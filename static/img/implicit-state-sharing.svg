@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1100px" height="661px" viewBox="0 0 1100 661" role="img">
+    <defs>
+        <rect id="implicitStateSharing-path-1" x="0" y="0" width="920" height="97"></rect>
+        <filter x="-2.7%" y="-24.2%" width="105.3%" height="150.5%" filterUnits="objectBoundingBox" id="implicitStateSharing-filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="implicitStateSharing-path-3" x="0" y="0" width="920" height="298"></rect>
+        <filter x="-2.7%" y="-7.9%" width="105.3%" height="116.4%" filterUnits="objectBoundingBox" id="implicitStateSharing-filter-4">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="implicitStateSharing-path-5" x="0" y="5.68434189e-14" width="920" height="97"></rect>
+        <filter x="-2.7%" y="-24.2%" width="105.3%" height="150.5%" filterUnits="objectBoundingBox" id="implicitStateSharing-filter-6">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, 1.000000)">
+        <rect class="gray-in-dark" fill="var(--hiq-color-primary)" x="0" y="0" width="1100" height="660"></rect>
+        <g transform="translate(90.000000, 54.000000)">
+            <g>
+                <use fill="black" fill-opacity="1" filter="url(#implicitStateSharing-filter-2)" xlink:href="#implicitStateSharing-path-1"></use>
+                <use fill="var(--hiq-color-gray-8)" fill-rule="evenodd" xlink:href="#implicitStateSharing-path-1"></use>
+            </g>
+            <rect stroke="var(--hiq-color-gray-5-5)" stroke-width="2" fill="var(--hiq-color-gray-5-5)" x="92" y="34" width="334" height="28"></rect>
+            <path d="M38,42.4142136 L25.4142136,55 L50.5857864,55 L38,42.4142136 Z" stroke="var(--hiq-color-gray-5-5)" stroke-width="2" fill="var(--hiq-color-gray-5-5)" transform="translate(38.000000, 48.500000) rotate(-270.000000) translate(-38.000000, -48.500000) "></path>
+        </g>
+        <g transform="translate(90.000000, 181.000000)">
+            <g>
+                <use fill="black" fill-opacity="1" filter="url(#implicitStateSharing-filter-4)" xlink:href="#implicitStateSharing-path-3"></use>
+                <use fill="var(--hiq-color-gray-8)" fill-rule="evenodd" xlink:href="#implicitStateSharing-path-3"></use>
+            </g>
+            <rect fill="var(--hiq-color-primary)" x="91" y="33" width="480" height="30"></rect>
+            <polygon fill="var(--hiq-color-primary)" transform="translate(46.000000, 48.500000) rotate(-180.000000) translate(-46.000000, -48.500000) " points="46 41 61 56 31 56"></polygon>
+            <path d="M0,93.5 L920,93.5" stroke="var(--hiq-color-gray-6)" stroke-width="2" stroke-linecap="square"></path>
+            <rect fill="var(--hiq-color-gray-6)" x="30" y="124" width="687" height="30"></rect>
+            <rect fill="var(--hiq-color-gray-6)" x="30" y="176" width="807" height="30"></rect>
+            <rect fill="var(--hiq-color-gray-6)" x="30" y="228" width="628" height="30"></rect>
+        </g>
+        <g transform="translate(90.000000, 509.000000)">
+            <g>
+                <use fill="black" fill-opacity="1" filter="url(#implicitStateSharing-filter-6)" xlink:href="#implicitStateSharing-path-5"></use>
+                <use fill="var(--hiq-color-gray-8)" fill-rule="evenodd" xlink:href="#implicitStateSharing-path-5"></use>
+            </g>
+            <rect stroke="var(--hiq-color-gray-5-5)" stroke-width="2" fill="var(--hiq-color-gray-5-5)" x="92" y="34" width="279" height="28"></rect>
+            <path d="M38,41.9142136 L25.4142136,54.5 L50.5857864,54.5 L38,41.9142136 Z" stroke="var(--hiq-color-gray-5-5)" stroke-width="2" fill="var(--hiq-color-gray-5-5)" transform="translate(38.000000, 48.000000) rotate(-270.000000) translate(-38.000000, -48.000000) "></path>
+        </g>
+    </g>
+</svg>
