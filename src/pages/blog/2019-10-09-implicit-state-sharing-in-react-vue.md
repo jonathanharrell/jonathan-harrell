@@ -18,7 +18,7 @@ Imagine you are creating an accordion component that you want to distribute publ
 
 Imagine this is your ideal API:
 
-```
+```jsx
 <Accordion>
   <AccordionItem>
     <AccordionHeader>Header content</AccordionHeader>
@@ -33,7 +33,7 @@ Each `AccordionItem` will need to maintain some state — whether it is expa
 
 One possibility is exposing the expanded value to your user through render props and making sure your documentation lets them know they need to pass that down to the header and panel components.
 
-```
+```jsx
 <Accordion>
   <AccordionItem render={({ expanded }) => (
     <AccordionHeader expanded={expanded}>
@@ -58,7 +58,7 @@ There is a better solution for cases like this — React Context. We can use
 
 First, we will create a context and define the _shape_ of that context. We will start with an `expanded` value and a `toggleExpansion` method. We are defining this context as specifically relevant to our accordion item:
 
-```
+```jsx
 const AccordionItemContext = React.createContext({
   expanded: false,
   toggleExpansion: () => {}
@@ -67,7 +67,7 @@ const AccordionItemContext = React.createContext({
 
 Now, inside our `AccordionItem` component, we will define the `expanded` and `toggleExpansion` values and feed them in as the value of the `Provider` component.
 
-```
+```jsx
 class AccordionItem extends React.Component {
   constructor(props) {
     super(props)
@@ -98,7 +98,7 @@ The `Provider` is one half of the React Context equation. The other half is the 
 
 Next, we need to set up `AccordionHeader` and `AccordionPanel` as consumers of this context:
 
-```
+```jsx
 const AccordionHeader = props => {
   return (
     <AccordionItemContext.Consumer>
@@ -119,7 +119,7 @@ The `Consumer` component requires a function as its child. This function will re
 
 We will similarly use `Consumer` to give `AccordionPanel` access to the context value:
 
-```
+```jsx
 const AccordionPanel = props => {
   return (
     <AccordionItemContext.Consumer>
@@ -138,7 +138,7 @@ const AccordionPanel = props => {
 
 Now, we really can achieve our ideal API for the accordion component. Users of our component won’t have to worry about passing state up or down the component tree. Those component internals are hidden from them:
 
-```
+```jsx
 <Accordion>
   <AccordionItem>
     <AccordionHeader>Header content</AccordionHeader>
@@ -153,7 +153,7 @@ Now, we really can achieve our ideal API for the accordion component. Users of o
 
 Vue provides a similar tool to React’s Context API, called provide/inject. To use this, we will use the `provide` method on our `accordion-item` Vue component:
 
-```
+```javascript
 Vue.component('accordion-item', {
   data() {
     return {
@@ -185,7 +185,7 @@ Note that we are using a render function here to create this component, but this
 
 Now, we will inject this state into our child components. We will simply use the `inject` property, which accepts an array of strings corresponding the properties of the object we defined in `provide`.
 
-```
+```javascript
 Vue.component('accordion-header', {
   inject: ['accordionItemState'],
 
@@ -202,7 +202,7 @@ Vue.component('accordion-header', {
 
 Once we include the property name in `inject`, we have access to those values in our template.
 
-```
+```javascript
 Vue.component('accordion-panel', {
   inject: ['accordionItemState'],
 

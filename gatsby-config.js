@@ -56,6 +56,30 @@ module.exports = {
               destinationDir: 'static',
             },
           },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            // options: {
+            //   classPrefix: 'language-',
+            //   inlineCodeMarker: null,
+            //   aliases: {},
+            //   showLineNumbers: false,
+            //   noInlineHighlight: false,
+            //   languageExtensions: [
+            //     {
+            //       language: 'superscript',
+            //       extend: 'javascript',
+            //       definition: {
+            //         superscript_types: /(SuperType)/,
+            //       },
+            //       insertBefore: {
+            //         function: {
+            //           superscript_keywords: /(superif|superelse)/,
+            //         },
+            //       },
+            //     },
+            //   ],
+            // },
+          },
         ],
       },
     },
@@ -63,6 +87,33 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            'family': 'Roboto',
+            'variants': [
+              '400',
+              '400i',
+              '700'
+            ],
+            'subsets': [
+              'latin-ext'
+            ]
+          },
+          {
+            'family': 'DM Serif Text',
+            'variants': [
+              '400'
+            ],
+            'subsets': [
+              'latin-ext'
+            ]
+          }
+        ],
       },
     },
     {
