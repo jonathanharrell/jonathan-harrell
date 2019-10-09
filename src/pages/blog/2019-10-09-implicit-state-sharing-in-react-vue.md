@@ -18,7 +18,7 @@ Imagine you are creating an accordion component that you want to distribute publ
 
 Imagine this is your ideal API:
 
-```
+```javascript
 <Accordion>
   <AccordionItem>
     <AccordionHeader>Header content</AccordionHeader>
