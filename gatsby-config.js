@@ -95,6 +95,7 @@ module.exports = {
         ],
       },
     },
+    "gatsby-plugin-styled-components",
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
