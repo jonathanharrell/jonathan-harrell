@@ -74,8 +74,8 @@ const Root = styled.h1`
   }
 `
 
-const Heading = ({ children, level, element }) => (
-  <Root level={level} as={element ? element : `h${level}`}>
+const Heading = ({ children, level, element, ...props }) => (
+  <Root level={level} as={element ? element : `h${level}`} {...props}>
     {children}
   </Root>
 )

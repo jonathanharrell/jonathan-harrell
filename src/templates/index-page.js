@@ -8,6 +8,7 @@ import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import ContentWrapper from '../components/ContextWrapper'
 import ThemeContext from '../context/theme'
+import Button from '../jh-ui/Button'
 
 export const IndexPageTemplate = ({
   image,
@@ -35,7 +36,9 @@ export const IndexPageTemplate = ({
       <Spaced top="m">
         <Text>I’m a designer and developer who is passionate about creating great user experiences, crafting solid code and overall making the web a better place.</Text>
       </Spaced>
-      <button onClick={toggleTheme}>Toggle theme</button>
+      <Spaced top="l">
+        <Button onClick={toggleTheme}>Toggle theme</Button>
+      </Spaced>
       <Heading level={2}>
         Recent Articles
       </Heading>

@@ -1,3 +1,7 @@
+export const colors = {
+  white: 'hsl(0, 0%, 100%)'
+}
+
 export const fonts = {
   sansSerif: `"Roboto", "Helvetica Neue", "Helvetica", "Arial", san-serif`,
   serif: `"DM Serif Text", serif`
@@ -54,20 +58,24 @@ export const breakpoints = {
 
 export default {
   light: {
+    mode: 'light',
     colors: {
       text: 'hsl(210, 67%, 11%)',
       textLighter: 'hsl(210, 15%, 60%)',
       background: 'hsl(210, 0%, 98%)',
+      primary: 'hsl(210, 67%, 11%)'
     },
     fonts,
     fontSizes,
     spacing
   },
   dark: {
+    mode: 'dark',
     colors: {
       text: 'hsl(0, 0%, 100%)',
       textLighter: 'hsl(210, 15%, 60%)',
-      background: 'hsl(210, 67%, 11%)'
+      background: 'hsl(210, 67%, 11%)',
+      primary: 'hsl(210, 67%, 11%)'
     },
     fonts,
     fontSizes,
