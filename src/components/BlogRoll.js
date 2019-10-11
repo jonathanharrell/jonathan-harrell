@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import Heading from '../jh-ui/Heading'
+import Text from '../jh-ui/Text'
 
 class BlogRoll extends React.Component {
   render() {
@@ -29,27 +31,26 @@ class BlogRoll extends React.Component {
                       />
                     </div>
                   ) : null}
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={post.fields.slug}
-                    >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
+                  <div className="post-meta">
+                    <Heading level={3}>
+                      <Link
+                        className="title has-text-primary is-size-4"
+                        to={post.fields.slug}
+                      >
+                        {post.frontmatter.title}
+                      </Link>
+                    </Heading>
+                    <Text order="meta">
                       {post.frontmatter.date}
-                    </span>
-                  </p>
+                    </Text>
+                  </div>
                 </header>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
+                <Text order="body">
+                  {post.excerpt}<br/>
+                  <Link to={post.fields.slug}>
                     Keep Reading →
                   </Link>
-                </p>
+                </Text>
               </article>
             </div>
           ))}
