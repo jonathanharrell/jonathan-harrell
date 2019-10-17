@@ -3,12 +3,12 @@ import { withKnobs, select } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrapper from '../ThemeWrapper'
 import ThemeContext from '../../context/theme'
-import Spaced from './index'
+import Padded from './index'
 import Text from '../Text'
 import { spacing } from '../themes'
 
 export default {
-  title: 'Spaced',
+  title: 'Padded',
   decorators: [
     renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>,
     withKnobs,
@@ -28,7 +28,7 @@ export const Basic = () => {
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Spaced
+        <Padded
           theme={theme}
           all={all}
           vertical={vertical}
@@ -39,7 +39,7 @@ export const Basic = () => {
           left={left}
         >
           <Text>This is some text</Text>
-        </Spaced>
+        </Padded>
       )}
     </ThemeContext.Consumer>
   )

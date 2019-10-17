@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { oneOf, string } from 'prop-types'
-import { breakpoints, colors } from '../themes'
+import { colors } from '../themes'
 
 const Root = styled.button`
   box-sizing: border-box;
@@ -22,14 +22,6 @@ const Root = styled.button`
   text-align: center;
   color: ${colors.white};
   cursor: pointer;
-
-  @media (min-width: ${breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.tablet};
-  }
-  
-  @media (min-width: ${breakpoints.desktop}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.desktop};
-  }
 `
 
 const Button = ({ children, order, element, ...props }) => (

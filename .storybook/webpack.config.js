@@ -14,6 +14,8 @@ module.exports = ({ config }) => {
     // use babel-plugin-remove-graphql-queries to remove static queries from components when rendering in storybook
     require.resolve('babel-plugin-remove-graphql-queries'),
   ]
+  config.module.rules[3].exclude = [/.svg$/]
+
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ['browser', 'module', 'main']
 
@@ -21,6 +23,12 @@ module.exports = ({ config }) => {
     test: /stories\.js?$/,
     loaders: [require.resolve('@storybook/source-loader')],
     enforce: 'pre',
+  })
+
+  config.module.rules.push({
+    test: /\.svg$/,
+    exclude: /node_modules/,
+    loader: 'svg-react-loader'
   })
 
   return config

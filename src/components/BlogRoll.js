@@ -4,6 +4,7 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
+import Card from '../jh-ui/Card'
 
 class BlogRoll extends React.Component {
   render() {
@@ -15,7 +16,8 @@ class BlogRoll extends React.Component {
         {posts &&
           posts.map(({ node: post }) => (
             <div className="is-parent column is-6" key={post.id}>
-              <article
+              <Card
+                element="article"
                 className={`blog-list-item tile is-child box notification ${
                   post.frontmatter.featuredpost ? 'is-featured' : ''
                 }`}
@@ -46,12 +48,9 @@ class BlogRoll extends React.Component {
                   </div>
                 </header>
                 <Text order="body">
-                  {post.excerpt}<br/>
-                  <Link to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
+                  {post.excerpt}
                 </Text>
-              </article>
+              </Card>
             </div>
           ))}
       </div>

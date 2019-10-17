@@ -1,5 +1,7 @@
 export const colors = {
-  white: 'hsl(0, 0%, 100%)'
+  white: 'hsl(0, 0%, 100%)',
+  red: 'hsl(10, 66%, 56%)',
+  redDark: 'hsl(10, 66%, 45%)',
 }
 
 export const fonts = {
@@ -46,7 +48,8 @@ export const spacing = {
   xl: '1.5rem',
   l: '1.25rem',
   m: '1rem',
-  s: '0.75rem'
+  s: '0.75rem',
+  xs: '0.5rem'
 }
 
 export const breakpoints = {
@@ -63,7 +66,8 @@ export default {
       text: 'hsl(210, 67%, 11%)',
       textLighter: 'hsl(210, 15%, 60%)',
       background: 'hsl(210, 0%, 98%)',
-      primary: 'hsl(210, 67%, 11%)'
+      primary: 'hsl(210, 67%, 11%)',
+      accent: colors.red
     },
     fonts,
     fontSizes,
@@ -75,7 +79,8 @@ export default {
       text: 'hsl(0, 0%, 100%)',
       textLighter: 'hsl(210, 15%, 60%)',
       background: 'hsl(210, 67%, 11%)',
-      primary: 'hsl(210, 67%, 11%)'
+      primary: 'hsl(210, 67%, 11%)',
+      accent: colors.red
     },
     fonts,
     fontSizes,

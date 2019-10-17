@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Primitive from '../Primitive'
 import { oneOf } from 'prop-types'
-import Button from '../Button'
 
 const Root = styled(Primitive)`
   ${({ theme, all, vertical, horizontal, top, right, bottom, left }) => {
@@ -40,7 +39,7 @@ const Spaced = (props) => (
 
 const spacing = ['s', 'm', 'l', 'xl', 'xxl', 'xxxl']
 
-Button.propTypes = {
+Spaced.propTypes = {
   all: oneOf(spacing),
   vertical: oneOf(spacing),
   horizontal: oneOf(spacing),
