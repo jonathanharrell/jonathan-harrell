@@ -34,6 +34,7 @@ const getFontSize = (theme, level, breakpoint) => {
 
 const getLineHeight = level => {
   switch (level) {
+    case 3:
     case 4:
       return 1.2
     case 5:

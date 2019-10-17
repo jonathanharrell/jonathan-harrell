@@ -8,25 +8,25 @@ const Root = styled(Primitive)`
     let str = ''
   
     if (all) {
-      str += `margin: ${theme.spacing[all]}`
+      str += `margin: ${theme.spacing[all]} !important`
     }
     if (vertical) {
-      str += `margin-top: ${theme.spacing[vertical]}; margin-bottom: ${theme.spacing[vertical]};`
+      str += `margin-top: ${theme.spacing[vertical]} !important; margin-bottom: ${theme.spacing[vertical]} !important;`
     }
     if (horizontal) {
-        str += `margin-left: ${theme.spacing[horizontal]}; margin-right: ${theme.spacing[horizontal]};`
+        str += `margin-left: ${theme.spacing[horizontal]} !important; margin-right: ${theme.spacing[horizontal]} !important;`
       }
     if (top) {
-      str += `margin-top: ${theme.spacing[top]};`
+      str += `margin-top: ${theme.spacing[top]} !important;`
     }
     if (right) {
-      str += `margin-right: ${theme.spacing[right]};`
+      str += `margin-right: ${theme.spacing[right]} !important;`
     }
     if (bottom) {
-      str += `margin-bottom: ${theme.spacing[bottom]};`
+      str += `margin-bottom: ${theme.spacing[bottom]} !important;`
     }
     if (left) {
-      str += `margin-left: ${theme.spacing[left]};`
+      str += `margin-left: ${theme.spacing[left]} !important;`
     }
 
     return str

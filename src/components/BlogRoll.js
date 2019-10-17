@@ -5,6 +5,7 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
 import Card from '../jh-ui/Card'
+import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 
 class BlogRoll extends React.Component {
   render() {
@@ -12,45 +13,34 @@ class BlogRoll extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div className="columns is-multiline">
+      <div>
         {posts &&
           posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
-              <Card
-                element="article"
-                className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
-                }`}
-              >
-                <header>
-                  {post.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${post.title}`,
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                  <div className="post-meta">
-                    <Heading level={3}>
-                      <Link
-                        className="title has-text-primary is-size-4"
-                        to={post.fields.slug}
-                      >
-                        {post.frontmatter.title}
-                      </Link>
-                    </Heading>
-                    <Text order="meta">
-                      {post.frontmatter.date}
-                    </Text>
-                  </div>
-                </header>
-                <Text order="body">
-                  {post.excerpt}
-                </Text>
-              </Card>
+            <div key={post.id}>
+              <ArticleExcerpt
+                date={new Date(post.frontmatter.date)}
+                title={post.frontmatter.title}
+                excerpt={post.excerpt}
+              />
+              {/*<Card*/}
+              {/*  element="article"*/}
+              {/*  className={`blog-list-item tile is-child box notification ${*/}
+              {/*    post.frontmatter.featuredpost ? 'is-featured' : ''*/}
+              {/*  }`}*/}
+              {/*>*/}
+              {/*  <header>*/}
+              {/*    {post.frontmatter.featuredimage ? (*/}
+              {/*      <div className="featured-thumbnail">*/}
+              {/*        <PreviewCompatibleImage*/}
+              {/*          imageInfo={{*/}
+              {/*            image: post.frontmatter.featuredimage,*/}
+              {/*            alt: `featured image thumbnail for post ${post.title}`,*/}
+              {/*          }}*/}
+              {/*        />*/}
+              {/*      </div>*/}
+              {/*    ) : null}*/}
+              {/*  </header>*/}
+              {/*</Card>*/}
             </div>
           ))}
       </div>
@@ -84,7 +74,7 @@ export default () => (
               frontmatter {
                 title
                 templateKey
-                date(formatString: "MMMM DD, YYYY")
+                date
                 featuredpost
                 featuredimage {
                   childImageSharp {
