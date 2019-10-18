@@ -6,6 +6,7 @@ import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 import themes from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
+import SubscribeBanner from './SubscribeBanner'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -82,6 +83,7 @@ const Layout = ({ children }) => {
         {/*<Navbar/>*/}
         <div>{children}</div>
         <Footer/>
+        <SubscribeBanner/>
       </Wrap>
     </ThemeProvider>
   )
