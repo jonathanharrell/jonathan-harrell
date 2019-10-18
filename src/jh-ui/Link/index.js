@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { bool } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { colors, breakpoints } from '../themes'
+import { breakpoints, colors } from '../themes'
 import ArrowRight from '../../img/icons/arrow-right.svg'
 import Spaced from '../Spaced'
 
@@ -33,8 +33,8 @@ const Root = styled(GatsbyLink)`
   }
 `
 
-const Link = ({ children, arrow, ...props }) => (
-  <Root to="/" {...props}>
+const Link = ({ children, arrow, anchor, ...props }) => (
+  <Root as={anchor ? 'a' : undefined} {...props}>
     {children}
     {arrow && (
       <Spaced left="xs">
@@ -45,11 +45,13 @@ const Link = ({ children, arrow, ...props }) => (
 )
 
 Link.propTypes = {
-  arrow: bool
+  arrow: bool,
+  anchor: bool
 }
 
 Link.defaultProps = {
-  arrow: false
+  arrow: false,
+  anchor: false
 }
 
 export default Link

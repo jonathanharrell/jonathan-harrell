@@ -54,60 +54,60 @@ const SocialLinksWrap = styled.div`
   }
 `
 
-const Footer = class extends React.Component {
-  render() {
-    return (
-      <FooterWrap>
-        <Padded top="xl" bottom="3x">
-          <FooterContentWrap>
-            <Link to="/">
-              &copy; 2017–2019 Jonathan Harrell
+const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <FooterWrap>
+      <Padded top="xl" bottom="3x">
+        <FooterContentWrap>
+          <Link to="/">
+            &copy; 2017–{currentYear} Jonathan Harrell
+          </Link>
+          <SocialLinksWrap>
+            <Link href="https://twitter.com/HarrellofDurham">
+              <ScreenReaderText>
+                Twitter
+              </ScreenReaderText>
+              <Twitter/>
             </Link>
-            <SocialLinksWrap>
-              <Link href="https://twitter.com/HarrellofDurham">
+            <Spaced left="s">
+              <Link href="https://github.com/jonathanharrell/">
                 <ScreenReaderText>
-                  Twitter
+                  Github
                 </ScreenReaderText>
-                <Twitter/>
+                <Github/>
               </Link>
-              <Spaced left="s">
-                <Link href="https://github.com/jonathanharrell/">
-                  <ScreenReaderText>
-                    Github
-                  </ScreenReaderText>
-                  <Github/>
-                </Link>
-                <Link href="https://codepen.io/jonathanharrell/">
-                  <ScreenReaderText>
-                    Codepen
-                  </ScreenReaderText>
-                  <Codepen/>
-                </Link>
-                <Link href="https://www.linkedin.com/in/jonathanharrell/">
-                  <ScreenReaderText>
-                    LinkedIn
-                  </ScreenReaderText>
-                  <LinkedIn/>
-                </Link>
-                <Link href="https://www.instagram.com/harrellofdurham/">
-                  <ScreenReaderText>
-                    Instagram
-                  </ScreenReaderText>
-                  <Instagram/>
-                </Link>
-                <Link href="https://jonathan-harrell.com/?feed=rss">
-                  <ScreenReaderText>
-                    RSS
-                  </ScreenReaderText>
-                  <Rss/>
-                </Link>
-              </Spaced>
-            </SocialLinksWrap>
-          </FooterContentWrap>
-        </Padded>
-      </FooterWrap>
-    )
-  }
+              <Link href="https://codepen.io/jonathanharrell/">
+                <ScreenReaderText>
+                  Codepen
+                </ScreenReaderText>
+                <Codepen/>
+              </Link>
+              <Link href="https://www.linkedin.com/in/jonathanharrell/">
+                <ScreenReaderText>
+                  LinkedIn
+                </ScreenReaderText>
+                <LinkedIn/>
+              </Link>
+              <Link href="https://www.instagram.com/harrellofdurham/">
+                <ScreenReaderText>
+                  Instagram
+                </ScreenReaderText>
+                <Instagram/>
+              </Link>
+              <Link href="https://jonathan-harrell.com/?feed=rss">
+                <ScreenReaderText>
+                  RSS
+                </ScreenReaderText>
+                <Rss/>
+              </Link>
+            </Spaced>
+          </SocialLinksWrap>
+        </FooterContentWrap>
+      </Padded>
+    </FooterWrap>
+  )
 }
 
 export default Footer

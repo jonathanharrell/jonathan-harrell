@@ -16,11 +16,12 @@ export default {
 
 export const Basic = () => {
   const arrow = boolean('Arrow', false)
+  const anchor = boolean('Anchor', false)
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Link theme={theme} arrow={arrow}>
+        <Link theme={theme} arrow={arrow} anchor={anchor}>
           Link
         </Link>
       )}

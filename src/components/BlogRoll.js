@@ -3,16 +3,26 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
+import { breakpoints } from '../jh-ui/themes'
 
 const BlogRollWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  grid-template-columns: repeat(12, 1fr);
 `
 
 const BlogExcerpt = styled(ArticleExcerpt)`
+  grid-column: 1 / -1;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundElevatedSecondary};
+  
+  @media (min-width: ${breakpoints.tablet}) {
+    grid-column: auto / span 6;
+  }
+  
+  @media (min-width: ${breakpoints.desktop}) {
+    grid-column: auto / span 4;
+  }
 `
 
 class BlogRoll extends React.Component {
@@ -24,34 +34,14 @@ class BlogRoll extends React.Component {
       <BlogRollWrap>
         {posts &&
         posts.map(({ node: post }) => (
-          <div key={post.id}>
-            <BlogExcerpt
-              link={post.fields.slug}
-              date={new Date(post.frontmatter.date)}
-              title={post.frontmatter.title}
-              excerpt={post.excerpt}
-              tags={post.frontmatter.tags}
-            />
-            {/*<Card*/}
-            {/*  element="article"*/}
-            {/*  className={`blog-list-item tile is-child box notification ${*/}
-            {/*    post.frontmatter.featuredpost ? 'is-featured' : ''*/}
-            {/*  }`}*/}
-            {/*>*/}
-            {/*  <header>*/}
-            {/*    {post.frontmatter.featuredimage ? (*/}
-            {/*      <div className="featured-thumbnail">*/}
-            {/*        <PreviewCompatibleImage*/}
-            {/*          imageInfo={{*/}
-            {/*            image: post.frontmatter.featuredimage,*/}
-            {/*            alt: `featured image thumbnail for post ${post.title}`,*/}
-            {/*          }}*/}
-            {/*        />*/}
-            {/*      </div>*/}
-            {/*    ) : null}*/}
-            {/*  </header>*/}
-            {/*</Card>*/}
-          </div>
+          <BlogExcerpt
+            key={post.id}
+            link={post.fields.slug}
+            date={new Date(post.frontmatter.date)}
+            title={post.frontmatter.title}
+            excerpt={post.excerpt}
+            tags={post.frontmatter.tags}
+          />
         ))}
       </BlogRollWrap>
     )

@@ -93,7 +93,11 @@ export const IndexPageTemplate = ({
               <Heading level={2} color={colors.white}>
                 Recent Experiments
               </Heading>
-              <Link arrow={true} to="/experiments">
+              <Link
+                href="https://codepen.io/jonathanharrell/"
+                arrow={true}
+                anchor={true}
+              >
                 View all
               </Link>
             </SectionHeader>
