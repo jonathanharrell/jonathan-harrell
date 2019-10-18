@@ -17,3 +17,471 @@ tags:
 One of the issues all front-end developers face is how to make UI components reusable. How do we craft components in such a way that satisfies the narrow use case that is clear to us now, while also making them reusable enough to work in a variety of circumstances? Render props and scoped slots provide a solution.
 
 Let’s say we are building an autocomplete component:
+
+Take a look at the initial React component code:
+
+```
+class Autocomplete extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      results: props.options
+    }
+  }
+
+  searchList(event) {
+    const results = this.props.options
+      .filter(option => 
+        option.toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      )
+    this.setState({ results })
+  }
+
+  render() {
+    return (
+      <div className="autocomplete">
+        <input
+          type="text"
+          placeholder="Type to search list"
+          onChange={searchList}
+        />
+        <div className="autocomplete-dropdown">
+          <ul className="autocomplete-search-results">
+            {this.state.results.map(option => (
+              <li class="autocomplete-search-result">
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )
+  }
+}
+```
+
+In this component, we have some logic that controls the core search behavior, but we also specify how the input and search results will be rendered. In this instance, we render a div that serves as a dropdown container and an unordered list containing a list item for each result within it.
+
+Think about how you would reuse this component. Sure, you could use this very same component if you want to reproduce exactly the same behavioral and visual result. But what if you want to reuse the same behavior, but visualize the component slightly differently? What if you want to reuse the core search behavior but add a few modifications for a slightly different use case?
+
+Imagine that instead of a dropdown containing the search results, you want a tag-like list of search results that always display:
+
+At their core, the functionality of these two components is very similar: type into an input to filter a list.
+
+This is a perfect use case for some relatively new tools that modern JavaScript frameworks now provide. These are _render props_ in React and _scoped slots_ in Vue. They work very similarly and provide a way to separate the **behavior** of a component from its **presentation**.
+
+## Render props in React
+
+First, let’s look at how we would restructure our autocomplete component using render props in React. We will now have two components — one for our Autocomplete component and one for a core SearchSelect component.
+
+Let’s look at the SearchSelect component first:
+
+```
+class SearchSelect extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      results: props.options
+    }
+  }
+
+  searchList(event) {
+    const results = this.props
+      .filterMethod(this.props.options, event.target.value)
+    this.setState({ results })
+  }
+
+  render() {
+    return this.props.render({
+      results: this.state.results,
+      searchList: (event) => this.searchList(event)
+    })
+  }
+}
+```
+
+This is a _renderless_ component (one that doesn’t render any markup of its own). Rather, it returns the result of a special prop called a _render prop_. This render prop accepts an object, into which you can pass any data that you would like the parent component to have access to.
+
+Think of this as the opposite of normal props. Usually, props are passed down from parent to child. In the case of render props, these are returned from the child so the parent can access them.
+
+Our `SearchSelect` component is handling the lowest level functionality — filtering a list of options based on a query string. It is then using the special render prop to render an element.
+
+In the parent, we pass a function to the render prop of the `SearchSelect` component. This function returns a React element, which we can hydrate with state and behavior from the `SearchSelect` component itself. Basically, this means we are able to access data from the child component in the parent.
+
+```
+import SearchSelect from './search-select'
+
+class Autocomplete extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  filterMethod (options, query) {
+    return options.filter(option =>
+      option.toLowerCase()
+        .includes(query.toLowerCase())
+    )
+  }
+
+  render() {
+    return (
+      <SearchSelect
+        options={this.props.options}
+        filterMethod={this.filterMethod}
+        render={({results, searchList}) => (
+          <div>
+            <input
+              type="text"
+              placeholder="Type to search list"
+              onChange={searchList}
+            />
+            <ul>
+              {results.map(option => (
+                <li>{option}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      />
+    )
+  }
+}
+```
+
+The key to making this work is the arguments we pass to the render prop function. See how we are destructuring a single object and using those destructured properties inside our markup? This object should be passed as an argument when you call `this.props.render()` in the child component.
+
+All this means that we can write whatever markup we want, as long as we properly hydrate it with the data and behavior exposed by the `SearchSelect` component.
+
+Also, note how we are passing the method for filtering our list in as a prop. This will allow us to change the way our list of options is filtered, while still using the `SearchSelect` component.
+
+## Implementing the Tag List Variant
+
+Let’s look at how we would implement our tag-like list component. We use the same SearchSelect core component and just change the markup rendered by the render prop:
+
+```
+import SearchSelect from './search-select'
+
+class TagListSearch extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  filterMethod(options, query) {
+    return options.filter(option =>
+      option.toLowerCase()
+        .includes(query.toLowerCase())
+    )
+  }
+
+  render() {
+    return (
+      <SearchSelect
+        options={this.props.options}
+        filterMethod={this.filterMethod}
+        render={({ results, searchList }) => (
+          <div className="tag-list-search">
+            <input
+              type="text"
+              placeholder="Type to search list"
+              onChange={searchList}
+            />
+            <ul className="tag-list">
+              {results.map(result => (
+                <li className="tag" key={result}>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      />
+    )
+  }
+}
+```
+
+Check out the Codepen [here](https://codepen.io/jonathanharrell/pen/KeOmVV).
+
+## Scoped slots in Vue
+
+Now let’s look at how we would implement this in Vue using scoped slots. First, here’s our search select component (for this example I am using globally registered components but you should probably use single file components in a real project):
+
+```
+Vue.component('search-select', {
+  props: [
+    'options',
+    'filterMethod'
+  ],
+
+  data() {
+    return {
+      query: ''
+    }
+  },
+
+  computed: {
+    results() {
+      return this.filterMethod(this.options, this.query)
+    }
+  },
+
+  methods: {
+    setQuery(event) {
+      this.query = event.target.value
+    }
+  },
+
+  render() {
+    return this.$scopedSlots.default({
+      results: this.results,
+      searchList: (event) => {
+        this.setQuery(event)
+      }
+    })
+  }
+})
+```
+
+As you can see, this looks very similar to the render prop in our React component. Here, we are returning a default _scoped slot_, which passes along an object with whatever we want. Here, we give it the results and our search method.
+
+In our `autocomplete` component, we use the `slot-scope` attribute to get access to the data from the child component. We can destructure the properties that come through for easier access, in much the same way as in our React render prop argument:
+
+```
+Vue.component('autocomplete', {
+  data() {
+    return {
+      dropdownVisible: false
+    }
+  },
+
+  methods: {
+    filterMethod(options, query) {
+      return options.filter(option =>
+        option.toLowerCase()
+          .includes(query.toLowerCase())
+      )
+    },
+
+    showDropdown() {
+      this.dropdownVisible = true
+    },
+
+    hideDropdown() {
+      this.dropdownVisible = false
+    }
+  },
+
+  template: `
+    <search-select
+      :options="options"
+      :filterMethod="filterMethod"
+    >
+      <div slot-scope="{ results, searchList }">
+        <div class="autocomplete">
+          <input
+            type="text"
+            placeholder="Type to search list"
+            @input="searchList"
+            @focus="showDropdown"
+            @blur="hideDropdown"
+          />
+          <div 
+            v-if="dropdownVisible" 
+            class="autocomplete-dropdown"
+          >
+            <ul class="autocomplete-search-results-list">
+              <li
+                class="autocomplete-search-result"
+                v-for="result in results"
+                :key="result"
+              >
+                {{ result }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </search-select>
+  `
+})
+```
+
+Check out the Codepen [here](https://codepen.io/jonathanharrell/pen/VdobNO).
+
+## Other uses for render props & scoped slots
+
+Creating reusable interface components isn’t the only use for render props and scoped slots. Here are some other ideas for how you can use them to encapsulate reusable behavior in a component that can then be exposed to its parent.
+
+### Data provider components
+
+You can use render props/scoped slots to create a component that handles asynchronously fetching data and exposing that data to its parent. This allows you to hide the logic for hitting an endpoint, getting the result and handling possible errors, as well as displaying a loading state to users while the data fetch is in progress.
+
+Here’s what the base component could look like:
+
+class FetchData extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
+      results: \[],
+      error: false
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData(this.props.url)
+  }
+
+  fetchData(url) {
+    this.setState({ loading: true })
+
+```
+fetch(url)
+  .then(data => data.json())
+  .then(json => {
+    this.setState({ 
+      loading: false, 
+      results: json 
+    })
+  })
+  .catch(error => {
+    this.setState({ 
+      loading: false, 
+      error: true 
+    })
+  })
+```
+
+  }
+
+  render() {
+    return this.props.render({
+      loading: this.state.loading,
+      results: this.state.results,
+      error: this.state.error
+    })
+  }
+}
+
+It accepts a URL as a prop and handles the actual fetching logic. Then, we use it in a parent component:
+
+```
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="wrapper">
+        <FetchData
+          url="https://..."
+          render={({ loading, results, error }) => (
+            <div>
+              {loading && (
+                <p>Loading...</p>
+              )}
+              {results.length > 0 && (
+                <div className="results">
+                  {results.map(result => (
+                    <p key={result.id}>
+                      {result.title}
+                    </p>
+                  ))}
+                </div>
+              )}
+              {error && (
+                <p>There was a problem loading.</p>
+              )}
+            </div>
+          )}
+        />
+      </div>
+    )
+  }
+}
+```
+
+## Observers (resize, intersection, etc.)
+
+You can also use render props/scoped slots to create a component that acts as a wrapper around resize or intersection observers. This component can simply expose the current size or intersection point of an element to a parent component. You can then perform whatever logic you need based on that data in the parent, preserving a nice separation of concerns.
+
+Here is a base component that observes its own size and exposes its height and width to its parent:
+
+```
+class ObserveDimensions extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      width: null,
+      height: null
+    }
+    this.elementToObserve = React.createRef()
+  }
+
+  componentDidMount(nextProps) {
+    const erd = elementResizeDetectorMaker({ 
+      strategy: 'scroll' 
+    })
+
+    erd.listenTo(
+      this.elementToObserve.current,
+        element => {
+        this.setState({
+          width: element.offsetWidth,
+          height: element.offsetHeight
+        })
+      }
+    )
+  }
+
+  render() {
+    return (
+      <div
+        className="observed-element"
+        ref={this.elementToObserve}
+      >
+        {this.props.render({
+          width: this.state.width,
+          height: this.state.height
+        })}
+      </div>
+    )
+  }
+}
+```
+
+We are using the [Element Resize Detector](https://github.com/wnr/element-resize-detector) library to listen to changes in our element size, and a React ref to get a reference to the actual DOM node.
+
+We can then use this component quite easily in our app:
+
+```
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="wrapper">
+        <ObserveDimensions
+          render={({ width, height }) => (
+            <div>
+              Width: {width}px
+              Height: {height}px
+            </div>
+          )}
+        />
+      </div>
+    )
+  }
+}
+```
+
+## Conclusion
+
+The key to successfully creating reusable components using both render props and scoped slots is being able to correctly separate **behavior** from **presentation**. Each time you create a new UI component, think “What is the core behavior of this component? Can I use this anywhere else?”
+
+Having a core set of renderless components that use render props or scoped slots can help you cut down on code duplication in your app and think more carefully about your core interface behaviors.
