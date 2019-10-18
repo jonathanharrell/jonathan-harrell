@@ -1,0 +1,48 @@
+---
+templateKey: blog-post
+title: What’s the Deal with Margin Collapse?
+date: 2018-03-11T20:17:00.000Z
+description: >-
+  Learn about margin collapse, a fundamental concept of CSS layout. See visual
+  examples of when margin collapse happens, and when it doesn't.
+featuredpost: true
+featuredimage: /img/implicit-state-sharing.svg
+tags:
+  - css
+  - layout
+  - box model
+  - margin collapse
+---
+The concept of _margin collapse_ is foundational to an understanding of the box model in CSS, but it is actually quite complex and potentially confusing. The spec describing how it works is thorough but difficult to understand. This article is an attempt to give some visual examples to the concepts from the specs.
+
+The basic idea is that if two margins are adjoining, they will collapse into one margin, which will have the greater of the two margin values (it will be the more negative of the margins if both margins are negative).
+
+## What makes margins adjoining?
+
+The key is understanding when two margins are adjoining. Here are the basic situations:
+
+### Sibling Elements
+
+The bottom margin of an element collapses with the top margin of its proceeding sibling.
+
+### Child Elements
+
+The top margin of an element collapses with the top margin of its first child element.
+
+The bottom margin of an element collapses with the bottom margin of its last child element.
+
+### An Element’s Own Top and Bottom Margins
+
+The top and bottom margins of an element collapse if the element has no height, padding, or border and all of its children elements’ margins collapse (height is represented here only for clarity).
+
+## When does margin collapse not occur?
+
+There are several exceptions to the rules. This is where things can get hard to follow. Following are some visual examples of situations where margins would not collapse. For a more complete understanding, refer to the specs.
+
+If the parent element has a top border or padding, the parent’s top margin does not collapse with the first child’s top margin.
+
+If the parent element has a bottom border or padding, the parent’s bottom margin does not collapse with the last child’s bottom margin.
+
+## Further Margin Collapse Resources
+
+There are some additional, more complex scenarios that prevent collapse that aren’t covered here. For updated and complete information, see the [CSS Box Model Spec](https://www.w3.org/TR/CSS2/box.html#collapsing-margins).
