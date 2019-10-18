@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import addons from '@storybook/addons'
 import { ThemeProvider } from 'styled-components'
 import themes from './themes'
@@ -7,7 +7,7 @@ import themes from './themes'
 const channel = addons.getChannel()
 
 // create a component that listens for the DARK_MODE event
-const ThemeWrapper = props => {
+const ThemeWrap = props => {
   // this example uses hook but you can also use class component as well
   const [theme, setTheme] = useState(themes.light)
 
@@ -29,4 +29,4 @@ const ThemeWrapper = props => {
   )
 }
 
-export default ThemeWrapper
+export default ThemeWrap

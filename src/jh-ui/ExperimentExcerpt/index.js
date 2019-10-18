@@ -1,9 +1,16 @@
 import React from 'react'
 import { instanceOf, number, string } from 'prop-types'
+import styled from 'styled-components'
 import Heading from '../Heading'
 import Text from '../Text'
 import Spaced from '../Spaced'
 import Card from '../Card'
+import Eye from '../../img/icons/eye.svg'
+
+const ExperimentMeta = styled(Text)`
+  display: flex;
+  align-items: center;
+`
 
 const ExperimentExcerpt = ({ date, title, viewsCount, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
@@ -24,9 +31,12 @@ const ExperimentExcerpt = ({ date, title, viewsCount, ...props }) => {
           {title}
         </Heading>
       </Spaced>
-      <Text order="meta">
-        {viewsCount}
-      </Text>
+      <ExperimentMeta order="meta">
+        <Eye/>
+        <Spaced left="xs">
+          <span>{viewsCount}</span>
+        </Spaced>
+      </ExperimentMeta>
     </Card>
   )
 }

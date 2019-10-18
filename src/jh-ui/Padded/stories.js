@@ -1,7 +1,7 @@
 import React from 'react'
-import { withKnobs, select } from '@storybook/addon-knobs'
+import { select, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
-import ThemeWrapper from '../ThemeWrapper'
+import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
 import Padded from './index'
 import Text from '../Text'
@@ -10,7 +10,7 @@ import { spacing } from '../themes'
 export default {
   title: 'Padded',
   decorators: [
-    renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>,
+    renderStory => <ThemeWrap>{renderStory()}</ThemeWrap>,
     withKnobs,
     withA11y
   ]

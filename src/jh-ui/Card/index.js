@@ -4,7 +4,7 @@ import { string } from 'prop-types'
 import Padded from '../Padded'
 
 const Root = styled.div`
-  box-shadow: 0 2px 28px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 28px rgba(0, 0, 0, 0.15);
 `
 
 const Card = ({ children, element, ...props }) => (

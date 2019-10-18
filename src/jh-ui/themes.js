@@ -87,7 +87,7 @@ export default {
     mode: 'dark',
     colors: {
       text: colors.white,
-      textLighter: 'hsl(210, 15%, 60%)',
+      textLighter: 'hsl(0, 0%, 60%)',
       textInverse: colors.white,
       backgroundPrimary: colors.black,
       backgroundSecondary: 'hsl(0, 0%, 10%)',

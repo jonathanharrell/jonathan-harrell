@@ -1,14 +1,14 @@
 import React from 'react'
-import { withKnobs, select, text } from '@storybook/addon-knobs'
+import { select, text, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
-import ThemeWrapper from '../ThemeWrapper'
+import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
 import Heading from './index'
 
 export default {
   title: 'Heading',
   decorators: [
-    renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>,
+    renderStory => <ThemeWrap>{renderStory()}</ThemeWrap>,
     withKnobs,
     withA11y
   ]
@@ -38,7 +38,8 @@ export const Multiline = () => {
       {({ theme }) => (
         <div style={{ width: '500px' }}>
           <Heading theme={theme} level={level} element={element}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque finibus nunc ac condimentum pellentesque. Sed in sem sed eros ornare feugiat et sit amet ligula.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque finibus nunc ac condimentum
+            pellentesque. Sed in sem sed eros ornare feugiat et sit amet ligula.
           </Heading>
         </div>
       )}

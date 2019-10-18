@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import Padded from '../jh-ui/Padded'
 import { breakpoints } from '../jh-ui/themes'
-import ContentWrapper from './ContentWrapper'
+import ContentWrap from './ContentWrap'
 
 const FooterWrap = styled.footer`
   background-color: ${({ theme }) => theme.colors.backgroundInverse};
   color: ${({ theme }) => theme.colors.textLighter};
 `
 
-const FooterContentWrapper = styled(ContentWrapper)`
+const FooterContentWrap = styled(ContentWrap)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@ const Footer = class extends React.Component {
     return (
       <FooterWrap>
         <Padded vertical="l">
-          <FooterContentWrapper>
+          <FooterContentWrap>
             <Link to="/">
               &copy; 2017–2019 Jonathan Harrell
             </Link>
@@ -47,7 +47,7 @@ const Footer = class extends React.Component {
               <a href="">in</a>
               <a href="">rss</a>
             </div>
-          </FooterContentWrapper>
+          </FooterContentWrap>
         </Padded>
       </FooterWrap>
     )

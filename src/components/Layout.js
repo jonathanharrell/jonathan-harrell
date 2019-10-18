@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 import themes from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
 
-const Wrapper = styled.div`
+const Wrap = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 `
 
@@ -19,7 +18,7 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper>
+      <Wrap>
         <Helmet>
           <html lang="en"/>
           <title>{title}</title>
@@ -58,12 +57,12 @@ const Layout = ({ children }) => {
         {/*<Navbar/>*/}
         <div>{children}</div>
         <Footer/>
-      </Wrapper>
+      </Wrap>
     </ThemeProvider>
   )
 }
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrap = ({ children }) => {
   const [theme, setTheme] = useState(themes.light)
 
   const toggleTheme = () => {
@@ -79,4 +78,4 @@ const TemplateWrapper = ({ children }) => {
   )
 }
 
-export default TemplateWrapper
+export default TemplateWrap

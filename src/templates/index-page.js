@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import ContentWrapper from '../components/ContentWrapper'
+import ContentWrap from '../components/ContentWrap'
 import BlogRoll from '../components/BlogRoll'
 import ExperimentRoll from '../components/ExperimentRoll'
 import Heading from '../jh-ui/Heading'
@@ -39,7 +39,7 @@ export const IndexPageTemplate = ({
     <>
       <HeaderWrap>
         <Padded vertical="3x">
-          <ContentWrapper>
+          <ContentWrap>
             {/*<div*/}
             {/*  style={{*/}
             {/*    backgroundImage: `url(${*/}
@@ -61,12 +61,12 @@ export const IndexPageTemplate = ({
             <Spaced top="l">
               <Button onClick={toggleTheme}>Toggle theme</Button>
             </Spaced>
-          </ContentWrapper>
+          </ContentWrap>
         </Padded>
       </HeaderWrap>
       <BlogRollWrap>
         <Padded vertical="3x">
-          <ContentWrapper>
+          <ContentWrap>
             <SectionHeader>
               <Heading level={2}>
                 Recent Articles
@@ -76,12 +76,12 @@ export const IndexPageTemplate = ({
               </Link>
             </SectionHeader>
             <BlogRoll/>
-          </ContentWrapper>
+          </ContentWrap>
         </Padded>
       </BlogRollWrap>
       <ExperimentRollWrap>
         <Padded vertical="3x">
-          <ContentWrapper>
+          <ContentWrap>
             <SectionHeader>
               <Heading level={2} color={colors.white}>
                 Recent Experiments
@@ -91,7 +91,7 @@ export const IndexPageTemplate = ({
               </Link>
             </SectionHeader>
             <ExperimentRoll/>
-          </ContentWrapper>
+          </ContentWrap>
         </Padded>
       </ExperimentRollWrap>
     </>

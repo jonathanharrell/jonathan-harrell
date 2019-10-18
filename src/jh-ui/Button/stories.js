@@ -1,14 +1,14 @@
 import React from 'react'
-import { withKnobs, select, text } from '@storybook/addon-knobs'
+import { select, text, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
-import ThemeWrapper from '../ThemeWrapper'
+import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
 import Button from './index'
 
 export default {
   title: 'Button',
   decorators: [
-    renderStory => <ThemeWrapper>{renderStory()}</ThemeWrapper>,
+    renderStory => <ThemeWrap>{renderStory()}</ThemeWrap>,
     withKnobs,
     withA11y
   ]
