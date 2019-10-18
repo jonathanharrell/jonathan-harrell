@@ -48,7 +48,9 @@ const SocialLinksWrap = styled.div`
   margin-top: ${({ theme }) => theme.spacing.s};
   
   @media (min-width: ${footerContentBreakpoint}) {
+    flex: 1;
     margin-top: 0;
+    text-align: right;
   }
 `
 
