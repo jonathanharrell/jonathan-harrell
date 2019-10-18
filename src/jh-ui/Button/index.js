@@ -4,7 +4,6 @@ import { oneOf, string } from 'prop-types'
 import { colors } from '../themes'
 
 const Root = styled.button`
-  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
