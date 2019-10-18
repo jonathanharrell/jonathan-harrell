@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Heading from '../jh-ui/Heading'
-import Text from '../jh-ui/Text'
-import Card from '../jh-ui/Card'
+import styled from 'styled-components'
+import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
+
+const BlogExcerpt = styled(ArticleExcerpt)`
+  background-color: ${({ theme }) => theme.colors.backgroundElevatedSecondary};
+`;
 
 class BlogRoll extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class BlogRoll extends React.Component {
         {posts &&
           posts.map(({ node: post }) => (
             <div key={post.id}>
-              <ArticleExcerpt
+              <BlogExcerpt
                 date={new Date(post.frontmatter.date)}
                 title={post.frontmatter.title}
                 excerpt={post.excerpt}

@@ -1,4 +1,7 @@
 export const colors = {
+  blueDarkest: 'hsl(210, 67%, 11%)',
+  blueDarker: 'hsl(210, 67%, 13%)',
+  black: 'hsl(0, 0%, 0%)',
   white: 'hsl(0, 0%, 100%)',
   red: 'hsl(10, 66%, 56%)',
   redDark: 'hsl(10, 66%, 45%)',
@@ -63,10 +66,16 @@ export default {
   light: {
     mode: 'light',
     colors: {
-      text: 'hsl(210, 67%, 11%)',
+      text: colors.blueDarkest,
       textLighter: 'hsl(210, 15%, 60%)',
-      background: 'hsl(210, 0%, 98%)',
-      primary: 'hsl(210, 67%, 11%)',
+      textInverse: 'hsl(0, 0%, 100%)',
+      backgroundPrimary: colors.white,
+      backgroundSecondary: 'hsl(210, 0%, 95%)',
+      backgroundInverse: colors.blueDarkest,
+      backgroundElevatedPrimary: '',
+      backgroundElevatedSecondary: '',
+      backgroundElevatedInverse: colors.blueDarker,
+      primary: colors.blueDarkest,
       accent: colors.red
     },
     fonts,
@@ -76,10 +85,16 @@ export default {
   dark: {
     mode: 'dark',
     colors: {
-      text: 'hsl(0, 0%, 100%)',
+      text: colors.white,
       textLighter: 'hsl(210, 15%, 60%)',
-      background: 'hsl(210, 67%, 11%)',
-      primary: 'hsl(210, 67%, 11%)',
+      textInverse: colors.white,
+      backgroundPrimary: colors.black,
+      backgroundSecondary: 'hsl(0, 0%, 10%)',
+      backgroundInverse: colors.black,
+      backgroundElevatedPrimary: '',
+      backgroundElevatedSecondary: 'hsl(0, 0%, 15%)',
+      backgroundElevatedInverse: 'hsl(0, 0%, 10%)',
+      primary: colors.blueDarkest,
       accent: colors.red
     },
     fonts,

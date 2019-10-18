@@ -64,7 +64,7 @@ const Root = styled.h1`
   line-height: ${({ level }) => getLineHeight(level)};
   font-weight: ${({ level }) => getFontWeight(level)};
   ${({ level }) => level === 6 ? 'text-transform: uppercase' : null}
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme, color }) => color || theme.colors.text};
   
   @media (min-width: ${breakpoints.tablet}) {
     font-size: ${({ theme, level }) => getFontSize(theme, level, 'tablet')};
@@ -75,14 +75,20 @@ const Root = styled.h1`
   }
 `
 
-const Heading = ({ children, level, element, ...props }) => (
-  <Root level={level} as={element ? element : `h${level}`} {...props}>
+const Heading = ({ children, level, color, element, ...props }) => (
+  <Root
+    level={level}
+    color={color}
+    as={element ? element : `h${level}`}
+    {...props}
+  >
     {children}
   </Root>
 )
 
 Heading.propTypes = {
   level: oneOf([1, 2, 3, 4, 5, 6]),
+  color: string,
   element: string
 }
 

@@ -1,52 +1,95 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import Layout from '../components/Layout'
+import ContentWrapper from '../components/ContextWrapper'
+import BlogRoll from '../components/BlogRoll'
+import ExperimentRoll from '../components/ExperimentRoll'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
-import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
-import ContentWrapper from '../components/ContextWrapper'
-import ThemeContext from '../context/theme'
+import Padded from '../jh-ui/Padded'
 import Button from '../jh-ui/Button'
 import Link from '../jh-ui/Link'
+import { colors } from '../jh-ui/themes'
+import ThemeContext from '../context/theme'
+
+const HeaderWrap = styled.section`
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+`
+
+const BlogRollWrap = styled.section`
+  background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+`
+
+const ExperimentRollWrap = styled.section`
+  background-color: ${({ theme }) => theme.colors.backgroundInverse};
+`
 
 export const IndexPageTemplate = ({
-  image,
-  title,
-  subheading
-}) => {
+                                    image,
+                                    title,
+                                    subheading
+                                  }) => {
   const { toggleTheme } = useContext(ThemeContext)
 
   return (
-    <ContentWrapper>
-      {/*<div*/}
-      {/*  style={{*/}
-      {/*    backgroundImage: `url(${*/}
-      {/*      !!image.childImageSharp ? image.childImageSharp.fluid.src : image*/}
-      {/*    })`,*/}
-      {/*    backgroundPosition: `top left`,*/}
-      {/*    backgroundAttachment: `fixed`,*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  {title}*/}
-      {/*  {subheading}*/}
-      {/*</div>*/}
-      <Heading level={1}>UI/UX Designer & Front-End Developer</Heading>
-      <Spaced top="m">
-        <Text>I’m a designer and developer who is passionate about creating great user experiences, crafting solid code and overall making the web a better place.</Text>
-      </Spaced>
-      <Spaced top="l">
-        <Button onClick={toggleTheme}>Toggle theme</Button>
-      </Spaced>
-      <Heading level={2}>
-        Recent Articles
-      </Heading>
-      <BlogRoll />
-      <Link arrow={true} to="/blog">
-        Read more
-      </Link>
-    </ContentWrapper>
+    <>
+      <HeaderWrap>
+        <Padded vertical="xxxl">
+          <ContentWrapper>
+            {/*<div*/}
+            {/*  style={{*/}
+            {/*    backgroundImage: `url(${*/}
+            {/*      !!image.childImageSharp ? image.childImageSharp.fluid.src : image*/}
+            {/*    })`,*/}
+            {/*    backgroundPosition: `top left`,*/}
+            {/*    backgroundAttachment: `fixed`,*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  {title}*/}
+            {/*  {subheading}*/}
+            {/*</div>*/}
+            <Heading level={1}>UI/UX Designer & Front-End Developer</Heading>
+            <Spaced top="m">
+              <Text>I’m a designer and developer who is passionate about creating great user experiences, crafting solid
+                code
+                and overall making the web a better place.</Text>
+            </Spaced>
+            <Spaced top="l">
+              <Button onClick={toggleTheme}>Toggle theme</Button>
+            </Spaced>
+          </ContentWrapper>
+        </Padded>
+      </HeaderWrap>
+      <BlogRollWrap>
+        <Padded vertical="xxxl">
+          <ContentWrapper>
+            <Heading level={2}>
+              Recent Articles
+            </Heading>
+            <Link arrow={true} to="/blog">
+              View all
+            </Link>
+            <BlogRoll/>
+          </ContentWrapper>
+        </Padded>
+      </BlogRollWrap>
+      <ExperimentRollWrap>
+        <Padded vertical="xxxl">
+          <ContentWrapper>
+            <Heading level={2} color={colors.white}>
+              Recent Experiments
+            </Heading>
+            <Link arrow={true} to="/experiments">
+              View all
+            </Link>
+            <ExperimentRoll/>
+          </ContentWrapper>
+        </Padded>
+      </ExperimentRollWrap>
+    </>
   )
 }
 
@@ -91,39 +134,39 @@ IndexPage.propTypes = {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
+    query IndexPageTemplate {
+        markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
+            frontmatter {
+                title
+                image {
+                    childImageSharp {
+                        fluid(maxWidth: 2048, quality: 100) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
                 }
-              }
+                heading
+                subheading
+                mainpitch {
+                    title
+                    description
+                }
+                description
+                intro {
+                    blurbs {
+                        image {
+                            childImageSharp {
+                                fluid(maxWidth: 240, quality: 64) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        text
+                    }
+                    heading
+                    description
+                }
             }
-            text
-          }
-          heading
-          description
         }
-      }
     }
-  }
 `

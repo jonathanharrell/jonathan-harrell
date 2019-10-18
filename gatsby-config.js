@@ -85,6 +85,7 @@ module.exports = {
             'variants': [
               '400',
               '400i',
+              '500',
               '700'
             ],
             'subsets': [
