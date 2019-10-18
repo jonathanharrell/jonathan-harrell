@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { oneOf, instanceOf, arrayOf, string } from 'prop-types'
-import { breakpoints } from '../themes'
+import { arrayOf, instanceOf, string } from 'prop-types'
 import Card from '../Card'
 import Heading from '../Heading'
 import Text from '../Text'

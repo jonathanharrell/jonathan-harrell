@@ -46,7 +46,8 @@ export const fontSizes = {
 }
 
 export const spacing = {
-  xxxl: '2rem',
+  '3x': '3rem',
+  '2x': '2rem',
   xxl: '1.75rem',
   xl: '1.5rem',
   l: '1.25rem',

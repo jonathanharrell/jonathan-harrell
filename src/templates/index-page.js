@@ -37,7 +37,7 @@ export const IndexPageTemplate = ({
   return (
     <>
       <HeaderWrap>
-        <Padded vertical="xxxl">
+        <Padded vertical="3x">
           <ContentWrapper>
             {/*<div*/}
             {/*  style={{*/}
@@ -64,7 +64,7 @@ export const IndexPageTemplate = ({
         </Padded>
       </HeaderWrap>
       <BlogRollWrap>
-        <Padded vertical="xxxl">
+        <Padded vertical="3x">
           <ContentWrapper>
             <Heading level={2}>
               Recent Articles
@@ -77,7 +77,7 @@ export const IndexPageTemplate = ({
         </Padded>
       </BlogRollWrap>
       <ExperimentRollWrap>
-        <Padded vertical="xxxl">
+        <Padded vertical="3x">
           <ContentWrapper>
             <Heading level={2} color={colors.white}>
               Recent Experiments
