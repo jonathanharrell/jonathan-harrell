@@ -14,6 +14,11 @@ const ContentWrap = styled.div`
   }
   
   @media (min-width: ${breakpoints.tablet}) {
+    padding-right: ${({ theme }) => theme.spacing['2x']};
+    padding-left: ${({ theme }) => theme.spacing['2x']};
+  }
+  
+  @media (min-width: ${breakpoints.desktop}) {
     padding-right: ${({ theme }) => theme.spacing['3x']};
     padding-left: ${({ theme }) => theme.spacing['3x']};
   }

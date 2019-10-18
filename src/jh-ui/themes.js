@@ -15,32 +15,32 @@ export const fonts = {
 export const fontSizes = {
   xxxl: {
     mobile: '2.125rem',
-    tablet: '',
+    tablet: '2.5rem',
     desktop: '2.875rem'
   },
   xxl: {
     mobile: '1.875rem',
-    tablet: '',
+    tablet: '2rem',
     desktop: '2.375rem'
   },
   xl: {
     mobile: '1.625rem',
-    tablet: '',
+    tablet: '1.75rem',
     desktop: '1.875rem'
   },
   l: {
     mobile: '1.25rem',
-    tablet: '',
+    tablet: '1.375rem',
     desktop: '1.5rem'
   },
   m: {
     mobile: '1rem',
-    tablet: '',
+    tablet: '1rem',
     desktop: '1.1875rem'
   },
   s: {
     mobile: '0.875rem',
-    tablet: '',
+    tablet: '0.875rem',
     desktop: '0.875rem',
   }
 }

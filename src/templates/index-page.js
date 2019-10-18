@@ -20,6 +20,10 @@ const HeaderWrap = styled.section`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 `
 
+const HeaderContentWrap = styled.div`
+  max-width: 28rem;
+`
+
 const BlogRollWrap = styled.section`
   background-color: ${({ theme }) => theme.colors.backgroundSecondary};
 `
@@ -40,27 +44,30 @@ export const IndexPageTemplate = ({
       <HeaderWrap>
         <Padded vertical="3x">
           <ContentWrap>
-            {/*<div*/}
-            {/*  style={{*/}
-            {/*    backgroundImage: `url(${*/}
-            {/*      !!image.childImageSharp ? image.childImageSharp.fluid.src : image*/}
-            {/*    })`,*/}
-            {/*    backgroundPosition: `top left`,*/}
-            {/*    backgroundAttachment: `fixed`,*/}
-            {/*  }}*/}
-            {/*>*/}
-            {/*  {title}*/}
-            {/*  {subheading}*/}
-            {/*</div>*/}
-            <Heading level={1}>UI/UX Designer & Front-End Developer</Heading>
-            <Spaced top="m">
-              <Text>I’m a designer and developer who is passionate about creating great user experiences, crafting solid
-                code
-                and overall making the web a better place.</Text>
-            </Spaced>
-            <Spaced top="l">
-              <Button onClick={toggleTheme}>Toggle theme</Button>
-            </Spaced>
+            <HeaderContentWrap>
+              {/*<div*/}
+              {/*  style={{*/}
+              {/*    backgroundImage: `url(${*/}
+              {/*      !!image.childImageSharp ? image.childImageSharp.fluid.src : image*/}
+              {/*    })`,*/}
+              {/*    backgroundPosition: `top left`,*/}
+              {/*    backgroundAttachment: `fixed`,*/}
+              {/*  }}*/}
+              {/*>*/}
+              {/*  {title}*/}
+              {/*  {subheading}*/}
+              {/*</div>*/}
+              <Heading level={1}>UI/UX Designer & Front-End Developer</Heading>
+              <Spaced top="m">
+                <Text>I’m a designer and developer who is passionate about creating great user experiences, crafting
+                  solid
+                  code
+                  and overall making the web a better place.</Text>
+              </Spaced>
+              <Spaced top="l">
+                <Button onClick={toggleTheme}>Toggle theme</Button>
+              </Spaced>
+            </HeaderContentWrap>
           </ContentWrap>
         </Padded>
       </HeaderWrap>
