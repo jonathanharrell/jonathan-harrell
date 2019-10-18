@@ -4,7 +4,14 @@ import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 
+const BlogRollWrap = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+`
+
 const BlogExcerpt = styled(ArticleExcerpt)`
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundElevatedSecondary};
 `
 
@@ -14,7 +21,7 @@ class BlogRoll extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div>
+      <BlogRollWrap>
         {posts &&
         posts.map(({ node: post }) => (
           <div key={post.id}>
@@ -46,7 +53,7 @@ class BlogRoll extends React.Component {
             {/*</Card>*/}
           </div>
         ))}
-      </div>
+      </BlogRollWrap>
     )
   }
 }

@@ -74,7 +74,7 @@ export default {
       backgroundSecondary: 'hsl(210, 0%, 95%)',
       backgroundInverse: colors.blueDarkest,
       backgroundElevatedPrimary: '',
-      backgroundElevatedSecondary: '',
+      backgroundElevatedSecondary: colors.white,
       backgroundElevatedInverse: colors.blueDarker,
       primary: colors.blueDarkest,
       accent: colors.red
