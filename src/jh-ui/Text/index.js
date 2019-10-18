@@ -28,7 +28,7 @@ const getColor = (theme, order) => {
 const Root = styled.p`
   margin: 0;
   font-family: ${({ theme }) => theme.fonts.sansSerif};
-  font-size: ${({ theme, order }) => getFontSize(theme, order, "mobile")};
+  font-size: ${({ theme, order }) => getFontSize(theme, order, 'mobile')};
   line-height: 1.5;
   font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
   ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};

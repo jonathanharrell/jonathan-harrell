@@ -21,7 +21,7 @@ const SectionHeaderWrap = styled.header`
 `
 
 const SectionHeader = ({ children, ...props }) => (
-  <Spaced bottom="l">
+  <Spaced bottom="2x">
     <SectionHeaderWrap {...props}>
       {children}
     </SectionHeaderWrap>
