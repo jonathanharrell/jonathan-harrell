@@ -19,6 +19,7 @@ class BlogRoll extends React.Component {
           posts.map(({ node: post }) => (
             <div key={post.id}>
               <BlogExcerpt
+                link={post.fields.slug}
                 date={new Date(post.frontmatter.date)}
                 title={post.frontmatter.title}
                 excerpt={post.excerpt}
@@ -67,7 +68,7 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
+              excerpt(pruneLength: 230)
               id
               fields {
                 slug

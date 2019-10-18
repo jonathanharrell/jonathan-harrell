@@ -6,8 +6,22 @@ import Card from '../Card'
 import Heading from '../Heading'
 import Text from '../Text'
 import Spaced from '../Spaced'
+import { Link as GatsbyLink } from 'gatsby'
 
-const ArticleExcerpt = ({ date, title, excerpt, tags, ...props }) => {
+const ArticleCard = styled(Card)`
+  position: relative;
+`;
+
+const Link = styled(GatsbyLink)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+const ArticleExcerpt = ({ link, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -17,7 +31,8 @@ const ArticleExcerpt = ({ date, title, excerpt, tags, ...props }) => {
   const tagsString = tags.join(' • ')
 
   return (
-    <Card element="article" {...props}>
+    <ArticleCard element="article" {...props}>
+      <Link to={link}/>
       <Spaced bottom="m">
         <Text order="meta">
           {formattedDate}
@@ -38,11 +53,12 @@ const ArticleExcerpt = ({ date, title, excerpt, tags, ...props }) => {
           </Text>
         </Spaced>
       )}
-    </Card>
+    </ArticleCard>
   )
 }
 
 ArticleExcerpt.propTypes = {
+  link: string.isRequired,
   date: instanceOf(Date),
   title: string.isRequired,
   excerpt: string.isRequired,

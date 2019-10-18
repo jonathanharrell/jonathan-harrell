@@ -20,6 +20,7 @@ export const Basic = () => {
       {({ theme }) => (
         <ArticleExcerpt
           theme={theme}
+          link="/"
           date={new Date('November 5, 2018')}
           title="Implicit State Sharing in React & Vue"
           excerpt="Learn to use React's Context API and provide/inject in Vue to share state between related components without resorting to a global data store."
