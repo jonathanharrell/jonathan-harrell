@@ -71,7 +71,7 @@ export default {
       textLighter: 'hsl(210, 15%, 60%)',
       textInverse: 'hsl(0, 0%, 100%)',
       backgroundPrimary: colors.white,
-      backgroundSecondary: 'hsl(210, 0%, 95%)',
+      backgroundSecondary: 'hsl(210, 15%, 95%)',
       backgroundInverse: colors.blueDarkest,
       backgroundElevatedPrimary: '',
       backgroundElevatedSecondary: colors.white,

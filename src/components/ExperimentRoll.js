@@ -5,7 +5,7 @@ import ExperimentExcerpt from '../jh-ui/ExperimentExcerpt'
 const ExperimentRollWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
 `
 
 const ExperimentExcerptElevated = styled(ExperimentExcerpt)`

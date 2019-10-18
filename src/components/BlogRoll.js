@@ -7,7 +7,7 @@ import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 const BlogRollWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
 `
 
 const BlogExcerpt = styled(ArticleExcerpt)`
