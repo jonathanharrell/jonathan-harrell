@@ -9,7 +9,7 @@ import { Link as GatsbyLink } from 'gatsby'
 
 const ArticleCard = styled(Card)`
   position: relative;
-`;
+`
 
 const Link = styled(GatsbyLink)`
   position: absolute;
@@ -18,7 +18,7 @@ const Link = styled(GatsbyLink)`
   z-index: 1;
   width: 100%;
   height: 100%;
-`;
+`
 
 const ArticleExcerpt = ({ link, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {

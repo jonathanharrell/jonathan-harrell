@@ -14,6 +14,7 @@ import Button from '../jh-ui/Button'
 import Link from '../jh-ui/Link'
 import { colors } from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
+import SectionHeader from '../jh-ui/SectionHeader'
 
 const HeaderWrap = styled.section`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
@@ -66,12 +67,14 @@ export const IndexPageTemplate = ({
       <BlogRollWrap>
         <Padded vertical="3x">
           <ContentWrapper>
-            <Heading level={2}>
-              Recent Articles
-            </Heading>
-            <Link arrow={true} to="/blog">
-              View all
-            </Link>
+            <SectionHeader>
+              <Heading level={2}>
+                Recent Articles
+              </Heading>
+              <Link arrow={true} to="/blog">
+                View all
+              </Link>
+            </SectionHeader>
             <BlogRoll/>
           </ContentWrapper>
         </Padded>
@@ -79,12 +82,14 @@ export const IndexPageTemplate = ({
       <ExperimentRollWrap>
         <Padded vertical="3x">
           <ContentWrapper>
-            <Heading level={2} color={colors.white}>
-              Recent Experiments
-            </Heading>
-            <Link arrow={true} to="/experiments">
-              View all
-            </Link>
+            <SectionHeader>
+              <Heading level={2} color={colors.white}>
+                Recent Experiments
+              </Heading>
+              <Link arrow={true} to="/experiments">
+                View all
+              </Link>
+            </SectionHeader>
             <ExperimentRoll/>
           </ContentWrapper>
         </Padded>

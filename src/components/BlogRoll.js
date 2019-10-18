@@ -6,7 +6,7 @@ import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 
 const BlogExcerpt = styled(ArticleExcerpt)`
   background-color: ${({ theme }) => theme.colors.backgroundElevatedSecondary};
-`;
+`
 
 class BlogRoll extends React.Component {
   render() {
@@ -16,35 +16,36 @@ class BlogRoll extends React.Component {
     return (
       <div>
         {posts &&
-          posts.map(({ node: post }) => (
-            <div key={post.id}>
-              <BlogExcerpt
-                link={post.fields.slug}
-                date={new Date(post.frontmatter.date)}
-                title={post.frontmatter.title}
-                excerpt={post.excerpt}
-              />
-              {/*<Card*/}
-              {/*  element="article"*/}
-              {/*  className={`blog-list-item tile is-child box notification ${*/}
-              {/*    post.frontmatter.featuredpost ? 'is-featured' : ''*/}
-              {/*  }`}*/}
-              {/*>*/}
-              {/*  <header>*/}
-              {/*    {post.frontmatter.featuredimage ? (*/}
-              {/*      <div className="featured-thumbnail">*/}
-              {/*        <PreviewCompatibleImage*/}
-              {/*          imageInfo={{*/}
-              {/*            image: post.frontmatter.featuredimage,*/}
-              {/*            alt: `featured image thumbnail for post ${post.title}`,*/}
-              {/*          }}*/}
-              {/*        />*/}
-              {/*      </div>*/}
-              {/*    ) : null}*/}
-              {/*  </header>*/}
-              {/*</Card>*/}
-            </div>
-          ))}
+        posts.map(({ node: post }) => (
+          <div key={post.id}>
+            <BlogExcerpt
+              link={post.fields.slug}
+              date={new Date(post.frontmatter.date)}
+              title={post.frontmatter.title}
+              excerpt={post.excerpt}
+              tags={post.frontmatter.tags}
+            />
+            {/*<Card*/}
+            {/*  element="article"*/}
+            {/*  className={`blog-list-item tile is-child box notification ${*/}
+            {/*    post.frontmatter.featuredpost ? 'is-featured' : ''*/}
+            {/*  }`}*/}
+            {/*>*/}
+            {/*  <header>*/}
+            {/*    {post.frontmatter.featuredimage ? (*/}
+            {/*      <div className="featured-thumbnail">*/}
+            {/*        <PreviewCompatibleImage*/}
+            {/*          imageInfo={{*/}
+            {/*            image: post.frontmatter.featuredimage,*/}
+            {/*            alt: `featured image thumbnail for post ${post.title}`,*/}
+            {/*          }}*/}
+            {/*        />*/}
+            {/*      </div>*/}
+            {/*    ) : null}*/}
+            {/*  </header>*/}
+            {/*</Card>*/}
+          </div>
+        ))}
       </div>
     )
   }
@@ -85,12 +86,13 @@ export default () => (
                     }
                   }
                 }
+                tags
               }
             }
           }
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={(data, count) => <BlogRoll data={data} count={count}/>}
   />
 )
