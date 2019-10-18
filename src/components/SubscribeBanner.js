@@ -7,7 +7,7 @@ import Button from '../jh-ui/Button'
 import { breakpoints } from '../jh-ui/themes'
 
 const SubscribeBannerWrap = styled.section`
-  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  background-color: ${({ theme }) => theme.colors.backgroundSecondary};
 `
 
 const SubscribeBannerContentWrap = styled.div`
