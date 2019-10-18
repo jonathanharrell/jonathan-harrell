@@ -20,6 +20,16 @@ const Link = styled(GatsbyLink)`
   height: 100%;
 `
 
+const ArticleCardContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const ArticleExcerptTextWrap = styled.div`
+  flex: 1;
+`
+
 const ArticleExcerpt = ({ link, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
@@ -32,26 +42,30 @@ const ArticleExcerpt = ({ link, date, title, excerpt, tags, ...props }) => {
   return (
     <ArticleCard element="article" {...props}>
       <Link to={link}/>
-      <Spaced bottom="m">
-        <Text order="meta">
-          {formattedDate}
-        </Text>
-      </Spaced>
-      <Spaced bottom="l">
-        <Heading level={3}>
-          {title}
-        </Heading>
-      </Spaced>
-      <Text order="body">
-        {excerpt}
-      </Text>
-      {tagsString && (
-        <Spaced top="xl">
+      <ArticleCardContentWrap>
+        <Spaced bottom="m">
           <Text order="meta">
-            {tagsString}
+            {formattedDate}
           </Text>
         </Spaced>
-      )}
+        <Spaced bottom="l">
+          <Heading level={3}>
+            {title}
+          </Heading>
+        </Spaced>
+        <ArticleExcerptTextWrap>
+          <Text order="body">
+            {excerpt}
+          </Text>
+        </ArticleExcerptTextWrap>
+        {tagsString && (
+          <Spaced top="xl">
+            <Text order="meta">
+              {tagsString}
+            </Text>
+          </Spaced>
+        )}
+      </ArticleCardContentWrap>
     </ArticleCard>
   )
 }

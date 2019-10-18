@@ -5,6 +5,10 @@ import Padded from '../Padded'
 
 const Root = styled.div`
   box-shadow: 0 2px 28px rgba(0, 0, 0, 0.15);
+  
+  > * {
+    height: 100%;
+  }
 `
 
 const Card = ({ children, element, ...props }) => (
