@@ -33,8 +33,8 @@ const Root = styled(GatsbyLink)`
   }
 `
 
-const Link = ({ children, arrow, anchor, ...props }) => (
-  <Root as={anchor ? 'a' : undefined} {...props}>
+const Link = ({ children, arrow, href, ...props }) => (
+  <Root as={href ? 'a' : undefined} href={href} {...props}>
     {children}
     {arrow && (
       <Spaced left="xs">
@@ -45,13 +45,11 @@ const Link = ({ children, arrow, anchor, ...props }) => (
 )
 
 Link.propTypes = {
-  arrow: bool,
-  anchor: bool
+  arrow: bool
 }
 
 Link.defaultProps = {
-  arrow: false,
-  anchor: false
+  arrow: false
 }
 
 export default Link

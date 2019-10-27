@@ -9,6 +9,18 @@ const BlogRollWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
+  
+  > *:nth-child(4) {
+    display: none;
+    
+    @media (min-width: ${breakpoints.tablet}) {
+      display: block;
+    }
+    
+    @media (min-width: ${breakpoints.desktop}) {
+      display: none;
+    }
+  }
 `
 
 const BlogExcerpt = styled(ArticleExcerpt)`
@@ -61,6 +73,7 @@ export default () => (
     query={graphql`
       query BlogRollQuery {
         allMarkdownRemark(
+          limit: 4
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {

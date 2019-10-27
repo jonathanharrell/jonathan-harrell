@@ -96,7 +96,6 @@ export const IndexPageTemplate = ({
               <Link
                 href="https://codepen.io/jonathanharrell/"
                 arrow={true}
-                anchor={true}
               >
                 View all
               </Link>

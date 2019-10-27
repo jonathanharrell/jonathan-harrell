@@ -65,38 +65,38 @@ const Footer = () => {
             &copy; 2017–{currentYear} Jonathan Harrell
           </Link>
           <SocialLinksWrap>
-            <Link href="https://twitter.com/HarrellofDurham">
+            <Link as="a" href="https://twitter.com/HarrellofDurham">
               <ScreenReaderText>
                 Twitter
               </ScreenReaderText>
               <Twitter/>
             </Link>
             <Spaced left="s">
-              <Link href="https://github.com/jonathanharrell/">
+              <Link as="a" href="https://github.com/jonathanharrell/">
                 <ScreenReaderText>
                   Github
                 </ScreenReaderText>
                 <Github/>
               </Link>
-              <Link href="https://codepen.io/jonathanharrell/">
+              <Link as="a" href="https://codepen.io/jonathanharrell/">
                 <ScreenReaderText>
                   Codepen
                 </ScreenReaderText>
                 <Codepen/>
               </Link>
-              <Link href="https://www.linkedin.com/in/jonathanharrell/">
+              <Link as="a" href="https://www.linkedin.com/in/jonathanharrell/">
                 <ScreenReaderText>
                   LinkedIn
                 </ScreenReaderText>
                 <LinkedIn/>
               </Link>
-              <Link href="https://www.instagram.com/harrellofdurham/">
+              <Link as="a" href="https://www.instagram.com/harrellofdurham/">
                 <ScreenReaderText>
                   Instagram
                 </ScreenReaderText>
                 <Instagram/>
               </Link>
-              <Link href="https://jonathan-harrell.com/?feed=rss">
+              <Link as="a" href="https://jonathan-harrell.com/?feed=rss">
                 <ScreenReaderText>
                   RSS
                 </ScreenReaderText>
