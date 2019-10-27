@@ -111,7 +111,6 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  console.log('index')
   const { frontmatter } = data.mdx
 
   return (
