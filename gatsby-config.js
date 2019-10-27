@@ -8,12 +8,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
-      resolve: 'gatsby-plugin-mdx',
-      options: {
-        defaultLayouts: {
-          default: require.resolve('./src/components/Layout.js'),
-        }
-      },
+      resolve: 'gatsby-plugin-mdx'
     },
     {
       resolve: 'gatsby-plugin-react-svg',

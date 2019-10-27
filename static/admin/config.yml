@@ -42,7 +42,7 @@ collections:
     extension: mdx
     format: frontmatter
     files:
-      - file: src/pages/index.md
+      - file: src/pages/index.mdx
         label: 'Landing Page'
         name: index
         fields:
@@ -135,7 +135,7 @@ collections:
                   - label: Alt
                     name: alt
                     widget: string
-      - file: src/pages/about/index.md
+      - file: src/pages/about/index.mdx
         label: About
         name: about
         fields:

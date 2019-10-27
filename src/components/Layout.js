@@ -113,7 +113,7 @@ const Layout = ({ children }) => {
   )
 }
 
-const TemplateWrap = ({ children }) => {
+const TemplateWrap = (props) => {
   const [theme, setTheme] = useState(themes.light)
 
   const toggleTheme = () => {
@@ -123,7 +123,7 @@ const TemplateWrap = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Layout>
-        {children}
+        {props.children}
       </Layout>
     </ThemeContext.Provider>
   )
