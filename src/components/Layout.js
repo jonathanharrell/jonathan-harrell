@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react'
+import { MDXProvider } from '@mdx-js/react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
-import Footer from '../components/Footer'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
-import themes from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
+import Heading from '../jh-ui/Heading'
+import Text from '../jh-ui/Text'
+import Spaced from '../jh-ui/Spaced'
+import themes from '../jh-ui/themes'
+import Footer from './Footer'
 import SubscribeBanner from './SubscribeBanner'
 
 const GlobalStyle = createGlobalStyle`
@@ -81,7 +85,27 @@ const Layout = ({ children }) => {
       <GlobalStyle/>
       <Wrap>
         {/*<Navbar/>*/}
-        <div>{children}</div>
+        <div>
+          <MDXProvider
+            components={{
+              h1: props => <Heading level={1} {...props}/>,
+              h2: props => <Heading level={2} {...props}/>,
+              h3: props => <Heading level={3} {...props}/>,
+              h4: props => <Heading level={4} {...props}/>,
+              h5: props => <Heading level={5} {...props}/>,
+              h6: props => <Heading level={6} {...props}/>,
+              p: props => (
+                <Spaced bottom="m">
+                  <Text {...props}/>
+                </Spaced>
+              ),
+              code: props => <code {...props} style={{ color: 'red' }}/>,
+              inlineCode: props => <code {...props} style={{ color: 'red' }}/>
+            }}
+          >
+            {children}
+          </MDXProvider>
+        </div>
         <Footer/>
         <SubscribeBanner/>
       </Wrap>

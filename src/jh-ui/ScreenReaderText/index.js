@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { string } from 'prop-types'
+import Heading from '../Heading'
 
 const ScreenReaderOnlySpan = styled.span`
   clip: rect(0 0 0 0);
@@ -13,10 +15,14 @@ const ScreenReaderOnlySpan = styled.span`
   white-space: nowrap;
 `
 
-const ScreenReaderText = ({ children }) => (
-  <ScreenReaderOnlySpan>
+const ScreenReaderText = ({ children, element }) => (
+  <ScreenReaderOnlySpan as={element}>
     {children}
   </ScreenReaderOnlySpan>
 )
+
+Heading.propTypes = {
+  element: string
+}
 
 export default ScreenReaderText

@@ -7,6 +7,8 @@ collections:
   - name: blog
     label: Blog
     folder: src/pages/blog
+    extension: mdx
+    format: frontmatter
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
@@ -37,6 +39,8 @@ collections:
         widget: list
   - name: pages
     label: Pages
+    extension: mdx
+    format: frontmatter
     files:
       - file: src/pages/index.md
         label: 'Landing Page'

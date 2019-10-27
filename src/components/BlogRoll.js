@@ -40,7 +40,7 @@ const BlogExcerpt = styled(ArticleExcerpt)`
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { edges: posts } = data.allMdx
 
     return (
       <BlogRollWrap>
@@ -72,7 +72,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
-        allMarkdownRemark(
+        allMdx(
           limit: 4
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
@@ -89,13 +89,6 @@ export default () => (
                 templateKey
                 date
                 featuredpost
-                featuredimage {
-                  childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
-                }
                 tags
               }
             }

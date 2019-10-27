@@ -1,48 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
+import styled from 'styled-components'
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { HTMLContent } from '../components/Content'
+import ContentWrap from '../components/ContentWrap'
+import Heading from '../jh-ui/Heading'
+import Spaced from '../jh-ui/Spaced'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+
+const ArticleWrap = styled.article`
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+`
 
 export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
+                                   content,
+                                   contentComponent,
+                                   description,
+                                   tags,
+                                   title,
+                                   helmet
+                                 }) => {
 
   return (
-    <section className="section">
+    <ArticleWrap>
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
+      <ContentWrap>
+        <Spaced bottom="m">
+          <Heading level={1}>
+            {title}
+          </Heading>
+        </Spaced>
+        {/*{tags && tags.length ? (*/}
+        {/*  <div style={{ marginTop: `4rem` }}>*/}
+        {/*    <ScreenReaderText element="h2">Tags</ScreenReaderText>*/}
+        {/*    <ul className="taglist">*/}
+        {/*      {tags.map(tag => (*/}
+        {/*        <li key={tag + `tag`}>*/}
+        {/*          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>*/}
+        {/*        </li>*/}
+        {/*      ))}*/}
+        {/*    </ul>*/}
+        {/*  </div>*/}
+        {/*) : null}*/}
+        <MDXRenderer>
+          {content}
+        </MDXRenderer>
+      </ContentWrap>
+    </ArticleWrap>
   )
 }
 
@@ -55,12 +61,12 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { mdx: post } = data
 
   return (
     <Layout>
       <BlogPostTemplate
-        content={post.html}
+        content={post.body}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
@@ -81,23 +87,23 @@ const BlogPost = ({ data }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
+    mdx: PropTypes.object,
   }),
 }
 
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      id
-      html
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-        description
-        tags
-      }
+    query BlogPostByID($id: String!) {
+        mdx(id: { eq: $id }) {
+            id
+            body
+            frontmatter {
+                date(formatString: "MMMM DD, YYYY")
+                title
+                description
+                tags
+            }
+        }
     }
-  }
 `
