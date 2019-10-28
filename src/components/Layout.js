@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     min-width: 20rem;
     background-color: ${({ theme }) => theme.colors.backgroundBody};
     font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -33,6 +34,23 @@ const GlobalStyle = createGlobalStyle`
   h4 {
     font-family: "DM Serif Text", serif;
     font-weight: 400 !important;
+  }
+  
+  p code {
+    padding: 0.125rem 0.25rem;
+    border-radius: 2px;
+    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+  }
+  
+  pre {
+    margin: ${({ theme }) => theme.spacing.xl} -${({ theme }) => theme.spacing.l};
+    padding: ${({ theme }) => theme.spacing.m} ${({ theme }) => theme.spacing.l};
+    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+  }
+  
+  pre code {
+    line-height: 1.4;
+    white-space: pre-wrap;
   }
 `
 
@@ -97,10 +115,7 @@ const Layout = ({ children }) => {
                 <Spaced bottom="m">
                   <Text {...props}/>
                 </Spaced>
-              ),
-              // pre: Pre,
-              // code: Code,
-              // inlineCode: InlineCode
+              )
             }}
           >
             {children}
