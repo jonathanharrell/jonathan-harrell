@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
+import kebabCase from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
@@ -10,6 +11,8 @@ import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Padded from '../jh-ui/Padded'
+import Text from '../jh-ui/Text'
+import Link from '../jh-ui/Link'
 
 const ArticleWrap = styled.article`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
@@ -29,23 +32,29 @@ export const BlogPostTemplate = ({
       {helmet || ''}
       <Padded vertical="3x">
         <ContentWrap>
+          {tags && (
+            <Spaced bottom="m">
+              <div>
+                {tags.map((tag, index) => (
+                  <>
+                    <Link key={tag + `tag`} to={`/tags/${kebabCase(tag)}/`}>
+                      <Text order="meta">
+                        {tag}
+                      </Text>
+                    </Link>
+                    {index < tags.length - 1 && (
+                      <Text order="meta" element="span"> • </Text>
+                    )}
+                  </>
+                ))}
+              </div>
+            </Spaced>
+          )}
           <Spaced bottom="m">
             <Heading level={1}>
               {title}
             </Heading>
           </Spaced>
-          {/*{tags && tags.length ? (*/}
-          {/*  <div style={{ marginTop: `4rem` }}>*/}
-          {/*    <ScreenReaderText element="h2">Tags</ScreenReaderText>*/}
-          {/*    <ul className="taglist">*/}
-          {/*      {tags.map(tag => (*/}
-          {/*        <li key={tag + `tag`}>*/}
-          {/*          <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>*/}
-          {/*        </li>*/}
-          {/*      ))}*/}
-          {/*    </ul>*/}
-          {/*  </div>*/}
-          {/*) : null}*/}
           <MDXRenderer>
             {content}
           </MDXRenderer>
