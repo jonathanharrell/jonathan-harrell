@@ -9,6 +9,7 @@ import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
 import Spaced from '../jh-ui/Spaced'
 import Footer from './Footer'
+
 import SubscribeBanner from './SubscribeBanner'
 
 const GlobalStyle = createGlobalStyle`
@@ -43,6 +44,8 @@ const GlobalStyle = createGlobalStyle`
   }
   
   pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: ${({ theme }) => theme.spacing.xl} -${({ theme }) => theme.spacing.l};
     padding: ${({ theme }) => theme.spacing.m} ${({ theme }) => theme.spacing.l};
     background-color: ${({ theme }) => theme.colors.backgroundSecondary};
@@ -50,7 +53,6 @@ const GlobalStyle = createGlobalStyle`
   
   pre code {
     line-height: 1.4;
-    white-space: pre-wrap;
   }
 `
 
