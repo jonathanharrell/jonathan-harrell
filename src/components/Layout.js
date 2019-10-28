@@ -11,6 +11,9 @@ import Spaced from '../jh-ui/Spaced'
 import Footer from './Footer'
 
 import SubscribeBanner from './SubscribeBanner'
+import Pre from '../jh-ui/Pre'
+import Code from '../jh-ui/Code'
+import InlineCode from '../jh-ui/InlineCode'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -45,18 +48,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
     background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-  }
-  
-  pre {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: ${({ theme }) => theme.spacing.xl} -${({ theme }) => theme.spacing.l};
-    padding: ${({ theme }) => theme.spacing.m} ${({ theme }) => theme.spacing.l};
-    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-  }
-  
-  pre code {
-    line-height: 1.4;
   }
 `
 
@@ -141,7 +132,10 @@ const Layout = ({ children }) => {
                 <Spaced bottom="m">
                   <Text {...props}/>
                 </Spaced>
-              )
+              ),
+              pre: Pre,
+              code: Code,
+              inlineCode: InlineCode
             }}
           >
             {children}
