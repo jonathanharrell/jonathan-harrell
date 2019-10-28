@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400 !important;
   }
   
+  p a {
+    color: ${({ theme }) => theme.colors.text};
+  }
+  
   p code {
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
@@ -108,11 +112,31 @@ const Layout = ({ children }) => {
           <MDXProvider
             components={{
               h1: props => <Heading level={1} {...props}/>,
-              h2: props => <Heading level={2} {...props}/>,
-              h3: props => <Heading level={3} {...props}/>,
-              h4: props => <Heading level={4} {...props}/>,
-              h5: props => <Heading level={5} {...props}/>,
-              h6: props => <Heading level={6} {...props}/>,
+              h2: props => (
+                <Spaced top="3x" bottom="m">
+                  <Heading level={2} {...props}/>
+                </Spaced>
+              ),
+              h3: props => (
+                <Spaced top="xxl" bottom="m">
+                  <Heading level={3} {...props}/>
+                </Spaced>
+              ),
+              h4: props => (
+                <Spaced top="xl" bottom="m">
+                  <Heading level={4} {...props}/>
+                </Spaced>
+              ),
+              h5: props => (
+                <Spaced top="l" bottom="m">
+                  <Heading level={5} {...props}/>
+                </Spaced>
+              ),
+              h6: props => (
+                <Spaced vertical="m">
+                  <Heading level={6} {...props}/>
+                </Spaced>
+              ),
               p: props => (
                 <Spaced bottom="m">
                   <Text {...props}/>
