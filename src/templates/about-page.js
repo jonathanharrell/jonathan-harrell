@@ -39,7 +39,7 @@ const AboutPage = ({ data }) => {
       <AboutPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
-        content={post.html}
+        content={post.body}
       />
     </Layout>
   )
@@ -54,7 +54,7 @@ export default AboutPage
 export const aboutPageQuery = graphql`
     query AboutPage($id: String!) {
         mdx(id: { eq: $id }) {
-            html
+            body
             frontmatter {
                 title
             }

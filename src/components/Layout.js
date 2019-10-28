@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
@@ -8,7 +8,6 @@ import ThemeContext from '../context/theme'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
 import Spaced from '../jh-ui/Spaced'
-import themes from '../jh-ui/themes'
 import Footer from './Footer'
 import SubscribeBanner from './SubscribeBanner'
 
@@ -99,8 +98,9 @@ const Layout = ({ children }) => {
                   <Text {...props}/>
                 </Spaced>
               ),
-              code: props => <code {...props} style={{ color: 'red' }}/>,
-              inlineCode: props => <code {...props} style={{ color: 'red' }}/>
+              // pre: Pre,
+              // code: Code,
+              // inlineCode: InlineCode
             }}
           >
             {children}
@@ -113,20 +113,4 @@ const Layout = ({ children }) => {
   )
 }
 
-const TemplateWrap = (props) => {
-  const [theme, setTheme] = useState(themes.light)
-
-  const toggleTheme = () => {
-    setTheme(theme === themes.light ? themes.dark : themes.light)
-  }
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <Layout>
-        {props.children}
-      </Layout>
-    </ThemeContext.Provider>
-  )
-}
-
-export default TemplateWrap
+export default Layout
