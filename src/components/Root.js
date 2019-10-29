@@ -3,23 +3,11 @@ import themes from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
 
 const Root = ({ children }) => {
-  const [theme, setTheme] = useState(themes.light)
+  const defaultTheme = typeof document !== 'undefined' && document.body.dataset.theme
+  const [theme, setTheme] = useState(defaultTheme ? themes[defaultTheme] : themes.light)
 
   useLayoutEffect(() => {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-    // if system has dark theme, set theme to dark
-    if (window.matchMedia && darkModeMediaQuery.matches) {
-      setTheme(themes.dark)
-    }
-
-    // look if there is a saved theme
-    const savedTheme = sessionStorage.getItem('jh-theme')
-
-    // if saved theme, set theme to that
-    if (savedTheme) {
-      setTheme(themes[savedTheme])
-    }
 
     darkModeMediaQuery.addListener(() => {
       // set and store newly changed system theme
