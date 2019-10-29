@@ -17,7 +17,6 @@ import ThemeContext from '../context/theme'
 import SectionHeader from '../jh-ui/SectionHeader'
 
 const HeaderWrap = styled.section`
-  ${({ theme }) => console.log(theme)};
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 `
 

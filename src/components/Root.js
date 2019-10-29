@@ -19,11 +19,13 @@ const Root = ({ children }) => {
 
   const toggleTheme = () => {
     // set and store newly toggled theme
+    console.log(theme)
+    console.log(themes.light)
     const newThemeName = theme === themes.light ? 'dark' : 'light'
     setTheme(themes[newThemeName])
     sessionStorage.setItem('jh-theme', newThemeName)
   }
-  console.log(theme)
+  console.log('render', theme)
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
