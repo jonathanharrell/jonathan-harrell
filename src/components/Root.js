@@ -23,7 +23,7 @@ const Root = ({ children }) => {
     setTheme(themes[newThemeName])
     sessionStorage.setItem('jh-theme', newThemeName)
   }
-
+  console.log(theme)
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
