@@ -20,7 +20,7 @@ Let’s say we are building an autocomplete component:
 
 Take a look at the initial React component code:
 
-```
+```jsx
 class Autocomplete extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +32,7 @@ class Autocomplete extends React.Component {
 
   searchList(event) {
     const results = this.props.options
-      .filter(option => 
+      .filter(option =>
         option.toLowerCase()
           .includes(event.target.value.toLowerCase())
       )
@@ -78,7 +78,7 @@ First, let’s look at how we would restructure our autocomplete component using
 
 Let’s look at the SearchSelect component first:
 
-```
+```jsx
 class SearchSelect extends React.Component {
   constructor(props) {
     super(props)
@@ -110,7 +110,7 @@ Our `SearchSelect` component is handling the lowest level functionality — 
 
 In the parent, we pass a function to the render prop of the `SearchSelect` component. This function returns a React element, which we can hydrate with state and behavior from the `SearchSelect` component itself. Basically, this means we are able to access data from the child component in the parent.
 
-```
+```jsx
 import SearchSelect from './search-select'
 
 class Autocomplete extends React.Component {
@@ -160,7 +160,7 @@ Also, note how we are passing the method for filtering our list in as a prop. Th
 
 Let’s look at how we would implement our tag-like list component. We use the same SearchSelect core component and just change the markup rendered by the render prop:
 
-```
+```jsx
 import SearchSelect from './search-select'
 
 class TagListSearch extends React.Component {
@@ -208,7 +208,7 @@ Check out the Codepen [here](https://codepen.io/jonathanharrell/pen/KeOmVV).
 
 Now let’s look at how we would implement this in Vue using scoped slots. First, here’s our search select component (for this example I am using globally registered components but you should probably use single file components in a real project):
 
-```
+```javascript
 Vue.component('search-select', {
   props: [
     'options',
@@ -248,7 +248,7 @@ As you can see, this looks very similar to the render prop in our React componen
 
 In our `autocomplete` component, we use the `slot-scope` attribute to get access to the data from the child component. We can destructure the properties that come through for easier access, in much the same way as in our React render prop argument:
 
-```
+```javascript
 Vue.component('autocomplete', {
   data() {
     return {
@@ -287,8 +287,8 @@ Vue.component('autocomplete', {
             @focus="showDropdown"
             @blur="hideDropdown"
           />
-          <div 
-            v-if="dropdownVisible" 
+          <div
+            v-if="dropdownVisible"
             class="autocomplete-dropdown"
           >
             <ul class="autocomplete-search-results-list">
@@ -320,6 +320,7 @@ You can use render props/scoped slots to create a component that handles asynchr
 
 Here’s what the base component could look like:
 
+```jsx
 class FetchData extends React.Component {
   constructor(props) {
     super(props)
@@ -337,23 +338,20 @@ class FetchData extends React.Component {
   fetchData(url) {
     this.setState({ loading: true })
 
-```
-fetch(url)
-  .then(data => data.json())
-  .then(json => {
-    this.setState({ 
-      loading: false, 
-      results: json 
-    })
-  })
-  .catch(error => {
-    this.setState({ 
-      loading: false, 
-      error: true 
-    })
-  })
-```
-
+    fetch(url)
+      .then(data => data.json())
+      .then(json => {
+        this.setState({
+          loading: false,
+          results: json
+        })
+      })
+      .catch(error => {
+        this.setState({
+          loading: false,
+          error: true
+        })
+      })
   }
 
   render() {
@@ -364,10 +362,11 @@ fetch(url)
     })
   }
 }
+```
 
 It accepts a URL as a prop and handles the actual fetching logic. Then, we use it in a parent component:
 
-```
+```jsx
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -410,7 +409,7 @@ You can also use render props/scoped slots to create a component that acts as a 
 
 Here is a base component that observes its own size and exposes its height and width to its parent:
 
-```
+```jsx
 class ObserveDimensions extends React.Component {
   constructor(props) {
     super(props)
@@ -422,8 +421,8 @@ class ObserveDimensions extends React.Component {
   }
 
   componentDidMount(nextProps) {
-    const erd = elementResizeDetectorMaker({ 
-      strategy: 'scroll' 
+    const erd = elementResizeDetectorMaker({
+      strategy: 'scroll'
     })
 
     erd.listenTo(
@@ -457,7 +456,7 @@ We are using the [Element Resize Detector](https://github.com/wnr/element-resize
 
 We can then use this component quite easily in our app:
 
-```
+```jsx
 class App extends React.Component {
   constructor(props) {
     super(props)
