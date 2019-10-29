@@ -16,10 +16,13 @@ import Code from '../jh-ui/Code'
 import InlineCode from '../jh-ui/InlineCode'
 
 const GlobalStyle = createGlobalStyle`
-  * {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
   }
   
   body {
