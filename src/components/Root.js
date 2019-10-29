@@ -3,7 +3,7 @@ import themes from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
 
 const Root = ({ children }) => {
-  const [theme, setTheme] = useState(null)
+  const [theme, setTheme] = useState(themes.light)
 
   useLayoutEffect(() => {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -36,11 +36,11 @@ const Root = ({ children }) => {
     sessionStorage.setItem('jh-theme', newThemeName)
   }
 
-  return theme ? (
+  return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
-  ) : null
+  )
 }
 
 export default Root
