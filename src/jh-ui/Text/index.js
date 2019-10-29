@@ -15,7 +15,9 @@ const getFontSize = (theme, order, breakpoint) => {
   }
 }
 
-const getColor = (theme, order) => {
+const getColor = ({ theme, order, color }) => {
+  if (color) return theme.colors[color]
+
   switch (order) {
     case 'caption':
     case 'meta':
@@ -32,7 +34,7 @@ const Root = styled.p`
   line-height: 1.5;
   font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
   ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};
-  color: ${({ theme, order }) => getColor(theme, order)};
+  color: ${({ theme, order, color }) => getColor({ theme, order, color })};
   
   @media (min-width: ${breakpoints.tablet}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'tablet')};
@@ -43,14 +45,15 @@ const Root = styled.p`
   }
 `
 
-const Text = ({ children, order, element, ...props }) => (
-  <Root order={order} as={element} {...props}>
+const Text = ({ children, order, color, element, ...props }) => (
+  <Root order={order} color={color} as={element} {...props}>
     {children}
   </Root>
 )
 
 Text.propTypes = {
   order: oneOf(['body', 'caption', 'meta']),
+  color: oneOf(['text', 'textLighter', 'textInverse']),
   element: string
 }
 

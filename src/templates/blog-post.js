@@ -28,6 +28,7 @@ export const BlogPostTemplate = ({
                                    description,
                                    tags,
                                    title,
+                                   date,
                                    helmet
                                  }) => {
 
@@ -37,7 +38,7 @@ export const BlogPostTemplate = ({
       <Padded vertical="3x">
         <ContentWrap>
           {tags && (
-            <Spaced bottom="m">
+            <Spaced bottom="xs">
               <Tags>
                 {tags.map((tag, index) => (
                   <span key={tag + `tag`}>
@@ -54,6 +55,11 @@ export const BlogPostTemplate = ({
               </Tags>
             </Spaced>
           )}
+          <Spaced bottom="l">
+            <Text order="body" color="textLighter" element="p">
+              {date}
+            </Text>
+          </Spaced>
           <Spaced bottom="m">
             <Heading level={1}>
               {title}
@@ -96,6 +102,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
       />
     </Layout>
   )

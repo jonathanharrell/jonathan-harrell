@@ -3,12 +3,12 @@ import styled from 'styled-components'
 
 const StyledPre = styled.pre`
   margin: ${({ theme }) => theme.spacing.xl} -${({ theme }) => theme.spacing.l};
-  padding: ${({ theme }) => theme.spacing.l};
+  padding: ${({ theme }) => theme.spacing.xl};
   background-color: ${({ theme }) => theme.colors.backgroundPre};
   white-space: pre-wrap;
   
   code {
-    line-height: 1.5;
+    line-height: 1.6;
     color: ${({ theme }) => theme.colors.textInverse};
   }
   
