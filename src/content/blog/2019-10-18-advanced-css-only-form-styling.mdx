@@ -30,7 +30,7 @@ This also means that all variable expressions and calc statements using CSS cust
 
 Here we are redefining a grid gutter within a media query and using that custom property inside `calc()` statements:
 
-```
+```css
 :root {
   --grid-gutter: 1rem;
 }
@@ -55,7 +55,7 @@ Since preprocessor variables don’t run in the browser, they have no knowledge 
 
 A clear use case for this is theme switching:
 
-```
+```css
 :root {
   --body-background-color: white;
   --body-text-color: black;
@@ -78,7 +78,7 @@ Preprocessor variables do not work in plain CSS or with other preprocessors so t
 
 Here’s an example of overriding default Bootstrap Sass typography variables to use custom properties.
 
-```
+```css
 $font-size-h1: calc(var(--font-size-base) * 2.6) !default;
 $font-size-h2: calc(var(--font-size-base) * 2.15) !default;
 $font-size-h3: calc(var(--font-size-base) * 1.7) !default;
@@ -93,7 +93,7 @@ If you aren’t sure if a particular custom property exists, you can provide a d
 
 Simply pass in the default value as the second argument of the `var()` function:
 
-```
+```css
 /* single fallback */
 .button {
   background-color: var(--button-background-color, gray);
@@ -102,7 +102,7 @@ Simply pass in the default value as the second argument of the `var()` function:
 
 You can provide multiple fallbacks by nesting multiple `var()` functions inside of each other:
 
-```
+```css
 /* multiple fallbacks */
 .button-primary {
   background-color: var(
@@ -121,7 +121,7 @@ There may be times when you need to define a custom property as a unitless value
 
 Here’s an example of a complex responsive font size calculation using custom properties:
 
-```
+```css
 :root {
   /* unitless base font size variables in px */
   --unitless-min-font-size: 15;
@@ -159,7 +159,7 @@ html {
 
 Remember that you can redefine custom properties within media queries. Margins, padding, and grid gutters are particularly good use cases for this. Imagine a condensed view of a grid on mobile, a slightly more spaced out view on tablet, and a view with even more space on desktop. This is possible very simply with custom properties. Instead of redefining the spacing properties on the element, just redefine the custom properties within the media queries.
 
-```
+```css
 :root {
   --card-padding: 1rem;
 }

@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledPre = styled.pre`
-  margin: ${({ theme }) => theme.spacing.xl} -${({ theme }) => theme.spacing.l};
-  padding: ${({ theme }) => theme.spacing.xl};
+  overflow-x: auto;
   background-color: ${({ theme }) => theme.colors.backgroundPre};
   white-space: pre-wrap;
   

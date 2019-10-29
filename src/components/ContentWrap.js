@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { breakpoints } from '../jh-ui/themes'
 
 const ContentWrap = styled.div`
-  max-width: 90rem;
+  max-width: ${breakpoints.desktopLarge};
   margin-right: auto;
   margin-left: auto;
   padding-right: ${({ theme }) => theme.spacing.l};

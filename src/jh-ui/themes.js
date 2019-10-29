@@ -60,7 +60,7 @@ export const breakpoints = {
   mobile: '30rem',
   tablet: '45rem',
   desktop: '64rem',
-  desktopLarge: '90rem'
+  desktopLarge: '80rem'
 }
 
 export default {

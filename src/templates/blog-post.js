@@ -13,13 +13,75 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
+import { breakpoints } from '../jh-ui/themes'
 
 const ArticleWrap = styled.article`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  
+  .gatsby-highlight pre {
+    margin: ${({ theme }) => theme.spacing.xs} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xl};
+    padding: ${({ theme }) => theme.spacing.xl};
+    
+    @media (min-width: ${breakpoints.mobile}) {
+      margin-right: -${({ theme }) => theme.spacing.xxl};
+      margin-left: -${({ theme }) => theme.spacing.xxl};
+    }
+    
+    @media (min-width: ${breakpoints.tablet}) {
+      margin-right: 0;
+      margin-left: 0;
+      border-radius: 4px;
+    }
+  }
+`
+
+const ArticleContentWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  
+  > * {
+    grid-column: 1 / -1;
+  
+    @media (min-width: ${breakpoints.tablet}) {
+      grid-column: 3 / -3;
+    }
+    
+    @media (min-width: ${breakpoints.desktop}) {
+      grid-column: 4 / -4;
+    }
+  }
+  
+  .gatsby-highlight {
+    @media (min-width: ${breakpoints.tablet}) {
+      grid-column: 2 / -2;
+      
+      pre {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        padding: ${({ theme }) => theme.spacing.xl} 0;
+        
+        code {
+          grid-column: 2 / -2;
+        }
+      }
+    }
+    
+    @media (min-width: ${breakpoints.desktop}) {
+      grid-column: 3 / -3;
+      
+      pre {
+        grid-template-columns: repeat(8, 1fr);
+      }
+    }
+  }
 `
 
 const Tags = styled.div`
   max-width: 20rem;
+  
+  @media (min-width: ${breakpoints.mobile}) {
+    max-width: unset;
+  }
 `
 
 export const BlogPostTemplate = ({
@@ -37,37 +99,39 @@ export const BlogPostTemplate = ({
       {helmet || ''}
       <Padded vertical="3x">
         <ContentWrap>
-          {tags && (
-            <Spaced bottom="xs">
-              <Tags>
-                {tags.map((tag, index) => (
-                  <span key={tag + `tag`}>
-                    <Link to={`/tags/${kebabCase(tag)}/`}>
-                      <Text order="meta">
-                        {tag}
-                      </Text>
-                    </Link>
-                    {index < tags.length - 1 && (
-                      <Text order="meta" element="span"> • </Text>
-                    )}
-                  </span>
-                ))}
-              </Tags>
+          <ArticleContentWrap>
+            {tags && (
+              <Spaced bottom="xs">
+                <Tags>
+                  {tags.map((tag, index) => (
+                    <span key={tag + `tag`}>
+                  <Link to={`/tags/${kebabCase(tag)}/`}>
+                    <Text order="meta">
+                      {tag}
+                    </Text>
+                  </Link>
+                      {index < tags.length - 1 && (
+                        <Text order="meta" element="span"> • </Text>
+                      )}
+                </span>
+                  ))}
+                </Tags>
+              </Spaced>
+            )}
+            <Spaced bottom="l">
+              <Text order="body" color="textLighter" element="p">
+                {date}
+              </Text>
             </Spaced>
-          )}
-          <Spaced bottom="l">
-            <Text order="body" color="textLighter" element="p">
-              {date}
-            </Text>
-          </Spaced>
-          <Spaced bottom="m">
-            <Heading level={1}>
-              {title}
-            </Heading>
-          </Spaced>
-          <MDXRenderer>
-            {content}
-          </MDXRenderer>
+            <Spaced bottom="m">
+              <Heading level={1}>
+                {title}
+              </Heading>
+            </Spaced>
+            <MDXRenderer>
+              {content}
+            </MDXRenderer>
+          </ArticleContentWrap>
         </ContentWrap>
       </Padded>
     </ArticleWrap>

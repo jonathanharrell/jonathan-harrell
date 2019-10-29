@@ -6,7 +6,7 @@ const Code = styled.code`
   border-radius: 2px;
   background-color: ${({ theme }) => theme.colors.backgroundSecondary};
   font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-  font-size: 90%;
+  font-size: 0.95rem;
 `
 
 const InlineCode = ({ children, ...props }) => (
