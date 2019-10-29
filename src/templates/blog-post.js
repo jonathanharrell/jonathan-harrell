@@ -43,16 +43,20 @@ const ArticleContentWrap = styled.div`
     grid-column: 1 / -1;
   
     @media (min-width: ${breakpoints.tablet}) {
-      grid-column: 3 / -3;
+      grid-column: 2 / -2;
     }
     
     @media (min-width: ${breakpoints.desktop}) {
+      grid-column: 3 / -3;
+    }
+    
+    @media (min-width: ${breakpoints.desktopLarge}) {
       grid-column: 4 / -4;
     }
   }
   
   .gatsby-highlight {
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${breakpoints.desktop}) {
       grid-column: 2 / -2;
       
       pre {
@@ -66,7 +70,7 @@ const ArticleContentWrap = styled.div`
       }
     }
     
-    @media (min-width: ${breakpoints.desktop}) {
+    @media (min-width: ${breakpoints.desktopLarge}) {
       grid-column: 3 / -3;
       
       pre {
