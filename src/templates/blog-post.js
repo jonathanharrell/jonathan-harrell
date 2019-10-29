@@ -18,6 +18,10 @@ const ArticleWrap = styled.article`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 `
 
+const Tags = styled.div`
+  max-width: 20rem;
+`
+
 export const BlogPostTemplate = ({
                                    content,
                                    contentComponent,
@@ -34,10 +38,10 @@ export const BlogPostTemplate = ({
         <ContentWrap>
           {tags && (
             <Spaced bottom="m">
-              <div>
+              <Tags>
                 {tags.map((tag, index) => (
-                  <>
-                    <Link key={tag + `tag`} to={`/tags/${kebabCase(tag)}/`}>
+                  <span key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`}>
                       <Text order="meta">
                         {tag}
                       </Text>
@@ -45,9 +49,9 @@ export const BlogPostTemplate = ({
                     {index < tags.length - 1 && (
                       <Text order="meta" element="span"> • </Text>
                     )}
-                  </>
+                  </span>
                 ))}
-              </div>
+              </Tags>
             </Spaced>
           )}
           <Spaced bottom="m">

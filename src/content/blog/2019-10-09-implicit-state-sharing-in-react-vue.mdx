@@ -21,8 +21,12 @@ Imagine this is your ideal API:
 ```jsx
 <Accordion>
   <AccordionItem>
-    <AccordionHeader>Header content</AccordionHeader>
-    <AccordionPanel>Panel content</AccordionPanel>
+    <AccordionHeader>
+      Header content
+    </AccordionHeader>
+    <AccordionPanel>
+      Panel content
+    </AccordionPanel>
   </AccordionItem>
 </Accordion>
 ```
@@ -125,7 +129,7 @@ const AccordionPanel = props => {
     <AccordionItemContext.Consumer>
       {({ expanded }) =>
         <div className={
-          'accordion-panel ' + 
+          'accordion-panel ' +
           (expanded ? 'expanded' : '')
         }>
           {props.children}
@@ -141,8 +145,12 @@ Now, we really can achieve our ideal API for the accordion component. Users of o
 ```jsx
 <Accordion>
   <AccordionItem>
-    <AccordionHeader>Header content</AccordionHeader>
-    <AccordionPanel>Panel content</AccordionPanel>
+    <AccordionHeader>
+      Header content
+    </AccordionHeader>
+    <AccordionPanel>
+      Panel content
+    </AccordionPanel>
   </AccordionItem>
 </Accordion>
 ```
@@ -207,8 +215,8 @@ Vue.component('accordion-panel', {
   inject: ['accordionItemState'],
 
   template: `
-    <div 
-      class="accordion-panel" 
+    <div
+      class="accordion-panel"
       :class="{ expanded: accordionItemState.expanded }"
     >
       <slot></slot>
