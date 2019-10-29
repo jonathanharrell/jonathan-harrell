@@ -5,10 +5,10 @@ import ThemeContext from '../context/theme'
 const Root = ({ children }) => {
   let defaultTheme = themes.light
 
-  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  const darkModeMediaQuery = window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')
 
   // if system has dark theme, set theme to dark
-  if (window.matchMedia && darkModeMediaQuery.matches) {
+  if (darkModeMediaQuery && darkModeMediaQuery.matches) {
     defaultTheme = themes.dark
   }
 
