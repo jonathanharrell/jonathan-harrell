@@ -33,7 +33,7 @@ const Root = styled.p`
   line-height: 1.5;
   font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
   ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};
-  color: ${({ theme, order, color }) => getColor({ order, color })};
+  color: ${({ order, color }) => getColor({ order, color })};
   
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'tablet')};

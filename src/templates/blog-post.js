@@ -27,12 +27,12 @@ const ArticleWrap = styled.article`
     }
     
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      margin: ${({ theme }) => theme.spacing.s} 0 ${({ theme }) => theme.spacing['2x']};
+      margin: ${({ theme }) => theme.spacing.s} 0 ${({ theme }) => theme.spacing.xxl};
       border-radius: 4px;
     }
     
     @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-      margin: ${({ theme }) => theme.spacing.m} 0 ${({ theme }) => theme.spacing['3x']};
+      margin: ${({ theme }) => theme.spacing.m} 0 ${({ theme }) => theme.spacing['2x']};
     }
   }
 `

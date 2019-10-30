@@ -45,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+    //transition: background-color 0.3s ease-out, color 0.3s ease-out;
   }
   
   ::selection {
