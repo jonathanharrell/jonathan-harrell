@@ -4,21 +4,34 @@ import PropTypes from 'prop-types'
 export default function HTML(props) {
   const themeScript = `
     (function() {
-      let defaultThemeName = 'light'
-      var darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      
-      if (darkModeMediaQuery.matches) {
-        defaultThemeName = 'dark'
+      function setTheme(newTheme) {
+        window.__theme = newTheme
+        preferredTheme = newTheme
+        document.body.className = 'theme-' + newTheme
       }
+    
+      var preferredTheme;
       
-      var savedThemeName = sessionStorage.getItem('jh-theme')
-      
-      if (savedThemeName) {
-        defaultThemeName = savedThemeName
+      try {
+        preferredTheme = localStorage.getItem('theme');
+      } catch (error) {}
+    
+      window.__setPreferredTheme = function(newTheme) {
+        setTheme(newTheme);
+
+        try {
+          localStorage.setItem('theme', newTheme)
+        } catch (error) {}
       }
-      
-      document.body.classList.add('theme-' + defaultThemeName)
-    })()
+    
+      var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+      darkModeQuery.addListener(function(event) {
+        window.__setPreferredTheme(event.matches ? 'dark' : 'light')
+      });
+    
+      setTheme(preferredTheme || (darkModeQuery.matches ? 'dark' : 'light'));
+    })();
   `
 
   return (
