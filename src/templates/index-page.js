@@ -12,12 +12,11 @@ import Text from '../jh-ui/Text'
 import Padded from '../jh-ui/Padded'
 import Button from '../jh-ui/Button'
 import Link from '../jh-ui/Link'
-import { colors } from '../jh-ui/themes'
 import ThemeContext from '../context/theme'
 import SectionHeader from '../jh-ui/SectionHeader'
 
 const HeaderWrap = styled.section`
-  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  background-color: var(--backgroundPrimary);
 `
 
 const HeaderContentWrap = styled.div`
@@ -25,11 +24,11 @@ const HeaderContentWrap = styled.div`
 `
 
 const BlogRollWrap = styled.section`
-  background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+  background-color: var(--backgroundSecondary);
 `
 
 const ExperimentRollWrap = styled.section`
-  background-color: ${({ theme }) => theme.colors.backgroundInverse};
+  background-color: var(--backgroundInverse);
 `
 
 export const IndexPageTemplate = ({
@@ -80,7 +79,7 @@ export const IndexPageTemplate = ({
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
-              <Heading level={2} color={colors.white}>
+              <Heading level={2} color="white">
                 Recent Experiments
               </Heading>
               <Link

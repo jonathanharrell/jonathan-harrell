@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
@@ -8,54 +8,15 @@ import ThemeContext from '../context/theme'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
 import Spaced from '../jh-ui/Spaced'
-import Footer from './Footer'
-
-import SubscribeBanner from './SubscribeBanner'
 import Pre from '../jh-ui/Pre'
 import Code from '../jh-ui/Code'
 import InlineCode from '../jh-ui/InlineCode'
-
-const GlobalStyle = createGlobalStyle`
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s ease-out, color 0.3s ease-out;
-  }
-  
-  body {
-    min-width: 20rem;
-    background-color: ${({ theme }) => theme.colors.backgroundBody};
-    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: "DM Serif Text", serif;
-    font-weight: 400 !important;
-  }
-  
-  p a {
-    color: ${({ theme }) => theme.colors.text};
-  }
-  
-  p code {
-    padding: 0.125rem 0.25rem;
-    border-radius: 2px;
-    background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-  }
-`
+import Footer from './Footer'
+import SubscribeBanner from './SubscribeBanner'
+import GlobalStyle from './globalStyle'
 
 const Wrap = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: var(--background);
 `
 
 const Layout = ({ children }) => {

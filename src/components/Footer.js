@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import Padded from '../jh-ui/Padded'
-import { breakpoints } from '../jh-ui/themes'
 import ContentWrap from './ContentWrap'
 import Twitter from '../img/icons/twitter.svg'
 import Github from '../img/icons/github.svg'
@@ -14,8 +13,8 @@ import Spaced from '../jh-ui/Spaced'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const FooterWrap = styled.footer`
-  background-color: ${({ theme }) => theme.colors.backgroundInverse};
-  color: ${({ theme }) => theme.colors.textLighter};
+  background-color: var(--backgroundInverse);
+  color: var(--textLighter);
 `
 
 const footerContentBreakpoint = '35rem'
@@ -33,13 +32,13 @@ const FooterContentWrap = styled(ContentWrap)`
 const Link = styled(GatsbyLink)`
   font-size: ${({ theme }) => theme.fontSizes.s.mobile};
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.textLighter};
+  color: var(--textLighter);
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.s.tablet};
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }) => theme.fontSizes.s.desktop};
   }
 `

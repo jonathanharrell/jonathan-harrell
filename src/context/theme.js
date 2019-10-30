@@ -1,9 +1,10 @@
 import React from 'react'
-import themes from '../jh-ui/themes'
+import theme from '../jh-ui/theme'
 
 const ThemeContext = React.createContext({
-  theme: themes.light,
-  toggleTheme: () => {}
+  theme: theme,
+  toggleTheme: () => {
+  }
 })
 
 export default ThemeContext

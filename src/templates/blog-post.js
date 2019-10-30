@@ -13,21 +13,20 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
-import { breakpoints } from '../jh-ui/themes'
 
 const ArticleWrap = styled.article`
-  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  background-color: var(--backgroundPrimary);
   
   .gatsby-highlight pre {
     margin: ${({ theme }) => theme.spacing.xs} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xl};
     padding: ${({ theme }) => theme.spacing.xl};
     
-    @media (min-width: ${breakpoints.mobile}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
       margin-right: -${({ theme }) => theme.spacing.xxl};
       margin-left: -${({ theme }) => theme.spacing.xxl};
     }
     
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       margin-right: 0;
       margin-left: 0;
       border-radius: 4px;
@@ -42,21 +41,21 @@ const ArticleContentWrap = styled.div`
   > * {
     grid-column: 1 / -1;
   
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       grid-column: 2 / -2;
     }
     
-    @media (min-width: ${breakpoints.desktop}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
       grid-column: 3 / -3;
     }
     
-    @media (min-width: ${breakpoints.desktopLarge}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
       grid-column: 4 / -4;
     }
   }
   
   .gatsby-highlight {
-    @media (min-width: ${breakpoints.desktop}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
       grid-column: 2 / -2;
       
       pre {
@@ -70,7 +69,7 @@ const ArticleContentWrap = styled.div`
       }
     }
     
-    @media (min-width: ${breakpoints.desktopLarge}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
       grid-column: 3 / -3;
       
       pre {
@@ -83,7 +82,7 @@ const ArticleContentWrap = styled.div`
 const Tags = styled.div`
   max-width: 20rem;
   
-  @media (min-width: ${breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: unset;
   }
 `

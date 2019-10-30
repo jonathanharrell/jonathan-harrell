@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { oneOf, string } from 'prop-types'
-import { breakpoints } from '../themes'
 
 const getFontFamily = (theme, level) => {
   switch (level) {
@@ -63,14 +62,14 @@ const Root = styled.h1`
   font-size: ${({ theme, level }) => getFontSize(theme, level, 'mobile')};
   line-height: ${({ level }) => getLineHeight(level)};
   font-weight: ${({ level }) => getFontWeight(level)};
-  ${({ level }) => level === 6 ? 'text-transform: uppercase' : null}
-  color: ${({ theme, color }) => color || theme.colors.text};
+  ${({ level }) => level === 6 ? 'text-transform: uppercase' : null};
+  color: ${({ color }) => color || 'var(--text);'};
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme, level }) => getFontSize(theme, level, 'tablet')};
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme, level }) => getFontSize(theme, level, 'desktop')};
   }
 `

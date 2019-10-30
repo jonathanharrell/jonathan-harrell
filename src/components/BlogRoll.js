@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
-import { breakpoints } from '../jh-ui/themes'
 
 const BlogRollWrap = styled.div`
   display: grid;
@@ -13,11 +12,11 @@ const BlogRollWrap = styled.div`
   > *:nth-child(4) {
     display: none;
     
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       display: block;
     }
     
-    @media (min-width: ${breakpoints.desktop}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
       display: none;
     }
   }
@@ -26,13 +25,13 @@ const BlogRollWrap = styled.div`
 const BlogExcerpt = styled(ArticleExcerpt)`
   grid-column: 1 / -1;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundElevatedSecondary};
+  background-color: var(--backgroundElevatedSecondary);
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 6;
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
 `

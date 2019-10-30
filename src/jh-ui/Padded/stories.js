@@ -5,7 +5,7 @@ import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
 import Padded from './index'
 import Text from '../Text'
-import { spacing } from '../themes'
+import { spacing } from '../theme'
 
 export default {
   title: 'Padded',

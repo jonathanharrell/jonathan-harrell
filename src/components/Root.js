@@ -1,31 +1,51 @@
-import React, { useLayoutEffect, useState } from 'react'
-import themes from '../jh-ui/themes'
+import React, { useEffect, useState } from 'react'
 import ThemeContext from '../context/theme'
+import theme from '../jh-ui/theme'
 
 const Root = ({ children }) => {
-  const defaultTheme = typeof document !== 'undefined' && document.body.dataset.theme
-  const [theme, setTheme] = useState(defaultTheme ? themes[defaultTheme] : themes.light)
+  const [themeName, setTheme] = useState('light')
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    let defaultThemeName
+
+    // if system has dark theme, set theme to dark
+    if (window.matchMedia && darkModeMediaQuery.matches) {
+      defaultThemeName = 'dark'
+    }
+
+    // look if there is a saved theme
+    const savedThemeName = sessionStorage.getItem('jh-theme')
+
+    // if saved theme, set theme to that
+    if (savedThemeName) {
+      defaultThemeName = savedThemeName
+    }
+
+    setTheme(defaultThemeName)
+    //sessionStorage.setItem('jh-theme', defaultThemeName)
 
     darkModeMediaQuery.addListener(() => {
       // set and store newly changed system theme
       const newThemeName = darkModeMediaQuery.matches ? 'dark' : 'light'
-      setTheme(themes[newThemeName])
+      setTheme(newThemeName)
       sessionStorage.setItem('jh-theme', newThemeName)
     })
-  }, [theme])
+  }, [themeName])
+
+  useEffect(() => {
+    document.body.classList.remove('theme-light', 'theme-dark')
+    document.body.classList.add(`theme-${themeName}`)
+  })
 
   const toggleTheme = () => {
     // set and store newly toggled theme
-    console.log(theme)
-    console.log(themes.light)
-    const newThemeName = theme === themes.light ? 'dark' : 'light'
-    setTheme(themes[newThemeName])
+    const newThemeName = themeName === 'light' ? 'dark' : 'light'
+    setTheme(newThemeName)
     sessionStorage.setItem('jh-theme', newThemeName)
   }
-  console.log('render', theme)
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { oneOf, string } from 'prop-types'
-import { breakpoints } from '../themes'
 
 const getFontSize = (theme, order, breakpoint) => {
   switch (order) {
@@ -15,15 +14,15 @@ const getFontSize = (theme, order, breakpoint) => {
   }
 }
 
-const getColor = ({ theme, order, color }) => {
-  if (color) return theme.colors[color]
+const getColor = ({ order, color }) => {
+  if (color) return `var(--${color})`
 
   switch (order) {
     case 'caption':
     case 'meta':
-      return theme.colors.textLighter
+      return 'var(--textLighter)'
     default:
-      return theme.colors.text
+      return 'var(--text)'
   }
 }
 
@@ -34,13 +33,13 @@ const Root = styled.p`
   line-height: 1.5;
   font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
   ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};
-  color: ${({ theme, order, color }) => getColor({ theme, order, color })};
+  color: ${({ theme, order, color }) => getColor({ order, color })};
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'tablet')};
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'desktop')};
   }
 `

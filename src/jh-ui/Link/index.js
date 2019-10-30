@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { bool } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { breakpoints, colors } from '../themes'
 import ArrowRight from '../../img/icons/arrow-right.svg'
 import Spaced from '../Spaced'
 
@@ -13,14 +12,14 @@ const Root = styled(GatsbyLink)`
   font-family: ${({ theme }) => theme.fonts.sansSerif};
   font-size: ${({ theme }) => theme.fontSizes.m.mobile};
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--accent);
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: ${({ theme }) => theme.fontSizes.m.tablet};
     font-size: ${({ theme }) => theme.fontSizes.m.tablet};
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     height: ${({ theme }) => theme.fontSizes.m.desktop};
     font-size: ${({ theme }) => theme.fontSizes.m.desktop};
   }
@@ -29,7 +28,7 @@ const Root = styled(GatsbyLink)`
   &:focus,
   &:focus-within,
   &:active {
-    color: ${colors.redDark};
+    color: ${({ theme }) => theme.colors.redDark};
   }
 `
 

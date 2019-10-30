@@ -3,12 +3,12 @@ import styled from 'styled-components'
 
 const StyledPre = styled.pre`
   overflow-x: auto;
-  background-color: ${({ theme }) => theme.colors.backgroundPre};
+  background-color: var(--backgroundPre);
   white-space: pre-wrap;
   
   code {
     line-height: 1.6;
-    color: ${({ theme }) => theme.colors.textInverse};
+    color: var(--textInverse);
   }
   
   .token.comment,

@@ -4,16 +4,15 @@ import ContentWrap from './ContentWrap'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Button from '../jh-ui/Button'
-import { breakpoints } from '../jh-ui/themes'
 
 const SubscribeBannerWrap = styled.section`
-  background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+  background-color: var(--backgroundSecondary);
 `
 
 const SubscribeBannerContentWrap = styled.div`
   text-align: center;
 
-  @media (min-width: ${breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: flex;
     align-items: center;
     justify-content: center;

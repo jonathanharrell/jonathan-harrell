@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import ExperimentExcerpt from '../jh-ui/ExperimentExcerpt'
-import { breakpoints } from '../jh-ui/themes'
 
 const ExperimentRollWrap = styled.div`
   display: grid;
@@ -13,7 +12,7 @@ const ExperimentRollWrap = styled.div`
   > *:nth-child(6) {
     display: none;
     
-    @media (min-width: ${breakpoints.tablet}) {
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       display: block;
     }
   }
@@ -22,18 +21,18 @@ const ExperimentRollWrap = styled.div`
 const ExperimentExcerptElevated = styled(ExperimentExcerpt)`
   grid-column: 1 / -1;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundElevatedInverse};
+  background-color: var(--backgroundElevatedInverse);
   
-  @media (min-width: ${breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 6;
   }
   
-  @media (min-width: ${breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
 
   h3 {
-    color: ${({ theme }) => theme.colors.textInverse};
+    color: var(--textInverse);
   }
 `
 

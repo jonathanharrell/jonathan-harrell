@@ -4,18 +4,20 @@ import PropTypes from 'prop-types'
 export default function HTML(props) {
   const themeScript = `
     (function() {
-      let theme
-    
+      let defaultTheme = 'light'
       var darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    
+      
       if (window.matchMedia && darkModeMediaQuery.matches) {
-        theme = 'dark'
+        defaultTheme = 'dark'
       }
-    
+      
       var savedTheme = sessionStorage.getItem('jh-theme')
-      if (savedTheme) theme = savedTheme
-    
-      document.body.setAttribute('data-theme', theme)
+      
+      if (savedTheme) {
+        defaultTheme = savedTheme
+      }
+      
+      document.body.classList.add('theme-' + defaultTheme)
     })()
   `
 
