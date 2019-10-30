@@ -27,9 +27,12 @@ const ArticleWrap = styled.article`
     }
     
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      margin-right: 0;
-      margin-left: 0;
+      margin: ${({ theme }) => theme.spacing.s} 0 ${({ theme }) => theme.spacing['2x']};
       border-radius: 4px;
+    }
+    
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+      margin: ${({ theme }) => theme.spacing.m} 0 ${({ theme }) => theme.spacing['3x']};
     }
   }
 `
@@ -104,29 +107,27 @@ export const BlogPostTemplate = ({
         <ContentWrap>
           <ArticleContentWrap>
             {tags && (
-              <Spaced bottom="xs">
-                <Tags>
-                  {tags.map((tag, index) => (
-                    <span key={tag + `tag`}>
+              <Tags>
+                {tags.map((tag, index) => (
+                  <span key={tag + `tag`}>
                   <Link to={`/tags/${kebabCase(tag)}/`}>
                     <Text order="meta">
                       {tag}
                     </Text>
                   </Link>
-                      {index < tags.length - 1 && (
-                        <Text order="meta" element="span"> • </Text>
-                      )}
+                    {index < tags.length - 1 && (
+                      <Text order="meta" element="span"> • </Text>
+                    )}
                 </span>
-                  ))}
-                </Tags>
-              </Spaced>
+                ))}
+              </Tags>
             )}
             <Spaced bottom="l">
               <Text order="body" color="textLighter" element="p">
                 {date}
               </Text>
             </Spaced>
-            <Spaced bottom="m">
+            <Spaced bottom="l">
               <Heading level={1}>
                 {title}
               </Heading>

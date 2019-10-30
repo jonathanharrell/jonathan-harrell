@@ -6,33 +6,24 @@ const Root = ({ children }) => {
   const [themeName, setTheme] = useState('light')
 
   useEffect(() => {
+    let defaultThemeName = 'light'
+
+    const savedThemeName = sessionStorage.getItem('jh-theme')
     const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
-    let defaultThemeName
-
-    // if system has dark theme, set theme to dark
-    if (window.matchMedia && darkModeMediaQuery.matches) {
+    if (savedThemeName) {
+      defaultThemeName = savedThemeName
+    } else if (darkModeMediaQuery.matches) {
       defaultThemeName = 'dark'
     }
 
-    // look if there is a saved theme
-    const savedThemeName = sessionStorage.getItem('jh-theme')
-
-    // if saved theme, set theme to that
-    if (savedThemeName) {
-      defaultThemeName = savedThemeName
-    }
-
     setTheme(defaultThemeName)
-    //sessionStorage.setItem('jh-theme', defaultThemeName)
 
     darkModeMediaQuery.addListener(() => {
-      // set and store newly changed system theme
       const newThemeName = darkModeMediaQuery.matches ? 'dark' : 'light'
       setTheme(newThemeName)
-      sessionStorage.setItem('jh-theme', newThemeName)
     })
-  }, [themeName])
+  }, [])
 
   useEffect(() => {
     document.body.classList.remove('theme-light', 'theme-dark')
@@ -40,7 +31,6 @@ const Root = ({ children }) => {
   })
 
   const toggleTheme = () => {
-    // set and store newly toggled theme
     const newThemeName = themeName === 'light' ? 'dark' : 'light'
     setTheme(newThemeName)
     sessionStorage.setItem('jh-theme', newThemeName)

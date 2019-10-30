@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <GlobalStyle/>
+      <GlobalStyle withBackground/>
       <Wrap>
         {/*<Navbar/>*/}
         <div>

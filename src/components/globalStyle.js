@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --primary: ${({ theme }) => theme.colors.blueDarkest};
     --accent: ${({ theme }) => theme.colors.red};
+    --selection: hsla(210, 67%, 11%, 0.15);
     
     .theme-dark {
       --text: ${({ theme }) => theme.colors.white};
@@ -34,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
       --buttonBackgroundPrimary: transparent;
       --primary: ${({ theme }) => theme.colors.blueDarkest};
       --accent: ${({ theme }) => theme.colors.red};
+      --selection: hsla(0, 0%, 100%, 0.15);
     }
   }
   
@@ -46,9 +48,17 @@ const GlobalStyle = createGlobalStyle`
     transition: background-color 0.3s ease-out, color 0.3s ease-out;
   }
   
+  ::selection {
+    background-color: var(--selection);
+  }
+  
+  pre ::selection {
+    background-color: rgba(250, 250, 250, 0.15);
+  }
+  
   body {
     min-width: 20rem;
-    background-color: var(--backgroundBody);
+    ${({ withBackground }) => withBackground && 'background-color: var(--backgroundBody)'};
     font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
