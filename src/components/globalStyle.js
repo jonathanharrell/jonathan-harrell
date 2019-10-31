@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
       --backgroundElevatedSecondary: hsl(0, 0%, 15%);
       --backgroundElevatedInverse: hsl(0, 0%, 10%);
       --backgroundBody: ${({ theme }) => theme.colors.black};
-      --backgroundPre: hsl(0, 0%, 5%);
+      --backgroundPre: hsl(0, 0%, 10%);
       --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
       --buttonBackgroundPrimary: transparent;
       --primary: ${({ theme }) => theme.colors.blueDarkest};

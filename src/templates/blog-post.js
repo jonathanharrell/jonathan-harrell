@@ -16,10 +16,35 @@ import Link from '../jh-ui/Link'
 
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
+`
+
+const ArticleContentWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+`
+
+const ArticleContent = styled.div`
+  grid-column: 1 / -1;
   
-  .gatsby-highlight pre {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: 2 / -2;
+  }
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-column: 3 / -3;
+  }
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    grid-column: 4 / -4;
+  }
+  
+  .gatsby-highlight {
     margin: ${({ theme }) => theme.spacing.xs} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xl};
-    padding: ${({ theme }) => theme.spacing.xl};
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      margin-right: -${({ theme }) => theme.spacing.xl};
+      margin-left: -${({ theme }) => theme.spacing.xl};
+    }
     
     @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
       margin-right: -${({ theme }) => theme.spacing.xxl};
@@ -27,57 +52,32 @@ const ArticleWrap = styled.article`
     }
     
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      margin: ${({ theme }) => theme.spacing.s} 0 ${({ theme }) => theme.spacing.xxl};
-      border-radius: 4px;
+      margin: ${({ theme }) => theme.spacing.xxl} 0;
     }
     
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-      margin: ${({ theme }) => theme.spacing.m} 0 ${({ theme }) => theme.spacing['2x']};
-    }
-  }
-`
+     @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+        margin: ${({ theme }) => theme.spacing['2x']} 0;
+     }
+    
+    pre {
+      padding: ${({ theme }) => theme.spacing.xl};
 
-const ArticleContentWrap = styled.div`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  
-  > * {
-    grid-column: 1 / -1;
-  
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      grid-column: 2 / -2;
-    }
-    
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-      grid-column: 3 / -3;
-    }
-    
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-      grid-column: 4 / -4;
+      @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+        border-radius: 6px;
+      }
     }
   }
   
-  .gatsby-highlight {
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-      grid-column: 2 / -2;
-      
-      pre {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        padding: ${({ theme }) => theme.spacing.xl} 0;
-        
-        code {
-          grid-column: 2 / -2;
-        }
-      }
-    }
+  .anchor {
+    display: none;
+    position: absolute;
+    font-size: 1em;
+    line-height: 1.3;
+    color: var(--accent);
+    transform: translateX(calc(-100% - 0.25rem));
     
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-      grid-column: 3 / -3;
-      
-      pre {
-        grid-template-columns: repeat(8, 1fr);
-      }
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      display: block;
     }
   }
 `
@@ -106,35 +106,37 @@ export const BlogPostTemplate = ({
       <Padded vertical="3x">
         <ContentWrap>
           <ArticleContentWrap>
-            {tags && (
-              <Tags>
-                {tags.map((tag, index) => (
-                  <span key={tag + `tag`}>
-                  <Link to={`/tags/${kebabCase(tag)}/`}>
-                    <Text order="meta">
-                      {tag}
-                    </Text>
-                  </Link>
-                    {index < tags.length - 1 && (
-                      <Text order="meta" element="span"> • </Text>
-                    )}
-                </span>
-                ))}
-              </Tags>
-            )}
-            <Spaced bottom="l">
-              <Text order="body" color="textLighter" element="p">
-                {date}
-              </Text>
-            </Spaced>
-            <Spaced bottom="l">
-              <Heading level={1}>
-                {title}
-              </Heading>
-            </Spaced>
-            <MDXRenderer>
-              {content}
-            </MDXRenderer>
+            <ArticleContent>
+              {tags && (
+                <Tags>
+                  {tags.map((tag, index) => (
+                    <span key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`}>
+                      <Text order="meta">
+                        {tag}
+                      </Text>
+                    </Link>
+                      {index < tags.length - 1 && (
+                        <Text order="meta" element="span"> • </Text>
+                      )}
+                  </span>
+                  ))}
+                </Tags>
+              )}
+              <Spaced bottom="l">
+                <Text order="body" color="textLighter" element="p">
+                  {date}
+                </Text>
+              </Spaced>
+              <Spaced bottom="l">
+                <Heading level={1}>
+                  {title}
+                </Heading>
+              </Spaced>
+              <MDXRenderer>
+                {content}
+              </MDXRenderer>
+            </ArticleContent>
           </ArticleContentWrap>
         </ContentWrap>
       </Padded>

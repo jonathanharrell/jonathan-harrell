@@ -4,15 +4,17 @@ import ContentWrap from './ContentWrap'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Button from '../jh-ui/Button'
+import Input from '../jh-ui/Input'
+import Spaced from '../jh-ui/Spaced'
 
 const SubscribeBannerWrap = styled.section`
-  background-color: var(--backgroundSecondary);
+  background-color: var(--backgroundPrimary);
 `
 
 const SubscribeBannerContentWrap = styled.div`
   text-align: center;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,16 +24,22 @@ const SubscribeBannerContentWrap = styled.div`
 const SubscribeBanner = () => (
   <SubscribeBannerWrap>
     <ContentWrap>
-      <Padded vertical="xl">
+      <Padded vertical="m">
         <SubscribeBannerContentWrap>
-          <Text order="body">
-            Sign up for periodic updates
-          </Text>
+          <Spaced vertical="xs" right="m">
+            <Text order="body">
+              Sign up for periodic updates
+            </Text>
+          </Spaced>
           <form>
-            <input type="email"/>
-            <Button>
-              Subscribe
-            </Button>
+            <Spaced vertical="xs" right="m">
+              <Input type="email" placeholder="Your email address"/>
+            </Spaced>
+            <Spaced vertical="xs">
+              <Button>
+                Subscribe
+              </Button>
+            </Spaced>
           </form>
         </SubscribeBannerContentWrap>
       </Padded>

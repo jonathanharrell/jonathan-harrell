@@ -73,22 +73,22 @@ const Layout = ({ children }) => {
                 </Spaced>
               ),
               h3: props => (
-                <Spaced top="xxl" bottom="m">
+                <Spaced top="2x" bottom="m">
                   <Heading level={3} {...props}/>
                 </Spaced>
               ),
               h4: props => (
-                <Spaced top="xl" bottom="m">
+                <Spaced top="xxl" bottom="m">
                   <Heading level={4} {...props}/>
                 </Spaced>
               ),
               h5: props => (
-                <Spaced top="l" bottom="m">
+                <Spaced top="xl" bottom="m">
                   <Heading level={5} {...props}/>
                 </Spaced>
               ),
               h6: props => (
-                <Spaced vertical="m">
+                <Spaced vertical="l">
                   <Heading level={6} {...props}/>
                 </Spaced>
               ),
@@ -99,7 +99,8 @@ const Layout = ({ children }) => {
               ),
               pre: Pre,
               code: Code,
-              inlineCode: InlineCode
+              inlineCode: InlineCode,
+              a: props => <Text element="a" {...props}/>
             }}
           >
             {children}
