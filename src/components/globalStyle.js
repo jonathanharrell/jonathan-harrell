@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundElevatedSecondary: ${({ theme }) => theme.colors.white};
     --backgroundElevatedInverse: ${({ theme }) => theme.colors.blueDarker};
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
+    --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
     --backgroundPre: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
@@ -30,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
       --backgroundElevatedSecondary: hsl(0, 0%, 15%);
       --backgroundElevatedInverse: hsl(0, 0%, 10%);
       --backgroundBody: ${({ theme }) => theme.colors.black};
+      --backgroundSubscribeBanner: hsl(0, 0%, 5%);
       --backgroundPre: hsl(0, 0%, 10%);
       --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
       --buttonBackgroundPrimary: transparent;
