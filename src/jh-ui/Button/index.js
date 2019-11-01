@@ -8,7 +8,9 @@ const Root = styled.button`
   line-height: 1;
   font-weight: 400;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
+
   ${({ unstyled, theme }) => unstyled ? `
     padding: 0;
     border: 0;

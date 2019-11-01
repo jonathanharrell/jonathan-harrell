@@ -31,7 +31,7 @@ const ArticleExcerpt = ({ link, date, title, excerpt, tags, ...props }) => {
 
   return (
     <ArticleCard element="article" {...props}>
-      <Link to={link}/>
+      <Link to={link} aria-label={title}/>
       <Spaced bottom="m">
         <Text order="meta">
           {formattedDate}

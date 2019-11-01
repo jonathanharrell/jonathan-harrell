@@ -107,32 +107,34 @@ export const BlogPostTemplate = ({
         <ContentWrap>
           <ArticleContentWrap>
             <ArticleContent>
-              {tags && (
-                <Tags>
-                  {tags.map((tag, index) => (
-                    <span key={tag + `tag`}>
-                    <Link to={`/tags/${kebabCase(tag)}/`}>
+              <header>
+                {tags && (
+                  <Tags>
+                    {tags.map((tag, index) => (
+                      <span key={tag + `tag`}>
+                    <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
                       <Text order="meta">
                         {tag}
                       </Text>
                     </Link>
-                      {index < tags.length - 1 && (
-                        <Text order="meta" element="span"> • </Text>
-                      )}
+                        {index < tags.length - 1 && (
+                          <Text order="meta" element="span"> • </Text>
+                        )}
                   </span>
-                  ))}
-                </Tags>
-              )}
-              <Spaced bottom="l">
-                <Text order="body" color="textLighter" element="p">
-                  {date}
-                </Text>
-              </Spaced>
-              <Spaced bottom="l">
-                <Heading level={1}>
-                  {title}
-                </Heading>
-              </Spaced>
+                    ))}
+                  </Tags>
+                )}
+                <Spaced bottom="l">
+                  <Text order="body" color="textLighter" element="p">
+                    {date}
+                  </Text>
+                </Spaced>
+                <Spaced bottom="l">
+                  <Heading level={1}>
+                    {title}
+                  </Heading>
+                </Spaced>
+              </header>
               <MDXRenderer>
                 {content}
               </MDXRenderer>

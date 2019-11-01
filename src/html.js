@@ -34,6 +34,20 @@ export default function HTML(props) {
     })();
   `
 
+  const style = `
+    .screen-reader-text {
+      clip: rect(0 0 0 0);
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      white-space: nowrap;
+    }
+  `
+
   return (
     <html {...props.htmlAttributes}>
     <head>
@@ -44,13 +58,15 @@ export default function HTML(props) {
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       {props.headComponents}
+      <style dangerouslySetInnerHTML={{ __html: style }}/>
     </head>
     <body {...props.bodyAttributes}>
     <script dangerouslySetInnerHTML={{ __html: themeScript }}/>
     {props.preBodyComponents}
-    <noscript key="noscript" id="gatsby-noscript">
+    <noscript key="noscript" id="gatsby-noscript" className="noscript">
       This app works best with JavaScript enabled.
     </noscript>
+    <div id="alert" role="region" aria-live="assertive" className="screen-reader-text"/>
     <div
       key={`body`}
       id="___gatsby"

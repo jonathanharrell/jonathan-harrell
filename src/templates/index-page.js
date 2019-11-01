@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
-import BlogRoll from '../components/BlogRoll'
+import RecentArticles from '../components/RecentArticles'
 import ExperimentRoll from '../components/ExperimentRoll'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
@@ -23,7 +23,7 @@ const HeaderContentWrap = styled.div`
   max-width: 28rem;
 `
 
-const BlogRollWrap = styled.section`
+const RecentArticlesWrap = styled.section`
   background-color: var(--backgroundSecondary);
 `
 
@@ -40,7 +40,7 @@ export const IndexPageTemplate = ({
 
   return (
     <>
-      <HeaderWrap>
+      <HeaderWrap aria-label="Introduction">
         <Padded vertical="3x">
           <ContentWrap>
             <HeaderContentWrap>
@@ -54,28 +54,34 @@ export const IndexPageTemplate = ({
                 </Text>
               </Spaced>
               <Spaced top="l">
-                <Button onClick={toggleTheme}>Toggle theme</Button>
+                <Button onClick={toggleTheme}>
+                  Toggle theme
+                </Button>
               </Spaced>
             </HeaderContentWrap>
           </ContentWrap>
         </Padded>
       </HeaderWrap>
-      <BlogRollWrap>
+      <RecentArticlesWrap aria-label="Recent Articles">
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
               <Heading level={2}>
                 Recent Articles
               </Heading>
-              <Link arrow={true} to="/blog">
+              <Link
+                to="/blog"
+                arrow={true}
+                aria-label="View all articles"
+              >
                 View all
               </Link>
             </SectionHeader>
-            <BlogRoll/>
+            <RecentArticles/>
           </ContentWrap>
         </Padded>
-      </BlogRollWrap>
-      <ExperimentRollWrap>
+      </RecentArticlesWrap>
+      <ExperimentRollWrap aria-label="Recent Experiments">
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
@@ -85,6 +91,7 @@ export const IndexPageTemplate = ({
               <Link
                 href="https://codepen.io/jonathanharrell/"
                 arrow={true}
+                aria-label="View all experiments"
               >
                 View all
               </Link>

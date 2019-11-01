@@ -11,12 +11,33 @@ import Spaced from '../jh-ui/Spaced'
 import Pre from '../jh-ui/Pre'
 import Code from '../jh-ui/Code'
 import InlineCode from '../jh-ui/InlineCode'
+import Button from '../jh-ui/Button'
 import Footer from './Footer'
 import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
 
 const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: var(--background);
+`
+
+const SkipLink = styled(Button)`
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 2;
+  
+  &:focus {
+    top: 1rem;
+  }
+`
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `
 
 const Layout = ({ children }) => {
@@ -62,8 +83,11 @@ const Layout = ({ children }) => {
       </Helmet>
       <GlobalStyle withBackground/>
       <Wrap>
+        <SkipLink element="a" href="#main">
+          Skip to content
+        </SkipLink>
         {/*<Navbar/>*/}
-        <div>
+        <Main id="main" aria-label="Main Content">
           <MDXProvider
             components={{
               h1: props => <Heading level={1} {...props}/>,
@@ -105,7 +129,7 @@ const Layout = ({ children }) => {
           >
             {children}
           </MDXProvider>
-        </div>
+        </Main>
         <Footer/>
         <SubscribeBanner/>
       </Wrap>

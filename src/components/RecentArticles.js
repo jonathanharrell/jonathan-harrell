@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 
-const BlogRollWrap = styled.div`
+const RecentArticlesWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
@@ -36,13 +36,13 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 `
 
-class BlogRoll extends React.Component {
+class RecentArticles extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMdx
 
     return (
-      <BlogRollWrap>
+      <RecentArticlesWrap>
         {posts &&
         posts.map(({ node: post }) => (
           <BlogExcerpt
@@ -54,12 +54,12 @@ class BlogRoll extends React.Component {
             tags={post.frontmatter.tags}
           />
         ))}
-      </BlogRollWrap>
+      </RecentArticlesWrap>
     )
   }
 }
 
-BlogRoll.propTypes = {
+RecentArticles.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -70,7 +70,7 @@ BlogRoll.propTypes = {
 export default () => (
   <StaticQuery
     query={graphql`
-      query BlogRollQuery {
+      query RecentArticlesQuery {
         allMdx(
           limit: 4
           sort: { order: DESC, fields: [frontmatter___date] }
@@ -87,7 +87,6 @@ export default () => (
                 title
                 templateKey
                 date
-                featuredpost
                 tags
               }
             }
@@ -95,6 +94,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count}/>}
+    render={(data, count) => <RecentArticles data={data} count={count}/>}
   />
 )

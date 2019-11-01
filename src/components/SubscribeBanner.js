@@ -7,6 +7,7 @@ import Button from '../jh-ui/Button'
 import Input from '../jh-ui/Input'
 import Spaced from '../jh-ui/Spaced'
 import X from '../img/icons/x.svg'
+import { addAlert } from '../helpers'
 
 const SubscribeBannerWrap = styled.section`
   position: relative;
@@ -17,6 +18,7 @@ const CloseButton = styled(Button)`
   position: absolute;
   top: ${({ theme }) => theme.spacing.m};
   right: ${({ theme }) => theme.spacing.m};
+  color: var(--text);
   
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     top: 50%;
@@ -48,16 +50,15 @@ const SubscribeBanner = () => {
     setDismissed(!!subscribeBannerDismissed)
   }, [])
 
-  const dismiss = () => {
+  const dismiss = event => {
     setDismissed(true)
-    localStorage.setItem('subscribe-banner-dismissed', true)
+    localStorage.setItem('subscribe-banner-dismissed', 'true')
+    addAlert('Subscribe banner dismissed')
+    event.target.blur()
   }
 
   return !dismissed ? (
     <SubscribeBannerWrap>
-      <CloseButton unstyled onClick={dismiss}>
-        <X/>
-      </CloseButton>
       <ContentWrap>
         <Padded vertical="m">
           <SubscribeBannerContentWrap>
@@ -79,6 +80,9 @@ const SubscribeBanner = () => {
           </SubscribeBannerContentWrap>
         </Padded>
       </ContentWrap>
+      <CloseButton unstyled onClick={dismiss}>
+        <X/>
+      </CloseButton>
     </SubscribeBannerWrap>
   ) : null
 }

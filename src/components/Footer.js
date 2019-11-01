@@ -60,48 +60,80 @@ const Footer = () => {
     <FooterWrap>
       <Padded top="xl" bottom="3x">
         <FooterContentWrap>
-          <Link to="/">
+          <Link to="/" aria-label="Home page" rel="home">
             &copy; 2017–{currentYear} Jonathan Harrell
           </Link>
           <SocialLinksWrap>
-            <Link as="a" href="https://twitter.com/HarrellofDurham">
-              <ScreenReaderText>
-                Twitter
-              </ScreenReaderText>
-              <Twitter/>
-            </Link>
-            <Spaced left="s">
-              <Link as="a" href="https://github.com/jonathanharrell/">
-                <ScreenReaderText>
-                  Github
-                </ScreenReaderText>
-                <Github/>
-              </Link>
-              <Link as="a" href="https://codepen.io/jonathanharrell/">
-                <ScreenReaderText>
-                  Codepen
-                </ScreenReaderText>
-                <Codepen/>
-              </Link>
-              <Link as="a" href="https://www.linkedin.com/in/jonathanharrell/">
-                <ScreenReaderText>
-                  LinkedIn
-                </ScreenReaderText>
-                <LinkedIn/>
-              </Link>
-              <Link as="a" href="https://www.instagram.com/harrellofdurham/">
-                <ScreenReaderText>
-                  Instagram
-                </ScreenReaderText>
-                <Instagram/>
-              </Link>
-              <Link as="a" href="https://jonathan-harrell.com/?feed=rss">
-                <ScreenReaderText>
-                  RSS
-                </ScreenReaderText>
-                <Rss/>
-              </Link>
-            </Spaced>
+            <nav aria-label="Social Links">
+              <Spaced left="s">
+                <Link
+                  as="a"
+                  href="https://twitter.com/HarrellofDurham"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    Twitter
+                  </ScreenReaderText>
+                  <Twitter/>
+                </Link>
+                <Link
+                  as="a"
+                  href="https://github.com/jonathanharrell/"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    Github
+                  </ScreenReaderText>
+                  <Github/>
+                </Link>
+                <Link
+                  as="a"
+                  href="https://codepen.io/jonathanharrell/"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    Codepen
+                  </ScreenReaderText>
+                  <Codepen/>
+                </Link>
+                <Link
+                  as="a"
+                  href="https://www.linkedin.com/in/jonathanharrell/"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    LinkedIn
+                  </ScreenReaderText>
+                  <LinkedIn/>
+                </Link>
+                <Link
+                  as="a"
+                  href="https://www.instagram.com/harrellofdurham/"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    Instagram
+                  </ScreenReaderText>
+                  <Instagram/>
+                </Link>
+                <Link
+                  as="a"
+                  href="https://jonathan-harrell.com/?feed=rss"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <ScreenReaderText>
+                    RSS
+                  </ScreenReaderText>
+                  <Rss/>
+                </Link>
+              </Spaced>
+            </nav>
           </SocialLinksWrap>
         </FooterContentWrap>
       </Padded>

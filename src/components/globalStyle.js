@@ -61,7 +61,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     min-width: 20rem;
     ${({ withBackground }) => withBackground && 'background-color: var(--backgroundBody)'};
-    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-family: ${({ theme }) => theme.fonts.sansSerif};
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -84,6 +84,15 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
     background-color: var(--backgroundSecondary);
+  }
+  
+  .noscript {
+    display: block;
+    padding: ${({ theme }) => theme.spacing.s};
+    font-family: ${({ theme }) => theme.fonts.sansSerif};
+    font-size: 16px;
+    background-color: var(--accent);
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 
