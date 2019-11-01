@@ -6,7 +6,7 @@ public_folder: /img
 collections:
   - name: blog
     label: Blog
-    folder: src/pages/blog
+    folder: src/content/blog
     extension: mdx
     format: frontmatter
     create: true
@@ -42,7 +42,7 @@ collections:
     extension: mdx
     format: frontmatter
     files:
-      - file: src/pages/index.mdx
+      - file: src/content/index.mdx
         label: 'Landing Page'
         name: index
         fields:
@@ -135,7 +135,7 @@ collections:
                   - label: Alt
                     name: alt
                     widget: string
-      - file: src/pages/about/index.mdx
+      - file: src/content/about/index.mdx
         label: About
         name: about
         fields:
