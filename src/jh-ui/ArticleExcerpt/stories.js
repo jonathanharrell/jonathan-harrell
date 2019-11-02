@@ -1,5 +1,5 @@
 import React from 'react'
-import { withKnobs } from '@storybook/addon-knobs'
+import { select, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
@@ -15,12 +15,20 @@ export default {
 }
 
 export const Basic = () => {
+  const imagePosition = select('Image Position', ['left', 'right'], 'left')
+  const imageRatio = select('Image Ratio', [1 / 2, 2 / 3], 1 / 2)
+  const imageBreakpoint = select('Image Breakpoint', ['mobile', 'tablet', 'desktop', 'desktopLarge'], 'desktop')
+
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
         <ArticleExcerpt
           theme={theme}
           link="/"
+          image="https://via.placeholder.com/1200x800.png"
+          imagePosition={imagePosition}
+          imageRatio={imageRatio}
+          imageBreakpoint={imageBreakpoint}
           date={new Date('November 5, 2018')}
           title="Implicit State Sharing in React & Vue"
           excerpt="Learn to use React's Context API and provide/inject in Vue to share state between related components without resorting to a global data store."

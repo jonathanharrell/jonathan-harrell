@@ -1,5 +1,5 @@
 import React from 'react'
-import { withKnobs } from '@storybook/addon-knobs'
+import { boolean, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
@@ -16,10 +16,12 @@ export default {
 }
 
 export const Basic = () => {
+  const padding = boolean('Padding', true)
+
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Card theme={theme}>
+        <Card theme={theme} padding={padding}>
           <Text element="span">Card</Text>
         </Card>
       )}

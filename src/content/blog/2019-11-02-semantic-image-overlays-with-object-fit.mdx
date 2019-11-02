@@ -1,0 +1,118 @@
+---
+templateKey: blog-post
+title: Semantic Image Overlays With Object-Fit
+date: 2017-10-27T20:17:00.000Z
+description: >-
+  Learn how to use CSS grid and the object-fit property to create an image grid with overlays that is semantic and great for SEO.
+featuredpost: true
+featuredimage: /img/implicit-state-sharing.svg
+tags:
+  - css
+  - images
+  - object-fit
+---
+Think of how many times you have coded a grid of images with an overlay that appears on hover and displays some sort of text. With the `object-fit` property getting wider support, there is now a clean, semantic way of doing this.
+
+## The Old Way (without object-fit)
+
+Here’s how I used to accomplish this:
+
+```html
+<article class="blog-post-teaser">
+  <div
+    class="image"
+    style="background-image: url(...)"
+  ></div>
+  <div class="overlay">
+    <h1>
+      <a href="...">
+        Article Title
+      </a>
+    </h1>
+  </div>
+</article>
+```
+
+The markup involved an article containing a plain div with a background image applied, and an overlay div that contained the text that needed to sit on top of the image. I would then absolutely position both the image and the overlay. The size of the div would be determined by a little percentage padding trick on the article:
+
+```css
+.blog-post-teaser {
+  position: relative;
+  padding: 30% 0;
+}
+
+.blog-post-teaser .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blog-post-teaser .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+This approach gives us a lot of control but it’s really not as semantic as it could be. The image for each article seems like a pretty important piece of content, and the browser doesn’t know that it’s an image. And we can’t feed in `alt` tags to help with SEO.
+
+How do we improve semantics while retaining control of the image sizing so everything fits nicely into a grid? Enter `object-fit`.
+
+## The New Way (with object-fit)
+
+Here’s what my markup looks like now:
+
+```html
+<article class="blog-post-teaser">
+  <figure>
+    <img src="..." alt="...">
+    <figcaption>
+      <h1>
+        <a href="...">
+          Article Title
+        </a>
+      </h1>
+    </figcaption>
+  </figure>
+</article>
+```
+
+Now the browser knows we’re serving up an image. It even knows that the article title is both a heading for the article and a caption for the image. Search engines can now access alt text. Let’s look at the styling:
+
+```css
+.blog-post-teaser figure {
+  position: relative;
+  padding: 30% 0;
+}
+
+.blog-post-teaser figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blog-post-teaser img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+```
+
+It’s almost identical, only that now we’re using the `figure` element to control sizing, and we’re using the `object-fit` property on the image element. This works the exact same way as setting `background-size: cover`. The image will fill the specified space without stretching.
+
+## Browser Support of object-fit
+
+Currently `object-fit` is not supported in IE or Edge, but there is a simple [polyfill](https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3) you can use to convert the image to a background-image in those browsers.
+
+## Conclusion
+
+Check out the [live demo](https://codepen.io/jonathanharrell/pen/vVEerg) to see the styles in action, as well as some additional gradient and hover effects to make it more snazzy.

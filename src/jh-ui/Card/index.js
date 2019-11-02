@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { string } from 'prop-types'
+import { bool, string } from 'prop-types'
 import Padded from '../Padded'
 
 const Root = styled.div`
@@ -11,9 +11,9 @@ const Root = styled.div`
   }
 `
 
-const Card = ({ children, element, ...props }) => (
+const Card = ({ children, padding, element, ...props }) => (
   <Root as={element} {...props}>
-    <Padded all="xxl">
+    <Padded all={padding ? 'xxl' : undefined}>
       <div>
         {children}
       </div>
@@ -22,11 +22,12 @@ const Card = ({ children, element, ...props }) => (
 )
 
 Card.propTypes = {
+  padding: bool,
   element: string
 }
 
 Card.defaultProps = {
-  arrow: false
+  padding: true
 }
 
 export default Card

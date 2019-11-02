@@ -8,19 +8,19 @@ const ArticlesWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
-  
-  > *:nth-child(4) {
-    display: none;
-    
-    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-      display: block;
-    }
-    
-    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-      display: none;
-    }
-  }
 `
+
+const getExcerptColumns = index => {
+  switch (index) {
+    case 0:
+      return 12
+    case 4:
+    case 7:
+      return 8
+    default:
+      return 4
+  }
+}
 
 const BlogExcerpt = styled(ArticleExcerpt)`
   grid-column: 1 / -1;
@@ -32,7 +32,8 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
   
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-column: auto / span 4;
+    grid-column-start: auto;
+    ${({ index }) => `grid-column-end: span ${getExcerptColumns(index)};`};
   }
 `
 
@@ -41,13 +42,22 @@ class Articles extends React.Component {
     const { data } = this.props
     const { edges: posts } = data.allMdx
 
+    const showImage = (index) => {
+      return [0, 4, 7].includes(index)
+    }
+
     return (
       <ArticlesWrap>
         {posts &&
-        posts.map(({ node: post }) => (
+        posts.map(({ node: post }, index) => (
           <BlogExcerpt
             key={post.id}
+            index={index}
             link={post.fields.slug}
+            image={showImage(index) ? 'https://via.placeholder.com/1200x800.png' : undefined}
+            imagePosition={index === 7 ? 'right' : 'left'}
+            imageRatio={index === 0 ? 2 / 3 : 1 / 2}
+            imageBreakpoint="desktop"
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
             excerpt={post.excerpt}
