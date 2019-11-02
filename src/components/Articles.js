@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
-import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
+import ArticleExcerpt, { CardText, Image } from '../jh-ui/ArticleExcerpt'
 
 const ArticlesWrap = styled.div`
   display: grid;
@@ -35,6 +35,18 @@ const BlogExcerpt = styled(ArticleExcerpt)`
     grid-column-start: auto;
     ${({ index }) => `grid-column-end: span ${getExcerptColumns(index)};`};
   }
+  
+  ${({ index, theme }) => ![0, 4, 7].includes(index) ? `
+    @media (min-width: ${theme.breakpoints.desktop}) {
+      ${Image} {
+        display: none;
+      }
+      
+      ${CardText} {
+        grid-column: 1 / -1;
+      }
+    }
+  ` : ''}
 `
 
 class Articles extends React.Component {
@@ -42,8 +54,16 @@ class Articles extends React.Component {
     const { data } = this.props
     const { edges: posts } = data.allMdx
 
-    const showImage = (index) => {
-      return [0, 4, 7].includes(index)
+    const getImagePosition = index => {
+      switch (index) {
+        case 0:
+        case 4:
+          return 'left'
+        case 7:
+          return 'right'
+        default:
+          return 'top'
+      }
     }
 
     return (
@@ -54,10 +74,9 @@ class Articles extends React.Component {
             key={post.id}
             index={index}
             link={post.fields.slug}
-            image={showImage(index) ? 'https://via.placeholder.com/1200x800.png' : undefined}
-            imagePosition={index === 7 ? 'right' : 'left'}
+            image="https://via.placeholder.com/1200x800.png"
+            imagePosition={getImagePosition(index)}
             imageRatio={index === 0 ? 2 / 3 : 1 / 2}
-            imageBreakpoint="desktop"
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
             excerpt={post.excerpt}

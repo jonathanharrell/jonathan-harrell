@@ -15,9 +15,8 @@ export default {
 }
 
 export const Basic = () => {
-  const imagePosition = select('Image Position', ['left', 'right'], 'left')
+  const imagePosition = select('Image Position', ['top', 'left', 'right'], 'top')
   const imageRatio = select('Image Ratio', [1 / 2, 2 / 3], 1 / 2)
-  const imageBreakpoint = select('Image Breakpoint', ['mobile', 'tablet', 'desktop', 'desktopLarge'], 'desktop')
 
   return (
     <ThemeContext.Consumer>
@@ -28,7 +27,6 @@ export const Basic = () => {
           image="https://via.placeholder.com/1200x800.png"
           imagePosition={imagePosition}
           imageRatio={imageRatio}
-          imageBreakpoint={imageBreakpoint}
           date={new Date('November 5, 2018')}
           title="Implicit State Sharing in React & Vue"
           excerpt="Learn to use React's Context API and provide/inject in Vue to share state between related components without resorting to a global data store."
