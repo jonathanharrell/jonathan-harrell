@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
-import ArticleExcerpt, { CardText, Image } from '../jh-ui/ArticleExcerpt'
+import ArticleExcerpt, { CardText, ImageWrap } from '../jh-ui/ArticleExcerpt'
 
 const ArticlesWrap = styled.div`
   display: grid;
@@ -38,7 +38,7 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   
   ${({ index, theme }) => ![0, 4, 7].includes(index) ? `
     @media (min-width: ${theme.breakpoints.desktop}) {
-      ${Image} {
+      ${ImageWrap} {
         display: none;
       }
       

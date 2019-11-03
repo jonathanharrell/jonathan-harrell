@@ -40,8 +40,16 @@ const getImageColumns = ({ imagePosition, imageRatio }) => {
   }
 }
 
-export const Image = styled.img`
+export const ImageWrap = styled.figure`
   grid-column: 1 / -1;
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    ${({ imagePosition, imageRatio }) => getImageColumns({ imagePosition, imageRatio })};
+    grid-row: 1 / -1;
+  }
+`
+
+const Image = styled.img`
   max-width: 100%;
   height: auto;
   
@@ -49,8 +57,6 @@ export const Image = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    ${({ imagePosition, imageRatio }) => getImageColumns({ imagePosition, imageRatio })};
-    grid-row: 1 / -1;
   }
 `
 
@@ -93,11 +99,14 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
       <Link to={link} aria-label={title}/>
       <CardContent imageRatio={imageRatio}>
         {image && (
-          <Image
-            src={image}
+          <ImageWrap
             imagePosition={imagePosition}
             imageRatio={imageRatio}
-          />
+          >
+            <Image
+              src={image}
+            />
+          </ImageWrap>
         )}
         <Padded all="xxl">
           <CardText
