@@ -50,6 +50,7 @@ export const ImageWrap = styled.figure`
 `
 
 const Image = styled.img`
+  display: block;
   max-width: 100%;
   height: auto;
   
@@ -63,20 +64,22 @@ const Image = styled.img`
 export const CardText = styled.div`
   grid-column: 1 / -1;
   
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-row: 1 / -1;
-  }
+  ${({ imagePosition, theme }) => imagePosition !== 'top' ? `
+    @media (min-width: ${theme.breakpoints.desktop}) {
+      grid-row: 1 / -1;
+    }
+  ` : ''};
   
   ${({ image, imagePosition, theme }) => image ? `
     @media (min-width: ${theme.breakpoints.desktop}) {
-      ${imagePosition === 'left' && `
+      ${imagePosition === 'left' ? `
         grid-column: auto / -1;
         padding-left: 0;
-      `};
-      ${imagePosition === 'right' && `
+      ` : ''};
+      ${imagePosition === 'right' ? `
         grid-column: auto / span 1;
         padding-right: 0;
-      `}
+      ` : ''}
     }` : ``
 }
 `

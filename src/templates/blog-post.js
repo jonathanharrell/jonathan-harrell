@@ -39,7 +39,7 @@ const ArticleContent = styled.div`
   }
   
   .gatsby-highlight {
-    margin: ${({ theme }) => theme.spacing.xs} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xl};
+    margin: ${({ theme }) => theme.spacing.l} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xxl};
 
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       margin-right: -${({ theme }) => theme.spacing.xl};
@@ -82,11 +82,23 @@ const ArticleContent = styled.div`
   }
 `
 
+const ArticleMeta = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: flex;
+    align-items: baseline;
+  }
+`
+
 const Tags = styled.div`
   max-width: 20rem;
+  margin-bottom: 0.25rem;
   
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: unset;
+  }
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin: 0 ${({ theme }) => theme.spacing.xxl} 0 0;
   }
 `
 
@@ -108,28 +120,30 @@ export const BlogPostTemplate = ({
           <ArticleContentWrap>
             <ArticleContent>
               <header>
-                {tags && (
-                  <Tags>
-                    {tags.map((tag, index) => (
-                      <span key={tag + `tag`}>
-                    <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
-                      <Text order="meta">
-                        {tag}
-                      </Text>
-                    </Link>
-                        {index < tags.length - 1 && (
-                          <Text order="meta" element="span"> • </Text>
-                        )}
-                  </span>
-                    ))}
-                  </Tags>
-                )}
-                <Spaced bottom="l">
-                  <Text order="body" color="textLighter" element="p">
-                    {date}
-                  </Text>
+                <Spaced bottom="m">
+                  <ArticleMeta>
+                    {tags && (
+                      <Tags>
+                        {tags.map((tag, index) => (
+                          <span key={tag + `tag`}>
+                            <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
+                              <Text order="meta">
+                                {tag}
+                              </Text>
+                            </Link>
+                            {index < tags.length - 1 && (
+                              <Text order="meta" element="span"> • </Text>
+                            )}
+                          </span>
+                        ))}
+                      </Tags>
+                    )}
+                    <Text order="body" color="textLighter" element="p">
+                      {date}
+                    </Text>
+                  </ArticleMeta>
                 </Spaced>
-                <Spaced bottom="l">
+                <Spaced bottom="3x">
                   <Heading level={1}>
                     {title}
                   </Heading>

@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { bool } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import ArrowRight from '../../img/icons/arrow-right.svg'
 import Spaced from '../Spaced'
+import ArrowRight from '../../img/icons/arrow-right.svg'
 
 const Root = styled(GatsbyLink)`
   display: inline-flex;

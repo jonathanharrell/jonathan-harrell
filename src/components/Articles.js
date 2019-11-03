@@ -68,8 +68,7 @@ class Articles extends React.Component {
 
     return (
       <ArticlesWrap>
-        {posts &&
-        posts.map(({ node: post }, index) => (
+        {posts && posts.map(({ node: post }, index) => (
           <BlogExcerpt
             key={post.id}
             index={index}

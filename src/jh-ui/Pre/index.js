@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledPre = styled.pre`
   overflow-x: auto;
-  background-color: var(--backgroundPre);
+  background-color: var(--backgroundCode);
   white-space: pre-wrap;
   
   code {

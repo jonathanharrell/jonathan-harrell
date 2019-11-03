@@ -15,6 +15,9 @@ import Button from '../jh-ui/Button'
 import Footer from './Footer'
 import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
+import ArticleHeading from './ArticleHeading'
+import Ul from '../jh-ui/Ul'
+import Ol from '../jh-ui/Ol'
 
 const Wrap = styled.div`
   display: flex;
@@ -92,27 +95,27 @@ const Layout = ({ children }) => {
             components={{
               h1: props => <Heading level={1} {...props}/>,
               h2: props => (
-                <Spaced top="3x" bottom="m">
-                  <Heading level={2} {...props}/>
+                <Spaced top="4x" bottom="m">
+                  <ArticleHeading {...props}/>
                 </Spaced>
               ),
               h3: props => (
-                <Spaced top="2x" bottom="m">
+                <Spaced top="3x" bottom="m">
                   <Heading level={3} {...props}/>
                 </Spaced>
               ),
               h4: props => (
-                <Spaced top="xxl" bottom="m">
+                <Spaced top="2x" bottom="m">
                   <Heading level={4} {...props}/>
                 </Spaced>
               ),
               h5: props => (
-                <Spaced top="xl" bottom="m">
+                <Spaced top="xxl" bottom="m">
                   <Heading level={5} {...props}/>
                 </Spaced>
               ),
               h6: props => (
-                <Spaced vertical="l">
+                <Spaced vertical="xl">
                   <Heading level={6} {...props}/>
                 </Spaced>
               ),
@@ -121,6 +124,8 @@ const Layout = ({ children }) => {
                   <Text {...props}/>
                 </Spaced>
               ),
+              ul: props => <Ul {...props} />,
+              ol: props => <Ol {...props} />,
               pre: Pre,
               code: Code,
               inlineCode: InlineCode,
