@@ -73,7 +73,7 @@ class Articles extends React.Component {
             key={post.id}
             index={index}
             link={post.fields.slug}
-            image="https://via.placeholder.com/1200x800.png"
+            image={post.frontmatter.featuredimage.publicURL}
             imagePosition={getImagePosition(index)}
             imageRatio={index === 0 ? 2 / 3 : 1 / 2}
             date={new Date(post.frontmatter.date)}
@@ -115,6 +115,9 @@ export default () => (
                 templateKey
                 date
                 tags
+                featuredimage {
+                    publicURL
+                }
               }
             }
           }

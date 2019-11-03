@@ -82,6 +82,11 @@ const ArticleContent = styled.div`
   }
 `
 
+const FeaturedImage = styled.img`
+  max-width: 100%;
+  height: auto;
+`
+
 const ArticleMeta = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: flex;
@@ -104,11 +109,10 @@ const Tags = styled.div`
 
 export const BlogPostTemplate = ({
                                    content,
-                                   contentComponent,
-                                   description,
                                    tags,
                                    title,
                                    date,
+                                   image,
                                    helmet
                                  }) => {
 
@@ -120,7 +124,14 @@ export const BlogPostTemplate = ({
           <ArticleContentWrap>
             <ArticleContent>
               <header>
-                <Spaced bottom="m">
+                {image && (
+                  <Spaced bottom="3x">
+                    <figure>
+                      <FeaturedImage src={image.publicURL} alt=""/>
+                    </figure>
+                  </Spaced>
+                )}
+                <Spaced bottom="s">
                   <ArticleMeta>
                     {tags && (
                       <Tags>
@@ -143,7 +154,7 @@ export const BlogPostTemplate = ({
                     </Text>
                   </ArticleMeta>
                 </Spaced>
-                <Spaced bottom="3x">
+                <Spaced bottom="2x">
                   <Heading level={1}>
                     {title}
                   </Heading>
@@ -189,6 +200,7 @@ const BlogPost = ({ data }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
+        image={post.frontmatter.featuredimage}
       />
     </Layout>
   )
@@ -212,6 +224,9 @@ export const pageQuery = graphql`
                 title
                 description
                 tags
+                featuredimage {
+                    publicURL
+                }
             }
         }
     }
