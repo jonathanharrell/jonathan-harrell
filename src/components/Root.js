@@ -8,12 +8,15 @@ const Root = ({ children }) => {
 
   useEffect(() => {
     setThemeName(window.__theme)
+
+    window.addEventListener('themeChange', event => {
+      setThemeName(event.detail)
+    })
   }, [])
 
   const setTheme = themeName => {
     window.__setPreferredTheme(themeName)
     addAlert(`Theme set to ${themeName}`)
-    setThemeName(themeName)
   }
 
   return (

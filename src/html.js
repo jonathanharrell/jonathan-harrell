@@ -8,6 +8,9 @@ export default function HTML(props) {
         window.__theme = newTheme
         preferredTheme = newTheme
         document.body.className = 'theme-' + newTheme
+        window.dispatchEvent(new CustomEvent('themeChange', {
+          detail: newTheme
+        }))
       }
     
       var preferredTheme;
@@ -15,7 +18,7 @@ export default function HTML(props) {
       try {
         preferredTheme = localStorage.getItem('theme');
       } catch (error) {}
-    
+
       window.__setPreferredTheme = function(newTheme) {
         setTheme(newTheme);
 
@@ -27,9 +30,10 @@ export default function HTML(props) {
       var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
       darkModeQuery.addListener(function(event) {
+        console.log(event)
         window.__setPreferredTheme(event.matches ? 'dark' : 'light')
       });
-    
+
       setTheme(preferredTheme || (darkModeQuery.matches ? 'dark' : 'light'));
     })();
   `
