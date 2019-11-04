@@ -47,7 +47,7 @@ export default function BlogIndexPage({
                 </Heading>
                 <Spaced top="xxl">
                   {tags && (
-                    <div>
+                    <section aria-label="Tags">
                       {tags.map(tag => (
                         <TagWrap key={tag.fieldValue + `tag`}>
                           <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}
@@ -58,14 +58,14 @@ export default function BlogIndexPage({
                           </Link>
                         </TagWrap>
                       ))}
-                    </div>
+                    </section>
                   )}
                 </Spaced>
               </div>
             </Padded>
           </ContentWrap>
         </Header>
-        <ArticlesWrap>
+        <ArticlesWrap aria-label="Articles">
           <Padded bottom="3x">
             <ContentWrap>
               <Articles/>

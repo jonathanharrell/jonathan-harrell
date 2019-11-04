@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
@@ -10,9 +10,7 @@ import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
 import Padded from '../jh-ui/Padded'
-import Button from '../jh-ui/Button'
 import Link from '../jh-ui/Link'
-import ThemeContext from '../context/theme'
 import SectionHeader from '../jh-ui/SectionHeader'
 
 const HeaderWrap = styled.section`
@@ -36,7 +34,6 @@ export const IndexPageTemplate = ({
                                     title,
                                     subheading
                                   }) => {
-  const { toggleTheme } = useContext(ThemeContext)
 
   return (
     <>
@@ -52,11 +49,6 @@ export const IndexPageTemplate = ({
                   I’m a designer and developer who is passionate about creating great user experiences, crafting solid
                   code and overall making the web a better place.
                 </Text>
-              </Spaced>
-              <Spaced top="l">
-                <Button onClick={toggleTheme}>
-                  Toggle theme
-                </Button>
               </Spaced>
             </HeaderContentWrap>
           </ContentWrap>

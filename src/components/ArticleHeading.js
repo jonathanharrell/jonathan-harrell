@@ -9,12 +9,17 @@ const HeadingWrap = styled.div`
 `
 
 const HeadingLink = styled.a`
+  display: none;
   position: absolute;
   height: 100%;
   padding-top: 0.5rem;
   color: var(--textLighter);
   text-decoration: none;
   transform: translateX(calc(-100% - 0.5rem));
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    display: block;
+  }
 `
 
 const ArticleHeading = ({ children, ...props }) => {

@@ -37,7 +37,7 @@ const Padded = (props) => (
   <Root {...props}/>
 )
 
-const spacing = ['xs', 's', 'm', 'l', 'xl', 'xxl', '2x', '3x']
+const spacing = ['xs', 's', 'm', 'l', 'xl', 'xxl', '2x', '3x', '4x']
 
 Padded.propTypes = {
   all: oneOf(spacing),

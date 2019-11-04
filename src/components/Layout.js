@@ -18,6 +18,7 @@ import GlobalStyle from './globalStyle'
 import ArticleHeading from './ArticleHeading'
 import Ul from '../jh-ui/Ul'
 import Ol from '../jh-ui/Ol'
+import Header from './Header'
 
 const Wrap = styled.div`
   display: flex;
@@ -89,7 +90,7 @@ const Layout = ({ children }) => {
         <SkipLink element="a" href="#main">
           Skip to content
         </SkipLink>
-        {/*<Navbar/>*/}
+        <Header/>
         <Main id="main" aria-label="Main Content">
           <MDXProvider
             components={{

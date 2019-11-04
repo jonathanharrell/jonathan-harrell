@@ -3,7 +3,8 @@ import theme from '../jh-ui/theme'
 
 const ThemeContext = React.createContext({
   theme: theme,
-  toggleTheme: () => {
+  themeName: window.__theme,
+  setTheme: () => {
   }
 })
 

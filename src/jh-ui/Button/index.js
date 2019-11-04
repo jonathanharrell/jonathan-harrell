@@ -9,6 +9,7 @@ const Root = styled.button`
   font-weight: 400;
   text-align: center;
   text-decoration: none;
+  color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
   ${({ unstyled, theme }) => unstyled ? `
@@ -26,15 +27,14 @@ const Root = styled.button`
     border-color: var(--buttonBorderPrimary);
     border-radius: 2em;
     background-color: var(--buttonBackgroundPrimary);
-    color: ${theme.colors.white};
   `}
 `
 
-const Button = ({ children, order, unstyled, element, ...props }) => (
-  <Root order={order} unstyled={unstyled} as={element} {...props}>
+const Button = React.forwardRef(({ children, order, unstyled, element, ...props }, ref) => (
+  <Root ref={ref} order={order} unstyled={unstyled} as={element} {...props}>
     {children}
   </Root>
-)
+))
 
 Button.propTypes = {
   order: oneOf(['primary', 'secondary']),

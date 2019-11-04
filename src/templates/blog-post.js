@@ -119,13 +119,13 @@ export const BlogPostTemplate = ({
   return (
     <ArticleWrap>
       {helmet || ''}
-      <Padded vertical="3x">
+      <Padded top="s" bottom="3x">
         <ContentWrap>
           <ArticleContentWrap>
             <ArticleContent>
               <header>
                 {image && (
-                  <Spaced bottom="3x">
+                  <Spaced bottom="2x">
                     <figure>
                       <FeaturedImage src={image.publicURL} alt=""/>
                     </figure>

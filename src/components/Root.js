@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ThemeContext from '../context/theme'
 import theme from '../jh-ui/theme'
 import { addAlert } from '../helpers'
 
 const Root = ({ children }) => {
-  const toggleTheme = () => {
-    const newThemeName = window.__theme === 'light' ? 'dark' : 'light'
-    window.__setPreferredTheme(newThemeName)
-    addAlert(`Theme set to ${newThemeName}`)
+  const [themeName, setThemeName] = useState(window.__theme)
+
+  const setTheme = themeName => {
+    window.__setPreferredTheme(themeName)
+    addAlert(`Theme set to ${themeName}`)
+    setThemeName(themeName)
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, themeName, setTheme }}>
       {children}
     </ThemeContext.Provider>
   )

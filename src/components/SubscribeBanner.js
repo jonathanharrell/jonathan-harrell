@@ -16,9 +16,9 @@ const SubscribeBannerWrap = styled.section`
 
 const CloseButton = styled(Button)`
   position: absolute;
-  top: ${({ theme }) => theme.spacing.m};
+  top: ${({ theme }) => theme.spacing.l};
   right: ${({ theme }) => theme.spacing.m};
-  color: var(--text);
+  color: var(--textLighter);
   
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     top: 50%;
