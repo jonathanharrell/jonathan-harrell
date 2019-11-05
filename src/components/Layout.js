@@ -91,7 +91,7 @@ const Layout = ({ children }) => {
           Skip to content
         </SkipLink>
         <Header/>
-        <Main id="main" aria-label="Main Content">
+        <Main id="main" tabindex="-1" aria-label="Main Content">
           <MDXProvider
             components={{
               h1: props => <Heading level={1} {...props}/>,

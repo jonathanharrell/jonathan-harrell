@@ -11,6 +11,7 @@ const HeadingWrap = styled.div`
 const HeadingLink = styled.a`
   display: none;
   position: absolute;
+  top: 0;
   height: 100%;
   padding-top: 0.5rem;
   color: var(--textLighter);
@@ -27,12 +28,12 @@ const ArticleHeading = ({ children, ...props }) => {
 
   return (
     <HeadingWrap>
-      <HeadingLink href={`#${id}`}>
-        <Hash/>
-      </HeadingLink>
       <Heading level={2} id={id} {...props}>
         {children}
       </Heading>
+      <HeadingLink href={`#${id}`} aria-label="Link to this section">
+        <Hash/>
+      </HeadingLink>
     </HeadingWrap>
   )
 }

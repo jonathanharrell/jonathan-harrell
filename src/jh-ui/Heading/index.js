@@ -56,6 +56,18 @@ const getFontWeight = level => {
   }
 }
 
+const getColor = ({ order, color }) => {
+  if (color) return `var(--${color})`
+
+  switch (order) {
+    case 'caption':
+    case 'meta':
+      return 'var(--textLighter)'
+    default:
+      return 'var(--text)'
+  }
+}
+
 const Root = styled.h1`
   margin: 0;
   font-family: ${({ theme, level }) => getFontFamily(theme, level)};
@@ -63,7 +75,7 @@ const Root = styled.h1`
   line-height: ${({ level }) => getLineHeight(level)};
   font-weight: ${({ level }) => getFontWeight(level)};
   ${({ level }) => level === 6 ? 'text-transform: uppercase' : null};
-  color: ${({ color }) => color || 'var(--text);'};
+  color: ${({ color }) => getColor({ color })};
   
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme, level }) => getFontSize(theme, level, 'tablet')};
@@ -87,7 +99,7 @@ const Heading = ({ children, level, color, element, ...props }) => (
 
 Heading.propTypes = {
   level: oneOf([1, 2, 3, 4, 5, 6]),
-  color: string,
+  color: oneOf(['text', 'textLighter', 'textInverse']),
   element: string
 }
 

@@ -34,7 +34,7 @@ const ExperimentExcerpt = ({ date, title, viewsCount, ...props }) => {
       <ExperimentMeta order="meta">
         <Eye/>
         <Spaced left="xs">
-          <span>{viewsCount}</span>
+          <span aria-label="Views Count">{viewsCount}</span>
         </Spaced>
       </ExperimentMeta>
     </Card>

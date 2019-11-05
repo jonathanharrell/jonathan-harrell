@@ -27,13 +27,13 @@ const SiteTitle = styled(Heading)`
 
 const HomePageLink = styled(Link)`
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
 `
 
 class Header extends React.Component {
   render() {
     return (
-      <HeaderWrap>
+      <HeaderWrap aria-label="Site Header">
         <Padded vertical="m">
           <ContentWrap>
             <HeaderContentWrap>

@@ -13,6 +13,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
@@ -124,6 +125,9 @@ export const BlogPostTemplate = ({
           <ArticleContentWrap>
             <ArticleContent>
               <header>
+                <ScreenReaderText>
+                  {title}
+                </ScreenReaderText>
                 {image && (
                   <Spaced bottom="2x">
                     <figure>
@@ -143,7 +147,7 @@ export const BlogPostTemplate = ({
                               </Text>
                             </Link>
                             {index < tags.length - 1 && (
-                              <Text order="meta" element="span"> • </Text>
+                              <Text order="meta" element="span" aria-hidden> • </Text>
                             )}
                           </span>
                         ))}

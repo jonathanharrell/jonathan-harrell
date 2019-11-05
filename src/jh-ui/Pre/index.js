@@ -88,7 +88,7 @@ const StyledPre = styled.pre`
 `
 
 const Pre = ({ children, ...props }) => (
-  <StyledPre {...props}>
+  <StyledPre aria-label={`Code sample (${props.className})`} {...props}>
     {children}
   </StyledPre>
 )

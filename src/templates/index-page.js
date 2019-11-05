@@ -77,7 +77,7 @@ export const IndexPageTemplate = ({
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
-              <Heading level={2} color="white">
+              <Heading level={2} color="textInverse">
                 Recent Experiments
               </Heading>
               <Link

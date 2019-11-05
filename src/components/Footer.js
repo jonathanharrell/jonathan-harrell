@@ -57,7 +57,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <FooterWrap>
+    <FooterWrap aria-label="Site Footer">
       <Padded top="xl" bottom="3x">
         <FooterContentWrap>
           <Link to="/" aria-label="Home page" rel="home">

@@ -84,14 +84,20 @@ export const CardText = styled.div`
 }
 `
 
+const Tags = styled.ul`
+  list-style: none;
+  
+  li {
+    display: inline-block;
+  }
+`
+
 const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric'
   })
-
-  const tagsString = tags.join(' • ')
 
   return (
     <ArticleCard
@@ -108,6 +114,7 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
           >
             <Image
               src={image}
+              role="presentation"
             />
           </ImageWrap>
         )}
@@ -129,11 +136,23 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
             <Text order="body">
               {excerpt}
             </Text>
-            {tagsString && (
+            {tags.length && (
               <Spaced top="xl">
-                <Text order="meta">
-                  {tagsString}
-                </Text>
+                <Tags aria-label="Article Tags">
+                  {tags.map((tag, index) => (
+                    <li key={tag}>
+                      <Text order="meta">
+                        {index !== 0 && (
+                          <span
+                            dangerouslySetInnerHTML={{ __html: '&nbsp;&nbsp;•&nbsp;&nbsp;' }}
+                            aria-hidden={true}
+                          />
+                        )}
+                        {tag}
+                      </Text>
+                    </li>
+                  ))}
+                </Tags>
               </Spaced>
             )}
           </CardText>

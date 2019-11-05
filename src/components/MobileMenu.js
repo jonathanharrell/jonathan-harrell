@@ -8,6 +8,7 @@ import Heading from '../jh-ui/Heading'
 import Padded from '../jh-ui/Padded'
 import Spaced from '../jh-ui/Spaced'
 import ThemeContext from '../context/theme'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const ToggleButton = styled(Button)`
   position: relative;
@@ -22,12 +23,46 @@ const Menu = styled.div`
   height: 100vh;
   overflow-y: auto;
   overscroll-behavior-y: contain;
-  background-color: var(--backgroundPrimary);
+  background-color: var(--backgroundSecondary);
 `
 
 const MenuLink = styled(Link)`
   display: block;
   text-decoration: none;
+`
+
+const ThemeOptions = styled.form`
+  display: flex;
+  align-items: center;
+`
+
+const getThemeOptionBackgroundColor = ({ active, themeName }) => {
+  if (themeName === 'light') {
+    return active ? 'hsl(0, 0%, 80%)' : 'hsl(0, 0%, 90%)'
+  } else {
+    return active ? 'hsl(0, 0%, 25%)' : 'hsl(0, 0%, 15%)'
+  }
+}
+
+const ThemeOption = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing['4x']};
+  background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({ active, themeName })};
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  
+  &:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 `
 
 const MobileMenu = () => {
@@ -64,6 +99,8 @@ const MobileMenu = () => {
   }
 
   const handleKeydown = event => {
+    if (!visible) return
+
     // if tabbing from last link, force toggle button to get focus
     if (event.key === 'Tab' && !event.shiftKey) {
       if (lastTabbableElementRef.includes(event.target)) {
@@ -76,8 +113,13 @@ const MobileMenu = () => {
     if (event.key === 'Tab' && event.shiftKey) {
       if (event.target === toggleButtonRef.current) {
         event.preventDefault()
-        lastTabbableElementRef.current.focus()
+        lastTabbableElementRef[lastTabbableElementRef.length - 1].focus()
       }
+    }
+
+    // close menu on escape
+    if (event.key === 'Escape') {
+      setVisibility(false)
     }
   }
 
@@ -91,15 +133,16 @@ const MobileMenu = () => {
 
   return (
     <div onKeyDown={handleKeydown}>
-      <ToggleButton ref={toggleButtonRef} onClick={toggleVisibility}>
-        menu
+      <ToggleButton
+        ref={toggleButtonRef}
+        aria-expanded={visible}
+        aria-controls="main-menu"
+        onClick={toggleVisibility}
+      >
+        Main Menu
       </ToggleButton>
       {visible && (
-        <Menu
-          role="dialog"
-          aria-modal={true}
-          aria-label="Main Menu"
-        >
+        <Menu id="main-menu" aria-label="Main Menu">
           <Padded top="4x" bottom="2x">
             <ContentWrap>
               <Spaced vertical="3x">
@@ -107,7 +150,7 @@ const MobileMenu = () => {
                   <h2>
                     <Text order="meta">Links</Text>
                   </h2>
-                  <nav>
+                  <nav role="navigation">
                     <Spaced vertical="l">
                       <MenuLink
                         to="/"
@@ -142,32 +185,46 @@ const MobileMenu = () => {
                   <h2>
                     <Text order="meta">Change Theme</Text>
                   </h2>
-                  <form>
-                    <input
-                      ref={setLastTabbableElementRef}
-                      type="radio"
-                      id="light-theme"
-                      name="theme"
-                      value="light"
-                      checked={themeName === 'light'}
-                      onChange={handleThemeChange}
-                    />
-                    <label htmlFor="light-theme">
-                      <Text order="body">Light</Text>
-                    </label>
-                    <input
-                      ref={setLastTabbableElementRef}
-                      type="radio"
-                      id="dark-theme"
-                      name="theme"
-                      value="dark"
-                      checked={themeName === 'dark'}
-                      onChange={handleThemeChange}
-                    />
-                    <label htmlFor="dark-theme">
-                      <Text order="body">Dark</Text>
-                    </label>
-                  </form>
+                  <Spaced top="m">
+                    <ThemeOptions>
+                      <ThemeOption
+                        htmlFor="light-theme"
+                        themeName={themeName}
+                        active={themeName === 'light'}
+                      >
+                        <Text order="body">Light</Text>
+                        <ScreenReaderText>
+                          <input
+                            ref={setLastTabbableElementRef}
+                            type="radio"
+                            id="light-theme"
+                            name="theme"
+                            value="light"
+                            checked={themeName === 'light'}
+                            onChange={handleThemeChange}
+                          />
+                        </ScreenReaderText>
+                      </ThemeOption>
+                      <ThemeOption
+                        htmlFor="dark-theme"
+                        themeName={themeName}
+                        active={themeName === 'dark'}
+                      >
+                        <Text order="body">Dark</Text>
+                        <ScreenReaderText>
+                          <input
+                            ref={setLastTabbableElementRef}
+                            type="radio"
+                            id="dark-theme"
+                            name="theme"
+                            value="dark"
+                            checked={themeName === 'dark'}
+                            onChange={handleThemeChange}
+                          />
+                        </ScreenReaderText>
+                      </ThemeOption>
+                    </ThemeOptions>
+                  </Spaced>
                 </section>
               </Spaced>
             </ContentWrap>
