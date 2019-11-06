@@ -31,7 +31,7 @@ const SkipLink = styled(Button)`
   position: fixed;
   top: -100%;
   left: 1rem;
-  z-index: 2;
+  z-index: 3;
   
   &:focus {
     top: 1rem;

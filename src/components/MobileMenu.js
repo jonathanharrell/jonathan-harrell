@@ -10,9 +10,38 @@ import Spaced from '../jh-ui/Spaced'
 import ThemeContext from '../context/theme'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
+const MobileMenuWrap = styled.div`
+  display: ${({ visible }) => visible ? 'block' : 'none'};
+`
+
 const ToggleButton = styled(Button)`
   position: relative;
   z-index: 1;
+  height: 1.75rem;
+  
+  ${({ expanded }) => expanded ? (`
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(2px, 3px);
+    }
+
+    span:nth-child(2) {
+      display: none;
+    }
+    
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(2px, -3px);
+    }
+  `) : ''};
+`
+
+const Bar = styled.span`
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: var(--text);
+  transition: all 0.2s ease-out;
 `
 
 const Menu = styled.div`
@@ -68,12 +97,17 @@ const ThemeOption = styled.label`
 const MobileMenu = () => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const [visible, setVisibility] = useState(false)
+  const [expanded, setExpanded] = useState(false)
   const toggleButtonRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = []
 
   useEffect(() => {
-    if (visible) {
+    setVisibility(true)
+  }, [])
+
+  useEffect(() => {
+    if (expanded) {
       // when menu is opened, fix body to prevent scrolling outside menu
       document.body.style.top = `-${window.scrollY}px`
       document.body.style.position = 'fixed'
@@ -88,7 +122,7 @@ const MobileMenu = () => {
       // focus toggle button
       toggleButtonRef.current.focus()
     }
-  }, [visible])
+  }, [expanded])
 
   const setLastTabbableElementRef = element => {
     lastTabbableElementRef.push(element)
@@ -99,7 +133,7 @@ const MobileMenu = () => {
   }
 
   const handleKeydown = event => {
-    if (!visible) return
+    if (!expanded) return
 
     // if tabbing from last link, force toggle button to get focus
     if (event.key === 'Tab' && !event.shiftKey) {
@@ -119,12 +153,12 @@ const MobileMenu = () => {
 
     // close menu on escape
     if (event.key === 'Escape') {
-      setVisibility(false)
+      setExpanded(false)
     }
   }
 
   const toggleVisibility = () => {
-    setVisibility(!visible)
+    setExpanded(!expanded)
   }
 
   const handleThemeChange = event => {
@@ -132,16 +166,23 @@ const MobileMenu = () => {
   }
 
   return (
-    <div onKeyDown={handleKeydown}>
+    <MobileMenuWrap
+      visible={visible}
+      onKeyDown={handleKeydown}
+    >
       <ToggleButton
         ref={toggleButtonRef}
-        aria-expanded={visible}
+        unstyled={true}
+        expanded={expanded}
+        aria-expanded={expanded}
         aria-controls="main-menu"
         onClick={toggleVisibility}
       >
-        Main Menu
+        <Bar/>
+        <Bar/>
+        <Bar/>
       </ToggleButton>
-      {visible && (
+      {expanded && (
         <Menu id="main-menu" aria-label="Main Menu">
           <Padded top="4x" bottom="2x">
             <ContentWrap>
@@ -185,7 +226,7 @@ const MobileMenu = () => {
                   <h2>
                     <Text order="meta">Change Theme</Text>
                   </h2>
-                  <Spaced top="m">
+                  <Spaced top="s">
                     <ThemeOptions>
                       <ThemeOption
                         htmlFor="light-theme"
@@ -231,7 +272,7 @@ const MobileMenu = () => {
           </Padded>
         </Menu>
       )}
-    </div>
+    </MobileMenuWrap>
   )
 }
 
