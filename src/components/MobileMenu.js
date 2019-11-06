@@ -15,20 +15,23 @@ const MobileMenuWrap = styled.div`
 `
 
 const ToggleButton = styled(Button)`
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   z-index: 1;
   height: 1.75rem;
+  overflow: hidden;
   
   ${({ expanded }) => expanded ? (`
-    span:nth-child(1) {
+    span:nth-of-type(2) {
       transform: rotate(45deg) translate(2px, 3px);
     }
 
-    span:nth-child(2) {
+    span:nth-of-type(3) {
       display: none;
     }
     
-    span:nth-child(3) {
+    span:nth-of-type(4) {
       transform: rotate(-45deg) translate(2px, -3px);
     }
   `) : ''};
@@ -178,6 +181,9 @@ const MobileMenu = () => {
         aria-controls="main-menu"
         onClick={toggleVisibility}
       >
+        <ScreenReaderText>
+          Main Menu
+        </ScreenReaderText>
         <Bar/>
         <Bar/>
         <Bar/>
