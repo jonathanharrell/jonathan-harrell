@@ -125,8 +125,21 @@ const Layout = ({ children }) => {
                   <Text {...props}/>
                 </Spaced>
               ),
-              ul: props => <Ul {...props} />,
-              ol: props => <Ol {...props} />,
+              ul: props => (
+                <Spaced bottom="m" left="m">
+                  <Ul {...props} />
+                </Spaced>
+              ),
+              ol: props => (
+                <Spaced bottom="m" left="m">
+                  <Ol {...props} />
+                </Spaced>
+              ),
+              li: props => (
+                <Spaced bottom="xs">
+                  <li {...props}/>
+                </Spaced>
+              ),
               pre: Pre,
               code: Code,
               inlineCode: InlineCode,

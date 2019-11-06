@@ -120,7 +120,7 @@ export const BlogPostTemplate = ({
   return (
     <ArticleWrap>
       {helmet || ''}
-      <Padded top="s" bottom="3x">
+      <Padded top="s" bottom="4x">
         <ContentWrap>
           <ArticleContentWrap>
             <ArticleContent>
