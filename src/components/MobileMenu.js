@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import debounce from 'lodash/debounce'
 import Button from '../jh-ui/Button'
 import Text from '../jh-ui/Text'
 import ContentWrap from './ContentWrap'
@@ -9,9 +10,16 @@ import Padded from '../jh-ui/Padded'
 import Spaced from '../jh-ui/Spaced'
 import ThemeContext from '../context/theme'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import { breakpoints } from '../jh-ui/theme'
 
 const MobileMenuWrap = styled.div`
-  display: ${({ visible }) => visible ? 'block' : 'none'};
+  .no-js & {
+    display: none;
+  }
+  
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    display: none;
+  }
 `
 
 const ToggleButton = styled(Button)`
@@ -99,33 +107,46 @@ const ThemeOption = styled.label`
 
 const MobileMenu = () => {
   const { themeName, setTheme } = useContext(ThemeContext)
-  const [visible, setVisibility] = useState(false)
+  const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
   const toggleButtonRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = []
 
   useEffect(() => {
-    setVisibility(true)
+    const rems = breakpoints.desktop.replace('rem', '')
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+    const desktopWidth = rems * fontSize
+
+    const handleResize = debounce(() => {
+      setVisibility(window.innerWidth < desktopWidth)
+    }, 300)
+
+    setVisibility(window.innerWidth < desktopWidth)
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   useEffect(() => {
-    if (expanded) {
-      // when menu is opened, fix body to prevent scrolling outside menu
-      document.body.style.top = `-${window.scrollY}px`
-      document.body.style.position = 'fixed'
-      // focus first link
-      firstTabbableElementRef.current.focus()
-    } else {
-      // when menu is closed, reset body to original scroll position
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
-      // focus toggle button
-      toggleButtonRef.current.focus()
+    if (visible) {
+      if (expanded) {
+        // when menu is opened, fix body to prevent scrolling outside menu
+        document.body.style.top = `-${window.scrollY}px`
+        document.body.style.position = 'fixed'
+        // focus first link
+        firstTabbableElementRef.current.focus()
+      } else {
+        // when menu is closed, reset body to original scroll position
+        const scrollY = document.body.style.top
+        document.body.style.position = ''
+        document.body.style.top = ''
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+        // focus toggle button
+        toggleButtonRef.current.focus()
+      }
     }
-  }, [expanded])
+  }, [visible, expanded])
 
   const setLastTabbableElementRef = element => {
     lastTabbableElementRef.push(element)
@@ -168,7 +189,7 @@ const MobileMenu = () => {
     setTheme(event.target.value)
   }
 
-  return (
+  return visible ? (
     <MobileMenuWrap
       visible={visible}
       onKeyDown={handleKeydown}
@@ -279,7 +300,7 @@ const MobileMenu = () => {
         </Menu>
       )}
     </MobileMenuWrap>
-  )
+  ) : null
 }
 
 export default MobileMenu

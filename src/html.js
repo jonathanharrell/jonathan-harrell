@@ -2,6 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function HTML(props) {
+  const jsScript = `
+    (function() {
+      document.body.className = ''
+    })()
+  `
+
   const themeScript = `
     (function() {
       function setTheme(newTheme) {
@@ -64,7 +70,8 @@ export default function HTML(props) {
       {props.headComponents}
       <style dangerouslySetInnerHTML={{ __html: style }}/>
     </head>
-    <body {...props.bodyAttributes}>
+    <body className="no-js" {...props.bodyAttributes}>
+    <script dangerouslySetInnerHTML={{ __html: jsScript }}/>
     <script dangerouslySetInnerHTML={{ __html: themeScript }}/>
     {props.preBodyComponents}
     <noscript key="noscript" id="gatsby-noscript" className="noscript">
