@@ -6,8 +6,8 @@ import Text from '../jh-ui/Text'
 import Button from '../jh-ui/Button'
 import Input from '../jh-ui/Input'
 import Spaced from '../jh-ui/Spaced'
-import X from '../img/icons/x.svg'
 import { addAlert } from '../helpers'
+import X from '../img/icons/x.svg'
 
 const SubscribeBannerWrap = styled.section`
   position: relative;

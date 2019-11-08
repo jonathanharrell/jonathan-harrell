@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
     --backgroundCode: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
+    --buttonTextPrimary: ${({ theme }) => theme.colors.white};
+    --buttonBorderSecondary: hsl(210, 15%, 90%);
+    --buttonBackgroundSecondary: transparent;
+    --buttonTextSecondary: ${({ theme }) => theme.colors.blueDarkest};
     --primary: ${({ theme }) => theme.colors.blueDarkest};
     --accent: ${({ theme }) => theme.colors.red};
     --selection: hsla(210, 67%, 11%, 0.15);
@@ -35,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
       --backgroundCode: hsl(0, 0%, 10%);
       --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
       --buttonBackgroundPrimary: transparent;
+      --buttonTextPrimary: ${({ theme }) => theme.colors.white};
+      --buttonBorderSecondary: hsl(210, 15%, 95%);
+      --buttonBackgroundSecondary: transparent;
+      --buttonTextSecondary: ${({ theme }) => theme.colors.white};
       --primary: ${({ theme }) => theme.colors.blueDarkest};
       --accent: ${({ theme }) => theme.colors.red};
       --selection: hsla(0, 0%, 100%, 0.15);
@@ -47,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out, stroke 0.2s ease-out;
   }
   
   ::selection {

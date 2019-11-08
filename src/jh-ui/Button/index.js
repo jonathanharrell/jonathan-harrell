@@ -12,7 +12,7 @@ const Root = styled.button`
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
-  ${({ unstyled, theme }) => unstyled ? `
+  ${({ unstyled, order, theme }) => unstyled ? `
     padding: 0;
     border: 0;
     background-color: transparent;
@@ -24,9 +24,10 @@ const Root = styled.button`
     padding: 0 ${theme.spacing.m};
     border-width: 1px;
     border-style: solid;
-    border-color: var(--buttonBorderPrimary);
+    border-color: ${order === 'primary' ? 'var(--buttonBorderPrimary)' : 'var(--buttonBorderSecondary)'};
     border-radius: 2em;
-    background-color: var(--buttonBackgroundPrimary);
+    background-color: ${order === 'primary' ? 'var(--buttonBackgroundPrimary)' : 'var(--buttonBackgroundSecondary)'};
+    color: ${order === 'primary' ? 'var(--buttonTextPrimary)' : 'var(--buttonTextSecondary)'};
   `}
 `
 

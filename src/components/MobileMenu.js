@@ -190,10 +190,7 @@ const MobileMenu = () => {
   }
 
   return visible ? (
-    <MobileMenuWrap
-      visible={visible}
-      onKeyDown={handleKeydown}
-    >
+    <MobileMenuWrap onKeyDown={handleKeydown}>
       <ToggleButton
         ref={toggleButtonRef}
         unstyled={true}
@@ -299,6 +296,21 @@ const MobileMenu = () => {
           </Padded>
         </Menu>
       )}
+      <noscript>
+        <nav role="navigation">
+          <Spaced right="xl">
+            <MenuLink to="/" rel="home">
+              Home
+            </MenuLink>
+            <MenuLink to="/blog">
+              Articles
+            </MenuLink>
+            <MenuLink to="/about">
+              About
+            </MenuLink>
+          </Spaced>
+        </nav>
+      </noscript>
     </MobileMenuWrap>
   ) : null
 }
