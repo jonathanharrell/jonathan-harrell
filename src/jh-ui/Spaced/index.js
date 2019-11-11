@@ -37,7 +37,7 @@ const Spaced = (props) => (
   <Root {...props}/>
 )
 
-const spacing = ['xs', 's', 'm', 'l', 'xl', 'xxl', '2x', '3x', '4x']
+const spacing = ['xs', 's', 'm', 'l', 'xl', 'xxl', '2x', '3x', '4x', '5x']
 
 Spaced.propTypes = {
   all: oneOf(spacing),

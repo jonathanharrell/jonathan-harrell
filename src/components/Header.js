@@ -42,7 +42,7 @@ const Icon = styled.span`
   color: var(--accent);
 `
 
-const Header = () => {
+const Header = ({ handleMobileMenuExpandedChange }) => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const Header = () => {
                 Jonathan Harrell
               </HomePageLink>
             </SiteTitle>
-            <MobileMenu/>
+            <MobileMenu handleExpandedChange={handleMobileMenuExpandedChange}/>
             <DesktopMenu/>
           </HeaderContentWrap>
         </ContentWrap>

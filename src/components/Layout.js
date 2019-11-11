@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
@@ -12,12 +12,12 @@ import Pre from '../jh-ui/Pre'
 import Code from '../jh-ui/Code'
 import InlineCode from '../jh-ui/InlineCode'
 import Button from '../jh-ui/Button'
+import Ul from '../jh-ui/Ul'
+import Ol from '../jh-ui/Ol'
 import Footer from './Footer'
 import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
 import ArticleHeading from './ArticleHeading'
-import Ul from '../jh-ui/Ul'
-import Ol from '../jh-ui/Ol'
 import Header from './Header'
 
 const Wrap = styled.div`
@@ -45,8 +45,13 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
+  const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false)
   const { title, description } = useSiteMetadata()
   const { theme } = useContext(ThemeContext)
+
+  const handleMobileMenuExpandedChange = expanded => {
+    setMobileMenuExpanded(expanded)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -86,12 +91,17 @@ const Layout = ({ children }) => {
         />
       </Helmet>
       <GlobalStyle withBackground/>
-      <Wrap>
+      <Wrap className="layout">
         <SkipLink element="a" href="#main">
           Skip to content
         </SkipLink>
-        <Header/>
-        <Main id="main" tabindex="-1" aria-label="Main Content">
+        <Header handleMobileMenuExpandedChange={handleMobileMenuExpandedChange}/>
+        <Main
+          id="main"
+          tabindex="-1"
+          aria-label="Main Content"
+          aria-hidden={mobileMenuExpanded}
+        >
           <MDXProvider
             components={{
               h1: props => <Heading level={1} {...props}/>,
@@ -149,8 +159,8 @@ const Layout = ({ children }) => {
             {children}
           </MDXProvider>
         </Main>
-        <Footer/>
-        <SubscribeBanner/>
+        <Footer inert={mobileMenuExpanded}/>
+        <SubscribeBanner inert={mobileMenuExpanded}/>
       </Wrap>
     </ThemeProvider>
   )

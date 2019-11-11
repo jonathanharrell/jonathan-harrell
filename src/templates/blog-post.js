@@ -24,6 +24,15 @@ const ArticleContentWrap = styled.div`
   grid-template-columns: repeat(12, 1fr);
 `
 
+const Figure = styled.figure`
+  grid-column: 1 / -1;
+`
+
+const FeaturedImage = styled.img`
+  width: 100%;
+  height: auto;
+`
+
 const ArticleContent = styled.div`
   grid-column: 1 / -1;
   
@@ -83,11 +92,6 @@ const ArticleContent = styled.div`
   }
 `
 
-const FeaturedImage = styled.img`
-  max-width: 100%;
-  height: auto;
-`
-
 const ArticleMeta = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: flex;
@@ -123,18 +127,18 @@ export const BlogPostTemplate = ({
       <Padded top="s" bottom="4x">
         <ContentWrap>
           <ArticleContentWrap>
+            <ScreenReaderText>
+              {title}
+            </ScreenReaderText>
+            {image && (
+              <Spaced bottom="2x">
+                <Figure>
+                  <FeaturedImage src={image.publicURL} alt=""/>
+                </Figure>
+              </Spaced>
+            )}
             <ArticleContent>
               <header>
-                <ScreenReaderText>
-                  {title}
-                </ScreenReaderText>
-                {image && (
-                  <Spaced bottom="2x">
-                    <figure>
-                      <FeaturedImage src={image.publicURL} alt=""/>
-                    </figure>
-                  </Spaced>
-                )}
                 <Spaced bottom="s">
                   <ArticleMeta>
                     {tags && (

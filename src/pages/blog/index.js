@@ -66,11 +66,11 @@ export default function BlogIndexPage({
           </ContentWrap>
         </Header>
         <ArticlesWrap aria-label="Articles">
-          <Padded bottom="3x">
+          <Spaced bottom="5x">
             <ContentWrap>
               <Articles/>
             </ContentWrap>
-          </Padded>
+          </Spaced>
         </ArticlesWrap>
       </BlogIndexWrap>
     </Layout>

@@ -105,7 +105,7 @@ const ThemeOption = styled.label`
   }
 `
 
-const MobileMenu = () => {
+const MobileMenu = ({ handleExpandedChange }) => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
@@ -136,6 +136,8 @@ const MobileMenu = () => {
         document.body.style.position = 'fixed'
         // focus first link
         firstTabbableElementRef.current.focus()
+        // emit to parent
+        handleExpandedChange(true)
       } else {
         // when menu is closed, reset body to original scroll position
         const scrollY = document.body.style.top
@@ -144,7 +146,12 @@ const MobileMenu = () => {
         window.scrollTo(0, parseInt(scrollY || '0') * -1)
         // focus toggle button
         toggleButtonRef.current.focus()
+        // emit to parent
+        handleExpandedChange(false)
       }
+    } else {
+      // emit to parent
+      handleExpandedChange(false)
     }
   }, [visible, expanded])
 
