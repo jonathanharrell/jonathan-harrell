@@ -66,6 +66,10 @@ const Menu = styled.div`
   background-color: var(--backgroundSecondary);
 `
 
+const MenuLinkWrap = styled.li`
+  list-style: none;
+`
+
 const MenuLink = styled(Link)`
   display: block;
   text-decoration: none;
@@ -110,6 +114,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
   const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
   const toggleButtonRef = useRef()
+  const menuHeadingRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = []
 
@@ -134,8 +139,8 @@ const MobileMenu = ({ handleExpandedChange }) => {
         // when menu is opened, fix body to prevent scrolling outside menu
         document.body.style.top = `-${window.scrollY}px`
         document.body.style.position = 'fixed'
-        // focus first link
-        firstTabbableElementRef.current.focus()
+        // focus menu heading
+        menuHeadingRef.current.focus()
         // emit to parent
         handleExpandedChange(true)
       } else {
@@ -153,7 +158,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
       // emit to parent
       handleExpandedChange(false)
     }
-  }, [visible, expanded])
+  }, [visible, expanded, handleExpandedChange])
 
   const setLastTabbableElementRef = element => {
     lastTabbableElementRef.push(element)
@@ -214,49 +219,68 @@ const MobileMenu = ({ handleExpandedChange }) => {
         <Bar/>
       </ToggleButton>
       {expanded && (
-        <Menu id="main-menu" aria-label="Main Menu">
+        <Menu id="main-menu">
           <Padded top="4x" bottom="2x">
             <ContentWrap>
+              <ScreenReaderText>
+                <h2
+                  id="main-menu-label"
+                  ref={menuHeadingRef}
+                  tabIndex="-1"
+                >Main Menu</h2>
+              </ScreenReaderText>
               <Spaced vertical="3x">
-                <section aria-label="Site Links">
-                  <h2>
-                    <Text order="meta">Links</Text>
-                  </h2>
+                <section aria-labelledby="site-links-label">
+                  <h3>
+                    <ScreenReaderText id="site-links-label">Site Links</ScreenReaderText>
+                    <Text order="meta" aria-hidden>Links</Text>
+                  </h3>
                   <nav role="navigation">
-                    <Spaced vertical="l">
-                      <MenuLink
-                        to="/"
-                        rel="home"
-                        ref={firstTabbableElementRef}
-                        getProps={isActive}
-                      >
-                        <Heading level={1} element="span">
-                          Home
-                        </Heading>
-                      </MenuLink>
-                      <MenuLink
-                        to="/blog"
-                        getProps={isActive}
-                      >
-                        <Heading level={1} element="span">
-                          Articles
-                        </Heading>
-                      </MenuLink>
-                      <MenuLink
-                        to="/about"
-                        getProps={isActive}
-                      >
-                        <Heading level={1} element="span">
-                          About
-                        </Heading>
-                      </MenuLink>
-                    </Spaced>
+                    <ul>
+                      <Spaced vertical="l">
+                        <MenuLinkWrap>
+                          <MenuLink
+                            to="/"
+                            rel="home"
+                            ref={firstTabbableElementRef}
+                            getProps={isActive}
+                          >
+                            <Heading level={1} element="span">
+                              Home
+                            </Heading>
+                          </MenuLink>
+                        </MenuLinkWrap>
+                        <MenuLinkWrap>
+                          <MenuLink
+                            to="/blog"
+                            getProps={isActive}
+                          >
+                            <Heading level={1} element="span">
+                              Articles
+                            </Heading>
+                          </MenuLink>
+                        </MenuLinkWrap>
+                        <MenuLinkWrap>
+                          <MenuLink
+                            to="/about"
+                            getProps={isActive}
+                          >
+                            <Heading level={1} element="span">
+                              About
+                            </Heading>
+                          </MenuLink>
+                        </MenuLinkWrap>
+                      </Spaced>
+                    </ul>
                   </nav>
                 </section>
-                <section aria-label="Theme Settings">
-                  <h2>
-                    <Text order="meta">Change Theme</Text>
-                  </h2>
+                <section aria-labelledby="theme-settings-label">
+                  <h3 id="theme-settings-label">
+                    <ScreenReaderText>
+                      Theme Settings
+                    </ScreenReaderText>
+                    <Text order="meta" aria-hidden>Change Theme</Text>
+                  </h3>
                   <Spaced top="s">
                     <ThemeOptions>
                       <ThemeOption

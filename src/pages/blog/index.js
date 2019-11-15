@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
@@ -10,6 +10,7 @@ import Link from '../../jh-ui/Link'
 import kebabCase from 'lodash/kebabCase'
 import Tag from '../../jh-ui/Tag'
 import Spaced from '../../jh-ui/Spaced'
+import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 
 const BlogIndexWrap = styled.div`
   flex: 1;
@@ -24,7 +25,7 @@ const ArticlesWrap = styled.section`
 
 `
 
-const TagWrap = styled.span`
+const TagWrap = styled.li`
   display: inline-block;
   margin: 0 0.25rem 0.75rem 0;
 `
@@ -34,6 +35,11 @@ export default function BlogIndexPage({
                                           allMdx: { group: tags },
                                         }
                                       }) {
+  const articlesRef = useRef()
+
+  const skipToArticles = () => {
+    articlesRef.current.focus()
+  }
 
   return (
     <Layout>
@@ -46,18 +52,30 @@ export default function BlogIndexPage({
                   Articles
                 </Heading>
                 <Spaced top="xxl">
+                  <ScreenReaderText>
+                    <Heading level={2} id="tags-label">
+                      Tags
+                    </Heading>
+                  </ScreenReaderText>
+                  <ScreenReaderText>
+                    <a href="#articles" onClick={skipToArticles}>Skip to articles</a>
+                  </ScreenReaderText>
                   {tags && (
-                    <section aria-label="Tags">
-                      {tags.map(tag => (
-                        <TagWrap key={tag.fieldValue + `tag`}>
-                          <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                                aria-label={`View articles with the tag ${tag.fieldValue}`}>
-                            <Tag>
-                              {tag.fieldValue}
-                            </Tag>
-                          </Link>
-                        </TagWrap>
-                      ))}
+                    <section aria-labelledby="tags-label">
+                      <ul>
+                        {tags.map(tag => (
+                          <TagWrap key={tag.fieldValue + `tag`}>
+                            <Link
+                              to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                              aria-label={`View articles with the tag ${tag.fieldValue}`}
+                            >
+                              <Tag>
+                                {tag.fieldValue}
+                              </Tag>
+                            </Link>
+                          </TagWrap>
+                        ))}
+                      </ul>
                     </section>
                   )}
                 </Spaced>
@@ -65,9 +83,19 @@ export default function BlogIndexPage({
             </Padded>
           </ContentWrap>
         </Header>
-        <ArticlesWrap aria-label="Articles">
+        <ArticlesWrap
+          id="articles"
+          aria-labelledby="articles-label"
+          tabIndex="-1"
+          ref={articlesRef}
+        >
           <Spaced bottom="5x">
             <ContentWrap>
+              <ScreenReaderText>
+                <Heading level={2} id="articles-label">
+                  Articles
+                </Heading>
+              </ScreenReaderText>
               <Articles/>
             </ContentWrap>
           </Spaced>

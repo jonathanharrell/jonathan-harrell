@@ -6,6 +6,8 @@ import Text from '../Text'
 import Spaced from '../Spaced'
 import Card from '../Card'
 import Eye from '../../img/icons/eye.svg'
+import ScreenReaderText from '../ScreenReaderText'
+import kebabCase from 'lodash/kebabCase'
 
 const ExperimentMeta = styled(Text)`
   display: flex;
@@ -20,21 +22,34 @@ const ExperimentExcerpt = ({ date, title, viewsCount, ...props }) => {
   })
 
   return (
-    <Card element="article" {...props}>
+    <Card
+      element="article"
+      aria-labelledby={`${kebabCase(title)}-label`}
+      {...props}
+    >
       <Spaced bottom="m">
         <Text order="meta">
+          <ScreenReaderText>Experiment published date&nbsp;</ScreenReaderText>
           {formattedDate}
         </Text>
       </Spaced>
       <Spaced bottom="l">
-        <Heading level={3}>
+        <Heading
+          level={3}
+          id={`${kebabCase(title)}-label`}
+        >
           {title}
         </Heading>
       </Spaced>
       <ExperimentMeta order="meta">
         <Eye/>
         <Spaced left="xs">
-          <span aria-label="Views Count">{viewsCount}</span>
+          <span>
+            <ScreenReaderText>
+              Views count
+            </ScreenReaderText>
+            {viewsCount}
+          </span>
         </Spaced>
       </ExperimentMeta>
     </Card>

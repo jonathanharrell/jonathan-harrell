@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { arrayOf, instanceOf, oneOf, string } from 'prop-types'
+import kebabCase from 'lodash/kebabCase'
 import Card from '../Card'
 import Heading from '../Heading'
 import Text from '../Text'
 import Spaced from '../Spaced'
 import { Link as GatsbyLink } from 'gatsby'
 import Padded from '../Padded'
+import ScreenReaderText from '../ScreenReaderText'
 
 const ArticleCard = styled(Card)`
   position: relative;
@@ -103,9 +105,14 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
     <ArticleCard
       padding={false}
       element="article"
+      aria-labelledby={`${kebabCase(title)}-label`}
       {...props}
     >
-      <Link to={link} aria-label={title}/>
+      <Link to={link}>
+        <ScreenReaderText>
+          Go to article
+        </ScreenReaderText>
+      </Link>
       <CardContent imageRatio={imageRatio}>
         {image && (
           <ImageWrap
@@ -125,11 +132,15 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
           >
             <Spaced bottom="m">
               <Text order="meta">
+                <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                 {formattedDate}
               </Text>
             </Spaced>
             <Spaced bottom="l">
-              <Heading level={3}>
+              <Heading
+                level={3}
+                id={`${kebabCase(title)}-label`}
+              >
                 {title}
               </Heading>
             </Spaced>
@@ -138,7 +149,15 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
             </Text>
             {tags.length && (
               <Spaced top="xl">
-                <Tags aria-label="Article Tags">
+                <ScreenReaderText>
+                  <Heading
+                    level={4}
+                    id={`${kebabCase(title)}-label`}
+                  >
+                    Article Tags
+                  </Heading>
+                </ScreenReaderText>
+                <Tags aria-labelledby={`${kebabCase(title)}-label`}>
                   {tags.map((tag, index) => (
                     <li key={tag}>
                       <Text order="meta">

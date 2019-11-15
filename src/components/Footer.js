@@ -43,7 +43,7 @@ const Link = styled(GatsbyLink)`
   }
 `
 
-const SocialLinksWrap = styled.div`
+const SocialLinksWrap = styled.section`
   margin-top: ${({ theme }) => theme.spacing.s};
   
   @media (min-width: ${footerContentBreakpoint}) {
@@ -63,8 +63,11 @@ const Footer = () => {
           <Link to="/" aria-label="Home page" rel="home">
             &copy; 2017–{currentYear} Jonathan Harrell
           </Link>
-          <SocialLinksWrap>
-            <nav aria-label="Social Links">
+          <SocialLinksWrap aria-labelledby="social-links-label">
+            <ScreenReaderText>
+              <h2 id="social-links-label">Social Links</h2>
+            </ScreenReaderText>
+            <nav>
               <Spaced left="s">
                 <Link
                   as="a"

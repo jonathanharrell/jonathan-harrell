@@ -22,6 +22,11 @@ const DesktopMenuWrap = styled.div`
   }
 `
 
+const MenuLinkWrap = styled.li`
+  display: inline-block;
+  list-style: none;
+`
+
 const MenuLink = styled(Link)`
   text-decoration: none;
 `
@@ -69,38 +74,52 @@ const DesktopMenu = () => {
   return visible ? (
     <DesktopMenuWrap>
       <Spaced left="3x">
-        <section aria-label="Site Links">
+        <section aria-labelledby="site-links-label">
+          <ScreenReaderText>
+            <h2 id="site-links-label">Site Links</h2>
+          </ScreenReaderText>
           <nav role="navigation">
-            <Spaced right="xxl">
-              <MenuLink
-                to="/"
-                rel="home"
-                getProps={isActive}
-              >
-                <Text order="body" element="span">
-                  Home
-                </Text>
-              </MenuLink>
-              <MenuLink
-                to="/blog"
-                getProps={isActive}
-              >
-                <Text order="body" element="span">
-                  Articles
-                </Text>
-              </MenuLink>
-              <MenuLink
-                to="/about"
-                getProps={isActive}
-              >
-                <Text order="body" element="span">
-                  About
-                </Text>
-              </MenuLink>
-            </Spaced>
+            <ul>
+              <Spaced right="xxl">
+                <MenuLinkWrap>
+                  <MenuLink
+                    to="/"
+                    rel="home"
+                    getProps={isActive}
+                  >
+                    <Text order="body" element="span">
+                      Home
+                    </Text>
+                  </MenuLink>
+                </MenuLinkWrap>
+                <MenuLinkWrap>
+                  <MenuLink
+                    to="/blog"
+                    getProps={isActive}
+                  >
+                    <Text order="body" element="span">
+                      Articles
+                    </Text>
+                  </MenuLink>
+                </MenuLinkWrap>
+                <MenuLinkWrap>
+                  <MenuLink
+                    to="/about"
+                    getProps={isActive}
+                  >
+                    <Text order="body" element="span">
+                      About
+                    </Text>
+                  </MenuLink>
+                </MenuLinkWrap>
+              </Spaced>
+            </ul>
           </nav>
         </section>
-        <SiteTools aria-label="Site Tools">
+        <SiteTools aria-labelledby="site-tools-label">
+          <ScreenReaderText>
+            <h2 id="site-tools-label">Site Tools</h2>
+          </ScreenReaderText>
           <Spaced left="xl">
             <ThemeToggleButton unstyled onClick={toggleTheme}>
               <ScreenReaderText>

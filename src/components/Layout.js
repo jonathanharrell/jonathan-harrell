@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
@@ -48,9 +48,14 @@ const Layout = ({ children }) => {
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false)
   const { title, description } = useSiteMetadata()
   const { theme } = useContext(ThemeContext)
+  const mainRef = useRef()
 
   const handleMobileMenuExpandedChange = expanded => {
     setMobileMenuExpanded(expanded)
+  }
+
+  const skipToContent = () => {
+    mainRef.current.focus()
   }
 
   return (
@@ -92,15 +97,16 @@ const Layout = ({ children }) => {
       </Helmet>
       <GlobalStyle withBackground/>
       <Wrap className="layout">
-        <SkipLink element="a" href="#main">
+        <SkipLink element="a" href="#main" onClick={skipToContent}>
           Skip to content
         </SkipLink>
         <Header handleMobileMenuExpandedChange={handleMobileMenuExpandedChange}/>
         <Main
           id="main"
-          tabindex="-1"
+          tabIndex="-1"
           aria-label="Main Content"
           aria-hidden={mobileMenuExpanded}
+          ref={mainRef}
         >
           <MDXProvider
             components={{

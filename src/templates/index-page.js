@@ -12,6 +12,7 @@ import Text from '../jh-ui/Text'
 import Padded from '../jh-ui/Padded'
 import Link from '../jh-ui/Link'
 import SectionHeader from '../jh-ui/SectionHeader'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const HeaderWrap = styled.section`
   background-color: var(--backgroundPrimary);
@@ -37,11 +38,11 @@ export const IndexPageTemplate = ({
 
   return (
     <>
-      <HeaderWrap aria-label="Introduction">
+      <HeaderWrap aria-labelledby="introduction-label">
         <Padded vertical="3x">
           <ContentWrap>
             <HeaderContentWrap>
-              <Heading level={1}>
+              <Heading level={1} id="introduction-label">
                 UI/UX Designer & Front-End Developer
               </Heading>
               <Spaced top="m">
@@ -54,38 +55,48 @@ export const IndexPageTemplate = ({
           </ContentWrap>
         </Padded>
       </HeaderWrap>
-      <RecentArticlesWrap aria-label="Recent Articles">
+      <RecentArticlesWrap aria-labelledby="recent-articles-label">
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
-              <Heading level={2}>
+              <Heading level={2} id="recent-articles-label">
                 Recent Articles
               </Heading>
               <Link
                 to="/blog"
                 arrow={true}
-                aria-label="View all articles"
+                aria-labelledby="view-all-articles-label"
               >
-                View all
+                <span aria-hidden>
+                  View all
+                </span>
+                <ScreenReaderText id="view-all-articles-label">
+                  View all articles
+                </ScreenReaderText>
               </Link>
             </SectionHeader>
             <RecentArticles/>
           </ContentWrap>
         </Padded>
       </RecentArticlesWrap>
-      <ExperimentRollWrap aria-label="Recent Experiments">
+      <ExperimentRollWrap aria-labelledby="recent-experiments-label">
         <Padded vertical="3x">
           <ContentWrap>
             <SectionHeader>
-              <Heading level={2} color="textInverse">
+              <Heading level={2} color="textInverse" id="recent-experiments-label">
                 Recent Experiments
               </Heading>
               <Link
                 href="https://codepen.io/jonathanharrell/"
                 arrow={true}
-                aria-label="View all experiments"
+                aria-labelledby="view-all-experiments-label"
               >
-                View all
+                <span aria-hidden>
+                  View all
+                </span>
+                <ScreenReaderText id="view-all-experiments-label">
+                  View all experiments
+                </ScreenReaderText>
               </Link>
             </SectionHeader>
             <ExperimentRoll/>

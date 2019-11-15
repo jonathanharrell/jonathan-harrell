@@ -99,7 +99,7 @@ const ArticleMeta = styled.div`
   }
 `
 
-const Tags = styled.div`
+const Tags = styled.ul`
   max-width: 20rem;
   margin-bottom: 0.25rem;
   
@@ -112,6 +112,11 @@ const Tags = styled.div`
   }
 `
 
+const Tag = styled.li`
+  display: inline-block;
+  list-style: none;
+`
+
 export const BlogPostTemplate = ({
                                    content,
                                    tags,
@@ -122,14 +127,11 @@ export const BlogPostTemplate = ({
                                  }) => {
 
   return (
-    <ArticleWrap>
+    <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
       <Padded top="s" bottom="4x">
         <ContentWrap>
           <ArticleContentWrap>
-            <ScreenReaderText>
-              {title}
-            </ScreenReaderText>
             {image && (
               <Spaced bottom="2x">
                 <Figure>
@@ -142,28 +144,39 @@ export const BlogPostTemplate = ({
                 <Spaced bottom="s">
                   <ArticleMeta>
                     {tags && (
-                      <Tags>
-                        {tags.map((tag, index) => (
-                          <span key={tag + `tag`}>
-                            <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
-                              <Text order="meta">
-                                {tag}
-                              </Text>
-                            </Link>
-                            {index < tags.length - 1 && (
-                              <Text order="meta" element="span" aria-hidden> • </Text>
-                            )}
-                          </span>
-                        ))}
-                      </Tags>
+                      <div>
+                        <ScreenReaderText>
+                          <Heading
+                            level={2}
+                            id="article-tags-label"
+                          >
+                            Article Tags
+                          </Heading>
+                        </ScreenReaderText>
+                        <Tags aria-labelledby="article-tags-label">
+                          {tags.map((tag, index) => (
+                            <Tag key={tag + `tag`}>
+                              <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
+                                <Text order="meta">
+                                  {tag}
+                                </Text>
+                              </Link>
+                              {index < tags.length - 1 && (
+                                <Text order="meta" element="span" aria-hidden>&nbsp;•&nbsp;</Text>
+                              )}
+                            </Tag>
+                          ))}
+                        </Tags>
+                      </div>
                     )}
                     <Text order="body" color="textLighter" element="p">
+                      <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                       {date}
                     </Text>
                   </ArticleMeta>
                 </Spaced>
                 <Spaced bottom="2x">
-                  <Heading level={1}>
+                  <Heading level={1} id="article-title">
                     {title}
                   </Heading>
                 </Spaced>
