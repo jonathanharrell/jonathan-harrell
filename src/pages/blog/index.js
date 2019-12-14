@@ -22,7 +22,6 @@ const Header = styled.header`
 `
 
 const ArticlesWrap = styled.section`
-
 `
 
 const TagWrap = styled.li`
@@ -30,11 +29,7 @@ const TagWrap = styled.li`
   margin: 0 0.25rem 0.75rem 0;
 `
 
-export default function BlogIndexPage({
-                                        data: {
-                                          allMdx: { group: tags },
-                                        }
-                                      }) {
+export default function BlogIndexPage({ data: { allMdx: { group: tags } } }) {
   const articlesRef = useRef()
 
   const skipToArticles = () => {
@@ -106,12 +101,12 @@ export default function BlogIndexPage({
 }
 
 export const pageQuery = graphql`
-    query BlogPageTemplate {
-        allMdx(limit: 1000) {
-            group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
-            }
-        }
+  query BlogPageTemplate {
+    allMdx(limit: 1000) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
     }
+  }
 `

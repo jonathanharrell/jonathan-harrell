@@ -32,7 +32,7 @@ const SkipLink = styled(Button)`
   top: -100%;
   left: 1rem;
   z-index: 3;
-  
+
   &:focus {
     top: 1rem;
   }
@@ -42,6 +42,15 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
+`
+
+const AnchoredHeading = styled(ArticleHeading)`
+  &::before {
+    display: block;
+    margin-top: -6rem;
+    padding-top: 6rem;
+    content: "";
+  }
 `
 
 const Layout = ({ children }) => {
@@ -113,7 +122,7 @@ const Layout = ({ children }) => {
               h1: props => <Heading level={1} {...props}/>,
               h2: props => (
                 <Spaced top="4x" bottom="m">
-                  <ArticleHeading {...props}/>
+                  <AnchoredHeading {...props}/>
                 </Spaced>
               ),
               h3: props => (

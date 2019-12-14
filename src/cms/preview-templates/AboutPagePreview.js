@@ -1,12 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AboutPageTemplate } from '../../templates/about-page'
+import theme from '../../jh-ui/theme'
+import { ThemeProvider } from 'styled-components'
+import ThemeContext from '../../context/theme'
 
 const AboutPagePreview = ({ entry, widgetFor }) => (
-  <AboutPageTemplate
-    title={entry.getIn(['data', 'title'])}
-    content={widgetFor('body')}
-  />
+  <ThemeContext.Provider value={{ theme }}>
+    <div style={{
+      fontFamily: `'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'`,
+      lineHeight: 1.4
+    }}>
+      <ThemeProvider theme={theme}>
+        <h1>{entry.getIn(['data', 'title'])}</h1>
+        {widgetFor('body')}
+      </ThemeProvider>
+    </div>
+  </ThemeContext.Provider>
 )
 
 AboutPagePreview.propTypes = {

@@ -1,58 +1,127 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
+import { kebabCase } from 'lodash'
 import Layout from '../../components/Layout'
+import styled from 'styled-components'
+import ContentWrap from '../../components/ContentWrap'
+import Padded from '../../jh-ui/Padded'
+import Heading from '../../jh-ui/Heading'
+import Spaced from '../../jh-ui/Spaced'
+import ScreenReaderText from '../../jh-ui/ScreenReaderText'
+import Card from '../../jh-ui/Card'
+import Text from '../../jh-ui/Text'
+
+const TagsIndexWrap = styled.div`
+  flex: 1;
+  background-color: var(--backgroundPrimary);
+`
+
+const Header = styled.header`
+  text-align: center;
+`
+
+const TagsWrap = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-template-columns: repeat(12, 1fr);
+`
+
+const TagCard = styled(Card)`
+  grid-column: 1 / -1;
+  position: relative;
+  background-color: var(--backgroundElevatedSecondary);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: auto / span 6;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 4;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-column: auto / span 3;
+  }
+`
+
+const Link = styled(GatsbyLink)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+`
 
 const TagsPage = ({
-                    data: {
-                      allMdx: { group },
-                      site: {
-                        siteMetadata: { title },
-                      },
-                    },
-                  }) => (
+  data: {
+    allMdx: { group },
+    site: { siteMetadata: { title } },
+  },
+}) => (
   <Layout>
-    <section className="section">
-      <Helmet title={`Tags | ${title}`}/>
-      <div className="container content">
-        <div className="columns">
-          <div
-            className="column is-10 is-offset-1"
-            style={{ marginBottom: '6rem' }}
-          >
-            <h1 className="title is-size-2 is-bold-light">Tags</h1>
-            <ul className="taglist">
+    <Helmet title={`Tags | ${title}`}/>
+    <TagsIndexWrap>
+      <Header>
+        <ContentWrap>
+          <Padded vertical="3x">
+            <Heading level={1}>
+              Tags
+            </Heading>
+          </Padded>
+        </ContentWrap>
+      </Header>
+      <section
+        id="tags"
+        aria-labelledby="tags-label"
+      >
+        <Spaced bottom="5x">
+          <ContentWrap>
+            <ScreenReaderText>
+              <Heading level={2} id="tags-label">
+                Tags
+              </Heading>
+            </ScreenReaderText>
+            <TagsWrap>
               {group.map(tag => (
-                <li key={tag.fieldValue}>
+                <TagCard key={tag.fieldValue}>
                   <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
+                    <ScreenReaderText>
+                      Go to tag
+                    </ScreenReaderText>
                   </Link>
-                </li>
+                  <Heading level={3}>
+                    {tag.fieldValue}
+                  </Heading>
+                  <Text order="body" color="textLighter">
+                    {tag.totalCount} articles
+                  </Text>
+                </TagCard>
               ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+            </TagsWrap>
+          </ContentWrap>
+        </Spaced>
+      </section>
+    </TagsIndexWrap>
   </Layout>
 )
 
 export default TagsPage
 
 export const tagPageQuery = graphql`
-    query TagsQuery {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        allMdx(limit: 1000) {
-            group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
-            }
-        }
+  query TagsQuery {
+    site {
+      siteMetadata {
+        title
+      }
     }
+    allMdx(limit: 1000) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }
 `
 

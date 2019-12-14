@@ -23,9 +23,9 @@ const Link = styled(GatsbyLink)`
   height: 100%;
 `
 
-const CardContent = styled.div`
+export const CardContent = styled.div`
   height: 100%;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: grid;
     grid-template-columns: repeat(${({ imageRatio }) => imageRatio === 1 / 2 ? '2' : '3'}, 1fr);
@@ -44,10 +44,10 @@ const getImageColumns = ({ imagePosition, imageRatio }) => {
 
 export const ImageWrap = styled.figure`
   grid-column: 1 / -1;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     ${({ imagePosition, imageRatio }) => getImageColumns({ imagePosition, imageRatio })};
-    grid-row: 1 / -1;
+    ${({ imagePosition }) => imagePosition !== 'top' ? `grid-row: 1 / -1` : `grid-row: 1 / 2`};
   }
 `
 
@@ -55,7 +55,7 @@ const Image = styled.img`
   display: block;
   max-width: 100%;
   height: auto;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     width: 100%;
     height: 100%;
@@ -65,13 +65,13 @@ const Image = styled.img`
 
 export const CardText = styled.div`
   grid-column: 1 / -1;
-  
+
   ${({ imagePosition, theme }) => imagePosition !== 'top' ? `
     @media (min-width: ${theme.breakpoints.desktop}) {
       grid-row: 1 / -1;
     }
-  ` : ''};
-  
+  ` : ``};
+
   ${({ image, imagePosition, theme }) => image ? `
     @media (min-width: ${theme.breakpoints.desktop}) {
       ${imagePosition === 'left' ? `
@@ -88,7 +88,7 @@ export const CardText = styled.div`
 
 const Tags = styled.ul`
   list-style: none;
-  
+
   li {
     display: inline-block;
   }

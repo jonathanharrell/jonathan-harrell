@@ -12,13 +12,13 @@ const HeadingWrap = styled.div`
 const HeadingLink = styled.a`
   display: none;
   position: absolute;
-  top: 0;
+  top: 6rem;
   height: 100%;
   padding-top: 0.5rem;
   color: var(--textLighter);
   text-decoration: none;
   transform: translateX(calc(-100% - 0.5rem));
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: block;
   }

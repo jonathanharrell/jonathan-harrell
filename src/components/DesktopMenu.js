@@ -13,7 +13,7 @@ import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const DesktopMenuWrap = styled.div`
   display: none;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: flex;
     flex: 1;
@@ -38,7 +38,7 @@ const SiteTools = styled.section`
 
 const ThemeToggleButton = styled(Button)`
   color: var(--text);
-  
+
   svg {
     stroke: var(--text);
   }
@@ -55,7 +55,7 @@ const DesktopMenu = () => {
 
     const handleResize = debounce(() => {
       setVisibility(window.innerWidth >= desktopWidth)
-    }, 100)
+    }, 50)
 
     setVisibility(window.innerWidth >= desktopWidth)
 
@@ -73,10 +73,13 @@ const DesktopMenu = () => {
 
   return visible ? (
     <DesktopMenuWrap>
+      <ScreenReaderText>
+        <h2>Main Menu</h2>
+      </ScreenReaderText>
       <Spaced left="3x">
         <section aria-labelledby="site-links-label">
           <ScreenReaderText>
-            <h2 id="site-links-label">Site Links</h2>
+            <h3 id="site-links-label">Site Links</h3>
           </ScreenReaderText>
           <nav role="navigation">
             <ul>
@@ -118,12 +121,16 @@ const DesktopMenu = () => {
         </section>
         <SiteTools aria-labelledby="site-tools-label">
           <ScreenReaderText>
-            <h2 id="site-tools-label">Site Tools</h2>
+            <h3 id="site-tools-label">Site Tools</h3>
           </ScreenReaderText>
           <Spaced left="xl">
-            <ThemeToggleButton unstyled onClick={toggleTheme}>
+            <ThemeToggleButton
+              unstyled
+              title={`Change theme to ${themeName === 'light' ? 'dark' : 'light'}`}
+              onClick={toggleTheme}
+            >
               <ScreenReaderText>
-                Change Theme
+                Change theme to {themeName === 'light' ? 'dark' : 'light'}
               </ScreenReaderText>
               {themeName === 'light' ? <Sun/> : <Moon/>}
             </ThemeToggleButton>

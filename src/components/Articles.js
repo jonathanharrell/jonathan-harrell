@@ -26,22 +26,22 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   grid-column: 1 / -1;
   height: 100%;
   background-color: var(--backgroundElevatedSecondary);
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 6;
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column-start: auto;
     ${({ index }) => `grid-column-end: span ${getExcerptColumns(index)};`};
   }
-  
+
   ${({ index, theme }) => ![0, 4, 7].includes(index) ? `
     @media (min-width: ${theme.breakpoints.desktop}) {
       ${ImageWrap} {
         display: none;
       }
-      
+
       ${CardText} {
         grid-column: 1 / -1;
       }
@@ -116,7 +116,7 @@ export default () => (
                 date
                 tags
                 featuredimage {
-                    publicURL
+                  publicURL
                 }
               }
             }

@@ -35,19 +35,15 @@ const FeaturedImage = styled.img`
 
 const ArticleContent = styled.div`
   grid-column: 1 / -1;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: 2 / -2;
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: 3 / -3;
   }
-  
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    grid-column: 4 / -4;
-  }
-  
+
   .gatsby-highlight {
     margin: ${({ theme }) => theme.spacing.l} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xxl};
 
@@ -55,20 +51,20 @@ const ArticleContent = styled.div`
       margin-right: -${({ theme }) => theme.spacing.xl};
       margin-left: -${({ theme }) => theme.spacing.xl};
     }
-    
+
     @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
       margin-right: -${({ theme }) => theme.spacing.xxl};
       margin-left: -${({ theme }) => theme.spacing.xxl};
     }
-    
+
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       margin: ${({ theme }) => theme.spacing.xxl} 0;
     }
-    
+
      @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
         margin: ${({ theme }) => theme.spacing['2x']} 0;
      }
-    
+
     pre {
       padding: ${({ theme }) => theme.spacing.xl};
 
@@ -77,7 +73,7 @@ const ArticleContent = styled.div`
       }
     }
   }
-  
+
   .anchor {
     display: none;
     position: absolute;
@@ -85,7 +81,7 @@ const ArticleContent = styled.div`
     line-height: 1.3;
     color: var(--accent);
     transform: translateX(calc(-100% - 0.25rem));
-    
+
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       display: block;
     }
@@ -93,23 +89,13 @@ const ArticleContent = styled.div`
 `
 
 const ArticleMeta = styled.div`
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    display: flex;
-    align-items: baseline;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 `
 
 const Tags = styled.ul`
-  max-width: 20rem;
-  margin-bottom: 0.25rem;
-  
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: unset;
-  }
-  
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin: 0 ${({ theme }) => theme.spacing.xxl} 0 0;
-  }
+  margin: 0 ${({ theme }) => theme.spacing.xxl} 0 0;
 `
 
 const Tag = styled.li`
@@ -118,14 +104,13 @@ const Tag = styled.li`
 `
 
 export const BlogPostTemplate = ({
-                                   content,
-                                   tags,
-                                   title,
-                                   date,
-                                   image,
-                                   helmet
-                                 }) => {
-
+  content,
+  tags,
+  title,
+  date,
+  image,
+  helmet
+}) => {
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
@@ -133,7 +118,7 @@ export const BlogPostTemplate = ({
         <ContentWrap>
           <ArticleContentWrap>
             {image && (
-              <Spaced bottom="2x">
+              <Spaced bottom="3x">
                 <Figure>
                   <FeaturedImage src={image.publicURL} alt=""/>
                 </Figure>
@@ -169,7 +154,7 @@ export const BlogPostTemplate = ({
                         </Tags>
                       </div>
                     )}
-                    <Text order="body" color="textLighter" element="p">
+                    <Text order="meta" color="textLighter" element="span">
                       <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                       {date}
                     </Text>
@@ -236,19 +221,19 @@ BlogPost.propTypes = {
 export default BlogPost
 
 export const pageQuery = graphql`
-    query BlogPostByID($id: String!) {
-        mdx(id: { eq: $id }) {
-            id
-            body
-            frontmatter {
-                date(formatString: "MMMM DD, YYYY")
-                title
-                description
-                tags
-                featuredimage {
-                    publicURL
-                }
-            }
+  query BlogPostByID($id: String!) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        description
+        tags
+        featuredimage {
+          publicURL
         }
+      }
     }
+  }
 `

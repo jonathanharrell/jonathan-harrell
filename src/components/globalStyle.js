@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     --textLighter: hsl(210, 15%, 60%);
     --textInverse: hsl(0, 0%, 100%);
     --backgroundPrimary: ${({ theme }) => theme.colors.white};
-    --backgroundSecondary: hsl(210, 15%, 95%);
+    --backgroundSecondary: hsl(210, 15%, 97.5%);
     --backgroundInverse: ${({ theme }) => theme.colors.blueDarkest};
     --backgroundElevatedPrimary: '';
     --backgroundElevatedSecondary: ${({ theme }) => theme.colors.white};
@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
     --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
     --backgroundCode: ${({ theme }) => theme.colors.blueDarkest};
+    --border: hsl(210, 15%, 90%);
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonTextPrimary: ${({ theme }) => theme.colors.white};
@@ -23,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     --primary: ${({ theme }) => theme.colors.blueDarkest};
     --accent: ${({ theme }) => theme.colors.red};
     --selection: hsla(210, 67%, 11%, 0.15);
-    
+
     .theme-dark {
       --text: ${({ theme }) => theme.colors.white};
       --textLighter: hsl(0, 0%, 60%);
@@ -37,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
       --backgroundBody: ${({ theme }) => theme.colors.black};
       --backgroundSubscribeBanner: hsl(0, 0%, 5%);
       --backgroundCode: hsl(0, 0%, 10%);
+      --border: hsl(0, 0%, 15%);
       --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
       --buttonBackgroundPrimary: transparent;
       --buttonTextPrimary: ${({ theme }) => theme.colors.white};
@@ -48,24 +50,24 @@ const GlobalStyle = createGlobalStyle`
       --selection: hsla(0, 0%, 100%, 0.15);
     }
   }
-  
+
   *,
   *::before,
   *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s ease-out, color 0.3s ease-out, stroke 0.2s ease-out;
+    transition: border-color 0.3s ease-out, background-color 0.3s ease-out, color 0.3s ease-out, stroke 0.2s ease-out;
   }
-  
+
   ::selection {
     background-color: var(--selection);
   }
-  
-  pre ::selection {
+
+  pre::selection {
     background-color: rgba(250, 250, 250, 0.15);
   }
-  
+
   body {
     min-width: 20rem;
     ${({ withBackground }) => withBackground && 'background-color: var(--backgroundBody)'};
@@ -75,7 +77,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  
+
   h1,
   h2,
   h3,
@@ -83,17 +85,17 @@ const GlobalStyle = createGlobalStyle`
     font-family: "DM Serif Text", serif;
     font-weight: 400 !important;
   }
-  
+
   p a {
     color: var(--text);
   }
-  
+
   p code {
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
     background-color: var(--backgroundSecondary);
   }
-  
+
   .noscript {
     display: block;
     padding: ${({ theme }) => theme.spacing.s};

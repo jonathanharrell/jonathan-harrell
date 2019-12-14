@@ -16,7 +16,7 @@ const MobileMenuWrap = styled.div`
   .no-js & {
     display: none;
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: none;
   }
@@ -29,7 +29,7 @@ const ToggleButton = styled(Button)`
   z-index: 1;
   height: 1.75rem;
   overflow: hidden;
-  
+
   ${({ expanded }) => expanded ? (`
     span:nth-of-type(2) {
       transform: rotate(45deg) translate(2px, 3px);
@@ -38,7 +38,7 @@ const ToggleButton = styled(Button)`
     span:nth-of-type(3) {
       display: none;
     }
-    
+
     span:nth-of-type(4) {
       transform: rotate(-45deg) translate(2px, -3px);
     }
@@ -97,7 +97,7 @@ const ThemeOption = styled.label`
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
-  
+
   &:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -125,7 +125,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
     const handleResize = debounce(() => {
       setVisibility(window.innerWidth < desktopWidth)
-    }, 300)
+    }, 50)
 
     setVisibility(window.innerWidth < desktopWidth)
 
@@ -223,11 +223,9 @@ const MobileMenu = ({ handleExpandedChange }) => {
           <Padded top="4x" bottom="2x">
             <ContentWrap>
               <ScreenReaderText>
-                <h2
-                  id="main-menu-label"
-                  ref={menuHeadingRef}
-                  tabIndex="-1"
-                >Main Menu</h2>
+                <h2 ref={menuHeadingRef} tabIndex="-1">
+                  Main Menu
+                </h2>
               </ScreenReaderText>
               <Spaced vertical="3x">
                 <section aria-labelledby="site-links-label">

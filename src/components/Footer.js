@@ -60,12 +60,15 @@ const Footer = () => {
     <FooterWrap aria-label="Site Footer">
       <Padded top="xl" bottom="3x">
         <FooterContentWrap>
+          <ScreenReaderText element="h2">
+            Site Footer
+          </ScreenReaderText>
           <Link to="/" aria-label="Home page" rel="home">
             &copy; 2017–{currentYear} Jonathan Harrell
           </Link>
           <SocialLinksWrap aria-labelledby="social-links-label">
             <ScreenReaderText>
-              <h2 id="social-links-label">Social Links</h2>
+              <h3 id="social-links-label">Social Links</h3>
             </ScreenReaderText>
             <nav>
               <Spaced left="s">
