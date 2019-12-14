@@ -12,7 +12,6 @@ const AboutPagePreview = ({ entry, widgetFor }) => (
     }}>
       <ThemeProvider theme={theme}>
         <h1>{entry.getIn(['data', 'title'])}</h1>
-        {widgetFor('body')}
       </ThemeProvider>
     </div>
   </ThemeContext.Provider>
