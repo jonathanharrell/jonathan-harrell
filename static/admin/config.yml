@@ -159,8 +159,8 @@ collections:
               - label: Title
                 name: title
                 widget: string
-              - label: Usage
-                name: usage
+              - label: Project
+                name: project
                 widget: list
                 fields:
                   - label: Name
