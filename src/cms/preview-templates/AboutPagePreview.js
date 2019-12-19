@@ -32,7 +32,7 @@ const AboutPagePreview = ({ entry, widgetFor, widgetsFor, getAsset }) => {
         <dl>
           {usages.map((usage, index) => (
             <li key={index}>
-              <strong>{usage.toJSON().name}</strong>: {usage.toJSON().description}
+              <strong>{usage.toJSON().name}</strong>: <a href={usage.toJSON().link}>{usage.toJSON().description}</a>
             </li>
           ))}
         </dl>

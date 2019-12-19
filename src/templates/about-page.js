@@ -127,8 +127,6 @@ const Usage = styled.div`
     }
   }
 
-
-
   dt p {
     font-weight: 600;
 
@@ -138,8 +136,20 @@ const Usage = styled.div`
   }
 `
 
-export const AboutPageTemplate = ({ title, image }) => {
-  console.log(image)
+const UsageLink = styled.a`
+  font-size: ${({ theme }) => theme.fontSizes.m.mobile};
+  color: var(--text);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }) => theme.fontSizes.m.tablet};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: ${({ theme }) => theme.fontSizes.m.desktop};
+  }
+`
+
+export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) => {
   return (
     <>
       <HeaderWrap aria-labelledby="about-label">
@@ -150,15 +160,11 @@ export const AboutPageTemplate = ({ title, image }) => {
             </BioFigure>
             <BioText>
               <Heading level={1} id="about-label">
-                About Jonathan
+                {title || 'About Jonathan'}
               </Heading>
               <Spaced top="m">
                 <Text>
-                  I’m a UI/UX designer and front-end developer working in Chicago, building websites and applications
-                  for clients large and small. I’ve been interested in creating things on the web for most of my life,
-                  but I’ve been working seriously at it for the last four years. From a technical standpoint, I spend
-                  most of my time working with HTML, CSS and JavaScript. My true passion is the intersection point
-                  between design and development, when something flat and static becomes a real, usable thing.
+                  {bio}
                 </Text>
               </Spaced>
             </BioText>
@@ -169,49 +175,24 @@ export const AboutPageTemplate = ({ title, image }) => {
         <AboutContentWrap>
           <SectionHeader>
             <Heading level={4} as="h2" id="involvement-label">
-              Involvement
+              {involvement.title || 'Involvement'}
             </Heading>
           </SectionHeader>
           <Padded vertical="l">
-            <Involvement>
-              <InvolvementTitle>
-                <Spaced bottom="s">
-                  <Heading level={3}>
-                    InVision
-                  </Heading>
-                </Spaced>
-              </InvolvementTitle>
-              <InvolvementDescription>
-                InVision is my current work home. InVision is a digital product design platform that many of the
-                world’s largest companies use to help create their products.
-              </InvolvementDescription>
-            </Involvement>
-            <Involvement>
-              <InvolvementTitle>
-                <Spaced bottom="s">
-                  <Heading level={3}>
-                    HiQ
-                  </Heading>
-                </Spaced>
-              </InvolvementTitle>
-              <InvolvementDescription>
-                I maintain a very lightweight CSS library that provides foundational styles for developers to quickly
-                get started called HiQ.
-              </InvolvementDescription>
-            </Involvement>
-            <Involvement>
-              <InvolvementTitle>
-                <Spaced bottom="s">
-                  <Heading level={3}>
-                    LogRocket
-                  </Heading>
-                </Spaced>
-              </InvolvementTitle>
-              <InvolvementDescription>
-                Sometimes I write for the LogRocket blog, a great information resource for front-end developers.
-                LogRocket is an advanced error tracking and session recording service.
-              </InvolvementDescription>
-            </Involvement>
+            {involvement.project.map((project, index) => (
+              <Involvement key={index}>
+                <InvolvementTitle>
+                  <Spaced bottom="s">
+                    <Heading level={3}>
+                      {project.name}
+                    </Heading>
+                  </Spaced>
+                </InvolvementTitle>
+                <InvolvementDescription>
+                  {project.description}
+                </InvolvementDescription>
+              </Involvement>
+            ))}
           </Padded>
         </AboutContentWrap>
       </InvolvementWrap>
@@ -219,43 +200,17 @@ export const AboutPageTemplate = ({ title, image }) => {
         <AboutContentWrap>
           <SectionHeader>
             <Heading level={4} as="h2" id="uses-label">
-              What I Use
+              {whatIUse.title || 'What I Use'}
             </Heading>
           </SectionHeader>
           <dl>
             <Padded vertical="m">
-              <Usage>
-                <dt><Text>IDE</Text></dt>
-                <dd><Text>Webstorm</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Text Editor</Text></dt>
-                <dd><Text>Visual Studio Code</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Terminal</Text></dt>
-                <dd><Text>Hyper</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>UI Design</Text></dt>
-                <dd><Text>Sketch</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Backup</Text></dt>
-                <dd><Text>Backblaze</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Backpack</Text></dt>
-                <dd><Text>eBags Professional Slim</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Computer</Text></dt>
-                <dd><Text>Macbook Pro</Text></dd>
-              </Usage>
-              <Usage>
-                <dt><Text>Headphones</Text></dt>
-                <dd><Text>Airpods</Text></dd>
-              </Usage>
+              {whatIUse.usage.map((usage, index) => (
+                <Usage key={index}>
+                  <dt><Text>{usage.name}</Text></dt>
+                  <dd><UsageLink href={usage.link}>{usage.description}</UsageLink></dd>
+                </Usage>
+              ))}
             </Padded>
           </dl>
         </AboutContentWrap>
@@ -266,17 +221,37 @@ export const AboutPageTemplate = ({ title, image }) => {
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string
+  image: PropTypes.object.isRequired,
+  bio: PropTypes.string.isRequired,
+  involvement: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    project: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired
+    })).isRequired
+  }).isRequired,
+  whatIUse: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    usage: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired
+    })).isRequired
+  }).isRequired
 }
 
 const AboutPage = ({ data }) => {
   const { mdx: post } = data
+  const { title, image, bio, involvement, what_i_use: whatIUse } = post.frontmatter
 
   return (
     <Layout>
       <AboutPageTemplate
-        title={post.frontmatter.title}
-        image={post.frontmatter.image}
+        title={title}
+        image={image}
+        bio={bio}
+        involvement={involvement}
+        whatIUse={whatIUse}
       />
     </Layout>
   )
@@ -295,6 +270,22 @@ export const aboutPageQuery = graphql`
         title
         image {
           publicURL
+        }
+        bio
+        involvement {
+          title
+          project {
+            name
+            description
+          }
+        }
+        what_i_use {
+          title
+          usage {
+            name
+            description
+            link
+          }
         }
       }
     }
