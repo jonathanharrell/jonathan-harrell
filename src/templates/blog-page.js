@@ -1,16 +1,16 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import Layout from '../../components/Layout'
-import ContentWrap from '../../components/ContentWrap'
-import Articles from '../../components/Articles'
-import Heading from '../../jh-ui/Heading'
-import Padded from '../../jh-ui/Padded'
+import Layout from '../components/Layout'
+import ContentWrap from '../components/ContentWrap'
+import Articles from '../components/Articles'
+import Heading from '../jh-ui/Heading'
+import Padded from '../jh-ui/Padded'
 import { graphql } from 'gatsby'
-import Link from '../../jh-ui/Link'
+import Link from '../jh-ui/Link'
 import kebabCase from 'lodash/kebabCase'
-import Tag from '../../jh-ui/Tag'
-import Spaced from '../../jh-ui/Spaced'
-import ScreenReaderText from '../../jh-ui/ScreenReaderText'
+import Tag from '../jh-ui/Tag'
+import Spaced from '../jh-ui/Spaced'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const BlogIndexWrap = styled.div`
   flex: 1;
@@ -29,7 +29,7 @@ const TagWrap = styled.li`
   margin: 0 0.25rem 0.75rem 0;
 `
 
-export default function BlogIndexPage({ data: { allMdx: { group: tags } } }) {
+export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: post } }) {
   const articlesRef = useRef()
 
   const skipToArticles = () => {
@@ -44,7 +44,7 @@ export default function BlogIndexPage({ data: { allMdx: { group: tags } } }) {
             <Padded vertical="3x">
               <div>
                 <Heading level={1}>
-                  Articles
+                  {post.title || 'Articles'}
                 </Heading>
                 <Spaced top="xxl">
                   <ScreenReaderText>
@@ -100,8 +100,13 @@ export default function BlogIndexPage({ data: { allMdx: { group: tags } } }) {
   )
 }
 
-export const pageQuery = graphql`
-  query BlogPageTemplate {
+export const blogPageQuery = graphql`
+  query BlogPage {
+    mdx(frontmatter: {templateKey: {eq: "blog-page"}}) {
+      frontmatter {
+        title
+      }
+    }
     allMdx(limit: 1000) {
       group(field: frontmatter___tags) {
         fieldValue

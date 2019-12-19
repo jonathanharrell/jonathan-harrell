@@ -135,6 +135,17 @@ collections:
                   - label: Alt
                     name: alt
                     widget: string
+      - file: src/content/blog/index.mdx
+        label: Articles
+        name: blog
+        fields:
+          - label: 'Template Key'
+            name: templateKey
+            widget: hidden
+            default: blog-page
+          - label: Title
+            name: title
+            widget: string
       - file: src/content/about/index.mdx
         label: About
         name: about
