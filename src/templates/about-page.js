@@ -155,9 +155,9 @@ export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) 
       <HeaderWrap aria-labelledby="about-label">
         <AboutContentWrap>
           <HeaderContentWrap>
-            {/*<BioFigure>*/}
-            {/*  <BioImage src={image.publicURL} alt=""/>*/}
-            {/*</BioFigure>*/}
+            <BioFigure>
+              <BioImage src={image.publicURL} alt=""/>
+            </BioFigure>
             <BioText>
               <Heading level={1} id="about-label">
                 {title || 'About Jonathan'}
@@ -221,7 +221,7 @@ export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) 
 
 AboutPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  // image: PropTypes.object.isRequired,
+  image: PropTypes.object.isRequired,
   bio: PropTypes.string.isRequired,
   involvement: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -268,9 +268,9 @@ export const aboutPageQuery = graphql`
     mdx(frontmatter: {templateKey: {eq: "about-page"}}) {
       frontmatter {
         title
-        #        image {
-        #          publicURL
-        #        }
+        image {
+          publicURL
+        }
         bio
         involvement {
           title

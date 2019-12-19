@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const IndexPagePreview = ({ entry }) => {
+const BlogPagePreview = ({ entry }) => {
   return (
     <div style={{
       fontFamily: `'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'`,
@@ -12,10 +12,10 @@ const IndexPagePreview = ({ entry }) => {
   )
 }
 
-IndexPagePreview.propTypes = {
+BlogPagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func
   })
 }
 
-export default IndexPagePreview
+export default BlogPagePreview
