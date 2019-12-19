@@ -120,7 +120,7 @@ export const BlogPostTemplate = ({
             {image && (
               <Spaced bottom="3x">
                 <Figure>
-                  <FeaturedImage src={image.publicURL} alt=""/>
+                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
                 </Figure>
               </Spaced>
             )}
