@@ -86,6 +86,11 @@ const ArticleContent = styled.div`
       display: block;
     }
   }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 `
 
 const ArticleMeta = styled.div`
@@ -141,8 +146,11 @@ export const BlogPostTemplate = ({
                         <Tags aria-labelledby="article-tags-label">
                           {tags.map((tag, index) => (
                             <Tag key={tag + `tag`}>
-                              <Link to={`/tags/${kebabCase(tag)}/`} aria-label={`View articles with the tag ${tag}`}>
-                                <Text order="meta">
+                              <Link
+                                to={`/tags/${kebabCase(tag)}/`}
+                                aria-label={`View articles with the tag ${tag}`}
+                              >
+                                <Text order="meta" element="span">
                                   {tag}
                                 </Text>
                               </Link>

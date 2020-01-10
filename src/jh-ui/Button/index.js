@@ -30,9 +30,12 @@ const Root = styled.button`
     background-color: ${order === 'primary' ? 'var(--buttonBackgroundPrimary)' : 'var(--buttonBackgroundSecondary)'};
     color: ${order === 'primary' ? 'var(--buttonTextPrimary)' : 'var(--buttonTextSecondary)'};
 
-    &:hover,
-    &:focus {
+    &:hover {
       box-shadow: var(--elevationMedium);
+    }
+
+    &:focus {
+      box-shadow: var(--elevationMedium), 0 0 0 0.2em var(--selection)
     }
 
     &:active {

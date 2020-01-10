@@ -31,13 +31,21 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
 
+  &[data-active] > span {
+    color: var(--textLighter);
+  }
+
   &:hover,
   &:focus {
-    opacity: 0.5;
+    > span {
+      color: var(--textLighter);
+    }
   }
 
   &:active {
-    opacity: 0.75;
+    > span {
+      color: var(--textLight);
+    }
   }
 `
 
@@ -83,7 +91,7 @@ const DesktopMenu = () => {
   }, [])
 
   const isActive = ({ isCurrent }) => {
-    return isCurrent ? { style: { opacity: 0.5 } } : null
+    return isCurrent ? { 'data-active': true } : null
   }
 
   const toggleTheme = () => {

@@ -7,6 +7,7 @@ import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const HeadingWrap = styled.div`
   position: relative;
+  z-index: 0 !important;
 `
 
 const HeadingLink = styled.a`
@@ -21,6 +22,29 @@ const HeadingLink = styled.a`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: block;
+  }
+
+  &:hover,
+  &:focus {
+    svg {
+      transform: scale(1.1);
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:focus-within {
+    svg {
+      box-shadow: 0 0 0 0.2em var(--selection);
+    }
+  }
+
+  &:active {
+    svg {
+      transform: scale(0.98);
+    }
   }
 `
 

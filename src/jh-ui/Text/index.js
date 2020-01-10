@@ -34,11 +34,11 @@ const Root = styled.p`
   font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
   ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};
   color: ${({ order, color }) => getColor({ order, color })};
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'tablet')};
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme, order }) => getFontSize(theme, order, 'desktop')};
   }

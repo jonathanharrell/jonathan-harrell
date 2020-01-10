@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
       --backgroundCode: hsl(0, 0%, 10%);
       --border: hsl(0, 0%, 15%);
       --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
-      --buttonBackgroundPrimary: transparent;
+      --buttonBackgroundPrimary: ${({ theme }) => theme.colors.black};
       --buttonTextPrimary: ${({ theme }) => theme.colors.white};
       --buttonBorderSecondary: hsl(210, 15%, 95%);
       --buttonBackgroundSecondary: transparent;

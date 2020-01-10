@@ -147,6 +147,12 @@ const UsageLink = styled.a`
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }) => theme.fontSizes.m.desktop};
   }
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
 `
 
 export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) => {

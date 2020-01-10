@@ -82,28 +82,63 @@ const MenuLinkWrap = styled.li`
 const MenuLink = styled(Link)`
   display: block;
   text-decoration: none;
-  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+
+  &[data-active] > span {
+    color: var(--textLighter);
+  }
 
   &:hover,
   &:focus {
-    opacity: 0.5;
+    > span {
+      color: var(--textLighter);
+    }
   }
 
   &:active {
-    opacity: 0.75;
+    > span {
+      color: var(--textLight);
+    }
   }
 `
 
 const ThemeOptions = styled.form`
-  display: flex;
+  display: inline-flex;
   align-items: center;
+
+  &:focus-within {
+    box-shadow: 0 0 0 0.2em var(--selection);
+  }
 `
 
-const getThemeOptionBackgroundColor = ({ active, themeName }) => {
+const getThemeOptionBackgroundColor = ({ active, themeName, action }) => {
   if (themeName === 'light') {
-    return active ? 'hsl(0, 0%, 80%)' : 'hsl(0, 0%, 90%)'
+    if (active) {
+      return 'hsl(0, 0%, 80%)'
+    }
+
+    if (action === 'hover' || action === 'focus') {
+      return 'hsl(0, 0%, 86%)'
+    }
+
+    if (action === 'active') {
+      return 'hsl(0, 0%, 88%)'
+    }
+
+    return 'hsl(0, 0%, 90%)'
   } else {
-    return active ? 'hsl(0, 0%, 25%)' : 'hsl(0, 0%, 15%)'
+    if (active) {
+      return 'hsl(0, 0%, 25%)'
+    }
+
+    if (action === 'hover' || action === 'focus') {
+      return 'hsl(0, 0%, 19%)'
+    }
+
+    if (action === 'active') {
+      return 'hsl(0, 0%, 17%)'
+    }
+
+    return 'hsl(0, 0%, 15%)'
   }
 }
 
@@ -115,7 +150,7 @@ const ThemeOption = styled.label`
   background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({ active, themeName })};
   border-radius: 4px;
   text-align: center;
-  cursor: pointer;
+  cursor: ${({ active }) => active ? 'not-allowed' : 'pointer'};
 
   &:first-child {
     border-top-right-radius: 0;
@@ -125,6 +160,30 @@ const ThemeOption = styled.label`
   &:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  &:hover {
+    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
+  active,
+  themeName,
+  action: 'hover'
+})};
+  }
+
+  &:focus {
+    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
+  active,
+  themeName,
+  action: 'focus'
+})};
+  }
+
+  &:active {
+    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
+  active,
+  themeName,
+  action: 'active'
+})};
   }
 `
 
@@ -177,14 +236,14 @@ const MobileMenu = ({ handleExpandedChange }) => {
       // emit to parent
       handleExpandedChange(false)
     }
-  }, [visible, expanded, handleExpandedChange])
+  }, [visible, expanded])
 
   const setLastTabbableElementRef = element => {
     lastTabbableElementRef.push(element)
   }
 
   const isActive = ({ isCurrent }) => {
-    return isCurrent ? { style: { opacity: 0.5 } } : null
+    return isCurrent ? { 'data-active': true } : null
   }
 
   const handleKeydown = event => {
@@ -228,6 +287,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
         expanded={expanded}
         aria-expanded={expanded}
         aria-controls="main-menu"
+        title={expanded ? 'Close menu' : 'Open menu'}
         onClick={toggleVisibility}
       >
         <ScreenReaderText>

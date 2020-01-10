@@ -27,6 +27,19 @@ const HeaderContentWrap = styled.div`
 const HomePageLink = styled(Link)`
   text-decoration: none;
   color: var(--text);
+
+  &:hover,
+  &:focus {
+    span {
+      transform: rotate(-10deg);
+    }
+  }
+
+  &:active {
+    span {
+      transform: rotate(-5deg);
+    }
+  }
 `
 
 const SiteTitle = styled(Heading)`
@@ -36,10 +49,12 @@ const SiteTitle = styled(Heading)`
 `
 
 const Icon = styled.span`
+  display: inline-block;
   font-family: Menlo, Monaco, Consolas, Courier New, monospace;
   font-weight: 600;
   letter-spacing: -1px;
   color: var(--accent);
+  transition: transform 0.2s ${({ theme }) => theme.beziers.out};
 `
 
 const Header = ({ handleMobileMenuExpandedChange }) => {

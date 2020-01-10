@@ -54,6 +54,14 @@ const AnchoredHeading = styled(ArticleHeading)`
   }
 `
 
+const Link = styled(Text)`
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+`
+
 const Layout = ({ children }) => {
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false)
   const { title, description } = useSiteMetadata()
@@ -169,7 +177,7 @@ const Layout = ({ children }) => {
               pre: Pre,
               code: Code,
               inlineCode: InlineCode,
-              a: props => <Text element="a" {...props}/>
+              a: props => <Link element="a" {...props}/>
             }}
           >
             {children}
