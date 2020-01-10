@@ -43,6 +43,15 @@ const ToggleButton = styled(Button)`
       transform: rotate(-45deg) translate(2px, -3px);
     }
   `) : ''};
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 `
 
 const Bar = styled.span`
@@ -73,6 +82,16 @@ const MenuLinkWrap = styled.li`
 const MenuLink = styled(Link)`
   display: block;
   text-decoration: none;
+  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.75;
+  }
 `
 
 const ThemeOptions = styled.form`

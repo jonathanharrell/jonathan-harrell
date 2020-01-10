@@ -10,6 +10,7 @@ const Root = styled.button`
   text-align: center;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
+  transition: all 0.2s ${({ theme }) => theme.colors.out};
   cursor: pointer;
 
   ${({ unstyled, order, theme }) => unstyled ? `
@@ -28,6 +29,16 @@ const Root = styled.button`
     border-radius: 2em;
     background-color: ${order === 'primary' ? 'var(--buttonBackgroundPrimary)' : 'var(--buttonBackgroundSecondary)'};
     color: ${order === 'primary' ? 'var(--buttonTextPrimary)' : 'var(--buttonTextSecondary)'};
+
+    &:hover,
+    &:focus {
+      box-shadow: var(--elevationMedium);
+    }
+
+    &:active {
+      box-shadow: var(--elevationMedium);
+      transform: scale(0.98);
+    }
   `}
 `
 

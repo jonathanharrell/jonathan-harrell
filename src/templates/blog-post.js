@@ -114,7 +114,7 @@ export const BlogPostTemplate = ({
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
-      <Padded top="s" bottom="4x">
+      <Padded bottom="4x">
         <ContentWrap>
           <ArticleContentWrap>
             {image && (

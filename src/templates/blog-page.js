@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import Articles from '../components/Articles'
 import Heading from '../jh-ui/Heading'
 import Padded from '../jh-ui/Padded'
-import { graphql } from 'gatsby'
-import Link from '../jh-ui/Link'
 import kebabCase from 'lodash/kebabCase'
 import Tag from '../jh-ui/Tag'
 import Spaced from '../jh-ui/Spaced'
@@ -22,11 +21,16 @@ const Header = styled.header`
 `
 
 const ArticlesWrap = styled.section`
+  box-shadow: none;
 `
 
 const TagWrap = styled.li`
   display: inline-block;
   margin: 0 0.25rem 0.75rem 0;
+`
+
+const Link = styled(GatsbyLink)`
+
 `
 
 export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: post } }) {
@@ -60,14 +64,13 @@ export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: po
                       <ul>
                         {tags.map(tag => (
                           <TagWrap key={tag.fieldValue + `tag`}>
-                            <Link
+                            <Tag
+                              as={Link}
                               to={`/tags/${kebabCase(tag.fieldValue)}/`}
                               aria-label={`View articles with the tag ${tag.fieldValue}`}
                             >
-                              <Tag>
-                                {tag.fieldValue}
-                              </Tag>
-                            </Link>
+                              {tag.fieldValue}
+                            </Tag>
                           </TagWrap>
                         ))}
                       </ul>

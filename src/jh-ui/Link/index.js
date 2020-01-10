@@ -13,22 +13,30 @@ const Root = styled(GatsbyLink)`
   font-size: ${({ theme }) => theme.fontSizes.m.mobile};
   text-decoration: none;
   color: var(--accent);
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: ${({ theme }) => theme.fontSizes.m.tablet};
     font-size: ${({ theme }) => theme.fontSizes.m.tablet};
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     height: ${({ theme }) => theme.fontSizes.m.desktop};
     font-size: ${({ theme }) => theme.fontSizes.m.desktop};
   }
-  
+
   &:hover,
   &:focus,
   &:focus-within,
   &:active {
     color: ${({ theme }) => theme.colors.redDark};
+
+    svg {
+      transform: translateX(0.1em);
+    }
+  }
+
+  svg {
+    transition: transform 0.2s ${({ theme }) => theme.beziers.out};
   }
 `
 

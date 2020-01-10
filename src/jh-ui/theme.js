@@ -1,10 +1,23 @@
+export const beziers = {
+  in: 'cubic-bezier(0.94, 0.01, 0.83, 0.86)',
+  out: 'cubic-bezier(0.2, 0.91, 0.85, 0.96)',
+  inOut: 'cubic-bezier(0.82, 0.09, 0.4, 0.92)',
+  bounce: 'cubic-bezier(0.68, -0.28, 0.18, 1.26)'
+}
+
 export const colors = {
   blueDarkest: 'hsl(210, 67%, 11%)',
   blueDarker: 'hsl(210, 67%, 13%)',
   black: 'hsl(0, 0%, 0%)',
   white: 'hsl(0, 0%, 100%)',
   red: 'hsl(10, 66%, 56%)',
-  redDark: 'hsl(10, 66%, 45%)',
+  redDark: 'hsl(10, 66%, 40%)',
+}
+
+export const elevations = {
+  low: '0 0 0 1px rgba(0,0,0,0.05),0 1px 2px rgba(0,0,0,0.12)',
+  medium: '0 0 0 1px rgba(0,0,0,0.05),0 5px 10px rgba(0,0,0,0.15)',
+  high: '0 0 0 1px rgba(0,0,0,0.05),0 10px 20px rgba(0,0,0,0.2)'
 }
 
 export const fonts = {
@@ -66,7 +79,9 @@ export const breakpoints = {
 }
 
 export default {
+  beziers,
   colors,
+  elevations,
   fonts,
   fontSizes,
   spacing,

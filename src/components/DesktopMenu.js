@@ -29,6 +29,16 @@ const MenuLinkWrap = styled.li`
 
 const MenuLink = styled(Link)`
   text-decoration: none;
+  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.75;
+  }
 `
 
 const SiteTools = styled.section`
@@ -41,6 +51,15 @@ const ThemeToggleButton = styled(Button)`
 
   svg {
     stroke: var(--text);
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 `
 

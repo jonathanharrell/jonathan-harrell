@@ -42,6 +42,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
+  box-shadow: none;
 `
 
 const AnchoredHeading = styled(ArticleHeading)`

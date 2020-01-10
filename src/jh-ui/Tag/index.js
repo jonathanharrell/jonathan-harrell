@@ -12,13 +12,18 @@ const Root = styled.span`
   text-transform: uppercase;
   text-decoration: none;
   color: var(--textLighter);
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.s.tablet};
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }) => theme.fontSizes.s.desktop};
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--backgroundTertiary);
   }
 `
 

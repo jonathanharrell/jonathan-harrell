@@ -19,11 +19,20 @@ const CloseButton = styled(Button)`
   top: ${({ theme }) => theme.spacing.l};
   right: ${({ theme }) => theme.spacing.m};
   color: var(--textLighter);
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     top: 50%;
     right: ${({ theme }) => theme.spacing.xl};
     transform: translateY(-50%);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--textLight);
+  }
+
+  &:active {
+    color: var(--textLighter);
   }
 `
 
