@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="600px" viewBox="0 0 1200 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>implicit-state-sharing</title>
+    <desc>Created with Sketch.</desc>
+    <g id="implicit-state-sharing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#0D0D0D" x="0" y="0" width="1200" height="600"></rect>
+        <polyline id="Path-2-Copy" stroke="#8D8DA6" stroke-width="4" transform="translate(490.973922, 385.384076) scale(-1, 1) translate(-490.973922, -385.384076) " points="384 300 597.947844 394.048347 597.947844 470.768152"></polyline>
+        <polyline id="Path-2" stroke="#D75037" stroke-width="7" points="599.685567 43.1217746 599.685567 300 815.633411 394.048347 815.633411 470.768152"></polyline>
+        <polyline id="Path-3" stroke="#D75037" stroke-width="4" points="600 98.6914511 383.020714 200.824956 383.020714 242.70044"></polyline>
+        <polyline id="Path-3" stroke-opacity="0.25" stroke="#D75037" stroke-width="4" transform="translate(707.510357, 170.695946) scale(-1, 1) translate(-707.510357, -170.695946) " points="816 98.6914511 599.020714 200.824956 599.020714 242.70044"></polyline>
+        <polyline id="Path-4" stroke="#D75037" stroke-width="4" points="383.020714 242.70044 250.7198 301.724335 250.7198 392.132483"></polyline>
+        <polyline id="Path-4" stroke="#8D8DA6" stroke-width="4" transform="translate(880.870257, 317.416462) scale(-1, 1) translate(-880.870257, -317.416462) " points="948.020714 242.70044 813.7198 300.724335 813.7198 392.132483"></polyline>
+        <polyline id="Path-4-Copy" stroke="#8D8DA6" stroke-width="4" transform="translate(491.500000, 358.668690) scale(-1, 1) translate(-491.500000, -358.668690) " points="600 243 470.699086 301.023895 470.699086 435.432043 383 474.33738"></polyline>
+        <polyline id="Path-4-Copy" stroke-opacity="0.25" stroke="#D75037" stroke-width="4" points="816 243 683.699086 301.023895 683.699086 435.432043 599 474.33738 599 551.853237"></polyline>
+        <circle id="Oval" fill="#D75037" cx="599.5" cy="44.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="599.5" cy="100.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="599.5" cy="302.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="815.5" cy="245.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="382.5" cy="245.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="250.5" cy="392.5" r="8.5"></circle>
+        <circle id="Oval" fill="#8D8DA6" cx="948.5" cy="392.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="599.5" cy="470.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="815.5" cy="470.5" r="8.5"></circle>
+        <circle id="Oval" fill="#8D8DA6" cx="383.5" cy="470.5" r="8.5"></circle>
+        <circle id="Oval" fill="#D75037" cx="599.5" cy="550.5" r="8.5"></circle>
+    </g>
+</svg>
