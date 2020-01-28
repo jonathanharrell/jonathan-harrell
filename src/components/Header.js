@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import BodyClassName from 'react-body-classname'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
@@ -30,6 +31,10 @@ const HeaderContentWrap = styled.div`
 const HomePageLink = styled(Link)`
   text-decoration: none;
   color: var(--text);
+
+  .header-background-blue:not(.scrolled):not(.mobile-menu-expanded) & {
+    color: white;
+  }
 
   &:hover,
   &:focus {
@@ -78,6 +83,7 @@ const Header = ({ handleMobileMenuExpandedChange }) => {
 
   return (
     <HeaderWrap scrolled={scrolled} aria-label="Site Header">
+      <BodyClassName className={scrolled ? 'scrolled' : ''}/>
       <Padded vertical="m">
         <ContentWrap>
           <HeaderContentWrap>

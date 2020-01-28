@@ -32,20 +32,26 @@ const MenuLink = styled(Link)`
   transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
 
   &[data-active] > span {
-    color: var(--textLighter);
+    color: var(--textLighter) !important;
   }
 
   &:hover,
   &:focus {
     > span {
-      color: var(--textLighter);
+      color: var(--textLighter) !important;
     }
   }
 
   &:active {
     > span {
-      color: var(--textLight);
+      color: var(--textLight) !important;
     }
+  }
+`
+
+const MenuLinkText = styled(Text)`
+  .header-background-blue:not(.scrolled) & {
+    color: white;
   }
 `
 
@@ -61,6 +67,14 @@ const ThemeToggleButton = styled(Button)`
     stroke: var(--text);
   }
 
+  .header-background-blue:not(.scrolled) & {
+    color: white;
+
+    svg {
+      stroke: white;
+    }
+  }
+
   &:hover,
   &:focus {
     transform: scale(1.05);
@@ -68,6 +82,12 @@ const ThemeToggleButton = styled(Button)`
 
   &:active {
     transform: scale(0.98);
+  }
+`
+
+const SubscribeButton = styled(Button)`
+  .header-background-blue:not(.scrolled) & {
+    color: white;
   }
 `
 
@@ -117,9 +137,9 @@ const DesktopMenu = () => {
                     rel="home"
                     getProps={isActive}
                   >
-                    <Text order="body" element="span">
+                    <MenuLinkText order="body" element="span">
                       Home
-                    </Text>
+                    </MenuLinkText>
                   </MenuLink>
                 </MenuLinkWrap>
                 <MenuLinkWrap>
@@ -127,9 +147,9 @@ const DesktopMenu = () => {
                     to="/blog"
                     getProps={isActive}
                   >
-                    <Text order="body" element="span">
+                    <MenuLinkText order="body" element="span">
                       Articles
-                    </Text>
+                    </MenuLinkText>
                   </MenuLink>
                 </MenuLinkWrap>
                 <MenuLinkWrap>
@@ -137,9 +157,9 @@ const DesktopMenu = () => {
                     to="/about"
                     getProps={isActive}
                   >
-                    <Text order="body" element="span">
+                    <MenuLinkText order="body" element="span">
                       About
-                    </Text>
+                    </MenuLinkText>
                   </MenuLink>
                 </MenuLinkWrap>
               </Spaced>
@@ -161,9 +181,9 @@ const DesktopMenu = () => {
               </ScreenReaderText>
               {themeName === 'light' ? <Sun/> : <Moon/>}
             </ThemeToggleButton>
-            <Button order="secondary">
+            <SubscribeButton order="secondary">
               Subscribe
-            </Button>
+            </SubscribeButton>
           </Spaced>
         </SiteTools>
       </Spaced>

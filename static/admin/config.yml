@@ -29,6 +29,7 @@ collections:
         name: headercolor
         widget: select
         options: ["blue", "orange", "gray"]
+        default: "blue"
       - label: 'Featured Image'
         name: featuredimage
         widget: image

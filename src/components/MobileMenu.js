@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import BodyClassName from 'react-body-classname'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
@@ -62,6 +63,10 @@ const Bar = styled.span`
   border-radius: 4px;
   background-color: var(--text);
   transition: all 0.2s ease-out;
+
+  .header-background-blue:not(.scrolled):not(.mobile-menu-expanded) & {
+    background-color: white;
+  }
 `
 
 const Menu = styled.div`
@@ -281,6 +286,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
   return visible ? (
     <MobileMenuWrap onKeyDown={handleKeydown}>
+      <BodyClassName className={expanded ? 'mobile-menu-expanded' : ''}/>
       <ToggleButton
         ref={toggleButtonRef}
         unstyled={true}

@@ -33,11 +33,16 @@ const ArticleHeader = styled.header`
   }
 `
 
-const ArticleContentWrap = styled.div`
+const ArticleHeaderContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   height: 100%;
-  padding-bottom: 6rem;
+  padding: 6rem 0;
+`
+
+const ArticleContentWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 `
 
 const ArticleHeaderContent = styled.figure`
@@ -171,68 +176,68 @@ export const BlogPostTemplate = ({
   title,
   description,
   date,
+  color,
   image,
   helmet
 }) => {
+  console.log(color)
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
-      <BodyClassName className="my-class another-class"/>
+      <BodyClassName className={`header-background-${color}`}/>
       <ArticleHeader>
         <ContentWrap>
-          <Padded top="4x">
-            <ArticleContentWrap>
-              <ArticleHeaderContent>
-                <Spaced bottom="s">
-                  <ArticleMeta>
-                    {tags && (
-                      <div>
-                        <ScreenReaderText>
-                          <Heading
-                            level={2}
-                            id="article-tags-label"
-                          >
-                            Article Tags
-                          </Heading>
-                        </ScreenReaderText>
-                        <Tags aria-labelledby="article-tags-label">
-                          {tags.map((tag, index) => (
-                            <Tag key={tag + `tag`}>
-                              <TagLink
-                                to={`/tags/${kebabCase(tag)}/`}
-                                aria-label={`View articles with the tag ${tag}`}
-                              >
-                                <Text order="meta" element="span">
-                                  {tag}
-                                </Text>
-                              </TagLink>
-                              {index < tags.length - 1 && (
-                                <Text order="meta" element="span" aria-hidden>&nbsp;•&nbsp;</Text>
-                              )}
-                            </Tag>
-                          ))}
-                        </Tags>
-                      </div>
-                    )}
-                    <Text order="meta" color="textLighter" element="span">
-                      <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
-                      {date}
-                    </Text>
-                  </ArticleMeta>
-                </Spaced>
-                <Spaced bottom="m">
-                  <Heading level={1} color="textInverse" id="article-title">
-                    {title}
-                  </Heading>
-                </Spaced>
-                {description && (
-                  <Text order="body" color="textLighter" element="p">
-                    {description}
+          <ArticleHeaderContentWrap>
+            <ArticleHeaderContent>
+              <Spaced bottom="s">
+                <ArticleMeta>
+                  {tags && (
+                    <div>
+                      <ScreenReaderText>
+                        <Heading
+                          level={2}
+                          id="article-tags-label"
+                        >
+                          Article Tags
+                        </Heading>
+                      </ScreenReaderText>
+                      <Tags aria-labelledby="article-tags-label">
+                        {tags.map((tag, index) => (
+                          <Tag key={tag + `tag`}>
+                            <TagLink
+                              to={`/tags/${kebabCase(tag)}/`}
+                              aria-label={`View articles with the tag ${tag}`}
+                            >
+                              <Text order="meta" element="span">
+                                {tag}
+                              </Text>
+                            </TagLink>
+                            {index < tags.length - 1 && (
+                              <Text order="meta" element="span" aria-hidden>&nbsp;•&nbsp;</Text>
+                            )}
+                          </Tag>
+                        ))}
+                      </Tags>
+                    </div>
+                  )}
+                  <Text order="meta" color="textLighter" element="span">
+                    <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                    {date}
                   </Text>
-                )}
-              </ArticleHeaderContent>
-            </ArticleContentWrap>
-          </Padded>
+                </ArticleMeta>
+              </Spaced>
+              <Spaced bottom="m">
+                <Heading level={1} color="textInverse" id="article-title">
+                  {title}
+                </Heading>
+              </Spaced>
+              {description && (
+                <Text order="body" color="textLighter" element="p">
+                  {description}
+                </Text>
+              )}
+            </ArticleHeaderContent>
+          </ArticleHeaderContentWrap>
         </ContentWrap>
       </ArticleHeader>
       <Mask>
@@ -292,6 +297,7 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description}
         date={post.frontmatter.date}
+        color={post.frontmatter.headercolor}
         image={post.frontmatter.featuredimage}
       />
     </Layout>
@@ -316,6 +322,7 @@ export const pageQuery = graphql`
         title
         description
         tags
+        headercolor
         featuredimage {
           publicURL
         }
