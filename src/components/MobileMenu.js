@@ -227,8 +227,6 @@ const MobileMenu = ({ handleExpandedChange }) => {
         document.body.style.position = ''
         document.body.style.top = ''
         window.scrollTo(0, parseInt(scrollY || '0') * -1)
-        // focus toggle button
-        toggleButtonRef.current.focus()
         // emit to parent
         handleExpandedChange(false)
       }
@@ -268,10 +266,12 @@ const MobileMenu = ({ handleExpandedChange }) => {
     // close menu on escape
     if (event.key === 'Escape') {
       setExpanded(false)
+      toggleButtonRef.current.focus()
     }
   }
 
   const toggleVisibility = () => {
+    if (expanded) toggleButtonRef.current.focus()
     setExpanded(!expanded)
   }
 

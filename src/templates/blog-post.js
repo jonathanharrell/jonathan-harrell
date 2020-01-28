@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
+import BodyClassName from 'react-body-classname'
 import kebabCase from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
@@ -19,9 +20,53 @@ const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
 `
 
+const ArticleHeader = styled.header`
+  background-image: var(--gradientBlue);
+  clip-path: url(#wave);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    height: 32.5rem;
+  }
+
+  ${ContentWrap} {
+    height: 100%;
+  }
+`
+
 const ArticleContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  height: 100%;
+  padding-bottom: 6rem;
+`
+
+const ArticleHeaderContent = styled.figure`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-column: 1 / -1;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: auto / span 10;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 7;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-column: auto / span 6;
+  }
+`
+
+const TagLink = styled(Link)`
+  &:hover,
+  &:focus,
+  &:active {
+    span {
+      color: var(--textLight);
+    }
+  }
 `
 
 const Figure = styled.figure`
@@ -31,6 +76,18 @@ const Figure = styled.figure`
 const FeaturedImage = styled.img`
   width: 100%;
   height: auto;
+`
+
+const Mask = styled.svg`
+  clip: rect(0 0 0 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
 `
 
 const ArticleContent = styled.div`
@@ -112,6 +169,7 @@ export const BlogPostTemplate = ({
   content,
   tags,
   title,
+  description,
   date,
   image,
   helmet
@@ -119,18 +177,12 @@ export const BlogPostTemplate = ({
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
-      <Padded bottom="4x">
+      <BodyClassName className="my-class another-class"/>
+      <ArticleHeader>
         <ContentWrap>
-          <ArticleContentWrap>
-            {image && (
-              <Spaced bottom="3x">
-                <Figure>
-                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
-                </Figure>
-              </Spaced>
-            )}
-            <ArticleContent>
-              <header>
+          <Padded top="4x">
+            <ArticleContentWrap>
+              <ArticleHeaderContent>
                 <Spaced bottom="s">
                   <ArticleMeta>
                     {tags && (
@@ -146,14 +198,14 @@ export const BlogPostTemplate = ({
                         <Tags aria-labelledby="article-tags-label">
                           {tags.map((tag, index) => (
                             <Tag key={tag + `tag`}>
-                              <Link
+                              <TagLink
                                 to={`/tags/${kebabCase(tag)}/`}
                                 aria-label={`View articles with the tag ${tag}`}
                               >
                                 <Text order="meta" element="span">
                                   {tag}
                                 </Text>
-                              </Link>
+                              </TagLink>
                               {index < tags.length - 1 && (
                                 <Text order="meta" element="span" aria-hidden>&nbsp;•&nbsp;</Text>
                               )}
@@ -168,12 +220,38 @@ export const BlogPostTemplate = ({
                     </Text>
                   </ArticleMeta>
                 </Spaced>
-                <Spaced bottom="2x">
-                  <Heading level={1} id="article-title">
+                <Spaced bottom="m">
+                  <Heading level={1} color="textInverse" id="article-title">
                     {title}
                   </Heading>
                 </Spaced>
-              </header>
+                {description && (
+                  <Text order="body" color="textLighter" element="p">
+                    {description}
+                  </Text>
+                )}
+              </ArticleHeaderContent>
+            </ArticleContentWrap>
+          </Padded>
+        </ContentWrap>
+      </ArticleHeader>
+      <Mask>
+        <clipPath id="wave" clipPathUnits="objectBoundingBox">
+          <path
+            d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
+        </clipPath>
+      </Mask>
+      {/*{image && (*/}
+      {/*  <Spaced bottom="3x">*/}
+      {/*    <Figure>*/}
+      {/*      <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>*/}
+      {/*    </Figure>*/}
+      {/*  </Spaced>*/}
+      {/*)}*/}
+      <Padded vertical="4x">
+        <ContentWrap>
+          <ArticleContentWrap>
+            <ArticleContent>
               <MDXRenderer>
                 {content}
               </MDXRenderer>
@@ -201,7 +279,6 @@ const BlogPost = ({ data }) => {
       <BlogPostTemplate
         content={post.body}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
@@ -213,6 +290,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        description={post.frontmatter.description}
         date={post.frontmatter.date}
         image={post.frontmatter.featuredimage}
       />

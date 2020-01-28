@@ -29,13 +29,14 @@ const GlobalStyle = createGlobalStyle`
     --elevationLow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.12);
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
+    --gradientBlue: linear-gradient(169deg, #112F46 1%, #091C2E 100%);
 
     .theme-dark {
       --text: ${({ theme }) => theme.colors.white};
-      --textLight: hsl(210, 15%, 55%);
+      --textLight: hsl(0, 0%, 45%);
       --textLighter: hsl(0, 0%, 60%);
       --textInverse: ${({ theme }) => theme.colors.white};
-      --backgroundPrimary: ${({ theme }) => theme.colors.black};
+      --backgroundPrimary: hsl(0, 0%, 8%);
       --backgroundSecondary: hsl(0, 0%, 10%);
       --backgroundTertiary: hsl(0, 0%, 15%);
       --backgroundInverse: ${({ theme }) => theme.colors.black};
@@ -58,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
       --elevationLow: 0 0 0 0.1em var(--selection);
       --elevationMedium: 0 0 0 0.2em var(--selection);
       --elevationHigh: 0 0 0 0.3em var(--selection);
+      --gradientBlue: linear-gradient(169deg, #1A1A1A 1%, #000000 100%);
     }
   }
 
@@ -67,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: border-color 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out, stroke 0.2s ease-out;
+    transition: border-color 0.2s ease-out, background 0.2s ease-out, color 0.2s ease-out, stroke 0.2s ease-out;
   }
 
   ::selection {

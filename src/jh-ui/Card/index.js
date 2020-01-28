@@ -5,7 +5,7 @@ import Padded from '../Padded'
 
 const Root = styled.div`
   box-shadow: ${({ theme }) => theme.elevations.medium};
-  transition: box-shadow 0.2s ${({ theme }) => theme.beziers.out};
+  transition: all 0.2s ${({ theme }) => theme.beziers.out};
 
   > * {
     height: 100%;
@@ -15,6 +15,7 @@ const Root = styled.div`
   &:focus,
   &:active {
     box-shadow: ${({ theme }) => theme.elevations.high};
+    transform: scale(1.005);
   }
 `
 

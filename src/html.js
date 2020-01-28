@@ -18,9 +18,9 @@ export default function HTML(props) {
           detail: newTheme
         }))
       }
-    
+
       var preferredTheme;
-      
+
       try {
         preferredTheme = localStorage.getItem('theme');
       } catch (error) {}
@@ -32,7 +32,7 @@ export default function HTML(props) {
           localStorage.setItem('theme', newTheme)
         } catch (error) {}
       }
-    
+
       var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
       darkModeQuery.addListener(function(event) {
@@ -75,7 +75,7 @@ export default function HTML(props) {
     <script dangerouslySetInnerHTML={{ __html: themeScript }}/>
     {props.preBodyComponents}
     <noscript key="noscript" id="gatsby-noscript" className="noscript">
-      This app works best with JavaScript enabled.
+      This site works best with JavaScript enabled.
     </noscript>
     <div id="alert" role="region" aria-live="assertive" className="screen-reader-text"/>
     <div

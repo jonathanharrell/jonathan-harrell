@@ -42,7 +42,12 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
+  //margin-top: 3.5rem;
   box-shadow: none;
+
+  // @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  //   margin-top: 4.375rem;
+  // }
 `
 
 const AnchoredHeading = styled(ArticleHeading)`

@@ -25,9 +25,10 @@ collections:
       - label: Description
         name: description
         widget: text
-      - label: 'Featured Post'
-        name: featuredpost
-        widget: boolean
+      - label: 'Header Color'
+        name: headercolor
+        widget: select
+        options: ["blue", "orange", "gray"]
       - label: 'Featured Image'
         name: featuredimage
         widget: image

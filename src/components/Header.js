@@ -10,11 +10,14 @@ import MobileMenu from './MobileMenu'
 import DesktopMenu from './DesktopMenu'
 
 const HeaderWrap = styled.header`
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 2;
-  background-color: var(--backgroundPrimary);
-  ${({ scrolled }) => scrolled ? 'box-shadow: 0 2px 28px rgba(0, 0, 0, 0.15);' : ''}
+  width: 100%;
+  ${({ scrolled }) => scrolled ? `
+    background-color: var(--backgroundPrimary);
+    box-shadow: 0 2px 28px rgba(0, 0, 0, 0.15);
+  ` : ''}
 `
 
 const HeaderContentWrap = styled.div`
