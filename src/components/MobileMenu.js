@@ -43,7 +43,6 @@ const Menu = styled.div`
   top: 1rem;
   right: 1rem;
   width: 100%;
-  height: 100%;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
@@ -54,7 +53,6 @@ const Menu = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: auto;
-    height: auto;
   }
 `
 
