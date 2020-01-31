@@ -50,7 +50,7 @@ const MenuLink = styled(Link)`
 `
 
 const MenuLinkText = styled(Text)`
-  .header-background-blue:not(.scrolled) & {
+  .header-background-blue & {
     color: white;
   }
 `
@@ -67,7 +67,7 @@ const ThemeToggleButton = styled(Button)`
     stroke: var(--text);
   }
 
-  .header-background-blue:not(.scrolled) & {
+  .header-background-blue & {
     color: white;
 
     svg {
@@ -86,7 +86,7 @@ const ThemeToggleButton = styled(Button)`
 `
 
 const SubscribeButton = styled(Button)`
-  .header-background-blue:not(.scrolled) & {
+  .header-background-blue & {
     color: white;
   }
 `

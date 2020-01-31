@@ -5,13 +5,13 @@ import styled from 'styled-components'
 import debounce from 'lodash/debounce'
 import Button from '../jh-ui/Button'
 import Text from '../jh-ui/Text'
-import ContentWrap from './ContentWrap'
 import Heading from '../jh-ui/Heading'
 import Padded from '../jh-ui/Padded'
 import Spaced from '../jh-ui/Spaced'
 import ThemeContext from '../context/theme'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import { breakpoints } from '../jh-ui/theme'
+import X from '../img/icons/x.svg'
 
 const MobileMenuWrap = styled.div`
   .no-js & {
@@ -23,27 +23,10 @@ const MobileMenuWrap = styled.div`
   }
 `
 
-const ToggleButton = styled(Button)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  height: 1.75rem;
-  overflow: hidden;
-
-  ${({ expanded }) => expanded ? (`
-    span:nth-of-type(2) {
-      transform: rotate(45deg) translate(2px, 3px);
-    }
-
-    span:nth-of-type(3) {
-      display: none;
-    }
-
-    span:nth-of-type(4) {
-      transform: rotate(-45deg) translate(2px, -3px);
-    }
-  `) : ''};
+const MenuButton = styled(Button)`
+  .header-background-blue & {
+    color: white;
+  }
 
   &:hover,
   &:focus {
@@ -55,29 +38,41 @@ const ToggleButton = styled(Button)`
   }
 `
 
-const Bar = styled.span`
-  display: block;
-  width: 22px;
-  height: 2px;
-  margin: 5px;
-  border-radius: 4px;
-  background-color: var(--text);
-  transition: all 0.2s ease-out;
+const Menu = styled.div`
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 100%;
+  height: 100%;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  background-color: var(--backgroundPrimary);
+  border-radius: 6px;
+  box-shadow: ${({ theme }) => theme.elevations.high};
 
-  .header-background-blue:not(.scrolled):not(.mobile-menu-expanded) & {
-    background-color: white;
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: auto;
+    height: auto;
   }
 `
 
-const Menu = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-  background-color: var(--backgroundSecondary);
+const MenuHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - ${({ theme }) => theme.spacing['4x']});
+`
+
+const CloseButton = styled(Button)`
+  height: auto;
+  margin-left: auto;
+  padding: 0.3rem;
+  border: 0;
+  background-color: var(--backgroundTertiary);
+  color: var(--text);
 `
 
 const MenuLinkWrap = styled.li`
@@ -151,7 +146,7 @@ const ThemeOption = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing['4x']};
+  padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing['3x']};
   background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({ active, themeName })};
   border-radius: 4px;
   text-align: center;
@@ -197,11 +192,21 @@ const MobileMenu = ({ handleExpandedChange }) => {
   const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
   const toggleButtonRef = useRef()
+  const menuWrapRef = useRef()
+  const closeButtonRef = useRef()
   const menuHeadingRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = []
 
   useEffect(() => {
+    const handleClick = event => {
+      if (menuWrapRef.current && !menuWrapRef.current.contains(event.target)) {
+        close()
+      }
+    }
+
+    window.addEventListener('click', handleClick)
+
     const rems = breakpoints.desktop.replace('rem', '')
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     const desktopWidth = rems * fontSize
@@ -213,7 +218,10 @@ const MobileMenu = ({ handleExpandedChange }) => {
     setVisibility(window.innerWidth < desktopWidth)
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('click', handleClick)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   useEffect(() => {
@@ -223,7 +231,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
         document.body.style.top = `-${window.scrollY}px`
         document.body.style.position = 'fixed'
         // focus menu heading
-        menuHeadingRef.current.focus()
+        closeButtonRef.current.focus()
         // emit to parent
         handleExpandedChange(true)
       } else {
@@ -256,7 +264,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
     if (event.key === 'Tab' && !event.shiftKey) {
       if (lastTabbableElementRef.includes(event.target)) {
         event.preventDefault()
-        toggleButtonRef.current.focus()
+        closeButtonRef.current.focus()
       }
     }
 
@@ -270,14 +278,17 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
     // close menu on escape
     if (event.key === 'Escape') {
-      setExpanded(false)
-      toggleButtonRef.current.focus()
+      close()
     }
   }
 
-  const toggleVisibility = () => {
-    if (expanded) toggleButtonRef.current.focus()
-    setExpanded(!expanded)
+  const open = () => {
+    setExpanded(true)
+  }
+
+  const close = () => {
+    toggleButtonRef.current.focus()
+    setExpanded(false)
   }
 
   const handleThemeChange = event => {
@@ -285,128 +296,131 @@ const MobileMenu = ({ handleExpandedChange }) => {
   }
 
   return visible ? (
-    <MobileMenuWrap onKeyDown={handleKeydown}>
+    <MobileMenuWrap ref={menuWrapRef} onKeyDown={handleKeydown}>
       <BodyClassName className={expanded ? 'mobile-menu-expanded' : ''}/>
-      <ToggleButton
+      <MenuButton
         ref={toggleButtonRef}
-        unstyled={true}
         expanded={expanded}
         aria-expanded={expanded}
+        order="secondary"
         aria-controls="main-menu"
         title={expanded ? 'Close menu' : 'Open menu'}
-        onClick={toggleVisibility}
+        onClick={open}
       >
-        <ScreenReaderText>
-          Main Menu
-        </ScreenReaderText>
-        <Bar/>
-        <Bar/>
-        <Bar/>
-      </ToggleButton>
+        Menu
+      </MenuButton>
       {expanded && (
         <Menu id="main-menu">
           <Padded top="4x" bottom="2x">
-            <ContentWrap>
-              <ScreenReaderText>
-                <h2 ref={menuHeadingRef} tabIndex="-1">
-                  Main Menu
-                </h2>
-              </ScreenReaderText>
-              <Spaced vertical="3x">
-                <section aria-labelledby="site-links-label">
-                  <h3>
-                    <ScreenReaderText id="site-links-label">Site Links</ScreenReaderText>
-                    <Text order="meta" aria-hidden>Links</Text>
-                  </h3>
-                  <nav role="navigation">
-                    <ul>
-                      <Spaced vertical="l">
-                        <MenuLinkWrap>
-                          <MenuLink
-                            to="/"
-                            rel="home"
-                            ref={firstTabbableElementRef}
-                            getProps={isActive}
-                          >
-                            <Heading level={1} element="span">
-                              Home
-                            </Heading>
-                          </MenuLink>
-                        </MenuLinkWrap>
-                        <MenuLinkWrap>
-                          <MenuLink
-                            to="/blog"
-                            getProps={isActive}
-                          >
-                            <Heading level={1} element="span">
-                              Articles
-                            </Heading>
-                          </MenuLink>
-                        </MenuLinkWrap>
-                        <MenuLinkWrap>
-                          <MenuLink
-                            to="/about"
-                            getProps={isActive}
-                          >
-                            <Heading level={1} element="span">
-                              About
-                            </Heading>
-                          </MenuLink>
-                        </MenuLinkWrap>
-                      </Spaced>
-                    </ul>
-                  </nav>
-                </section>
-                <section aria-labelledby="theme-settings-label">
-                  <h3 id="theme-settings-label">
-                    <ScreenReaderText>
-                      Theme Settings
-                    </ScreenReaderText>
-                    <Text order="meta" aria-hidden>Change Theme</Text>
-                  </h3>
-                  <Spaced top="s">
-                    <ThemeOptions>
-                      <ThemeOption
-                        htmlFor="light-theme"
-                        themeName={themeName}
-                        active={themeName === 'light'}
-                      >
-                        <Text order="body">Light</Text>
-                        <ScreenReaderText>
-                          <input
-                            ref={setLastTabbableElementRef}
-                            type="radio"
-                            id="light-theme"
-                            name="theme"
-                            value="light"
-                            checked={themeName === 'light'}
-                            onChange={handleThemeChange}
-                          />
-                        </ScreenReaderText>
-                      </ThemeOption>
-                      <ThemeOption
-                        htmlFor="dark-theme"
-                        themeName={themeName}
-                        active={themeName === 'dark'}
-                      >
-                        <Text order="body">Dark</Text>
-                        <ScreenReaderText>
-                          <input
-                            ref={setLastTabbableElementRef}
-                            type="radio"
-                            id="dark-theme"
-                            name="theme"
-                            value="dark"
-                            checked={themeName === 'dark'}
-                            onChange={handleThemeChange}
-                          />
-                        </ScreenReaderText>
-                      </ThemeOption>
-                    </ThemeOptions>
-                  </Spaced>
-                </section>
-              </Spaced>
-            </ContentWrap>
+            <Padded horizontal="2x" top="2x" bottom="4x">
+              <div>
+                <MenuHeader>
+                  <ScreenReaderText>
+                    <h2 ref={menuHeadingRef} tabIndex="-1">
+                      Main Menu
+                    </h2>
+                  </ScreenReaderText>
+                  <CloseButton ref={closeButtonRef} onClick={close}>
+                    <ScreenReaderText>Close Menu</ScreenReaderText>
+                    <X/>
+                  </CloseButton>
+                </MenuHeader>
+                <Spaced vertical="3x">
+                  <section aria-labelledby="site-links-label">
+                    <h3>
+                      <ScreenReaderText id="site-links-label">Site Links</ScreenReaderText>
+                      <Text order="meta" aria-hidden>Links</Text>
+                    </h3>
+                    <nav role="navigation">
+                      <ul>
+                        <Spaced vertical="l">
+                          <MenuLinkWrap>
+                            <MenuLink
+                              to="/"
+                              rel="home"
+                              ref={firstTabbableElementRef}
+                              getProps={isActive}
+                            >
+                              <Heading level={1} element="span">
+                                Home
+                              </Heading>
+                            </MenuLink>
+                          </MenuLinkWrap>
+                          <MenuLinkWrap>
+                            <MenuLink
+                              to="/blog"
+                              getProps={isActive}
+                            >
+                              <Heading level={1} element="span">
+                                Articles
+                              </Heading>
+                            </MenuLink>
+                          </MenuLinkWrap>
+                          <MenuLinkWrap>
+                            <MenuLink
+                              to="/about"
+                              getProps={isActive}
+                            >
+                              <Heading level={1} element="span">
+                                About
+                              </Heading>
+                            </MenuLink>
+                          </MenuLinkWrap>
+                        </Spaced>
+                      </ul>
+                    </nav>
+                  </section>
+                  <section aria-labelledby="theme-settings-label">
+                    <h3 id="theme-settings-label">
+                      <ScreenReaderText>
+                        Theme Settings
+                      </ScreenReaderText>
+                      <Text order="meta" aria-hidden>Change Theme</Text>
+                    </h3>
+                    <Spaced top="s">
+                      <ThemeOptions>
+                        <ThemeOption
+                          htmlFor="light-theme"
+                          themeName={themeName}
+                          active={themeName === 'light'}
+                        >
+                          <Text order="body">Light</Text>
+                          <ScreenReaderText>
+                            <input
+                              ref={setLastTabbableElementRef}
+                              type="radio"
+                              id="light-theme"
+                              name="theme"
+                              value="light"
+                              checked={themeName === 'light'}
+                              onChange={handleThemeChange}
+                            />
+                          </ScreenReaderText>
+                        </ThemeOption>
+                        <ThemeOption
+                          htmlFor="dark-theme"
+                          themeName={themeName}
+                          active={themeName === 'dark'}
+                        >
+                          <Text order="body">Dark</Text>
+                          <ScreenReaderText>
+                            <input
+                              ref={setLastTabbableElementRef}
+                              type="radio"
+                              id="dark-theme"
+                              name="theme"
+                              value="dark"
+                              checked={themeName === 'dark'}
+                              onChange={handleThemeChange}
+                            />
+                          </ScreenReaderText>
+                        </ThemeOption>
+                      </ThemeOptions>
+                    </Spaced>
+                  </section>
+                </Spaced>
+              </div>
+            </Padded>
           </Padded>
         </Menu>
       )}

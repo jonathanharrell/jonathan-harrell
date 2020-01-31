@@ -37,7 +37,11 @@ const ArticleHeaderContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   height: 100%;
-  padding: 6rem 0;
+  padding: 8rem 0 6rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-top: 10rem;
+  }
 `
 
 const ArticleContentWrap = styled.div`

@@ -44,6 +44,8 @@ const Main = styled.main`
   flex: 1;
   //margin-top: 3.5rem;
   box-shadow: none;
+  transition: opacity 0.2s ease-out;
+  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? 'opacity: 0.5;' : ''}
 
   // @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
   //   margin-top: 4.375rem;
@@ -123,12 +125,16 @@ const Layout = ({ children }) => {
         <SkipLink element="a" href="#main" onClick={skipToContent}>
           Skip to content
         </SkipLink>
-        <Header handleMobileMenuExpandedChange={handleMobileMenuExpandedChange}/>
+        <Header
+          mobileMenuExpanded={mobileMenuExpanded}
+          handleMobileMenuExpandedChange={handleMobileMenuExpandedChange}
+        />
         <Main
           id="main"
           tabIndex="-1"
           aria-label="Main Content"
           aria-hidden={mobileMenuExpanded}
+          mobileMenuExpanded={mobileMenuExpanded}
           ref={mainRef}
         >
           <MDXProvider

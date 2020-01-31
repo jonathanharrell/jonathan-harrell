@@ -11,7 +11,16 @@ import ContentWrap from '../components/ContentWrap'
 import SectionHeader from '../jh-ui/SectionHeader'
 
 const HeaderWrap = styled.section`
+  padding-top: ${({ theme }) => theme.spacing['3x']};
   background-color: var(--backgroundPrimary);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-top: ${({ theme }) => theme.spacing['4x']};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    padding-top: ${({ theme }) => theme.spacing['5x']};
+  }
 `
 
 const AboutContentWrap = styled(ContentWrap)`

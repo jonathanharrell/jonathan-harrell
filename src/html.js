@@ -13,7 +13,8 @@ export default function HTML(props) {
       function setTheme(newTheme) {
         window.__theme = newTheme
         preferredTheme = newTheme
-        document.body.className = 'theme-' + newTheme
+        document.body.classList.remove('theme-light', 'theme-dark')
+        document.body.classList.add('theme-' + newTheme)
         window.dispatchEvent(new CustomEvent('themeChange', {
           detail: newTheme
         }))

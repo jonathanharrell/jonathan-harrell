@@ -14,7 +14,16 @@ import SectionHeader from '../jh-ui/SectionHeader'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const HeaderWrap = styled.section`
+  padding-top: ${({ theme }) => theme.spacing['3x']};
   background-color: var(--backgroundPrimary);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-top: ${({ theme }) => theme.spacing['4x']};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    padding-top: ${({ theme }) => theme.spacing['5x']};
+  }
 `
 
 const HomeContentWrap = styled(ContentWrap)`

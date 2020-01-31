@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import BodyClassName from 'react-body-classname'
+import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import debounce from 'lodash/debounce'
 import Padded from '../jh-ui/Padded'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
@@ -11,14 +9,10 @@ import MobileMenu from './MobileMenu'
 import DesktopMenu from './DesktopMenu'
 
 const HeaderWrap = styled.header`
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 2;
   width: 100%;
-  ${({ scrolled }) => scrolled ? `
-    background-color: var(--backgroundPrimary);
-    box-shadow: 0 2px 28px rgba(0, 0, 0, 0.15);
-  ` : ''}
 `
 
 const HeaderContentWrap = styled.div`
@@ -32,7 +26,7 @@ const HomePageLink = styled(Link)`
   text-decoration: none;
   color: var(--text);
 
-  .header-background-blue:not(.scrolled):not(.mobile-menu-expanded) & {
+  .header-background-blue & {
     color: white;
   }
 
@@ -51,9 +45,9 @@ const HomePageLink = styled(Link)`
 `
 
 const SiteTitle = styled(Heading)`
-  position: relative;
-  z-index: 1;
   font-size: 1.25rem;
+  transition: opacity 0.2s ease-out;
+  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? 'opacity: 0.5;' : ''}
 `
 
 const Icon = styled.span`
@@ -65,29 +59,17 @@ const Icon = styled.span`
   transition: transform 0.2s ${({ theme }) => theme.beziers.out};
 `
 
-const Header = ({ handleMobileMenuExpandedChange }) => {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = debounce(() => {
-      if (document.documentElement.scrollTop > 25) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }, 10)
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
+const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => {
   return (
-    <HeaderWrap scrolled={scrolled} aria-label="Site Header">
-      <BodyClassName className={scrolled ? 'scrolled' : ''}/>
+    <HeaderWrap aria-label="Site Header">
       <Padded vertical="m">
         <ContentWrap>
           <HeaderContentWrap>
-            <SiteTitle level={4} element="span" scrolled={scrolled}>
+            <SiteTitle
+              mobileMenuExpanded={mobileMenuExpanded}
+              level={4}
+              element="span"
+            >
               <HomePageLink to="/" aria-label="Home page" rel="home">
                 <Spaced right="xs">
                   <Icon>{`</>`}</Icon>
