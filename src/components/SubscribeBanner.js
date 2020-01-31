@@ -4,7 +4,6 @@ import ContentWrap from './ContentWrap'
 import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Button from '../jh-ui/Button'
-import Input from '../jh-ui/Input'
 import Spaced from '../jh-ui/Spaced'
 import { addAlert } from '../helpers'
 import X from '../img/icons/x.svg'
@@ -46,11 +45,6 @@ const SubscribeBannerContentWrap = styled.div`
   }
 `
 
-const EmailInput = styled(Input)`
-  width: 15rem;
-  max-width: 100%;
-`
-
 const SubscribeBanner = () => {
   const [dismissed, setDismissed] = useState(true)
 
@@ -69,23 +63,16 @@ const SubscribeBanner = () => {
   return !dismissed ? (
     <SubscribeBannerWrap>
       <ContentWrap>
-        <Padded vertical="m">
+        <Padded vertical="xs">
           <SubscribeBannerContentWrap>
             <Spaced vertical="xs" right="m">
               <Text order="body">
                 Sign up for periodic updates
               </Text>
+              <Button>
+                Subscribe
+              </Button>
             </Spaced>
-            <form>
-              <Spaced vertical="xs" right="m">
-                <EmailInput type="email" placeholder="Your email address"/>
-              </Spaced>
-              <Spaced vertical="xs">
-                <Button>
-                  Subscribe
-                </Button>
-              </Spaced>
-            </form>
           </SubscribeBannerContentWrap>
         </Padded>
       </ContentWrap>

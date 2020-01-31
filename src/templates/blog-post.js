@@ -110,6 +110,14 @@ const ArticleContent = styled.div`
     grid-column: 3 / -3;
   }
 
+  p:first-child:first-letter {
+    float: left;
+    margin-right: 0.75rem;
+    font-family: ${({ theme }) => theme.fonts.serifDisplay};
+    font-size: 6rem;
+    line-height: 0.85;
+  }
+
   .gatsby-highlight {
     margin: ${({ theme }) => theme.spacing.l} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xxl};
 

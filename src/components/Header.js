@@ -13,6 +13,16 @@ const HeaderWrap = styled.header`
   top: 0;
   z-index: 2;
   width: 100%;
+  height: 4.375rem;
+
+  .no-js & {
+    top: 2.6785rem;
+    background-color: white;
+  }
+
+  ${ContentWrap} {
+    height: 100%;
+  }
 `
 
 const HeaderContentWrap = styled.div`
@@ -20,6 +30,7 @@ const HeaderContentWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 100%;
 `
 
 const HomePageLink = styled(Link)`
@@ -47,7 +58,10 @@ const HomePageLink = styled(Link)`
 const SiteTitle = styled(Heading)`
   font-size: 1.25rem;
   transition: opacity 0.2s ease-out;
-  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? 'opacity: 0.5;' : ''}
+  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? `
+    opacity: 0.5;
+    pointer-events: none;
+  ` : ''}
 `
 
 const Icon = styled.span`

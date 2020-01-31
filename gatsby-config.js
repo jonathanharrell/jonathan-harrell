@@ -88,6 +88,15 @@ module.exports = {
             ]
           },
           {
+            'family': 'DM Serif Display',
+            'variants': [
+              '400'
+            ],
+            'subsets': [
+              'latin-ext'
+            ]
+          },
+          {
             'family': 'DM Serif Text',
             'variants': [
               '400'

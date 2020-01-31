@@ -32,6 +32,7 @@ const SkipLink = styled(Button)`
   top: -100%;
   left: 1rem;
   z-index: 3;
+  background-color: var(--backgroundInverse);
 
   &:focus {
     top: 1rem;
@@ -45,7 +46,10 @@ const Main = styled.main`
   //margin-top: 3.5rem;
   box-shadow: none;
   transition: opacity 0.2s ease-out;
-  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? 'opacity: 0.5;' : ''}
+  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? `
+    opacity: 0.5;
+    pointer-events: none;
+  ` : ''}
 
   // @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
   //   margin-top: 4.375rem;
@@ -141,7 +145,7 @@ const Layout = ({ children }) => {
             components={{
               h1: props => <Heading level={1} {...props}/>,
               h2: props => (
-                <Spaced top="4x" bottom="m">
+                <Spaced top="5x" bottom="m">
                   <AnchoredHeading {...props}/>
                 </Spaced>
               ),

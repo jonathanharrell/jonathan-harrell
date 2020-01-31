@@ -13,10 +13,13 @@ const Root = styled.div`
   }
 
   &:hover,
-  &:focus,
   &:active {
     box-shadow: ${({ theme }) => theme.elevations.high};
-    transform: scale(1.005);
+    transform: translateY(-0.25rem);
+  }
+
+  &:focus-within {
+    box-shadow: ${({ theme }) => theme.elevations.high}, 0 0 0 0.2em var(--selection);
   }
 `
 
