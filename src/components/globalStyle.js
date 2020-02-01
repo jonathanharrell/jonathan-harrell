@@ -30,6 +30,8 @@ const GlobalStyle = createGlobalStyle`
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
     --gradientBlue: linear-gradient(169deg, #112F46 1%, #091C2E 100%);
+    --gradientOrange: linear-gradient(169deg, #D75037 1%, #EB7A56 100%);
+    --gradientGray: linear-gradient(169deg, #E2E2E9 1%, #F3F3F6 100%);
 
     .theme-dark {
       --text: ${({ theme }) => theme.colors.white};

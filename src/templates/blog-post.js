@@ -16,12 +16,24 @@ import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
+const getArticleHeaderBackground = color => {
+  switch (color) {
+    case 'blue':
+      return 'var(--gradientBlue)'
+    case 'orange':
+      return 'var(--gradientOrange)'
+    case 'gray':
+    default:
+      return 'var(--gradientGray)'
+  }
+}
+
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
 `
 
 const ArticleHeader = styled.header`
-  background-image: var(--gradientBlue);
+  background-image: ${({ color }) => getArticleHeaderBackground(color)};
   clip-path: url(#wave);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -69,13 +81,53 @@ const ArticleHeaderContent = styled.figure`
 `
 
 const TagLink = styled(Link)`
+  span {
+    transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+  }
+
   &:hover,
   &:focus,
   &:active {
     span {
       color: var(--textLight);
+
+      .header-background-orange & {
+        color: white !important;
+        opacity: 0.5;
+      }
     }
   }
+`
+
+const getArticleTitleColor = color => {
+  switch (color) {
+    case 'blue':
+      return 'white'
+    case 'orange':
+      return 'white'
+    case 'gray':
+    default:
+      return 'var(--text)'
+  }
+}
+
+const ArticleTitle = styled(Heading)`
+  color: ${({ color }) => getArticleTitleColor(color)};
+`
+
+const getArticleHeaderTextColor = color => {
+  switch (color) {
+    case 'orange':
+      return 'white'
+    case 'blue':
+    case 'gray':
+    default:
+      return 'var(--textLighter)'
+  }
+}
+
+const ArticleHeaderText = styled(Text)`
+  color: ${({ color }) => getArticleHeaderTextColor(color)};
 `
 
 const Figure = styled.figure`
@@ -192,12 +244,11 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
-  console.log(color)
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
       <BodyClassName className={`header-background-${color}`}/>
-      <ArticleHeader>
+      <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
             <ArticleHeaderContent>
@@ -220,33 +271,35 @@ export const BlogPostTemplate = ({
                               to={`/tags/${kebabCase(tag)}/`}
                               aria-label={`View articles with the tag ${tag}`}
                             >
-                              <Text order="meta" element="span">
+                              <ArticleHeaderText color={color} order="meta" element="span">
                                 {tag}
-                              </Text>
+                              </ArticleHeaderText>
                             </TagLink>
                             {index < tags.length - 1 && (
-                              <Text order="meta" element="span" aria-hidden>&nbsp;•&nbsp;</Text>
+                              <ArticleHeaderText color={color} order="meta" element="span" aria-hidden>
+                                &nbsp;•&nbsp;
+                              </ArticleHeaderText>
                             )}
                           </Tag>
                         ))}
                       </Tags>
                     </div>
                   )}
-                  <Text order="meta" color="textLighter" element="span">
+                  <ArticleHeaderText color={color} order="meta" element="span">
                     <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                     {date}
-                  </Text>
+                  </ArticleHeaderText>
                 </ArticleMeta>
               </Spaced>
               <Spaced bottom="m">
-                <Heading level={1} color="textInverse" id="article-title">
+                <ArticleTitle level={1} color={color} id="article-title">
                   {title}
-                </Heading>
+                </ArticleTitle>
               </Spaced>
               {description && (
-                <Text order="body" color="textLighter" element="p">
+                <ArticleHeaderText color={color} order="body" element="p">
                   {description}
-                </Text>
+                </ArticleHeaderText>
               )}
             </ArticleHeaderContent>
           </ArticleHeaderContentWrap>

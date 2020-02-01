@@ -37,7 +37,8 @@ const HomePageLink = styled(Link)`
   text-decoration: none;
   color: var(--text);
 
-  .header-background-blue & {
+  .header-background-blue &,
+  .header-background-orange & {
     color: white;
   }
 
@@ -71,6 +72,10 @@ const Icon = styled.span`
   letter-spacing: -1px;
   color: var(--accent);
   transition: transform 0.2s ${({ theme }) => theme.beziers.out};
+
+  .header-background-orange & {
+    color: white;
+  }
 `
 
 const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => {

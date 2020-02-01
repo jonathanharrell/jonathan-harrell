@@ -29,7 +29,6 @@ const MenuLinkWrap = styled.li`
 
 const MenuLink = styled(Link)`
   text-decoration: none;
-  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
 
   &[data-active] > span {
     color: var(--textLighter) !important;
@@ -39,18 +38,31 @@ const MenuLink = styled(Link)`
   &:focus {
     > span {
       color: var(--textLighter) !important;
+
+      .header-background-orange & {
+        color: white !important;
+        opacity: 0.5;
+      }
     }
   }
 
   &:active {
     > span {
       color: var(--textLight) !important;
+
+      .header-background-orange & {
+        color: white !important;
+        opacity: 0.5;
+      }
     }
   }
 `
 
 const MenuLinkText = styled(Text)`
-  .header-background-blue & {
+  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+
+  .header-background-blue &,
+  .header-background-orange & {
     color: white;
   }
 `
@@ -67,7 +79,8 @@ const ThemeToggleButton = styled(Button)`
     stroke: var(--text);
   }
 
-  .header-background-blue & {
+  .header-background-blue &,
+  .header-background-orange & {
     color: white;
 
     svg {
@@ -86,7 +99,8 @@ const ThemeToggleButton = styled(Button)`
 `
 
 const SubscribeButton = styled(Button)`
-  .header-background-blue & {
+  .header-background-blue &,
+  .header-background-orange & {
     color: white;
   }
 `
