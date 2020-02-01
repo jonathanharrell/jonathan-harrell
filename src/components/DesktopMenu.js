@@ -59,7 +59,7 @@ const MenuLink = styled(Link)`
 `
 
 const MenuLinkText = styled(Text)`
-  transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+  transition: all 0.2s ${({ theme }) => theme.beziers.out};
 
   .header-background-blue &,
   .header-background-orange & {

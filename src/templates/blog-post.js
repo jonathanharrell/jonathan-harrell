@@ -33,7 +33,7 @@ const ArticleWrap = styled.article`
 `
 
 const ArticleHeader = styled.header`
-  background-image: ${({ color }) => getArticleHeaderBackground(color)};
+  background: ${({ color }) => getArticleHeaderBackground(color)};
   clip-path: url(#wave);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -171,7 +171,7 @@ const ArticleContent = styled.div`
   }
 
   .gatsby-highlight {
-    margin: ${({ theme }) => theme.spacing.l} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing.xxl};
+    margin: ${({ theme }) => theme.spacing['2x']} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing['2x']};
 
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       margin-right: -${({ theme }) => theme.spacing.xl};

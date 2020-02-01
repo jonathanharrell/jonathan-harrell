@@ -24,6 +24,7 @@ export const Basic = () => {
         <ArticleExcerpt
           theme={theme}
           link="/"
+          color="blue"
           image="https://via.placeholder.com/1200x800.png"
           imagePosition={imagePosition}
           imageRatio={imageRatio}

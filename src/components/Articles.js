@@ -73,6 +73,7 @@ class Articles extends React.Component {
             key={post.id}
             index={index}
             link={post.fields.slug}
+            color={post.frontmatter.headercolor}
             image={post.frontmatter.featuredimage.publicURL}
             imagePosition={getImagePosition(index)}
             imageRatio={index === 0 ? 2 / 3 : 1 / 2}
@@ -115,6 +116,7 @@ export default () => (
                 templateKey
                 date
                 tags
+                headercolor
                 featuredimage {
                   publicURL
                 }

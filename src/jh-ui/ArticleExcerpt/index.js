@@ -46,8 +46,21 @@ const getImageColumns = ({ imagePosition, imageRatio }) => {
   }
 }
 
+const getImageWrapBackgroundColor = color => {
+  switch (color) {
+    case 'blue':
+      return 'var(--backgroundInverse)'
+    case 'orange':
+      return 'var(--accent)'
+    case 'gray':
+    default:
+      return 'var(--backgroundSecondary)'
+  }
+}
+
 export const ImageWrap = styled.figure`
   grid-column: 1 / -1;
+  background-color: ${({ color }) => getImageWrapBackgroundColor(color)};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     ${({ imagePosition, imageRatio }) => getImageColumns({ imagePosition, imageRatio })};
@@ -98,7 +111,7 @@ const Tags = styled.ul`
   }
 `
 
-const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
+const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -122,9 +135,11 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
           <ImageWrap
             imagePosition={imagePosition}
             imageRatio={imageRatio}
+            color={color}
           >
             <Image
-              src={image}
+              // src={image}
+              color={color}
               role="presentation"
             />
           </ImageWrap>
@@ -187,6 +202,7 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
 
 ArticleExcerpt.propTypes = {
   link: string.isRequired,
+  color: string.isRequired,
   image: string,
   imagePosition: oneOf(['top', 'left', 'right']),
   imageRatio: oneOf([1 / 2, 2 / 3]),

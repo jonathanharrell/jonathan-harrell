@@ -61,7 +61,9 @@ const GlobalStyle = createGlobalStyle`
       --elevationLow: 0 0 0 0.1em var(--selection);
       --elevationMedium: 0 0 0 0.2em var(--selection);
       --elevationHigh: 0 0 0 0.3em var(--selection);
-      --gradientBlue: linear-gradient(169deg, hsl(0, 0%, 6%) 1%, hsl(0, 0%, 2%) 100%);
+      --gradientBlue: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
+      --gradientGray: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
+      --gradientOrange: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
     }
   }
 
@@ -113,6 +115,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
     background-color: var(--backgroundSecondary);
+  }
+
+  a {
+    text-decoration-color: var(--textLighter);
   }
 
   .noscript {

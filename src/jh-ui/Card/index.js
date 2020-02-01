@@ -4,6 +4,7 @@ import { bool, string } from 'prop-types'
 import Padded from '../Padded'
 
 const Root = styled.div`
+  overflow: hidden;
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.elevations.medium};
   transition: all 0.2s ${({ theme }) => theme.beziers.out};
