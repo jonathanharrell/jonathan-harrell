@@ -73,6 +73,9 @@ const SiteTools = styled.section`
 `
 
 const ThemeToggleButton = styled(Button)`
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
   color: var(--text);
 
   svg {
