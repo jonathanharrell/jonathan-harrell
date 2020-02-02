@@ -26,7 +26,7 @@ const MobileMenuWrap = styled.div`
 const MenuButton = styled(Button)`
   .header-background-blue &,
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   &:hover,

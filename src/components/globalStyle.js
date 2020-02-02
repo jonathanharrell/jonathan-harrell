@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     --textLight: hsl(210, 15%, 40%);
     --textLighter: hsl(210, 15%, 60%);
     --textInverse: hsl(0, 0%, 100%);
+    --textCode: hsl(210, 15%, 40%);
     --backgroundPrimary: ${({ theme }) => theme.colors.white};
     --backgroundSecondary: hsl(210, 15%, 97.5%);
     --backgroundTertiary: hsl(210, 15%, 92.5%);
@@ -15,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundElevatedInverse: ${({ theme }) => theme.colors.blueDarker};
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
     --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
-    --backgroundCode: ${({ theme }) => theme.colors.blueDarkest};
+    --backgroundCode: hsl(210, 15%, 96%);
     --border: hsl(210, 15%, 90%);
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
@@ -38,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
       --textLight: hsl(0, 0%, 45%);
       --textLighter: hsl(0, 0%, 60%);
       --textInverse: ${({ theme }) => theme.colors.white};
+      --textCode: ${({ theme }) => theme.colors.white};
       --backgroundPrimary: hsl(0, 0%, 6%);
       --backgroundSecondary: hsl(0, 0%, 8%);
       --backgroundTertiary: hsl(0, 0%, 10%);

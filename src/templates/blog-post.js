@@ -48,6 +48,7 @@ const ArticleHeader = styled.header`
 const ArticleHeaderContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  position: relative;
   height: 100%;
   padding: 8rem 0 6rem;
 
@@ -61,11 +62,33 @@ const ArticleContentWrap = styled.div`
   grid-template-columns: repeat(12, 1fr);
 `
 
-const ArticleHeaderContent = styled.figure`
+const Figure = styled.figure`
+  display: none;
+  grid-column: 1 / -1;
+  position: absolute;
+  top: 0;
+  right: -25%;
+  height: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: block;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    right: 0;
+  }
+`
+
+const FeaturedImage = styled.img`
+  width: 100%;
+`
+
+const ArticleHeaderContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   grid-column: 1 / -1;
+  position: relative;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-column: auto / span 10;
@@ -92,7 +115,7 @@ const TagLink = styled(Link)`
       color: var(--textLight);
 
       .header-background-orange & {
-        color: white !important;
+        color: ${({ theme }) => theme.colors.white} !important;
         opacity: 0.5;
       }
     }
@@ -128,15 +151,6 @@ const getArticleHeaderTextColor = color => {
 
 const ArticleHeaderText = styled(Text)`
   color: ${({ color }) => getArticleHeaderTextColor(color)};
-`
-
-const Figure = styled.figure`
-  grid-column: 1 / -1;
-`
-
-const FeaturedImage = styled.img`
-  width: 100%;
-  height: auto;
 `
 
 const Mask = styled.svg`
@@ -244,6 +258,7 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
+
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
@@ -251,6 +266,13 @@ export const BlogPostTemplate = ({
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
+            {image && (
+              <Spaced bottom="3x">
+                <Figure>
+                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
+                </Figure>
+              </Spaced>
+            )}
             <ArticleHeaderContent>
               <Spaced bottom="s">
                 <ArticleMeta>
@@ -311,13 +333,6 @@ export const BlogPostTemplate = ({
             d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
         </clipPath>
       </Mask>
-      {/*{image && (*/}
-      {/*  <Spaced bottom="3x">*/}
-      {/*    <Figure>*/}
-      {/*      <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>*/}
-      {/*    </Figure>*/}
-      {/*  </Spaced>*/}
-      {/*)}*/}
       <Padded vertical="4x">
         <ContentWrap>
           <ArticleContentWrap>

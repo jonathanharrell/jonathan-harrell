@@ -40,7 +40,7 @@ const MenuLink = styled(Link)`
       color: var(--textLighter) !important;
 
       .header-background-orange & {
-        color: white !important;
+        color: ${({ theme }) => theme.colors.white} !important;
         opacity: 0.5;
       }
     }
@@ -51,7 +51,7 @@ const MenuLink = styled(Link)`
       color: var(--textLight) !important;
 
       .header-background-orange & {
-        color: white !important;
+        color: ${({ theme }) => theme.colors.white} !important;
         opacity: 0.5;
       }
     }
@@ -63,7 +63,7 @@ const MenuLinkText = styled(Text)`
 
   .header-background-blue &,
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 
@@ -84,10 +84,10 @@ const ThemeToggleButton = styled(Button)`
 
   .header-background-blue &,
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
 
     svg {
-      stroke: white;
+      stroke: ${({ theme }) => theme.colors.white};
     }
   }
 
@@ -104,7 +104,7 @@ const ThemeToggleButton = styled(Button)`
 const SubscribeButton = styled(Button)`
   .header-background-blue &,
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 

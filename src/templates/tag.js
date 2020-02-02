@@ -102,6 +102,7 @@ class TagRoute extends React.Component {
                       key={post.id}
                       index={index}
                       link={post.fields.slug}
+                      color={post.frontmatter.headercolor}
                       image={post.frontmatter.featuredimage.publicURL}
                       imagePosition="top"
                       date={new Date(post.frontmatter.date)}
@@ -147,6 +148,7 @@ export const tagPageQuery = graphql`
             templateKey
             date
             tags
+            headercolor
             featuredimage {
               publicURL
             }

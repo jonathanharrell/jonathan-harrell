@@ -17,7 +17,7 @@ const HeaderWrap = styled.header`
 
   .no-js & {
     top: 2.6785rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 
   ${ContentWrap} {
@@ -39,7 +39,7 @@ const HomePageLink = styled(Link)`
 
   .header-background-blue &,
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 
   &:hover,
@@ -74,7 +74,7 @@ const Icon = styled.span`
   transition: transform 0.2s ${({ theme }) => theme.beziers.out};
 
   .header-background-orange & {
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 `
 

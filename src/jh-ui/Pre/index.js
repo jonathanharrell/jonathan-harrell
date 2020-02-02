@@ -8,7 +8,7 @@ const StyledPre = styled.pre`
 
   code {
     line-height: 1.7;
-    color: var(--textInverse);
+    color: var(--textCode);
   }
 
   .token.comment,

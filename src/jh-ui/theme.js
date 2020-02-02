@@ -35,7 +35,7 @@ export const fontSizes = {
   xxl: {
     mobile: '1.875rem',
     tablet: '2rem',
-    desktop: '2.375rem'
+    desktop: '2.25rem'
   },
   xl: {
     mobile: '1.625rem',
