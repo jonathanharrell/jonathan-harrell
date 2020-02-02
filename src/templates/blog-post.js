@@ -404,7 +404,12 @@ export const pageQuery = graphql`
         tags
         headercolor
         featuredimage {
-          publicURL
+          light {
+            publicURL
+          }
+          dark {
+            publicURL
+          }
         }
       }
     }
