@@ -258,7 +258,7 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
-
+  console.log(image)
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}

@@ -32,7 +32,14 @@ collections:
         default: "blue"
       - label: 'Featured Image'
         name: featuredimage
-        widget: image
+        widget: object
+        fields:
+          - label: Light
+            name: light
+            widget: image
+          - label: Dark
+            name: dark
+            widget: image
       - label: Body
         name: body
         widget: markdown
