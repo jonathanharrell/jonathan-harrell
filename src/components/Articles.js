@@ -117,9 +117,6 @@ export default () => (
                 date
                 tags
                 headercolor
-                featuredimage {
-                  publicURL
-                }
               }
             }
           }

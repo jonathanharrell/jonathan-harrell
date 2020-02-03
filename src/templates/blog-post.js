@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
@@ -15,6 +15,7 @@ import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import ThemeContext from '../context/theme'
 
 const getArticleHeaderBackground = color => {
   switch (color) {
@@ -258,7 +259,8 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
-  console.log(image)
+  const { themeName } = useContext(ThemeContext)
+
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
@@ -269,7 +271,7 @@ export const BlogPostTemplate = ({
             {image && (
               <Spaced bottom="3x">
                 <Figure>
-                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
+                  <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
                 </Figure>
               </Spaced>
             )}

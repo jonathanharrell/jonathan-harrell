@@ -149,9 +149,6 @@ export const tagPageQuery = graphql`
             date
             tags
             headercolor
-            featuredimage {
-              publicURL
-            }
           }
         }
       }
