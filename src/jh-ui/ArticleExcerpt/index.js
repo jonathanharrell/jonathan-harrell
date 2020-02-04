@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { arrayOf, instanceOf, oneOf, shape, string } from 'prop-types'
+import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
-import { arrayOf, instanceOf, oneOf, string } from 'prop-types'
 import kebabCase from 'lodash/kebabCase'
 import Card from '../Card'
 import Heading from '../Heading'
 import Text from '../Text'
 import Spaced from '../Spaced'
-import { Link as GatsbyLink } from 'gatsby'
 import Padded from '../Padded'
 import ScreenReaderText from '../ScreenReaderText'
+import ThemeContext from '../../context/theme'
 
 const ArticleCard = styled(Card)`
   position: relative;
@@ -29,78 +30,26 @@ const Link = styled(GatsbyLink)`
 
 export const CardContent = styled.div`
   height: 100%;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    display: grid;
-    grid-template-columns: repeat(${({ imageRatio }) => imageRatio === 1 / 2 ? '2' : '3'}, 1fr);
-    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
-  }
 `
 
-const getImageColumns = ({ imagePosition, imageRatio }) => {
-  if (imagePosition === 'left') {
-    return imageRatio === 1 / 2 ? 'grid-column: auto / span 1' : 'grid-column: auto / span 2'
-  }
-  if (imagePosition === 'right') {
-    return imageRatio === 1 / 2 ? 'grid-column: 2 / 3' : 'grid-column: 2 / 4'
-  }
-}
-
-const getImageWrapBackgroundColor = color => {
-  switch (color) {
-    case 'blue':
-      return 'var(--backgroundInverse)'
-    case 'orange':
-      return 'var(--accent)'
-    case 'gray':
-    default:
-      return 'var(--backgroundSecondary)'
-  }
-}
-
 export const ImageWrap = styled.figure`
-  grid-column: 1 / -1;
-  background-color: ${({ color }) => getImageWrapBackgroundColor(color)};
+  position: relative;
+  padding: 25% 0;
+  background-color: var(--backgroundSecondary);
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    ${({ imagePosition, imageRatio }) => getImageColumns({ imagePosition, imageRatio })};
-    ${({ imagePosition }) => imagePosition !== 'top' ? `grid-row: 1 / -1` : `grid-row: 1 / 2`};
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 30% 0;
   }
 `
 
 const Image = styled.img`
   display: block;
-  max-width: 100%;
-  height: auto;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`
-
-export const CardText = styled.div`
-  grid-column: 1 / -1;
-
-  ${({ imagePosition, theme }) => imagePosition !== 'top' ? `
-    @media (min-width: ${theme.breakpoints.desktop}) {
-      grid-row: 1 / -1;
-    }
-  ` : ``};
-
-  ${({ image, imagePosition, theme }) => image ? `
-    @media (min-width: ${theme.breakpoints.desktop}) {
-      ${imagePosition === 'left' ? `
-        grid-column: auto / -1;
-        padding-left: 0;
-      ` : ''};
-      ${imagePosition === 'right' ? `
-        grid-column: auto / span 1;
-        padding-right: 0;
-      ` : ''}
-    }` : ``
-}
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
 
 const Tags = styled.ul`
@@ -111,7 +60,8 @@ const Tags = styled.ul`
   }
 `
 
-const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
+const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
+  const { themeName } = useContext(ThemeContext)
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -130,25 +80,17 @@ const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, t
           Go to article
         </ScreenReaderText>
       </Link>
-      <CardContent imageRatio={imageRatio}>
-        {image && (
-          <ImageWrap
-            imagePosition={imagePosition}
-            imageRatio={imageRatio}
-            color={color}
-          >
+      <CardContent>
+        {(image && image[themeName]) && (
+          <ImageWrap>
             <Image
-              // src={image}
-              color={color}
+              src={image[themeName].publicURL}
               role="presentation"
             />
           </ImageWrap>
         )}
         <Padded all="xxl">
-          <CardText
-            image={image}
-            imagePosition={imagePosition}
-          >
+          <div>
             <Spaced bottom="m">
               <Text order="meta">
                 <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
@@ -193,7 +135,7 @@ const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, t
                 </Tags>
               </Spaced>
             )}
-          </CardText>
+          </div>
         </Padded>
       </CardContent>
     </ArticleCard>
@@ -202,8 +144,14 @@ const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, t
 
 ArticleExcerpt.propTypes = {
   link: string.isRequired,
-  color: string.isRequired,
-  image: Object,
+  image: shape({
+    light: shape({
+      publicURL: string
+    }),
+    dark: shape({
+      publicURL: string
+    })
+  }),
   imagePosition: oneOf(['top', 'left', 'right']),
   imageRatio: oneOf([1 / 2, 2 / 3]),
   date: instanceOf(Date),

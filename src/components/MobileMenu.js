@@ -24,11 +24,6 @@ const MobileMenuWrap = styled.div`
 `
 
 const MenuButton = styled(Button)`
-  .header-background-blue &,
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
-  }
-
   &:hover,
   &:focus {
     transform: scale(1.05);

@@ -44,7 +44,7 @@ const BlogExcerpt = styled(ArticleExcerpt)`
     grid-column: auto / span 6;
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
 
@@ -102,7 +102,6 @@ class TagRoute extends React.Component {
                       key={post.id}
                       index={index}
                       link={post.fields.slug}
-                      color={post.frontmatter.headercolor}
                       image={post.frontmatter.featuredimage}
                       imagePosition="top"
                       date={new Date(post.frontmatter.date)}
@@ -148,7 +147,6 @@ export const tagPageQuery = graphql`
             templateKey
             date
             tags
-            headercolor
           }
         }
       }

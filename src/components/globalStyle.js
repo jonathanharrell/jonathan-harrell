@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundElevatedInverse: ${({ theme }) => theme.colors.blueDarker};
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
     --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
-    --backgroundCode: hsl(210, 15%, 96%);
+    --backgroundCode: hsl(210, 15%, 97%);
     --border: hsl(210, 15%, 90%);
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
@@ -30,9 +30,7 @@ const GlobalStyle = createGlobalStyle`
     --elevationLow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.12);
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
-    --gradientBlue: linear-gradient(169deg, #112F46 1%, #091C2E 100%);
-    --gradientOrange: linear-gradient(169deg, #D75037 1%, #EB7A56 100%);
-    --gradientGray: linear-gradient(169deg, #E2E2E9 1%, #F3F3F6 100%);
+    --gradientGray: linear-gradient(169deg, #E2E2E9 5%, #F3F3F6 100%);
 
     .theme-dark {
       --text: ${({ theme }) => theme.colors.white};
@@ -63,9 +61,7 @@ const GlobalStyle = createGlobalStyle`
       --elevationLow: 0 0 0 0.1em var(--selection);
       --elevationMedium: 0 0 0 0.2em var(--selection);
       --elevationHigh: 0 0 0 0.3em var(--selection);
-      --gradientBlue: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
-      --gradientGray: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
-      --gradientOrange: linear-gradient(169deg, hsl(0, 0%, 12%) 1%, hsl(0, 0%, 1%) 100%);
+      --gradientGray: linear-gradient(169deg, hsl(0, 0%, 15%) 1%, hsl(0, 0%, 1%) 100%);
     }
   }
 

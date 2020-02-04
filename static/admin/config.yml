@@ -25,11 +25,6 @@ collections:
       - label: Description
         name: description
         widget: text
-      - label: 'Header Color'
-        name: headercolor
-        widget: select
-        options: ["blue", "orange", "gray"]
-        default: "blue"
       - label: 'Featured Image'
         name: featuredimage
         widget: object

@@ -2,25 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
-import ArticleExcerpt, { CardText, ImageWrap } from '../jh-ui/ArticleExcerpt'
+import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
 
 const ArticlesWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
 `
-
-const getExcerptColumns = index => {
-  switch (index) {
-    case 0:
-      return 12
-    case 4:
-    case 7:
-      return 8
-    default:
-      return 4
-  }
-}
 
 const BlogExcerpt = styled(ArticleExcerpt)`
   grid-column: 1 / -1;
@@ -32,39 +20,14 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-column-start: auto;
-    ${({ index }) => `grid-column-end: span ${getExcerptColumns(index)};`};
+    grid-column: auto / span 4;
   }
-
-  ${({ index, theme }) => ![0, 4, 7].includes(index) ? `
-    @media (min-width: ${theme.breakpoints.desktop}) {
-      ${ImageWrap} {
-        display: none;
-      }
-
-      ${CardText} {
-        grid-column: 1 / -1;
-      }
-    }
-  ` : ''}
 `
 
 class Articles extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMdx
-
-    const getImagePosition = index => {
-      switch (index) {
-        case 0:
-        case 4:
-          return 'left'
-        case 7:
-          return 'right'
-        default:
-          return 'top'
-      }
-    }
 
     return (
       <ArticlesWrap>
@@ -73,10 +36,7 @@ class Articles extends React.Component {
             key={post.id}
             index={index}
             link={post.fields.slug}
-            color={post.frontmatter.headercolor}
             image={post.frontmatter.featuredimage}
-            imagePosition={getImagePosition(index)}
-            imageRatio={index === 0 ? 2 / 3 : 1 / 2}
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
             excerpt={post.excerpt}
@@ -116,7 +76,14 @@ export default () => (
                 templateKey
                 date
                 tags
-                headercolor
+                featuredimage {
+                    light {
+                      publicURL
+                    }
+                    dark {
+                      publicURL
+                    }
+                }
               }
             }
           }

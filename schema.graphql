@@ -489,8 +489,7 @@ type MdxFrontmatter {
     locale: String
   ): Date
   description: String
-  featuredimage: File
-  featuredpost: Boolean
+  featuredimage: MdxFrontmatterFeaturedimage
   headercolor: String
   heading: String
   image: String
@@ -503,6 +502,11 @@ type MdxFrontmatter {
   templateKey: String
   title: String!
   what_i_use: MdxFrontmatterWhat_i_use
+}
+
+type MdxFrontmatterFeaturedimage {
+  dark: File
+  light: File
 }
 
 type MdxFrontmatterIntro {
@@ -1035,43 +1039,6 @@ enum FileFieldsEnum {
   childMdx___frontmatter___bio
   childMdx___frontmatter___date
   childMdx___frontmatter___description
-  childMdx___frontmatter___featuredimage___absolutePath
-  childMdx___frontmatter___featuredimage___accessTime
-  childMdx___frontmatter___featuredimage___atime
-  childMdx___frontmatter___featuredimage___atimeMs
-  childMdx___frontmatter___featuredimage___base
-  childMdx___frontmatter___featuredimage___birthTime
-  childMdx___frontmatter___featuredimage___birthtime
-  childMdx___frontmatter___featuredimage___birthtimeMs
-  childMdx___frontmatter___featuredimage___blksize
-  childMdx___frontmatter___featuredimage___blocks
-  childMdx___frontmatter___featuredimage___changeTime
-  childMdx___frontmatter___featuredimage___children
-  childMdx___frontmatter___featuredimage___ctime
-  childMdx___frontmatter___featuredimage___ctimeMs
-  childMdx___frontmatter___featuredimage___dev
-  childMdx___frontmatter___featuredimage___dir
-  childMdx___frontmatter___featuredimage___ext
-  childMdx___frontmatter___featuredimage___extension
-  childMdx___frontmatter___featuredimage___gid
-  childMdx___frontmatter___featuredimage___id
-  childMdx___frontmatter___featuredimage___ino
-  childMdx___frontmatter___featuredimage___mode
-  childMdx___frontmatter___featuredimage___modifiedTime
-  childMdx___frontmatter___featuredimage___mtime
-  childMdx___frontmatter___featuredimage___mtimeMs
-  childMdx___frontmatter___featuredimage___name
-  childMdx___frontmatter___featuredimage___nlink
-  childMdx___frontmatter___featuredimage___prettySize
-  childMdx___frontmatter___featuredimage___publicURL
-  childMdx___frontmatter___featuredimage___rdev
-  childMdx___frontmatter___featuredimage___relativeDirectory
-  childMdx___frontmatter___featuredimage___relativePath
-  childMdx___frontmatter___featuredimage___root
-  childMdx___frontmatter___featuredimage___size
-  childMdx___frontmatter___featuredimage___sourceInstanceName
-  childMdx___frontmatter___featuredimage___uid
-  childMdx___frontmatter___featuredpost
   childMdx___frontmatter___headercolor
   childMdx___frontmatter___heading
   childMdx___frontmatter___image
@@ -1460,68 +1427,78 @@ enum MdxFieldsEnum {
   frontmatter___bio
   frontmatter___date
   frontmatter___description
-  frontmatter___featuredimage___absolutePath
-  frontmatter___featuredimage___accessTime
-  frontmatter___featuredimage___atime
-  frontmatter___featuredimage___atimeMs
-  frontmatter___featuredimage___base
-  frontmatter___featuredimage___birthTime
-  frontmatter___featuredimage___birthtime
-  frontmatter___featuredimage___birthtimeMs
-  frontmatter___featuredimage___blksize
-  frontmatter___featuredimage___blocks
-  frontmatter___featuredimage___changeTime
-  frontmatter___featuredimage___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childImageSharp___id
-  frontmatter___featuredimage___childMdx___body
-  frontmatter___featuredimage___childMdx___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___fileAbsolutePath
-  frontmatter___featuredimage___childMdx___headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___mdxAST @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___rawBody
-  frontmatter___featuredimage___childMdx___tableOfContents @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childMdx___timeToRead @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___children
-  frontmatter___featuredimage___children___children
-  frontmatter___featuredimage___children___id
-  frontmatter___featuredimage___ctime
-  frontmatter___featuredimage___ctimeMs
-  frontmatter___featuredimage___dev
-  frontmatter___featuredimage___dir
-  frontmatter___featuredimage___ext
-  frontmatter___featuredimage___extension
-  frontmatter___featuredimage___gid
-  frontmatter___featuredimage___id
-  frontmatter___featuredimage___ino
-  frontmatter___featuredimage___internal___content
-  frontmatter___featuredimage___internal___contentDigest
-  frontmatter___featuredimage___internal___description
-  frontmatter___featuredimage___internal___fieldOwners
-  frontmatter___featuredimage___internal___ignoreType
-  frontmatter___featuredimage___internal___mediaType
-  frontmatter___featuredimage___internal___owner
-  frontmatter___featuredimage___internal___type
-  frontmatter___featuredimage___mode
-  frontmatter___featuredimage___modifiedTime
-  frontmatter___featuredimage___mtime
-  frontmatter___featuredimage___mtimeMs
-  frontmatter___featuredimage___name
-  frontmatter___featuredimage___nlink
-  frontmatter___featuredimage___parent___children
-  frontmatter___featuredimage___parent___id
-  frontmatter___featuredimage___prettySize
-  frontmatter___featuredimage___publicURL
-  frontmatter___featuredimage___rdev
-  frontmatter___featuredimage___relativeDirectory
-  frontmatter___featuredimage___relativePath
-  frontmatter___featuredimage___root
-  frontmatter___featuredimage___size
-  frontmatter___featuredimage___sourceInstanceName
-  frontmatter___featuredimage___uid
-  frontmatter___featuredpost
+  frontmatter___featuredimage___dark___absolutePath
+  frontmatter___featuredimage___dark___accessTime
+  frontmatter___featuredimage___dark___atime
+  frontmatter___featuredimage___dark___atimeMs
+  frontmatter___featuredimage___dark___base
+  frontmatter___featuredimage___dark___birthTime
+  frontmatter___featuredimage___dark___birthtime
+  frontmatter___featuredimage___dark___birthtimeMs
+  frontmatter___featuredimage___dark___blksize
+  frontmatter___featuredimage___dark___blocks
+  frontmatter___featuredimage___dark___changeTime
+  frontmatter___featuredimage___dark___children
+  frontmatter___featuredimage___dark___ctime
+  frontmatter___featuredimage___dark___ctimeMs
+  frontmatter___featuredimage___dark___dev
+  frontmatter___featuredimage___dark___dir
+  frontmatter___featuredimage___dark___ext
+  frontmatter___featuredimage___dark___extension
+  frontmatter___featuredimage___dark___gid
+  frontmatter___featuredimage___dark___id
+  frontmatter___featuredimage___dark___ino
+  frontmatter___featuredimage___dark___mode
+  frontmatter___featuredimage___dark___modifiedTime
+  frontmatter___featuredimage___dark___mtime
+  frontmatter___featuredimage___dark___mtimeMs
+  frontmatter___featuredimage___dark___name
+  frontmatter___featuredimage___dark___nlink
+  frontmatter___featuredimage___dark___prettySize
+  frontmatter___featuredimage___dark___publicURL
+  frontmatter___featuredimage___dark___rdev
+  frontmatter___featuredimage___dark___relativeDirectory
+  frontmatter___featuredimage___dark___relativePath
+  frontmatter___featuredimage___dark___root
+  frontmatter___featuredimage___dark___size
+  frontmatter___featuredimage___dark___sourceInstanceName
+  frontmatter___featuredimage___dark___uid
+  frontmatter___featuredimage___light___absolutePath
+  frontmatter___featuredimage___light___accessTime
+  frontmatter___featuredimage___light___atime
+  frontmatter___featuredimage___light___atimeMs
+  frontmatter___featuredimage___light___base
+  frontmatter___featuredimage___light___birthTime
+  frontmatter___featuredimage___light___birthtime
+  frontmatter___featuredimage___light___birthtimeMs
+  frontmatter___featuredimage___light___blksize
+  frontmatter___featuredimage___light___blocks
+  frontmatter___featuredimage___light___changeTime
+  frontmatter___featuredimage___light___children
+  frontmatter___featuredimage___light___ctime
+  frontmatter___featuredimage___light___ctimeMs
+  frontmatter___featuredimage___light___dev
+  frontmatter___featuredimage___light___dir
+  frontmatter___featuredimage___light___ext
+  frontmatter___featuredimage___light___extension
+  frontmatter___featuredimage___light___gid
+  frontmatter___featuredimage___light___id
+  frontmatter___featuredimage___light___ino
+  frontmatter___featuredimage___light___mode
+  frontmatter___featuredimage___light___modifiedTime
+  frontmatter___featuredimage___light___mtime
+  frontmatter___featuredimage___light___mtimeMs
+  frontmatter___featuredimage___light___name
+  frontmatter___featuredimage___light___nlink
+  frontmatter___featuredimage___light___prettySize
+  frontmatter___featuredimage___light___publicURL
+  frontmatter___featuredimage___light___rdev
+  frontmatter___featuredimage___light___relativeDirectory
+  frontmatter___featuredimage___light___relativePath
+  frontmatter___featuredimage___light___root
+  frontmatter___featuredimage___light___size
+  frontmatter___featuredimage___light___sourceInstanceName
+  frontmatter___featuredimage___light___uid
   frontmatter___headercolor
   frontmatter___heading
   frontmatter___image
@@ -2279,12 +2256,16 @@ input MdxFilterInput {
   wordCount: MdxWordCountFilterInput
 }
 
+input MdxFrontmatterFeaturedimageFilterInput {
+  dark: FileFilterInput
+  light: FileFilterInput
+}
+
 input MdxFrontmatterFilterInput {
   bio: StringQueryOperatorInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
-  featuredimage: FileFilterInput
-  featuredpost: BooleanQueryOperatorInput
+  featuredimage: MdxFrontmatterFeaturedimageFilterInput
   headercolor: StringQueryOperatorInput
   heading: StringQueryOperatorInput
   image: StringQueryOperatorInput

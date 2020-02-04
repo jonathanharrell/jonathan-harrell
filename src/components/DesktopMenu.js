@@ -38,33 +38,18 @@ const MenuLink = styled(Link)`
   &:focus {
     > span {
       color: var(--textLighter) !important;
-
-      .header-background-orange & {
-        color: ${({ theme }) => theme.colors.white} !important;
-        opacity: 0.5;
-      }
     }
   }
 
   &:active {
     > span {
       color: var(--textLight) !important;
-
-      .header-background-orange & {
-        color: ${({ theme }) => theme.colors.white} !important;
-        opacity: 0.5;
-      }
     }
   }
 `
 
 const MenuLinkText = styled(Text)`
   transition: all 0.2s ${({ theme }) => theme.beziers.out};
-
-  .header-background-blue &,
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
-  }
 `
 
 const SiteTools = styled.section`
@@ -82,15 +67,6 @@ const ThemeToggleButton = styled(Button)`
     stroke: var(--text);
   }
 
-  .header-background-blue &,
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
-
-    svg {
-      stroke: ${({ theme }) => theme.colors.white};
-    }
-  }
-
   &:hover,
   &:focus {
     transform: scale(1.05);
@@ -102,9 +78,8 @@ const ThemeToggleButton = styled(Button)`
 `
 
 const SubscribeButton = styled(Button)`
-  .header-background-blue &,
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
+  .header-background-gray & {
+    border-color: var(--textLighter);
   }
 `
 

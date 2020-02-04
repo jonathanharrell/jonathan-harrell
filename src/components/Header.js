@@ -15,11 +15,6 @@ const HeaderWrap = styled.header`
   width: 100%;
   height: 4.375rem;
 
-  .no-js & {
-    top: 2.6785rem;
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-
   ${ContentWrap} {
     height: 100%;
   }
@@ -36,11 +31,6 @@ const HeaderContentWrap = styled.div`
 const HomePageLink = styled(Link)`
   text-decoration: none;
   color: var(--text);
-
-  .header-background-blue &,
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
-  }
 
   &:hover,
   &:focus {
@@ -72,10 +62,6 @@ const Icon = styled.span`
   letter-spacing: -1px;
   color: var(--accent);
   transition: transform 0.2s ${({ theme }) => theme.beziers.out};
-
-  .header-background-orange & {
-    color: ${({ theme }) => theme.colors.white};
-  }
 `
 
 const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => {

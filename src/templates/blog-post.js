@@ -17,24 +17,12 @@ import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import ThemeContext from '../context/theme'
 
-const getArticleHeaderBackground = color => {
-  switch (color) {
-    case 'blue':
-      return 'var(--gradientBlue)'
-    case 'orange':
-      return 'var(--gradientOrange)'
-    case 'gray':
-    default:
-      return 'var(--gradientGray)'
-  }
-}
-
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
 `
 
 const ArticleHeader = styled.header`
-  background: ${({ color }) => getArticleHeaderBackground(color)};
+  background: var(--gradientGray);
   clip-path: url(#wave);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -114,44 +102,8 @@ const TagLink = styled(Link)`
   &:active {
     span {
       color: var(--textLight);
-
-      .header-background-orange & {
-        color: ${({ theme }) => theme.colors.white} !important;
-        opacity: 0.5;
-      }
     }
   }
-`
-
-const getArticleTitleColor = color => {
-  switch (color) {
-    case 'blue':
-      return 'white'
-    case 'orange':
-      return 'white'
-    case 'gray':
-    default:
-      return 'var(--text)'
-  }
-}
-
-const ArticleTitle = styled(Heading)`
-  color: ${({ color }) => getArticleTitleColor(color)};
-`
-
-const getArticleHeaderTextColor = color => {
-  switch (color) {
-    case 'orange':
-      return 'white'
-    case 'blue':
-    case 'gray':
-    default:
-      return 'var(--textLighter)'
-  }
-}
-
-const ArticleHeaderText = styled(Text)`
-  color: ${({ color }) => getArticleHeaderTextColor(color)};
 `
 
 const Mask = styled.svg`
@@ -264,7 +216,7 @@ export const BlogPostTemplate = ({
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
-      <BodyClassName className={`header-background-${color}`}/>
+      <BodyClassName className={`header-background-gray`}/>
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
@@ -295,35 +247,35 @@ export const BlogPostTemplate = ({
                               to={`/tags/${kebabCase(tag)}/`}
                               aria-label={`View articles with the tag ${tag}`}
                             >
-                              <ArticleHeaderText color={color} order="meta" element="span">
+                              <Text order="meta" element="span">
                                 {tag}
-                              </ArticleHeaderText>
+                              </Text>
                             </TagLink>
                             {index < tags.length - 1 && (
-                              <ArticleHeaderText color={color} order="meta" element="span" aria-hidden>
+                              <Text order="meta" element="span" aria-hidden>
                                 &nbsp;•&nbsp;
-                              </ArticleHeaderText>
+                              </Text>
                             )}
                           </Tag>
                         ))}
                       </Tags>
                     </div>
                   )}
-                  <ArticleHeaderText color={color} order="meta" element="span">
+                  <Text order="meta" element="span">
                     <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                     {date}
-                  </ArticleHeaderText>
+                  </Text>
                 </ArticleMeta>
               </Spaced>
               <Spaced bottom="m">
-                <ArticleTitle level={1} color={color} id="article-title">
+                <Heading level={1} id="article-title">
                   {title}
-                </ArticleTitle>
+                </Heading>
               </Spaced>
               {description && (
-                <ArticleHeaderText color={color} order="body" element="p">
+                <Text order="body" color="textLighter" element="p">
                   {description}
-                </ArticleHeaderText>
+                </Text>
               )}
             </ArticleHeaderContent>
           </ArticleHeaderContentWrap>
@@ -379,7 +331,6 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description}
         date={post.frontmatter.date}
-        color={post.frontmatter.headercolor}
         image={post.frontmatter.featuredimage}
       />
     </Layout>
@@ -404,7 +355,6 @@ export const pageQuery = graphql`
         title
         description
         tags
-        headercolor
         featuredimage {
           light {
             publicURL
