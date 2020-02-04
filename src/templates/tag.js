@@ -103,7 +103,7 @@ class TagRoute extends React.Component {
                       index={index}
                       link={post.fields.slug}
                       color={post.frontmatter.headercolor}
-                      image={post.frontmatter.featuredimage.publicURL}
+                      image={post.frontmatter.featuredimage}
                       imagePosition="top"
                       date={new Date(post.frontmatter.date)}
                       title={post.frontmatter.title}
