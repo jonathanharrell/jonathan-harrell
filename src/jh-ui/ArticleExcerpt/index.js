@@ -203,7 +203,7 @@ const ArticleExcerpt = ({ link, color, image, imagePosition, imageRatio, date, t
 ArticleExcerpt.propTypes = {
   link: string.isRequired,
   color: string.isRequired,
-  image: string,
+  image: Object,
   imagePosition: oneOf(['top', 'left', 'right']),
   imageRatio: oneOf([1 / 2, 2 / 3]),
   date: instanceOf(Date),

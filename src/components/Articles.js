@@ -74,7 +74,7 @@ class Articles extends React.Component {
             index={index}
             link={post.fields.slug}
             color={post.frontmatter.headercolor}
-            image={post.frontmatter.featuredimage.publicURL}
+            image={post.frontmatter.featuredimage}
             imagePosition={getImagePosition(index)}
             imageRatio={index === 0 ? 2 / 3 : 1 / 2}
             date={new Date(post.frontmatter.date)}
