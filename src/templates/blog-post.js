@@ -268,7 +268,7 @@ export const BlogPostTemplate = ({
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
-            {image && (
+            {(image && image[themeName]) && (
               <Spaced bottom="3x">
                 <Figure>
                   <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
