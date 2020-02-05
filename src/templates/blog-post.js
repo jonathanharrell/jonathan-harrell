@@ -224,6 +224,9 @@ export const BlogPostTemplate = ({
               <Spaced bottom="3x">
                 <Figure>
                   <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
+                  <noscript>
+                    <FeaturedImage src={image.light.publicURL} alt="" width="1200" height="600"/>
+                  </noscript>
                 </Figure>
               </Spaced>
             )}
