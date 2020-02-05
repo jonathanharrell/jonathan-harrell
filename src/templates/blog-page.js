@@ -39,7 +39,7 @@ const TagWrap = styled.li`
 `
 
 const Link = styled(GatsbyLink)`
-
+  background-color: var(--backgroundTertiary);
 `
 
 export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: post } }) {
