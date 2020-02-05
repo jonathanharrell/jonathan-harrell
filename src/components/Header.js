@@ -18,6 +18,10 @@ const HeaderWrap = styled.header`
   ${ContentWrap} {
     height: 100%;
   }
+
+  .no-js & {
+    top: 2.6875rem;
+  }
 `
 
 const HeaderContentWrap = styled.div`

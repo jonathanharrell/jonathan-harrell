@@ -26,6 +26,9 @@ const Figure = ({ src, alt }) => {
   return (
     <figure>
       <img src={finalSrc} alt={alt} onError={handleError}/>
+      <noscript>
+        <img src={src} alt={alt}/>
+      </noscript>
     </figure>
   )
 }
