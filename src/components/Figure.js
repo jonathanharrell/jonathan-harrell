@@ -23,13 +23,16 @@ const Figure = ({ src, alt }) => {
     setFinalSrc(src)
   }
 
-  return (
+  return finalSrc ? (
     <figure>
       <img src={finalSrc} alt={alt} onError={handleError}/>
-      <noscript>
-        <img src={src} alt={alt}/>
-      </noscript>
     </figure>
+  ) : (
+    <noscript>
+      <figure>
+        <img src={src} alt={alt}/>
+      </figure>
+    </noscript>
   )
 }
 
