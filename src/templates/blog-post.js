@@ -220,16 +220,16 @@ export const BlogPostTemplate = ({
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
-            {(image && image[themeName]) && (
-              <Spaced bottom="3x">
-                <Figure>
+            <Spaced bottom="3x">
+              <Figure>
+                {(image && image[themeName]) && (
                   <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
-                  <noscript>
-                    <FeaturedImage src={image.light.publicURL} alt="" width="1200" height="600"/>
-                  </noscript>
-                </Figure>
-              </Spaced>
-            )}
+                )}
+                <noscript>
+                  <FeaturedImage src={image.light.publicURL} alt="" width="1200" height="600"/>
+                </noscript>
+              </Figure>
+            </Spaced>
             <ArticleHeaderContent>
               <Spaced bottom="s">
                 <ArticleMeta>
