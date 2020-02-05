@@ -60,8 +60,8 @@ const Main = styled.main`
 const AnchoredHeading = styled(ArticleHeading)`
   &::before {
     display: block;
-    margin-top: -6rem;
-    padding-top: 6rem;
+    margin-top: -2rem;
+    padding-top: 2rem;
     content: "";
   }
 `
