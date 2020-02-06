@@ -29,14 +29,17 @@ const Figure = ({ src, alt }) => {
     }
   }
 
-  return processedMarkup ? (
-    <figure dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
-  ) : (
-    <noscript>
-      <figure>
-        <img src={src} alt={alt}/>
-      </figure>
-    </noscript>
+  return (
+    <>
+      {processedMarkup && (
+        <figure dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
+      )}
+      <noscript>
+        <figure>
+          <img src={src} alt={alt}/>
+        </figure>
+      </noscript>
+    </>
   )
 }
 
