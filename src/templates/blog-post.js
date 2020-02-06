@@ -241,11 +241,6 @@ export const BlogPostTemplate = ({
                   <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
                 </Figure>
               )}
-              <noscript>
-                <figure>
-                  <img src={image.light.publicURL} alt="" width="1200" height="600"/>
-                </figure>
-              </noscript>
             </Spaced>
             <ArticleHeaderContent>
               <Spaced bottom="s">
