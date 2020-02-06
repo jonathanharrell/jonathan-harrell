@@ -1,32 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react'
-import ThemeContext from '../context/theme'
+import React, { useEffect, useMemo, useState } from 'react'
 
 const Figure = ({ src, alt }) => {
-  const { themeName } = useContext(ThemeContext)
-  const [finalSrc, setFinalSrc] = useState()
+  const [markup, setMarkup] = useState('')
 
   // switch to dark version of image if using dark theme
   // NOTE: this relies on strict image naming convention
   useEffect(() => {
-    if (themeName === 'dark') {
-      const re = new RegExp('\/static\/(.+)\/(.*?).svg')
-      const [, , filename] = src.match(re)
-      if (filename) setFinalSrc(`/img/${filename}-dark.svg`)
+    if (src.endsWith('.svg')) {
+      fetchImage(src)
     }
+  }, [])
 
-    if (themeName === 'light') {
-      setFinalSrc(src)
+  const processedMarkup = useMemo(() => {
+    return markup
+      .replace(/#8D8DA6/g, 'var(--textLighter)')
+      .replace(/#C1C1D2/g, 'var(--textLight)')
+  }, [markup])
+
+  const fetchImage = async (src) => {
+    try {
+      const response = await fetch(src, {
+        method: 'GET'
+      })
+      const text = await response.text()
+      setMarkup(text)
+    } catch (error) {
+      console.error(error)
     }
-  }, [themeName])
-
-  const handleError = () => {
-    setFinalSrc(src)
   }
 
-  return finalSrc ? (
-    <figure>
-      <img src={finalSrc} alt={alt} onError={handleError}/>
-    </figure>
+  return processedMarkup ? (
+    <figure dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
   ) : (
     <noscript>
       <figure>

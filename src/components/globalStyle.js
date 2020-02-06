@@ -1,4 +1,36 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
+
+const darkValues = css`
+  --text: ${({ theme }) => theme.colors.white};
+  --textLight: hsl(0, 0%, 45%);
+  --textLighter: hsl(0, 0%, 60%);
+  --textInverse: ${({ theme }) => theme.colors.white};
+  --textCode: ${({ theme }) => theme.colors.white};
+  --backgroundPrimary: hsl(0, 0%, 6%);
+  --backgroundSecondary: hsl(0, 0%, 8%);
+  --backgroundTertiary: hsl(0, 0%, 10%);
+  --backgroundInverse: hsl(0, 0%, 6%);
+  --backgroundElevatedPrimary: '';
+  --backgroundElevatedSecondary: hsl(0, 0%, 10%);
+  --backgroundElevatedInverse: hsl(0, 0%, 8%);
+  --backgroundBody: ${({ theme }) => theme.colors.black};
+  --backgroundSubscribeBanner: hsl(0, 0%, 2%);
+  --backgroundCode: hsl(0, 0%, 2%);
+  --border: hsl(0, 0%, 10%);
+  --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
+  --buttonBackgroundPrimary: transparent;
+  --buttonTextPrimary: ${({ theme }) => theme.colors.white};
+  --buttonBorderSecondary: hsl(210, 15%, 95%);
+  --buttonBackgroundSecondary: transparent;
+  --buttonTextSecondary: ${({ theme }) => theme.colors.white};
+  --primary: ${({ theme }) => theme.colors.blueDarkest};
+  --accent: ${({ theme }) => theme.colors.red};
+  --selection: hsla(0, 0%, 100%, 0.15);
+  --elevationLow: 0 0 0 0.1em var(--selection);
+  --elevationMedium: 0 0 0 0.2em var(--selection);
+  --elevationHigh: 0 0 0 0.3em var(--selection);
+  --gradientGray: linear-gradient(169deg, hsl(0, 0%, 15%) 1%, hsl(0, 0%, 1%) 100%);
+`
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -33,35 +65,13 @@ const GlobalStyle = createGlobalStyle`
     --gradientGray: linear-gradient(169deg, #E2E2E9 5%, #F3F3F6 100%);
 
     .theme-dark {
-      --text: ${({ theme }) => theme.colors.white};
-      --textLight: hsl(0, 0%, 45%);
-      --textLighter: hsl(0, 0%, 60%);
-      --textInverse: ${({ theme }) => theme.colors.white};
-      --textCode: ${({ theme }) => theme.colors.white};
-      --backgroundPrimary: hsl(0, 0%, 6%);
-      --backgroundSecondary: hsl(0, 0%, 8%);
-      --backgroundTertiary: hsl(0, 0%, 10%);
-      --backgroundInverse: hsl(0, 0%, 6%);
-      --backgroundElevatedPrimary: '';
-      --backgroundElevatedSecondary: hsl(0, 0%, 10%);
-      --backgroundElevatedInverse: hsl(0, 0%, 8%);
-      --backgroundBody: ${({ theme }) => theme.colors.black};
-      --backgroundSubscribeBanner: hsl(0, 0%, 2%);
-      --backgroundCode: hsl(0, 0%, 2%);
-      --border: hsl(0, 0%, 10%);
-      --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
-      --buttonBackgroundPrimary: transparent;
-      --buttonTextPrimary: ${({ theme }) => theme.colors.white};
-      --buttonBorderSecondary: hsl(210, 15%, 95%);
-      --buttonBackgroundSecondary: transparent;
-      --buttonTextSecondary: ${({ theme }) => theme.colors.white};
-      --primary: ${({ theme }) => theme.colors.blueDarkest};
-      --accent: ${({ theme }) => theme.colors.red};
-      --selection: hsla(0, 0%, 100%, 0.15);
-      --elevationLow: 0 0 0 0.1em var(--selection);
-      --elevationMedium: 0 0 0 0.2em var(--selection);
-      --elevationHigh: 0 0 0 0.3em var(--selection);
-      --gradientGray: linear-gradient(169deg, hsl(0, 0%, 15%) 1%, hsl(0, 0%, 1%) 100%);
+      ${darkValues}
+    }
+
+    .no-js {
+      @media (prefers-color-scheme: dark) {
+        ${darkValues}
+      }
     }
   }
 
