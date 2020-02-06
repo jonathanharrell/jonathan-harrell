@@ -22,14 +22,29 @@ const ArticleWrap = styled.article`
 `
 
 const ArticleHeader = styled.header`
-  background: var(--gradientGray);
+  position: relative;
+  background-color: var(--backgroundSecondary);
   clip-path: url(#wave);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     height: 32.5rem;
   }
 
+  &::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradientGray);
+    mix-blend-mode: multiply;
+    content: "";
+  }
+
   ${ContentWrap} {
+    position: relative;
+    z-index: 1;
     height: 100%;
   }
 `
