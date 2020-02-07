@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { bool } from 'prop-types'
+import { bool, oneOf } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import Spaced from '../Spaced'
+import ArrowLeft from '../../img/icons/arrow-left.svg'
 import ArrowRight from '../../img/icons/arrow-right.svg'
 
 const Root = styled(GatsbyLink)`
@@ -31,7 +32,7 @@ const Root = styled(GatsbyLink)`
     color: ${({ theme }) => theme.colors.redDark};
 
     svg {
-      transform: translateX(0.1em);
+      transform: ${({ arrowPosition }) => arrowPosition === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
     }
   }
 
@@ -40,10 +41,15 @@ const Root = styled(GatsbyLink)`
   }
 `
 
-const Link = ({ children, arrow, href, ...props }) => (
-  <Root as={href ? 'a' : undefined} href={href} {...props}>
+const Link = ({ children, arrow, arrowPosition, href, ...props }) => (
+  <Root as={href ? 'a' : undefined} arrowPosition={arrowPosition} href={href} {...props}>
+    {(arrow && arrowPosition === 'left') && (
+      <Spaced right="xs">
+        <ArrowLeft/>
+      </Spaced>
+    )}
     {children}
-    {arrow && (
+    {(arrow && arrowPosition === 'right') && (
       <Spaced left="xs">
         <ArrowRight/>
       </Spaced>
@@ -52,11 +58,13 @@ const Link = ({ children, arrow, href, ...props }) => (
 )
 
 Link.propTypes = {
-  arrow: bool
+  arrow: bool,
+  arrowPosition: oneOf(['left', 'right'])
 }
 
 Link.defaultProps = {
-  arrow: false
+  arrow: false,
+  arrowPosition: 'right'
 }
 
 export default Link

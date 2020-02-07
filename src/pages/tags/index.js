@@ -18,7 +18,16 @@ const TagsIndexWrap = styled.div`
 `
 
 const Header = styled.header`
+  padding-top: ${({ theme }) => theme.spacing['3x']};
   text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-top: ${({ theme }) => theme.spacing['4x']};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    padding-top: ${({ theme }) => theme.spacing['5x']};
+  }
 `
 
 const TagsWrap = styled.div`

@@ -8,6 +8,19 @@ const Image = ({ src, alt, title }) => {
   // switch to dark version of image if using dark theme
   // NOTE: this relies on strict image naming convention
   useEffect(() => {
+    const fetchImage = async (src) => {
+      try {
+        const response = await fetch(src, {
+          method: 'GET',
+          signal
+        })
+        const text = await response.text()
+        setMarkup(text)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
     if (src.endsWith('.svg')) {
       fetchImage(src)
     }
@@ -15,26 +28,13 @@ const Image = ({ src, alt, title }) => {
     return () => {
       controller.abort()
     }
-  }, [])
+  }, [controller, src, signal])
 
   const processedMarkup = useMemo(() => {
     return markup
       .replace(/#8D8DA6/g, 'var(--textLighter)')
       .replace(/#C1C1D2/g, 'var(--textLight)')
   }, [markup])
-
-  const fetchImage = async (src) => {
-    try {
-      const response = await fetch(src, {
-        method: 'GET',
-        signal
-      })
-      const text = await response.text()
-      setMarkup(text)
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
   return (
     <>

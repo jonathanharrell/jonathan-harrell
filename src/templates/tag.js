@@ -29,6 +29,12 @@ const Header = styled.header`
   }
 `
 
+const Links = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const ArticlesWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
@@ -75,11 +81,16 @@ class TagRoute extends React.Component {
                     {tagHeading}
                   </Heading>
                   <Spaced top="m">
-                    <div>
-                      <Link to="/tags/" arrow={true}>
-                        Browse all tags
-                      </Link>
-                    </div>
+                    <Links>
+                      <Spaced horizontal="m">
+                        <Link to="/blog/" arrow={true} arrowPosition="left">
+                          See all articles
+                        </Link>
+                        <Link to="/tags/" arrow={true} arrowPosition="right">
+                          Browse all tags
+                        </Link>
+                      </Spaced>
+                    </Links>
                   </Spaced>
                 </div>
               </Padded>

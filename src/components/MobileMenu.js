@@ -244,7 +244,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
       // emit to parent
       handleExpandedChange(false)
     }
-  }, [visible, expanded])
+  }, [visible, expanded, handleExpandedChange])
 
   const setLastTabbableElementRef = element => {
     lastTabbableElementRef.push(element)

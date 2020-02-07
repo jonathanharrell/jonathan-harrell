@@ -40,6 +40,12 @@ const TagWrap = styled.li`
 
 const Link = styled(GatsbyLink)`
   background-color: var(--backgroundTertiary);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--backgroundSecondary);
+  }
 `
 
 export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: post } }) {

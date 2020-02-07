@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useCallback, useContext, useRef, useState } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
@@ -80,9 +80,9 @@ const Layout = ({ children }) => {
   const { theme } = useContext(ThemeContext)
   const mainRef = useRef()
 
-  const handleMobileMenuExpandedChange = expanded => {
+  const handleMobileMenuExpandedChange = useCallback(expanded => {
     setMobileMenuExpanded(expanded)
-  }
+  }, [])
 
   const skipToContent = () => {
     mainRef.current.focus()
