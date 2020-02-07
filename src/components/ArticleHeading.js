@@ -61,7 +61,6 @@ const ArticleHeading = ({ children, ...props }) => {
 
     const el = document.createElement('textarea')
     el.value = event.target.href
-    console.log(event.target.href)
     document.body.appendChild(el)
 
     el.select()
