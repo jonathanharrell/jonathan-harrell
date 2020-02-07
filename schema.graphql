@@ -478,6 +478,7 @@ type MdxFields {
 
 type MdxFrontmatter {
   bio: String
+  bioimage: File
   date(
     #Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
     difference: String,
@@ -1031,6 +1032,42 @@ enum FileFieldsEnum {
   childMdx___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___fileAbsolutePath
   childMdx___frontmatter___bio
+  childMdx___frontmatter___bioimage___absolutePath
+  childMdx___frontmatter___bioimage___accessTime
+  childMdx___frontmatter___bioimage___atime
+  childMdx___frontmatter___bioimage___atimeMs
+  childMdx___frontmatter___bioimage___base
+  childMdx___frontmatter___bioimage___birthTime
+  childMdx___frontmatter___bioimage___birthtime
+  childMdx___frontmatter___bioimage___birthtimeMs
+  childMdx___frontmatter___bioimage___blksize
+  childMdx___frontmatter___bioimage___blocks
+  childMdx___frontmatter___bioimage___changeTime
+  childMdx___frontmatter___bioimage___children
+  childMdx___frontmatter___bioimage___ctime
+  childMdx___frontmatter___bioimage___ctimeMs
+  childMdx___frontmatter___bioimage___dev
+  childMdx___frontmatter___bioimage___dir
+  childMdx___frontmatter___bioimage___ext
+  childMdx___frontmatter___bioimage___extension
+  childMdx___frontmatter___bioimage___gid
+  childMdx___frontmatter___bioimage___id
+  childMdx___frontmatter___bioimage___ino
+  childMdx___frontmatter___bioimage___mode
+  childMdx___frontmatter___bioimage___modifiedTime
+  childMdx___frontmatter___bioimage___mtime
+  childMdx___frontmatter___bioimage___mtimeMs
+  childMdx___frontmatter___bioimage___name
+  childMdx___frontmatter___bioimage___nlink
+  childMdx___frontmatter___bioimage___prettySize
+  childMdx___frontmatter___bioimage___publicURL
+  childMdx___frontmatter___bioimage___rdev
+  childMdx___frontmatter___bioimage___relativeDirectory
+  childMdx___frontmatter___bioimage___relativePath
+  childMdx___frontmatter___bioimage___root
+  childMdx___frontmatter___bioimage___size
+  childMdx___frontmatter___bioimage___sourceInstanceName
+  childMdx___frontmatter___bioimage___uid
   childMdx___frontmatter___date
   childMdx___frontmatter___description
   childMdx___frontmatter___featuredimage___absolutePath
@@ -1454,6 +1491,67 @@ enum MdxFieldsEnum {
   fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fileAbsolutePath
   frontmatter___bio
+  frontmatter___bioimage___absolutePath
+  frontmatter___bioimage___accessTime
+  frontmatter___bioimage___atime
+  frontmatter___bioimage___atimeMs
+  frontmatter___bioimage___base
+  frontmatter___bioimage___birthTime
+  frontmatter___bioimage___birthtime
+  frontmatter___bioimage___birthtimeMs
+  frontmatter___bioimage___blksize
+  frontmatter___bioimage___blocks
+  frontmatter___bioimage___changeTime
+  frontmatter___bioimage___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childImageSharp___id
+  frontmatter___bioimage___childMdx___body
+  frontmatter___bioimage___childMdx___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___fileAbsolutePath
+  frontmatter___bioimage___childMdx___headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___mdxAST @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___rawBody
+  frontmatter___bioimage___childMdx___tableOfContents @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___childMdx___timeToRead @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___bioimage___children
+  frontmatter___bioimage___children___children
+  frontmatter___bioimage___children___id
+  frontmatter___bioimage___ctime
+  frontmatter___bioimage___ctimeMs
+  frontmatter___bioimage___dev
+  frontmatter___bioimage___dir
+  frontmatter___bioimage___ext
+  frontmatter___bioimage___extension
+  frontmatter___bioimage___gid
+  frontmatter___bioimage___id
+  frontmatter___bioimage___ino
+  frontmatter___bioimage___internal___content
+  frontmatter___bioimage___internal___contentDigest
+  frontmatter___bioimage___internal___description
+  frontmatter___bioimage___internal___fieldOwners
+  frontmatter___bioimage___internal___ignoreType
+  frontmatter___bioimage___internal___mediaType
+  frontmatter___bioimage___internal___owner
+  frontmatter___bioimage___internal___type
+  frontmatter___bioimage___mode
+  frontmatter___bioimage___modifiedTime
+  frontmatter___bioimage___mtime
+  frontmatter___bioimage___mtimeMs
+  frontmatter___bioimage___name
+  frontmatter___bioimage___nlink
+  frontmatter___bioimage___parent___children
+  frontmatter___bioimage___parent___id
+  frontmatter___bioimage___prettySize
+  frontmatter___bioimage___publicURL
+  frontmatter___bioimage___rdev
+  frontmatter___bioimage___relativeDirectory
+  frontmatter___bioimage___relativePath
+  frontmatter___bioimage___root
+  frontmatter___bioimage___size
+  frontmatter___bioimage___sourceInstanceName
+  frontmatter___bioimage___uid
   frontmatter___date
   frontmatter___description
   frontmatter___featuredimage___absolutePath
@@ -2275,6 +2373,7 @@ input MdxFilterInput {
 
 input MdxFrontmatterFilterInput {
   bio: StringQueryOperatorInput
+  bioimage: FileFilterInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
   featuredimage: FileFilterInput
