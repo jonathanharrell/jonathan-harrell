@@ -230,11 +230,9 @@ const MobileMenu = ({ handleExpandedChange }) => {
         // emit to parent
         handleExpandedChange(true)
       } else {
-        // when menu is closed, reset body to original scroll position
-        const scrollY = document.body.style.top
+        // when menu is closed, reset body
         document.body.style.position = ''
         document.body.style.top = ''
-        //window.scrollTo(0, parseInt(scrollY || '0') * -1)
         // emit to parent
         handleExpandedChange(false)
         // focus toggle button
