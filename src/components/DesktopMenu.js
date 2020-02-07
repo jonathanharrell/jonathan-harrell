@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
+import Tippy from '@tippy.js/react'
+import 'tippy.js/dist/tippy.css'
+import 'tippy.js/animations/shift-away.css'
 import ThemeContext from '../context/theme'
 import Spaced from '../jh-ui/Spaced'
 import { breakpoints } from '../jh-ui/theme'
@@ -163,15 +166,25 @@ const DesktopMenu = () => {
             <h3 id="site-tools-label">Site Tools</h3>
           </ScreenReaderText>
           <Spaced left="xl">
+
             <ThemeToggleButton
               unstyled
-              title={`Change theme to ${themeName === 'light' ? 'dark' : 'light'}`}
+              // title={`Change theme to ${themeName === 'light' ? 'dark' : 'light'}`}
               onClick={toggleTheme}
             >
               <ScreenReaderText>
                 Change theme to {themeName === 'light' ? 'dark' : 'light'}
               </ScreenReaderText>
-              {themeName === 'light' ? <Sun/> : <Moon/>}
+              <Tippy
+                content={`Change theme to ${themeName === 'light' ? 'dark' : 'light'}`}
+                placement="bottom"
+                animation="shift-away"
+                theme="jh"
+              >
+                <span>
+                {themeName === 'light' ? <Sun/> : <Moon/>}
+                </span>
+              </Tippy>
             </ThemeToggleButton>
             <SubscribeButton order="secondary">
               Subscribe

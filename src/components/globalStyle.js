@@ -137,6 +137,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--accent);
     color: ${({ theme }) => theme.colors.white};
   }
+
+  .tippy-tooltip.jh-theme {
+    background-color: var(--backgroundTertiary);
+    color: var(--text);
+
+    &[data-placement^='bottom'] {
+      .tippy-arrow {
+        border-bottom-color: var(--backgroundTertiary);
+      }
+    }
+  }
 `
 
 export default GlobalStyle

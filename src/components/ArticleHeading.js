@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
+import 'tippy.js/animations/shift-away.css'
 import Heading from '../jh-ui/Heading'
 import Hash from '../img/icons/hash.svg'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
@@ -76,6 +77,8 @@ const ArticleHeading = ({ children, ...props }) => {
       <Tippy
         content="Copy link to this section"
         placement="bottom"
+        animation="shift-away"
+        theme="jh"
       >
         <HeadingLink
           href={`#${id}`}
