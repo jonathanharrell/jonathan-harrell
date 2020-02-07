@@ -2,12 +2,13 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 const Image = ({ src, alt, title }) => {
   const [markup, setMarkup] = useState('')
-  const controller = new AbortController()
-  const signal = controller.signal
 
   // switch to dark version of image if using dark theme
   // NOTE: this relies on strict image naming convention
   useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+
     const fetchImage = async (src) => {
       try {
         const response = await fetch(src, {
@@ -28,7 +29,7 @@ const Image = ({ src, alt, title }) => {
     return () => {
       controller.abort()
     }
-  }, [controller, src, signal])
+  }, [src])
 
   const processedMarkup = useMemo(() => {
     return markup
