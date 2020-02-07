@@ -72,8 +72,8 @@ collections:
           - label: Title
             name: title
             widget: string
-          - label: Image
-            name: image
+          - label: Bio Image
+            name: bioimage
             widget: image
           - label: Bio
             name: bio
