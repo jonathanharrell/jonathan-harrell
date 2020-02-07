@@ -170,9 +170,11 @@ export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) 
       <HeaderWrap aria-labelledby="about-label">
         <AboutContentWrap>
           <HeaderContentWrap>
-            <BioFigure>
-              <BioImage src={image.publicURL} alt=""/>
-            </BioFigure>
+            {image && (
+              <BioFigure>
+                <BioImage src={image.publicURL} alt=""/>
+              </BioFigure>
+            )}
             <BioText>
               <Heading level={1} id="about-label">
                 {title || 'About Jonathan'}
@@ -257,13 +259,13 @@ AboutPageTemplate.propTypes = {
 
 const AboutPage = ({ data }) => {
   const { mdx: post } = data
-  const { title, image, bio, involvement, what_i_use: whatIUse } = post.frontmatter
+  const { title, bioimage, bio, involvement, what_i_use: whatIUse } = post.frontmatter
 
   return (
     <Layout>
       <AboutPageTemplate
         title={title}
-        image={image}
+        image={bioimage}
         bio={bio}
         involvement={involvement}
         whatIUse={whatIUse}
@@ -283,7 +285,7 @@ export const aboutPageQuery = graphql`
     mdx(frontmatter: {templateKey: {eq: "about-page"}}) {
       frontmatter {
         title
-        image {
+        bioimage {
           publicURL
         }
         bio
