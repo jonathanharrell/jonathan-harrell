@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
+import Tippy from '@tippy.js/react'
+import 'tippy.js/dist/tippy.css'
 import Heading from '../jh-ui/Heading'
 import Hash from '../img/icons/hash.svg'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
@@ -14,7 +16,6 @@ const HeadingLink = styled.a`
   display: none;
   position: absolute;
   top: 2rem;
-  height: 100%;
   padding-top: 0.5rem;
   color: var(--textLighter);
   text-decoration: none;
@@ -22,6 +23,10 @@ const HeadingLink = styled.a`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: block;
+  }
+
+  svg {
+    pointer-events: none;
   }
 
   &:hover,
@@ -51,17 +56,39 @@ const HeadingLink = styled.a`
 const ArticleHeading = ({ children, ...props }) => {
   const id = kebabCase(children)
 
+  const copyLink = event => {
+    event.preventDefault()
+
+    const el = document.createElement('textarea')
+    el.value = event.target.href
+    console.log(event.target.href)
+    document.body.appendChild(el)
+
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }
+
   return (
     <HeadingWrap>
       <Heading level={2} id={id} {...props}>
         {children}
       </Heading>
-      <HeadingLink href={`#${id}`} aria-labelledby={`${id}-label`}>
-        <ScreenReaderText id={`${id}-label`}>
-          Link to this section
-        </ScreenReaderText>
-        <Hash/>
-      </HeadingLink>
+      <Tippy
+        content="Copy link to this section"
+        placement="bottom"
+      >
+        <HeadingLink
+          href={`#${id}`}
+          aria-labelledby={`${id}-label`}
+          onClick={copyLink}
+        >
+          <ScreenReaderText id={`${id}-label`}>
+            Link to this section
+          </ScreenReaderText>
+          <Hash/>
+        </HeadingLink>
+      </Tippy>
     </HeadingWrap>
   )
 }
