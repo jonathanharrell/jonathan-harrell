@@ -13,7 +13,7 @@ const HeadingWrap = styled.div`
 const HeadingLink = styled.a`
   display: none;
   position: absolute;
-  top: 6rem;
+  top: 2rem;
   height: 100%;
   padding-top: 0.5rem;
   color: var(--textLighter);

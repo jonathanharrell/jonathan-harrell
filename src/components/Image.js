@@ -1,13 +1,19 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-const Figure = ({ src, alt }) => {
+const Image = ({ src, alt, title }) => {
   const [markup, setMarkup] = useState('')
+  const controller = new AbortController()
+  const signal = controller.signal
 
   // switch to dark version of image if using dark theme
   // NOTE: this relies on strict image naming convention
   useEffect(() => {
     if (src.endsWith('.svg')) {
       fetchImage(src)
+    }
+
+    return () => {
+      controller.abort()
     }
   }, [])
 
@@ -20,7 +26,8 @@ const Figure = ({ src, alt }) => {
   const fetchImage = async (src) => {
     try {
       const response = await fetch(src, {
-        method: 'GET'
+        method: 'GET',
+        signal
       })
       const text = await response.text()
       setMarkup(text)
@@ -32,15 +39,14 @@ const Figure = ({ src, alt }) => {
   return (
     <>
       {processedMarkup && (
-        <figure dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
+        <div dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
       )}
       <noscript>
-        <figure>
-          <img src={src} alt={alt}/>
-        </figure>
+        <img src={src} alt={alt}/>
       </noscript>
+      {title && <figcaption>{title}</figcaption>}
     </>
   )
 }
 
-export default Figure
+export default Image

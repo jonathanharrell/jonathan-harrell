@@ -77,12 +77,7 @@ export default () => (
                 date
                 tags
                 featuredimage {
-                    light {
-                      publicURL
-                    }
-                    dark {
-                      publicURL
-                    }
+                  publicURL
                 }
               }
             }

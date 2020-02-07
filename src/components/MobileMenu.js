@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import BodyClassName from 'react-body-classname'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import debounce from 'lodash/debounce'
@@ -24,6 +23,8 @@ const MobileMenuWrap = styled.div`
 `
 
 const MenuButton = styled(Button)`
+  background-color: var(--backgroundSecondary);
+
   &:hover,
   &:focus {
     transform: scale(1.05);
@@ -236,6 +237,8 @@ const MobileMenu = ({ handleExpandedChange }) => {
         window.scrollTo(0, parseInt(scrollY || '0') * -1)
         // emit to parent
         handleExpandedChange(false)
+        // focus toggle button
+        toggleButtonRef.current.focus()
       }
     } else {
       // emit to parent
@@ -281,7 +284,6 @@ const MobileMenu = ({ handleExpandedChange }) => {
   }
 
   const close = () => {
-    toggleButtonRef.current.focus()
     setExpanded(false)
   }
 
@@ -291,7 +293,6 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
   return visible ? (
     <MobileMenuWrap ref={menuWrapRef} onKeyDown={handleKeydown}>
-      <BodyClassName className={expanded ? 'mobile-menu-expanded' : ''}/>
       <MenuButton
         ref={toggleButtonRef}
         expanded={expanded}

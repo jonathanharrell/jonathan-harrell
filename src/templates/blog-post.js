@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from 'styled-components'
@@ -15,7 +15,6 @@ import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
-import ThemeContext from '../context/theme'
 
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
@@ -23,6 +22,7 @@ const ArticleWrap = styled.article`
 
 const ArticleHeader = styled.header`
   position: relative;
+  overflow: hidden;
   background-color: var(--backgroundSecondary);
   clip-path: url(#wave);
 
@@ -226,8 +226,6 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
-  const { themeName } = useContext(ThemeContext)
-
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
@@ -235,20 +233,13 @@ export const BlogPostTemplate = ({
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
-            <Spaced bottom="3x">
-              {(image && image[themeName]) && (
+            {image && (
+              <Spaced bottom="3x">
                 <Figure>
-                  <FeaturedImage src={image[themeName].publicURL} alt="" width="1200" height="600"/>
+                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
                 </Figure>
-              )}
-              {(image && image.light) && (
-                <noscript>
-                  <Figure>
-                    <FeaturedImage src={image.light.publicURL} alt="" width="1200" height="600"/>
-                  </Figure>
-                </noscript>
-              )}
-            </Spaced>
+              </Spaced>
+            )}
             <ArticleHeaderContent>
               <Spaced bottom="s">
                 <ArticleMeta>
@@ -378,12 +369,7 @@ export const pageQuery = graphql`
         description
         tags
         featuredimage {
-          light {
-            publicURL
-          }
-          dark {
-            publicURL
-          }
+          publicURL
         }
       }
     }

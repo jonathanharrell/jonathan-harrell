@@ -19,7 +19,7 @@ import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
 import ArticleHeading from './ArticleHeading'
 import Header from './Header'
-import Figure from './Figure'
+import Image from './Image'
 
 const Wrap = styled.div`
   display: flex;
@@ -170,11 +170,21 @@ const Layout = ({ children }) => {
                   <Heading level={6} {...props}/>
                 </Spaced>
               ),
-              p: props => (
-                <Spaced bottom="m">
-                  <Text {...props}/>
-                </Spaced>
-              ),
+              p: props => {
+                if (props.children.props && props.children.props.originalType === 'img') {
+                  return (
+                    <Spaced bottom="m">
+                      <figure {...props}/>
+                    </Spaced>
+                  )
+                }
+
+                return (
+                  <Spaced bottom="m">
+                    <Text {...props}/>
+                  </Spaced>
+                )
+              },
               ul: props => (
                 <Spaced bottom="m" left="m">
                   <Ul {...props} />
@@ -194,7 +204,7 @@ const Layout = ({ children }) => {
               code: Code,
               inlineCode: InlineCode,
               a: props => <Link element="a" {...props}/>,
-              img: Figure
+              img: Image
             }}
           >
             {children}

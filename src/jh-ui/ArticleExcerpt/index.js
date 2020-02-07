@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { arrayOf, instanceOf, oneOf, shape, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
@@ -9,7 +9,6 @@ import Text from '../Text'
 import Spaced from '../Spaced'
 import Padded from '../Padded'
 import ScreenReaderText from '../ScreenReaderText'
-import ThemeContext from '../../context/theme'
 
 const ArticleCard = styled(Card)`
   position: relative;
@@ -61,7 +60,6 @@ const Tags = styled.ul`
 `
 
 const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
-  const { themeName } = useContext(ThemeContext)
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -81,10 +79,10 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
         </ScreenReaderText>
       </Link>
       <CardContent>
-        {(image && image[themeName]) && (
+        {image && (
           <ImageWrap>
             <Image
-              src={image[themeName].publicURL}
+              src={image.publicURL}
               role="presentation"
             />
           </ImageWrap>
@@ -145,12 +143,7 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
 ArticleExcerpt.propTypes = {
   link: string.isRequired,
   image: shape({
-    light: shape({
-      publicURL: string
-    }),
-    dark: shape({
-      publicURL: string
-    })
+    publicURL: string
   }),
   imagePosition: oneOf(['top', 'left', 'right']),
   imageRatio: oneOf([1 / 2, 2 / 3]),
