@@ -243,9 +243,9 @@ export const BlogPostTemplate = ({
               )}
               {(image && image.light) && (
                 <noscript>
-                  <figure>
-                    <img src={image.light.publicURL} alt="" width="1200" height="600"/>
-                  </figure>
+                  <Figure>
+                    <FeaturedImage src={image.light.publicURL} alt="" width="1200" height="600"/>
+                  </Figure>
                 </noscript>
               )}
             </Spaced>
