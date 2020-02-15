@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="621px" viewBox="0 0 592 621" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>live-theming</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="189.5" cy="216.5" r="169.5"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="339" height="339" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <circle id="path-3" cx="317.5" cy="417.5" r="148.5"></circle>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="297" height="297" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="live-theming" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <use id="Oval-2-Copy-2" stroke="#C9C9D6" mask="url(#mask-2)" stroke-width="6" stroke-dasharray="4" xlink:href="#path-1"></use>
+        <use id="Oval-2-Copy-3" stroke="#C9C9D6" mask="url(#mask-4)" stroke-width="6" stroke-dasharray="4" xlink:href="#path-3"></use>
+        <polygon id="Line-6" fill="#C9C9D6" fill-rule="nonzero" transform="translate(507.000000, 1.500000) rotate(-360.000000) translate(-507.000000, -1.500000) " points="592 -4.4408921e-16 592 3 422 3 422 -4.4408921e-16"></polygon>
+        <circle id="Oval-2" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" cx="244.5" cy="300.5" r="68"></circle>
+        <circle id="Oval-2-Copy" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" cx="245.5" cy="304.5" r="109"></circle>
+        <circle id="Oval-2-Copy-4" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" cx="361.5" cy="262.5" r="210"></circle>
+        <path id="Line-4" d="M134.316505,129.076499 L136.668753,130.332701 L152.861825,138.980498 L154.184965,139.687111 L152.771738,142.33339 L151.448599,141.626777 L140.306,135.675 L145.793525,144.276568 L419.764551,573.694335 L420.571342,574.958886 L418.04224,576.572468 L417.235449,575.307917 L143.264423,145.890149 L137.777,137.289 L138.478292,149.901907 L138.561511,151.399597 L135.566132,151.566035 L135.482913,150.068345 L134.46445,131.739059 L134.316505,129.076499 Z" fill="#8D8DA6" fill-rule="nonzero"></path>
+        <path id="Line-5" d="M415.893609,228.269187 L414.66819,230.637616 L406.232299,246.942086 L405.543001,248.274328 L402.878518,246.895731 L403.567816,245.56349 L409.372,234.345 L400.857556,239.934883 L151.323213,403.756796 L150.069291,404.580009 L148.422865,402.072164 L149.676787,401.248952 L399.21113,237.427039 L407.725,231.837 L395.124245,232.702201 L393.627768,232.804944 L393.422282,229.81199 L394.918759,229.709247 L413.233205,228.451841 L415.893609,228.269187 Z" fill="#8D8DA6" fill-rule="nonzero"></path>
+    </g>
+</svg>
