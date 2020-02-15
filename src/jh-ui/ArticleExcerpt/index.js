@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrayOf, instanceOf, oneOf, shape, string } from 'prop-types'
+import { arrayOf, instanceOf, object, oneOf, shape, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
@@ -33,11 +33,22 @@ export const CardContent = styled.div`
 
 export const ImageWrap = styled.figure`
   position: relative;
+  overflow: hidden;
   padding: 25% 0;
   background-color: var(--backgroundSecondary);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 30% 0;
+  }
+
+  svg {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: translateY(-50%);
   }
 `
 
@@ -59,7 +70,7 @@ const Tags = styled.ul`
   }
 `
 
-const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, excerpt, tags, ...props }) => {
+const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, tags, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -79,12 +90,15 @@ const ArticleExcerpt = ({ link, image, imagePosition, imageRatio, date, title, e
         </ScreenReaderText>
       </Link>
       <CardContent>
-        {image && (
+        {(image || svg) && (
           <ImageWrap>
-            <Image
-              src={image.publicURL}
-              role="presentation"
-            />
+            {svg ? svg : null}
+            {image && (
+              <Image
+                src={image.publicURL}
+                role="presentation"
+              />
+            )}
           </ImageWrap>
         )}
         <Padded all="xxl">
@@ -150,7 +164,8 @@ ArticleExcerpt.propTypes = {
   date: instanceOf(Date),
   title: string.isRequired,
   excerpt: string.isRequired,
-  tags: arrayOf(string)
+  tags: arrayOf(string),
+  svg: object
 }
 
 ArticleExcerpt.defaultProps = {

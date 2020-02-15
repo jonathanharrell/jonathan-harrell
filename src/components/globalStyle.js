@@ -6,17 +6,17 @@ const darkValues = css`
   --textLighter: hsl(0, 0%, 60%);
   --textInverse: ${({ theme }) => theme.colors.white};
   --textCode: ${({ theme }) => theme.colors.white};
-  --backgroundPrimary: hsl(0, 0%, 6%);
-  --backgroundSecondary: hsl(0, 0%, 8%);
-  --backgroundTertiary: hsl(0, 0%, 10%);
-  --backgroundInverse: hsl(0, 0%, 6%);
+  --backgroundPrimary: hsl(0, 0%, 8%);
+  --backgroundSecondary: hsl(0, 0%, 10%);
+  --backgroundTertiary: hsl(0, 0%, 12%);
+  --backgroundInverse: hsl(0, 0%, 8%);
   --backgroundElevatedPrimary: '';
-  --backgroundElevatedSecondary: hsl(0, 0%, 10%);
-  --backgroundElevatedInverse: hsl(0, 0%, 8%);
+  --backgroundElevatedSecondary: hsl(0, 0%, 12%);
+  --backgroundElevatedInverse: hsl(0, 0%, 10%);
   --backgroundBody: ${({ theme }) => theme.colors.black};
   --backgroundSubscribeBanner: hsl(0, 0%, 2%);
   --backgroundCode: hsl(0, 0%, 2%);
-  --border: hsl(0, 0%, 10%);
+  --border: hsl(0, 0%, 12%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
   --buttonBackgroundPrimary: transparent;
   --buttonTextPrimary: ${({ theme }) => theme.colors.white};
@@ -29,7 +29,11 @@ const darkValues = css`
   --elevationLow: 0 0 0 0.1em var(--selection);
   --elevationMedium: 0 0 0 0.2em var(--selection);
   --elevationHigh: 0 0 0 0.3em var(--selection);
-  --gradientGray: linear-gradient(169deg, transparent 5%, hsl(0, 0%, 95%) 100%);
+  --gradientGray: linear-gradient(169deg, transparent 5%, hsl(0, 0%, 50%) 100%);
+  --illustrationHeroShapeBackground: hsl(0, 0%, 60%);
+  --illustrationLineShade1: hsl(240, 3%, 12%);
+  --illustrationLineShade2: hsl(240, 5%, 15%);
+  --illustrationLineShade3: hsl(240, 7%, 19%);
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -63,6 +67,10 @@ const GlobalStyle = createGlobalStyle`
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
     --gradientGray: linear-gradient(169deg, transparent 5%, hsl(0, 0%, 95%) 100%);
+    --illustrationHeroShapeBackground: hsl(240, 12%, 60%);
+    --illustrationLineShade1: hsl(240, 14%, 89%);
+    --illustrationLineShade2: hsl(240, 14%, 85%);
+    --illustrationLineShade3: hsl(240, 14%, 80%);
 
     .theme-dark {
       ${darkValues}
@@ -81,7 +89,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: border-color 0.2s ease-out, background 0.2s ease-out, color 0.2s ease-out, stroke 0.2s ease-out;
+    transition: border-color 0.2s ease-out, background 0.2s ease-out, color 0.2s ease-out, fill 0.2s ease-out, stroke 0.2s ease-out;
   }
 
   ::selection {

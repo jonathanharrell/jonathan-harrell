@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import Text from '../jh-ui/Text'
 
 const Image = ({ src, alt, title }) => {
   const [markup, setMarkup] = useState('')
@@ -33,8 +34,11 @@ const Image = ({ src, alt, title }) => {
 
   const processedMarkup = useMemo(() => {
     return markup
-      .replace(/#8D8DA6/g, 'var(--textLighter)')
-      .replace(/#C1C1D2/g, 'var(--textLight)')
+      .replace(/#8D8DA6/g, 'var(--illustrationHeroShapeBackground)')
+      .replace(/#DEDEE6/g, 'var(--illustrationLineShade1)')
+      .replace(/#D4D4DD/g, 'var(--illustrationLineShade2)')
+      .replace(/#C9C9D6/g, 'var(--illustrationLineShade3)')
+      .replace(/#C1C1D2/g, 'var(--illustrationLineShade3)')
   }, [markup])
 
   return (
@@ -45,7 +49,7 @@ const Image = ({ src, alt, title }) => {
       <noscript>
         <img src={src} alt={alt}/>
       </noscript>
-      {title && <figcaption>{title}</figcaption>}
+      {title && <Text order="body" color="textLighter" element="figcaption">{title}</Text>}
     </>
   )
 }

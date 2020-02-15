@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, StaticQuery } from 'gatsby'
 import ArticleExcerpt from '../jh-ui/ArticleExcerpt'
+import Image from './Image'
 
 const ArticlesWrap = styled.div`
   display: grid;
@@ -36,7 +37,8 @@ class Articles extends React.Component {
             key={post.id}
             index={index}
             link={post.fields.slug}
-            image={post.frontmatter.featuredimage}
+            svg={post.frontmatter.featuredimage ?
+              <Image src={post.frontmatter.featuredimage.publicURL} alt="" width="376" height="226"/> : undefined}
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
             excerpt={post.excerpt}

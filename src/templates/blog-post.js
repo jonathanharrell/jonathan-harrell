@@ -9,6 +9,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 import ContentWrap from '../components/ContentWrap'
+import Image from '../components/Image'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Padded from '../jh-ui/Padded'
@@ -81,10 +82,15 @@ const Figure = styled.figure`
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     right: 0;
   }
-`
 
-const FeaturedImage = styled.img`
-  width: 100%;
+  > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    height: 100%;
+  }
 `
 
 const ArticleHeaderContent = styled.div`
@@ -236,7 +242,7 @@ export const BlogPostTemplate = ({
             {image && (
               <Spaced bottom="3x">
                 <Figure>
-                  <FeaturedImage src={image.publicURL} alt="" width="1200" height="600"/>
+                  <Image src={image.publicURL} alt="" width="1200" height="600"/>
                 </Figure>
               </Spaced>
             )}
