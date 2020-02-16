@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>semantic-image-overlays</title>
+    <desc>Created with Sketch.</desc>
+    <g id="semantic-image-overlays" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="background" fill="#DEDEE6" points="150.77474 0 526 0 207.22526 591 -168 591"></polygon>
+        <path d="M248.42966,121.5 L101.515011,393.5 L373.57034,393.5 L520.484989,121.5 L248.42966,121.5 Z" id="overlay" stroke="#C9C9D6" stroke-width="3"></path>
+        <path d="M276.42966,159.5 L129.515011,431.5 L401.57034,431.5 L548.484989,159.5 L276.42966,159.5 Z" id="rectangle" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6"></path>
+        <path d="M109.408957,222.4 L91.3549267,255.6 L363.591043,255.6 L381.645073,222.4 L109.408957,222.4 Z" id="text" stroke="#8D8DA6" stroke-width="2.79999995"></path>
+        <path d="M73.4089567,291.4 L55.3549267,324.6 L327.591043,324.6 L345.645073,291.4 L73.4089567,291.4 Z" id="text" stroke="#8D8DA6" stroke-width="2.79999995"></path>
+    </g>
+</svg>
