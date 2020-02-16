@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="621px" viewBox="0 0 592 621" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>css-form-styling</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="85" y="44" width="422" height="36" rx="8"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="422" height="36" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="0" y="0" width="422" height="36" rx="8"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="422" height="36" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="121" y="292" width="351" height="36" rx="8"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="351" height="36" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="css-form-styling" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <use id="Rectangle-13-Copy-9" stroke="#C9C9D6" mask="url(#mask-2)" stroke-width="6" stroke-dasharray="4" xlink:href="#path-1"></use>
+        <rect id="Rectangle-13" stroke="#C9C9D6" stroke-width="3" x="86.5" y="101.5" width="419" height="117" rx="8"></rect>
+        <rect id="Rectangle-13" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" x="120.5" y="134.5" width="50" height="50" rx="8"></rect>
+        <g id="Group" transform="translate(85.000000, 400.000000)">
+            <use id="Rectangle-13-Copy-17" stroke="#C9C9D6" mask="url(#mask-4)" stroke-width="6" stroke-dasharray="4" xlink:href="#path-3"></use>
+            <rect id="Rectangle-13-Copy-16" stroke="#C9C9D6" stroke-width="3" x="1.5" y="57.5" width="419" height="117" rx="8"></rect>
+            <path d="M362.5,134.583385 L387.899347,102.5 L337.100653,102.5 L362.5,134.583385 Z" id="Triangle" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6"></path>
+        </g>
+        <use id="Rectangle-13-Copy-19" stroke="#8D8DA6" mask="url(#mask-6)" stroke-width="6" stroke-dasharray="4" xlink:href="#path-5"></use>
+        <rect id="Rectangle-13-Copy-15" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" x="86.5" y="251.5" width="419" height="117" rx="8"></rect>
+    </g>
+</svg>
