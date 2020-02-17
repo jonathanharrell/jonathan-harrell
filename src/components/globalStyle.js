@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
     --elevationLow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.12);
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
-    --gradientGray: linear-gradient(169deg, transparent 5%, hsl(0, 0%, 95%) 100%);
+    --gradientGray: linear-gradient(169deg, hsl(0, 0%, 100%) 5%, hsl(0, 0%, 95%) 100%);
     --illustrationHeroShapeBackground: hsl(240, 12%, 60%);
     --illustrationLineShade1: hsl(240, 14%, 89%);
     --illustrationLineShade2: hsl(240, 14%, 85%);
