@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>component-reusability</title>
+    <desc>Created with Sketch.</desc>
+    <g id="component-reusability" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#C9C9D6" stroke-width="3" x="2" y="254" width="81" height="337"></rect>
+        <rect id="Rectangle" stroke="#C9C9D6" stroke-width="3" x="422" y="2" width="81" height="165"></rect>
+        <circle id="Oval-4-Copy" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" cx="336" cy="252" r="82.5"></circle>
+        <circle id="Oval-4-Copy-2" stroke="#C9C9D6" stroke-width="3" cx="168.5" cy="84.5" r="82.5"></circle>
+        <path d="M334.5,253.506616 C243.734774,254.307609 170.307609,327.734774 169.506616,418.5 L334.5,418.5 L334.5,253.506616 Z" id="Path" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6"></path>
+        <rect id="Rectangle" stroke="#8D8DA6" stroke-width="3" x="2" y="2" width="165" height="81" rx="40.5"></rect>
+        <rect id="Rectangle" stroke="#8D8DA6" stroke-width="3" transform="translate(42.500000, 420.500000) rotate(-90.000000) translate(-42.500000, -420.500000) " x="-40" y="380" width="165" height="81" rx="40.5"></rect>
+        <rect id="Rectangle" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6" transform="translate(505.000000, 108.000000) rotate(-315.000000) translate(-505.000000, -108.000000) " x="464.5" y="67.5" width="81" height="81"></rect>
+        <polyline id="Path" stroke="#8D8DA6" stroke-width="3" points="338 592 338 505 503 505 503 592"></polyline>
+    </g>
+</svg>
