@@ -1,5 +1,5 @@
 import React from 'react'
-import { arrayOf, instanceOf, object, oneOf, shape, string } from 'prop-types'
+import { instanceOf, object, oneOf, shape, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
@@ -62,15 +62,7 @@ const Image = styled.img`
   object-fit: cover;
 `
 
-const Tags = styled.ul`
-  list-style: none;
-
-  li {
-    display: inline-block;
-  }
-`
-
-const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, tags, ...props }) => {
+const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -101,7 +93,7 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, tags, ...props
             )}
           </ImageWrap>
         )}
-        <Padded all="xxl">
+        <Padded top="xxl" left="xxl" right="xxl" bottom="2x">
           <div>
             <Spaced bottom="m">
               <Text order="meta">
@@ -120,33 +112,6 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, tags, ...props
             <Text order="body">
               {excerpt}
             </Text>
-            {tags.length && (
-              <Spaced top="xl">
-                <ScreenReaderText>
-                  <Heading
-                    level={4}
-                    id={`${kebabCase(title)}-label`}
-                  >
-                    Article Tags
-                  </Heading>
-                </ScreenReaderText>
-                <Tags aria-labelledby={`${kebabCase(title)}-label`}>
-                  {tags.map((tag, index) => (
-                    <li key={tag}>
-                      <Text order="meta">
-                        {index !== 0 && (
-                          <span
-                            dangerouslySetInnerHTML={{ __html: '&nbsp;&nbsp;•&nbsp;&nbsp;' }}
-                            aria-hidden={true}
-                          />
-                        )}
-                        {tag}
-                      </Text>
-                    </li>
-                  ))}
-                </Tags>
-              </Spaced>
-            )}
           </div>
         </Padded>
       </CardContent>
@@ -164,15 +129,13 @@ ArticleExcerpt.propTypes = {
   date: instanceOf(Date),
   title: string.isRequired,
   excerpt: string.isRequired,
-  tags: arrayOf(string),
   svg: object
 }
 
 ArticleExcerpt.defaultProps = {
   imagePosition: 'top',
   imageRatio: 1 / 2,
-  date: new Date(),
-  tags: []
+  date: new Date()
 }
 
 export default ArticleExcerpt

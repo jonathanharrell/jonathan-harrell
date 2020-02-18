@@ -83,6 +83,7 @@ const ArticleHeading = ({ children, ...props }) => {
         <HeadingLink
           href={`#${id}`}
           aria-labelledby={`${id}-label`}
+          tabIndex="-1"
           onClick={copyLink}
         >
           <ScreenReaderText id={`${id}-label`}>

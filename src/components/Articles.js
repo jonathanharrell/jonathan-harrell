@@ -42,7 +42,6 @@ class Articles extends React.Component {
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
             excerpt={post.excerpt}
-            tags={post.frontmatter.tags}
           />
         ))}
       </ArticlesWrap>
@@ -77,7 +76,6 @@ export default () => (
                 title
                 templateKey
                 date
-                tags
                 featuredimage {
                   publicURL
                 }
