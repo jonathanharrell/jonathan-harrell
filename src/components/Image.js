@@ -1,13 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import styled from 'styled-components'
 import Text from '../jh-ui/Text'
-
-const SvgWrap = styled.div`
-  svg {
-    width: 100%;
-    height: auto;
-  }
-`
 
 const Image = ({ src, alt, title }) => {
   const [markup, setMarkup] = useState('')
@@ -54,7 +46,7 @@ const Image = ({ src, alt, title }) => {
   return (
     <>
       {processedMarkup && (
-        <SvgWrap dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
+        <div dangerouslySetInnerHTML={{ __html: processedMarkup }}/>
       )}
       <noscript>
         <img src={src} alt={alt}/>

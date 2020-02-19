@@ -201,6 +201,12 @@ const ArticleContent = styled.div`
     }
   }
 
+  svg,
+  img {
+    width: 100%;
+    height: auto;
+  }
+
   > * {
     position: relative;
     z-index: 1;
