@@ -14,6 +14,8 @@ CSS variables, now enjoying fairly good [browser support](https://caniuse.com/#s
 
 The process is fairly simple — setup initial variable values in CSS, markup some inputs, add event listeners and set the values in JavaScript. Let’s get started!
 
+![Set CSS variables using JavaScript to create a live theming experience.](/img/live-theming.svg)
+
 ## Setup Initial Values of CSS Variables
 
 First we’ll set up the variables and their initial values in the `:root` pseudo-selector:
@@ -66,9 +68,7 @@ Set your initial input values to match the starting values of your CSS variables
 
 ## Set up Event Listeners
 
-
 I’m setting up listeners to the “change” event for color inputs, and the “input” event for range inputs. I’ve extracted the logic to a separate function called handleInputChange so I can reuse it for all the inputs. A small complication is the need to set `--base-font-size` in pixels and everything else in unitless values. So `handleInputChange` accepts a second parameter that is a simple Boolean to handle this.
-
 
 ```javascript
 const handleInputChange = (property, pixels) => {
