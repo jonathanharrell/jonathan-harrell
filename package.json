@@ -12,6 +12,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "bulma": "^0.7.0",
     "classnames": "^2.2.6",
+    "framer-motion": "^1.8.4",
     "gatsby": "^2.13.31",
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-mdx": "^1.0.53",

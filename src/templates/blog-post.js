@@ -6,6 +6,7 @@ import Helmet from 'react-helmet'
 import BodyClassName from 'react-body-classname'
 import kebabCase from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
+import { motion, useViewportScroll } from 'framer-motion'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 import ContentWrap from '../components/ContentWrap'
@@ -15,6 +16,14 @@ import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
+
+const ProgressBar = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+`
 
 const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
@@ -237,10 +246,23 @@ export const BlogPostTemplate = ({
   image,
   helmet
 }) => {
+  const { scrollYProgress } = useViewportScroll()
+
   return (
     <ArticleWrap aria-labelledby="article-title">
       {helmet || ''}
       <BodyClassName className={`header-background-gray`}/>
+      <ProgressBar>
+        <motion.div
+          style={{
+            width: '100%',
+            height: '0.25rem',
+            background: 'var(--accent)',
+            scaleX: scrollYProgress,
+            transformOrigin: '0 0'
+          }}
+        />
+      </ProgressBar>
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
