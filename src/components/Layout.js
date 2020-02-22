@@ -19,7 +19,6 @@ import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
 import ArticleHeading from './ArticleHeading'
 import Header from './Header'
-import Image from './Image'
 
 const Wrap = styled.div`
   display: flex;
@@ -204,7 +203,7 @@ const Layout = ({ children }) => {
               code: Code,
               inlineCode: InlineCode,
               a: props => <Link element="a" {...props}/>,
-              img: Image
+              // img: Image
             }}
           >
             {children}

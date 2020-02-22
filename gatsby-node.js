@@ -1,7 +1,9 @@
 const _ = require('lodash')
 const path = require('path')
+const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const colors = require('./colors')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -83,6 +85,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+  }
+
+  if (node.internal.type === 'File') {
+    if (node.relativePath.endsWith('.svg')) {
+      let value = fs.readFileSync(node.absolutePath, 'utf8')
+
+      Object.entries(colors).forEach(([color, replacement]) => {
+        const re = new RegExp(color, 'g')
+        value = value.replace(re, replacement)
+      })
+
+      createNodeField({
+        name: `markup`,
+        node,
+        value,
+      })
+    }
   }
 }
 

@@ -52,16 +52,6 @@ export const ImageWrap = styled.figure`
   }
 `
 
-const Image = styled.img`
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
-
 const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
@@ -83,11 +73,11 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) =>
       </Link>
       <CardContent>
         {(image || svg) && (
-          <ImageWrap>
-            {svg ? svg : null}
+          <ImageWrap dangerouslySetInnerHTML={{ __html: svg || undefined }}>
             {image && (
-              <Image
+              <img
                 src={image.publicURL}
+                alt=""
                 role="presentation"
               />
             )}

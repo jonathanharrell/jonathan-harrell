@@ -1,3 +1,5 @@
+const colors = require('./colors')
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + Netlify CMS Starter',
@@ -29,8 +31,16 @@ module.exports = {
               destinationDir: 'static',
             },
           },
-          'gatsby-remark-prismjs'
-        ],
+          'gatsby-remark-prismjs',
+          {
+            // this plugin converts svg images to inline svgs within mardown
+            // and replaces hardcoded colors with CSS variables
+            resolve: 'gatsby-remark-jh-inline-svg',
+            options: {
+              colors
+            }
+          }
+        ]
       }
     },
     'gatsby-plugin-react-helmet',
@@ -115,7 +125,7 @@ module.exports = {
     //     develop: true, // Activates purging in npm run develop
     //   },
     // }, // must be after other CSS plugins
-    'gatsby-plugin-netlify', // make sure to keep it last in the array,
-    'gatsby-plugin-remove-trailing-slashes'
+    // 'gatsby-plugin-remove-trailing-slashes',
+    'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

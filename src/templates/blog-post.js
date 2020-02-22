@@ -9,7 +9,6 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 import ContentWrap from '../components/ContentWrap'
-import Image from '../components/Image'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Padded from '../jh-ui/Padded'
@@ -247,9 +246,7 @@ export const BlogPostTemplate = ({
           <ArticleHeaderContentWrap>
             {image && (
               <Spaced bottom="3x">
-                <Figure>
-                  <Image src={image.publicURL} alt="" width="1200" height="600"/>
-                </Figure>
+                <Figure dangerouslySetInnerHTML={{ __html: image.fields.markup }}/>
               </Spaced>
             )}
             <ArticleHeaderContent>
@@ -381,7 +378,9 @@ export const pageQuery = graphql`
         description
         tags
         featuredimage {
-          publicURL
+          fields {
+            markup
+          }
         }
       }
     }
