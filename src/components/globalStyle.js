@@ -14,8 +14,8 @@ const darkValues = css`
   --backgroundElevatedSecondary: hsl(0, 0%, 12%);
   --backgroundElevatedInverse: hsl(0, 0%, 10%);
   --backgroundBody: ${({ theme }) => theme.colors.black};
-  --backgroundSubscribeBanner: hsl(0, 0%, 4%);
-  --backgroundCode: hsl(0, 0%, 4%);
+  --backgroundSubscribeBanner: hsl(0, 0%, 5%);
+  --backgroundCode: hsl(0, 0%, 5%);
   --border: hsl(0, 0%, 12%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
   --buttonBackgroundPrimary: transparent;

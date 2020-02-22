@@ -149,7 +149,7 @@ const ArticleContent = styled.div`
     grid-column: 3 / -3;
   }
 
-  p:first-child:first-letter {
+  > p:first-child:first-letter {
     float: left;
     margin-right: 0.75rem;
     font-family: ${({ theme }) => theme.fonts.serifDisplay};

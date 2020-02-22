@@ -19,6 +19,9 @@ import SubscribeBanner from './SubscribeBanner'
 import GlobalStyle from './globalStyle'
 import ArticleHeading from './ArticleHeading'
 import Header from './Header'
+import Note from './Note'
+import Figure from './Figure'
+import Codepen from './Codepen'
 
 const Wrap = styled.div`
   display: flex;
@@ -170,10 +173,10 @@ const Layout = ({ children }) => {
                 </Spaced>
               ),
               p: props => {
-                if (props.children.props && props.children.props.originalType === 'img') {
+                if (props.children.props && props.children.props.originalType === 'figure') {
                   return (
-                    <Spaced bottom="m">
-                      <figure {...props}/>
+                    <Spaced vertical="2x">
+                      <Figure {...props}/>
                     </Spaced>
                   )
                 }
@@ -203,7 +206,8 @@ const Layout = ({ children }) => {
               code: Code,
               inlineCode: InlineCode,
               a: props => <Link element="a" {...props}/>,
-              // img: Image
+              Note,
+              Codepen
             }}
           >
             {children}

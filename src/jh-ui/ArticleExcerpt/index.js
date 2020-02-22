@@ -1,5 +1,5 @@
 import React from 'react'
-import { instanceOf, object, oneOf, shape, string } from 'prop-types'
+import { instanceOf, oneOf, shape, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
@@ -119,7 +119,7 @@ ArticleExcerpt.propTypes = {
   date: instanceOf(Date),
   title: string.isRequired,
   excerpt: string.isRequired,
-  svg: object
+  svg: string
 }
 
 ArticleExcerpt.defaultProps = {

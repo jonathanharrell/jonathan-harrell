@@ -5,7 +5,7 @@ import { oneOf, string } from 'prop-types'
 const getFontSize = (theme, order, breakpoint) => {
   switch (order) {
     case 'caption':
-      return theme.fontSizes.s[breakpoint]
+      return theme.fontSizes.m[breakpoint]
     case 'meta':
       return theme.fontSizes.s[breakpoint]
     case 'body':
