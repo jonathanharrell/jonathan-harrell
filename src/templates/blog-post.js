@@ -395,13 +395,15 @@ export const BlogPostTemplate = ({
                       </Spaced>
                     </>
                   )}
-                  <Link
-                    href={`https://twitter.com/intent/tweet?text=${title}&url=${window.location.href}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Discuss on Twitter
-                  </Link>
+                  {window && (
+                    <Link
+                      href={`https://twitter.com/intent/tweet?text=${title}&url=${window.location.href}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Discuss on Twitter
+                    </Link>
+                  )}
                   {processedGithubUrl && (
                     <>
                       <Spaced horizontal="s">
