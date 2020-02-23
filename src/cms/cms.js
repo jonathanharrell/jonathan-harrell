@@ -29,14 +29,11 @@ CMS.registerEditorComponent({
       text: match[2]
     }
   },
-  // Function to create a text block from an instance of this component
   toBlock: function (obj) {
     return `<Note type="${obj.type}">
     ${obj.text}
 </Note>`
   },
-  // Preview output for this component. Can either be a string or a React component
-  // (component gives better render performance)
   toPreview: function (obj) {
     return (
       '<p><em>' + obj.text + '</em></p>'
@@ -56,15 +53,41 @@ CMS.registerEditorComponent({
       id: match[1]
     }
   },
-  // Function to create a text block from an instance of this component
   toBlock: function (obj) {
     return `<Codepen id="${obj.id}"/>`
   },
-  // Preview output for this component. Can either be a string or a React component
-  // (component gives better render performance)
   toPreview: function (obj) {
     return (
-      '<p>Codepen ' + obj.id + '</p>'
+      '<p>Codepen - ' + obj.id + '</p>'
+    )
+  }
+})
+
+CMS.registerEditorComponent({
+  id: 'articleLink',
+  label: 'Article Link',
+  fields: [
+    {
+      name: 'title',
+      label: 'Title',
+      widget: 'relation',
+      collection: 'blog-post',
+      searchFields: ['title'],
+      valueField: 'title'
+    }
+  ],
+  pattern: /^<ArticleLink title="(.+)"\/>$/,
+  fromBlock: function (match) {
+    return {
+      title: match[1]
+    }
+  },
+  toBlock: function (obj) {
+    return `<ArticleLink title="${obj.title}"/>`
+  },
+  toPreview: function (obj) {
+    return (
+      '<p>Article Link - ' + obj.title + '</p>'
     )
   }
 })

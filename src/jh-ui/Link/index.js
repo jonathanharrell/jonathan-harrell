@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { bool, oneOf } from 'prop-types'
+import { bool, oneOf, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import Spaced from '../Spaced'
 import ArrowLeft from '../../img/icons/arrow-left.svg'
@@ -41,8 +41,8 @@ const Root = styled(GatsbyLink)`
   }
 `
 
-const Link = ({ children, arrow, arrowPosition, href, ...props }) => (
-  <Root as={href ? 'a' : undefined} arrowPosition={arrowPosition} href={href} {...props}>
+const Link = ({ children, arrow, arrowPosition, href, element, ...props }) => (
+  <Root as={element ? element : (href ? 'a' : undefined)} arrowPosition={arrowPosition} href={href} {...props}>
     {(arrow && arrowPosition === 'left') && (
       <Spaced right="xs">
         <ArrowLeft/>
@@ -59,7 +59,8 @@ const Link = ({ children, arrow, arrowPosition, href, ...props }) => (
 
 Link.propTypes = {
   arrow: bool,
-  arrowPosition: oneOf(['left', 'right'])
+  arrowPosition: oneOf(['left', 'right']),
+  element: string
 }
 
 Link.defaultProps = {

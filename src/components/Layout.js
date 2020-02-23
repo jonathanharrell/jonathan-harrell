@@ -22,6 +22,7 @@ import Header from './Header'
 import Note from './Note'
 import Figure from './Figure'
 import Codepen from './Codepen'
+import ArticleLink from './ArticleLink'
 
 const Wrap = styled.div`
   display: flex;
@@ -207,7 +208,8 @@ const Layout = ({ children }) => {
               inlineCode: InlineCode,
               a: props => <Link element="a" {...props}/>,
               Note,
-              Codepen
+              Codepen,
+              ArticleLink
             }}
           >
             {children}

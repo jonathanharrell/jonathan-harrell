@@ -50,6 +50,7 @@
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
     "styled-components": "^4.4.0",
+    "typemate": "^0.7.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -65,6 +66,7 @@
     "@storybook/react": "^5.2.0",
     "babel-loader": "^8.0.6",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.21",
+    "gatsby-remark-reading-time": "^1.1.0",
     "prettier": "^1.15.3",
     "storybook-dark-mode": "^0.1.7"
   },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Card from '../jh-ui/Card'
 import Spaced from '../jh-ui/Spaced'
@@ -13,7 +13,7 @@ const CodepenWrap = styled(Card)`
 
   > div {
     display: flex;
-    align-items: center;
+    align-items: stretch;
   }
 `
 
@@ -31,12 +31,10 @@ const CodepenLink = styled.a`
 
 const CodepenFigure = styled.figure`
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  flex: 0 0 10rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: 8rem;
-    height: 8rem;
+    flex: 0 0 8rem;
   }
 `
 
@@ -49,66 +47,31 @@ const CodepenImage = styled.img`
   object-fit: cover;
 `
 
-const Codepen = ({ id }) => {
-  const [pen, setPen] = useState({})
-  const [penLoading, setPenLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setPenLoading(true)
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://codepen.io/api/oembed?format=json&url=https://codepen.io/jonathanharrell/pen/${id}`)
-        const data = await response.json()
-        setPen(data)
-      } catch (error) {
-        console.error(error)
-      } finally {
-        setPenLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [id])
-
-  return (
-    <Spaced vertical="xl">
-      <CodepenWrap padding={false}>
-        {penLoading && (
-          <Padded all="xl">
-            <div>
-              <Text element="p" color="textLighter">
-                Loading experiment...
-              </Text>
-            </div>
-          </Padded>
-        )}
-        {(pen && !penLoading) && (
-          <>
-            <CodepenLink
-              href={`https://codepen.io/jonathanharrell/details/${id}`}
-              target="_blank"
-              rel="noopener"
-            />
-            <CodepenFigure>
-              <CodepenImage src={pen.thumbnail_url} alt=""/>
-            </CodepenFigure>
-            <Padded all="xl">
-              <div>
-                <Heading level={5} element="p">
-                  {pen.title}
-                </Heading>
-                <Spaced top="xs">
-                  <Text element="p" color="textLighter">
-                    Click here to view the experiment on Codepen
-                  </Text>
-                </Spaced>
-              </div>
-            </Padded>
-          </>
-        )}
-      </CodepenWrap>
-    </Spaced>
-  )
-}
+const Codepen = ({ id, title, thumbnailUrl }) => (
+  <Spaced vertical="xl">
+    <CodepenWrap padding={false}>
+      <CodepenLink
+        href={`https://codepen.io/jonathanharrell/details/${id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      />
+      <CodepenFigure>
+        <CodepenImage src={thumbnailUrl} alt=""/>
+      </CodepenFigure>
+      <Padded vertical="2x" horizontal="xl">
+        <div>
+          <Heading level={5} element="p">
+            {title}
+          </Heading>
+          <Spaced top="xs">
+            <Text element="p" color="textLighter">
+              Click here to view the experiment on Codepen
+            </Text>
+          </Spaced>
+        </div>
+      </Padded>
+    </CodepenWrap>
+  </Spaced>
+)
 
 export default Codepen

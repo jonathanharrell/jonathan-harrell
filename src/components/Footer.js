@@ -87,7 +87,7 @@ const Footer = () => {
                   as="a"
                   href="https://twitter.com/HarrellofDurham"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     Twitter
@@ -98,7 +98,7 @@ const Footer = () => {
                   as="a"
                   href="https://github.com/jonathanharrell/"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     Github
@@ -109,7 +109,7 @@ const Footer = () => {
                   as="a"
                   href="https://codepen.io/jonathanharrell/"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     Codepen
@@ -120,7 +120,7 @@ const Footer = () => {
                   as="a"
                   href="https://www.linkedin.com/in/jonathanharrell/"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     LinkedIn
@@ -131,7 +131,7 @@ const Footer = () => {
                   as="a"
                   href="https://www.instagram.com/harrellofdurham/"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     Instagram
@@ -142,7 +142,7 @@ const Footer = () => {
                   as="a"
                   href="https://jonathan-harrell.com/?feed=rss"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <ScreenReaderText>
                     RSS

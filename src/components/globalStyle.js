@@ -16,6 +16,7 @@ const darkValues = css`
   --backgroundBody: ${({ theme }) => theme.colors.black};
   --backgroundSubscribeBanner: hsl(0, 0%, 5%);
   --backgroundCode: hsl(0, 0%, 5%);
+  --backgroundInlineCode: hsl(0, 0%, 12%);
   --border: hsl(0, 0%, 12%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
   --buttonBackgroundPrimary: transparent;
@@ -53,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
     --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
     --backgroundCode: hsl(210, 15%, 97%);
+    --backgroundInlineCode: hsl(210, 15%, 97%);
     --border: hsl(210, 15%, 90%);
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
@@ -130,7 +132,7 @@ const GlobalStyle = createGlobalStyle`
   p code {
     padding: 0.125rem 0.25rem;
     border-radius: 2px;
-    background-color: var(--backgroundSecondary);
+    background-color: var(--backgroundInlineCode);
   }
 
   a {

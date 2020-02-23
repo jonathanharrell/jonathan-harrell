@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from 'styled-components'
@@ -7,6 +7,7 @@ import BodyClassName from 'react-body-classname'
 import kebabCase from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
 import { motion, useViewportScroll } from 'framer-motion'
+import TypeMate from 'typemate'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 import ContentWrap from '../components/ContentWrap'
@@ -16,8 +17,9 @@ import Padded from '../jh-ui/Padded'
 import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import Button from '../jh-ui/Button'
 
-const ProgressBar = styled.div`
+const ProgressBarWrap = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -236,6 +238,12 @@ const Tag = styled.li`
   list-style: none;
 `
 
+const ArticleLinksWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+`
+
 export const BlogPostTemplate = ({
   content,
   tags,
@@ -244,25 +252,52 @@ export const BlogPostTemplate = ({
   date,
   color,
   image,
+  readingTime,
+  slug,
   helmet
 }) => {
   const { scrollYProgress } = useViewportScroll()
+  const articleWrap = useRef()
+  const articleContent = useRef()
+
+  const githubUrl = `https://github.com/jonathanharrell/gatsby-starter-netlify-cms/edit/master/src/content${slug}`
+  const re = new RegExp(/.+?(?=\/$)/)
+  const [match] = githubUrl.match(re)
+  const processedGithubUrl = `${match}.mdx`
+
+  const hasNavigatorShare = !!navigator.share
+
+  const shareArticle = () => {
+    try {
+      navigator.share({
+        title,
+        url: `${window.location.origin}${slug}`
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useLayoutEffect(() => {
+    const typeMateInstance = new TypeMate(articleWrap.current, { selector: 'h1, h2, h3, h4, h5, h6, p' })
+    typeMateInstance.apply()
+  }, [])
 
   return (
-    <ArticleWrap aria-labelledby="article-title">
+    <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
       {helmet || ''}
       <BodyClassName className={`header-background-gray`}/>
-      <ProgressBar>
+      <ProgressBarWrap>
         <motion.div
           style={{
             width: '100%',
-            height: '0.25rem',
+            height: '0.2rem',
             background: 'var(--accent)',
             scaleX: scrollYProgress,
             transformOrigin: '0 0'
           }}
         />
-      </ProgressBar>
+      </ProgressBarWrap>
       <ArticleHeader color={color}>
         <ContentWrap>
           <ArticleHeaderContentWrap>
@@ -309,6 +344,11 @@ export const BlogPostTemplate = ({
                     <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
                     {date}
                   </Text>
+                  <Spaced left="xxl">
+                    <Text order="meta" element="span">
+                      {readingTime.text}
+                    </Text>
+                  </Spaced>
                 </ArticleMeta>
               </Spaced>
               <Spaced bottom="m">
@@ -334,10 +374,47 @@ export const BlogPostTemplate = ({
       <Padded vertical="4x">
         <ContentWrap>
           <ArticleContentWrap>
-            <ArticleContent>
+            <ArticleContent ref={articleContent}>
               <MDXRenderer>
                 {content}
               </MDXRenderer>
+              <Spaced top="4x">
+                <ArticleLinksWrap>
+                  {hasNavigatorShare && (
+                    <>
+                      <Button unstyled={true} onClick={shareArticle}>
+                        <Link element="span">
+                          Share this article
+                        </Link>
+                      </Button>
+                      <Spaced horizontal="s">
+                        <Text>•</Text>
+                      </Spaced>
+                    </>
+                  )}
+                  <Link
+                    href={`https://twitter.com/intent/tweet?text=${title}&url=${window.location.href}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Discuss on Twitter
+                  </Link>
+                  {processedGithubUrl && (
+                    <>
+                      <Spaced horizontal="s">
+                        <Text>•</Text>
+                      </Spaced>
+                      <Link
+                        href={processedGithubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Edit on Github
+                      </Link>
+                    </>
+                  )}
+                </ArticleLinksWrap>
+              </Spaced>
             </ArticleContent>
           </ArticleContentWrap>
         </ContentWrap>
@@ -376,6 +453,8 @@ const BlogPost = ({ data }) => {
         description={post.frontmatter.description}
         date={post.frontmatter.date}
         image={post.frontmatter.featuredimage}
+        readingTime={post.fields.readingTime}
+        slug={post.fields.slug}
       />
     </Layout>
   )
@@ -383,7 +462,7 @@ const BlogPost = ({ data }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    mdx: PropTypes.object,
+    mdx: PropTypes.object
   }),
 }
 
@@ -404,6 +483,12 @@ export const pageQuery = graphql`
             markup
           }
         }
+      }
+      fields {
+        readingTime {
+          text
+        }
+        slug
       }
     }
   }

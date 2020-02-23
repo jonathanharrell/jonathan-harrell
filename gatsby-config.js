@@ -43,6 +43,7 @@ module.exports = {
         ]
       }
     },
+    'gatsby-remark-reading-time',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
