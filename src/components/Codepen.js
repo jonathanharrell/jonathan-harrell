@@ -5,6 +5,8 @@ import Spaced from '../jh-ui/Spaced'
 import Padded from '../jh-ui/Padded'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import kebabCase from 'lodash/kebabCase'
 
 const CodepenWrap = styled(Card)`
   position: relative;
@@ -49,18 +51,30 @@ const CodepenImage = styled.img`
 
 const Codepen = ({ id, title, thumbnailUrl }) => (
   <Spaced vertical="xl">
-    <CodepenWrap padding={false}>
+    <CodepenWrap
+      padding={false}
+      aria-labelledby={`${kebabCase(title)}-label`}
+      element="article"
+    >
       <CodepenLink
         href={`https://codepen.io/jonathanharrell/details/${id}`}
         target="_blank"
         rel="noopener noreferrer"
-      />
+      >
+        <ScreenReaderText>
+          Go to experiment
+        </ScreenReaderText>
+      </CodepenLink>
       <CodepenFigure>
         <CodepenImage src={thumbnailUrl} alt=""/>
       </CodepenFigure>
       <Padded vertical="2x" horizontal="xl">
         <div>
-          <Heading level={5} element="p">
+          <Heading
+            level={5}
+            id={`${kebabCase(title)}-label`}
+            element="h2"
+          >
             {title}
           </Heading>
           <Spaced top="xs">

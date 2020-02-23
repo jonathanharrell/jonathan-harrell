@@ -6,6 +6,8 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Padded from '../jh-ui/Padded'
 import Heading from '../jh-ui/Heading'
 import Text from '../jh-ui/Text'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import kebabCase from 'lodash/kebabCase'
 
 const ArticleLinkWrap = styled(Card)`
   position: relative;
@@ -33,6 +35,7 @@ const ArticleLinkLink = styled.a`
 const ArticleLinkFigure = styled.figure`
   position: relative;
   flex: 0 0 10rem;
+  background-color: var(--backgroundPrimary);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex: 0 0 8rem;
@@ -83,12 +86,24 @@ const ArticleLink = ({ title }) => {
 
   return article ? (
     <Spaced vertical="xl">
-      <ArticleLinkWrap padding={false}>
-        <ArticleLinkLink href={article.fields.slug}/>
+      <ArticleLinkWrap
+        padding={false}
+        aria-labelledby={`${kebabCase(title)}-label`}
+        element="article"
+      >
+        <ArticleLinkLink href={article.fields.slug}>
+          <ScreenReaderText>
+            Go to article
+          </ScreenReaderText>
+        </ArticleLinkLink>
         <ArticleLinkFigure dangerouslySetInnerHTML={{ __html: svg || undefined }}/>
         <Padded vertical="2x" horizontal="xl">
           <div>
-            <Heading level={5} element="p">
+            <Heading
+              level={5}
+              id={`${kebabCase(title)}-label`}
+              element="h2"
+            >
               {article.frontmatter.title}
             </Heading>
             <Spaced top="xs">
