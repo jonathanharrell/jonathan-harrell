@@ -11,10 +11,12 @@ tags:
 ---
 Controlling the display of elements based on their visibility within the viewport has typically been a rather messy affair, involving calculations using window height and `getBoundingClientRect()`. There is now a new API that makes this much simpler called Intersection Observer. It is now [supported](https://caniuse.com/#feat=intersectionobserver) in Chrome, Firefox, Opera and Edge and there is a good [polyfill](https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill) for it.
 
-I decided to experiment and push IntersectionObserver to its limits. [Check it out here](https://codepen.io/jonathanharrell/pen/mzyBXW).
+I decided to experiment and push IntersectionObserver to its limits:
 
-<Note type="info">
-    You probably shouldn’t create as many observers on a production site as I have done. You start to run into performance issues. However, this experiment should help you visualize how the API works.
+<Codepen id="mzyBXW"/>
+
+<Note type="warning">
+        You probably shouldn’t create as many observers on a production site as I have done. You start to run into performance issues. However, this experiment should help you visualize how the API works.
 </Note>
 
 ## The HTML and CSS
