@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from 'styled-components'
@@ -256,6 +256,7 @@ export const BlogPostTemplate = ({
   slug,
   helmet
 }) => {
+  const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
   const { scrollYProgress } = useViewportScroll()
   const articleWrap = useRef()
   const articleContent = useRef()
@@ -264,8 +265,6 @@ export const BlogPostTemplate = ({
   const re = new RegExp(/.+?(?=\/$)/)
   const [match] = githubUrl.match(re)
   const processedGithubUrl = `${match}.mdx`
-
-  const hasNavigatorShare = !!navigator.share
 
   const shareArticle = () => {
     try {
@@ -277,6 +276,10 @@ export const BlogPostTemplate = ({
       console.error(error)
     }
   }
+
+  useEffect(() => {
+    setHasNavigatorShare(!!navigator.share)
+  }, [])
 
   useLayoutEffect(() => {
     const typeMateInstance = new TypeMate(articleWrap.current, { selector: 'h1, h2, h3, h4, h5, h6, p' })

@@ -19,7 +19,7 @@ CMS.registerEditorComponent({
   id: 'note',
   label: 'Note',
   fields: [
-    { name: 'type', label: 'Type', widget: 'select', options: ['info'] },
+    { name: 'type', label: 'Type', widget: 'select', options: ['info', 'warning', 'danger'] },
     { name: 'text', label: 'Text', widget: 'text' }
   ],
   pattern: /^<Note type="(\S+)">\n(.+)\n<\/Note>$/,

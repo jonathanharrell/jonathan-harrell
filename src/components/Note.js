@@ -11,7 +11,7 @@ const NoteWrap = styled.div`
 
 const Note = ({ type, children }) => (
   <Spaced bottom="m">
-    <Padded all="m">
+    <Padded all="xxl">
       <NoteWrap type={type}>
         <Text order="meta">
           Note
