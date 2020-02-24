@@ -66,7 +66,7 @@
     "@storybook/react": "^5.2.0",
     "babel-loader": "^8.0.6",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.21",
-    "gatsby-remark-jh-codepen-block": "^0.1.1",
+    "gatsby-remark-jh-codepen-block": "^0.1.2",
     "gatsby-remark-reading-time": "^1.1.0",
     "prettier": "^1.15.3",
     "storybook-dark-mode": "^0.1.7"
