@@ -214,6 +214,7 @@ type File implements Node {
   dir: String
   ext: String
   extension: String
+  fields: FileFields
   gid: Int
   id: ID!
   ino: Int
@@ -268,6 +269,10 @@ type FileEdge {
   next: File
   node: File!
   previous: File
+}
+
+type FileFields {
+  markup: String
 }
 
 type FileGroupConnection {
@@ -473,7 +478,15 @@ type MdxEdge {
 }
 
 type MdxFields {
+  readingTime: MdxFieldsReadingTime
   slug: String
+}
+
+type MdxFieldsReadingTime {
+  minutes: Float
+  text: String
+  time: Float
+  words: Int
 }
 
 type MdxFrontmatter {
@@ -602,7 +615,7 @@ type Query {
   allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: SitePageSortInput): SitePageConnection!
   allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: SitePluginSortInput): SitePluginConnection!
   directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
-  file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
+  file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, childMdx: MdxFilterInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, fields: FileFieldsFilterInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: IntQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput, resolutions: ImageSharpResolutionsFilterInput, sizes: ImageSharpSizesFilterInput): ImageSharp
   mdx(body: StringQueryOperatorInput, children: NodeFilterListInput, excerpt: StringQueryOperatorInput, fields: MdxFieldsFilterInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, mdxAST: JSONQueryOperatorInput, parent: NodeFilterInput, rawBody: StringQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput): Mdx
   site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
@@ -1029,6 +1042,10 @@ enum FileFieldsEnum {
   childMdx___children___parent___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___children___parent___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___readingTime___minutes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___readingTime___text @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___readingTime___time @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___readingTime___words @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___fileAbsolutePath
   childMdx___frontmatter___bio
@@ -1202,6 +1219,7 @@ enum FileFieldsEnum {
   dir
   ext
   extension
+  fields___markup
   gid
   id
   ino
@@ -1488,6 +1506,10 @@ enum MdxFieldsEnum {
   children___parent___parent___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   children___parent___parent___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___readingTime___minutes @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___readingTime___text @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___readingTime___time @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___readingTime___words @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fileAbsolutePath
   frontmatter___bio
@@ -1524,6 +1546,7 @@ enum MdxFieldsEnum {
   frontmatter___bioimage___dir
   frontmatter___bioimage___ext
   frontmatter___bioimage___extension
+  frontmatter___bioimage___fields___markup
   frontmatter___bioimage___gid
   frontmatter___bioimage___id
   frontmatter___bioimage___ino
@@ -1587,6 +1610,7 @@ enum MdxFieldsEnum {
   frontmatter___featuredimage___dir
   frontmatter___featuredimage___ext
   frontmatter___featuredimage___extension
+  frontmatter___featuredimage___fields___markup
   frontmatter___featuredimage___gid
   frontmatter___featuredimage___id
   frontmatter___featuredimage___ino
@@ -2169,6 +2193,10 @@ input DuotoneGradient {
   shadow: String!
 }
 
+input FileFieldsFilterInput {
+  markup: StringQueryOperatorInput
+}
+
 input FileFilterInput {
   absolutePath: StringQueryOperatorInput
   accessTime: DateQueryOperatorInput
@@ -2190,6 +2218,7 @@ input FileFilterInput {
   dir: StringQueryOperatorInput
   ext: StringQueryOperatorInput
   extension: StringQueryOperatorInput
+  fields: FileFieldsFilterInput
   gid: IntQueryOperatorInput
   id: StringQueryOperatorInput
   ino: IntQueryOperatorInput
@@ -2349,7 +2378,15 @@ input JSONQueryOperatorInput {
 }
 
 input MdxFieldsFilterInput {
+  readingTime: MdxFieldsReadingTimeFilterInput
   slug: StringQueryOperatorInput
+}
+
+input MdxFieldsReadingTimeFilterInput {
+  minutes: FloatQueryOperatorInput
+  text: StringQueryOperatorInput
+  time: FloatQueryOperatorInput
+  words: IntQueryOperatorInput
 }
 
 input MdxFilterInput {

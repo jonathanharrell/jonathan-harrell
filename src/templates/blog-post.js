@@ -405,19 +405,19 @@ export const BlogPostTemplate = ({
                       Discuss on Twitter
                     </Link>
                   )}
+                  {(location.href && processedGithubUrl) && (
+                    <Spaced horizontal="s">
+                      <Text>•</Text>
+                    </Spaced>
+                  )}
                   {processedGithubUrl && (
-                    <>
-                      <Spaced horizontal="s">
-                        <Text>•</Text>
-                      </Spaced>
-                      <Link
-                        href={processedGithubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Edit on Github
-                      </Link>
-                    </>
+                    <Link
+                      href={processedGithubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Edit on Github
+                    </Link>
                   )}
                 </ArticleLinksWrap>
               </Spaced>
