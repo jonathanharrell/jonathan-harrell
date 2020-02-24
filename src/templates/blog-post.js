@@ -254,7 +254,8 @@ export const BlogPostTemplate = ({
   image,
   readingTime,
   slug,
-  helmet
+  helmet,
+  location
 }) => {
   const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
   const { scrollYProgress } = useViewportScroll()
@@ -395,9 +396,9 @@ export const BlogPostTemplate = ({
                       </Spaced>
                     </>
                   )}
-                  {window && (
+                  {location.href && (
                     <Link
-                      href={`https://twitter.com/intent/tweet?text=${title}&url=${window.location.href}`}
+                      href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -436,7 +437,7 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
   const { mdx: post } = data
 
   return (
@@ -460,6 +461,7 @@ const BlogPost = ({ data }) => {
         image={post.frontmatter.featuredimage}
         readingTime={post.fields.readingTime}
         slug={post.fields.slug}
+        location={location}
       />
     </Layout>
   )
