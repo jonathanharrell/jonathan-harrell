@@ -39,7 +39,8 @@ module.exports = {
             options: {
               colors
             }
-          }
+          },
+          'gatsby-remark-jh-codepen-block'
         ]
       }
     },
