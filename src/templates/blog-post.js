@@ -263,13 +263,13 @@ const ShareLink = styled(Link)`
     width: 1em;
     height: 1em;
   }
+`
 
-  + span {
-    display: none;
+const Divider = styled(Text)`
+  display: none;
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-      display: inline;
-    }
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: inline;
   }
 `
 
@@ -423,12 +423,9 @@ export const BlogPostTemplate = ({
                           Share this article
                         </ShareLink>
                       </Button>
-                      <Spaced horizontal="s">
-                        <Text element="span">•</Text>
-                      </Spaced>
                     </span>
                   )}
-                  {location.href && (
+                  {(!hasNavigatorShare && location.href) && (
                     <span>
                       <ShareLink
                         href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
@@ -440,12 +437,12 @@ export const BlogPostTemplate = ({
                         </Spaced>
                         Discuss on Twitter
                       </ShareLink>
-                      {processedGithubUrl && (
-                        <Spaced horizontal="s">
-                          <Text element="span">•</Text>
-                        </Spaced>
-                      )}
                     </span>
+                  )}
+                  {((hasNavigatorShare || location.href) && processedGithubUrl) && (
+                    <Spaced horizontal="s">
+                      <Divider element="span">•</Divider>
+                    </Spaced>
                   )}
                   {processedGithubUrl && (
                     <ShareLink
