@@ -395,7 +395,7 @@ export const BlogPostTemplate = ({
               <Spaced top="4x">
                 <ArticleLinksWrap>
                   {hasNavigatorShare && (
-                    <>
+                    <span>
                       <Button unstyled={true} onClick={shareArticle}>
                         <ShareLink element="span">
                           <Spaced right="xs">
@@ -405,26 +405,28 @@ export const BlogPostTemplate = ({
                         </ShareLink>
                       </Button>
                       <Spaced horizontal="s">
-                        <Text>•</Text>
+                        <Text element="span">•</Text>
                       </Spaced>
-                    </>
+                    </span>
                   )}
                   {location.href && (
-                    <ShareLink
-                      href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Spaced right="xs">
-                        <Twitter/>
-                      </Spaced>
-                      Discuss on Twitter
-                    </ShareLink>
-                  )}
-                  {(location.href && processedGithubUrl) && (
-                    <Spaced horizontal="s">
-                      <Text>•</Text>
-                    </Spaced>
+                    <span>
+                      <ShareLink
+                        href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Spaced right="xs">
+                          <Twitter/>
+                        </Spaced>
+                        Discuss on Twitter
+                      </ShareLink>
+                      {processedGithubUrl && (
+                        <Spaced horizontal="s">
+                          <Text element="span">•</Text>
+                        </Spaced>
+                      )}
+                    </span>
                   )}
                   {processedGithubUrl && (
                     <ShareLink
