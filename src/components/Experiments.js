@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import ExperimentExcerpt from '../jh-ui/ExperimentExcerpt'
 
-const ExperimentRollWrap = styled.div`
+const ExperimentsWrap = styled.div`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
@@ -40,10 +40,10 @@ const ExperimentExcerptElevated = styled(ExperimentExcerpt)`
   }
 `
 
-class ExperimentRoll extends React.Component {
+class Experiments extends React.Component {
   render() {
     return (
-      <ExperimentRollWrap>
+      <ExperimentsWrap>
         <ExperimentExcerptElevated
           date={new Date('September 29, 2018')}
           title="Typographic Details Cheat Sheet"
@@ -74,9 +74,9 @@ class ExperimentRoll extends React.Component {
           title="Advanced Form Styling with CSS Only"
           viewsCount={1302}
         />
-      </ExperimentRollWrap>
+      </ExperimentsWrap>
     )
   }
 }
 
-export default ExperimentRoll
+export default Experiments

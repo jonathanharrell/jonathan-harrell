@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import RecentArticles from '../components/RecentArticles'
-import ExperimentRoll from '../components/ExperimentRoll'
+import Experiments from '../components/Experiments'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
@@ -49,7 +49,7 @@ const RecentArticlesWrap = styled.section`
   background-color: var(--backgroundSecondary);
 `
 
-const ExperimentRollWrap = styled.section`
+const ExperimentsWrap = styled.section`
   background-color: var(--backgroundInverse);
 `
 
@@ -93,7 +93,7 @@ export const IndexPageTemplate = ({ image, title, subheading }) => {
           <RecentArticles/>
         </HomeContentWrap>
       </RecentArticlesWrap>
-      <ExperimentRollWrap aria-labelledby="recent-experiments-label">
+      <ExperimentsWrap aria-labelledby="recent-experiments-label">
         <HomeContentWrap>
           <SectionHeader>
             <Heading level={2} color="textInverse" id="recent-experiments-label">
@@ -101,6 +101,8 @@ export const IndexPageTemplate = ({ image, title, subheading }) => {
             </Heading>
             <Link
               href="https://codepen.io/jonathanharrell/"
+              target="_blank"
+              rel="noopener noreferrer"
               arrow={true}
               aria-labelledby="view-all-experiments-label"
             >
@@ -112,9 +114,9 @@ export const IndexPageTemplate = ({ image, title, subheading }) => {
               </ScreenReaderText>
             </Link>
           </SectionHeader>
-          <ExperimentRoll/>
+          <Experiments/>
         </HomeContentWrap>
-      </ExperimentRollWrap>
+      </ExperimentsWrap>
     </>
   )
 }

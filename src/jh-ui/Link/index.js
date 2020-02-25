@@ -31,12 +31,12 @@ const Root = styled(GatsbyLink)`
   &:active {
     color: ${({ theme }) => theme.colors.redDark};
 
-    svg {
+    .arrow {
       transform: ${({ arrow }) => arrow === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
     }
   }
 
-  svg {
+  .arrow {
     transition: transform 0.2s ${({ theme }) => theme.beziers.out};
   }
 `
@@ -45,13 +45,13 @@ const Link = ({ children, arrow, arrowPosition, href, element, ...props }) => (
   <Root as={element ? element : (href ? 'a' : undefined)} arrow={arrowPosition} href={href} {...props}>
     {(arrow && arrowPosition === 'left') && (
       <Spaced right="xs">
-        <ArrowLeft/>
+        <ArrowLeft className="arrow"/>
       </Spaced>
     )}
     {children}
     {(arrow && arrowPosition === 'right') && (
       <Spaced left="xs">
-        <ArrowRight/>
+        <ArrowRight className="arrow"/>
       </Spaced>
     )}
   </Root>
