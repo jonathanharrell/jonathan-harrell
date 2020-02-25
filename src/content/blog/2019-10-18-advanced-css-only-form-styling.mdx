@@ -13,7 +13,7 @@ tags:
 ---
 HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.
 
-[Check out live examples](https://codepen.io/jonathanharrell/pen/vVEexG).
+<Codepen id="vVEexG"/>
 
 ## :placeholder-shown
 
@@ -65,7 +65,6 @@ input:required + .help-text::before {
 }
 ```
 
-
 ## :optional
 
 This selector does the opposite of `:required`. I am again using an empty `.help-text` `span` to display some optional text if the required attribute is NOT present.
@@ -75,7 +74,6 @@ input:optional + .help-text::before {
   content: '*Optional';
 }
 ```
-
 
 ## :disabled
 
