@@ -69,6 +69,8 @@ targets.forEach(target => observer.observe(target));
 
 The callback function gives me an array of entries – each entry is essentially an intersection change. I can check the `intersectionRatio` on each entry and apply some styling appropriately.
 
+![Thresholds indicate at what percentage of the target's visibility the observer's callback should be executed.](/img/thresholds.svg)
+
 ```javascript
 const callback = entries => {
   entries.forEach(entry => {
@@ -102,8 +104,6 @@ switch (true) {
     return;
 }
 ```
-
-![Thresholds indicate at what percentage of the target's visibility the observer's callback should be executed.](/img/thresholds.svg)
 
 ## Conclusion
 
