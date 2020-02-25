@@ -243,14 +243,33 @@ const Tag = styled.li`
 
 const ArticleLinksWrap = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: baseline;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: row;
+  }
 `
 
 const ShareLink = styled(Link)`
+  margin-bottom: ${({ theme }) => theme.spacing.s};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-bottom: 0;
+  }
+
   svg {
     width: 1em;
     height: 1em;
+  }
+
+  + span {
+    display: none;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      display: inline;
+    }
   }
 `
 

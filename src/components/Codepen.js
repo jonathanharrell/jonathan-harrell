@@ -32,10 +32,11 @@ const CodepenLink = styled.a`
 `
 
 const CodepenFigure = styled.figure`
+  display: none;
   position: relative;
-  flex: 0 0 6rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: block;
     flex: 0 0 8rem;
   }
 `
