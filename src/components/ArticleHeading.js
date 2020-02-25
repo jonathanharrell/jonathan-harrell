@@ -27,6 +27,8 @@ const HeadingLink = styled.a`
   }
 
   svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
     pointer-events: none;
   }
 

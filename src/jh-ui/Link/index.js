@@ -32,7 +32,7 @@ const Root = styled(GatsbyLink)`
     color: ${({ theme }) => theme.colors.redDark};
 
     svg {
-      transform: ${({ arrowPosition }) => arrowPosition === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
+      transform: ${({ arrow }) => arrow === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
     }
   }
 
@@ -42,7 +42,7 @@ const Root = styled(GatsbyLink)`
 `
 
 const Link = ({ children, arrow, arrowPosition, href, element, ...props }) => (
-  <Root as={element ? element : (href ? 'a' : undefined)} arrowPosition={arrowPosition} href={href} {...props}>
+  <Root as={element ? element : (href ? 'a' : undefined)} arrow={arrowPosition} href={href} {...props}>
     {(arrow && arrowPosition === 'left') && (
       <Spaced right="xs">
         <ArrowLeft/>

@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="562px" viewBox="0 0 1200 562" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>root-margin</title>
-    <desc>Created with Sketch.</desc>
-    <g id="root-margin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="562"></rect>
-        <g>
-            <path d="M1200,0 L1200,562 L0,562 L0,0 L1200,0 Z M1165,35 L35,35 L35,527 L1165,527 L1165,35 Z" id="overlay" fill-opacity="0.1" fill="#D75037"></path>
-            <rect id="border" stroke="#D75037" stroke-width="2" x="36" y="34" width="1128" height="492"></rect>
-        </g>
-        <g id="margin-value" transform="translate(1094.000000, 22.000000)">
-            <rect id="pill" fill="#D75037" x="0" y="0" width="44" height="24" rx="12"></rect>
-            <text id="100" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
-                <tspan x="8.45385742" y="17">100</tspan>
-            </text>
-        </g>
-        <g id="margin-value" transform="translate(1141.000000, 60.000000)">
-            <rect id="pill" fill="#D75037" x="0" y="0" width="44" height="24" rx="12"></rect>
-            <text id="100" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
-                <tspan x="8.45385742" y="17">100</tspan>
-            </text>
-        </g>
-        <g id="root-margin-label" transform="translate(62.000000, 479.000000)">
-            <rect id="pill" fill="#D75037" x="0" y="0" width="119" height="24" rx="12"></rect>
-            <text id="root-margin" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
-                <tspan x="9.33081055" y="16">root margin</tspan>
-            </text>
-        </g>
-        <polygon id="margin-measure" fill="#D75037" fill-rule="nonzero" points="1199.77273 47 1197.77273 47 1197.772 41 1165 41 1165 47 1163 47 1163 33 1165 33 1165 39 1197.772 39 1197.77273 33 1199.77273 33"></polygon>
-        <polygon id="margin-measure" fill="#D75037" fill-rule="nonzero" points="1151 35 1151 33 1157 33 1157 2 1151 2 1151 1.47289588e-14 1165 1.36927506e-14 1165 2 1159 2 1159 33 1165 33 1165 35"></polygon>
-        <polygon id="root-margin-pointer" fill="#D75037" fill-rule="nonzero" points="124 502 124 543.564896 122 543.564896 122 502"></polygon>
+<svg width="1200px" height="562px" viewBox="0 0 1200 562" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+  <title>root-margin</title>
+  <desc>Created with Sketch.</desc>
+  <g id="root-margin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect fill="#F9F9FB" x="0" y="0" width="1200" height="562"></rect>
+    <g>
+      <path d="M1200,0 L1200,562 L0,562 L0,0 L1200,0 Z M1165,35 L35,35 L35,527 L1165,527 L1165,35 Z" id="overlay"
+            fill-opacity="0.1" fill="#D75037"></path>
+      <rect id="border" stroke="#D75037" stroke-width="2" x="36" y="34" width="1128" height="492"></rect>
     </g>
+    <g id="margin-value" transform="translate(1094.000000, 22.000000)">
+      <rect id="pill" fill="#D75037" x="0" y="0" width="44" height="24" rx="12"></rect>
+      <text id="100" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
+        <tspan x="8.45385742" y="17">100</tspan>
+      </text>
+    </g>
+    <g id="margin-value" transform="translate(1141.000000, 60.000000)">
+      <rect id="pill" fill="#D75037" x="0" y="0" width="44" height="24" rx="12"></rect>
+      <text id="100" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
+        <tspan x="8.45385742" y="17">100</tspan>
+      </text>
+    </g>
+    <g id="root-margin-label" transform="translate(62.000000, 479.000000)">
+      <rect id="pill" fill="#D75037" x="0" y="0" width="119" height="24" rx="12"></rect>
+      <text id="root-margin" font-family="Menlo-Bold, Menlo" font-size="15" font-weight="bold" fill="#F9FAFA">
+        <tspan x="9.33081055" y="16">root margin</tspan>
+      </text>
+    </g>
+    <polygon id="margin-measure" fill="#D75037" fill-rule="nonzero"
+             points="1199.77273 47 1197.77273 47 1197.772 41 1165 41 1165 47 1163 47 1163 33 1165 33 1165 39 1197.772 39 1197.77273 33 1199.77273 33"></polygon>
+    <polygon id="margin-measure" fill="#D75037" fill-rule="nonzero"
+             points="1151 35 1151 33 1157 33 1157 2 1151 2 1151 1.47289588e-14 1165 1.36927506e-14 1165 2 1159 2 1159 33 1165 33 1165 35"></polygon>
+    <polygon id="root-margin-pointer" fill="#D75037" fill-rule="nonzero"
+             points="124 502 124 543.564896 122 543.564896 122 502"></polygon>
+  </g>
 </svg>

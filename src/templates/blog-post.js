@@ -18,6 +18,9 @@ import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import Button from '../jh-ui/Button'
+import Share from '../img/icons/share.svg'
+import Twitter from '../img/icons/twitter.svg'
+import Github from '../img/icons/github.svg'
 
 const ProgressBarWrap = styled.div`
   position: fixed;
@@ -244,6 +247,13 @@ const ArticleLinksWrap = styled.div`
   align-items: baseline;
 `
 
+const ShareLink = styled(Link)`
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+`
+
 export const BlogPostTemplate = ({
   content,
   tags,
@@ -286,7 +296,7 @@ export const BlogPostTemplate = ({
     const typeMateInstance = new TypeMate(articleWrap.current, { selector: 'h1, h2, h3, h4, h5, h6, p' })
     typeMateInstance.apply()
   }, [])
-
+  console.log()
   return (
     <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
       {helmet || ''}
@@ -387,9 +397,12 @@ export const BlogPostTemplate = ({
                   {hasNavigatorShare && (
                     <>
                       <Button unstyled={true} onClick={shareArticle}>
-                        <Link element="span">
+                        <ShareLink element="span">
+                          <Spaced right="xs">
+                            <Share/>
+                          </Spaced>
                           Share this article
-                        </Link>
+                        </ShareLink>
                       </Button>
                       <Spaced horizontal="s">
                         <Text>•</Text>
@@ -397,13 +410,16 @@ export const BlogPostTemplate = ({
                     </>
                   )}
                   {location.href && (
-                    <Link
+                    <ShareLink
                       href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      <Spaced right="xs">
+                        <Twitter/>
+                      </Spaced>
                       Discuss on Twitter
-                    </Link>
+                    </ShareLink>
                   )}
                   {(location.href && processedGithubUrl) && (
                     <Spaced horizontal="s">
@@ -411,13 +427,16 @@ export const BlogPostTemplate = ({
                     </Spaced>
                   )}
                   {processedGithubUrl && (
-                    <Link
+                    <ShareLink
                       href={processedGithubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
+                      <Spaced right="xs">
+                        <Github/>
+                      </Spaced>
                       Edit on Github
-                    </Link>
+                    </ShareLink>
                   )}
                 </ArticleLinksWrap>
               </Spaced>

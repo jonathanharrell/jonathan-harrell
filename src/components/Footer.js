@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import Padded from '../jh-ui/Padded'
+import Spaced from '../jh-ui/Spaced'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import ContentWrap from './ContentWrap'
 import Twitter from '../img/icons/twitter.svg'
 import Github from '../img/icons/github.svg'
@@ -9,8 +11,6 @@ import Codepen from '../img/icons/codepen.svg'
 import LinkedIn from '../img/icons/linkedin.svg'
 import Instagram from '../img/icons/instagram.svg'
 import Rss from '../img/icons/rss.svg'
-import Spaced from '../jh-ui/Spaced'
-import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
 const FooterWrap = styled.footer`
   background-color: var(--backgroundInverse);
