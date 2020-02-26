@@ -16,7 +16,7 @@ However, this is quickly changing thanks to the increasing availability of OpenT
 
 This article is an overview of how to control OpenType features using CSS, but remember that whatever web font you are using will also need to support these features.
 
-For live examples, [check out my web typography cheat sheet here](https://codepen.io/jonathanharrell/pen/rqaGqE).
+<Codepen id="rqaGqE"/>
 
 ## The font-variant- Properties for Advanced Typography
 
@@ -320,7 +320,6 @@ font-feature-settings: 'hist' 0; /* low-level disable */
 ```
 
 ### stylistic(feature-value-name)
-
 
 Use this to select stylistic features on an individual basis. In order to use this and several of the following `font-variant-alternates` functions, you must define a `font-feature-value` using the `@font-feature-values` rule. For example, if you wanted to select stylistic feature number 1 in the font you are using, you would first define the feature value, and then use it within the `font-variant-alternates: stylistic()` function.
 
