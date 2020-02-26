@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="304px" viewBox="0 0 1200 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>read-only</title>
+    <desc>Created with Sketch.</desc>
+    <g id="read-only" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="304"></rect>
+        <text id="label" font-family="Roboto-Medium, Roboto" font-size="26" font-weight="400" fill="#2E3138">
+            <tspan x="200" y="114">Read-only input</tspan>
+        </text>
+        <rect id="input" fill="#FFFFFF" x="200" y="134" width="800" height="80" rx="6"></rect>
+        <text id="value" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
+            <tspan x="225" y="182">Read-only input</tspan>
+        </text>
+    </g>
+</svg>
