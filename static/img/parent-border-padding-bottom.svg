@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>parent-border-padding-bottom</title>
+    <desc>Created with Sketch.</desc>
+    <g id="parent-border-padding-bottom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(330.000000, 477.500000) scale(1, -1) translate(-330.000000, -477.500000) " x="115" y="450" width="430" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(870.000000, 477.500000) scale(1, -1) translate(-870.000000, -477.500000) " x="655" y="450" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(330.000000, 270.000000) scale(1, -1) translate(-330.000000, -270.000000) " x="115" y="90" width="430" height="360"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(870.000000, 270.000000) scale(1, -1) translate(-870.000000, -270.000000) " x="655" y="90" width="430" height="360"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(222.500000, 424.500000) scale(1, -1) translate(-222.500000, -424.500000) " x="115" y="397" width="215" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(762.500000, 367.500000) scale(1, -1) translate(-762.500000, -367.500000) " x="655" y="340" width="215" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" transform="translate(870.000000, 422.500000) scale(1, -1) translate(-870.000000, -422.500000) " x="655" y="395" width="430" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(222.500000, 307.000000) scale(1, -1) translate(-222.500000, -307.000000) " x="116" y="218" width="213" height="178"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(762.500000, 250.000000) scale(1, -1) translate(-762.500000, -250.000000) " x="656" y="161" width="213" height="178"></rect>
+        <path id="line" d="M323,505 L323,503 L329,503 L329,452 L323,452 L323,450 L337,450 L337,452 L331,452 L331,503 L337,503 L337,505 L323,505 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <line x1="870" y1="182" x2="870" y2="610" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square" stroke-dasharray="5" transform="translate(870.000000, 396.000000) rotate(-270.000000) translate(-870.000000, -396.000000) "></line>
+        <line x1="870" y1="235" x2="870" y2="663" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square" stroke-dasharray="5" transform="translate(870.000000, 449.000000) rotate(-270.000000) translate(-870.000000, -449.000000) "></line>
+        <path id="line" d="M756,395 L756,393 L762,393 L762,342 L756,342 L756,340 L770,340 L770,342 L764,342 L764,393 L770,393 L770,395 L756,395 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <path id="line" d="M863,505 L863,503 L869,503 L869,452 L863,452 L863,450 L877,450 L877,452 L871,452 L871,503 L877,503 L877,505 L863,505 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <g id="margin-value" transform="translate(298.000000, 477.000000) scale(1, -1) translate(-298.000000, -477.000000) translate(278.000000, 465.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(838.000000, 477.000000) scale(1, -1) translate(-838.000000, -477.000000) translate(818.000000, 465.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(191.000000, 424.000000) scale(1, -1) translate(-191.000000, -424.000000) translate(171.000000, 412.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(731.000000, 367.000000) scale(1, -1) translate(-731.000000, -367.000000) translate(711.000000, 355.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <path id="line" d="M216,452 L216,450 L222,450 L222,399 L216,399 L216,397 L230,397 L230,399 L224,399 L224,450 L230,450 L230,452 L216,452 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <line x1="330.5" y1="237" x2="330.5" y2="665" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square" transform="translate(330.500000, 451.000000) rotate(-90.000000) translate(-330.500000, -451.000000) "></line>
+    </g>
+</svg>
