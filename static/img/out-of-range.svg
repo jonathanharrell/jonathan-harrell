@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="344px" viewBox="0 0 1200 344" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>out-of-range</title>
+    <desc>Created with Sketch.</desc>
+    <g id="out-of-range" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="344"></rect>
+        <text id="label" font-family="Roboto-Medium, Roboto" font-size="26" font-weight="400" fill="#2E3138">
+            <tspan x="200" y="114">Out-of-range input</tspan>
+        </text>
+        <rect id="input" stroke="#D75037" stroke-width="2" fill="#F9FAFA" x="201" y="135" width="798" height="78" rx="6"></rect>
+        <g id="x" transform="translate(958.603770, 172.853553) rotate(-45.000000) translate(-958.603770, -172.853553) translate(943.103770, 157.353553)" stroke="#D75037" stroke-linecap="square" stroke-width="3">
+            <line x1="15.6766235" y1="0.176623509" x2="15.6766235" y2="30.1766235" id="Line"></line>
+            <line x1="15.6766235" y1="0.176623509" x2="15.6766235" y2="30.1766235" id="Line" transform="translate(15.676624, 15.176624) rotate(-90.000000) translate(-15.676624, -15.176624) "></line>
+        </g>
+        <text id="validation-message" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#D75037">
+            <tspan x="200" y="248">Out of range (value must be between 1 and 10)</tspan>
+        </text>
+        <text id="value" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="225" y="182">12</tspan>
+        </text>
+    </g>
+</svg>
