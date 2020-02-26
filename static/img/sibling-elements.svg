@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>sibling-elements</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sibling-elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" x="115" y="230" width="430" height="55"></rect>
+        <rect id="rectangle" fill="#FFFFFF" x="655" y="90" width="430" height="180"></rect>
+        <rect id="rectangle" fill="#FFFFFF" x="115" y="90" width="430" height="140"></rect>
+        <line x1="655" y1="90" x2="655" y2="505" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square"></line>
+        <path id="line" d="M323,285 L323,283 L329,283 L329,232 L323,232 L323,230 L337,230 L337,232 L331,232 L331,283 L337,283 L337,285 L323,285 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <line x1="1085" y1="90" x2="1085" y2="505" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square"></line>
+        <g id="margin-value" transform="translate(278.000000, 246.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
