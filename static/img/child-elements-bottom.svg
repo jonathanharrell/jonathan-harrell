@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>child-elements-bottom</title>
+    <desc>Created with Sketch.</desc>
+    <g id="child-elements-bottom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(330.000000, 477.500000) scale(1, -1) translate(-330.000000, -477.500000) " x="115" y="450" width="430" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(870.000000, 477.500000) scale(1, -1) translate(-870.000000, -477.500000) " x="655" y="450" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(870.000000, 269.500000) scale(1, -1) translate(-870.000000, -269.500000) " x="655" y="90" width="430" height="359"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(330.000000, 270.000000) scale(1, -1) translate(-330.000000, -270.000000) " x="115" y="90" width="430" height="360"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(762.500000, 360.000000) scale(1, -1) translate(-762.500000, -360.000000) " x="656" y="271" width="213" height="178"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(222.500000, 422.500000) scale(1, -1) translate(-222.500000, -422.500000) " x="115" y="395" width="215" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(222.500000, 305.000000) scale(1, -1) translate(-222.500000, -305.000000) " x="116" y="216" width="213" height="178"></rect>
+        <path id="line" d="M323,505 L323,503 L329,503 L329,452 L323,452 L323,450 L337,450 L337,452 L331,452 L331,503 L337,503 L337,505 L323,505 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <path id="line" d="M216,452 L216,450 L222,450 L222,397 L216,397 L216,395 L230,395 L230,397 L224,397 L224,450 L230,450 L230,452 L216,452 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <path id="line" d="M863,505 L863,503 L869,503 L869,452 L863,452 L863,450 L877,450 L877,452 L871,452 L871,503 L877,503 L877,505 L863,505 Z" fill="#D75037" fill-rule="nonzero"></path>
+        <line x1="330" y1="236" x2="330" y2="666" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square" stroke-dasharray="5" transform="translate(330.000000, 451.000000) scale(1, -1) rotate(-90.000000) translate(-330.000000, -451.000000) "></line>
+        <line x1="655" y1="91" x2="655" y2="504" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square" transform="translate(655.000000, 297.500000) scale(1, -1) translate(-655.000000, -297.500000) "></line>
+        <line x1="1085" y1="91" x2="1085" y2="504" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square"></line>
+        <g id="margin-value" transform="translate(298.000000, 477.000000) scale(1, -1) translate(-298.000000, -477.000000) translate(278.000000, 465.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(838.000000, 477.000000) scale(1, -1) translate(-838.000000, -477.000000) translate(818.000000, 465.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(191.000000, 422.000000) scale(1, -1) translate(-191.000000, -422.000000) translate(171.000000, 410.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
