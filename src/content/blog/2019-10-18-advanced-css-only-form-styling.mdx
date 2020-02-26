@@ -17,6 +17,8 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 ## :placeholder-shown
 
+![A common UX pattern involves showing a placeholder within an input and then moving that placeholder text above the input when a user starts typing.](/img/placeholder-shown.svg)
+
 The first selector is relatively new and doesn’t have complete [browser support](https://caniuse.com/#feat=css-placeholder-shown) yet. However, this seems like something that could easily work as a progressive enhancement. The selector allows us to detect whether a placeholder is currently visible to the user. This could come in handy if we want to dynamically hide and show the input’s associated label.
 
 Here I am hiding the label until the user types in the input, thus hiding the placeholder. I use a nice transition effect to display the label. Note that for this to work, the label must come AFTER the input.
