@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>child-elements-bottom</title>
+    <desc>Created with Sketch.</desc>
+    <g id="child-elements-bottom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" transform="translate(330.000000, 477.500000) scale(1, -1) translate(-330.000000, -477.500000) " x="115" y="450" width="430" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" transform="translate(870.000000, 477.500000) scale(1, -1) translate(-870.000000, -477.500000) " x="655" y="450" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(870.000000, 269.500000) scale(1, -1) translate(-870.000000, -269.500000) " x="655" y="90" width="430" height="359"></rect>
+        <rect id="parent" fill="#FFFFFF" transform="translate(330.000000, 270.000000) scale(1, -1) translate(-330.000000, -270.000000) " x="115" y="90" width="430" height="360"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(762.500000, 360.000000) scale(1, -1) translate(-762.500000, -360.000000) " x="656" y="271" width="213" height="178"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" transform="translate(222.500000, 422.500000) scale(1, -1) translate(-222.500000, -422.500000) " x="115" y="395" width="215" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(222.500000, 305.000000) scale(1, -1) translate(-222.500000, -305.000000) " x="116" y="216" width="213" height="178"></rect>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="323 505 323 503 329 503 329 452 323 452 323 450 337 450 337 452 331 452 331 503 337 503 337 505"></polygon>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="863 505 863 503 869 503 869 452 863 452 863 450 877 450 877 452 871 452 871 503 877 503 877 505"></polygon>
+        <path d="M331,237.5 L329,237.5 L329,244.5 L331,244.5 L331,237.5 Z M331,247.5 L329,247.5 L329,254.5 L331,254.5 L331,247.5 Z M331,257.5 L329,257.5 L329,264.5 L331,264.5 L331,257.5 Z M331,267.5 L329,267.5 L329,274.5 L331,274.5 L331,267.5 Z M331,277.5 L329,277.5 L329,284.5 L331,284.5 L331,277.5 Z M331,287.5 L329,287.5 L329,294.5 L331,294.5 L331,287.5 Z M331,297.5 L329,297.5 L329,304.5 L331,304.5 L331,297.5 Z M331,307.5 L329,307.5 L329,314.5 L331,314.5 L331,307.5 Z M331,317.5 L329,317.5 L329,324.5 L331,324.5 L331,317.5 Z M331,327.5 L329,327.5 L329,334.5 L331,334.5 L331,327.5 Z M331,337.5 L329,337.5 L329,344.5 L331,344.5 L331,337.5 Z M331,347.5 L329,347.5 L329,354.5 L331,354.5 L331,347.5 Z M331,357.5 L329,357.5 L329,364.5 L331,364.5 L331,357.5 Z M331,367.5 L329,367.5 L329,374.5 L331,374.5 L331,367.5 Z M331,377.5 L329,377.5 L329,384.5 L331,384.5 L331,377.5 Z M331,387.5 L329,387.5 L329,394.5 L331,394.5 L331,387.5 Z M331,397.5 L329,397.5 L329,404.5 L331,404.5 L331,397.5 Z M331,407.5 L329,407.5 L329,414.5 L331,414.5 L331,407.5 Z M331,417.5 L329,417.5 L329,424.5 L331,424.5 L331,417.5 Z M331,427.5 L329,427.5 L329,434.5 L331,434.5 L331,427.5 Z M331,437.5 L329,437.5 L329,444.5 L331,444.5 L331,437.5 Z M331,447.5 L329,447.5 L329,454.5 L331,454.5 L331,447.5 Z M331,457.5 L329,457.5 L329,464.5 L331,464.5 L331,457.5 Z M331,467.5 L329,467.5 L329,474.5 L331,474.5 L331,467.5 Z M331,477.5 L329,477.5 L329,484.5 L331,484.5 L331,477.5 Z M331,487.5 L329,487.5 L329,494.5 L331,494.5 L331,487.5 Z M331,497.5 L329,497.5 L329,504.5 L331,504.5 L331,497.5 Z M331,507.5 L329,507.5 L329,514.5 L331,514.5 L331,507.5 Z M331,517.5 L329,517.5 L329,524.5 L331,524.5 L331,517.5 Z M331,527.5 L329,527.5 L329,534.5 L331,534.5 L331,527.5 Z M331,537.5 L329,537.5 L329,544.5 L331,544.5 L331,537.5 Z M331,547.5 L329,547.5 L329,554.5 L331,554.5 L331,547.5 Z M331,557.5 L329,557.5 L329,564.5 L331,564.5 L331,557.5 Z M331,567.5 L329,567.5 L329,574.5 L331,574.5 L331,567.5 Z M331,577.5 L329,577.5 L329,584.5 L331,584.5 L331,577.5 Z M331,587.5 L329,587.5 L329,594.5 L331,594.5 L331,587.5 Z M331,597.5 L329,597.5 L329,604.5 L331,604.5 L331,597.5 Z M331,607.5 L329,607.5 L329,614.5 L331,614.5 L331,607.5 Z M331,617.5 L329,617.5 L329,624.5 L331,624.5 L331,617.5 Z M331,627.5 L329,627.5 L329,634.5 L331,634.5 L331,627.5 Z M331,637.5 L329,637.5 L329,644.5 L331,644.5 L331,637.5 Z M331,647.5 L329,647.5 L329,654.5 L331,654.5 L331,647.5 Z M331,657.5 L329,657.5 L329,664.5 L331,664.5 L331,657.5 Z" id="line" fill="#8D8DA6" fill-rule="nonzero" transform="translate(330.000000, 451.000000) scale(1, -1) rotate(-90.000000) translate(-330.000000, -451.000000) "></path>
+        <line x1="655" y1="91" x2="655" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square" transform="translate(655.000000, 297.500000) scale(1, -1) translate(-655.000000, -297.500000) "></line>
+        <line x1="1085" y1="91" x2="1085" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square"></line>
+        <g id="margin-value" transform="translate(298.000000, 477.000000) scale(1, -1) translate(-298.000000, -477.000000) translate(278.000000, 465.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(838.000000, 477.000000) scale(1, -1) translate(-838.000000, -477.000000) translate(818.000000, 465.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(191.000000, 422.000000) scale(1, -1) translate(-191.000000, -422.000000) translate(171.000000, 410.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Regular, Menlo" font-size="16" font-weight="normal" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="216 452 216 450 222 450 222 395 216 395 216 393 230 393 230 395 224 395 224 450 230 450 230 452"></polygon>
+    </g>
+</svg>
