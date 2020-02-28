@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>child-elements-top</title>
+    <desc>Created with Sketch.</desc>
+    <g id="child-elements-top" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="115" y="90" width="430" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="655" y="90" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" x="655" y="146" width="430" height="359"></rect>
+        <rect id="parent" fill="#FFFFFF" x="115" y="145" width="430" height="360"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" x="656" y="146" width="213" height="178"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="115" y="145" width="215" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" x="116" y="201" width="213" height="178"></rect>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="323 145 323 143 329 143 329 92 323 92 323 90 337 90 337 92 331 92 331 143 337 143 337 145"></polygon>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="216 202 216 200 222 200 222 145 216 145 216 143 230 143 230 145 224 145 224 200 230 200 230 202"></polygon>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="863 145 863 143 869 143 869 92 863 92 863 90 877 90 877 92 871 92 871 143 877 143 877 145"></polygon>
+        <path d="M331,-69.5 L329,-69.5 L329,-62.5 L331,-62.5 L331,-69.5 Z M331,-59.5 L329,-59.5 L329,-52.5 L331,-52.5 L331,-59.5 Z M331,-49.5 L329,-49.5 L329,-42.5 L331,-42.5 L331,-49.5 Z M331,-39.5 L329,-39.5 L329,-32.5 L331,-32.5 L331,-39.5 Z M331,-29.5 L329,-29.5 L329,-22.5 L331,-22.5 L331,-29.5 Z M331,-19.5 L329,-19.5 L329,-12.5 L331,-12.5 L331,-19.5 Z M331,-9.5 L329,-9.5 L329,-2.5 L331,-2.5 L331,-9.5 Z M331,0.5 L329,0.5 L329,7.5 L331,7.5 L331,0.5 Z M331,10.5 L329,10.5 L329,17.5 L331,17.5 L331,10.5 Z M331,20.5 L329,20.5 L329,27.5 L331,27.5 L331,20.5 Z M331,30.5 L329,30.5 L329,37.5 L331,37.5 L331,30.5 Z M331,40.5 L329,40.5 L329,47.5 L331,47.5 L331,40.5 Z M331,50.5 L329,50.5 L329,57.5 L331,57.5 L331,50.5 Z M331,60.5 L329,60.5 L329,67.5 L331,67.5 L331,60.5 Z M331,70.5 L329,70.5 L329,77.5 L331,77.5 L331,70.5 Z M331,80.5 L329,80.5 L329,87.5 L331,87.5 L331,80.5 Z M331,90.5 L329,90.5 L329,97.5 L331,97.5 L331,90.5 Z M331,100.5 L329,100.5 L329,107.5 L331,107.5 L331,100.5 Z M331,110.5 L329,110.5 L329,117.5 L331,117.5 L331,110.5 Z M331,120.5 L329,120.5 L329,127.5 L331,127.5 L331,120.5 Z M331,130.5 L329,130.5 L329,137.5 L331,137.5 L331,130.5 Z M331,140.5 L329,140.5 L329,147.5 L331,147.5 L331,140.5 Z M331,150.5 L329,150.5 L329,157.5 L331,157.5 L331,150.5 Z M331,160.5 L329,160.5 L329,167.5 L331,167.5 L331,160.5 Z M331,170.5 L329,170.5 L329,177.5 L331,177.5 L331,170.5 Z M331,180.5 L329,180.5 L329,187.5 L331,187.5 L331,180.5 Z M331,190.5 L329,190.5 L329,197.5 L331,197.5 L331,190.5 Z M331,200.5 L329,200.5 L329,207.5 L331,207.5 L331,200.5 Z M331,210.5 L329,210.5 L329,217.5 L331,217.5 L331,210.5 Z M331,220.5 L329,220.5 L329,227.5 L331,227.5 L331,220.5 Z M331,230.5 L329,230.5 L329,237.5 L331,237.5 L331,230.5 Z M331,240.5 L329,240.5 L329,247.5 L331,247.5 L331,240.5 Z M331,250.5 L329,250.5 L329,257.5 L331,257.5 L331,250.5 Z M331,260.5 L329,260.5 L329,267.5 L331,267.5 L331,260.5 Z M331,270.5 L329,270.5 L329,277.5 L331,277.5 L331,270.5 Z M331,280.5 L329,280.5 L329,287.5 L331,287.5 L331,280.5 Z M331,290.5 L329,290.5 L329,297.5 L331,297.5 L331,290.5 Z M331,300.5 L329,300.5 L329,307.5 L331,307.5 L331,300.5 Z M331,310.5 L329,310.5 L329,317.5 L331,317.5 L331,310.5 Z M331,320.5 L329,320.5 L329,327.5 L331,327.5 L331,320.5 Z M331,330.5 L329,330.5 L329,337.5 L331,337.5 L331,330.5 Z M331,340.5 L329,340.5 L329,347.5 L331,347.5 L331,340.5 Z M331,350.5 L329,350.5 L329,357.5 L331,357.5 L331,350.5 Z" id="line" fill="#8D8DA6" fill-rule="nonzero" transform="translate(330.000000, 144.000000) rotate(-90.000000) translate(-330.000000, -144.000000) "></path>
+        <line x1="655" y1="91" x2="655" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="1085" y1="91" x2="1085" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square"></line>
+        <g id="margin-value" transform="translate(278.000000, 106.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(818.000000, 106.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(171.000000, 161.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
