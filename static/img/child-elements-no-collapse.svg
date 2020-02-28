@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>child-elements-no-collapse</title>
+    <desc>Created with Sketch.</desc>
+    <g id="child-elements-no-collapse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" x="115" y="90" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" x="115" y="145" width="430" height="360"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" x="115" y="145" width="215" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" x="116" y="201" width="213" height="178"></rect>
+        <polygon id="line" fill="#D75037" fill-rule="nonzero" points="323 145 323 143 329 143 329 92 323 92 323 90 337 90 337 92 331 92 331 143 337 143 337 145"></polygon>
+        <polygon id="line" fill="#D75037" fill-rule="nonzero" points="216 202 216 200 222 200 222 145 216 145 216 143 230 143 230 145 224 145 224 200 230 200 230 202"></polygon>
+        <line x1="330.5" y1="-70" x2="330.5" y2="358" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square" transform="translate(330.500000, 144.000000) rotate(-90.000000) translate(-330.500000, -144.000000) "></line>
+        <g id="margin-value" transform="translate(278.000000, 106.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(171.000000, 161.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <rect id="parent" fill="#FFFFFF" transform="translate(870.000000, 270.000000) scale(1, -1) translate(-870.000000, -270.000000) " x="655" y="90" width="430" height="360"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" transform="translate(762.500000, 305.000000) scale(1, -1) translate(-762.500000, -305.000000) " x="656" y="216" width="213" height="178"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(762.500000, 422.500000) scale(1, -1) translate(-762.500000, -422.500000) " x="655" y="395" width="215" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#D75037" transform="translate(870.000000, 477.500000) scale(1, -1) translate(-870.000000, -477.500000) " x="655" y="450" width="430" height="55"></rect>
+        <polygon id="line" fill="#D75037" fill-rule="nonzero" points="863 505 863 503 869 503 869 452 863 452 863 450 877 450 877 452 871 452 871 503 877 503 877 505"></polygon>
+        <line x1="870" y1="237" x2="870" y2="665" id="line" stroke="#D75037" stroke-width="2" stroke-linecap="square" transform="translate(870.000000, 451.000000) scale(1, -1) rotate(-90.000000) translate(-870.000000, -451.000000) "></line>
+        <g id="margin-value" transform="translate(838.000000, 477.000000) scale(1, -1) translate(-838.000000, -477.000000) translate(818.000000, 465.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(731.000000, 422.000000) scale(1, -1) translate(-731.000000, -422.000000) translate(711.000000, 410.000000)">
+            <rect id="pill" fill="#D75037" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" transform="translate(21.000000, 12.500000) scale(1, -1) translate(-21.000000, -12.500000) " font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="18">30</tspan>
+            </text>
+        </g>
+        <polygon id="line" fill="#D75037" fill-rule="nonzero" points="756 452 756 450 762 450 762 395 756 395 756 393 770 393 770 395 764 395 764 450 770 450 770 452"></polygon>
+    </g>
+</svg>
