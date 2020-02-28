@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>child-elements-top</title>
+    <desc>Created with Sketch.</desc>
+    <g id="child-elements-top" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="115" y="90" width="430" height="55"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="655" y="90" width="430" height="55"></rect>
+        <rect id="parent" fill="#FFFFFF" x="655" y="146" width="430" height="359"></rect>
+        <rect id="parent" fill="#FFFFFF" x="115" y="145" width="430" height="360"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" x="656" y="146" width="213" height="178"></rect>
+        <rect id="margin-fill" fill-opacity="0.1" fill="#8D8DA6" x="115" y="145" width="215" height="55"></rect>
+        <rect id="child" stroke="#DEDEE6" stroke-width="2" fill="#FFFFFF" x="116" y="201" width="213" height="178"></rect>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="323 145 323 143 329 143 329 92 323 92 323 90 337 90 337 92 331 92 331 143 337 143 337 145"></polygon>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="216 200 216 198 222 198 222 145 216 145 216 143 230 143 230 145 224 145 224 198 230 198 230 200"></polygon>
+        <polygon id="line" fill="#8D8DA6" fill-rule="nonzero" points="863 145 863 143 869 143 869 92 863 92 863 90 877 90 877 92 871 92 871 143 877 143 877 145"></polygon>
+        <path d="M331,-69 L329,-69 L329,-62 L331,-62 L331,-69 Z M331,-59 L329,-59 L329,-52 L331,-52 L331,-59 Z M331,-49 L329,-49 L329,-42 L331,-42 L331,-49 Z M331,-39 L329,-39 L329,-32 L331,-32 L331,-39 Z M331,-29 L329,-29 L329,-22 L331,-22 L331,-29 Z M331,-19 L329,-19 L329,-12 L331,-12 L331,-19 Z M331,-9 L329,-9 L329,-2 L331,-2 L331,-9 Z M331,1 L329,1 L329,8 L331,8 L331,1 Z M331,11 L329,11 L329,18 L331,18 L331,11 Z M331,21 L329,21 L329,28 L331,28 L331,21 Z M331,31 L329,31 L329,38 L331,38 L331,31 Z M331,41 L329,41 L329,48 L331,48 L331,41 Z M331,51 L329,51 L329,58 L331,58 L331,51 Z M331,61 L329,61 L329,68 L331,68 L331,61 Z M331,71 L329,71 L329,78 L331,78 L331,71 Z M331,81 L329,81 L329,88 L331,88 L331,81 Z M331,91 L329,91 L329,98 L331,98 L331,91 Z M331,101 L329,101 L329,108 L331,108 L331,101 Z M331,111 L329,111 L329,118 L331,118 L331,111 Z M331,121 L329,121 L329,128 L331,128 L331,121 Z M331,131 L329,131 L329,138 L331,138 L331,131 Z M331,141 L329,141 L329,148 L331,148 L331,141 Z M331,151 L329,151 L329,158 L331,158 L331,151 Z M331,161 L329,161 L329,168 L331,168 L331,161 Z M331,171 L329,171 L329,178 L331,178 L331,171 Z M331,181 L329,181 L329,188 L331,188 L331,181 Z M331,191 L329,191 L329,198 L331,198 L331,191 Z M331,201 L329,201 L329,208 L331,208 L331,201 Z M331,211 L329,211 L329,218 L331,218 L331,211 Z M331,221 L329,221 L329,228 L331,228 L331,221 Z M331,231 L329,231 L329,238 L331,238 L331,231 Z M331,241 L329,241 L329,248 L331,248 L331,241 Z M331,251 L329,251 L329,258 L331,258 L331,251 Z M331,261 L329,261 L329,268 L331,268 L331,261 Z M331,271 L329,271 L329,278 L331,278 L331,271 Z M331,281 L329,281 L329,288 L331,288 L331,281 Z M331,291 L329,291 L329,298 L331,298 L331,291 Z M331,301 L329,301 L329,308 L331,308 L331,301 Z M331,311 L329,311 L329,318 L331,318 L331,311 Z M331,321 L329,321 L329,328 L331,328 L331,321 Z M331,331 L329,331 L329,338 L331,338 L331,331 Z M331,341 L329,341 L329,348 L331,348 L331,341 Z M331,351 L329,351 L329,358 L331,358 L331,351 Z" id="line" fill="#8D8DA6" fill-rule="nonzero" transform="translate(330.000000, 144.500000) rotate(-90.000000) translate(-330.000000, -144.500000) "></path>
+        <line x1="655" y1="91" x2="655" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square"></line>
+        <line x1="1085" y1="91" x2="1085" y2="504" id="line" stroke="#8D8DA6" stroke-width="2" stroke-linecap="square"></line>
+        <g id="margin-value" transform="translate(278.000000, 106.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(818.000000, 106.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+        <g id="margin-value" transform="translate(171.000000, 161.000000)">
+            <rect id="pill" fill="#8D8DA6" x="0" y="0" width="40" height="24" rx="12"></rect>
+            <text id="30" font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
+                <tspan x="11" y="17">30</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
