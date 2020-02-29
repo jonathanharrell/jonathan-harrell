@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200px" height="635px" viewBox="0 0 1200 635" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>autocomplete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="autocomplete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="635"></rect>
+        <rect id="dropdown" fill="#FFFFFF" x="200" y="185" width="800" height="360" rx="6"></rect>
+        <rect id="selected-option" fill="#DEDEE6" x="200" y="274" width="800" height="58"></rect>
+        <rect id="input" fill="#FFFFFF" x="200" y="90" width="800" height="80" rx="6"></rect>
+        <text id="value" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
+            <tspan x="229" y="138">Type to search list</tspan>
+        </text>
+        <line x1="225" y1="111.47561" x2="225" y2="149.89878" id="cursor" stroke="#2E3138" stroke-linecap="square"></line>
+        <path d="M966.585786,135 L968,133.585786 L974.414214,140 L973,141.414214 L966.585786,135 Z M961,138 C955.477153,138 951,133.522847 951,128 C951,122.477153 955.477153,118 961,118 C966.522847,118 971,122.477153 971,128 C971,133.522847 966.522847,138 961,138 Z M961,136 C965.418278,136 969,132.418278 969,128 C969,123.581722 965.418278,120 961,120 C956.581722,120 953,123.581722 953,128 C953,132.418278 956.581722,136 961,136 Z" id="search-icon" fill="#2E3138" fill-rule="nonzero"></path>
+        <text id="Inside-Out" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="230" y="250">Inside Out</tspan>
+        </text>
+        <text id="John-Wick" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="230" y="312">John Wick</tspan>
+        </text>
+        <text id="Jurassic-World" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="230" y="374">Jurassic World</tspan>
+        </text>
+        <text id="The-Lord-of-the-Ring" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="230" y="436">The Lord of the Rings</tspan>
+        </text>
+        <text id="Pacific-Rim" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+            <tspan x="230" y="498">Pacific Rim</tspan>
+        </text>
+    </g>
+</svg>
