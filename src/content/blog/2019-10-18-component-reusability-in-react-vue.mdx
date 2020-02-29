@@ -15,6 +15,8 @@ One of the issues all front-end developers face is how to make UI components reu
 
 Let’s say we are building an autocomplete component:
 
+![Using render props in React or scoped slots in Vue, we reuse the same basic search/select functionality to create two different components.](/img/autocomplete.svg)
+
 Take a look at the initial React component code:
 
 ```jsx
@@ -64,6 +66,8 @@ In this component, we have some logic that controls the core search behavior, bu
 Think about how you would reuse this component. Sure, you could use this very same component if you want to reproduce exactly the same behavioral and visual result. But what if you want to reuse the same behavior, but visualize the component slightly differently? What if you want to reuse the core search behavior but add a few modifications for a slightly different use case?
 
 Imagine that instead of a dropdown containing the search results, you want a tag-like list of search results that always display:
+
+![An additional component we can create that reuses the same core search/select functionality is a tag-like list.](/img/tag-list.svg)
 
 At their core, the functionality of these two components is very similar: type into an input to filter a list.
 
