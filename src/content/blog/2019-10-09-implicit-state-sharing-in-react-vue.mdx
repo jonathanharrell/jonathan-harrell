@@ -55,6 +55,8 @@ What we really need is a way to _implicitly_ pass down props.
 
 ## Using React Context
 
+![](/img/accordion-state-sharing.svg)
+
 There is a better solution for cases like this — React Context. We can use the Context API to create some state and provide it where needed behind the scenes, removing this concern from our public-facing API.
 
 First, we will create a context and define the _shape_ of that context. We will start with an `expanded` value and a `toggleExpansion` method. We are defining this context as specifically relevant to our accordion item:
