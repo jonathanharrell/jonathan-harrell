@@ -54,6 +54,9 @@ collections:
             name: experiment
             widget: list
             fields:
+              - label: ID
+                name: id
+                widget: string
               - label: Title
                 name: title
                 widget: string
