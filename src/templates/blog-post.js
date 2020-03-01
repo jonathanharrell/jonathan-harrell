@@ -232,10 +232,6 @@ const ArticleMeta = styled.div`
   align-items: baseline;
 `
 
-const Tags = styled.ul`
-  margin: 0 ${({ theme }) => theme.spacing.xxl} 0 0;
-`
-
 const Tag = styled.li`
   display: inline-block;
   list-style: none;
@@ -253,7 +249,7 @@ const ArticleLinksWrap = styled.div`
 `
 
 const ShareLink = styled(Link)`
-  margin-bottom: ${({ theme }) => theme.spacing.s};
+  margin-bottom: ${({ theme }) => theme.spacing.m};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     margin-bottom: 0;
@@ -343,45 +339,47 @@ export const BlogPostTemplate = ({
               <Spaced bottom="s">
                 <ArticleMeta>
                   {tags && (
-                    <div>
-                      <ScreenReaderText>
-                        <Heading
-                          level={2}
-                          id="article-tags-label"
-                        >
-                          Article Tags
-                        </Heading>
-                      </ScreenReaderText>
-                      <Tags aria-labelledby="article-tags-label">
-                        {tags.map((tag, index) => (
-                          <Tag key={tag + `tag`}>
-                            <TagLink
-                              to={`/tags/${kebabCase(tag)}/`}
-                              aria-label={`View articles with the tag ${tag}`}
-                            >
-                              <Text order="meta" element="span">
-                                {tag}
-                              </Text>
-                            </TagLink>
-                            {index < tags.length - 1 && (
-                              <Text order="meta" element="span" aria-hidden>
-                                &nbsp;•&nbsp;
-                              </Text>
-                            )}
-                          </Tag>
-                        ))}
-                      </Tags>
-                    </div>
+                    <Spaced right="xxl">
+                      <div>
+                        <ScreenReaderText>
+                          <Heading
+                            level={2}
+                            id="article-tags-label"
+                          >
+                            Article Tags
+                          </Heading>
+                        </ScreenReaderText>
+                        <ul aria-labelledby="article-tags-label">
+                          {tags.map((tag, index) => (
+                            <Tag key={tag + `tag`}>
+                              <TagLink
+                                to={`/tags/${kebabCase(tag)}/`}
+                                aria-label={`View articles with the tag ${tag}`}
+                              >
+                                <Text order="meta" element="span">
+                                  {tag}
+                                </Text>
+                              </TagLink>
+                              {index < tags.length - 1 && (
+                                <Text order="meta" element="span" aria-hidden>
+                                  &nbsp;•&nbsp;
+                                </Text>
+                              )}
+                            </Tag>
+                          ))}
+                        </ul>
+                      </div>
+                    </Spaced>
                   )}
-                  <Text order="meta" element="span">
-                    <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
-                    {date}
-                  </Text>
-                  <Spaced left="xxl">
+                  <Spaced right="xxl">
                     <Text order="meta" element="span">
-                      {readingTime.text}
+                      <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                      {date}
                     </Text>
                   </Spaced>
+                  <Text order="meta" element="span">
+                    {readingTime.text}
+                  </Text>
                 </ArticleMeta>
               </Spaced>
               <Spaced bottom="m">

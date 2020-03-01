@@ -105,7 +105,17 @@ const DesktopMenu = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const isActive = ({ isCurrent }) => {
+  const isActive = ({ isCurrent, href, location }) => {
+    if (href === '/blog') {
+      if (location.pathname.startsWith('/blog')) {
+        return { 'data-active': true }
+      }
+
+      if (location.pathname.startsWith('/tags')) {
+        return { 'data-active': true }
+      }
+    }
+
     return isCurrent ? { 'data-active': true } : null
   }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link as GatsbyLink } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import { kebabCase } from 'lodash'
 import Layout from '../../components/Layout'
 import styled from 'styled-components'
