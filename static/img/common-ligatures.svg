@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="450px" viewBox="0 0 1200 450" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1200px" height="400px" viewBox="0 0 1200 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
     <title>common-ligatures</title>
     <desc>Created with Sketch.</desc>
     <g id="common-ligatures" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="450"></rect>
-        <text id="surfboard-riffs-wolfhound" font-family="DMSerifText-Regular, DM Serif Text" font-size="300" font-weight="normal" line-spacing="300" fill="#ABB0BA">
-            <tspan x="335" y="371">ff</tspan>
+        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="400"></rect>
+        <text id="surfboard-riffs-wolfhound" font-family="HoeflerText-Regular, Hoefler Text" font-size="300" font-weight="normal" fill="#C9C9D6">
+            <tspan x="335" y="296">ff</tspan>
         </text>
-        <text id="surfboard-riffs-wolfhound-copy" font-family="DMSerifText-Regular, DM Serif Text" font-size="300" font-weight="normal" line-spacing="300" fill="#2E3138">
-            <tspan x="660" y="371">ff</tspan>
+        <text id="surfboard-riffs-wolfhound-copy" font-family="HoeflerText-Regular, Hoefler Text" font-size="300" font-weight="normal" fill="#2E3138">
+            <tspan x="660" y="296">ff</tspan>
         </text>
     </g>
 </svg>
