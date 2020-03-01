@@ -28,7 +28,6 @@
     "gatsby-remark-autolink-headers": "^2.1.16",
     "gatsby-remark-copy-linked-files": "^2.0.7",
     "gatsby-remark-images": "^3.1.6",
-    "gatsby-remark-jh-inline-svg": "^0.1.1",
     "gatsby-remark-prismjs": "^3.3.18",
     "gatsby-remark-relative-images": "^0.2.1",
     "gatsby-source-filesystem": "^2.0.26",
@@ -67,6 +66,7 @@
     "babel-loader": "^8.0.6",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.21",
     "gatsby-remark-jh-codepen-block": "^0.1.2",
+    "gatsby-remark-jh-inline-svg": "^0.1.2",
     "gatsby-remark-reading-time": "^1.1.0",
     "prettier": "^1.15.3",
     "storybook-dark-mode": "^0.1.7"

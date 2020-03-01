@@ -42,13 +42,15 @@ const BlogExcerpt = styled(ArticleExcerpt)`
 
 class RecentArticles extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMdx
+    const { data, currentPostId } = this.props
+    let { edges: posts } = data.allMdx
+
+    if (currentPostId) posts = posts.filter(post => post.node.id !== currentPostId)
+    posts = posts.slice(0, 4)
 
     return (
       <RecentArticlesWrap>
-        {posts &&
-        posts.map(({ node: post }) => (
+        {posts && posts.map(({ node: post }) => (
           <BlogExcerpt
             key={post.id}
             link={post.fields.slug}
@@ -64,6 +66,7 @@ class RecentArticles extends React.Component {
 }
 
 RecentArticles.propTypes = {
+  currentPostId: PropTypes.string,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -71,12 +74,12 @@ RecentArticles.propTypes = {
   }),
 }
 
-export default () => (
+export default ({ currentPostId }) => (
   <StaticQuery
     query={graphql`
       query RecentArticlesQuery {
         allMdx(
-          limit: 4
+          limit: 5
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
@@ -98,6 +101,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <RecentArticles data={data} count={count}/>}
+    render={(data) => <RecentArticles data={data} currentPostId={currentPostId}/>}
   />
 )

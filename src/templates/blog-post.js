@@ -11,6 +11,7 @@ import TypeMate from 'typemate'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 import ContentWrap from '../components/ContentWrap'
+import RecentArticles from '../components/RecentArticles'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Padded from '../jh-ui/Padded'
@@ -269,7 +270,12 @@ const Divider = styled(Text)`
   }
 `
 
+const RecentArticlesWrap = styled.section`
+  background-color: var(--backgroundSecondary);
+`
+
 export const BlogPostTemplate = ({
+  id,
   content,
   tags,
   title,
@@ -460,6 +466,18 @@ export const BlogPostTemplate = ({
           </ArticleContentWrap>
         </ContentWrap>
       </Padded>
+      <RecentArticlesWrap aria-labelledby="recent-articles-label">
+        <Padded vertical="5x">
+          <ContentWrap>
+            <Spaced bottom="2x">
+              <Heading level={2} id="recent-articles-label">
+                Recent Articles
+              </Heading>
+            </Spaced>
+            <RecentArticles currentPostId={id}/>
+          </ContentWrap>
+        </Padded>
+      </RecentArticlesWrap>
     </ArticleWrap>
   )
 }
@@ -478,6 +496,7 @@ const BlogPost = ({ data, location }) => {
   return (
     <Layout>
       <BlogPostTemplate
+        id={post.id}
         content={post.body}
         contentComponent={HTMLContent}
         helmet={
