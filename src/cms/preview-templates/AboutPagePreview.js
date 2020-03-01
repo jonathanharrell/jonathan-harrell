@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const AboutPagePreview = ({ entry, widgetFor, widgetsFor, getAsset }) => {
+const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
   const projects = widgetsFor('involvement').getIn(['data', 'project'])
   const usages = widgetsFor('what-i-use').getIn(['data', 'usage'])
-  const image = entry.getIn(['data', 'image'])
+  const image = entry.getIn(['data', 'bioimage'])
   const imageAsset = getAsset(image).value
 
   return (

@@ -503,7 +503,7 @@ type MdxFrontmatter {
     locale: String
   ): Date
   description: String
-  experiment: [MdxFrontmatterExperiment]
+  experiments: [MdxFrontmatterExperiments]
   featuredimage: File
   involvement: MdxFrontmatterInvolvement
   tags: [String]
@@ -512,7 +512,7 @@ type MdxFrontmatter {
   what_i_use: MdxFrontmatterWhat_i_use
 }
 
-type MdxFrontmatterExperiment {
+type MdxFrontmatterExperiments {
   date(
     #Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
     difference: String,
@@ -1059,10 +1059,10 @@ enum FileFieldsEnum {
   childMdx___frontmatter___bioimage___uid
   childMdx___frontmatter___date
   childMdx___frontmatter___description
-  childMdx___frontmatter___experiment
-  childMdx___frontmatter___experiment___date
-  childMdx___frontmatter___experiment___id
-  childMdx___frontmatter___experiment___title
+  childMdx___frontmatter___experiments
+  childMdx___frontmatter___experiments___date
+  childMdx___frontmatter___experiments___id
+  childMdx___frontmatter___experiments___title
   childMdx___frontmatter___featuredimage___absolutePath
   childMdx___frontmatter___featuredimage___accessTime
   childMdx___frontmatter___featuredimage___atime
@@ -1543,10 +1543,10 @@ enum MdxFieldsEnum {
   frontmatter___bioimage___uid
   frontmatter___date
   frontmatter___description
-  frontmatter___experiment
-  frontmatter___experiment___date
-  frontmatter___experiment___id
-  frontmatter___experiment___title
+  frontmatter___experiments
+  frontmatter___experiments___date
+  frontmatter___experiments___id
+  frontmatter___experiments___title
   frontmatter___featuredimage___absolutePath
   frontmatter___featuredimage___accessTime
   frontmatter___featuredimage___atime
@@ -2361,14 +2361,14 @@ input MdxFilterInput {
   wordCount: MdxWordCountFilterInput
 }
 
-input MdxFrontmatterExperimentFilterInput {
+input MdxFrontmatterExperimentsFilterInput {
   date: DateQueryOperatorInput
   id: StringQueryOperatorInput
   title: StringQueryOperatorInput
 }
 
-input MdxFrontmatterExperimentFilterListInput {
-  elemMatch: MdxFrontmatterExperimentFilterInput
+input MdxFrontmatterExperimentsFilterListInput {
+  elemMatch: MdxFrontmatterExperimentsFilterInput
 }
 
 input MdxFrontmatterFilterInput {
@@ -2376,7 +2376,7 @@ input MdxFrontmatterFilterInput {
   bioimage: FileFilterInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
-  experiment: MdxFrontmatterExperimentFilterListInput
+  experiments: MdxFrontmatterExperimentsFilterListInput
   featuredimage: FileFilterInput
   involvement: MdxFrontmatterInvolvementFilterInput
   tags: StringQueryOperatorInput

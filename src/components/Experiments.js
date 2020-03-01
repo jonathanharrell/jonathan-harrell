@@ -40,43 +40,19 @@ const ExperimentExcerptElevated = styled(ExperimentExcerpt)`
   }
 `
 
-class Experiments extends React.Component {
-  render() {
-    return (
-      <ExperimentsWrap>
+const Experiments = ({ experiments }) => {
+  return (
+    <ExperimentsWrap>
+      {experiments.slice(0, 6).map(experiment => (
         <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Typographic Details Cheat Sheet"
-          viewsCount={210}
+          key={experiment.id}
+          id={experiment.id}
+          title={experiment.title}
+          date={new Date(experiment.date)}
         />
-        <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Semantic Image Grid with Object-Fit"
-          viewsCount={441}
-        />
-        <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Live Theming with CSS Variables"
-          viewsCount={169}
-        />
-        <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Controlling Element Visibility"
-          viewsCount={183}
-        />
-        <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Contextual Callouts with CSS Grid"
-          viewsCount={90}
-        />
-        <ExperimentExcerptElevated
-          date={new Date('September 29, 2018')}
-          title="Advanced Form Styling with CSS Only"
-          viewsCount={1302}
-        />
-      </ExperimentsWrap>
-    )
-  }
+      ))}
+    </ExperimentsWrap>
+  )
 }
 
 export default Experiments

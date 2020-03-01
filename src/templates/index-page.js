@@ -13,7 +13,7 @@ import Link from '../jh-ui/Link'
 import SectionHeader from '../jh-ui/SectionHeader'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 
-const HeaderWrap = styled.section`
+const HeaderWrap = styled.header`
   padding-top: ${({ theme }) => theme.spacing['3x']};
   background-color: var(--backgroundPrimary);
 
@@ -53,19 +53,18 @@ const ExperimentsWrap = styled.section`
   background-color: var(--backgroundInverse);
 `
 
-export const IndexPageTemplate = ({ title, experiments }) => {
+export const IndexPageTemplate = ({ title, description, experiments }) => {
   return (
     <>
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
             <Heading level={1} id="introduction-label">
-              UI/UX Designer & Front-End Developer
+              {title}
             </Heading>
             <Spaced top="m">
               <Text>
-                I’m a designer and developer who is passionate about creating great user experiences, crafting solid
-                code and overall making the web a better place.
+                {description}
               </Text>
             </Spaced>
           </HeaderContentWrap>
@@ -123,11 +122,11 @@ export const IndexPageTemplate = ({ title, experiments }) => {
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  experiments: PropTypes.arrayOf({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    date: PropTypes.string,
-  }),
+  experiments: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }))
 }
 
 const IndexPage = ({ data }) => {
@@ -137,7 +136,8 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         title={frontmatter.title}
-        experiment={frontmatter.experiment}
+        description={frontmatter.description}
+        experiments={frontmatter.experiments}
       />
     </Layout>
   )
@@ -158,6 +158,7 @@ export const pageQuery = graphql`
     mdx(frontmatter: {templateKey: {eq: "index-page"}}) {
       frontmatter {
         title
+        description
         experiments {
           id
           title

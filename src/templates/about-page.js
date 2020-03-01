@@ -10,7 +10,7 @@ import Text from '../jh-ui/Text'
 import ContentWrap from '../components/ContentWrap'
 import SectionHeader from '../jh-ui/SectionHeader'
 
-const HeaderWrap = styled.section`
+const HeaderWrap = styled.header`
   padding-top: ${({ theme }) => theme.spacing['3x']};
   background-color: var(--backgroundPrimary);
 
