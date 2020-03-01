@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     --illustrationLineShade2: hsl(240, 14%, 85%);
     --illustrationLineShade3: hsl(240, 14%, 80%);
 
-    .theme-dark {
+    [data-theme="dark"] {
       ${darkValues}
     }
 

@@ -10,7 +10,7 @@ collections:
     extension: mdx
     format: frontmatter
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     fields:
       - label: 'Template Key'
         name: templateKey
@@ -50,6 +50,16 @@ collections:
           - label: Title
             name: title
             widget: string
+          - label: Experiment
+            name: experiment
+            widget: list
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Date
+                name: date
+                widget: date
       - file: src/content/blog/index.mdx
         label: Articles
         name: blog

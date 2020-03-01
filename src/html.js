@@ -13,8 +13,7 @@ export default function HTML(props) {
       function setTheme(newTheme) {
         window.__theme = newTheme
         preferredTheme = newTheme
-        document.body.classList.remove('theme-light', 'theme-dark')
-        document.body.classList.add('theme-' + newTheme)
+        document.body.setAttribute('data-theme', newTheme)
         window.dispatchEvent(new CustomEvent('themeChange', {
           detail: newTheme
         }))
@@ -37,7 +36,6 @@ export default function HTML(props) {
       var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
       darkModeQuery.addListener(function(event) {
-        console.log(event)
         window.__setPreferredTheme(event.matches ? 'dark' : 'light')
       });
 

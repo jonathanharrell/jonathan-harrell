@@ -2,9 +2,9 @@ const colors = require('./colors')
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
-    description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+    siteUrl: 'https://www.jonathan-harrell.com',
+    title: 'Jonathan Harrell | CSS Blogger & Teacher, UI/UX Designer, Front-End Developer',
+    description: 'Want to stay up-to-date on the latest developments in CSS and JavaScript? Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.'
   },
   plugins: [
     'gatsby-plugin-sharp',
@@ -121,6 +121,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
     // {
     //   resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
     //   options: {

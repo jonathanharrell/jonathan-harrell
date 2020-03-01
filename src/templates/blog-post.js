@@ -466,12 +466,12 @@ export const BlogPostTemplate = ({
           </ArticleContentWrap>
         </ContentWrap>
       </Padded>
-      <RecentArticlesWrap aria-labelledby="recent-articles-label">
+      <RecentArticlesWrap aria-labelledby="more-label">
         <Padded vertical="5x">
           <ContentWrap>
             <Spaced bottom="2x">
-              <Heading level={2} id="recent-articles-label">
-                Recent Articles
+              <Heading level={2} id="more-label">
+                More Articles
               </Heading>
             </Spaced>
             <RecentArticles currentPostId={id}/>

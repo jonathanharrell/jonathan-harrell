@@ -23,8 +23,7 @@ const ThemeWrap = props => {
   }, [channel, setThemeName])
 
   useEffect(() => {
-    document.body.classList.remove('theme-light', 'theme-dark')
-    document.body.classList.add(`theme-${themeName}`)
+    document.body.setAttribute('data-theme', themeName)
   })
 
   // render your custom theme provider
