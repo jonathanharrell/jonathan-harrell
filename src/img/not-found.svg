@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="237px" height="239px" viewBox="0 0 237 239" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+  <title>not-found</title>
+  <desc>Created with Sketch.</desc>
+  <g id="not-found" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect id="Rectangle" stroke="var(--illustrationLineShade3)" stroke-width="4" x="2" y="2" width="233" height="235"
+          rx="2"></rect>
+    <line x1="3.5" y1="34.5" x2="232.5" y2="34.5" id="Line-9" stroke="var(--illustrationLineShade3)" stroke-width="4"
+          stroke-linecap="square"></line>
+    <line x1="16" y1="18" x2="16.5" y2="18" id="Line-9-Copy-2" stroke="var(--illustrationLineShade3)" stroke-width="4"
+          stroke-linecap="square"></line>
+    <line x1="25" y1="18" x2="25.5" y2="18" id="Line-9-Copy-2" stroke="var(--illustrationLineShade3)" stroke-width="4"
+          stroke-linecap="square"></line>
+    <line x1="34" y1="18" x2="34.5" y2="18" id="Line-9-Copy-2" stroke="var(--illustrationLineShade3)" stroke-width="4"
+          stroke-linecap="square"></line>
+    <rect id="Rectangle" stroke="var(--illustrationLineShade3)" stroke-width="4" x="51" y="75" width="136" height="109"
+          rx="2"></rect>
+    <path
+      d="M51,237 L51,223 C51,201.460895 68.4608948,184 90,184 L148,184 C169.539105,184 187,201.460895 187,223 L187,237"
+      id="Path" stroke="var(--illustrationLineShade3)" stroke-width="4"></path>
+    <line x1="79" y1="101" x2="100.213203" y2="122.213203" id="Line-10" stroke="var(--illustrationLineShade3)"
+          stroke-width="4" stroke-linecap="square"></line>
+    <line x1="79" y1="101" x2="100.213203" y2="122.213203" id="Line-10" stroke="var(--illustrationLineShade3)"
+          stroke-width="4" stroke-linecap="square"
+          transform="translate(89.606602, 111.606602) scale(-1, 1) translate(-89.606602, -111.606602) "></line>
+    <line x1="137" y1="101" x2="158.213203" y2="122.213203" id="Line-10" stroke="var(--illustrationLineShade3)"
+          stroke-width="4" stroke-linecap="square"></line>
+    <line x1="137" y1="101" x2="158.213203" y2="122.213203" id="Line-10" stroke="var(--illustrationLineShade3)"
+          stroke-width="4" stroke-linecap="square"
+          transform="translate(147.606602, 111.606602) scale(-1, 1) translate(-147.606602, -111.606602) "></line>
+    <path d="M144,164 C144,150.192881 132.807119,139 119,139 C105.192881,139 94,150.192881 94,164 L144,164 Z" id="Path"
+          stroke="var(--illustrationLineShade3)" stroke-width="4"></path>
+    <circle id="Oval" stroke="var(--illustrationLineShade3)" stroke-width="4" stroke-linecap="square" cx="119" cy="55"
+            r="8"></circle>
+    <line x1="119.5" y1="63.3846154" x2="119.5" y2="72.6153846" id="Line" stroke="var(--illustrationLineShade3)"
+          stroke-width="4" stroke-linecap="square"></line>
+    <line x1="124" y1="18" x2="220" y2="18" id="Line-9-Copy" stroke="var(--illustrationLineShade3)" stroke-width="4"
+          stroke-linecap="square"></line>
+  </g>
+</svg>
