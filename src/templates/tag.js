@@ -59,75 +59,73 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 `
 
-class TagRoute extends React.Component {
-  render() {
-    const posts = this.props.data.allMdx.edges
-    const tag = this.props.pageContext.tag
-    const title = this.props.data.site.siteMetadata.title
-    const totalCount = this.props.data.allMdx.totalCount
-    const tagHeading = `${totalCount} post${
-      totalCount === 1 ? '' : 's'
-    } tagged with “${tag}”`
+const TagRoute = ({ data, pageContext }) => {
+  const posts = data.allMdx.edges
+  const tag = pageContext.tag
+  const title = data.site.siteMetadata.title
+  const totalCount = data.allMdx.totalCount
+  const tagHeading = `${totalCount} post${
+    totalCount === 1 ? '' : 's'
+  } tagged with “${tag}”`
 
-    return (
-      <Layout>
-        <Helmet title={`${tag} | ${title}`}/>
-        <TagIndexWrap>
-          <Header>
+  return (
+    <Layout>
+      <Helmet title={`${tag} | ${title}`}/>
+      <TagIndexWrap>
+        <Header>
+          <ContentWrap>
+            <Padded vertical="3x">
+              <div>
+                <Heading level={1}>
+                  {tagHeading}
+                </Heading>
+                <Spaced top="m">
+                  <Links>
+                    <Spaced horizontal="m">
+                      <Link to="/blog/" arrow={true} arrowPosition="left">
+                        See all articles
+                      </Link>
+                      <Link to="/tags/" arrow={true} arrowPosition="right">
+                        Browse all tags
+                      </Link>
+                    </Spaced>
+                  </Links>
+                </Spaced>
+              </div>
+            </Padded>
+          </ContentWrap>
+        </Header>
+        <section
+          id="articles"
+          aria-labelledby="articles-label"
+        >
+          <Spaced bottom="5x">
             <ContentWrap>
-              <Padded vertical="3x">
-                <div>
-                  <Heading level={1}>
-                    {tagHeading}
-                  </Heading>
-                  <Spaced top="m">
-                    <Links>
-                      <Spaced horizontal="m">
-                        <Link to="/blog/" arrow={true} arrowPosition="left">
-                          See all articles
-                        </Link>
-                        <Link to="/tags/" arrow={true} arrowPosition="right">
-                          Browse all tags
-                        </Link>
-                      </Spaced>
-                    </Links>
-                  </Spaced>
-                </div>
-              </Padded>
+              <ScreenReaderText>
+                <Heading level={2} id="articles-label">
+                  Articles
+                </Heading>
+              </ScreenReaderText>
+              <ArticlesWrap>
+                {posts && posts.map(({ node: post }, index) => (
+                  <BlogExcerpt
+                    key={post.id}
+                    index={index}
+                    link={post.fields.slug}
+                    svg={post.frontmatter.featuredimage.fields.markup}
+                    date={new Date(post.frontmatter.date)}
+                    title={post.frontmatter.title}
+                    excerpt={post.excerpt}
+                    tags={post.frontmatter.tags}
+                  />
+                ))}
+              </ArticlesWrap>
             </ContentWrap>
-          </Header>
-          <section
-            id="articles"
-            aria-labelledby="articles-label"
-          >
-            <Spaced bottom="5x">
-              <ContentWrap>
-                <ScreenReaderText>
-                  <Heading level={2} id="articles-label">
-                    Articles
-                  </Heading>
-                </ScreenReaderText>
-                <ArticlesWrap>
-                  {posts && posts.map(({ node: post }, index) => (
-                    <BlogExcerpt
-                      key={post.id}
-                      index={index}
-                      link={post.fields.slug}
-                      svg={post.frontmatter.featuredimage.fields.markup}
-                      date={new Date(post.frontmatter.date)}
-                      title={post.frontmatter.title}
-                      excerpt={post.excerpt}
-                      tags={post.frontmatter.tags}
-                    />
-                  ))}
-                </ArticlesWrap>
-              </ContentWrap>
-            </Spaced>
-          </section>
-        </TagIndexWrap>
-      </Layout>
-    )
-  }
+          </Spaced>
+        </section>
+      </TagIndexWrap>
+    </Layout>
+  )
 }
 
 export default TagRoute

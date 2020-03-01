@@ -40,29 +40,26 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 `
 
-class RecentArticles extends React.Component {
-  render() {
-    const { data, currentPostId } = this.props
-    let { edges: posts } = data.allMdx
+const RecentArticles = ({ data, currentPostId }) => {
+  let { edges: posts } = data.allMdx
 
-    if (currentPostId) posts = posts.filter(post => post.node.id !== currentPostId)
-    posts = posts.slice(0, 4)
+  if (currentPostId) posts = posts.filter(post => post.node.id !== currentPostId)
+  posts = posts.slice(0, 4)
 
-    return (
-      <RecentArticlesWrap>
-        {posts && posts.map(({ node: post }) => (
-          <BlogExcerpt
-            key={post.id}
-            link={post.fields.slug}
-            date={new Date(post.frontmatter.date)}
-            title={post.frontmatter.title}
-            excerpt={post.excerpt}
-            tags={post.frontmatter.tags}
-          />
-        ))}
-      </RecentArticlesWrap>
-    )
-  }
+  return (
+    <RecentArticlesWrap>
+      {posts && posts.map(({ node: post }) => (
+        <BlogExcerpt
+          key={post.id}
+          link={post.fields.slug}
+          date={new Date(post.frontmatter.date)}
+          title={post.frontmatter.title}
+          excerpt={post.excerpt}
+          tags={post.frontmatter.tags}
+        />
+      ))}
+    </RecentArticlesWrap>
+  )
 }
 
 RecentArticles.propTypes = {

@@ -24,27 +24,24 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 `
 
-class Articles extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMdx
+const Articles = ({ data }) => {
+  const { edges: posts } = data.allMdx
 
-    return (
-      <ArticlesWrap>
-        {posts && posts.map(({ node: post }, index) => (
-          <BlogExcerpt
-            key={post.id}
-            index={index}
-            link={post.fields.slug}
-            svg={post.frontmatter.featuredimage.fields.markup}
-            date={new Date(post.frontmatter.date)}
-            title={post.frontmatter.title}
-            excerpt={post.excerpt}
-          />
-        ))}
-      </ArticlesWrap>
-    )
-  }
+  return (
+    <ArticlesWrap>
+      {posts && posts.map(({ node: post }, index) => (
+        <BlogExcerpt
+          key={post.id}
+          index={index}
+          link={post.fields.slug}
+          svg={post.frontmatter.featuredimage.fields.markup}
+          date={new Date(post.frontmatter.date)}
+          title={post.frontmatter.title}
+          excerpt={post.excerpt}
+        />
+      ))}
+    </ArticlesWrap>
+  )
 }
 
 Articles.propTypes = {
