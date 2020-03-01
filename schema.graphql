@@ -503,29 +503,28 @@ type MdxFrontmatter {
     locale: String
   ): Date
   description: String
+  experiment: [MdxFrontmatterExperiment]
   featuredimage: File
-  heading: String
-  image: String
-  intro: MdxFrontmatterIntro
   involvement: MdxFrontmatterInvolvement
-  main: MdxFrontmatterMain
-  mainpitch: MdxFrontmatterMainpitch
-  subheading: String
   tags: [String]
   templateKey: String
   title: String!
   what_i_use: MdxFrontmatterWhat_i_use
 }
 
-type MdxFrontmatterIntro {
-  blurbs: [MdxFrontmatterIntroBlurbs]
-  description: String
-  heading: String
-}
-
-type MdxFrontmatterIntroBlurbs {
-  image: String
-  text: String
+type MdxFrontmatterExperiment {
+  date(
+    #Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\".
+    difference: String,
+    #Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String,
+    #Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean,
+    #Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  id: String
+  title: String
 }
 
 type MdxFrontmatterInvolvement {
@@ -536,34 +535,6 @@ type MdxFrontmatterInvolvement {
 type MdxFrontmatterInvolvementProject {
   description: String
   name: String
-}
-
-type MdxFrontmatterMain {
-  description: String
-  heading: String
-  image1: MdxFrontmatterMainImage1
-  image2: MdxFrontmatterMainImage2
-  image3: MdxFrontmatterMainImage3
-}
-
-type MdxFrontmatterMainImage1 {
-  alt: String
-  image: String
-}
-
-type MdxFrontmatterMainImage2 {
-  alt: String
-  image: String
-}
-
-type MdxFrontmatterMainImage3 {
-  alt: String
-  image: String
-}
-
-type MdxFrontmatterMainpitch {
-  description: String
-  title: String
 }
 
 type MdxFrontmatterWhat_i_use {
@@ -797,6 +768,7 @@ type SitePluginPluginOptionsFonts {
 
 type SiteSiteMetadata {
   description: String
+  siteUrl: String
   title: String
 }
 
@@ -1087,6 +1059,10 @@ enum FileFieldsEnum {
   childMdx___frontmatter___bioimage___uid
   childMdx___frontmatter___date
   childMdx___frontmatter___description
+  childMdx___frontmatter___experiment
+  childMdx___frontmatter___experiment___date
+  childMdx___frontmatter___experiment___id
+  childMdx___frontmatter___experiment___title
   childMdx___frontmatter___featuredimage___absolutePath
   childMdx___frontmatter___featuredimage___accessTime
   childMdx___frontmatter___featuredimage___atime
@@ -1123,18 +1099,8 @@ enum FileFieldsEnum {
   childMdx___frontmatter___featuredimage___size
   childMdx___frontmatter___featuredimage___sourceInstanceName
   childMdx___frontmatter___featuredimage___uid
-  childMdx___frontmatter___heading
-  childMdx___frontmatter___image
-  childMdx___frontmatter___intro___blurbs
-  childMdx___frontmatter___intro___description
-  childMdx___frontmatter___intro___heading
   childMdx___frontmatter___involvement___project
   childMdx___frontmatter___involvement___title
-  childMdx___frontmatter___main___description
-  childMdx___frontmatter___main___heading
-  childMdx___frontmatter___mainpitch___description
-  childMdx___frontmatter___mainpitch___title
-  childMdx___frontmatter___subheading
   childMdx___frontmatter___tags
   childMdx___frontmatter___templateKey
   childMdx___frontmatter___title
@@ -1577,6 +1543,10 @@ enum MdxFieldsEnum {
   frontmatter___bioimage___uid
   frontmatter___date
   frontmatter___description
+  frontmatter___experiment
+  frontmatter___experiment___date
+  frontmatter___experiment___id
+  frontmatter___experiment___title
   frontmatter___featuredimage___absolutePath
   frontmatter___featuredimage___accessTime
   frontmatter___featuredimage___atime
@@ -1639,28 +1609,10 @@ enum MdxFieldsEnum {
   frontmatter___featuredimage___size
   frontmatter___featuredimage___sourceInstanceName
   frontmatter___featuredimage___uid
-  frontmatter___heading
-  frontmatter___image
-  frontmatter___intro___blurbs
-  frontmatter___intro___blurbs___image
-  frontmatter___intro___blurbs___text
-  frontmatter___intro___description
-  frontmatter___intro___heading
   frontmatter___involvement___project
   frontmatter___involvement___project___description
   frontmatter___involvement___project___name
   frontmatter___involvement___title
-  frontmatter___main___description
-  frontmatter___main___heading
-  frontmatter___main___image1___alt
-  frontmatter___main___image1___image
-  frontmatter___main___image2___alt
-  frontmatter___main___image2___image
-  frontmatter___main___image3___alt
-  frontmatter___main___image3___image
-  frontmatter___mainpitch___description
-  frontmatter___mainpitch___title
-  frontmatter___subheading
   frontmatter___tags
   frontmatter___templateKey
   frontmatter___title
@@ -1831,6 +1783,7 @@ enum SiteFieldsEnum {
   polyfill
   port
   siteMetadata___description
+  siteMetadata___siteUrl
   siteMetadata___title
 }
 
@@ -2408,38 +2361,28 @@ input MdxFilterInput {
   wordCount: MdxWordCountFilterInput
 }
 
+input MdxFrontmatterExperimentFilterInput {
+  date: DateQueryOperatorInput
+  id: StringQueryOperatorInput
+  title: StringQueryOperatorInput
+}
+
+input MdxFrontmatterExperimentFilterListInput {
+  elemMatch: MdxFrontmatterExperimentFilterInput
+}
+
 input MdxFrontmatterFilterInput {
   bio: StringQueryOperatorInput
   bioimage: FileFilterInput
   date: DateQueryOperatorInput
   description: StringQueryOperatorInput
+  experiment: MdxFrontmatterExperimentFilterListInput
   featuredimage: FileFilterInput
-  heading: StringQueryOperatorInput
-  image: StringQueryOperatorInput
-  intro: MdxFrontmatterIntroFilterInput
   involvement: MdxFrontmatterInvolvementFilterInput
-  main: MdxFrontmatterMainFilterInput
-  mainpitch: MdxFrontmatterMainpitchFilterInput
-  subheading: StringQueryOperatorInput
   tags: StringQueryOperatorInput
   templateKey: StringQueryOperatorInput
   title: StringQueryOperatorInput
   what_i_use: MdxFrontmatterWhat_i_useFilterInput
-}
-
-input MdxFrontmatterIntroBlurbsFilterInput {
-  image: StringQueryOperatorInput
-  text: StringQueryOperatorInput
-}
-
-input MdxFrontmatterIntroBlurbsFilterListInput {
-  elemMatch: MdxFrontmatterIntroBlurbsFilterInput
-}
-
-input MdxFrontmatterIntroFilterInput {
-  blurbs: MdxFrontmatterIntroBlurbsFilterListInput
-  description: StringQueryOperatorInput
-  heading: StringQueryOperatorInput
 }
 
 input MdxFrontmatterInvolvementFilterInput {
@@ -2454,34 +2397,6 @@ input MdxFrontmatterInvolvementProjectFilterInput {
 
 input MdxFrontmatterInvolvementProjectFilterListInput {
   elemMatch: MdxFrontmatterInvolvementProjectFilterInput
-}
-
-input MdxFrontmatterMainFilterInput {
-  description: StringQueryOperatorInput
-  heading: StringQueryOperatorInput
-  image1: MdxFrontmatterMainImage1FilterInput
-  image2: MdxFrontmatterMainImage2FilterInput
-  image3: MdxFrontmatterMainImage3FilterInput
-}
-
-input MdxFrontmatterMainImage1FilterInput {
-  alt: StringQueryOperatorInput
-  image: StringQueryOperatorInput
-}
-
-input MdxFrontmatterMainImage2FilterInput {
-  alt: StringQueryOperatorInput
-  image: StringQueryOperatorInput
-}
-
-input MdxFrontmatterMainImage3FilterInput {
-  alt: StringQueryOperatorInput
-  image: StringQueryOperatorInput
-}
-
-input MdxFrontmatterMainpitchFilterInput {
-  description: StringQueryOperatorInput
-  title: StringQueryOperatorInput
 }
 
 input MdxFrontmatterWhat_i_useFilterInput {
@@ -2661,6 +2576,7 @@ input SitePluginSortInput {
 
 input SiteSiteMetadataFilterInput {
   description: StringQueryOperatorInput
+  siteUrl: StringQueryOperatorInput
   title: StringQueryOperatorInput
 }
 

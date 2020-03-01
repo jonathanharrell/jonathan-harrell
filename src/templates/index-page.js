@@ -53,7 +53,7 @@ const ExperimentsWrap = styled.section`
   background-color: var(--backgroundInverse);
 `
 
-export const IndexPageTemplate = ({ image, title, subheading }) => {
+export const IndexPageTemplate = ({ title, experiments }) => {
   return (
     <>
       <HeaderWrap aria-labelledby="introduction-label">
@@ -114,7 +114,7 @@ export const IndexPageTemplate = ({ image, title, subheading }) => {
               </ScreenReaderText>
             </Link>
           </SectionHeader>
-          <Experiments/>
+          <Experiments experiments={experiments}/>
         </HomeContentWrap>
       </ExperimentsWrap>
     </>
@@ -123,13 +123,10 @@ export const IndexPageTemplate = ({ image, title, subheading }) => {
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
+  experiments: PropTypes.arrayOf({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    date: PropTypes.string,
   }),
 }
 
@@ -139,13 +136,8 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
         title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        experiment={frontmatter.experiment}
       />
     </Layout>
   )
@@ -166,16 +158,10 @@ export const pageQuery = graphql`
     mdx(frontmatter: {templateKey: {eq: "index-page"}}) {
       frontmatter {
         title
-        heading
-        subheading
-        mainpitch {
+        experiments {
+          id
           title
-          description
-        }
-        description
-        intro {
-          heading
-          description
+          date
         }
       }
     }

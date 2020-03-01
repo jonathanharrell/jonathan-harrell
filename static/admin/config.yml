@@ -50,8 +50,8 @@ collections:
           - label: Title
             name: title
             widget: string
-          - label: Experiment
-            name: experiment
+          - label: Experiments
+            name: experiments
             widget: list
             fields:
               - label: ID
