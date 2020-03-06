@@ -15,17 +15,17 @@ const Root = styled.div`
 
   &:hover,
   &:active {
-    box-shadow: ${({ theme }) => theme.elevations.high};
-    transform: translateY(-0.25rem);
+    box-shadow: ${({ theme, hover }) => hover ? theme.elevations.high : null};
+    transform: ${({ hover }) => hover ? 'translateY(-0.25rem)' : ''};
   }
 
   &:focus-within {
-    box-shadow: ${({ theme }) => theme.elevations.high}, 0 0 0 0.2em var(--selection);
+    box-shadow: ${({ theme, hover }) => hover ? `${theme.elevations.high}, 0 0 0 0.2em var(--selection)` : null};
   }
 `
 
-const Card = ({ children, padding, element, ...props }) => (
-  <Root as={element} {...props}>
+const Card = ({ children, padding, hover, element, ...props }) => (
+  <Root as={element} hover={hover} {...props}>
     <Padded all={padding ? 'xxl' : undefined}>
       <div>
         {children}
@@ -36,11 +36,13 @@ const Card = ({ children, padding, element, ...props }) => (
 
 Card.propTypes = {
   padding: bool,
+  hover: bool,
   element: string
 }
 
 Card.defaultProps = {
-  padding: true
+  padding: true,
+  hover: true
 }
 
 export default Card

@@ -13,8 +13,8 @@ const darkValues = css`
   --backgroundElevatedPrimary: '';
   --backgroundElevatedSecondary: hsl(0, 0%, 12%);
   --backgroundElevatedInverse: hsl(0, 0%, 10%);
-  --backgroundBody: ${({ theme }) => theme.colors.black};
-  --backgroundSubscribeBanner: hsl(0, 0%, 5%);
+  --backgroundBody: hsl(0, 0%, 3%);
+  --backgroundSubscribeBanner: hsl(0, 0%, 6%);
   --backgroundCode: hsl(0, 0%, 5%);
   --backgroundInlineCode: hsl(0, 0%, 12%);
   --border: hsl(0, 0%, 12%);
@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     --backgroundElevatedSecondary: ${({ theme }) => theme.colors.white};
     --backgroundElevatedInverse: ${({ theme }) => theme.colors.blueDarker};
     --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
-    --backgroundSubscribeBanner: ${({ theme }) => theme.colors.white};
+    --backgroundSubscribeBanner: hsl(210, 67%, 9%);
     --backgroundCode: hsl(210, 15%, 97%);
     --backgroundInlineCode: hsl(210, 15%, 97%);
     --border: hsl(210, 15%, 90%);
@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
     --buttonTextSecondary: ${({ theme }) => theme.colors.blueDarkest};
     --primary: ${({ theme }) => theme.colors.blueDarkest};
     --accent: ${({ theme }) => theme.colors.red};
-    --selection: hsla(210, 67%, 11%, 0.15);
+    --selection: hsla(210, 25%, 50%, 0.15);
     --elevationLow: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.12);
     --elevationMedium: 0 0 0 1px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.15);
     --elevationHigh: 0 0 0 1px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.2);
@@ -137,6 +137,17 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration-color: var(--textLighter);
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    margin: -1px;
+    padding: 0;
+    border: 0;
   }
 
   .noscript {

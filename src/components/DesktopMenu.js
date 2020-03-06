@@ -196,7 +196,7 @@ const DesktopMenu = () => {
                 </span>
               </Tippy>
             </ThemeToggleButton>
-            <SubscribeButton order="secondary">
+            <SubscribeButton order="secondary" element="a" href="#subscribe">
               Subscribe
             </SubscribeButton>
           </Spaced>

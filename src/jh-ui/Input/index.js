@@ -8,20 +8,24 @@ const Root = styled.input`
   background-color: var(--backgroundSecondary);
   font-family: ${({ theme }) => theme.fonts.sansSerif};
   font-size: ${({ theme }) => theme.fontSizes.m.mobile};
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.m.tablet};
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     font-size: ${({ theme }) => theme.fontSizes.m.desktop};
   }
+
+  ::placeholder {
+    color: var(--textLighter);
+  }
 `
 
-const Input = ({ children, type, ...props }) => (
-  <Root type={type} {...props}>
+const Input = React.forwardRef(({ children, type, ...props }, ref) => (
+  <Root ref={ref} type={type} {...props}>
     {children}
   </Root>
-)
+))
 
 export default Input

@@ -16,12 +16,13 @@ export default {
 
 export const Basic = () => {
   const order = select('Order', ['primary', 'secondary'], 'primary')
+  const size = select('Size', ['medium', 'large'], 'medium')
   const element = text('Element', '')
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Button theme={theme} order={order} element={element}>
+        <Button theme={theme} order={order} size={size} element={element}>
           This is a button
         </Button>
       )}
