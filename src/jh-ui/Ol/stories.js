@@ -3,13 +3,13 @@ import { withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
-import ExperimentExcerpt from './index'
+import Ol from './index'
 
 export default {
-  title: 'ExperimentExcerpt',
+  title: 'Ol',
   decorators: [
     renderStory => (
-      <div style={{ width: '400px' }}>
+      <div style={{ marginLeft: '0.25rem' }}>
         <ThemeWrap>{renderStory()}</ThemeWrap>
       </div>
     ),
@@ -22,13 +22,11 @@ export const Basic = () => {
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <ExperimentExcerpt
-          theme={theme}
-          id="abc123"
-          date={new Date('September 29, 2018')}
-          title="Typographic Details Cheat Sheet"
-          viewsCount={210}
-        />
+        <Ol theme={theme}>
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </Ol>
       )}
     </ThemeContext.Consumer>
   )

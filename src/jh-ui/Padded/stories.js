@@ -38,7 +38,9 @@ export const Basic = () => {
           bottom={bottom}
           left={left}
         >
-          <Text>This is some text</Text>
+          <div style={{ backgroundColor: 'lightgray' }}>
+            <Text>This is some text</Text>
+          </div>
         </Padded>
       )}
     </ThemeContext.Consumer>

@@ -4,7 +4,6 @@ import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
 import Spaced from './index'
-import Text from '../Text'
 import { spacing } from '../theme'
 
 export default {
@@ -38,7 +37,8 @@ export const Basic = () => {
           bottom={bottom}
           left={left}
         >
-          <Text>This is some text</Text>
+          <div style={{ width: '200px', height: '100px', backgroundColor: 'lightgray' }}/>
+          <div style={{ width: '200px', height: '100px', backgroundColor: 'lightgray' }}/>
         </Spaced>
       )}
     </ThemeContext.Consumer>

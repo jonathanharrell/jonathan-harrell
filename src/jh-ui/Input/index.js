@@ -8,6 +8,7 @@ const Root = styled.input`
   background-color: var(--backgroundSecondary);
   font-family: ${({ theme }) => theme.fonts.sansSerif};
   font-size: ${({ theme }) => theme.fontSizes.m.mobile};
+  color: var(--text);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.m.tablet};

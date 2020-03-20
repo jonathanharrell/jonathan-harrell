@@ -1,12 +1,12 @@
 import React from 'react'
-import { boolean, select, withKnobs } from '@storybook/addon-knobs'
+import { withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
-import Link from './index'
+import InlineCode from './index'
 
 export default {
-  title: 'Link',
+  title: 'InlineCode',
   decorators: [
     renderStory => <ThemeWrap>{renderStory()}</ThemeWrap>,
     withKnobs,
@@ -15,15 +15,12 @@ export default {
 }
 
 export const Basic = () => {
-  const arrow = boolean('Arrow', false)
-  const arrowPosition = select('Arrow Position', ['left', 'right'], 'right')
-
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Link theme={theme} arrow={arrow} arrowPosition={arrowPosition}>
-          Link
-        </Link>
+        <InlineCode theme={theme}>
+          This is inline code
+        </InlineCode>
       )}
     </ThemeContext.Consumer>
   )

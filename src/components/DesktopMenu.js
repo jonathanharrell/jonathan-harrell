@@ -123,6 +123,11 @@ const DesktopMenu = () => {
     setTheme(themeName === 'light' ? 'dark' : 'light')
   }
 
+  const handleSubscribeClick = () => {
+    localStorage.removeItem('subscribe-banner-dismissed')
+    window.dispatchEvent(new CustomEvent('showSubscribe'))
+  }
+
   return visible ? (
     <DesktopMenuWrap>
       <ScreenReaderText>
@@ -196,7 +201,7 @@ const DesktopMenu = () => {
                 </span>
               </Tippy>
             </ThemeToggleButton>
-            <SubscribeButton order="secondary" element="a" href="#subscribe">
+            <SubscribeButton order="secondary" element="a" href="#subscribe" onClick={handleSubscribeClick}>
               Subscribe
             </SubscribeButton>
           </Spaced>

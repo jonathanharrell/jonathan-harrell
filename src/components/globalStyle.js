@@ -6,6 +6,8 @@ const darkValues = css`
   --textLighter: hsl(0, 0%, 60%);
   --textInverse: ${({ theme }) => theme.colors.white};
   --textCode: ${({ theme }) => theme.colors.white};
+  --textAlertInfo: hsl(0, 0%, 60%);
+  --textAlertDanger: hsl(5, 66%, 56%);
   --backgroundPrimary: hsl(0, 0%, 8%);
   --backgroundSecondary: hsl(0, 0%, 10%);
   --backgroundTertiary: hsl(0, 0%, 12%);
@@ -17,6 +19,8 @@ const darkValues = css`
   --backgroundSubscribeBanner: hsl(0, 0%, 6%);
   --backgroundCode: hsl(0, 0%, 5%);
   --backgroundInlineCode: hsl(0, 0%, 12%);
+  --backgroundAlertInfo: hsl(0, 0%, 40%, 15%);
+  --backgroundAlertDanger: hsl(5, 66%, 56%, 15%);
   --border: hsl(0, 0%, 12%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
   --buttonBackgroundPrimary: transparent;
@@ -44,6 +48,8 @@ const GlobalStyle = createGlobalStyle`
     --textLighter: hsl(210, 15%, 60%);
     --textInverse: hsl(0, 0%, 100%);
     --textCode: hsl(210, 15%, 40%);
+    --textAlertInfo: hsl(210, 15%, 60%);
+    --textAlertDanger: hsl(5, 66%, 56%);
     --backgroundPrimary: ${({ theme }) => theme.colors.white};
     --backgroundSecondary: hsl(210, 15%, 97.5%);
     --backgroundTertiary: hsl(210, 15%, 92.5%);
@@ -55,6 +61,8 @@ const GlobalStyle = createGlobalStyle`
     --backgroundSubscribeBanner: hsl(210, 67%, 9%);
     --backgroundCode: hsl(210, 15%, 97%);
     --backgroundInlineCode: hsl(210, 15%, 97%);
+    --backgroundAlertInfo: hsl(210, 15%, 60%, 15%);
+    --backgroundAlertDanger: hsl(5, 66%, 56%, 15%);
     --border: hsl(210, 15%, 90%);
     --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
     --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};

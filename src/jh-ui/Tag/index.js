@@ -27,7 +27,7 @@ const Root = styled.span`
   }
 `
 
-const Tag = ({ children, arrow, href, ...props }) => (
+const Tag = ({ children, ...props }) => (
   <Root {...props}>
     {children}
   </Root>

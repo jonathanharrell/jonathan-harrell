@@ -12,6 +12,7 @@ import Spaced from '../jh-ui/Spaced'
 import Input from '../jh-ui/Input'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import Ul from '../jh-ui/Ul'
+import Alert from '../jh-ui/Alert'
 
 const SubscribeBannerWrap = styled.aside`
   position: relative;
@@ -85,12 +86,24 @@ const SubscribeInput = styled(Input)`
 `
 
 const SubscribeBanner = () => {
+  const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
   const [dismissed, setDismissed] = useState(true)
   const inputRef = useRef()
 
   useEffect(() => {
     const subscribeBannerDismissed = localStorage.getItem('subscribe-banner-dismissed')
     setDismissed(!!subscribeBannerDismissed)
+
+    const handleShowSubscribe = () => {
+      setDismissed(false)
+    }
+
+    window.addEventListener('showSubscribe', handleShowSubscribe)
+
+    return () => {
+      window.removeEventListener('showSubscribe', handleShowSubscribe)
+    }
   }, [])
 
   const dismiss = event => {
@@ -98,6 +111,33 @@ const SubscribeBanner = () => {
     localStorage.setItem('subscribe-banner-dismissed', 'true')
     addAlert('Subscribe banner dismissed')
     event.target.blur()
+  }
+
+  const handleSubmit = async (event) => {
+    setError(null)
+    event.preventDefault()
+
+    const formData = new FormData(event.target)
+    const email = formData.get('email')
+
+    try {
+      const response = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        body: JSON.stringify({
+          email
+        })
+      })
+
+      const json = await response.json()
+
+      if (!response.ok) {
+        throw Error(json.detail)
+      } else {
+        setSuccess(true)
+      }
+    } catch (error) {
+      setError(error.message)
+    }
   }
 
   return !dismissed ? (
@@ -126,8 +166,8 @@ const SubscribeBanner = () => {
                     </Spaced>
                   </div>
                 </Padded>
-                <SubscribeForm>
-                  <CloseButton unstyled onClick={dismiss}>
+                <SubscribeForm onSubmit={handleSubmit}>
+                  <CloseButton unstyled type="button" onClick={dismiss}>
                     <X/>
                     <ScreenReaderText>
                       Dismiss newsletter subscription form
@@ -142,10 +182,25 @@ const SubscribeBanner = () => {
                         <SubscribeInput
                           id="email"
                           type="email"
+                          name="email"
                           placeholder="Your email address"
                           ref={inputRef}
                         />
                       </div>
+                      {error && (
+                        <Spaced top="m">
+                          <Alert>
+                            {error}
+                          </Alert>
+                        </Spaced>
+                      )}
+                      {success && (
+                        <Spaced top="m">
+                          <Alert order="info">
+                            You’ve been subscribed!
+                          </Alert>
+                        </Spaced>
+                      )}
                       <Spaced top="m">
                         <Button order="accent" size="large">
                           Subscribe

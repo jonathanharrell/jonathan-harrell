@@ -16,12 +16,18 @@ export default {
 
 export const Basic = () => {
   const order = select('Order', ['body', 'caption', 'meta'], 'body')
+  const color = select('Color', ['text', 'textLighter', 'textInverse'], '')
   const element = text('Element', '')
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Text theme={theme} order={order} element={element}>
+        <Text
+          theme={theme}
+          order={order}
+          color={color}
+          element={element}
+        >
           This is some text
         </Text>
       )}
@@ -31,13 +37,19 @@ export const Basic = () => {
 
 export const Multiline = () => {
   const order = select('Order', ['body', 'caption', 'meta'], 'body')
+  const color = select('Color', ['text', 'textLighter', 'textInverse'], '')
   const element = text('Element', '')
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
         <div style={{ width: '400px' }}>
-          <Text theme={theme} order={order} element={element}>
+          <Text
+            theme={theme}
+            order={order}
+            color={color}
+            element={element}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque finibus nunc ac condimentum
             pellentesque. Sed in sem sed eros ornare feugiat et sit amet ligula. Maecenas velit massa, convallis sit
             amet iaculis ac, aliquet id lorem. Suspendisse rutrum rhoncus augue sed tempus. Duis in rhoncus nisi. In

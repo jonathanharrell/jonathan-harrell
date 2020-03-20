@@ -1,5 +1,5 @@
 import React from 'react'
-import { select, text, withKnobs } from '@storybook/addon-knobs'
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 import { withA11y } from '@storybook/addon-a11y'
 import ThemeWrap from '../ThemeWrap'
 import ThemeContext from '../../context/theme'
@@ -15,14 +15,21 @@ export default {
 }
 
 export const Basic = () => {
-  const order = select('Order', ['primary', 'secondary'], 'primary')
+  const order = select('Order', ['primary', 'secondary', 'accent'], 'primary')
   const size = select('Size', ['medium', 'large'], 'medium')
+  const unstyled = boolean('Unstyled', false)
   const element = text('Element', '')
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Button theme={theme} order={order} size={size} element={element}>
+        <Button
+          theme={theme}
+          order={order}
+          size={size}
+          unstyled={unstyled}
+          element={element}
+        >
           This is a button
         </Button>
       )}

@@ -172,7 +172,7 @@ export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) 
           <HeaderContentWrap>
             {image && (
               <BioFigure>
-                <BioImage src={image.publicURL} alt=""/>
+                <BioImage src={image.publicURL} alt="Jonathan Harrell"/>
               </BioFigure>
             )}
             <BioText>

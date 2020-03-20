@@ -1,5 +1,5 @@
 import React from 'react'
-import { instanceOf, oneOf, shape, string } from 'prop-types'
+import { instanceOf, shape, string } from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
@@ -50,6 +50,15 @@ export const ImageWrap = styled.figure`
     height: auto;
     transform: translateY(-50%);
   }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) => {
@@ -72,8 +81,8 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) =>
         </ScreenReaderText>
       </Link>
       <CardContent>
-        {(image || svg) && (
-          <ImageWrap dangerouslySetInnerHTML={{ __html: svg || undefined }}>
+        {image && (
+          <ImageWrap>
             {image && (
               <img
                 src={image.publicURL}
@@ -82,6 +91,9 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) =>
               />
             )}
           </ImageWrap>
+        )}
+        {svg && (
+          <ImageWrap dangerouslySetInnerHTML={{ __html: svg || undefined }}/>
         )}
         <Padded top="xxl" left="xxl" right="xxl" bottom="2x">
           <div>
@@ -112,10 +124,10 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) =>
 ArticleExcerpt.propTypes = {
   link: string.isRequired,
   image: shape({
-    publicURL: string
+    publicURL: string.isRequired,
+    alt: string,
+    title: string
   }),
-  imagePosition: oneOf(['top', 'left', 'right']),
-  imageRatio: oneOf([1 / 2, 2 / 3]),
   date: instanceOf(Date),
   title: string.isRequired,
   excerpt: string.isRequired,
@@ -123,8 +135,6 @@ ArticleExcerpt.propTypes = {
 }
 
 ArticleExcerpt.defaultProps = {
-  imagePosition: 'top',
-  imageRatio: 1 / 2,
   date: new Date()
 }
 
