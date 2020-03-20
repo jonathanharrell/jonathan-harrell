@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ThemeContext from '../context/theme'
 import theme from '../jh-ui/theme'
+import ErrorBoundary from './ErrorBoundary'
 import { addAlert } from '../helpers'
+import * as Sentry from '@sentry/browser'
 
 const Root = ({ children }) => {
   const [themeName, setThemeName] = useState()
@@ -18,10 +20,12 @@ const Root = ({ children }) => {
     window.__setPreferredTheme(themeName)
     addAlert(`Theme set to ${themeName}`)
   }
-
+  Sentry.captureException(new Error('test error'))
   return (
     <ThemeContext.Provider value={{ theme, themeName, setTheme }}>
-      {children}
+      <ErrorBoundary>
+        {children}
+      </ErrorBoundary>
     </ThemeContext.Provider>
   )
 }

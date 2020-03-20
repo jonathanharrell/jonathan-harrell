@@ -91,6 +91,7 @@ const DesktopMenu = () => {
   const [visible, setVisibility] = useState(true)
 
   useEffect(() => {
+    throw new Error('test error')
     const rems = breakpoints.desktop.replace('rem', '')
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     const desktopWidth = rems * fontSize
