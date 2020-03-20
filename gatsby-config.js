@@ -7,6 +7,12 @@ module.exports = {
     description: 'Want to stay up-to-date on the latest developments in CSS and JavaScript? Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.'
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
@@ -122,13 +128,6 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
-    // {
-    //   resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
-    //   options: {
-    //     develop: true, // Activates purging in npm run develop
-    //   },
-    // }, // must be after other CSS plugins
-    // 'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
-  ],
+  ]
 }
