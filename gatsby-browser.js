@@ -9,6 +9,6 @@ export const wrapRootElement = ({ element }) => {
 }
 
 export const onClientEntry = () => {
-  Sentry.init({ dsn: process.env.GATSBY_SENTRY_DSN_URL })
+  Sentry.init({ dsn: process.env.SENTRY_DSN_URL })
   window.Sentry = Sentry
 }
