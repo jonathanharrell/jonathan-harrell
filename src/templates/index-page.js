@@ -12,7 +12,7 @@ import Text from '../jh-ui/Text'
 import Link from '../jh-ui/Link'
 import SectionHeader from '../jh-ui/SectionHeader'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
-import { Helmet } from 'react-helmet'
+import Seo from '../components/seo'
 
 const HeaderWrap = styled.header`
   padding-top: ${({ theme }) => theme.spacing['3x']};
@@ -54,13 +54,10 @@ const ExperimentsWrap = styled.section`
   background-color: var(--backgroundInverse);
 `
 
-export const IndexPageTemplate = ({ url, title, description, experiments }) => {
+export const IndexPageTemplate = ({ title, description, experiments }) => {
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href={url}/>
-        <meta property="og:url" content={url}/>
-      </Helmet>
+      <Seo/>
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
@@ -134,13 +131,12 @@ IndexPageTemplate.propTypes = {
   }))
 }
 
-const IndexPage = ({ data, location }) => {
+const IndexPage = ({ data }) => {
   const { frontmatter } = data.mdx
 
   return (
     <Layout>
       <IndexPageTemplate
-        href={location.href}
         title={frontmatter.title}
         description={frontmatter.description}
         experiments={frontmatter.experiments}

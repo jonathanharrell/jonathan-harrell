@@ -286,7 +286,7 @@ type FileGroupConnection {
 
 type ImageSharp implements Node {
   children: [Node!]!
-  fixed(background: String = "rgba(0,0,0,1)", base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, width: Int): ImageSharpFixed
+  fixed(background: String = "rgba(0,0,0,1)", base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, jpegQuality: Int, pngCompressionSpeed: Int = 4, pngQuality: Int, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, webpQuality: Int, width: Int): ImageSharpFixed
   fluid(
     background: String = "rgba(0,0,0,1)",
     base64Width: Int,
@@ -295,9 +295,11 @@ type ImageSharp implements Node {
     fit: ImageFit = COVER,
     grayscale: Boolean = false,
     jpegProgressive: Boolean = true,
+    jpegQuality: Int,
     maxHeight: Int,
     maxWidth: Int,
     pngCompressionSpeed: Int = 4,
+    pngQuality: Int,
     quality: Int,
     rotate: Int = 0,
     sizes: String = "",
@@ -306,14 +308,15 @@ type ImageSharp implements Node {
     toFormat: ImageFormat = NO_CHANGE,
     toFormatBase64: ImageFormat = NO_CHANGE,
     traceSVG: Potrace,
-    trim: Float = 0.0
+    trim: Float = 0.0,
+    webpQuality: Int
   ): ImageSharpFluid
   id: ID!
   internal: Internal!
   original: ImageSharpOriginal
   parent: Node
-  resize(background: String = "rgba(0,0,0,1)", base64: Boolean = false, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, width: Int): ImageSharpResize
-  resolutions(background: String = "rgba(0,0,0,1)", base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, width: Int): ImageSharpResolutions @deprecated(reason : "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https:\/\/example.com\/write-docs-and-fix-this-example-link")
+  resize(background: String = "rgba(0,0,0,1)", base64: Boolean = false, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, jpegQuality: Int, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, pngQuality: Int, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, webpQuality: Int, width: Int): ImageSharpResize
+  resolutions(background: String = "rgba(0,0,0,1)", base64Width: Int, cropFocus: ImageCropFocus = ATTENTION, duotone: DuotoneGradient, fit: ImageFit = COVER, grayscale: Boolean = false, height: Int, jpegProgressive: Boolean = true, jpegQuality: Int, pngCompressionSpeed: Int = 4, pngQuality: Int, quality: Int, rotate: Int = 0, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, traceSVG: Potrace, trim: Float = 0.0, webpQuality: Int, width: Int): ImageSharpResolutions @deprecated(reason : "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https:\/\/example.com\/write-docs-and-fix-this-example-link")
   sizes(
     background: String = "rgba(0,0,0,1)",
     base64Width: Int,
@@ -322,9 +325,11 @@ type ImageSharp implements Node {
     fit: ImageFit = COVER,
     grayscale: Boolean = false,
     jpegProgressive: Boolean = true,
+    jpegQuality: Int,
     maxHeight: Int,
     maxWidth: Int,
     pngCompressionSpeed: Int = 4,
+    pngQuality: Int,
     quality: Int,
     rotate: Int = 0,
     sizes: String = "",
@@ -333,7 +338,8 @@ type ImageSharp implements Node {
     toFormat: ImageFormat = NO_CHANGE,
     toFormatBase64: ImageFormat = NO_CHANGE,
     traceSVG: Potrace,
-    trim: Float = 0.0
+    trim: Float = 0.0,
+    webpQuality: Int
   ): ImageSharpSizes @deprecated(reason : "Sizes was deprecated in Gatsby v2. It's been renamed to \"fluid\" https:\/\/example.com\/write-docs-and-fix-this-example-link")
 }
 
@@ -355,26 +361,26 @@ type ImageSharpEdge {
 type ImageSharpFixed {
   aspectRatio: Float
   base64: String
-  height: Float
+  height: Float!
   originalName: String
-  src: String
-  srcSet: String
+  src: String!
+  srcSet: String!
   srcSetWebp: String
   srcWebp: String
   tracedSVG: String
-  width: Float
+  width: Float!
 }
 
 type ImageSharpFluid {
-  aspectRatio: Float
+  aspectRatio: Float!
   base64: String
   originalImg: String
   originalName: String
   presentationHeight: Int
   presentationWidth: Int
-  sizes: String
-  src: String
-  srcSet: String
+  sizes: String!
+  src: String!
+  srcSet: String!
   srcSetWebp: String
   srcWebp: String
   tracedSVG: String
@@ -407,26 +413,26 @@ type ImageSharpResize {
 type ImageSharpResolutions {
   aspectRatio: Float
   base64: String
-  height: Float
+  height: Float!
   originalName: String
-  src: String
-  srcSet: String
+  src: String!
+  srcSet: String!
   srcSetWebp: String
   srcWebp: String
   tracedSVG: String
-  width: Float
+  width: Float!
 }
 
 type ImageSharpSizes {
-  aspectRatio: Float
+  aspectRatio: Float!
   base64: String
   originalImg: String
   originalName: String
   presentationHeight: Int
   presentationWidth: Int
-  sizes: String
-  src: String
-  srcSet: String
+  sizes: String!
+  src: String!
+  srcSet: String!
   srcSetWebp: String
   srcWebp: String
   tracedSVG: String
@@ -753,11 +759,18 @@ type SitePluginPackageJsonPeerDependencies {
 }
 
 type SitePluginPluginOptions {
+  background_color: String
+  description: String
+  display: String
   fonts: [SitePluginPluginOptionsFonts]
+  icon: String
   modulePath: String
   name: String
   path: String
   pathCheck: Boolean
+  short_name: String
+  theme_color: String
+  trackingId: String
 }
 
 type SitePluginPluginOptionsFonts {
@@ -767,9 +780,16 @@ type SitePluginPluginOptionsFonts {
 }
 
 type SiteSiteMetadata {
+  author: String
+  banner: String
   description: String
+  facebookAppId: String
+  headline: String
+  ogLanguage: String
+  siteLanguage: String
   siteUrl: String
   title: String
+  twitterUsername: String
 }
 
 enum DirectoryFieldsEnum {
@@ -943,7 +963,7 @@ enum FileFieldsEnum {
   childImageSharp___fluid___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childImageSharp___fluid___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childImageSharp___fluid___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  childImageSharp___id
+  childImageSharp___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childImageSharp___internal___content @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childImageSharp___internal___contentDigest @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   childImageSharp___internal___description @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1279,6 +1299,8 @@ enum ImageFit {
   CONTAIN
   COVER
   FILL
+  INSIDE
+  OUTSIDE
 }
 
 enum ImageFormat {
@@ -1350,7 +1372,7 @@ enum ImageSharpFieldsEnum {
   fluid___srcSetWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fluid___srcWebp @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   fluid___tracedSVG @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  id
+  id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   internal___content @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   internal___contentDigest @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   internal___description @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1491,7 +1513,7 @@ enum MdxFieldsEnum {
   frontmatter___bioimage___blocks
   frontmatter___bioimage___changeTime
   frontmatter___bioimage___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___bioimage___childImageSharp___id
+  frontmatter___bioimage___childImageSharp___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___bioimage___childMdx___body
   frontmatter___bioimage___childMdx___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___bioimage___childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1559,7 +1581,7 @@ enum MdxFieldsEnum {
   frontmatter___featuredimage___blocks
   frontmatter___featuredimage___changeTime
   frontmatter___featuredimage___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___featuredimage___childImageSharp___id
+  frontmatter___featuredimage___childImageSharp___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___featuredimage___childMdx___body
   frontmatter___featuredimage___childMdx___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___featuredimage___childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1782,9 +1804,16 @@ enum SiteFieldsEnum {
   pathPrefix
   polyfill
   port
+  siteMetadata___author
+  siteMetadata___banner
   siteMetadata___description
+  siteMetadata___facebookAppId
+  siteMetadata___headline
+  siteMetadata___ogLanguage
+  siteMetadata___siteLanguage
   siteMetadata___siteUrl
   siteMetadata___title
+  siteMetadata___twitterUsername
 }
 
 enum SitePageFieldsEnum {
@@ -1940,14 +1969,21 @@ enum SitePageFieldsEnum {
   pluginCreator___parent___parent___children
   pluginCreator___parent___parent___id
   pluginCreator___pluginFilepath
+  pluginCreator___pluginOptions___background_color
+  pluginCreator___pluginOptions___description
+  pluginCreator___pluginOptions___display
   pluginCreator___pluginOptions___fonts
   pluginCreator___pluginOptions___fonts___family
   pluginCreator___pluginOptions___fonts___subsets
   pluginCreator___pluginOptions___fonts___variants
+  pluginCreator___pluginOptions___icon
   pluginCreator___pluginOptions___modulePath
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___short_name
+  pluginCreator___pluginOptions___theme_color
+  pluginCreator___pluginOptions___trackingId
   pluginCreator___resolve
   pluginCreator___ssrAPIs
   pluginCreator___version
@@ -2059,14 +2095,21 @@ enum SitePluginFieldsEnum {
   parent___parent___parent___children
   parent___parent___parent___id
   pluginFilepath
+  pluginOptions___background_color
+  pluginOptions___description
+  pluginOptions___display
   pluginOptions___fonts
   pluginOptions___fonts___family
   pluginOptions___fonts___subsets
   pluginOptions___fonts___variants
+  pluginOptions___icon
   pluginOptions___modulePath
   pluginOptions___name
   pluginOptions___path
   pluginOptions___pathCheck
+  pluginOptions___short_name
+  pluginOptions___theme_color
+  pluginOptions___trackingId
   resolve
   ssrAPIs
   version
@@ -2552,11 +2595,18 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 }
 
 input SitePluginPluginOptionsFilterInput {
+  background_color: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  display: StringQueryOperatorInput
   fonts: SitePluginPluginOptionsFontsFilterListInput
+  icon: StringQueryOperatorInput
   modulePath: StringQueryOperatorInput
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
+  short_name: StringQueryOperatorInput
+  theme_color: StringQueryOperatorInput
+  trackingId: StringQueryOperatorInput
 }
 
 input SitePluginPluginOptionsFontsFilterInput {
@@ -2575,9 +2625,16 @@ input SitePluginSortInput {
 }
 
 input SiteSiteMetadataFilterInput {
+  author: StringQueryOperatorInput
+  banner: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  facebookAppId: StringQueryOperatorInput
+  headline: StringQueryOperatorInput
+  ogLanguage: StringQueryOperatorInput
+  siteLanguage: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
   title: StringQueryOperatorInput
+  twitterUsername: StringQueryOperatorInput
 }
 
 input SiteSortInput {

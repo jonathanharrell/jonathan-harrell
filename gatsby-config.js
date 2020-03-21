@@ -1,12 +1,20 @@
 const colors = require('./colors')
+const website = require('./website-config')
 
 require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.jonathan-harrell.com',
-    title: 'Jonathan Harrell | CSS Blogger & Teacher, UI/UX Designer, Front-End Developer',
-    description: 'Want to stay up-to-date on the latest developments in CSS and JavaScript? Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.'
+    siteUrl: website.url,
+    title: website.title,
+    description: website.description,
+    banner: website.logo,
+    headline: website.headline,
+    siteLanguage: website.siteLanguage,
+    ogLanguage: website.ogLanguage,
+    author: website.author,
+    twitterUsername: website.twitterUsername,
+    facebookAppId: website.facebookAppId
   },
   plugins: [
     {
@@ -130,6 +138,19 @@ module.exports = {
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: website.title,
+        short_name: website.shortName,
+        description: website.description,
+        background_color: website.backgroundColor,
+        theme_color: website.themeColor,
+        display: 'standalone',
+        icon: website.favicon,
+      },
+    },
+    // 'gatsby-plugin-offline',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ]
 }

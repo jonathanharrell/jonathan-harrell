@@ -10,6 +10,9 @@ import kebabCase from 'lodash/kebabCase'
 import Tag from '../jh-ui/Tag'
 import Spaced from '../jh-ui/Spaced'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import PropTypes from 'prop-types'
+import website from '../../website-config'
+import Seo from '../components/seo'
 
 const BlogIndexWrap = styled.div`
   flex: 1;
@@ -48,7 +51,7 @@ const Link = styled(GatsbyLink)`
   }
 `
 
-export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: post } }) {
+export const BlogIndexPageTemplate = ({ location, title, tags, post }) => {
   const articlesRef = useRef()
 
   const skipToArticles = () => {
@@ -56,7 +59,12 @@ export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: po
   }
 
   return (
-    <Layout>
+    <>
+      <Seo
+        title={`${title} | ${website.titleAlt}`}
+        pathname={location.pathname}
+        description="Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques."
+      />
       <BlogIndexWrap>
         <Header>
           <ContentWrap>
@@ -114,9 +122,31 @@ export default function BlogIndexPage({ data: { allMdx: { group: tags }, mdx: po
           </Spaced>
         </ArticlesWrap>
       </BlogIndexWrap>
+    </>
+  )
+}
+
+const BlogIndexPage = ({ data, location }) => {
+  const { allMdx: { group: tags }, mdx: post } = data
+  const { title } = post.frontmatter
+
+  return (
+    <Layout>
+      <BlogIndexPageTemplate
+        location={location}
+        title={title}
+        tag={tags}
+        post={post}
+      />
     </Layout>
   )
 }
+
+BlogIndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default BlogIndexPage
 
 export const blogPageQuery = graphql`
   query BlogPage {
