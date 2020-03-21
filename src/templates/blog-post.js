@@ -22,6 +22,8 @@ import Button from '../jh-ui/Button'
 import Share from '../img/icons/share.svg'
 import Twitter from '../img/icons/twitter.svg'
 import Github from '../img/icons/github.svg'
+import website from '../../website-config'
+import Seo from '../components/seo'
 
 const ProgressBarWrap = styled.div`
   position: fixed;
@@ -319,166 +321,174 @@ export const BlogPostTemplate = ({
   }, [])
 
   return (
-    <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
-      {helmet || ''}
-      <BodyClassName className={`header-background-gray`}/>
-      <ProgressBarWrap>
-        <motion.div
-          style={{
-            width: '100%',
-            height: '0.2rem',
-            background: 'var(--accent)',
-            scaleX: scrollYProgress,
-            transformOrigin: '0 0'
-          }}
-        />
-      </ProgressBarWrap>
-      <ArticleHeader color={color}>
-        <ContentWrap>
-          <ArticleHeaderContentWrap>
-            {image && (
-              <Spaced bottom="3x">
-                <Figure dangerouslySetInnerHTML={{ __html: image.fields.markup }}/>
-              </Spaced>
-            )}
-            <ArticleHeaderContent>
-              <Spaced bottom="s">
-                <ArticleMeta>
-                  {tags && (
-                    <Spaced right="xxl">
-                      <div>
-                        <ScreenReaderText>
-                          <Heading
-                            level={2}
-                            id="article-tags-label"
-                          >
-                            Article Tags
-                          </Heading>
-                        </ScreenReaderText>
-                        <ul aria-labelledby="article-tags-label">
-                          {tags.map((tag, index) => (
-                            <Tag key={tag + `tag`}>
-                              <TagLink
-                                to={`/tags/${kebabCase(tag)}/`}
-                                aria-label={`View articles with the tag ${tag}`}
-                              >
-                                <Text order="meta" element="span">
-                                  {tag}
-                                </Text>
-                              </TagLink>
-                              {index < tags.length - 1 && (
-                                <Text order="meta" element="span" aria-hidden>
-                                  &nbsp;•&nbsp;
-                                </Text>
-                              )}
-                            </Tag>
-                          ))}
-                        </ul>
-                      </div>
-                    </Spaced>
-                  )}
-                  <Spaced right="xxl">
-                    <Text order="meta" element="span">
-                      <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
-                      {date}
-                    </Text>
-                  </Spaced>
-                  <Text order="meta" element="span">
-                    {readingTime.text}
-                  </Text>
-                </ArticleMeta>
-              </Spaced>
-              <Spaced bottom="m">
-                <Heading level={1} id="article-title">
-                  {title}
-                </Heading>
-              </Spaced>
-              {description && (
-                <Text order="body" color="textLighter" element="p">
-                  {description}
-                </Text>
+    <>
+      <Seo
+        title={`${title} | ${website.titleAlt}`}
+        pathname={location.pathname}
+        description={description}
+        banner={image}
+        article
+      />
+      <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
+        <BodyClassName className={`header-background-gray`}/>
+        <ProgressBarWrap>
+          <motion.div
+            style={{
+              width: '100%',
+              height: '0.2rem',
+              background: 'var(--accent)',
+              scaleX: scrollYProgress,
+              transformOrigin: '0 0'
+            }}
+          />
+        </ProgressBarWrap>
+        <ArticleHeader color={color}>
+          <ContentWrap>
+            <ArticleHeaderContentWrap>
+              {image && (
+                <Spaced bottom="3x">
+                  <Figure dangerouslySetInnerHTML={{ __html: image.fields.markup }}/>
+                </Spaced>
               )}
-            </ArticleHeaderContent>
-          </ArticleHeaderContentWrap>
-        </ContentWrap>
-      </ArticleHeader>
-      <Mask>
-        <clipPath id="wave" clipPathUnits="objectBoundingBox">
-          <path
-            d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
-        </clipPath>
-      </Mask>
-      <Padded vertical="4x">
-        <ContentWrap>
-          <ArticleContentWrap>
-            <ArticleContent ref={articleContent}>
-              <MDXRenderer>
-                {content}
-              </MDXRenderer>
-              <Spaced top="4x">
-                <ArticleLinksWrap>
-                  {hasNavigatorShare && (
-                    <span>
-                      <Button unstyled={true} onClick={shareArticle}>
-                        <ShareLink element="span">
+              <ArticleHeaderContent>
+                <Spaced bottom="s">
+                  <ArticleMeta>
+                    {tags && (
+                      <Spaced right="xxl">
+                        <div>
+                          <ScreenReaderText>
+                            <Heading
+                              level={2}
+                              id="article-tags-label"
+                            >
+                              Article Tags
+                            </Heading>
+                          </ScreenReaderText>
+                          <ul aria-labelledby="article-tags-label">
+                            {tags.map((tag, index) => (
+                              <Tag key={tag + `tag`}>
+                                <TagLink
+                                  to={`/tags/${kebabCase(tag)}/`}
+                                  aria-label={`View articles with the tag ${tag}`}
+                                >
+                                  <Text order="meta" element="span">
+                                    {tag}
+                                  </Text>
+                                </TagLink>
+                                {index < tags.length - 1 && (
+                                  <Text order="meta" element="span" aria-hidden>
+                                    &nbsp;•&nbsp;
+                                  </Text>
+                                )}
+                              </Tag>
+                            ))}
+                          </ul>
+                        </div>
+                      </Spaced>
+                    )}
+                    <Spaced right="xxl">
+                      <Text order="meta" element="span">
+                        <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                        {date}
+                      </Text>
+                    </Spaced>
+                    <Text order="meta" element="span">
+                      {readingTime.text}
+                    </Text>
+                  </ArticleMeta>
+                </Spaced>
+                <Spaced bottom="m">
+                  <Heading level={1} id="article-title">
+                    {title}
+                  </Heading>
+                </Spaced>
+                {description && (
+                  <Text order="body" color="textLighter" element="p">
+                    {description}
+                  </Text>
+                )}
+              </ArticleHeaderContent>
+            </ArticleHeaderContentWrap>
+          </ContentWrap>
+        </ArticleHeader>
+        <Mask>
+          <clipPath id="wave" clipPathUnits="objectBoundingBox">
+            <path
+              d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
+          </clipPath>
+        </Mask>
+        <Padded vertical="4x">
+          <ContentWrap>
+            <ArticleContentWrap>
+              <ArticleContent ref={articleContent}>
+                <MDXRenderer>
+                  {content}
+                </MDXRenderer>
+                <Spaced top="4x">
+                  <ArticleLinksWrap>
+                    {hasNavigatorShare && (
+                      <span>
+                        <Button unstyled={true} onClick={shareArticle}>
+                          <ShareLink element="span">
+                            <Spaced right="xs">
+                              <Share/>
+                            </Spaced>
+                            Share this article
+                          </ShareLink>
+                        </Button>
+                      </span>
+                    )}
+                    {(!hasNavigatorShare && location.href) && (
+                      <span>
+                        <ShareLink
+                          href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Spaced right="xs">
-                            <Share/>
+                            <Twitter/>
                           </Spaced>
-                          Share this article
+                          Discuss on Twitter
                         </ShareLink>
-                      </Button>
-                    </span>
-                  )}
-                  {(!hasNavigatorShare && location.href) && (
-                    <span>
+                      </span>
+                    )}
+                    {((hasNavigatorShare || location.href) && processedGithubUrl) && (
+                      <Spaced horizontal="s">
+                        <Divider element="span">•</Divider>
+                      </Spaced>
+                    )}
+                    {processedGithubUrl && (
                       <ShareLink
-                        href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+                        href={processedGithubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Spaced right="xs">
-                          <Twitter/>
+                          <Github/>
                         </Spaced>
-                        Discuss on Twitter
+                        Edit on Github
                       </ShareLink>
-                    </span>
-                  )}
-                  {((hasNavigatorShare || location.href) && processedGithubUrl) && (
-                    <Spaced horizontal="s">
-                      <Divider element="span">•</Divider>
-                    </Spaced>
-                  )}
-                  {processedGithubUrl && (
-                    <ShareLink
-                      href={processedGithubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Spaced right="xs">
-                        <Github/>
-                      </Spaced>
-                      Edit on Github
-                    </ShareLink>
-                  )}
-                </ArticleLinksWrap>
-              </Spaced>
-            </ArticleContent>
-          </ArticleContentWrap>
-        </ContentWrap>
-      </Padded>
-      <RecentArticlesWrap aria-labelledby="more-label">
-        <Padded vertical="5x">
-          <ContentWrap>
-            <Spaced bottom="2x">
-              <Heading level={2} id="more-label">
-                More Articles
-              </Heading>
-            </Spaced>
-            <RecentArticles currentPostId={id}/>
+                    )}
+                  </ArticleLinksWrap>
+                </Spaced>
+              </ArticleContent>
+            </ArticleContentWrap>
           </ContentWrap>
         </Padded>
-      </RecentArticlesWrap>
-    </ArticleWrap>
+        <RecentArticlesWrap aria-labelledby="more-label">
+          <Padded vertical="5x">
+            <ContentWrap>
+              <Spaced bottom="2x">
+                <Heading level={2} id="more-label">
+                  More Articles
+                </Heading>
+              </Spaced>
+              <RecentArticles currentPostId={id}/>
+            </ContentWrap>
+          </Padded>
+        </RecentArticlesWrap>
+      </ArticleWrap>
+    </>
   )
 }
 
