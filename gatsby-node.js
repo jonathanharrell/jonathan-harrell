@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const colors = require('./colors')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -105,7 +106,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
   const config = getConfig()
 
   if (stage.startsWith('develop') && config.resolve) {
@@ -114,4 +115,6 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
       'react-dom': '@hot-loader/react-dom'
     }
   }
+
+  actions.replaceWebpackConfig(config)
 }

@@ -317,7 +317,7 @@ export const BlogPostTemplate = ({
     const typeMateInstance = new TypeMate(articleWrap.current, { selector: 'h1, h2, h3, h4, h5, h6, p' })
     typeMateInstance.apply()
   }, [])
-  console.log()
+
   return (
     <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
       {helmet || ''}
