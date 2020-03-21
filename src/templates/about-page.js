@@ -9,6 +9,8 @@ import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
 import ContentWrap from '../components/ContentWrap'
 import SectionHeader from '../jh-ui/SectionHeader'
+import { Helmet } from 'react-helmet'
+import useSiteMetadata from '../components/SiteMetadata'
 
 const HeaderWrap = styled.header`
   padding-top: ${({ theme }) => theme.spacing['3x']};
@@ -164,9 +166,22 @@ const UsageLink = styled.a`
   }
 `
 
-export const AboutPageTemplate = ({ title, image, bio, involvement, whatIUse }) => {
+export const AboutPageTemplate = ({ url, title, image, bio, involvement, whatIUse }) => {
+  const { title: siteTitle } = useSiteMetadata()
+
   return (
     <>
+      <Helmet>
+        <title>{title} - {siteTitle}</title>
+        <meta
+          name="description"
+          content="Jonathan Harrell is a UI/UX designer and front-end developer. He specializes in and blogs about HTML and CSS. Learn more."
+        />
+        <link rel="canonical" href={url}/>
+        <meta property="og:title" content={`${title} - ${siteTitle}`}/>
+        <meta property="og:url" content={url}/>
+        <meta property="og:image" content={image.publicURL}/>
+      </Helmet>
       <HeaderWrap aria-labelledby="about-label">
         <AboutContentWrap>
           <HeaderContentWrap>
@@ -257,13 +272,14 @@ AboutPageTemplate.propTypes = {
   }).isRequired
 }
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data, location }) => {
   const { mdx: post } = data
   const { title, bioimage, bio, involvement, what_i_use: whatIUse } = post.frontmatter
 
   return (
     <Layout>
       <AboutPageTemplate
+        url={location.href}
         title={title}
         image={bioimage}
         bio={bio}
