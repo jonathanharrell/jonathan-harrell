@@ -326,7 +326,7 @@ export const BlogPostTemplate = ({
         title={`${title} | ${website.titleAlt}`}
         pathname={location.pathname}
         description={description}
-        banner={image}
+        banner={image.fields.socialURL}
         article
       />
       <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
@@ -552,6 +552,7 @@ export const pageQuery = graphql`
         featuredimage {
           fields {
             markup
+            socialURL
           }
         }
       }

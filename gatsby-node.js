@@ -4,6 +4,7 @@ const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
+const { convertFile } = require('convert-svg-to-png')
 const colors = require('./colors')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -75,7 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
 
@@ -102,6 +103,27 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         value,
       })
+
+      if (node.absolutePath.includes('/static/img/')) {
+        const outputFilePath = node.absolutePath.replace('.svg', '.png')
+
+        if (fs.existsSync(outputFilePath)) {
+          fs.unlinkSync(outputFilePath)
+        }
+
+        await convertFile(node.absolutePath, {
+          background: '#ffffff',
+          width: 600,
+          height: 600,
+          outputFilePath
+        })
+
+        createNodeField({
+          name: `socialURL`,
+          node,
+          value: `/${node.relativePath.replace('.svg', '.png')}`
+        })
+      }
     }
   }
 }
