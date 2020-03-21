@@ -1,5 +1,7 @@
 const colors = require('./colors')
 
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.jonathan-harrell.com',

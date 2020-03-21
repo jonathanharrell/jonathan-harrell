@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
+import * as Sentry from '@sentry/browser'
 import theme from '../jh-ui/theme'
 import Button from '../jh-ui/Button'
 import Heading from '../jh-ui/Heading'

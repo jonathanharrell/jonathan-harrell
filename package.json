@@ -72,6 +72,7 @@
     "@storybook/addons": "^5.2.0",
     "@storybook/react": "^5.2.0",
     "babel-loader": "^8.0.6",
+    "dotenv": "^8.2.0",
     "prettier": "^1.15.3",
     "storybook-dark-mode": "^0.1.7"
   },
