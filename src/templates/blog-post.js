@@ -326,6 +326,7 @@ export const BlogPostTemplate = ({
         pathname={location.pathname}
         description={description}
         banner={socialImage.publicURL}
+        publicationDate={date}
         article
       />
       <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
