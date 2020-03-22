@@ -1,0 +1,110 @@
+---
+templateKey: blog-post
+title: Controlling Element Visibility with the Intersection Observer API
+date: 2017-10-18T20:17:00.000Z
+description: >-
+  Learn how to use the new IntersectionObserver API to control the visibility of
+  elements relative to the viewport.
+featuredimage: /img/intersection-observer.svg
+tags:
+  - javascript
+---
+Controlling the display of elements based on their visibility within the viewport has typically been a rather messy affair, involving calculations using window height and `getBoundingClientRect()`. There is now a new API that makes this much simpler called Intersection Observer. It is now [supported](https://caniuse.com/#feat=intersectionobserver) in Chrome, Firefox, Opera and Edge and there is a good [polyfill](https://github.com/w3c/IntersectionObserver/tree/gh-pages/polyfill) for it.
+
+I decided to experiment and push IntersectionObserver to its limits:
+
+<Codepen id="mzyBXW"/>
+
+<Note type="warning">
+            You probably shouldn’t create as many observers on a production site as I have done. You start to run into performance issues. However, this experiment should help you visualize how the API works.
+</Note>
+
+## The HTML and CSS
+
+I have a simple grid of cards that is styled using CSS grid:
+
+```html
+<section class="card-grid">
+  <div class="card"></div>
+  <div class="card"></div>
+  <div class="card"></div>
+  ...
+</section>
+```
+
+```css
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+      auto-fill,
+      minmax(100px, 1fr)
+  );
+  grid-gap: 45px;
+}
+```
+
+## Creating the Intersection Observers
+
+I loop over each card and create an observer. The observer accepts a callback and an options object. Note that in options I am setting the `rootMargin` to a negative value. This insets the intersection point in from the viewport on all sides by 100px. So a card can be up to 100px in the viewport before the observer will read it as intersected.
+
+![The root margin grows or shrinks each side of the root element's bounding box before computing intersections.](/img/root-margin.svg)
+
+I have also set the `threshold` option as an array with two numeric values. These are essentially the percentages of intersection at which the observer will respond. So, when a card is 50% in the viewport and when it is 100% in, the observer will fire the callback.
+
+```javascript
+const options = {
+  rootMargin: '-100px',
+  threshold: [0.5, 1]
+}
+```
+
+```javascript
+const observer = new IntersectionObserver(callback, options);
+
+const targets = document.querySelectorAll('.card');
+targets.forEach(target => observer.observe(target));
+```
+
+## Setup the Callback
+
+The callback function gives me an array of entries – each entry is essentially an intersection change. I can check the `intersectionRatio` on each entry and apply some styling appropriately.
+
+![Thresholds indicate at what percentage of the target's visibility the observer's callback should be executed.](/img/thresholds.svg)
+
+```javascript
+const callback = entries => {
+  entries.forEach(entry => {
+    const ratio = entry.intersectionRatio;
+
+    // look at the ratio and do stuff to each element
+  });
+}
+```
+
+I use a switch statement to apply different styling for different ratios:
+
+```javascript
+switch (true) {
+  case (ratio === 1):
+    entry.target.style.opacity = 1;
+    entry.target.style.transform = 'scale(1.25)';
+    return;
+
+  case (ratio < 1 && ratio >= 0.5):
+    entry.target.style.opacity = 0.5;
+    entry.target.style.transform = 'scale(1.1)';
+    return;
+
+  case (ratio < 0.5):
+    entry.target.style.opacity = 0.15;
+    entry.target.style.transform = 'scale(1.0)';
+    return;
+
+  default:
+    return;
+}
+```
+
+## Conclusion
+
+The Intersection Observer API provides a more straightforward and powerful method for checking element visibility relative to the viewport. Hopefully browser support continues to improve and we’ll be able to use it soon in production sites without needing a polyfill.

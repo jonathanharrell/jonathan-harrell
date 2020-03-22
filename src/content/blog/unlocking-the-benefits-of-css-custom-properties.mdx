@@ -1,0 +1,188 @@
+---
+templateKey: blog-post
+title: Unlocking the Benefits of CSS Variables
+date: 2017-10-24T20:17:00.000Z
+description: >-
+  Overview of the benefits of CSS variables and helpful tips and tricks for
+  working with them.
+featuredimage: /img/unlocking-css-benefits.svg
+tags:
+  - css
+  - theming
+---
+More and more developers are starting to use CSS variables, or as they are more correctly known, custom properties. Native CSS custom properties provide several clear benefits over preprocessor variables. They provide the power to achieve things like live theming which were previously much more difficult.
+
+I want to take a quick look at the benefits of CSS custom properties and go over some lesser known features that may come in handy.
+
+## Benefits of CSS Custom Properties
+
+### They’re Native
+
+This one is obvious, but important. You can use CSS custom properties without the need for a preprocessor. The tooling around CSS has grown in complexity over the last several years. We may now be looking at a simplification as more features are adopted into CSS proper.
+
+### They’re Live
+
+Preprocessor variables are not actually live in the browser. They are evaluated when the CSS is compiled. Redefining a variable within a media query will do nothing. With CSS custom properties, the property actually lives in the browser so it can be redefined in media queries, or with JavaScript.
+
+This also means that all variable expressions and calc statements using CSS custom properties will be recalculated when the variable is redefined.
+
+Here we are redefining a grid gutter within a media query and using that custom property inside `calc()` statements:
+
+```css
+:root {
+  --grid-gutter: 1rem;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --grid-gutter: 1.25rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-gap: var(--grid-gutter);
+  margin-left: calc(-1 * var(--grid-gutter));
+  margin-right: calc(-1 * var(--grid-gutter));
+}
+```
+
+### They Cascade
+
+Since preprocessor variables don’t run in the browser, they have no knowledge of the DOM. Therefore they cannot be scoped to DOM elements. CSS custom properties, on the other hand, do have this knowledge. CSS custom properties can be scoped to particular elements, or classes on elements.
+
+A clear use case for this is theme switching:
+
+```css
+:root {
+  --body-background-color: white;
+  --body-text-color: black;
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-text-color);
+}
+
+.dark {
+  --body-background-color: black;
+  --body-text-color: white;
+}
+```
+
+### They Work Anywhere
+
+Preprocessor variables do not work in plain CSS or with other preprocessors so their shareability is limited. Because custom properties are native, they can be used with any preprocessor. They can also be accessed and defined through JavaScript.
+
+Here’s an example of overriding default Bootstrap Sass typography variables to use custom properties.
+
+```css
+$font-size-h1: calc(var(--font-size-base) * 2.6) !default;
+$font-size-h2: calc(var(--font-size-base) * 2.15) !default;
+$font-size-h3: calc(var(--font-size-base) * 1.7) !default;
+$font-size-h4: calc(var(--font-size-base) * 1.25) !default;
+$font-size-h5: var(--font-size-base) !default;
+$font-size-h6: calc(var(--font-size-base) * 0.85) !default;
+```
+
+### Using Fallback Values
+
+If you aren’t sure if a particular custom property exists, you can provide a default value for a particular property. This can be especially useful if you are creating a component that will be packaged up and imported as part of a library.
+
+Simply pass in the default value as the second argument of the `var()` function:
+
+```css
+/* single fallback */
+.button {
+  background-color: var(--button-background-color, gray);
+}
+```
+
+You can provide multiple fallbacks by nesting multiple `var()` functions inside of each other:
+
+```css
+/* multiple fallbacks */
+.button-primary {
+  background-color: var(
+    --primary-button-background-color,
+    var(
+      --button-background-color,
+      gray
+    )
+  );
+}
+```
+
+## Converting Unitless Values
+
+There may be times when you need to define a custom property as a unitless value and then tack on a unit. This can often be the case when dealing with responsive typography. To accommodate this, simply write a `calc()` expression where you multiply the custom property value by the unit you wish to add onto it.
+
+Here’s an example of a complex responsive font size calculation using custom properties:
+
+```css
+:root {
+  /* unitless base font size variables in px */
+  --unitless-min-font-size: 15;
+  --unitless-max-font-size: 18;
+
+  /* unitless viewport widths in px */
+  --unitless-lower-font-range: 460;
+  --unitless-upper-font-range: 1200;
+
+  --font-size-difference: calc(
+    var(--unitless-max-font-size) -
+    var(--unitless-min-font-size)
+  );
+  --font-range-difference: calc(
+    var(--unitless-upper-font-range) -
+    var(--unitless-lower-font-range)
+  );
+  --viewport-difference: calc(
+    100vw -
+    (var(--unitless-lower-font-range) * 1px)
+  );
+}
+
+html {
+  font-size: calc(
+    (var(--unitless-min-font-size) * 1px) +
+    var(--font-size-difference) *
+    var(--viewport-difference) /
+    var(--font-range-difference)
+  );
+}
+```
+
+## Redefining Custom Properties in Media Queries
+
+Remember that you can redefine custom properties within media queries. Margins, padding, and grid gutters are particularly good use cases for this. Imagine a condensed view of a grid on mobile, a slightly more spaced out view on tablet, and a view with even more space on desktop. This is possible very simply with custom properties. Instead of redefining the spacing properties on the element, just redefine the custom properties within the media queries.
+
+```css
+:root {
+  --card-padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --card-padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --card-padding: 1.5rem;
+  }
+}
+
+.card {
+  padding: var(--card-padding);
+}
+```
+
+## Get Started with a CSS Custom Property-Based Framework
+
+My new [CSS framework HiQ](https://jonathanharrell.github.io/hiq/) lets you get started quickly by providing custom properties that you can customize. HiQ is lightweight and provides truly fluid typography that changes in relation to the viewport width.
+
+Learn how to use custom properties to enable live theming in my article here:
+
+<ArticleLink title="Live Theming with CSS Variables"/>

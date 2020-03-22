@@ -1,0 +1,236 @@
+---
+templateKey: blog-post
+title: Implicit State Sharing in React & Vue
+date: 2018-11-05T22:14:59.449Z
+description: >-
+  Learn to use React's Context API and provide/inject in Vue to share state
+  between related components without resorting to a global data store.
+featuredimage: /img/implicit-state-sharing.svg
+socialimage: /img/implicit-state-sharing-social.png
+tags:
+  - javascript
+  - react
+  - vue
+---
+Imagine you are creating an accordion component that you want to distribute publicly through an npm package. You would like the user of this accordion to be able to use the component in a very flexible way, by composing multiple components together. React Context and provide/inject in Vue provide a solution.
+
+Imagine this is your ideal API:
+
+```jsx
+<Accordion>
+  <AccordionItem>
+    <AccordionHeader>
+      Header content
+    </AccordionHeader>
+    <AccordionPanel>
+      Panel content
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
+```
+
+`AccordionItem` will contain each section of the accordion that can be expanded or collapsed, `AccordionHeader` will be the place where the user can click to expand or collapse, and `AccordionPanel` will contain the content to be shown or hidden.
+
+Each `AccordionItem` will need to maintain some state — whether it is expanded or not. But `AccordionHeader` will also need access to this value, so that it can show the appropriate toggle button. And `AccordionPanel` may also need to access this, since it is the thing being _expanded_ and collapsed.
+
+One possibility is exposing the expanded value to your user through render props and making sure your documentation lets them know they need to pass that down to the header and panel components.
+
+```jsx
+<Accordion>
+  <AccordionItem render={({ expanded }) => (
+    <AccordionHeader expanded={expanded}>
+      Header content
+    </AccordionHeader>
+    <AccordionPanel expanded={expanded}>
+      Panel content
+    </AccordionPanel>
+  )} />
+</Accordion>
+```
+
+While this may seem like a decent solution at first, it’s not ideal that the consumer of our component has to worry about the component internals. The fact that `AccordionHeader` and `AccordionPanel` need access to the expanded state should not be something our user has to be concerned about.
+
+It should also not be noted that while this is a trivial example, your component may be far more complex, with multiple levels of nested components, in which case prop drilling may become quite tedious.
+
+What we really need is a way to _implicitly_ pass down props.
+
+## Using React Context
+
+![](/img/accordion-state-sharing.svg)
+
+There is a better solution for cases like this — React Context. We can use the Context API to create some state and provide it where needed behind the scenes, removing this concern from our public-facing API.
+
+First, we will create a context and define the _shape_ of that context. We will start with an `expanded` value and a `toggleExpansion` method. We are defining this context as specifically relevant to our accordion item:
+
+```jsx
+const AccordionItemContext = React.createContext({
+  expanded: false,
+  toggleExpansion: () => {}
+})
+```
+
+Now, inside our `AccordionItem` component, we will define the `expanded` and `toggleExpansion` values and feed them in as the value of the `Provider` component.
+
+```jsx
+class AccordionItem extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.toggleExpansion = () => {
+      this.setState({ expanded: !this.state.expanded });
+    }
+
+    this.state = {
+      expanded: false,
+      toggleExpansion: this.toggleExpansion
+    }
+  }
+
+  render() {
+    return (
+      <AccordionItemContext.Provider value={this.state}>
+        <div className="accordion-item">
+          {this.props.children}
+        </div>
+      </AccordionItemContext.Provider>
+    )
+  }
+}
+```
+
+The `Provider` is one half of the React Context equation. The other half is the `Consumer`. The `Provider` allows the `Consumer` to subscribe to context changes, as we will see soon.
+
+Next, we need to set up `AccordionHeader` and `AccordionPanel` as consumers of this context:
+
+```jsx
+const AccordionHeader = props => {
+  return (
+    <AccordionItemContext.Consumer>
+      {({ expanded, toggleExpansion }) => (
+        <h2 className="accordion-header">
+          <button onClick={toggleExpansion}>
+            {expanded ? '→ ' : '↓ '}
+            {props.children}
+          </button>
+        </h2>
+      )}
+    </AccordionItemContext.Consumer>
+  )
+}
+```
+
+The `Consumer` component requires a function as its child. This function will receive the context value, which we are destructuring into `expanded` and `toggleExpansion`. Our component is then able to use these values in its template.
+
+We will similarly use `Consumer` to give `AccordionPanel` access to the context value:
+
+```jsx
+const AccordionPanel = props => {
+  return (
+    <AccordionItemContext.Consumer>
+      {({ expanded }) =>
+        <div className={
+          'accordion-panel ' +
+          (expanded ? 'expanded' : '')
+        }>
+          {props.children}
+        </div>
+      }
+    </AccordionItemContext.Consumer>
+  )
+}
+```
+
+Now, we really can achieve our ideal API for the accordion component. Users of our component won’t have to worry about passing state up or down the component tree. Those component internals are hidden from them:
+
+```jsx
+<Accordion>
+  <AccordionItem>
+    <AccordionHeader>
+      Header content
+    </AccordionHeader>
+    <AccordionPanel>
+      Panel content
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
+```
+
+[Check out the Codepen here](https://codepen.io/jonathanharrell/pen/WgBzyX).
+
+## Provide/Inject in Vue
+
+Vue provides a similar tool to React’s Context API, called provide/inject. To use this, we will use the `provide` method on our `accordion-item` Vue component:
+
+```javascript
+Vue.component('accordion-item', {
+  data() {
+    return {
+      sharedState: {
+        expanded: false
+      }
+    }
+  },
+
+  provide() {
+    return {
+      accordionItemState: this.sharedState
+    }
+  },
+
+  render(createElement) {
+    return createElement(
+      'div',
+      { class: 'accordion-item' },
+      this.$slots.default
+    )
+  }
+})
+```
+
+We return an object from `provide()` that contains the state we want to provide to other components. Note that we are passing an object to `accordionItemState`, rather than simply passing the `expanded` value. In order to be reactive, provide must pass an object.
+
+Note that we are using a render function here to create this component, but this is not necessary to use provide/inject.
+
+Now, we will inject this state into our child components. We will simply use the `inject` property, which accepts an array of strings corresponding the properties of the object we defined in `provide`.
+
+```javascript
+Vue.component('accordion-header', {
+  inject: ['accordionItemState'],
+
+  template: `
+    <h2 class="accordion-header">
+      <button @click="accordionItemState.expanded = !accordionItemState.expanded">
+        {{ accordionItemState.expanded ? '→' : '→' }}
+        <slot></slot>
+      </button>
+    </h2>
+  `
+})
+```
+
+Once we include the property name in `inject`, we have access to those values in our template.
+
+```javascript
+Vue.component('accordion-panel', {
+  inject: ['accordionItemState'],
+
+  template: `
+    <div
+      class="accordion-panel"
+      :class="{ expanded: accordionItemState.expanded }"
+    >
+      <slot></slot>
+    </div>
+  `
+})
+```
+
+[Check out the Codepen here](https://codepen.io/jonathanharrell/pen/PdvRoP).
+
+## Use with Caution
+
+It’s worth noting that you should only implicitly pass down props when it really makes sense. Doing this too much can obfuscate the real behavior of your components and cause confusion for other developers that may be working on your project.
+
+A component library that is packaged up and distributed for use in other applications is a perfect use case for this, since the internal props of the components really don’t need to be exposed to the end user.
+
+React Context and Vue’s provide/inject feature both make it possible to do this through implicit state sharing.
