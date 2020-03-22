@@ -11,6 +11,8 @@ const Facebook = ({ url, type, title, desc, image, locale, appId }) => (
     <meta property="og:description" content={desc}/>
     <meta property="og:image" content={image}/>
     <meta property="og:image:alt" content={desc}/>
+    <meta property="og:image:width" content="600"/>
+    <meta property="og:image:height" content="600"/>
     {appId && <meta property="fb:app_id" content={appId}/>}
   </Helmet>
 )
