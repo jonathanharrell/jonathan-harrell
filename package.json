@@ -91,7 +91,6 @@
     "build": "npm run clean && gatsby build",
     "develop": "npm run clean && gatsby develop -H 0.0.0.0",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "gatsby serve",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
