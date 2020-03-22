@@ -325,7 +325,7 @@ export const BlogPostTemplate = ({
         title={`${title} | ${website.titleAlt}`}
         pathname={location.pathname}
         description={description}
-        banner={socialImage.publicURL}
+        banner={socialImage ? socialImage.publicURL : undefined}
         publicationDate={date}
         article
       />
