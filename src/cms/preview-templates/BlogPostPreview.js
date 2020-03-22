@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import previewStyle from '../preview-style'
 
 const style = `
   img {
@@ -10,10 +11,7 @@ const style = `
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
   return (
-    <div style={{
-      fontFamily: `'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'`,
-      lineHeight: 1.4
-    }}>
+    <div style={previewStyle}>
       <style dangerouslySetInnerHTML={{ __html: style }}/>
       <h1>{entry.getIn(['data', 'title'])}</h1>
       {widgetFor('body')}

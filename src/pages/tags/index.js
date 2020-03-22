@@ -1,70 +1,19 @@
 import React from 'react'
-import { graphql, Link as GatsbyLink } from 'gatsby'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 import { kebabCase } from 'lodash'
-import Layout from '../../components/Layout'
-import styled from 'styled-components'
-import ContentWrap from '../../components/ContentWrap'
 import Padded from '../../jh-ui/Padded'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Card from '../../jh-ui/Card'
 import Text from '../../jh-ui/Text'
-import website from '../../../website-config'
+import Layout from '../../components/Layout/'
+import ContentWrap from '../../components/ContentWrap/'
 import Seo from '../../components/seo'
+import website from '../../../website-config'
+import { Header, Link, TagCard, TagsIndexWrap, TagsWrap } from './styles'
 
-const TagsIndexWrap = styled.div`
-  flex: 1;
-  background-color: var(--backgroundPrimary);
-`
-
-const Header = styled.header`
-  padding-top: ${({ theme }) => theme.spacing['3x']};
-  text-align: center;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding-top: ${({ theme }) => theme.spacing['4x']};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    padding-top: ${({ theme }) => theme.spacing['5x']};
-  }
-`
-
-const TagsWrap = styled.div`
-  display: grid;
-  grid-gap: ${({ theme }) => theme.spacing.xxl};
-  grid-template-columns: repeat(12, 1fr);
-`
-
-const TagCard = styled(Card)`
-  grid-column: 1 / -1;
-  position: relative;
-  background-color: var(--backgroundElevatedSecondary);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-column: auto / span 6;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 4;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-column: auto / span 3;
-  }
-`
-
-const Link = styled(GatsbyLink)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-`
-
-const TagsPage = ({ location, data: { allMdx: { group } } }) => (
+const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
   <Layout>
     <Seo
       title={`Tags | ${website.titleAlt}`}
@@ -93,7 +42,7 @@ const TagsPage = ({ location, data: { allMdx: { group } } }) => (
               </Heading>
             </ScreenReaderText>
             <TagsWrap>
-              {group.map(tag => (
+              {tags.map(tag => (
                 <TagCard key={tag.fieldValue}>
                   <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                     <ScreenReaderText>
@@ -115,6 +64,20 @@ const TagsPage = ({ location, data: { allMdx: { group } } }) => (
     </TagsIndexWrap>
   </Layout>
 )
+
+TagsPage.propTypes = {
+  location: PropTypes.object,
+  data: PropTypes.shape({
+    allMdx: PropTypes.shape({
+      group: PropTypes.arrayOf(
+        PropTypes.shape({
+          fieldValue: PropTypes.string.isRequired,
+          totalCount: PropTypes.number.isRequired
+        })
+      ).isRequired
+    }).isRequired
+  }).isRequired
+}
 
 export default TagsPage
 

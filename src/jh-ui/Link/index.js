@@ -1,47 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
-import { bool, oneOf, string } from 'prop-types'
-import { Link as GatsbyLink } from 'gatsby'
+import PropTypes from 'prop-types'
 import Spaced from '../Spaced'
+import { Root } from './styles'
 import ArrowLeft from '../../img/icons/arrow-left.svg'
 import ArrowRight from '../../img/icons/arrow-right.svg'
 
-const Root = styled(GatsbyLink)`
-  display: inline-flex;
-  align-items: center;
-  height: ${({ theme }) => theme.fontSizes.m.mobile};
-  font-family: ${({ theme }) => theme.fonts.sansSerif};
-  font-size: ${({ theme }) => theme.fontSizes.m.mobile};
-  text-decoration: none;
-  color: var(--accent);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    height: ${({ theme }) => theme.fontSizes.m.tablet};
-    font-size: ${({ theme }) => theme.fontSizes.m.tablet};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    height: ${({ theme }) => theme.fontSizes.m.desktop};
-    font-size: ${({ theme }) => theme.fontSizes.m.desktop};
-  }
-
-  &:hover,
-  &:focus,
-  &:focus-within,
-  &:active {
-    color: ${({ theme }) => theme.colors.redDark};
-
-    .arrow {
-      transform: ${({ arrow }) => arrow === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
-    }
-  }
-
-  .arrow {
-    transition: transform 0.2s ${({ theme }) => theme.beziers.out};
-  }
-`
-
-const Link = ({ children, arrow, arrowPosition, href, element, ...props }) => (
+const Link = ({ arrow, arrowPosition, href, element, children, ...props }) => (
   <Root as={element ? element : (href ? 'a' : undefined)} arrow={arrowPosition} href={href} {...props}>
     {(arrow && arrowPosition === 'left') && (
       <Spaced right="xs">
@@ -58,9 +22,10 @@ const Link = ({ children, arrow, arrowPosition, href, element, ...props }) => (
 )
 
 Link.propTypes = {
-  arrow: bool,
-  arrowPosition: oneOf(['left', 'right']),
-  element: string
+  arrow: PropTypes.bool.isRequired,
+  arrowPosition: PropTypes.oneOf(['left', 'right']),
+  href: PropTypes.string,
+  element: PropTypes.string
 }
 
 Link.defaultProps = {

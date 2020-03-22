@@ -16,7 +16,7 @@ const Twitter = ({ type, username, title, desc, image }) => (
 export default Twitter
 
 Twitter.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   username: PropTypes.string,
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,

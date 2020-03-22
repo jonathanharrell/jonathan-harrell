@@ -1,30 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import { bool, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import Padded from '../Padded'
+import { Root } from './styles'
 
-const Root = styled.div`
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: ${({ theme }) => theme.elevations.medium};
-  transition: all 0.2s ${({ theme }) => theme.beziers.out};
-
-  > * {
-    height: 100%;
-  }
-
-  &:hover,
-  &:active {
-    box-shadow: ${({ theme, hover }) => hover ? theme.elevations.high : null};
-    transform: ${({ hover }) => hover ? 'translateY(-0.25rem)' : ''};
-  }
-
-  &:focus-within {
-    box-shadow: ${({ theme, hover }) => hover ? `${theme.elevations.high}, 0 0 0 0.2em var(--selection)` : null};
-  }
-`
-
-const Card = ({ children, padding, hover, element, ...props }) => (
+const Card = ({ padding, hover, element, children, ...props }) => (
   <Root as={element} hover={hover} {...props}>
     <Padded all={padding ? 'xxl' : undefined}>
       <div>
@@ -35,9 +14,9 @@ const Card = ({ children, padding, hover, element, ...props }) => (
 )
 
 Card.propTypes = {
-  padding: bool,
-  hover: bool,
-  element: string
+  padding: PropTypes.bool,
+  hover: PropTypes.bool,
+  element: PropTypes.string
 }
 
 Card.defaultProps = {

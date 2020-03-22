@@ -35,9 +35,6 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               maxWidth: 2048,
             },
           },
@@ -49,8 +46,6 @@ module.exports = {
           },
           'gatsby-remark-prismjs',
           {
-            // this plugin converts svg images to inline svgs within mardown
-            // and replaces hardcoded colors with CSS variables
             resolve: 'gatsby-remark-jh-inline-svg',
             options: {
               colors

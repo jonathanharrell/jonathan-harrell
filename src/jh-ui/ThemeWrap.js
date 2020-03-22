@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import addons from '@storybook/addons'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
-import GlobalStyle from '../components/globalStyle'
+import GlobalStyle from '../components/GlobalStyle/'
 
 // get channel to listen to event emitter
 const channel = addons.getChannel()

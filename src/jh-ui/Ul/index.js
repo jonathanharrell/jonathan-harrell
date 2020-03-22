@@ -1,31 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { Root } from './styles'
 
-const Root = styled.ul`
-  margin-left: 1rem;
-  font-family: ${({ theme }) => theme.fonts.sansSerif};
-  font-size: ${({ theme }) => theme.fontSizes.m.mobile};
-  line-height: 1.5;
-  color: ${({ color }) => `var(--${color})`};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.tablet};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.desktop};
-  }
-
-  li {
-    margin-bottom: ${({ theme }) => theme.spacing.xs};
-  }
-`
-
-const Ul = ({ children, color, ...props }) => (
+const Ul = ({ color, children, ...props }) => (
   <Root color={color} {...props}>
     {children}
   </Root>
 )
+
+Ul.propTypes = {
+  color: PropTypes.oneOf(['text', 'textLighter', 'textInverse'])
+}
 
 Ul.defaultProps = {
   color: 'text'

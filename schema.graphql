@@ -512,6 +512,7 @@ type MdxFrontmatter {
   experiments: [MdxFrontmatterExperiments]
   featuredimage: File
   involvement: MdxFrontmatterInvolvement
+  socialimage: File
   tags: [String]
   templateKey: String
   title: String!
@@ -1121,6 +1122,42 @@ enum FileFieldsEnum {
   childMdx___frontmatter___featuredimage___uid
   childMdx___frontmatter___involvement___project
   childMdx___frontmatter___involvement___title
+  childMdx___frontmatter___socialimage___absolutePath
+  childMdx___frontmatter___socialimage___accessTime
+  childMdx___frontmatter___socialimage___atime
+  childMdx___frontmatter___socialimage___atimeMs
+  childMdx___frontmatter___socialimage___base
+  childMdx___frontmatter___socialimage___birthTime
+  childMdx___frontmatter___socialimage___birthtime
+  childMdx___frontmatter___socialimage___birthtimeMs
+  childMdx___frontmatter___socialimage___blksize
+  childMdx___frontmatter___socialimage___blocks
+  childMdx___frontmatter___socialimage___changeTime
+  childMdx___frontmatter___socialimage___children
+  childMdx___frontmatter___socialimage___ctime
+  childMdx___frontmatter___socialimage___ctimeMs
+  childMdx___frontmatter___socialimage___dev
+  childMdx___frontmatter___socialimage___dir
+  childMdx___frontmatter___socialimage___ext
+  childMdx___frontmatter___socialimage___extension
+  childMdx___frontmatter___socialimage___gid
+  childMdx___frontmatter___socialimage___id
+  childMdx___frontmatter___socialimage___ino
+  childMdx___frontmatter___socialimage___mode
+  childMdx___frontmatter___socialimage___modifiedTime
+  childMdx___frontmatter___socialimage___mtime
+  childMdx___frontmatter___socialimage___mtimeMs
+  childMdx___frontmatter___socialimage___name
+  childMdx___frontmatter___socialimage___nlink
+  childMdx___frontmatter___socialimage___prettySize
+  childMdx___frontmatter___socialimage___publicURL
+  childMdx___frontmatter___socialimage___rdev
+  childMdx___frontmatter___socialimage___relativeDirectory
+  childMdx___frontmatter___socialimage___relativePath
+  childMdx___frontmatter___socialimage___root
+  childMdx___frontmatter___socialimage___size
+  childMdx___frontmatter___socialimage___sourceInstanceName
+  childMdx___frontmatter___socialimage___uid
   childMdx___frontmatter___tags
   childMdx___frontmatter___templateKey
   childMdx___frontmatter___title
@@ -1635,6 +1672,68 @@ enum MdxFieldsEnum {
   frontmatter___involvement___project___description
   frontmatter___involvement___project___name
   frontmatter___involvement___title
+  frontmatter___socialimage___absolutePath
+  frontmatter___socialimage___accessTime
+  frontmatter___socialimage___atime
+  frontmatter___socialimage___atimeMs
+  frontmatter___socialimage___base
+  frontmatter___socialimage___birthTime
+  frontmatter___socialimage___birthtime
+  frontmatter___socialimage___birthtimeMs
+  frontmatter___socialimage___blksize
+  frontmatter___socialimage___blocks
+  frontmatter___socialimage___changeTime
+  frontmatter___socialimage___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childImageSharp___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___body
+  frontmatter___socialimage___childMdx___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___fileAbsolutePath
+  frontmatter___socialimage___childMdx___headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___mdxAST @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___rawBody
+  frontmatter___socialimage___childMdx___tableOfContents @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___childMdx___timeToRead @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___socialimage___children
+  frontmatter___socialimage___children___children
+  frontmatter___socialimage___children___id
+  frontmatter___socialimage___ctime
+  frontmatter___socialimage___ctimeMs
+  frontmatter___socialimage___dev
+  frontmatter___socialimage___dir
+  frontmatter___socialimage___ext
+  frontmatter___socialimage___extension
+  frontmatter___socialimage___fields___markup
+  frontmatter___socialimage___gid
+  frontmatter___socialimage___id
+  frontmatter___socialimage___ino
+  frontmatter___socialimage___internal___content
+  frontmatter___socialimage___internal___contentDigest
+  frontmatter___socialimage___internal___description
+  frontmatter___socialimage___internal___fieldOwners
+  frontmatter___socialimage___internal___ignoreType
+  frontmatter___socialimage___internal___mediaType
+  frontmatter___socialimage___internal___owner
+  frontmatter___socialimage___internal___type
+  frontmatter___socialimage___mode
+  frontmatter___socialimage___modifiedTime
+  frontmatter___socialimage___mtime
+  frontmatter___socialimage___mtimeMs
+  frontmatter___socialimage___name
+  frontmatter___socialimage___nlink
+  frontmatter___socialimage___parent___children
+  frontmatter___socialimage___parent___id
+  frontmatter___socialimage___prettySize
+  frontmatter___socialimage___publicURL
+  frontmatter___socialimage___rdev
+  frontmatter___socialimage___relativeDirectory
+  frontmatter___socialimage___relativePath
+  frontmatter___socialimage___root
+  frontmatter___socialimage___size
+  frontmatter___socialimage___sourceInstanceName
+  frontmatter___socialimage___uid
   frontmatter___tags
   frontmatter___templateKey
   frontmatter___title
@@ -2422,6 +2521,7 @@ input MdxFrontmatterFilterInput {
   experiments: MdxFrontmatterExperimentsFilterListInput
   featuredimage: FileFilterInput
   involvement: MdxFrontmatterInvolvementFilterInput
+  socialimage: FileFilterInput
   tags: StringQueryOperatorInput
   templateKey: StringQueryOperatorInput
   title: StringQueryOperatorInput

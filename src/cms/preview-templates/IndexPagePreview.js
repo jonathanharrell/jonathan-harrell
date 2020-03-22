@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import previewStyle from '../preview-style'
 
 const IndexPagePreview = ({ entry }) => {
   const experiments = entry.getIn(['data', 'experiments'])
 
   return (
-    <div style={{
-      fontFamily: `'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'`,
-      lineHeight: 1.4
-    }}>
+    <div style={previewStyle}>
       <h1>{entry.getIn(['data', 'title'])}</h1>
       <p>{entry.getIn(['data', 'description'])}</p>
       {experiments && (

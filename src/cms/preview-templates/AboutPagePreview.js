@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import previewStyle from '../preview-style'
 
 const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
   const projects = widgetsFor('involvement').getIn(['data', 'project'])
@@ -8,10 +9,7 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
   const imageAsset = getAsset(image).value
 
   return (
-    <div style={{
-      fontFamily: `'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'`,
-      lineHeight: 1.4
-    }}>
+    <div style={previewStyle}>
       {imageAsset && (
         <img src={imageAsset} alt="" style={{ maxWidth: '100%' }}/>
       )}

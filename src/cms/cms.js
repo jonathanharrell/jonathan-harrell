@@ -15,6 +15,7 @@ CMS.registerPreviewTemplate('blog', BlogPagePreview)
 CMS.registerPreviewTemplate('blog-post', BlogPostPreview)
 CMS.registerPreviewTemplate('about', AboutPagePreview)
 
+// custom note block within blog posts
 CMS.registerEditorComponent({
   id: 'note',
   label: 'Note',
@@ -41,6 +42,8 @@ CMS.registerEditorComponent({
   }
 })
 
+// custom Codepen block within blog posts
+// grabs info about Codepen, given an ID
 CMS.registerEditorComponent({
   id: 'codepen',
   label: 'Codepen',
@@ -63,6 +66,8 @@ CMS.registerEditorComponent({
   }
 })
 
+// custom article link block within blog posts
+// grabs info about another blog post on the site
 CMS.registerEditorComponent({
   id: 'articleLink',
   label: 'Article Link',
