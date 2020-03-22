@@ -103,27 +103,6 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
         node,
         value,
       })
-
-      if (node.absolutePath.includes('/static/img/')) {
-        const outputFilePath = node.absolutePath.replace('.svg', '.png')
-
-        if (fs.existsSync(outputFilePath)) {
-          fs.unlinkSync(outputFilePath)
-        }
-
-        await convertFile(node.absolutePath, {
-          background: '#ffffff',
-          width: 600,
-          height: 600,
-          outputFilePath
-        })
-
-        createNodeField({
-          name: `socialURL`,
-          node,
-          value: `/${node.relativePath.replace('.svg', '.png')}`
-        })
-      }
     }
   }
 }

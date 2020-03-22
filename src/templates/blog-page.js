@@ -135,7 +135,7 @@ const BlogIndexPage = ({ data, location }) => {
       <BlogIndexPageTemplate
         location={location}
         title={title}
-        tag={tags}
+        tags={tags}
         post={post}
       />
     </Layout>

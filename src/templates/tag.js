@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
@@ -10,6 +9,8 @@ import Spaced from '../jh-ui/Spaced'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import ArticleExcerpt, { CardContent } from '../jh-ui/ArticleExcerpt'
 import Link from '../jh-ui/Link'
+import website from '../../website-config'
+import Seo from '../components/seo'
 
 const TagIndexWrap = styled.div`
   flex: 1;
@@ -59,10 +60,9 @@ const BlogExcerpt = styled(ArticleExcerpt)`
   }
 `
 
-const TagRoute = ({ data, pageContext }) => {
+const TagRoute = ({ location, data, pageContext }) => {
   const posts = data.allMdx.edges
   const tag = pageContext.tag
-  const title = data.site.siteMetadata.title
   const totalCount = data.allMdx.totalCount
   const tagHeading = `${totalCount} post${
     totalCount === 1 ? '' : 's'
@@ -70,7 +70,11 @@ const TagRoute = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Helmet title={`${tag} | ${title}`}/>
+      <Seo
+        title={`Posts tagged with “${tag}“ | ${website.titleAlt}`}
+        pathname={location.pathname}
+        description="Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques."
+      />
       <TagIndexWrap>
         <Header>
           <ContentWrap>

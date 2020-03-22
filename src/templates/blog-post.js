@@ -2,7 +2,6 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
 import BodyClassName from 'react-body-classname'
 import kebabCase from 'lodash/kebabCase'
 import { graphql } from 'gatsby'
@@ -287,7 +286,6 @@ export const BlogPostTemplate = ({
   image,
   readingTime,
   slug,
-  helmet,
   location
 }) => {
   const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
@@ -326,7 +324,6 @@ export const BlogPostTemplate = ({
         title={`${title} | ${website.titleAlt}`}
         pathname={location.pathname}
         description={description}
-        banner={image.fields.socialURL}
         article
       />
       <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
@@ -509,15 +506,6 @@ const BlogPost = ({ data, location }) => {
         id={post.id}
         content={post.body}
         contentComponent={HTMLContent}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
-        }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         description={post.frontmatter.description}
@@ -550,9 +538,9 @@ export const pageQuery = graphql`
         description
         tags
         featuredimage {
+          publicURL
           fields {
             markup
-            socialURL
           }
         }
       }

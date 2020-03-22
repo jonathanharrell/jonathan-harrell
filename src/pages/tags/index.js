@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import { kebabCase } from 'lodash'
 import Layout from '../../components/Layout'
@@ -11,6 +10,8 @@ import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Card from '../../jh-ui/Card'
 import Text from '../../jh-ui/Text'
+import website from '../../../website-config'
+import Seo from '../../components/seo'
 
 const TagsIndexWrap = styled.div`
   flex: 1;
@@ -63,14 +64,13 @@ const Link = styled(GatsbyLink)`
   height: 100%;
 `
 
-const TagsPage = ({
-  data: {
-    allMdx: { group },
-    site: { siteMetadata: { title } },
-  },
-}) => (
+const TagsPage = ({ location, data: { allMdx: { group } } }) => (
   <Layout>
-    <Helmet title={`Tags | ${title}`}/>
+    <Seo
+      title={`Tags | ${website.titleAlt}`}
+      pathname={location.pathname}
+      description="Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques."
+    />
     <TagsIndexWrap>
       <Header>
         <ContentWrap>
