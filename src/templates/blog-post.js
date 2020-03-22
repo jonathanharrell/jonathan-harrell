@@ -284,6 +284,7 @@ export const BlogPostTemplate = ({
   date,
   color,
   image,
+  socialImage,
   readingTime,
   slug,
   location
@@ -324,6 +325,7 @@ export const BlogPostTemplate = ({
         title={`${title} | ${website.titleAlt}`}
         pathname={location.pathname}
         description={description}
+        banner={socialImage.publicURL}
         article
       />
       <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
@@ -511,6 +513,7 @@ const BlogPost = ({ data, location }) => {
         description={post.frontmatter.description}
         date={post.frontmatter.date}
         image={post.frontmatter.featuredimage}
+        socialImage={post.frontmatter.socialimage}
         readingTime={post.fields.readingTime}
         slug={post.fields.slug}
         location={location}
@@ -542,6 +545,9 @@ export const pageQuery = graphql`
           fields {
             markup
           }
+        }
+        socialimage {
+          publicURL
         }
       }
       fields {

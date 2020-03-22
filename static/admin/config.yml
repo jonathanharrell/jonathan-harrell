@@ -28,6 +28,9 @@ collections:
       - label: 'Featured Image'
         name: featuredimage
         widget: image
+      - label: 'Social Image'
+        name: socialimage
+        widget: image
       - label: Body
         name: body
         widget: markdown
