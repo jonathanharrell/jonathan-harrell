@@ -1,17 +1,70 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import styled from 'styled-components'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import { kebabCase } from 'lodash'
-import Padded from '../../jh-ui/Padded'
-import Heading from '../../jh-ui/Heading'
-import Spaced from '../../jh-ui/Spaced'
-import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Text from '../../jh-ui/Text'
-import Layout from '../../components/Layout/'
-import ContentWrap from '../../components/ContentWrap/'
-import Seo from '../../components/seo'
-import website from '../../../website-config'
-import { Header, Link, TagCard, TagsIndexWrap, TagsWrap } from './styles'
+import Padded from '../jh-ui/Padded'
+import Heading from '../jh-ui/Heading'
+import Spaced from '../jh-ui/Spaced'
+import ScreenReaderText from '../jh-ui/ScreenReaderText'
+import Text from '../jh-ui/Text'
+import Card from '../jh-ui/Card'
+import Layout from '../components/Layout'
+import ContentWrap from '../components/ContentWrap'
+import Seo from '../components/seo'
+import website from '../../website-config'
+
+
+const TagsIndexWrap = styled.div`
+  flex: 1;
+  background-color: var(--backgroundPrimary);
+`
+
+const Header = styled.header`
+  padding-top: ${({ theme }) => theme.spacing['3x']};
+  text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding-top: ${({ theme }) => theme.spacing['4x']};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    padding-top: ${({ theme }) => theme.spacing['5x']};
+  }
+`
+
+const TagsWrap = styled.div`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-template-columns: repeat(12, 1fr);
+`
+
+const TagCard = styled(Card)`
+  grid-column: 1 / -1;
+  position: relative;
+  background-color: var(--backgroundElevatedSecondary);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-column: auto / span 6;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 4;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-column: auto / span 3;
+  }
+`
+
+const Link = styled(GatsbyLink)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+`
 
 const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
   <Layout>
