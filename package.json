@@ -1,8 +1,15 @@
 {
-  "name": "gatsby-starter-netlify-cms",
-  "description": "Example Gatsby, and Netlify CMS project",
+  "name": "jonathan-harrell",
   "version": "0.1.0",
-  "author": "Austin Green",
+  "description": "Version 4 of Jonathan Harrell's personal development blog.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanharrell/gatsby-starter-netlify-cms.git"
+  },
+  "homepage": "https://www.jonathan-harrell.com",
+  "author": "Jonathan Harrell <harr041@gmail.com> (www.jonathan-harrell.com)",
+  "license": "MIT",
+  "main": "n/a",
   "dependencies": {
     "@hot-loader/react-dom": "^16.11.0",
     "@mdx-js/mdx": "^1.5.1",
@@ -80,11 +87,6 @@
     "prettier": "^1.15.3",
     "storybook-dark-mode": "^0.1.7"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
     "start": "npm run develop",
