@@ -3,4 +3,4 @@
   command = "npm run build"
   functions = "functions"
 [build.environment]
-  NPM_VERSION = "10.12.0"
+  NPM_VERSION = "6.4.1"
