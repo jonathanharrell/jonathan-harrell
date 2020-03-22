@@ -14,7 +14,6 @@ import ContentWrap from '../components/ContentWrap'
 import Seo from '../components/seo'
 import website from '../../website-config'
 
-
 const TagsIndexWrap = styled.div`
   flex: 1;
   background-color: var(--backgroundPrimary);

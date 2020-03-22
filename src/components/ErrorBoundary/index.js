@@ -8,6 +8,7 @@ import Spaced from '../../jh-ui/Spaced'
 import GlobalStyle from '../GlobalStyle/'
 import { ErrorWrap } from './styles'
 
+// this component will catch any unhandled error and display a message and report button
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)

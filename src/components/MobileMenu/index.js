@@ -33,6 +33,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
   const lastTabbableElementRef = []
 
   useEffect(() => {
+    // implement close on document click
     const handleClick = event => {
       if (menuWrapRef.current && !menuWrapRef.current.contains(event.target)) {
         close()
@@ -41,6 +42,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
     window.addEventListener('click', handleClick)
 
+    // set up logic ot hide/show mobile menu based on the window width
     const rems = breakpoints.desktop.replace('rem', '')
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     const desktopWidth = rems * fontSize

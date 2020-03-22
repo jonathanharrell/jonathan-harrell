@@ -24,6 +24,7 @@ const DesktopMenu = () => {
   const [visible, setVisibility] = useState(true)
 
   useEffect(() => {
+    // set up logic ot hide/show desktop menu based on the window width
     const rems = breakpoints.desktop.replace('rem', '')
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     const desktopWidth = rems * fontSize
@@ -38,6 +39,7 @@ const DesktopMenu = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  // some links need special logic to determine whether or not they should get the active style
   const isActive = ({ isCurrent, href, location }) => {
     if (href === '/blog') {
       if (location.pathname.startsWith('/blog')) {
@@ -56,6 +58,8 @@ const DesktopMenu = () => {
     setTheme(themeName === 'light' ? 'dark' : 'light')
   }
 
+  // in order to make sure the subscribe section is shown when the subscribe button is clicked,
+  // we need to dispatch a custom event
   const handleSubscribeClick = () => {
     localStorage.removeItem('subscribe-banner-dismissed')
     window.dispatchEvent(new CustomEvent('showSubscribe'))

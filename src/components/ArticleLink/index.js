@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql, useStaticQuery } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import Spaced from '../../jh-ui/Spaced'
@@ -9,6 +10,7 @@ import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { ArticleLinkFigure, ArticleLinkLink, ArticleLinkWrap } from './styles'
 
 const ArticleLink = ({ title }) => {
+  // we need to grab all articles and then filter by the title prop
   const { allMdx: { edges } } = useStaticQuery(graphql`
     query ArticleLinksQuery {
       allMdx(
@@ -72,6 +74,10 @@ const ArticleLink = ({ title }) => {
       </ArticleLinkWrap>
     </Spaced>
   ) : null
+}
+
+ArticleLink.propTypes = {
+  title: PropTypes.string.isRequired
 }
 
 export default ArticleLink

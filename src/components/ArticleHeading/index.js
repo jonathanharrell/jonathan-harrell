@@ -11,6 +11,8 @@ import Hash from '../../img/icons/hash.svg'
 const ArticleHeading = ({ children, ...props }) => {
   const id = kebabCase(children)
 
+  // copy page URL including section anchor
+  // visitor will be jumped down to the shared section
   const copyLink = event => {
     event.preventDefault()
 

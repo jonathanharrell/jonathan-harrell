@@ -30,6 +30,8 @@ const SubscribeBanner = () => {
     const subscribeBannerDismissed = localStorage.getItem('subscribe-banner-dismissed')
     setDismissed(!!subscribeBannerDismissed)
 
+    // when the showSubscribe event has been dispatched (for example, from clicking
+    // the subscribe button in the header), show the subscribe section
     const handleShowSubscribe = () => {
       setDismissed(false)
     }
@@ -65,6 +67,7 @@ const SubscribeBanner = () => {
 
       const json = await response.json()
 
+      // if there is an error response, throw an error so catch block is triggered
       if (!response.ok) {
         throw Error(json.detail)
       } else {

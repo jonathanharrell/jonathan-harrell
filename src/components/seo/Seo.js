@@ -6,6 +6,7 @@ import Favicon from './Favicon'
 import Facebook from './Facebook'
 import Twitter from './Twitter'
 
+// this component injects relevant SEO-related meta tags into the head of the page
 const Seo = ({ title, description, banner, pathname, article, publicationDate }) => {
   const { site } = useStaticQuery(query)
 
