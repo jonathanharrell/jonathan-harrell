@@ -348,6 +348,8 @@ Fonts can provide a variety of alternates for any character. The `font-variant-a
 
 ### historical-forms
 
+![The typeface Hoefler Text provides an historical alternate "s" character, known as the archaic "long s".](/img/historical-forms.svg)
+
 Historical alternates can be used for a “period” effect. Note the difference between this and historical ligatures. Historical ligatures are historical character combinations, whereas historical forms are substitutions for individual characters.
 
 ```css
@@ -359,6 +361,8 @@ font-feature-settings: 'hist' 0; /* low-level disable */
 ```
 
 ### stylistic(feature-value-name)
+
+![The typeface Ideal Sans includes several special characters and alernates, such as the Inscriptional "G".](/img/stylistic.svg)
 
 Use this to select stylistic features on an individual basis. In order to use this and several of the following `font-variant-alternates` functions, you must define a `font-feature-value` using the `@font-feature-values` rule. For example, if you wanted to select stylistic feature number 1 in the font you are using, you would first define the feature value, and then use it within the `font-variant-alternates: stylistic()` function.
 
@@ -376,6 +380,8 @@ font-feature-settings: salt 0; /* low-level disable */
 
 ### styleset(feature-value-name)
 
+![Stylesets in the typeface Hoefler Text allow you to apply related alternate characters.](/img/styleset.svg)
+
 Use this to select an entire set of alternative glyphs. The glyphs in a set are often designed to work together. Select a particular set by defining a `font-feature-values` rule using the set’s number.
 
 ```css
@@ -391,6 +397,8 @@ font-feature-settings: ss01; /* low-level enable */
 
 ### character-variant(feature-value-name)
 
+![The italic style of the typeface Hoefler Text includes variants for several characters, including the letters "k" and "z".](/img/character-variant.svg)
+
 Use this to select specific character variants. Select a particular variant by defining a `font-feature-values` rule using the set’s number.
 
 ```css
@@ -405,6 +413,8 @@ font-feature-settings: cv01; /* low-level enable */
 ```
 
 ### swash(feature-value-name)
+
+![The typeface Hoefler Text includes alternate italic swash caps for several characters, including "M".](/img/swash.svg)
 
 Swashes can be used to provide typographic interest to headings or more artistic settings of text. They are typically exaggerated alternative character designs, or have some sort of typographic flourish. Select a particular swash by defining a `font-feature-values` rule using the set’s number.
 
@@ -422,6 +432,8 @@ font-feature-settings: swsh 0; /* low-level disable */
 
 ### ornaments(feature-value-name)
 
+![The typeface Hoefler Text provides many graphic characters, including several fleurons.](/img/ornaments.svg)
+
 This replaces default glyphs with ornaments, if they are provided in the font.
 
 ```css
@@ -437,6 +449,8 @@ font-feature-settings: ornm 0; /* low-level disable */
 ```
 
 ### annotation(feature-value-name)
+
+![The collection of Whitney Index fonts provide examples of annotation characters.](/img/annotations.svg)
 
 Annotations are notational forms of glyphs (for example, glyphs placed in open or solid circles, squares, parentheses, diamonds, rounded boxes. etc.).
 
