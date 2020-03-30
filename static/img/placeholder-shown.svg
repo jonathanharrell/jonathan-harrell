@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="426px" viewBox="0 0 1200 426" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>placeholder-shown</title>
-    <desc>Created with Sketch.</desc>
-    <g id="placeholder-shown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="426"></rect>
-        <rect id="input" fill="#FFFFFF" x="200" y="90" width="800" height="80" rx="6"></rect>
-        <text id="placeholder" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
-            <tspan x="225" y="138">First and last name</tspan>
-        </text>
-        <text id="label" font-family="Roboto-Medium, Roboto" font-size="26" font-weight="400" fill="#2E3138">
-            <tspan x="200" y="236">First and last name</tspan>
-        </text>
-        <rect id="input" fill="#FFFFFF" x="200" y="256" width="800" height="80" rx="6"></rect>
-        <text id="value" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
-            <tspan x="225" y="304">John Smith</tspan>
-        </text>
-        <polyline id="check" stroke="#8D8DA6" stroke-width="3" stroke-linecap="square" transform="translate(953.946699, 289.946699) rotate(-135.000000) translate(-953.946699, -289.946699) " points="960.386039 274.946699 947.507359 274.946699 947.507359 304.946699"></polyline>
-        <line x1="359" y1="276.47561" x2="359" y2="314.89878" id="cursor" stroke="#2E3138" stroke-linecap="square"></line>
-    </g>
+<svg width="1200px" height="426px" viewBox="0 0 1200 426" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect fill="#F9F9FB" x="0" y="0" width="1200" height="426"></rect>
+    <rect fill="#FFFFFF" x="200" y="90" width="800" height="80" rx="6"></rect>
+    <text font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
+      <tspan x="225" y="138">First and last name</tspan>
+    </text>
+    <text font-family="Roboto-Medium, Roboto" font-size="26" font-weight="400" fill="#2E3138">
+      <tspan x="200" y="236">First and last name</tspan>
+    </text>
+    <rect fill="#FFFFFF" x="200" y="256" width="800" height="80" rx="6"></rect>
+    <text font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#2E3138">
+      <tspan x="225" y="304">John Smith</tspan>
+    </text>
+    <polyline stroke="#8D8DA6" stroke-width="3"
+              transform="translate(953.946699, 289.946699) rotate(-135.000000) translate(-953.946699, -289.946699) "
+              points="960.386039 274.946699 947.507359 274.946699 947.507359 304.946699"></polyline>
+    <line x1="359" y1="276.47561" x2="359" y2="314.89878" stroke="#2E3138"></line>
+  </g>
 </svg>

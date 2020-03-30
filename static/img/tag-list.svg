@@ -1,74 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="472px" viewBox="0 0 1200 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
-    <title>tag-list</title>
-    <desc>Created with Sketch.</desc>
-    <g id="tag-list" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect fill="#F9F9FB" x="0" y="0" width="1200" height="472"></rect>
-        <rect id="input" fill="#FFFFFF" x="200" y="90" width="800" height="80" rx="6"></rect>
-        <text id="value" font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
-            <tspan x="229" y="138">Type to search list</tspan>
-        </text>
-        <line x1="225" y1="111.47561" x2="225" y2="149.89878" id="cursor" stroke="#2E3138" stroke-linecap="square"></line>
-        <g id="tag" transform="translate(200.000000, 220.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="140" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Inside Out</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(200.000000, 279.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="153" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Pacific Rim</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(200.000000, 338.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="106" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Sicario</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(321.000000, 338.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="126" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Zombies</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(916.000000, 279.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="78" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Saw</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(368.000000, 279.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="290" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Pirates of the Caribbean</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(673.000000, 279.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="228" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Planet of the Apes</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(355.000000, 220.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="144" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">John Wick</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(514.000000, 220.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="192" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">Jurassic World</tspan>
-            </text>
-        </g>
-        <g id="tag" transform="translate(721.000000, 220.000000)">
-            <rect id="Rectangle" fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="260" height="44" rx="4"></rect>
-            <text id="value-copy" font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
-                <tspan x="16" y="30">The Lord of the Rings</tspan>
-            </text>
-        </g>
+<svg width="1200px" height="472px" viewBox="0 0 1200 472" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect fill="#F9F9FB" x="0" y="0" width="1200" height="472"></rect>
+    <rect fill="#FFFFFF" x="200" y="90" width="800" height="80" rx="6"></rect>
+    <text font-family="Roboto-Regular, Roboto" font-size="26" font-weight="normal" fill="#C9C9D6">
+      <tspan x="229" y="138">Type to search list</tspan>
+    </text>
+    <line x1="225" y1="111.47561" x2="225" y2="149.89878" stroke="#2E3138"></line>
+    <g transform="translate(200.000000, 220.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="140" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Inside Out</tspan>
+      </text>
     </g>
+    <g transform="translate(200.000000, 279.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="153" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Pacific Rim</tspan>
+      </text>
+    </g>
+    <g transform="translate(200.000000, 338.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="106" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Sicario</tspan>
+      </text>
+    </g>
+    <g transform="translate(321.000000, 338.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="126" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Zombies</tspan>
+      </text>
+    </g>
+    <g transform="translate(916.000000, 279.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="78" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Saw</tspan>
+      </text>
+    </g>
+    <g transform="translate(368.000000, 279.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="290" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Pirates of the Caribbean</tspan>
+      </text>
+    </g>
+    <g transform="translate(673.000000, 279.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="228" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Planet of the Apes</tspan>
+      </text>
+    </g>
+    <g transform="translate(355.000000, 220.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="144" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">John Wick</tspan>
+      </text>
+    </g>
+    <g transform="translate(514.000000, 220.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="192" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">Jurassic World</tspan>
+      </text>
+    </g>
+    <g transform="translate(721.000000, 220.000000)">
+      <rect fill="#8D8DA6" fill-rule="evenodd" x="0" y="0" width="260" height="44" rx="4"></rect>
+      <text font-family="Roboto-Regular, Roboto" font-size="24" font-weight="normal" fill="#FFFFFF">
+        <tspan x="16" y="30">The Lord of the Rings</tspan>
+      </text>
+    </g>
+  </g>
 </svg>
