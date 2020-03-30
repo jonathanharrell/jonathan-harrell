@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient x1="-1.11022302e-14%" y1="50%" x2="100%" y2="50%">
+    <linearGradient x1="-1.11022302e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
       <stop stop-color="#8D8DA6" stop-opacity="0" offset="0%"></stop>
       <stop stop-color="#C1C1D2" offset="51.8607475%"></stop>
       <stop stop-color="#C1C1D2" stop-opacity="0" offset="100%"></stop>
     </linearGradient>
-    <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%">
+    <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-2">
       <stop stop-color="#8D8DA6" stop-opacity="0" offset="0%"></stop>
       <stop stop-color="#C1C1D2" offset="51.8607475%"></stop>
       <stop stop-color="#C1C1D2" stop-opacity="0" offset="100%"></stop>

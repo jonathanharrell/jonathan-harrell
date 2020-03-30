@@ -1,10 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1200px" height="328px" viewBox="0 0 1200 328" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <rect fill="#F9F9FB" x="0" y="0" width="1200" height="328"></rect>
-    <line x1="0" y1="80.5" x2="1200.5" y2="81" stroke="#DEDEE6" stroke-width="2"
-          stroke-linecap="square"></line>
-    <line x1="0" y1="137" x2="1200.5" y2="137.5" stroke="#DEDEE6" stroke-width="2"
-          stroke-linecap="square"></line>
+    <line x1="0" y1="80.5" x2="1200.5" y2="81" stroke="#DEDEE6" stroke-width="2"></line>
+    <line x1="0" y1="137" x2="1200.5" y2="137.5" stroke="#DEDEE6" stroke-width="2"></line>
     <polygon fill="#DEDEE6" fill-rule="nonzero"
              points="-1.00041641 247.499583 -0.99958342 245.499584 1201.50042 246.000417 1201.49958 248.000416"></polygon>
     <path

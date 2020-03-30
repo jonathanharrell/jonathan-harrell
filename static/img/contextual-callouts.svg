@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient x1="100%" y1="50%" x2="0%" y2="50%">
+    <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient">
       <stop stop-color="#8D8DA6" stop-opacity="0" offset="0%"></stop>
       <stop stop-color="#C1C1D2" offset="51.8607475%"></stop>
       <stop stop-color="#C1C1D2" stop-opacity="0" offset="100%"></stop>
@@ -25,22 +26,22 @@
     <polygon fill="#DEDEE6" fill-rule="nonzero"
              transform="translate(83.500000, 296.000000) rotate(-360.000000) translate(-83.500000, -296.000000) "
              points="85 2.27373675e-13 85 592 82 592 82 2.27373675e-13"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 83.500000) rotate(-360.000000) translate(-297.000000, -83.500000) "
              points="595 82 595 85 -1 85 -1 82"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 168.500000) rotate(-360.000000) translate(-297.000000, -168.500000) "
              points="595 167 595 170 -1 170 -1 167"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 253.500000) rotate(-360.000000) translate(-297.000000, -253.500000) "
              points="595 252 595 255 -1 255 -1 252"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 338.500000) rotate(-360.000000) translate(-297.000000, -338.500000) "
              points="595 337 595 340 -1 340 -1 337"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 423.500000) rotate(-360.000000) translate(-297.000000, -423.500000) "
              points="595 422 595 425 -1 425 -1 422"></polygon>
-    <polygon fill="url(#linearGradient-1)" fill-rule="nonzero"
+    <polygon fill="url(#linearGradient)" fill-rule="nonzero"
              transform="translate(297.000000, 508.500000) rotate(-360.000000) translate(-297.000000, -508.500000) "
              points="595 507 595 510 -1 510 -1 507"></polygon>
     <path d="M168.5,83.5 L168.5,168.5 L338.5,168.5 L338.5,83.5 L168.5,83.5 Z" stroke="#8D8DA6"

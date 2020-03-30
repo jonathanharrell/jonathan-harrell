@@ -12,9 +12,9 @@ import Seo from '../../components/seo'
 import website from '../../../website-config'
 import { ArticlesWrap, BlogExcerpt, Header, Links, TagIndexWrap } from './styles'
 
-const TagRoute = ({ location, data: { allMdx: { edges: posts }, totalCount }, pageContext: { tag } }) => {
-  const tagHeading = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
+const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: { tag } }) => {
+  const tagHeading = `${posts.length} post${
+    posts.length === 1 ? '' : 's'
   } tagged with “${tag}”`
 
   return (
@@ -101,8 +101,7 @@ TagRoute.propTypes = {
             }).isRequired
           }).isRequired
         }).isRequired
-      })).isRequired,
-      totalCount: PropTypes.number.isRequired
+      })).isRequired
     }).isRequired
   }).isRequired,
   pageContext: PropTypes.shape({
@@ -124,7 +123,6 @@ export const tagPageQuery = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
-      totalCount
       edges {
         node {
           excerpt(pruneLength: 150)
