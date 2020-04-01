@@ -35,14 +35,16 @@ export const HomeContentWrap = styled(ContentWrap)`
 export const Canvas = styled.canvas`
   position: absolute;
   top: calc(50% - 2rem);
-  left: 50%;
-  width: 70vw;
-  height: 70vw;
-  transform: translate(-50%, -50%);
+  right: -50%;
+  width: 100vw;
+  height: 100vw;
+  transform: translateY(-50%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     left: auto;
     right: 50px;
+    width: 70vw;
+    height: 70vw;
     transform: translate(0, -50%);
   }
 
