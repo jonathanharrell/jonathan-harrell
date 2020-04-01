@@ -6,6 +6,7 @@ export const HeaderWrap = styled.header`
   overflow: hidden;
   padding-top: 5rem;
   background-color: var(--backgroundPrimary);
+  box-shadow: inset 0 -1px 5px hsl(0, 0%, 0%, 15%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding-top: 7rem;
