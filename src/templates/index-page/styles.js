@@ -2,19 +2,22 @@ import styled from 'styled-components'
 import ContentWrap from '../../components/ContentWrap/'
 
 export const HeaderWrap = styled.header`
-  padding-top: ${({ theme }) => theme.spacing['3x']};
+  position: relative;
+  overflow: hidden;
+  padding-top: 5rem;
   background-color: var(--backgroundPrimary);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding-top: ${({ theme }) => theme.spacing['4x']};
+    padding-top: 7rem;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    padding-top: ${({ theme }) => theme.spacing['5x']};
+    padding-top: 10rem;
   }
 `
 
 export const HomeContentWrap = styled(ContentWrap)`
+  position: relative;
   padding-top: ${({ theme }) => theme.spacing['3x']};
   padding-bottom: ${({ theme }) => theme.spacing['3x']};
 
@@ -29,7 +32,27 @@ export const HomeContentWrap = styled(ContentWrap)`
   }
 `
 
+export const Canvas = styled.canvas`
+  position: absolute;
+  top: calc(50% - 2rem);
+  left: 50%;
+  width: 70vw;
+  height: 70vw;
+  transform: translate(-50%, -50%);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    left: auto;
+    right: 50px;
+    transform: translate(0, -50%);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    right: -15vh;
+  }
+`
+
 export const HeaderContentWrap = styled.div`
+  position: relative;
   max-width: 28rem;
 `
 
