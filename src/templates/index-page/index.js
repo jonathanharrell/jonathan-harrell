@@ -11,7 +11,15 @@ import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
-import { Canvas, ExperimentsWrap, HeaderContentWrap, HeaderWrap, HomeContentWrap, RecentArticlesWrap } from './styles'
+import {
+  Canvas,
+  ExperimentsWrap,
+  HeaderContentWrap,
+  HeaderTextWrap,
+  HeaderWrap,
+  HomeContentWrap,
+  RecentArticlesWrap
+} from './styles'
 import * as THREE from 'three-js/three'
 import gsap, { Power1 } from 'gsap'
 import { Noise } from 'noisejs'
@@ -42,8 +50,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
     scene.add(sphere)
 
     var X_AXIS = new THREE.Vector3(1, 0, 0)
-    sphere.rotateOnAxis(X_AXIS, 70)
-    console.log(sphere.rotation)
+    sphere.rotateOnAxis(X_AXIS, 80)
 
     const computedStyles = window.getComputedStyle(document.documentElement)
 
@@ -71,7 +78,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
     function updateVertices(a) {
       for (var j = 0; j < sphere.children.length; j++) {
         var line = sphere.children[j]
-        line.geometry.y += 0.3
+        line.geometry.y += 0.15
         if (line.geometry.y > radius * 2) {
           line.geometry.y = 0
         }
@@ -105,12 +112,16 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
 
     var mouse = new THREE.Vector2(0.8, 0.5)
 
-    const initialRotation = sphere.rotation.x
+    const initialXRotation = sphere.rotation.x
+    const initialYRotation = sphere.rotation.y
 
     function onMouseMove(e) {
-      mouse.y = e.clientY / window.innerHeight
+      mouse.x = (e.clientX / window.innerWidth) - 0.5
+      mouse.y = (e.clientY / window.innerHeight) - 0.5
+
       gsap.to(sphere.rotation, 2, {
-        x: initialRotation + (mouse.y * 1),
+        x: initialXRotation + (mouse.y * 1),
+        z: initialYRotation + (mouse.x * 1),
         ease: Power1.easeOut
       })
     }
@@ -118,6 +129,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
     requestAnimationFrame(render)
     window.addEventListener('mousemove', onMouseMove)
     var resizeTm
+
     window.addEventListener('resize', function() {
       resizeTm = clearTimeout(resizeTm)
       resizeTm = setTimeout(onResize, 200)
@@ -129,16 +141,18 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <Seo/>
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
-          <Canvas/>
           <HeaderContentWrap>
-            <Heading level={1} id="introduction-label">
-              {title}
-            </Heading>
-            <Spaced top="m">
-              <Text>
-                {description}
-              </Text>
-            </Spaced>
+            <Canvas/>
+            <HeaderTextWrap>
+              <Heading level={1} id="introduction-label">
+                {title}
+              </Heading>
+              <Spaced top="m">
+                <Text>
+                  {description}
+                </Text>
+              </Spaced>
+            </HeaderTextWrap>
           </HeaderContentWrap>
         </HomeContentWrap>
       </HeaderWrap>

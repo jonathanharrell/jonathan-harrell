@@ -7,11 +7,11 @@ export const HeaderWrap = styled.header`
   padding-top: 5rem;
   background-color: var(--backgroundPrimary);
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding-top: 7rem;
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
     padding-top: 10rem;
   }
 `
@@ -35,25 +35,36 @@ export const HomeContentWrap = styled(ContentWrap)`
 export const Canvas = styled.canvas`
   position: absolute;
   top: calc(50% - 2rem);
-  right: -50%;
+  right: -40%;
   width: 100vw;
+  max-width: 50rem;
   height: 100vw;
+  max-height: 50rem;
+  opacity: 0.75;
   transform: translateY(-50%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    opacity: 1;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     left: auto;
-    right: 50px;
-    width: 70vw;
-    height: 70vw;
+    right: -12.5%;
+    width: 60vw;
+    height: 60vw;
     transform: translate(0, -50%);
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    right: -15vh;
+    right: 0;
   }
 `
 
 export const HeaderContentWrap = styled.div`
+  position: relative;
+`
+
+export const HeaderTextWrap = styled.div`
   position: relative;
   max-width: 28rem;
 `
