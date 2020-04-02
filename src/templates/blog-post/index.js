@@ -17,9 +17,9 @@ import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import RecentArticles from '../../components/RecentArticles'
 import website from '../../../website-config'
-import Share from '../../img/icons/share.svg'
-import Twitter from '../../img/icons/twitter.svg'
-import Github from '../../img/icons/github.svg'
+import Share from '../../svgs/icons/share.svg'
+import Twitter from '../../svgs/icons/twitter.svg'
+import Github from '../../svgs/icons/github.svg'
 import {
   ArticleContent,
   ArticleContentWrap,

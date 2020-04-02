@@ -6,7 +6,7 @@ import 'tippy.js/animations/shift-away.css'
 import Heading from '../../jh-ui/Heading'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { HeadingLink, HeadingWrap } from './styles'
-import Hash from '../../img/icons/hash.svg'
+import Hash from '../../svgs/icons/hash.svg'
 
 const ArticleHeading = ({ children, ...props }) => {
   const id = kebabCase(children)

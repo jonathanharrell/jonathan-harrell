@@ -16,8 +16,8 @@ import {
   SubscribeButton,
   ThemeToggleButton
 } from './styles'
-import Sun from '../../img/icons/sun.svg'
-import Moon from '../../img/icons/moon.svg'
+import Sun from '../../svgs/icons/sun.svg'
+import Moon from '../../svgs/icons/moon.svg'
 
 const DesktopMenu = () => {
   const { themeName, setTheme } = useContext(ThemeContext)

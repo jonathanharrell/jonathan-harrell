@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-      },
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID
+      }
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
@@ -35,14 +35,14 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 2048,
-            },
+              maxWidth: 2048
+            }
           },
           {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
-              destinationDir: 'static',
-            },
+              destinationDir: 'static'
+            }
           },
           'gatsby-remark-prismjs',
           {
@@ -62,7 +62,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /img/
+          include: /svgs/
         }
       }
     },
@@ -71,28 +71,35 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,
-        name: 'uploads',
-      },
+        name: 'uploads'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content`,
-        name: 'pages',
-      },
+        name: 'pages'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/img`,
-        name: 'images',
-      },
+        name: 'images'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/svgs`,
+        name: 'svgs'
+      }
     },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
+        modulePath: `${__dirname}/src/cms/cms.js`
+      }
     },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
@@ -128,8 +135,8 @@ module.exports = {
               'latin-ext'
             ]
           }
-        ],
-      },
+        ]
+      }
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
@@ -142,10 +149,10 @@ module.exports = {
         background_color: website.backgroundColor,
         theme_color: website.themeColor,
         display: 'standalone',
-        icon: website.favicon,
-      },
+        icon: website.favicon
+      }
     },
     // 'gatsby-plugin-offline',
-    'gatsby-plugin-netlify', // make sure to keep it last in the array
+    'gatsby-plugin-netlify' // make sure to keep it last in the array
   ]
 }

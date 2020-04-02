@@ -5,7 +5,7 @@ import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
-import NotFound from '../img/not-found.svg'
+import NotFound from '../svgs/not-found.svg'
 
 const HeaderWrap = styled.header`
   flex: 1;

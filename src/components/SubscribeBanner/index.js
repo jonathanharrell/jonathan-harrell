@@ -18,7 +18,7 @@ import {
   SubscribeForm,
   SubscribeInput
 } from './styles'
-import X from '../../img/icons/x.svg'
+import X from '../../svgs/icons/x.svg'
 
 const SubscribeBanner = () => {
   const [error, setError] = useState(null)

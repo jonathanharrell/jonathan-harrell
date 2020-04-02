@@ -19,7 +19,7 @@ import {
   ThemeOption,
   ThemeOptions
 } from './styles'
-import X from '../../img/icons/x.svg'
+import X from '../../svgs/icons/x.svg'
 
 const MobileMenu = ({ handleExpandedChange }) => {
   const { themeName, setTheme } = useContext(ThemeContext)

@@ -11,6 +11,7 @@ import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
+import init from '../../home-animation'
 import {
   Canvas,
   ExperimentsWrap,
@@ -18,9 +19,10 @@ import {
   HeaderTextWrap,
   HeaderWrap,
   HomeContentWrap,
+  HomeIllustration,
   RecentArticlesWrap
 } from './styles'
-import init from '../../home-animation'
+import HomeIllustrationSrc from '../../img/home-illustration.png'
 
 export const IndexPageTemplate = ({ title, description, experiments }) => {
   useEffect(() => {
@@ -34,6 +36,9 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
         <HomeContentWrap>
           <HeaderContentWrap>
             <Canvas/>
+            <noscript>
+              <HomeIllustration src={HomeIllustrationSrc} alt=""/>
+            </noscript>
             <HeaderTextWrap>
               <Heading level={1} id="introduction-label">
                 {title}

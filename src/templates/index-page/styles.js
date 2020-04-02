@@ -61,6 +61,40 @@ export const Canvas = styled.canvas`
   }
 `
 
+export const HomeIllustration = styled.img`
+  position: absolute;
+  top: calc(50% - 2rem);
+  right: -40%;
+  width: 100vw;
+  max-width: 50rem;
+  height: 100vw;
+  max-height: 50rem;
+  opacity: 0.75;
+  mix-blend-mode: multiply;
+  transform: translateY(-50%);
+
+  @media (prefers-color-scheme: dark) {
+    mix-blend-mode: screen;
+    filter: invert(1) hue-rotate(183deg);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    opacity: 1;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    left: auto;
+    right: -12.5%;
+    width: 60vw;
+    height: 60vw;
+    transform: translate(0, -50%);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    right: 0;
+  }
+`
+
 export const HeaderContentWrap = styled.div`
   position: relative;
 `

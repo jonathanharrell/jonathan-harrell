@@ -3,12 +3,12 @@ import Padded from '../../jh-ui/Padded'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { FooterContentWrap, FooterWrap, Link, SocialLinksWrap } from './styles'
-import Twitter from '../../img/icons/twitter.svg'
-import Github from '../../img/icons/github.svg'
-import Codepen from '../../img/icons/codepen.svg'
-import LinkedIn from '../../img/icons/linkedin.svg'
-import Instagram from '../../img/icons/instagram.svg'
-import Rss from '../../img/icons/rss.svg'
+import Twitter from '../../svgs/icons/twitter.svg'
+import Github from '../../svgs/icons/github.svg'
+import Codepen from '../../svgs/icons/codepen.svg'
+import LinkedIn from '../../svgs/icons/linkedin.svg'
+import Instagram from '../../svgs/icons/instagram.svg'
+import Rss from '../../svgs/icons/rss.svg'
 
 const currentYear = new Date().getFullYear()
 

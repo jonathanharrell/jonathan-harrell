@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Spaced from '../Spaced'
 import { Root } from './styles'
-import ArrowLeft from '../../img/icons/arrow-left.svg'
-import ArrowRight from '../../img/icons/arrow-right.svg'
+import ArrowLeft from '../../svgs/icons/arrow-left.svg'
+import ArrowRight from '../../svgs/icons/arrow-right.svg'
 
 const Link = ({ arrow, arrowPosition, href, element, children, ...props }) => (
   <Root as={element ? element : (href ? 'a' : undefined)} arrow={arrowPosition} href={href} {...props}>
