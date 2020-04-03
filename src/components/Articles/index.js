@@ -1,20 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
-import { ArticlesWrap, BlogExcerpt } from './styles'
+import { ArticlesWrap, BlogExcerpt, BlogExcerptWrap } from './styles'
+
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
 
 const Articles = ({ data: { allMdx: { edges: posts } } }) => (
-  <ArticlesWrap>
+  <ArticlesWrap animate="mounted" variants={variants}>
     {posts && posts.map(({ node: post }, index) => (
-      <BlogExcerpt
+      <BlogExcerptWrap
         key={post.id}
-        index={index}
-        link={post.fields.slug}
-        svg={post.frontmatter.featuredimage.fields.markup}
-        date={new Date(post.frontmatter.date)}
-        title={post.frontmatter.title}
-        excerpt={post.excerpt}
-      />
+        variants={childVariants}
+        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+      >
+        <BlogExcerpt
+          index={index}
+          link={post.fields.slug}
+          svg={post.frontmatter.featuredimage.fields.markup}
+          date={new Date(post.frontmatter.date)}
+          title={post.frontmatter.title}
+          excerpt={post.excerpt}
+        />
+      </BlogExcerptWrap>
     ))}
   </ArticlesWrap>
 )

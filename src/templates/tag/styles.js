@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import ArticleExcerpt from '../../jh-ui/ArticleExcerpt'
-import { CardContent } from '../../jh-ui/ArticleExcerpt/styles'
 
 export const TagIndexWrap = styled.div`
   flex: 1;
@@ -26,16 +26,15 @@ export const Links = styled.div`
   justify-content: center;
 `
 
-export const ArticlesWrap = styled.div`
+export const ArticlesWrap = styled(motion.div)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
 `
 
-export const BlogExcerpt = styled(ArticleExcerpt)`
+export const BlogExcerptWrap = styled(motion.div)`
   grid-column: 1 / -1;
   height: 100%;
-  background-color: var(--backgroundElevatedSecondary);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 6;
@@ -44,8 +43,9 @@ export const BlogExcerpt = styled(ArticleExcerpt)`
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
+`
 
-  ${CardContent} {
-    grid-template-rows: 15rem 1fr;
-  }
+export const BlogExcerpt = styled(ArticleExcerpt)`
+  height: 100%;
+  background-color: var(--backgroundElevatedSecondary);
 `

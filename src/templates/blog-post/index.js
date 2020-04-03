@@ -110,65 +110,88 @@ export const BlogPostTemplate = ({
             <ArticleHeaderContentWrap>
               {image && (
                 <Spaced bottom="3x">
-                  <Figure dangerouslySetInnerHTML={{ __html: image.fields.markup }}/>
+                  <Figure
+                    dangerouslySetInnerHTML={{ __html: image.fields.markup }}
+                    initial={typeof window !== 'undefined' ? { opacity: 0, scale: 1 } : false}
+                    animate={{ opacity: 1, scale: 1.05 }}
+                    transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
+                  />
                 </Spaced>
               )}
               <ArticleHeaderContent>
-                <Spaced bottom="s">
-                  <ArticleMeta>
-                    {tags && (
+                <motion.div
+                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+                >
+                  <Spaced bottom="s">
+                    <ArticleMeta>
+                      {tags && (
+                        <Spaced right="xxl">
+                          <div>
+                            <ScreenReaderText>
+                              <Heading
+                                level={2}
+                                id="article-tags-label"
+                              >
+                                Article Tags
+                              </Heading>
+                            </ScreenReaderText>
+                            <ul aria-labelledby="article-tags-label">
+                              {tags.map((tag, index) => (
+                                <Tag key={tag + `tag`}>
+                                  <TagLink
+                                    to={`/tags/${kebabCase(tag)}/`}
+                                    aria-label={`View articles with the tag ${tag}`}
+                                  >
+                                    <Text order="meta" element="span">
+                                      {tag}
+                                    </Text>
+                                  </TagLink>
+                                  {index < tags.length - 1 && (
+                                    <Text order="meta" element="span" aria-hidden>
+                                      &nbsp;•&nbsp;
+                                    </Text>
+                                  )}
+                                </Tag>
+                              ))}
+                            </ul>
+                          </div>
+                        </Spaced>
+                      )}
                       <Spaced right="xxl">
-                        <div>
-                          <ScreenReaderText>
-                            <Heading
-                              level={2}
-                              id="article-tags-label"
-                            >
-                              Article Tags
-                            </Heading>
-                          </ScreenReaderText>
-                          <ul aria-labelledby="article-tags-label">
-                            {tags.map((tag, index) => (
-                              <Tag key={tag + `tag`}>
-                                <TagLink
-                                  to={`/tags/${kebabCase(tag)}/`}
-                                  aria-label={`View articles with the tag ${tag}`}
-                                >
-                                  <Text order="meta" element="span">
-                                    {tag}
-                                  </Text>
-                                </TagLink>
-                                {index < tags.length - 1 && (
-                                  <Text order="meta" element="span" aria-hidden>
-                                    &nbsp;•&nbsp;
-                                  </Text>
-                                )}
-                              </Tag>
-                            ))}
-                          </ul>
-                        </div>
+                        <Text order="meta" element="span">
+                          <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                          {date}
+                        </Text>
                       </Spaced>
-                    )}
-                    <Spaced right="xxl">
                       <Text order="meta" element="span">
-                        <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
-                        {date}
+                        {readingTime.text}
                       </Text>
-                    </Spaced>
-                    <Text order="meta" element="span">
-                      {readingTime.text}
-                    </Text>
-                  </ArticleMeta>
-                </Spaced>
-                <Spaced bottom="m">
-                  <Heading level={1} id="article-title">
-                    {title}
-                  </Heading>
-                </Spaced>
+                    </ArticleMeta>
+                  </Spaced>
+                </motion.div>
+                <motion.div
+                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+                >
+                  <Spaced bottom="m">
+                    <Heading level={1} id="article-title">
+                      {title}
+                    </Heading>
+                  </Spaced>
+                </motion.div>
                 {description && (
-                  <Text order="body" color="textLighter" element="p">
-                    {description}
-                  </Text>
+                  <motion.div
+                    initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+                  >
+                    <Text order="body" color="textLighter" element="p">
+                      {description}
+                    </Text>
+                  </motion.div>
                 )}
               </ArticleHeaderContent>
             </ArticleHeaderContentWrap>
@@ -180,17 +203,22 @@ export const BlogPostTemplate = ({
               d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
           </clipPath>
         </Mask>
-        <Padded vertical="4x">
-          <ContentWrap>
-            <ArticleContentWrap>
-              <ArticleContent ref={articleContent}>
-                <MDXRenderer>
-                  {content}
-                </MDXRenderer>
-                <Spaced top="4x">
-                  <ArticleLinksWrap>
-                    {hasNavigatorShare && (
-                      <span>
+        <motion.div
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.6 }}
+        >
+          <Padded vertical="4x">
+            <ContentWrap>
+              <ArticleContentWrap>
+                <ArticleContent ref={articleContent}>
+                  <MDXRenderer>
+                    {content}
+                  </MDXRenderer>
+                  <Spaced top="4x">
+                    <ArticleLinksWrap>
+                      {hasNavigatorShare && (
+                        <span>
                         <Button unstyled={true} onClick={shareArticle}>
                           <ShareLink element="span">
                             <Spaced right="xs">
@@ -200,9 +228,9 @@ export const BlogPostTemplate = ({
                           </ShareLink>
                         </Button>
                       </span>
-                    )}
-                    {(!hasNavigatorShare && location.href) && (
-                      <span>
+                      )}
+                      {(!hasNavigatorShare && location.href) && (
+                        <span>
                         <ShareLink
                           href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
                           target="_blank"
@@ -214,42 +242,49 @@ export const BlogPostTemplate = ({
                           Discuss on Twitter
                         </ShareLink>
                       </span>
-                    )}
-                    {((hasNavigatorShare || location.href) && processedGithubUrl) && (
-                      <Spaced horizontal="s">
-                        <Divider element="span">•</Divider>
-                      </Spaced>
-                    )}
-                    {processedGithubUrl && (
-                      <ShareLink
-                        href={processedGithubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Spaced right="xs">
-                          <Github/>
+                      )}
+                      {((hasNavigatorShare || location.href) && processedGithubUrl) && (
+                        <Spaced horizontal="s">
+                          <Divider element="span">•</Divider>
                         </Spaced>
-                        Edit on Github
-                      </ShareLink>
-                    )}
-                  </ArticleLinksWrap>
-                </Spaced>
-              </ArticleContent>
-            </ArticleContentWrap>
-          </ContentWrap>
-        </Padded>
-        <RecentArticlesWrap aria-labelledby="more-label">
-          <Padded vertical="5x">
-            <ContentWrap>
-              <Spaced bottom="2x">
-                <Heading level={2} id="more-label">
-                  More Articles
-                </Heading>
-              </Spaced>
-              <RecentArticles currentPostId={id}/>
+                      )}
+                      {processedGithubUrl && (
+                        <ShareLink
+                          href={processedGithubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Spaced right="xs">
+                            <Github/>
+                          </Spaced>
+                          Edit on Github
+                        </ShareLink>
+                      )}
+                    </ArticleLinksWrap>
+                  </Spaced>
+                </ArticleContent>
+              </ArticleContentWrap>
             </ContentWrap>
           </Padded>
-        </RecentArticlesWrap>
+        </motion.div>
+        <motion.div
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.8 }}
+        >
+          <RecentArticlesWrap aria-labelledby="more-label">
+            <Padded vertical="5x">
+              <ContentWrap>
+                <Spaced bottom="2x">
+                  <Heading level={2} id="more-label">
+                    More Articles
+                  </Heading>
+                </Spaced>
+                <RecentArticles currentPostId={id}/>
+              </ContentWrap>
+            </Padded>
+          </RecentArticlesWrap>
+        </motion.div>
       </ArticleWrap>
     </>
   )
@@ -313,7 +348,7 @@ BlogPost.propTypes = {
         }).isRequired,
         socialimage: PropTypes.shape({
           publicURL: PropTypes.string.isRequired
-        }).isRequired,
+        }).isRequired
       }).isRequired,
       fields: PropTypes.shape({
         readingTime: PropTypes.shape({

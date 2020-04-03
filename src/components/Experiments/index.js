@@ -1,16 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExperimentExcerptElevated, ExperimentsWrap } from './styles'
+import { ExperimentExcerptElevated, ExperimentExcerptWrap, ExperimentsWrap } from './styles'
+
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
 
 const Experiments = ({ experiments }) => (
-  <ExperimentsWrap>
+  <ExperimentsWrap animate="mounted" variants={variants}>
     {experiments.slice(0, 6).map(experiment => (
-      <ExperimentExcerptElevated
+      <ExperimentExcerptWrap
         key={experiment.id}
-        id={experiment.id}
-        title={experiment.title}
-        date={new Date(experiment.date)}
-      />
+        variants={childVariants}
+        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+      >
+        <ExperimentExcerptElevated
+          id={experiment.id}
+          title={experiment.title}
+          date={new Date(experiment.date)}
+        />
+      </ExperimentExcerptWrap>
     ))}
   </ExperimentsWrap>
 )

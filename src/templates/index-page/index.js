@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import Text from '../../jh-ui/Text'
@@ -35,19 +36,35 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
-            <Canvas/>
+            <Canvas
+              initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75, y: '-50%' } : false}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
+            />
             <noscript>
               <HomeIllustration src={HomeIllustrationSrc} alt=""/>
             </noscript>
             <HeaderTextWrap>
-              <Heading level={1} id="introduction-label">
-                {title}
-              </Heading>
-              <Spaced top="m">
-                <Text>
-                  {description}
-                </Text>
-              </Spaced>
+              <motion.div
+                initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+              >
+                <Heading level={1} id="introduction-label">
+                  {title}
+                </Heading>
+              </motion.div>
+              <motion.div
+                initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+              >
+                <Spaced top="m">
+                  <Text>
+                    {description}
+                  </Text>
+                </Spaced>
+              </motion.div>
             </HeaderTextWrap>
           </HeaderContentWrap>
         </HomeContentWrap>
@@ -55,21 +72,33 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <RecentArticlesWrap aria-labelledby="recent-articles-label">
         <HomeContentWrap>
           <SectionHeader>
-            <Heading level={2} id="recent-articles-label">
-              Recent Articles
-            </Heading>
-            <Link
-              to="/blog"
-              arrow={true}
-              aria-labelledby="view-all-articles-label"
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
             >
-            <span aria-hidden>
-              View all
-            </span>
-              <ScreenReaderText id="view-all-articles-label">
-                View all articles
-              </ScreenReaderText>
-            </Link>
+              <Heading level={2} id="recent-articles-label">
+                Recent Articles
+              </Heading>
+            </motion.div>
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
+              animate={{ opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
+            >
+              <Link
+                to="/blog"
+                arrow={true}
+                aria-labelledby="view-all-articles-label"
+              >
+                <span aria-hidden>
+                  View all
+                </span>
+                <ScreenReaderText id="view-all-articles-label">
+                  View all articles
+                </ScreenReaderText>
+              </Link>
+            </motion.div>
           </SectionHeader>
           <RecentArticles/>
         </HomeContentWrap>
@@ -77,23 +106,35 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <ExperimentsWrap aria-labelledby="recent-experiments-label">
         <HomeContentWrap>
           <SectionHeader>
-            <Heading level={2} color="textInverse" id="recent-experiments-label">
-              Recent Experiments
-            </Heading>
-            <Link
-              href="https://codepen.io/jonathanharrell/"
-              target="_blank"
-              rel="noopener noreferrer"
-              arrow={true}
-              aria-labelledby="view-all-experiments-label"
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
             >
+              <Heading level={2} color="textInverse" id="recent-experiments-label">
+                Recent Experiments
+              </Heading>
+            </motion.div>
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
+              animate={{ opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+            >
+              <Link
+                href="https://codepen.io/jonathanharrell/"
+                target="_blank"
+                rel="noopener noreferrer"
+                arrow={true}
+                aria-labelledby="view-all-experiments-label"
+              >
             <span aria-hidden>
               View all
             </span>
-              <ScreenReaderText id="view-all-experiments-label">
-                View all experiments
-              </ScreenReaderText>
-            </Link>
+                <ScreenReaderText id="view-all-experiments-label">
+                  View all experiments
+                </ScreenReaderText>
+              </Link>
+            </motion.div>
           </SectionHeader>
           <Experiments experiments={experiments}/>
         </HomeContentWrap>

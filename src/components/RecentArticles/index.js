@@ -1,22 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
-import { BlogExcerpt, RecentArticlesWrap } from './styles'
+import { BlogExcerpt, BlogExcerptWrap, RecentArticlesWrap } from './styles'
+
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
 
 const RecentArticles = ({ data: { allMdx: { edges: posts } }, currentPostId }) => {
   if (currentPostId) posts = posts.filter(post => post.node.id !== currentPostId)
   posts = posts.slice(0, 4)
 
   return (
-    <RecentArticlesWrap>
+    <RecentArticlesWrap animate="mounted" variants={variants}>
       {posts && posts.map(({ node: post }) => (
-        <BlogExcerpt
+        <BlogExcerptWrap
           key={post.id}
-          link={post.fields.slug}
-          date={new Date(post.frontmatter.date)}
-          title={post.frontmatter.title}
-          excerpt={post.excerpt}
-        />
+          variants={childVariants}
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        >
+          <BlogExcerpt
+            link={post.fields.slug}
+            date={new Date(post.frontmatter.date)}
+            title={post.frontmatter.title}
+            excerpt={post.excerpt}
+          />
+        </BlogExcerptWrap>
       ))}
     </RecentArticlesWrap>
   )
@@ -35,7 +58,7 @@ RecentArticles.propTypes = {
             }).isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
-              date: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired
             }).isRequired
           }).isRequired
         })

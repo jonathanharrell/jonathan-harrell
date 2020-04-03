@@ -6,6 +6,7 @@ import Text from '../jh-ui/Text'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import NotFound from '../svgs/not-found.svg'
+import { motion } from 'framer-motion'
 
 const HeaderWrap = styled.header`
   flex: 1;
@@ -38,16 +39,34 @@ const NotFoundPage = () => (
     <HeaderWrap aria-labelledby="about-label">
       <NotFoundContentWrap>
         <Spaced bottom="3x">
-          <NotFound/>
+          <motion.div
+            initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75 } : false}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+          >
+            <NotFound/>
+          </motion.div>
         </Spaced>
-        <Heading level={1} id="about-label">
-          Oops! That page can’t be found.
-        </Heading>
-        <Spaced top="m">
-          <Text>
-            It looks like nothing was found at this location.
-          </Text>
-        </Spaced>
+        <motion.div
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+        >
+          <Heading level={1} id="about-label">
+            Oops! That page can’t be found.
+          </Heading>
+        </motion.div>
+        <motion.div
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+        >
+          <Spaced top="m">
+            <Text>
+              It looks like nothing was found at this location.
+            </Text>
+          </Spaced>
+        </motion.div>
       </NotFoundContentWrap>
     </HeaderWrap>
   </Layout>

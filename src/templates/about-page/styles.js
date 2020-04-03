@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import ContentWrap from '../../components/ContentWrap/'
 import Text from '../../jh-ui/Text'
 
@@ -36,11 +37,9 @@ export const HeaderContentWrap = styled.div`
   }
 `
 
-export const BioFigure = styled.figure`
+export const BioFigureWrap = styled.div`
   grid-column: 1 / -1;
-  position: relative;
   margin-bottom: ${({ theme }) => theme.spacing.xxl};
-  padding: 50% 0;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 4;
@@ -50,6 +49,11 @@ export const BioFigure = styled.figure`
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: 2 / span 4;
   }
+`
+
+export const BioFigure = styled(motion.figure)`
+  position: relative;
+  padding: 50% 0;
 `
 
 export const BioImage = styled.img`

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import ContentWrap from '../../components/ContentWrap/'
 
 export const HeaderWrap = styled.header`
@@ -33,7 +34,7 @@ export const HomeContentWrap = styled(ContentWrap)`
   }
 `
 
-export const Canvas = styled.canvas`
+export const Canvas = styled(motion.canvas)`
   position: absolute;
   top: calc(50% - 2rem);
   right: -40%;
@@ -42,7 +43,6 @@ export const Canvas = styled.canvas`
   height: 100vw;
   max-height: 50rem;
   opacity: 0.75;
-  transform: translateY(-50%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     opacity: 1;
@@ -53,7 +53,6 @@ export const Canvas = styled.canvas`
     right: -12.5%;
     width: 60vw;
     height: 60vw;
-    transform: translate(0, -50%);
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {

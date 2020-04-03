@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql, Link as GatsbyLink } from 'gatsby'
+import { motion } from 'framer-motion'
 import { kebabCase } from 'lodash'
 import Padded from '../jh-ui/Padded'
 import Heading from '../jh-ui/Heading'
@@ -32,16 +33,15 @@ const Header = styled.header`
   }
 `
 
-const TagsWrap = styled.div`
+const TagsWrap = styled(motion.div)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
 `
 
-const TagCard = styled(Card)`
+export const TagCardWrap = styled(motion.div)`
   grid-column: 1 / -1;
-  position: relative;
-  background-color: var(--backgroundElevatedSecondary);
+  height: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-column: auto / span 6;
@@ -56,6 +56,11 @@ const TagCard = styled(Card)`
   }
 `
 
+const TagCard = styled(Card)`
+  position: relative;
+  background-color: var(--backgroundElevatedSecondary);
+`
+
 const Link = styled(GatsbyLink)`
   position: absolute;
   top: 0;
@@ -65,6 +70,24 @@ const Link = styled(GatsbyLink)`
   height: 100%;
 `
 
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
+
 const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
   <Layout>
     <Seo
@@ -73,15 +96,21 @@ const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
       description="Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques."
     />
     <TagsIndexWrap>
-      <Header>
-        <ContentWrap>
-          <Padded vertical="3x">
-            <Heading level={1}>
-              Tags
-            </Heading>
-          </Padded>
-        </ContentWrap>
-      </Header>
+      <motion.div
+        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+      >
+        <Header>
+          <ContentWrap>
+            <Padded vertical="3x">
+              <Heading level={1}>
+                Tags
+              </Heading>
+            </Padded>
+          </ContentWrap>
+        </Header>
+      </motion.div>
       <section
         id="tags"
         aria-labelledby="tags-label"
@@ -93,21 +122,27 @@ const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
                 Tags
               </Heading>
             </ScreenReaderText>
-            <TagsWrap>
+            <TagsWrap animate="mounted" variants={variants}>
               {tags.map(tag => (
-                <TagCard key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    <ScreenReaderText>
-                      Go to tag
-                    </ScreenReaderText>
-                  </Link>
-                  <Heading level={3}>
-                    {tag.fieldValue}
-                  </Heading>
-                  <Text order="body" color="textLighter">
-                    {tag.totalCount} articles
-                  </Text>
-                </TagCard>
+                <TagCardWrap
+                  key={tag.fieldValue}
+                  variants={childVariants}
+                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                >
+                  <TagCard>
+                    <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                      <ScreenReaderText>
+                        Go to tag
+                      </ScreenReaderText>
+                    </Link>
+                    <Heading level={3}>
+                      {tag.fieldValue}
+                    </Heading>
+                    <Text order="body" color="textLighter">
+                      {tag.totalCount} articles
+                    </Text>
+                  </TagCard>
+                </TagCardWrap>
               ))}
             </TagsWrap>
           </ContentWrap>

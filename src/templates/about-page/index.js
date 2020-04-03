@@ -12,6 +12,7 @@ import website from '../../../website-config'
 import {
   AboutContentWrap,
   BioFigure,
+  BioFigureWrap,
   BioImage,
   BioText,
   HeaderContentWrap,
@@ -24,6 +25,7 @@ import {
   UsageLink,
   UsesWrap
 } from './styles'
+import { motion } from 'framer-motion'
 
 export const AboutPageTemplate = ({ location, title, image, bio, involvement, whatIUse }) => (
   <>
@@ -37,66 +39,96 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
       <AboutContentWrap>
         <HeaderContentWrap>
           {image && (
-            <BioFigure>
-              <BioImage src={image.publicURL} alt="Jonathan Harrell"/>
-            </BioFigure>
+            <BioFigureWrap>
+              <BioFigure
+                initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75 } : false}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+              >
+                <BioImage src={image.publicURL} alt="Jonathan Harrell"/>
+              </BioFigure>
+            </BioFigureWrap>
           )}
           <BioText>
-            <Heading level={1} id="about-label">
-              {title || 'About Jonathan'}
-            </Heading>
-            <Spaced top="m">
-              <Text>
-                {bio}
-              </Text>
-            </Spaced>
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+            >
+              <Heading level={1} id="about-label">
+                {title || 'About Jonathan'}
+              </Heading>
+            </motion.div>
+            <motion.div
+              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+            >
+              <Spaced top="m">
+                <Text>
+                  {bio}
+                </Text>
+              </Spaced>
+            </motion.div>
           </BioText>
         </HeaderContentWrap>
       </AboutContentWrap>
     </HeaderWrap>
     <InvolvementWrap aria-labelledby="involvement-label">
-      <AboutContentWrap>
-        <SectionHeader>
-          <Heading level={4} as="h2" id="involvement-label">
-            {involvement.title || 'Involvement'}
-          </Heading>
-        </SectionHeader>
-        <Padded vertical="l">
-          {involvement.project.map((project, index) => (
-            <Involvement key={index}>
-              <InvolvementTitle>
-                <Spaced bottom="s">
-                  <Heading level={3}>
-                    {project.name}
-                  </Heading>
-                </Spaced>
-              </InvolvementTitle>
-              <InvolvementDescription>
-                {project.description}
-              </InvolvementDescription>
-            </Involvement>
-          ))}
-        </Padded>
-      </AboutContentWrap>
-    </InvolvementWrap>
-    <UsesWrap id="uses" aria-labelledby="uses-label">
-      <AboutContentWrap>
-        <SectionHeader>
-          <Heading level={4} as="h2" id="uses-label">
-            {whatIUse.title || 'What I Use'}
-          </Heading>
-        </SectionHeader>
-        <dl>
-          <Padded vertical="m">
-            {whatIUse.usage.map((usage, index) => (
-              <Usage key={index}>
-                <dt><Text>{usage.name}</Text></dt>
-                <dd><UsageLink href={usage.link}>{usage.description}</UsageLink></dd>
-              </Usage>
+      <motion.div
+        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
+      >
+        <AboutContentWrap>
+          <SectionHeader>
+            <Heading level={4} as="h2" id="involvement-label">
+              {involvement.title || 'Involvement'}
+            </Heading>
+          </SectionHeader>
+          <Padded vertical="l">
+            {involvement.project.map((project, index) => (
+              <Involvement key={index}>
+                <InvolvementTitle>
+                  <Spaced bottom="s">
+                    <Heading level={3}>
+                      {project.name}
+                    </Heading>
+                  </Spaced>
+                </InvolvementTitle>
+                <InvolvementDescription>
+                  {project.description}
+                </InvolvementDescription>
+              </Involvement>
             ))}
           </Padded>
-        </dl>
-      </AboutContentWrap>
+        </AboutContentWrap>
+      </motion.div>
+    </InvolvementWrap>
+    <UsesWrap id="uses" aria-labelledby="uses-label">
+      <motion.div
+        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+      >
+        <AboutContentWrap>
+          <SectionHeader>
+            <Heading level={4} as="h2" id="uses-label">
+              {whatIUse.title || 'What I Use'}
+            </Heading>
+          </SectionHeader>
+          <dl>
+            <Padded vertical="m">
+              {whatIUse.usage.map((usage, index) => (
+                <Usage key={index}>
+                  <dt><Text>{usage.name}</Text></dt>
+                  <dd><UsageLink href={usage.link}>{usage.description}</UsageLink></dd>
+                </Usage>
+              ))}
+            </Padded>
+          </dl>
+        </AboutContentWrap>
+      </motion.div>
     </UsesWrap>
   </>
 )

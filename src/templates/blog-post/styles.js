@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import ContentWrap from '../../components/ContentWrap/'
 import Link from '../../jh-ui/Link'
 import Text from '../../jh-ui/Text'
@@ -61,7 +62,7 @@ export const ArticleContentWrap = styled.div`
   grid-template-columns: repeat(12, 1fr);
 `
 
-export const Figure = styled.figure`
+export const Figure = styled(motion.figure)`
   display: none;
   grid-column: 1 / -1;
   position: absolute;

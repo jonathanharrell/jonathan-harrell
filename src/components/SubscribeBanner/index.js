@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Padded from '../../jh-ui/Padded'
 import Button from '../../jh-ui/Button'
 import Heading from '../../jh-ui/Heading'
@@ -78,82 +79,111 @@ const SubscribeBanner = () => {
     }
   }
 
-  return !dismissed ? (
-    <SubscribeBannerWrap id="subscribe" aria-labelledby="newsletter-label">
-      <ContentWrap>
-        <Padded vertical="3x">
-          <SubscribeContentWrap>
-            <SubscribeCard padding={false} hover={false}>
-              <SubscribeCardContent>
-                <Padded vertical="2x" bottom="xxl" horizontal="2x">
-                  <div>
-                    <Heading id="newsletter-label" level={4} element="h2" color="textInverse">
-                      Subscribe to the newsletter
-                    </Heading>
-                    <Spaced top="xs">
-                      <Text color="textInverse">
-                        Sign up for periodic updates, including:
-                      </Text>
-                    </Spaced>
-                    <Spaced top="m">
-                      <Ul color="textInverse">
-                        <li>New front-end experiments</li>
-                        <li>CSS layout tricks and new properties</li>
-                        <li>Insight into new JavaScript APIs</li>
-                      </Ul>
-                    </Spaced>
-                  </div>
-                </Padded>
-                <SubscribeForm onSubmit={handleSubmit}>
-                  <CloseButton unstyled type="button" onClick={dismiss}>
-                    <X/>
-                    <ScreenReaderText>
-                      Dismiss newsletter subscription form
-                    </ScreenReaderText>
-                  </CloseButton>
-                  <Padded top="4x" bottom="3x" horizontal="2x">
-                    <div>
-                      <div>
-                        <label htmlFor="email" className="visually-hidden">
-                          Enter your email address to subscribe to newsletter
-                        </label>
-                        <SubscribeInput
-                          id="email"
-                          type="email"
-                          name="email"
-                          placeholder="Your email address"
-                          ref={inputRef}
-                        />
-                      </div>
-                      {error && (
-                        <Spaced top="m">
-                          <Alert>
-                            {error}
-                          </Alert>
-                        </Spaced>
-                      )}
-                      {success && (
-                        <Spaced top="m">
-                          <Alert order="info">
-                            You’ve been subscribed!
-                          </Alert>
-                        </Spaced>
-                      )}
-                      <Spaced top="m">
-                        <Button order="accent" size="large">
-                          Subscribe
-                        </Button>
-                      </Spaced>
-                    </div>
-                  </Padded>
-                </SubscribeForm>
-              </SubscribeCardContent>
-            </SubscribeCard>
-          </SubscribeContentWrap>
-        </Padded>
-      </ContentWrap>
-    </SubscribeBannerWrap>
-  ) : null
+  return (
+    <AnimatePresence>
+      {!dismissed ? (
+        <motion.div
+          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+        >
+          <SubscribeBannerWrap id="subscribe" aria-labelledby="newsletter-label">
+            <ContentWrap>
+              <Padded vertical="3x">
+                <SubscribeContentWrap>
+                  <SubscribeCard padding={false} hover={false}>
+                    <SubscribeCardContent>
+                      <Padded vertical="2x" bottom="xxl" horizontal="2x">
+                        <div>
+                          <Heading id="newsletter-label" level={4} element="h2" color="textInverse">
+                            Subscribe to the newsletter
+                          </Heading>
+                          <Spaced top="xs">
+                            <Text color="textInverse">
+                              Sign up for periodic updates, including:
+                            </Text>
+                          </Spaced>
+                          <Spaced top="m">
+                            <Ul color="textInverse">
+                              <li>New front-end experiments</li>
+                              <li>CSS layout tricks and new properties</li>
+                              <li>Insight into new JavaScript APIs</li>
+                            </Ul>
+                          </Spaced>
+                        </div>
+                      </Padded>
+                      <SubscribeForm onSubmit={handleSubmit}>
+                        <CloseButton unstyled type="button" onClick={dismiss}>
+                          <X/>
+                          <ScreenReaderText>
+                            Dismiss newsletter subscription form
+                          </ScreenReaderText>
+                        </CloseButton>
+                        <Padded top="4x" bottom="3x" horizontal="2x">
+                          <div>
+                            <div>
+                              <label htmlFor="email" className="visually-hidden">
+                                Enter your email address to subscribe to newsletter
+                              </label>
+                              <SubscribeInput
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="Your email address"
+                                ref={inputRef}
+                              />
+                            </div>
+                            <AnimatePresence>
+                              {error && (
+                                <motion.div
+                                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 50 }}
+                                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                                >
+                                  <Spaced top="m">
+                                    <Alert>
+                                      {error}
+                                    </Alert>
+                                  </Spaced>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                            <AnimatePresence>
+                              {success && (
+                                <motion.div
+                                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 50 }}
+                                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                                >
+                                  <Spaced top="m">
+                                    <Alert order="info">
+                                      You’ve been subscribed!
+                                    </Alert>
+                                  </Spaced>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                            <Spaced top="m">
+                              <Button order="accent" size="large">
+                                Subscribe
+                              </Button>
+                            </Spaced>
+                          </div>
+                        </Padded>
+                      </SubscribeForm>
+                    </SubscribeCardContent>
+                  </SubscribeCard>
+                </SubscribeContentWrap>
+              </Padded>
+            </ContentWrap>
+          </SubscribeBannerWrap>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  )
 }
 
 export default SubscribeBanner

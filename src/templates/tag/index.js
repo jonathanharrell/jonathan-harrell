@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 import Padded from '../../jh-ui/Padded'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
@@ -10,7 +11,25 @@ import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import Seo from '../../components/seo'
 import website from '../../../website-config'
-import { ArticlesWrap, BlogExcerpt, Header, Links, TagIndexWrap } from './styles'
+import { ArticlesWrap, BlogExcerpt, BlogExcerptWrap, Header, Links, TagIndexWrap } from './styles'
+
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
 
 const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: { tag } }) => {
   const tagHeading = `${posts.length} post${
@@ -29,18 +48,36 @@ const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: {
           <ContentWrap>
             <Padded vertical="3x">
               <div>
-                <Heading level={1}>
-                  {tagHeading}
-                </Heading>
+                <motion.div
+                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+                >
+                  <Heading level={1}>
+                    {tagHeading}
+                  </Heading>
+                </motion.div>
                 <Spaced top="m">
                   <Links>
                     <Spaced horizontal="m">
-                      <Link to="/blog/" arrow={true} arrowPosition="left">
-                        See all articles
-                      </Link>
-                      <Link to="/tags/" arrow={true} arrowPosition="right">
-                        Browse all tags
-                      </Link>
+                      <motion.div
+                        initial={typeof window !== 'undefined' ? { opacity: 0, y: 25 } : false}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                      >
+                        <Link to="/blog/" arrow={true} arrowPosition="left">
+                          See all articles
+                        </Link>
+                      </motion.div>
+                      <motion.div
+                        initial={typeof window !== 'undefined' ? { opacity: 0, y: 25 } : false}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+                      >
+                        <Link to="/tags/" arrow={true} arrowPosition="right">
+                          Browse all tags
+                        </Link>
+                      </motion.div>
                     </Spaced>
                   </Links>
                 </Spaced>
@@ -59,17 +96,22 @@ const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: {
                   Articles
                 </Heading>
               </ScreenReaderText>
-              <ArticlesWrap>
+              <ArticlesWrap animate="mounted" variants={variants}>
                 {posts && posts.map(({ node: post }, index) => (
-                  <BlogExcerpt
+                  <BlogExcerptWrap
                     key={post.id}
-                    index={index}
-                    link={post.fields.slug}
-                    svg={post.frontmatter.featuredimage.fields.markup}
-                    date={new Date(post.frontmatter.date)}
-                    title={post.frontmatter.title}
-                    excerpt={post.excerpt}
-                  />
+                    variants={childVariants}
+                    initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  >
+                    <BlogExcerpt
+                      index={index}
+                      link={post.fields.slug}
+                      svg={post.frontmatter.featuredimage.fields.markup}
+                      date={new Date(post.frontmatter.date)}
+                      title={post.frontmatter.title}
+                      excerpt={post.excerpt}
+                    />
+                  </BlogExcerptWrap>
                 ))}
               </ArticlesWrap>
             </ContentWrap>
