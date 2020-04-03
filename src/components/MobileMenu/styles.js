@@ -26,9 +26,6 @@ export const MenuButton = styled(Button)`
 `
 
 export const Menu = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
   width: 100%;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
