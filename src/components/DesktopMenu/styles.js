@@ -1,5 +1,5 @@
+import TransitionLink from 'gatsby-plugin-transition-link'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import Text from '../../jh-ui/Text'
 import Button from '../../jh-ui/Button'
 
@@ -19,7 +19,7 @@ export const MenuLinkWrap = styled.li`
   list-style: none;
 `
 
-export const MenuLink = styled(Link)`
+export const MenuLink = styled(TransitionLink)`
   text-decoration: none;
 
   &[data-active] > span {

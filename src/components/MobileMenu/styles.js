@@ -26,7 +26,7 @@ export const MenuButton = styled(Button)`
 `
 
 export const Menu = styled.div`
-  width: 100%;
+  width: 100vw;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow-y: auto;

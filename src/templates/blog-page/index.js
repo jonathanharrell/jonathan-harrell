@@ -13,6 +13,7 @@ import Articles from '../../components/Articles'
 import Seo from '../../components/seo'
 import website from '../../../website-config'
 import { ArticlesWrap, BlogIndexWrap, Header, Link, TagWrap } from './styles'
+import { motion } from 'framer-motion'
 
 export const BlogIndexPageTemplate = ({ location, title, tags }) => {
   const articlesRef = useRef()
@@ -33,9 +34,15 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
           <ContentWrap>
             <Padded vertical="3x">
               <div>
-                <Heading level={1}>
-                  {title || 'Articles'}
-                </Heading>
+                <motion.div
+                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+                >
+                  <Heading level={1}>
+                    {title || 'Articles'}
+                  </Heading>
+                </motion.div>
                 <Spaced top="xxl">
                   <ScreenReaderText>
                     <Heading level={2} id="tags-label">
@@ -116,6 +123,7 @@ const BlogIndexPage = ({ location, data: { mdx: post, allMdx: { group: tags } } 
 
 BlogIndexPage.propTypes = {
   location: PropTypes.object.isRequired,
+  mount: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
@@ -130,7 +138,7 @@ BlogIndexPage.propTypes = {
         })
       ).isRequired
     })
-  }).isRequired,
+  }).isRequired
 }
 
 export default BlogIndexPage

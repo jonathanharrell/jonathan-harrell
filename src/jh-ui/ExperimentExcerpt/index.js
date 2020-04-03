@@ -36,26 +36,26 @@ const ExperimentExcerpt = ({ id, date, title, viewsCount, ...props }) => {
           {formattedDate}
         </Text>
       </Spaced>
-      <Spaced bottom="l">
-        <Heading
-          level={3}
-          id={`${kebabCase(title)}-label`}
-        >
-          {title}
-        </Heading>
-      </Spaced>
+      <Heading
+        level={3}
+        id={`${kebabCase(title)}-label`}
+      >
+        {title}
+      </Heading>
       {viewsCount && (
-        <ExperimentMeta order="meta">
-          <Eye/>
-          <Spaced left="xs">
+        <Spaced top="l">
+          <ExperimentMeta order="meta">
+            <Eye/>
+            <Spaced left="xs">
           <span>
             <ScreenReaderText>
               Views count
             </ScreenReaderText>
             {viewsCount}
           </span>
-          </Spaced>
-        </ExperimentMeta>
+            </Spaced>
+          </ExperimentMeta>
+        </Spaced>
       )}
     </ExperimentCard>
   )
