@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import { motion } from 'framer-motion'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import Text from '../../jh-ui/Text'
-import Link from '../../jh-ui/Link'
 import SectionHeader from '../../jh-ui/SectionHeader'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Seo from '../../components/seo'
@@ -23,6 +22,8 @@ import {
   HomeIllustration,
   RecentArticlesWrap
 } from './styles'
+import Button from '../../jh-ui/Button'
+import Link from '../../jh-ui/Link'
 import HomeIllustrationSrc from '../../img/home-illustration.png'
 
 export const IndexPageTemplate = ({ title, description, experiments }) => {
@@ -76,6 +77,24 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                   <Text>{description}</Text>
                 </Spaced>
               </motion.div>
+              <motion.div
+                initial={
+                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+                }
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 50,
+                  mass: 0.1,
+                  delay: 0.2
+                }}
+              >
+                <Spaced top="xxl">
+                  <Button order="accent" to="/about" as={GatsbyLink}>
+                    Learn more
+                  </Button>
+                </Spaced>
+              </motion.div>
             </HeaderTextWrap>
           </HeaderContentWrap>
         </HomeContentWrap>
@@ -92,7 +111,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 type: 'spring',
                 stiffness: 50,
                 mass: 0.1,
-                delay: 0.2
+                delay: 0.3
               }}
             >
               <Heading level={2} id="recent-articles-label">
@@ -106,7 +125,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 type: 'spring',
                 stiffness: 50,
                 mass: 0.1,
-                delay: 0.3
+                delay: 0.4
               }}
             >
               <Link
@@ -136,7 +155,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 type: 'spring',
                 stiffness: 50,
                 mass: 0.1,
-                delay: 0.3
+                delay: 0.4
               }}
             >
               <Heading
@@ -154,7 +173,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 type: 'spring',
                 stiffness: 50,
                 mass: 0.1,
-                delay: 0.4
+                delay: 0.5
               }}
             >
               <Link

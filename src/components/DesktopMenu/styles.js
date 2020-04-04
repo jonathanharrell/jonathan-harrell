@@ -74,6 +74,8 @@ export const ThemeToggleButton = styled(Button)`
 `
 
 export const SubscribeButton = styled(Button)`
+  background-color: var(--backgroundPrimary);
+
   .header-background-gray & {
     border-color: var(--textLighter);
   }
