@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import Heading from '../Heading'
 import { ScreenReaderOnlySpan } from './styles'
 
-const ScreenReaderText = ({ element, children }) => (
-  <ScreenReaderOnlySpan as={element}>{children}</ScreenReaderOnlySpan>
+const ScreenReaderText = ({ element, children, ...props }) => (
+  <ScreenReaderOnlySpan as={element} {...props}>
+    {children}
+  </ScreenReaderOnlySpan>
 )
 
 Heading.propTypes = {

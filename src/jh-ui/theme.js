@@ -10,7 +10,7 @@ export const colors = {
   blueDarker: 'hsl(210, 67%, 13%)',
   black: 'hsl(0, 0%, 0%)',
   white: 'hsl(0, 0%, 100%)',
-  red: 'hsl(5, 66%, 56%)',
+  red: 'hsl(5, 75%, 60%)',
   redDark: 'hsl(10, 66%, 40%)'
 }
 
