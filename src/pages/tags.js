@@ -35,8 +35,12 @@ const Header = styled.header`
 
 const TagsWrap = styled(motion.div)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: ${({ theme }) => theme.spacing.xxl};
+  }
 `
 
 export const TagCardWrap = styled(motion.div)`

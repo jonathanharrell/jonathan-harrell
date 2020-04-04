@@ -67,10 +67,18 @@ export const ThemeToggleButton = styled(Button)`
   &:active {
     transform: scale(0.98);
   }
+
+  .no-js & {
+    display: none;
+  }
 `
 
 export const SubscribeButton = styled(Button)`
   .header-background-gray & {
     border-color: var(--textLighter);
+  }
+
+  .no-js & {
+    display: none;
   }
 `

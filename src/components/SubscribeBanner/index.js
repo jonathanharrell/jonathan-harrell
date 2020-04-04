@@ -100,7 +100,7 @@ const SubscribeBanner = () => {
                             Subscribe to the newsletter
                           </Heading>
                           <Spaced top="xs">
-                            <Text color="textInverse">
+                            <Text color="textLighter">
                               Sign up for periodic updates, including:
                             </Text>
                           </Spaced>

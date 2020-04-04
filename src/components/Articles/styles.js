@@ -4,8 +4,12 @@ import ArticleExcerpt from '../../jh-ui/ArticleExcerpt'
 
 export const ArticlesWrap = styled(motion.div)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: ${({ theme }) => theme.spacing.xxl};
+  }
 `
 
 export const BlogExcerptWrap = styled(motion.div)`

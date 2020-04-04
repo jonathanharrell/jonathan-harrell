@@ -10,8 +10,11 @@ export const SubscribeBannerWrap = styled.aside`
 
 export const SubscribeContentWrap = styled.div`
   display: grid;
-  grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+  }
 `
 
 export const SubscribeCard = styled(Card)`

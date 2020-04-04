@@ -90,7 +90,18 @@ const MobileMenu = ({ handleExpandedChange }) => {
     lastTabbableElementRef.push(element)
   }
 
-  const isActive = ({ isCurrent }) => {
+  // some links need special logic to determine whether or not they should get the active style
+  const isActive = ({ isCurrent, href, location }) => {
+    if (href === '/blog') {
+      if (location.pathname.startsWith('/blog')) {
+        return { 'data-active': true }
+      }
+
+      if (location.pathname.startsWith('/tags')) {
+        return { 'data-active': true }
+      }
+    }
+
     return isCurrent ? { 'data-active': true } : null
   }
 
@@ -152,7 +163,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
-            style={{ position: 'fixed', top: '1rem', right: '1rem' }}
+            style={{ position: 'fixed', top: 'calc(1rem - 5px)', right: '1rem' }}
           >
             <Menu>
               <Padded top="4x" bottom="2x">

@@ -22,14 +22,31 @@ export const Header = styled.header`
 
 export const Links = styled.div`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+
+  > div {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  svg {
+    display: none;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      display: block;
+    }
+  }
 `
 
 export const ArticlesWrap = styled(motion.div)`
   display: grid;
-  grid-gap: ${({ theme }) => theme.spacing.xxl};
+  grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: ${({ theme }) => theme.spacing.xxl};
+  }
 `
 
 export const BlogExcerptWrap = styled(motion.div)`

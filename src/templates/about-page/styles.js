@@ -28,9 +28,12 @@ export const AboutContentWrap = styled(ContentWrap)`
 
 export const HeaderContentWrap = styled.div`
   display: grid;
-  grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-gap: 0 ${({ theme }) => theme.spacing['3x']};
@@ -84,9 +87,12 @@ export const InvolvementWrap = styled.section`
 
 export const Involvement = styled.div`
   display: grid;
-  grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
   border-top: 1px solid var(--border);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-gap: 0 ${({ theme }) => theme.spacing['3x']};
@@ -115,9 +121,12 @@ export const UsesWrap = styled.section`
 
 export const Usage = styled.div`
   display: grid;
-  grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
   border-top: 1px solid var(--border);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-gap: 0 ${({ theme }) => theme.spacing['3x']};
