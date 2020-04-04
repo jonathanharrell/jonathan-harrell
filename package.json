@@ -86,7 +86,7 @@
     "@storybook/addons": "^5.2.0",
     "@storybook/react": "^5.2.0",
     "babel-loader": "^8.0.6",
-    "caniuse-lite": "^1.0.30001035",
+    "caniuse-lite": "^1.0.30001039",
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-react-app": "^5.2.1",
