@@ -7,7 +7,14 @@ import Facebook from './Facebook'
 import Twitter from './Twitter'
 
 // this component injects relevant SEO-related meta tags into the head of the page
-const Seo = ({ title, description, banner, pathname, article, publicationDate }) => {
+const Seo = ({
+  title,
+  description,
+  banner,
+  pathname,
+  article,
+  publicationDate
+}) => {
   const { site } = useStaticQuery(query)
 
   const {
@@ -23,14 +30,14 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
       author,
       twitterUsername,
       facebookAppId
-    },
+    }
   } = site
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${banner || defaultBanner}`,
-    url: `${siteUrl}${pathname || ''}`,
+    url: `${siteUrl}${pathname || ''}`
   }
 
   const schemaOrgWebPage = {
@@ -44,27 +51,27 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
     name: defaultTitle,
     author: {
       '@type': 'Person',
-      name: author,
+      name: author
     },
     copyrightHolder: {
       '@type': 'Person',
-      name: author,
+      name: author
     },
     copyrightYear: '2020',
     creator: {
       '@type': 'Person',
-      name: author,
+      name: author
     },
     publisher: {
       '@type': 'Person',
-      name: author,
+      name: author
     },
     datePublished: '2020-03-21T10:30:00+01:00',
     dateModified: buildTime,
     image: {
       '@type': 'ImageObject',
-      url: `${siteUrl}${defaultBanner}`,
-    },
+      url: `${siteUrl}${defaultBanner}`
+    }
   }
 
   // Initial breadcrumb list
@@ -73,10 +80,10 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
       '@type': 'ListItem',
       item: {
         '@id': siteUrl,
-        name: 'Homepage',
+        name: 'Homepage'
       },
-      position: 1,
-    },
+      position: 1
+    }
   ]
 
   let schemaArticle = null
@@ -87,24 +94,24 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
       '@type': 'Article',
       author: {
         '@type': 'Person',
-        name: author,
+        name: author
       },
       copyrightHolder: {
         '@type': 'Person',
-        name: author,
+        name: author
       },
       copyrightYear: '2019',
       creator: {
         '@type': 'Person',
-        name: author,
+        name: author
       },
       publisher: {
         '@type': 'Organization',
         name: author,
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}${defaultBanner}`,
-        },
+          url: `${siteUrl}${defaultBanner}`
+        }
       },
       datePublished: publicationDate,
       dateModified: buildTime,
@@ -115,18 +122,18 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
       name: seo.title,
       image: {
         '@type': 'ImageObject',
-        url: seo.image,
+        url: seo.image
       },
-      mainEntityOfPage: seo.url,
+      mainEntityOfPage: seo.url
     }
     // Push current blog post into breadcrumb list
     itemListElement.push({
       '@type': 'ListItem',
       item: {
         '@id': seo.url,
-        name: seo.title,
+        name: seo.title
       },
-      position: 2,
+      position: 2
     })
   }
 
@@ -135,20 +142,28 @@ const Seo = ({ title, description, banner, pathname, article, publicationDate })
     '@type': 'BreadcrumbList',
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
-    itemListElement,
+    itemListElement
   }
 
   return (
     <>
       <Helmet title={seo.title}>
-        <html lang={siteLanguage}/>
-        <meta name="description" content={seo.description}/>
-        <meta name="image" content={seo.image}/>
-        {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
-        {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
+        <html lang={siteLanguage} />
+        <meta name="description" content={seo.description} />
+        <meta name="image" content={seo.image} />
+        {!article && (
+          <script type="application/ld+json">
+            {JSON.stringify(schemaOrgWebPage)}
+          </script>
+        )}
+        {article && (
+          <script type="application/ld+json">
+            {JSON.stringify(schemaArticle)}
+          </script>
+        )}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
-      <Favicon/>
+      <Favicon />
       <Facebook
         desc={seo.description}
         image={seo.image}
@@ -176,7 +191,7 @@ Seo.propTypes = {
   banner: PropTypes.string,
   pathname: PropTypes.string,
   article: PropTypes.bool,
-  publicationDate: PropTypes.string,
+  publicationDate: PropTypes.string
 }
 
 Seo.defaultProps = {

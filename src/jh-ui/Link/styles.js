@@ -27,7 +27,8 @@ export const Root = styled(GatsbyLink)`
     color: ${({ theme }) => theme.colors.redDark};
 
     .arrow {
-      transform: ${({ arrow }) => arrow === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
+      transform: ${({ arrow }) =>
+        arrow === 'left' ? 'translateX(-0.1em)' : 'translateX(0.1em)'};
     }
   }
 

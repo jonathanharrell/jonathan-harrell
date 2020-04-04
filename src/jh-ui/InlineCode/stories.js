@@ -18,9 +18,7 @@ export const Basic = () => {
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <InlineCode theme={theme}>
-          This is inline code
-        </InlineCode>
+        <InlineCode theme={theme}>This is inline code</InlineCode>
       )}
     </ThemeContext.Consumer>
   )

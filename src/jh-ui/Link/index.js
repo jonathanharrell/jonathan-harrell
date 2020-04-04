@@ -6,16 +6,21 @@ import ArrowLeft from '../../svgs/icons/arrow-left.svg'
 import ArrowRight from '../../svgs/icons/arrow-right.svg'
 
 const Link = ({ arrow, arrowPosition, href, element, children, ...props }) => (
-  <Root as={element ? element : (href ? 'a' : undefined)} arrow={arrowPosition} href={href} {...props}>
-    {(arrow && arrowPosition === 'left') && (
+  <Root
+    as={element ? element : href ? 'a' : undefined}
+    arrow={arrowPosition}
+    href={href}
+    {...props}
+  >
+    {arrow && arrowPosition === 'left' && (
       <Spaced right="xs">
-        <ArrowLeft className="arrow"/>
+        <ArrowLeft className="arrow" />
       </Spaced>
     )}
     {children}
-    {(arrow && arrowPosition === 'right') && (
+    {arrow && arrowPosition === 'right' && (
       <Spaced left="xs">
-        <ArrowRight className="arrow"/>
+        <ArrowRight className="arrow" />
       </Spaced>
     )}
   </Root>

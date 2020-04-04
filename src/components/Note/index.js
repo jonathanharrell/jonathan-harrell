@@ -9,12 +9,8 @@ const Note = ({ type, children }) => (
   <Spaced bottom="m">
     <Padded all="xxl">
       <NoteWrap type={type}>
-        <Text order="meta">
-          Note
-        </Text>
-        <Text>
-          {children}
-        </Text>
+        <Text order="meta">Note</Text>
+        <Text>{children}</Text>
       </NoteWrap>
     </Padded>
   </Spaced>

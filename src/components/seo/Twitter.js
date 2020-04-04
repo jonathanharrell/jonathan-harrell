@@ -4,12 +4,12 @@ import Helmet from 'react-helmet'
 
 const Twitter = ({ type, username, title, desc, image }) => (
   <Helmet>
-    {username && <meta name="twitter:creator" content={username}/>}
-    <meta name="twitter:card" content={type}/>
-    <meta name="twitter:title" content={title}/>
-    <meta name="twitter:description" content={desc}/>
-    <meta name="twitter:image" content={image}/>
-    <meta name="twitter:image:alt" content={desc}/>
+    {username && <meta name="twitter:creator" content={username} />}
+    <meta name="twitter:card" content={type} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={desc} />
   </Helmet>
 )
 
@@ -20,7 +20,7 @@ Twitter.propTypes = {
   username: PropTypes.string,
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 }
 
 Twitter.defaultProps = {

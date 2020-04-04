@@ -20,7 +20,11 @@ export const Basic = () => {
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Input theme={theme} value={value} placeholder="This is a placeholder"/>
+        <Input
+          theme={theme}
+          value={value}
+          placeholder="This is a placeholder"
+        />
       )}
     </ThemeContext.Consumer>
   )

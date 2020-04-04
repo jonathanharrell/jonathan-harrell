@@ -26,7 +26,9 @@ const DesktopMenu = () => {
   useEffect(() => {
     // set up logic ot hide/show desktop menu based on the window width
     const rems = breakpoints.desktop.replace('rem', '')
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+    const fontSize = parseFloat(
+      getComputedStyle(document.documentElement).fontSize
+    )
     const desktopWidth = rems * fontSize
 
     const handleResize = debounce(() => {
@@ -79,31 +81,21 @@ const DesktopMenu = () => {
             <ul>
               <Spaced right="xxl">
                 <MenuLinkWrap>
-                  <MenuLink
-                    to="/"
-                    rel="home"
-                    getProps={isActive}
-                  >
+                  <MenuLink to="/" rel="home" getProps={isActive}>
                     <MenuLinkText order="body" element="span">
                       Home
                     </MenuLinkText>
                   </MenuLink>
                 </MenuLinkWrap>
                 <MenuLinkWrap>
-                  <MenuLink
-                    to="/blog"
-                    getProps={isActive}
-                  >
+                  <MenuLink to="/blog" getProps={isActive}>
                     <MenuLinkText order="body" element="span">
                       Articles
                     </MenuLinkText>
                   </MenuLink>
                 </MenuLinkWrap>
                 <MenuLinkWrap>
-                  <MenuLink
-                    to="/about"
-                    getProps={isActive}
-                  >
+                  <MenuLink to="/about" getProps={isActive}>
                     <MenuLinkText order="body" element="span">
                       About
                     </MenuLinkText>
@@ -115,9 +107,7 @@ const DesktopMenu = () => {
         </section>
         <SiteTools aria-labelledby="site-tools-label">
           <ScreenReaderText>
-            <h3 id="site-tools-label">
-              Site Tools
-            </h3>
+            <h3 id="site-tools-label">Site Tools</h3>
           </ScreenReaderText>
           <Spaced left="xl">
             <ThemeToggleButton
@@ -129,14 +119,14 @@ const DesktopMenu = () => {
                 Change theme to {themeName === 'light' ? 'dark' : 'light'}
               </ScreenReaderText>
               <Tippy
-                content={`Change theme to ${themeName === 'light' ? 'dark' : 'light'}`}
+                content={`Change theme to ${
+                  themeName === 'light' ? 'dark' : 'light'
+                }`}
                 placement="bottom"
                 animation="shift-away"
                 theme="jh"
               >
-                <span>
-                {themeName === 'light' ? <Sun/> : <Moon/>}
-                </span>
+                <span>{themeName === 'light' ? <Sun /> : <Moon />}</span>
               </Tippy>
             </ThemeToggleButton>
             <SubscribeButton

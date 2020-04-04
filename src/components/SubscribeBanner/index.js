@@ -28,7 +28,9 @@ const SubscribeBanner = () => {
   const inputRef = useRef()
 
   useEffect(() => {
-    const subscribeBannerDismissed = localStorage.getItem('subscribe-banner-dismissed')
+    const subscribeBannerDismissed = localStorage.getItem(
+      'subscribe-banner-dismissed'
+    )
     setDismissed(!!subscribeBannerDismissed)
 
     // when the showSubscribe event has been dispatched (for example, from clicking
@@ -51,7 +53,7 @@ const SubscribeBanner = () => {
     event.target.blur()
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     setError(null)
     event.preventDefault()
 
@@ -83,12 +85,17 @@ const SubscribeBanner = () => {
     <AnimatePresence>
       {!dismissed ? (
         <motion.div
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
         >
-          <SubscribeBannerWrap id="subscribe" aria-labelledby="newsletter-label">
+          <SubscribeBannerWrap
+            id="subscribe"
+            aria-labelledby="newsletter-label"
+          >
             <ContentWrap>
               <Padded vertical="3x">
                 <SubscribeContentWrap>
@@ -96,7 +103,12 @@ const SubscribeBanner = () => {
                     <SubscribeCardContent>
                       <Padded vertical="2x" bottom="xxl" horizontal="2x">
                         <div>
-                          <Heading id="newsletter-label" level={4} element="h2" color="textInverse">
+                          <Heading
+                            id="newsletter-label"
+                            level={4}
+                            element="h2"
+                            color="textInverse"
+                          >
                             Subscribe to the newsletter
                           </Heading>
                           <Spaced top="xs">
@@ -115,7 +127,7 @@ const SubscribeBanner = () => {
                       </Padded>
                       <SubscribeForm onSubmit={handleSubmit}>
                         <CloseButton unstyled type="button" onClick={dismiss}>
-                          <X/>
+                          <X />
                           <ScreenReaderText>
                             Dismiss newsletter subscription form
                           </ScreenReaderText>
@@ -123,8 +135,12 @@ const SubscribeBanner = () => {
                         <Padded top="4x" bottom="3x" horizontal="2x">
                           <div>
                             <div>
-                              <label htmlFor="email" className="visually-hidden">
-                                Enter your email address to subscribe to newsletter
+                              <label
+                                htmlFor="email"
+                                className="visually-hidden"
+                              >
+                                Enter your email address to subscribe to
+                                newsletter
                               </label>
                               <SubscribeInput
                                 id="email"
@@ -137,15 +153,22 @@ const SubscribeBanner = () => {
                             <AnimatePresence>
                               {error && (
                                 <motion.div
-                                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                                  initial={
+                                    typeof window !== 'undefined'
+                                      ? { opacity: 0, y: 50 }
+                                      : false
+                                  }
                                   animate={{ opacity: 1, y: 0 }}
                                   exit={{ opacity: 0, y: 50 }}
-                                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                                  transition={{
+                                    type: 'spring',
+                                    stiffness: 50,
+                                    mass: 0.1,
+                                    delay: 0.1
+                                  }}
                                 >
                                   <Spaced top="m">
-                                    <Alert>
-                                      {error}
-                                    </Alert>
+                                    <Alert>{error}</Alert>
                                   </Spaced>
                                 </motion.div>
                               )}
@@ -153,10 +176,19 @@ const SubscribeBanner = () => {
                             <AnimatePresence>
                               {success && (
                                 <motion.div
-                                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                                  initial={
+                                    typeof window !== 'undefined'
+                                      ? { opacity: 0, y: 50 }
+                                      : false
+                                  }
                                   animate={{ opacity: 1, y: 0 }}
                                   exit={{ opacity: 0, y: 50 }}
-                                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                                  transition={{
+                                    type: 'spring',
+                                    stiffness: 50,
+                                    mass: 0.1,
+                                    delay: 0.1
+                                  }}
                                 >
                                   <Spaced top="m">
                                     <Alert order="info">

@@ -21,24 +21,31 @@ const childVariants = {
   }
 }
 
-const Articles = ({ data: { allMdx: { edges: posts } } }) => (
+const Articles = ({
+  data: {
+    allMdx: { edges: posts }
+  }
+}) => (
   <ArticlesWrap animate="mounted" variants={variants}>
-    {posts && posts.map(({ node: post }, index) => (
-      <BlogExcerptWrap
-        key={post.id}
-        variants={childVariants}
-        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
-      >
-        <BlogExcerpt
-          index={index}
-          link={post.fields.slug}
-          svg={post.frontmatter.featuredimage.fields.markup}
-          date={new Date(post.frontmatter.date)}
-          title={post.frontmatter.title}
-          excerpt={post.excerpt}
-        />
-      </BlogExcerptWrap>
-    ))}
+    {posts &&
+      posts.map(({ node: post }, index) => (
+        <BlogExcerptWrap
+          key={post.id}
+          variants={childVariants}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
+        >
+          <BlogExcerpt
+            index={index}
+            link={post.fields.slug}
+            svg={post.frontmatter.featuredimage.fields.markup}
+            date={new Date(post.frontmatter.date)}
+            title={post.frontmatter.title}
+            excerpt={post.excerpt}
+          />
+        </BlogExcerptWrap>
+      ))}
   </ArticlesWrap>
 )
 
@@ -99,6 +106,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <Articles data={data} count={count}/>}
+    render={(data, count) => <Articles data={data} count={count} />}
   />
 )

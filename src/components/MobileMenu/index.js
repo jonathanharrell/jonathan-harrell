@@ -45,7 +45,9 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
     // set up logic ot hide/show mobile menu based on the window width
     const rems = breakpoints.desktop.replace('rem', '')
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+    const fontSize = parseFloat(
+      getComputedStyle(document.documentElement).fontSize
+    )
     const desktopWidth = rems * fontSize
 
     const handleResize = debounce(() => {
@@ -163,7 +165,11 @@ const MobileMenu = ({ handleExpandedChange }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
-            style={{ position: 'fixed', top: 'calc(1rem - 5px)', right: '1rem' }}
+            style={{
+              position: 'fixed',
+              top: 'calc(1rem - 5px)',
+              right: '1rem'
+            }}
           >
             <Menu>
               <Padded top="4x" bottom="2x">
@@ -177,14 +183,18 @@ const MobileMenu = ({ handleExpandedChange }) => {
                       </ScreenReaderText>
                       <CloseButton ref={closeButtonRef} onClick={close}>
                         <ScreenReaderText>Close Menu</ScreenReaderText>
-                        <X/>
+                        <X />
                       </CloseButton>
                     </MenuHeader>
                     <Spaced vertical="3x">
                       <section aria-labelledby="site-links-label">
                         <h3>
-                          <ScreenReaderText id="site-links-label">Site Links</ScreenReaderText>
-                          <Text order="meta" aria-hidden>Links</Text>
+                          <ScreenReaderText id="site-links-label">
+                            Site Links
+                          </ScreenReaderText>
+                          <Text order="meta" aria-hidden>
+                            Links
+                          </Text>
                         </h3>
                         <nav role="navigation">
                           <ul>
@@ -202,20 +212,14 @@ const MobileMenu = ({ handleExpandedChange }) => {
                                 </MenuLink>
                               </MenuLinkWrap>
                               <MenuLinkWrap>
-                                <MenuLink
-                                  to="/blog"
-                                  getProps={isActive}
-                                >
+                                <MenuLink to="/blog" getProps={isActive}>
                                   <Heading level={1} element="span">
                                     Articles
                                   </Heading>
                                 </MenuLink>
                               </MenuLinkWrap>
                               <MenuLinkWrap>
-                                <MenuLink
-                                  to="/about"
-                                  getProps={isActive}
-                                >
+                                <MenuLink to="/about" getProps={isActive}>
                                   <Heading level={1} element="span">
                                     About
                                   </Heading>
@@ -227,10 +231,10 @@ const MobileMenu = ({ handleExpandedChange }) => {
                       </section>
                       <section aria-labelledby="theme-settings-label">
                         <h3 id="theme-settings-label">
-                          <ScreenReaderText>
-                            Theme Settings
-                          </ScreenReaderText>
-                          <Text order="meta" aria-hidden>Change Theme</Text>
+                          <ScreenReaderText>Theme Settings</ScreenReaderText>
+                          <Text order="meta" aria-hidden>
+                            Change Theme
+                          </Text>
                         </h3>
                         <Spaced top="s">
                           <ThemeOptions>
@@ -287,12 +291,8 @@ const MobileMenu = ({ handleExpandedChange }) => {
             <MenuLink to="/" rel="home">
               Home
             </MenuLink>
-            <MenuLink to="/blog">
-              Articles
-            </MenuLink>
-            <MenuLink to="/about">
-              About
-            </MenuLink>
+            <MenuLink to="/blog">Articles</MenuLink>
+            <MenuLink to="/about">About</MenuLink>
           </Spaced>
         </nav>
       </noscript>

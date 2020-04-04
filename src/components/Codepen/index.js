@@ -20,20 +20,14 @@ const Codepen = ({ id, title, thumbnailUrl }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <ScreenReaderText>
-          Go to experiment
-        </ScreenReaderText>
+        <ScreenReaderText>Go to experiment</ScreenReaderText>
       </CodepenLink>
       <CodepenFigure>
-        <CodepenImage src={thumbnailUrl} alt=""/>
+        <CodepenImage src={thumbnailUrl} alt="" />
       </CodepenFigure>
       <Padded vertical="2x" horizontal="xl">
         <div>
-          <Heading
-            level={5}
-            id={`${kebabCase(title)}-label`}
-            element="h2"
-          >
+          <Heading level={5} id={`${kebabCase(title)}-label`} element="h2">
             {title}
           </Heading>
           <Spaced top="xs">

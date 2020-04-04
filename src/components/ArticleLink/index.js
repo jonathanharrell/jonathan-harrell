@@ -11,7 +11,9 @@ import { ArticleLinkFigure, ArticleLinkLink, ArticleLinkWrap } from './styles'
 
 const ArticleLink = ({ title }) => {
   // we need to grab all articles and then filter by the title prop
-  const { allMdx: { edges } } = useStaticQuery(graphql`
+  const {
+    allMdx: { edges }
+  } = useStaticQuery(graphql`
     query ArticleLinksQuery {
       allMdx(
         sort: { order: DESC, fields: [frontmatter___date] }
@@ -39,7 +41,9 @@ const ArticleLink = ({ title }) => {
     }
   `)
 
-  const [{ node: article }] = edges.filter(edge => edge.node.frontmatter.title === title)
+  const [{ node: article }] = edges.filter(
+    edge => edge.node.frontmatter.title === title
+  )
   const svg = article.frontmatter.featuredimage.fields.markup
 
   return article ? (
@@ -50,18 +54,14 @@ const ArticleLink = ({ title }) => {
         element="article"
       >
         <ArticleLinkLink href={article.fields.slug}>
-          <ScreenReaderText>
-            Go to article
-          </ScreenReaderText>
+          <ScreenReaderText>Go to article</ScreenReaderText>
         </ArticleLinkLink>
-        <ArticleLinkFigure dangerouslySetInnerHTML={{ __html: svg || undefined }}/>
+        <ArticleLinkFigure
+          dangerouslySetInnerHTML={{ __html: svg || undefined }}
+        />
         <Padded vertical="2x" horizontal="xl">
           <div>
-            <Heading
-              level={5}
-              id={`${kebabCase(title)}-label`}
-              element="h2"
-            >
+            <Heading level={5} id={`${kebabCase(title)}-label`} element="h2">
               {article.frontmatter.title}
             </Heading>
             <Spaced top="xs">

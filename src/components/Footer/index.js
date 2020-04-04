@@ -16,9 +16,7 @@ const Footer = () => (
   <FooterWrap aria-label="Site Footer">
     <Padded top="xl" bottom="3x">
       <FooterContentWrap>
-        <ScreenReaderText element="h2">
-          Site Footer
-        </ScreenReaderText>
+        <ScreenReaderText element="h2">Site Footer</ScreenReaderText>
         <Link to="/" aria-label="Home page" rel="home">
           &copy; 2017–{currentYear} Jonathan Harrell
         </Link>
@@ -34,10 +32,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  Twitter
-                </ScreenReaderText>
-                <Twitter/>
+                <ScreenReaderText>Twitter</ScreenReaderText>
+                <Twitter />
               </Link>
               <Link
                 as="a"
@@ -45,10 +41,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  Github
-                </ScreenReaderText>
-                <Github/>
+                <ScreenReaderText>Github</ScreenReaderText>
+                <Github />
               </Link>
               <Link
                 as="a"
@@ -56,10 +50,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  Codepen
-                </ScreenReaderText>
-                <Codepen/>
+                <ScreenReaderText>Codepen</ScreenReaderText>
+                <Codepen />
               </Link>
               <Link
                 as="a"
@@ -67,10 +59,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  LinkedIn
-                </ScreenReaderText>
-                <LinkedIn/>
+                <ScreenReaderText>LinkedIn</ScreenReaderText>
+                <LinkedIn />
               </Link>
               <Link
                 as="a"
@@ -78,10 +68,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  Instagram
-                </ScreenReaderText>
-                <Instagram/>
+                <ScreenReaderText>Instagram</ScreenReaderText>
+                <Instagram />
               </Link>
               <Link
                 as="a"
@@ -89,10 +77,8 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ScreenReaderText>
-                  RSS
-                </ScreenReaderText>
-                <Rss/>
+                <ScreenReaderText>RSS</ScreenReaderText>
+                <Rss />
               </Link>
             </Spaced>
           </nav>

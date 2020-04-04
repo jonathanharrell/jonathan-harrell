@@ -17,11 +17,7 @@ export default {
 export const Basic = () => {
   return (
     <ThemeContext.Consumer>
-      {({ theme }) => (
-        <Code theme={theme}>
-          This is code
-        </Code>
-      )}
+      {({ theme }) => <Code theme={theme}>This is code</Code>}
     </ThemeContext.Consumer>
   )
 }

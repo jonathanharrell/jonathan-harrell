@@ -11,7 +11,14 @@ import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import Seo from '../../components/seo'
 import website from '../../../website-config'
-import { ArticlesWrap, BlogExcerpt, BlogExcerptWrap, Header, Links, TagIndexWrap } from './styles'
+import {
+  ArticlesWrap,
+  BlogExcerpt,
+  BlogExcerptWrap,
+  Header,
+  Links,
+  TagIndexWrap
+} from './styles'
 
 const variants = {
   mounted: {
@@ -31,7 +38,13 @@ const childVariants = {
   }
 }
 
-const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: { tag } }) => {
+const TagRoute = ({
+  location,
+  data: {
+    allMdx: { edges: posts }
+  },
+  pageContext: { tag }
+}) => {
   const tagHeading = `${posts.length} post${
     posts.length === 1 ? '' : 's'
   } tagged with “${tag}”`
@@ -49,30 +62,50 @@ const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: {
             <Padded vertical="3x">
               <div>
                 <motion.div
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
-                  <Heading level={1}>
-                    {tagHeading}
-                  </Heading>
+                  <Heading level={1}>{tagHeading}</Heading>
                 </motion.div>
                 <Spaced top="m">
                   <Links>
                     <Spaced horizontal="m">
                       <motion.div
-                        initial={typeof window !== 'undefined' ? { opacity: 0, y: 25 } : false}
+                        initial={
+                          typeof window !== 'undefined'
+                            ? { opacity: 0, y: 25 }
+                            : false
+                        }
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 50,
+                          mass: 0.1,
+                          delay: 0.1
+                        }}
                       >
                         <Link to="/blog/" arrow={true} arrowPosition="left">
                           See all articles
                         </Link>
                       </motion.div>
                       <motion.div
-                        initial={typeof window !== 'undefined' ? { opacity: 0, y: 25 } : false}
+                        initial={
+                          typeof window !== 'undefined'
+                            ? { opacity: 0, y: 25 }
+                            : false
+                        }
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 50,
+                          mass: 0.1,
+                          delay: 0.2
+                        }}
                       >
                         <Link to="/tags/" arrow={true} arrowPosition="right">
                           Browse all tags
@@ -85,10 +118,7 @@ const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: {
             </Padded>
           </ContentWrap>
         </Header>
-        <section
-          id="articles"
-          aria-labelledby="articles-label"
-        >
+        <section id="articles" aria-labelledby="articles-label">
           <Spaced bottom="5x">
             <ContentWrap>
               <ScreenReaderText>
@@ -97,22 +127,27 @@ const TagRoute = ({ location, data: { allMdx: { edges: posts } }, pageContext: {
                 </Heading>
               </ScreenReaderText>
               <ArticlesWrap animate="mounted" variants={variants}>
-                {posts && posts.map(({ node: post }, index) => (
-                  <BlogExcerptWrap
-                    key={post.id}
-                    variants={childVariants}
-                    initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
-                  >
-                    <BlogExcerpt
-                      index={index}
-                      link={post.fields.slug}
-                      svg={post.frontmatter.featuredimage.fields.markup}
-                      date={new Date(post.frontmatter.date)}
-                      title={post.frontmatter.title}
-                      excerpt={post.excerpt}
-                    />
-                  </BlogExcerptWrap>
-                ))}
+                {posts &&
+                  posts.map(({ node: post }, index) => (
+                    <BlogExcerptWrap
+                      key={post.id}
+                      variants={childVariants}
+                      initial={
+                        typeof window !== 'undefined'
+                          ? { opacity: 0, y: 50 }
+                          : false
+                      }
+                    >
+                      <BlogExcerpt
+                        index={index}
+                        link={post.fields.slug}
+                        svg={post.frontmatter.featuredimage.fields.markup}
+                        date={new Date(post.frontmatter.date)}
+                        title={post.frontmatter.title}
+                        excerpt={post.excerpt}
+                      />
+                    </BlogExcerptWrap>
+                  ))}
               </ArticlesWrap>
             </ContentWrap>
           </Spaced>
@@ -126,24 +161,26 @@ TagRoute.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.shape({
-        node: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          excerpt: PropTypes.string.isRequired,
-          fields: PropTypes.shape({
-            slug: PropTypes.string.isRequired
-          }).isRequired,
-          frontmatter: PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            date: PropTypes.string.isRequired,
-            featuredimage: PropTypes.shape({
-              fields: PropTypes.shape({
-                markup: PropTypes.string.isRequired
-              })
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            excerpt: PropTypes.string.isRequired,
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired
+            }).isRequired,
+            frontmatter: PropTypes.shape({
+              title: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              featuredimage: PropTypes.shape({
+                fields: PropTypes.shape({
+                  markup: PropTypes.string.isRequired
+                })
+              }).isRequired
             }).isRequired
           }).isRequired
-        }).isRequired
-      })).isRequired
+        })
+      ).isRequired
     }).isRequired
   }).isRequired,
   pageContext: PropTypes.shape({

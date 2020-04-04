@@ -5,7 +5,13 @@ import Spaced from '../../jh-ui/Spaced'
 import ContentWrap from '../ContentWrap'
 import MobileMenu from '../MobileMenu/'
 import DesktopMenu from '../DesktopMenu'
-import { HeaderContentWrap, HeaderWrap, HomePageLink, Icon, SiteTitle } from './styles'
+import {
+  HeaderContentWrap,
+  HeaderWrap,
+  HomePageLink,
+  Icon,
+  SiteTitle
+} from './styles'
 
 const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => (
   <HeaderWrap aria-label="Site Header">
@@ -24,8 +30,8 @@ const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => (
               Jonathan Harrell
             </HomePageLink>
           </SiteTitle>
-          <MobileMenu handleExpandedChange={handleMobileMenuExpandedChange}/>
-          <DesktopMenu/>
+          <MobileMenu handleExpandedChange={handleMobileMenuExpandedChange} />
+          <DesktopMenu />
         </HeaderContentWrap>
       </ContentWrap>
     </Padded>

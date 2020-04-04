@@ -18,7 +18,11 @@ export default {
 export const Basic = () => {
   const all = select('All', ['', ...Object.keys(spacing)], undefined)
   const vertical = select('Vertical', ['', ...Object.keys(spacing)], undefined)
-  const horizontal = select('Horizontal', ['', ...Object.keys(spacing)], undefined)
+  const horizontal = select(
+    'Horizontal',
+    ['', ...Object.keys(spacing)],
+    undefined
+  )
   const top = select('Top', ['', ...Object.keys(spacing)], undefined)
   const right = select('Right', ['', ...Object.keys(spacing)], undefined)
   const bottom = select('Bottom', ['', ...Object.keys(spacing)], undefined)
@@ -37,8 +41,20 @@ export const Basic = () => {
           bottom={bottom}
           left={left}
         >
-          <div style={{ width: '200px', height: '100px', backgroundColor: 'lightgray' }}/>
-          <div style={{ width: '200px', height: '100px', backgroundColor: 'lightgray' }}/>
+          <div
+            style={{
+              width: '200px',
+              height: '100px',
+              backgroundColor: 'lightgray'
+            }}
+          />
+          <div
+            style={{
+              width: '200px',
+              height: '100px',
+              backgroundColor: 'lightgray'
+            }}
+          />
         </Spaced>
       )}
     </ThemeContext.Consumer>

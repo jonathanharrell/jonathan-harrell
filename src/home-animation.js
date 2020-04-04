@@ -47,8 +47,8 @@ const init = () => {
 
     for (let i = 0; i <= verticesAmount; i++) {
       let vector = new THREE.Vector3()
-      vector.x = Math.cos(i / verticesAmount * Math.PI * 2)
-      vector.z = Math.sin(i / verticesAmount * Math.PI * 2)
+      vector.x = Math.cos((i / verticesAmount) * Math.PI * 2)
+      vector.z = Math.sin((i / verticesAmount) * Math.PI * 2)
       vector._o = vector.clone()
       geometry.vertices.push(vector)
     }
@@ -66,11 +66,18 @@ const init = () => {
         line.geometry.y = 0
       }
 
-      const radiusHeight = Math.sqrt(line.geometry.y * (2 * radius - line.geometry.y))
+      const radiusHeight = Math.sqrt(
+        line.geometry.y * (2 * radius - line.geometry.y)
+      )
 
       for (let i = 0; i <= verticesAmount; i++) {
         const vector = line.geometry.vertices[i]
-        const ratio = noise.simplex3(vector.x * 0.009, vector.z * 0.009 + a * 0.0006, line.geometry.y * 0.009) * 15
+        const ratio =
+          noise.simplex3(
+            vector.x * 0.009,
+            vector.z * 0.009 + a * 0.0006,
+            line.geometry.y * 0.009
+          ) * 15
         vector.copy(vector._o)
         vector.multiplyScalar(radiusHeight + ratio)
         vector.y = line.geometry.y - radius
@@ -102,8 +109,8 @@ const init = () => {
   const initialYRotation = sphere.rotation.y
 
   const onMouseMove = event => {
-    mouse.x = (event.clientX / window.innerWidth) - 0.5
-    mouse.y = (event.clientY / window.innerHeight) - 0.5
+    mouse.x = event.clientX / window.innerWidth - 0.5
+    mouse.y = event.clientY / window.innerHeight - 0.5
 
     gsap.to(sphere.rotation, 2, {
       x: initialXRotation + mouse.y,

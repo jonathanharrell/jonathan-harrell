@@ -78,7 +78,9 @@ export const BlogPostTemplate = ({
   }, [])
 
   useLayoutEffect(() => {
-    const typeMateInstance = new TypeMate(articleWrap.current, { selector: 'h1, h2, h3, h4, h5, h6, p' })
+    const typeMateInstance = new TypeMate(articleWrap.current, {
+      selector: 'h1, h2, h3, h4, h5, h6, p'
+    })
     typeMateInstance.apply()
   }, [])
 
@@ -93,7 +95,7 @@ export const BlogPostTemplate = ({
         article
       />
       <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
-        <BodyClassName className={`header-background-gray`}/>
+        <BodyClassName className={`header-background-gray`} />
         <ProgressBarWrap>
           <motion.div
             style={{
@@ -112,7 +114,11 @@ export const BlogPostTemplate = ({
                 <Spaced bottom="3x">
                   <Figure
                     dangerouslySetInnerHTML={{ __html: image.fields.markup }}
-                    initial={typeof window !== 'undefined' ? { opacity: 0, scale: 1 } : false}
+                    initial={
+                      typeof window !== 'undefined'
+                        ? { opacity: 0, scale: 1 }
+                        : false
+                    }
                     animate={{ opacity: 1, scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
                   />
@@ -120,7 +126,11 @@ export const BlogPostTemplate = ({
               )}
               <ArticleHeaderContent>
                 <motion.div
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
@@ -130,10 +140,7 @@ export const BlogPostTemplate = ({
                         <Spaced right="xxl">
                           <div>
                             <ScreenReaderText>
-                              <Heading
-                                level={2}
-                                id="article-tags-label"
-                              >
+                              <Heading level={2} id="article-tags-label">
                                 Article Tags
                               </Heading>
                             </ScreenReaderText>
@@ -149,7 +156,11 @@ export const BlogPostTemplate = ({
                                     </Text>
                                   </TagLink>
                                   {index < tags.length - 1 && (
-                                    <Text order="meta" element="span" aria-hidden>
+                                    <Text
+                                      order="meta"
+                                      element="span"
+                                      aria-hidden
+                                    >
                                       &nbsp;•&nbsp;
                                     </Text>
                                   )}
@@ -161,7 +172,9 @@ export const BlogPostTemplate = ({
                       )}
                       <Spaced right="xxl">
                         <Text order="meta" element="span">
-                          <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                          <ScreenReaderText>
+                            Article published date&nbsp;
+                          </ScreenReaderText>
                           {date}
                         </Text>
                       </Spaced>
@@ -172,9 +185,18 @@ export const BlogPostTemplate = ({
                   </Spaced>
                 </motion.div>
                 <motion.div
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 50,
+                    mass: 0.1,
+                    delay: 0.1
+                  }}
                 >
                   <Spaced bottom="m">
                     <Heading level={1} id="article-title">
@@ -184,9 +206,18 @@ export const BlogPostTemplate = ({
                 </motion.div>
                 {description && (
                   <motion.div
-                    initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                    initial={
+                      typeof window !== 'undefined'
+                        ? { opacity: 0, y: 50 }
+                        : false
+                    }
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 50,
+                      mass: 0.1,
+                      delay: 0.2
+                    }}
                   >
                     <Text order="body" color="textLighter" element="p">
                       {description}
@@ -199,12 +230,13 @@ export const BlogPostTemplate = ({
         </ArticleHeader>
         <Mask>
           <clipPath id="wave" clipPathUnits="objectBoundingBox">
-            <path
-              d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z"/>
+            <path d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z" />
           </clipPath>
         </Mask>
         <motion.div
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
         >
@@ -212,42 +244,41 @@ export const BlogPostTemplate = ({
             <ContentWrap>
               <ArticleContentWrap>
                 <ArticleContent ref={articleContent}>
-                  <MDXRenderer>
-                    {content}
-                  </MDXRenderer>
+                  <MDXRenderer>{content}</MDXRenderer>
                   <Spaced top="4x">
                     <ArticleLinksWrap>
                       {hasNavigatorShare && (
                         <span>
-                        <Button unstyled={true} onClick={shareArticle}>
-                          <ShareLink element="span">
-                            <Spaced right="xs">
-                              <Share/>
-                            </Spaced>
-                            Share this article
-                          </ShareLink>
-                        </Button>
-                      </span>
+                          <Button unstyled={true} onClick={shareArticle}>
+                            <ShareLink element="span">
+                              <Spaced right="xs">
+                                <Share />
+                              </Spaced>
+                              Share this article
+                            </ShareLink>
+                          </Button>
+                        </span>
                       )}
-                      {(!hasNavigatorShare && location.href) && (
+                      {!hasNavigatorShare && location.href && (
                         <span>
-                        <ShareLink
-                          href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Spaced right="xs">
-                            <Twitter/>
+                          <ShareLink
+                            href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Spaced right="xs">
+                              <Twitter />
+                            </Spaced>
+                            Discuss on Twitter
+                          </ShareLink>
+                        </span>
+                      )}
+                      {(hasNavigatorShare || location.href) &&
+                        processedGithubUrl && (
+                          <Spaced horizontal="s">
+                            <Divider element="span">•</Divider>
                           </Spaced>
-                          Discuss on Twitter
-                        </ShareLink>
-                      </span>
-                      )}
-                      {((hasNavigatorShare || location.href) && processedGithubUrl) && (
-                        <Spaced horizontal="s">
-                          <Divider element="span">•</Divider>
-                        </Spaced>
-                      )}
+                        )}
                       {processedGithubUrl && (
                         <ShareLink
                           href={processedGithubUrl}
@@ -255,7 +286,7 @@ export const BlogPostTemplate = ({
                           rel="noopener noreferrer"
                         >
                           <Spaced right="xs">
-                            <Github/>
+                            <Github />
                           </Spaced>
                           Edit on Github
                         </ShareLink>
@@ -268,7 +299,9 @@ export const BlogPostTemplate = ({
           </Padded>
         </motion.div>
         <motion.div
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
         >
@@ -280,7 +313,7 @@ export const BlogPostTemplate = ({
                     More Articles
                   </Heading>
                 </Spaced>
-                <RecentArticles currentPostId={id}/>
+                <RecentArticles currentPostId={id} />
               </ContentWrap>
             </Padded>
           </RecentArticlesWrap>

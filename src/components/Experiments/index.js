@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ExperimentExcerptElevated, ExperimentExcerptWrap, ExperimentsWrap } from './styles'
+import {
+  ExperimentExcerptElevated,
+  ExperimentExcerptWrap,
+  ExperimentsWrap
+} from './styles'
 
 const variants = {
   mounted: {

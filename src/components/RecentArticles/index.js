@@ -21,26 +21,35 @@ const childVariants = {
   }
 }
 
-const RecentArticles = ({ data: { allMdx: { edges: posts } }, currentPostId }) => {
-  if (currentPostId) posts = posts.filter(post => post.node.id !== currentPostId)
+const RecentArticles = ({
+  data: {
+    allMdx: { edges: posts }
+  },
+  currentPostId
+}) => {
+  if (currentPostId)
+    posts = posts.filter(post => post.node.id !== currentPostId)
   posts = posts.slice(0, 4)
 
   return (
     <RecentArticlesWrap animate="mounted" variants={variants}>
-      {posts && posts.map(({ node: post }) => (
-        <BlogExcerptWrap
-          key={post.id}
-          variants={childVariants}
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
-        >
-          <BlogExcerpt
-            link={post.fields.slug}
-            date={new Date(post.frontmatter.date)}
-            title={post.frontmatter.title}
-            excerpt={post.excerpt}
-          />
-        </BlogExcerptWrap>
-      ))}
+      {posts &&
+        posts.map(({ node: post }) => (
+          <BlogExcerptWrap
+            key={post.id}
+            variants={childVariants}
+            initial={
+              typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+            }
+          >
+            <BlogExcerpt
+              link={post.fields.slug}
+              date={new Date(post.frontmatter.date)}
+              title={post.frontmatter.title}
+              excerpt={post.excerpt}
+            />
+          </BlogExcerptWrap>
+        ))}
     </RecentArticlesWrap>
   )
 }
@@ -94,6 +103,8 @@ export default ({ currentPostId }) => (
         }
       }
     `}
-    render={(data) => <RecentArticles data={data} currentPostId={currentPostId}/>}
+    render={data => (
+      <RecentArticles data={data} currentPostId={currentPostId} />
+    )}
   />
 )

@@ -11,7 +11,7 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
   return (
     <div style={previewStyle}>
       {imageAsset && (
-        <img src={imageAsset} alt="" style={{ maxWidth: '100%' }}/>
+        <img src={imageAsset} alt="" style={{ maxWidth: '100%' }} />
       )}
       <h1>{entry.getIn(['data', 'title'])}</h1>
       <p>{entry.getIn(['data', 'bio'])}</p>
@@ -20,7 +20,8 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
         <ul>
           {projects.map((project, index) => (
             <li key={index}>
-              <strong>{project.toJSON().name}</strong>: {project.toJSON().description}
+              <strong>{project.toJSON().name}</strong>:{' '}
+              {project.toJSON().description}
             </li>
           ))}
         </ul>
@@ -30,7 +31,8 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
         <dl>
           {usages.map((usage, index) => (
             <li key={index}>
-              <strong>{usage.toJSON().name}</strong>: <a href={usage.toJSON().link}>{usage.toJSON().description}</a>
+              <strong>{usage.toJSON().name}</strong>:{' '}
+              <a href={usage.toJSON().link}>{usage.toJSON().description}</a>
             </li>
           ))}
         </dl>

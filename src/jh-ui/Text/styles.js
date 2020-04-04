@@ -29,8 +29,8 @@ export const Root = styled.p`
   font-family: ${({ theme }) => theme.fonts.sansSerif};
   font-size: ${({ theme, order }) => getFontSize(theme, order, 'mobile')};
   line-height: 1.5;
-  font-weight: ${({ order }) => order === 'meta' ? 500 : 400};
-  ${({ order }) => order === 'meta' ? 'text-transform: uppercase' : null};
+  font-weight: ${({ order }) => (order === 'meta' ? 500 : 400)};
+  ${({ order }) => (order === 'meta' ? 'text-transform: uppercase' : null)};
   color: ${({ order, color }) => getColor({ order, color })};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {

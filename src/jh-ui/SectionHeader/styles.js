@@ -8,7 +8,12 @@ export const SectionHeaderWrap = styled.header`
     justify-content: space-between;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-bottom: ${({ theme }) => theme.spacing.xs};
 
     @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {

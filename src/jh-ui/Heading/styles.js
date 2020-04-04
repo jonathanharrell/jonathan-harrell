@@ -72,7 +72,7 @@ export const Root = styled.h1`
   font-size: ${({ theme, level }) => getFontSize(theme, level, 'mobile')};
   line-height: ${({ level }) => getLineHeight(level)};
   font-weight: ${({ level }) => getFontWeight(level)} !important;
-  ${({ level }) => level === 6 ? 'text-transform: uppercase' : null};
+  ${({ level }) => (level === 6 ? 'text-transform: uppercase' : null)};
   color: ${({ color }) => getColor({ color })};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {

@@ -44,10 +44,13 @@ export const HomePageLink = styled(Link)`
 export const SiteTitle = styled(Heading)`
   font-size: 1.25rem;
   transition: opacity 0.2s ease-out;
-  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? `
+  ${({ mobileMenuExpanded }) =>
+    mobileMenuExpanded
+      ? `
     opacity: 0.5;
     pointer-events: none;
-  ` : ''}
+  `
+      : ''}
 `
 
 export const Icon = styled.span`

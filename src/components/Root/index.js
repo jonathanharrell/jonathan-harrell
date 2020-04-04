@@ -25,9 +25,7 @@ const Root = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, themeName, setTheme }}>
-      <ErrorBoundary>
-        {children}
-      </ErrorBoundary>
+      <ErrorBoundary>{children}</ErrorBoundary>
     </ThemeContext.Provider>
   )
 }

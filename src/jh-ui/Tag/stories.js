@@ -17,11 +17,7 @@ export default {
 export const Basic = () => {
   return (
     <ThemeContext.Consumer>
-      {({ theme }) => (
-        <Tag theme={theme}>
-          Tag
-        </Tag>
-      )}
+      {({ theme }) => <Tag theme={theme}>Tag</Tag>}
     </ThemeContext.Consumer>
   )
 }

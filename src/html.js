@@ -58,33 +58,38 @@ export default function HTML(props) {
   `
 
   return (
-    <html {...props.htmlAttributes}>
-    <head>
-      <meta charSet="utf-8"/>
-      <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
-      {props.headComponents}
-      <style dangerouslySetInnerHTML={{ __html: style }}/>
-    </head>
-    <body className="no-js" {...props.bodyAttributes}>
-    <script dangerouslySetInnerHTML={{ __html: jsScript }}/>
-    <script dangerouslySetInnerHTML={{ __html: themeScript }}/>
-    {props.preBodyComponents}
-    <noscript key="noscript" id="gatsby-noscript" className="noscript">
-      This site works best with JavaScript enabled.
-    </noscript>
-    <div id="alert" role="region" aria-live="assertive" className="screen-reader-text"/>
-    <div
-      key={`body`}
-      id="___gatsby"
-      dangerouslySetInnerHTML={{ __html: props.body }}
-    />
-    <div id="modal"/>
-    {props.postBodyComponents}
-    </body>
+    <html {...props.htmlAttributes} lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        {props.headComponents}
+        <style dangerouslySetInnerHTML={{ __html: style }} />
+      </head>
+      <body className="no-js" {...props.bodyAttributes}>
+        <script dangerouslySetInnerHTML={{ __html: jsScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {props.preBodyComponents}
+        <noscript key="noscript" id="gatsby-noscript" className="noscript">
+          This site works best with JavaScript enabled.
+        </noscript>
+        <div
+          id="alert"
+          role="region"
+          aria-live="assertive"
+          className="screen-reader-text"
+        />
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
+        <div id="modal" />
+        {props.postBodyComponents}
+      </body>
     </html>
   )
 }

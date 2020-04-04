@@ -20,7 +20,7 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    Sentry.withScope((scope) => {
+    Sentry.withScope(scope => {
       scope.setExtras(errorInfo)
       const eventId = Sentry.captureException(error)
       this.setState({ eventId })
@@ -35,15 +35,11 @@ export default class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <ThemeProvider theme={theme}>
-          <GlobalStyle withBackground/>
+          <GlobalStyle withBackground />
           <ErrorWrap>
-            <Heading level={1}>
-              Oops! There was an error.
-            </Heading>
+            <Heading level={1}>Oops! There was an error.</Heading>
             <Spaced top="m">
-              <Button onClick={this.handleClick}>
-                Report feedback
-              </Button>
+              <Button onClick={this.handleClick}>Report feedback</Button>
             </Spaced>
           </ErrorWrap>
         </ThemeProvider>

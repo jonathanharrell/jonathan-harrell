@@ -26,9 +26,7 @@ const ExperimentExcerpt = ({ id, date, title, viewsCount, ...props }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <ScreenReaderText>
-          Go to experiment
-        </ScreenReaderText>
+        <ScreenReaderText>Go to experiment</ScreenReaderText>
       </Link>
       <Spaced bottom="m">
         <Text order="meta">
@@ -36,23 +34,18 @@ const ExperimentExcerpt = ({ id, date, title, viewsCount, ...props }) => {
           {formattedDate}
         </Text>
       </Spaced>
-      <Heading
-        level={3}
-        id={`${kebabCase(title)}-label`}
-      >
+      <Heading level={3} id={`${kebabCase(title)}-label`}>
         {title}
       </Heading>
       {viewsCount && (
         <Spaced top="l">
           <ExperimentMeta order="meta">
-            <Eye/>
+            <Eye />
             <Spaced left="xs">
-          <span>
-            <ScreenReaderText>
-              Views count
-            </ScreenReaderText>
-            {viewsCount}
-          </span>
+              <span>
+                <ScreenReaderText>Views count</ScreenReaderText>
+                {viewsCount}
+              </span>
             </Spaced>
           </ExperimentMeta>
         </Spaced>

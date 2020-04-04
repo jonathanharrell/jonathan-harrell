@@ -4,9 +4,7 @@ import { SectionHeaderWrap } from './styles'
 
 const SectionHeader = ({ children, ...props }) => (
   <Spaced bottom="2x">
-    <SectionHeaderWrap {...props}>
-      {children}
-    </SectionHeaderWrap>
+    <SectionHeaderWrap {...props}>{children}</SectionHeaderWrap>
   </Spaced>
 )
 

@@ -35,7 +35,7 @@ export const ArticleHeader = styled.header`
     height: 100%;
     background: var(--gradientGray);
     mix-blend-mode: multiply;
-    content: "";
+    content: '';
   }
 
   ${ContentWrap} {
@@ -154,7 +154,8 @@ export const ArticleContent = styled.div`
   }
 
   .gatsby-highlight {
-    margin: ${({ theme }) => theme.spacing['2x']} -${({ theme }) => theme.spacing.l} ${({ theme }) => theme.spacing['2x']};
+    margin: ${({ theme }) => theme.spacing['2x']} -${({ theme }) =>
+        theme.spacing.l} ${({ theme }) => theme.spacing['2x']};
 
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
       margin-right: -${({ theme }) => theme.spacing.xl};
@@ -170,9 +171,9 @@ export const ArticleContent = styled.div`
       margin: ${({ theme }) => theme.spacing.xxl} 0;
     }
 
-     @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-        margin: ${({ theme }) => theme.spacing['2x']} 0;
-     }
+    @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+      margin: ${({ theme }) => theme.spacing['2x']} 0;
+    }
 
     pre {
       padding: ${({ theme }) => theme.spacing.xl};

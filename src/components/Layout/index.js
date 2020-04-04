@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components'
 import Heading from '../../jh-ui/Heading'
@@ -40,8 +46,8 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Seo/>
-      <GlobalStyle withBackground/>
+      <Seo />
+      <GlobalStyle withBackground />
       <Wrap className="layout">
         <SkipLink element="a" href="#main" onClick={skipToContent}>
           Skip to content
@@ -60,44 +66,47 @@ const Layout = ({ children }) => {
         >
           <MDXProvider
             components={{
-              h1: props => <Heading level={1} {...props}/>,
+              h1: props => <Heading level={1} {...props} />,
               h2: props => (
                 <Spaced top="5x" bottom="m">
-                  <AnchoredHeading {...props}/>
+                  <AnchoredHeading {...props} />
                 </Spaced>
               ),
               h3: props => (
                 <Spaced top="3x" bottom="m">
-                  <Heading level={3} {...props}/>
+                  <Heading level={3} {...props} />
                 </Spaced>
               ),
               h4: props => (
                 <Spaced top="2x" bottom="m">
-                  <Heading level={4} {...props}/>
+                  <Heading level={4} {...props} />
                 </Spaced>
               ),
               h5: props => (
                 <Spaced top="xxl" bottom="m">
-                  <Heading level={5} {...props}/>
+                  <Heading level={5} {...props} />
                 </Spaced>
               ),
               h6: props => (
                 <Spaced vertical="xl">
-                  <Heading level={6} {...props}/>
+                  <Heading level={6} {...props} />
                 </Spaced>
               ),
               p: props => {
-                if (props.children.props && props.children.props.originalType === 'figure') {
+                if (
+                  props.children.props &&
+                  props.children.props.originalType === 'figure'
+                ) {
                   return (
                     <Spaced vertical="2x">
-                      <Figure {...props}/>
+                      <Figure {...props} />
                     </Spaced>
                   )
                 }
 
                 return (
                   <Spaced bottom="m">
-                    <Text {...props}/>
+                    <Text {...props} />
                   </Spaced>
                 )
               },
@@ -113,13 +122,13 @@ const Layout = ({ children }) => {
               ),
               li: props => (
                 <Spaced bottom="xs">
-                  <li {...props}/>
+                  <li {...props} />
                 </Spaced>
               ),
               pre: Pre,
               code: Code,
               inlineCode: InlineCode,
-              a: props => <Link element="a" {...props}/>,
+              a: props => <Link element="a" {...props} />,
               Note,
               Codepen,
               ArticleLink
@@ -128,8 +137,8 @@ const Layout = ({ children }) => {
             {children}
           </MDXProvider>
         </Main>
-        <Footer inert={mobileMenuExpanded}/>
-        <SubscribeBanner inert={mobileMenuExpanded}/>
+        <Footer inert={mobileMenuExpanded} />
+        <SubscribeBanner inert={mobileMenuExpanded} />
       </Wrap>
     </ThemeProvider>
   )

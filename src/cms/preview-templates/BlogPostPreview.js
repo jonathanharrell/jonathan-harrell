@@ -12,7 +12,7 @@ const style = `
 const BlogPostPreview = ({ entry, widgetFor }) => {
   return (
     <div style={previewStyle}>
-      <style dangerouslySetInnerHTML={{ __html: style }}/>
+      <style dangerouslySetInnerHTML={{ __html: style }} />
       <h1>{entry.getIn(['data', 'title'])}</h1>
       {widgetFor('body')}
     </div>
@@ -21,9 +21,9 @@ const BlogPostPreview = ({ entry, widgetFor }) => {
 
 BlogPostPreview.propTypes = {
   entry: PropTypes.shape({
-    getIn: PropTypes.func,
+    getIn: PropTypes.func
   }),
-  widgetFor: PropTypes.func,
+  widgetFor: PropTypes.func
 }
 
 export default BlogPostPreview

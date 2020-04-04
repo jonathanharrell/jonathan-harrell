@@ -22,12 +22,7 @@ export const Basic = () => {
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Heading
-          theme={theme}
-          level={level}
-          color={color}
-          element={element}
-        >
+        <Heading theme={theme} level={level} color={color} element={element}>
           This is some text
         </Heading>
       )}
@@ -44,14 +39,10 @@ export const Multiline = () => {
     <ThemeContext.Consumer>
       {({ theme }) => (
         <div style={{ width: '500px' }}>
-          <Heading
-            theme={theme}
-            level={level}
-            color={color}
-            element={element}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque finibus nunc ac condimentum
-            pellentesque. Sed in sem sed eros ornare feugiat et sit amet ligula.
+          <Heading theme={theme} level={level} color={color} element={element}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque finibus nunc ac condimentum pellentesque. Sed in sem
+            sed eros ornare feugiat et sit amet ligula.
           </Heading>
         </div>
       )}

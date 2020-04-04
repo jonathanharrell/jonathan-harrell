@@ -35,18 +35,29 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
             <Padded vertical="3x">
               <div>
                 <motion.div
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
-                  <Heading level={1}>
-                    {title || 'Articles'}
-                  </Heading>
+                  <Heading level={1}>{title || 'Articles'}</Heading>
                 </motion.div>
                 <motion.div
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 50,
+                    mass: 0.1,
+                    delay: 0.1
+                  }}
                 >
                   <Spaced top="xxl">
                     <ScreenReaderText>
@@ -55,7 +66,9 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                       </Heading>
                     </ScreenReaderText>
                     <ScreenReaderText>
-                      <a href="#articles" onClick={skipToArticles}>Skip to articles</a>
+                      <a href="#articles" onClick={skipToArticles}>
+                        Skip to articles
+                      </a>
                     </ScreenReaderText>
                     {tags && (
                       <section aria-labelledby="tags-label">
@@ -93,7 +106,7 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                   Articles
                 </Heading>
               </ScreenReaderText>
-              <Articles/>
+              <Articles />
             </ContentWrap>
           </Spaced>
         </ArticlesWrap>
@@ -113,16 +126,18 @@ BlogIndexPageTemplate.propTypes = {
   ).isRequired
 }
 
-const BlogIndexPage = ({ location, data: { mdx: post, allMdx: { group: tags } } }) => {
+const BlogIndexPage = ({
+  location,
+  data: {
+    mdx: post,
+    allMdx: { group: tags }
+  }
+}) => {
   const { title } = post.frontmatter
 
   return (
     <Layout>
-      <BlogIndexPageTemplate
-        location={location}
-        title={title}
-        tags={tags}
-      />
+      <BlogIndexPageTemplate location={location} title={title} tags={tags} />
     </Layout>
   )
 }
@@ -151,7 +166,7 @@ export default BlogIndexPage
 
 export const blogPageQuery = graphql`
   query BlogPage {
-    mdx(frontmatter: {templateKey: {eq: "blog-page"}}) {
+    mdx(frontmatter: { templateKey: { eq: "blog-page" } }) {
       frontmatter {
         title
       }

@@ -47,11 +47,14 @@ export const Root = styled.button`
   transition: all 0.2s ${({ theme }) => theme.colors.out};
   cursor: pointer;
 
-  ${({ unstyled, order, size, theme }) => unstyled ? `
+  ${({ unstyled, order, size, theme }) =>
+    unstyled
+      ? `
     padding: 0;
     border: 0;
     background-color: transparent;
-  ` : `
+  `
+      : `
     display: inline-flex;
     align-items: center;
     justify-content: center;

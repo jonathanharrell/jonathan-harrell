@@ -6,9 +6,7 @@ import { Root } from './styles'
 const Card = ({ padding, hover, element, children, ...props }) => (
   <Root as={element} hover={hover} {...props}>
     <Padded all={padding ? 'xxl' : undefined}>
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </Padded>
   </Root>
 )

@@ -92,7 +92,11 @@ export const ThemeOptions = styled.form`
   }
 `
 
-export const getThemeOptionBackgroundColor = ({ active, themeName, action }) => {
+export const getThemeOptionBackgroundColor = ({
+  active,
+  themeName,
+  action
+}) => {
   if (themeName === 'light') {
     if (active) {
       return 'hsl(0, 0%, 80%)'
@@ -128,11 +132,13 @@ export const ThemeOption = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing.s} ${({ theme }) => theme.spacing['3x']};
-  background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({ active, themeName })};
+  padding: ${({ theme }) => theme.spacing.s}
+    ${({ theme }) => theme.spacing['3x']};
+  background-color: ${({ active, themeName }) =>
+    getThemeOptionBackgroundColor({ active, themeName })};
   border-radius: 4px;
   text-align: center;
-  cursor: ${({ active }) => active ? 'not-allowed' : 'pointer'};
+  cursor: ${({ active }) => (active ? 'not-allowed' : 'pointer')};
 
   &:first-child {
     border-top-right-radius: 0;
@@ -145,26 +151,29 @@ export const ThemeOption = styled.label`
   }
 
   &:hover {
-    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
-  active,
-  themeName,
-  action: 'hover'
-})};
+    background-color: ${({ active, themeName }) =>
+      getThemeOptionBackgroundColor({
+        active,
+        themeName,
+        action: 'hover'
+      })};
   }
 
   &:focus {
-    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
-  active,
-  themeName,
-  action: 'focus'
-})};
+    background-color: ${({ active, themeName }) =>
+      getThemeOptionBackgroundColor({
+        active,
+        themeName,
+        action: 'focus'
+      })};
   }
 
   &:active {
-    background-color: ${({ active, themeName }) => getThemeOptionBackgroundColor({
-  active,
-  themeName,
-  action: 'active'
-})};
+    background-color: ${({ active, themeName }) =>
+      getThemeOptionBackgroundColor({
+        active,
+        themeName,
+        action: 'active'
+      })};
   }
 `

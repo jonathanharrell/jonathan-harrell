@@ -14,7 +14,10 @@ const IndexPagePreview = ({ entry }) => {
           {experiments.map(experiment => (
             <li key={experiment.toJSON().id}>
               <a
-                href={`https://codepen.io/jonathanharrell/details/${experiment.toJSON().id}`}>
+                href={`https://codepen.io/jonathanharrell/details/${
+                  experiment.toJSON().id
+                }`}
+              >
                 {experiment.toJSON().title}
               </a>
               ({experiment.toJSON().date})

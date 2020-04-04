@@ -27,7 +27,14 @@ import {
 } from './styles'
 import { motion } from 'framer-motion'
 
-export const AboutPageTemplate = ({ location, title, image, bio, involvement, whatIUse }) => (
+export const AboutPageTemplate = ({
+  location,
+  title,
+  image,
+  bio,
+  involvement,
+  whatIUse
+}) => (
   <>
     <Seo
       title={`${title} | ${website.titleAlt}`}
@@ -41,33 +48,49 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
           {image && (
             <BioFigureWrap>
               <BioFigure
-                initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75 } : false}
+                initial={
+                  typeof window !== 'undefined'
+                    ? { opacity: 0, scale: 0.75 }
+                    : false
+                }
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
-                <BioImage src={image.publicURL} alt="Jonathan Harrell"/>
+                <BioImage src={image.publicURL} alt="Jonathan Harrell" />
               </BioFigure>
             </BioFigureWrap>
           )}
           <BioText>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              initial={
+                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+              }
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.1
+              }}
             >
               <Heading level={1} id="about-label">
                 {title || 'About Jonathan'}
               </Heading>
             </motion.div>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              initial={
+                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+              }
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.2
+              }}
             >
               <Spaced top="m">
-                <Text>
-                  {bio}
-                </Text>
+                <Text>{bio}</Text>
               </Spaced>
             </motion.div>
           </BioText>
@@ -91,9 +114,7 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
               <Involvement key={index}>
                 <InvolvementTitle>
                   <Spaced bottom="s">
-                    <Heading level={3}>
-                      {project.name}
-                    </Heading>
+                    <Heading level={3}>{project.name}</Heading>
                   </Spaced>
                 </InvolvementTitle>
                 <InvolvementDescription>
@@ -121,8 +142,12 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
             <Padded vertical="m">
               {whatIUse.usage.map((usage, index) => (
                 <Usage key={index}>
-                  <dt><Text>{usage.name}</Text></dt>
-                  <dd><UsageLink href={usage.link}>{usage.description}</UsageLink></dd>
+                  <dt>
+                    <Text>{usage.name}</Text>
+                  </dt>
+                  <dd>
+                    <UsageLink href={usage.link}>{usage.description}</UsageLink>
+                  </dd>
                 </Usage>
               ))}
             </Padded>
@@ -142,23 +167,33 @@ AboutPageTemplate.propTypes = {
   bio: PropTypes.string.isRequired,
   involvement: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    project: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
-    })).isRequired
+    project: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired,
   whatIUse: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    usage: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired
-    })).isRequired
+    usage: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired
 }
 
 const AboutPage = ({ location, data: { mdx: post } }) => {
-  const { title, bioimage, bio, involvement, what_i_use: whatIUse } = post.frontmatter
+  const {
+    title,
+    bioimage,
+    bio,
+    involvement,
+    what_i_use: whatIUse
+  } = post.frontmatter
 
   return (
     <Layout>
@@ -186,18 +221,22 @@ AboutPage.propTypes = {
         bio: PropTypes.string.isRequired,
         involvement: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          project: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired
-          })).isRequired
+          project: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired
+            })
+          ).isRequired
         }).isRequired,
         what_i_use: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          usage: PropTypes.arrayOf(PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired
-          })).isRequired
+          usage: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired,
+              link: PropTypes.string.isRequired
+            })
+          ).isRequired
         }).isRequired
       }).isRequired
     }).isRequired
@@ -208,7 +247,7 @@ export default AboutPage
 
 export const aboutPageQuery = graphql`
   query AboutPage {
-    mdx(frontmatter: {templateKey: {eq: "about-page"}}) {
+    mdx(frontmatter: { templateKey: { eq: "about-page" } }) {
       frontmatter {
         title
         bioimage {

@@ -21,14 +21,10 @@ export const Basic = () => {
       {({ theme }) => (
         <>
           <SectionHeader theme={theme}>
-            <Heading>
-              Section header 1
-            </Heading>
+            <Heading>Section header 1</Heading>
           </SectionHeader>
           <SectionHeader theme={theme}>
-            <Heading>
-              Section header 2
-            </Heading>
+            <Heading>Section header 2</Heading>
           </SectionHeader>
         </>
       )}

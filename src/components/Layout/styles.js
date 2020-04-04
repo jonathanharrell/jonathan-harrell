@@ -28,10 +28,13 @@ export const Main = styled.main`
   flex: 1;
   box-shadow: none;
   transition: opacity 0.2s ease-out;
-  ${({ mobileMenuExpanded }) => mobileMenuExpanded ? `
+  ${({ mobileMenuExpanded }) =>
+    mobileMenuExpanded
+      ? `
     opacity: 0.5;
     pointer-events: none;
-  ` : ''}
+  `
+      : ''}
 `
 
 export const AnchoredHeading = styled(ArticleHeading)`
@@ -39,7 +42,7 @@ export const AnchoredHeading = styled(ArticleHeading)`
     display: block;
     margin-top: -2rem;
     padding-top: 2rem;
-    content: "";
+    content: '';
   }
 `
 

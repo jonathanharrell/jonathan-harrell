@@ -41,7 +41,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     width: 100%;
     min-width: 20rem;
-    ${({ withBackground }) => withBackground && 'background-color: var(--backgroundBody)'};
+    ${({ withBackground }) =>
+      withBackground && 'background-color: var(--backgroundBody)'};
     font-family: ${({ theme }) => theme.fonts.sansSerif};
     font-size: 16px;
     -webkit-font-smoothing: antialiased;

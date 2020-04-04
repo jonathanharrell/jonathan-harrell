@@ -8,7 +8,15 @@ import Padded from '../Padded'
 import ScreenReaderText from '../ScreenReaderText'
 import { ArticleCard, CardContent, ImageWrap, Link } from './styles'
 
-const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) => {
+const ArticleExcerpt = ({
+  link,
+  image,
+  svg,
+  date,
+  title,
+  excerpt,
+  ...props
+}) => {
   const formattedDate = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -23,44 +31,33 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, ...props }) =>
       {...props}
     >
       <Link to={link}>
-        <ScreenReaderText>
-          Go to article
-        </ScreenReaderText>
+        <ScreenReaderText>Go to article</ScreenReaderText>
       </Link>
       <CardContent>
         {image && (
           <ImageWrap>
-            {image && (
-              <img
-                src={image.publicURL}
-                alt=""
-                role="presentation"
-              />
-            )}
+            {image && <img src={image.publicURL} alt="" role="presentation" />}
           </ImageWrap>
         )}
         {svg && (
-          <ImageWrap dangerouslySetInnerHTML={{ __html: svg || undefined }}/>
+          <ImageWrap dangerouslySetInnerHTML={{ __html: svg || undefined }} />
         )}
         <Padded top="xxl" left="xxl" right="xxl" bottom="2x">
           <div>
             <Spaced bottom="m">
               <Text order="meta">
-                <ScreenReaderText>Article published date&nbsp;</ScreenReaderText>
+                <ScreenReaderText>
+                  Article published date&nbsp;
+                </ScreenReaderText>
                 {formattedDate}
               </Text>
             </Spaced>
             <Spaced bottom="l">
-              <Heading
-                level={3}
-                id={`${kebabCase(title)}-label`}
-              >
+              <Heading level={3} id={`${kebabCase(title)}-label`}>
                 {title}
               </Heading>
             </Spaced>
-            <Text order="body">
-              {excerpt}
-            </Text>
+            <Text order="body">{excerpt}</Text>
           </div>
         </Padded>
       </CardContent>

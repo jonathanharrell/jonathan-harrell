@@ -45,7 +45,7 @@ const ArticleHeading = ({ children, ...props }) => {
           <ScreenReaderText id={`${id}-label`}>
             Link to this section
           </ScreenReaderText>
-          <Hash/>
+          <Hash />
         </HeadingLink>
       </Tippy>
     </HeadingWrap>

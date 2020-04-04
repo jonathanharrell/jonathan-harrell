@@ -32,21 +32,27 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
 
   return (
     <>
-      <Seo/>
+      <Seo />
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
             <Canvas
-              initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75, y: '-50%' } : false}
+              initial={
+                typeof window !== 'undefined'
+                  ? { opacity: 0, scale: 0.75, y: '-50%' }
+                  : false
+              }
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
             />
             <noscript>
-              <HomeIllustration src={HomeIllustrationSrc} alt=""/>
+              <HomeIllustration src={HomeIllustrationSrc} alt="" />
             </noscript>
             <HeaderTextWrap>
               <motion.div
-                initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                initial={
+                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+                }
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
@@ -55,14 +61,19 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 </Heading>
               </motion.div>
               <motion.div
-                initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                initial={
+                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+                }
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 50,
+                  mass: 0.1,
+                  delay: 0.1
+                }}
               >
                 <Spaced top="m">
-                  <Text>
-                    {description}
-                  </Text>
+                  <Text>{description}</Text>
                 </Spaced>
               </motion.div>
             </HeaderTextWrap>
@@ -73,9 +84,16 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
         <HomeContentWrap>
           <SectionHeader>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              initial={
+                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+              }
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.2
+              }}
             >
               <Heading level={2} id="recent-articles-label">
                 Recent Articles
@@ -84,41 +102,60 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
             <motion.div
               initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.3
+              }}
             >
               <Link
                 to="/blog"
                 arrow={true}
                 aria-labelledby="view-all-articles-label"
               >
-                <span aria-hidden>
-                  View all
-                </span>
+                <span aria-hidden>View all</span>
                 <ScreenReaderText id="view-all-articles-label">
                   View all articles
                 </ScreenReaderText>
               </Link>
             </motion.div>
           </SectionHeader>
-          <RecentArticles/>
+          <RecentArticles />
         </HomeContentWrap>
       </RecentArticlesWrap>
       <ExperimentsWrap aria-labelledby="recent-experiments-label">
         <HomeContentWrap>
           <SectionHeader>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+              initial={
+                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+              }
               animate={{ opacity: 1, y: 0 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.3
+              }}
             >
-              <Heading level={2} color="textInverse" id="recent-experiments-label">
+              <Heading
+                level={2}
+                color="textInverse"
+                id="recent-experiments-label"
+              >
                 Recent Experiments
               </Heading>
             </motion.div>
             <motion.div
               initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.4
+              }}
             >
               <Link
                 href="https://codepen.io/jonathanharrell/"
@@ -127,16 +164,14 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 arrow={true}
                 aria-labelledby="view-all-experiments-label"
               >
-            <span aria-hidden>
-              View all
-            </span>
+                <span aria-hidden>View all</span>
                 <ScreenReaderText id="view-all-experiments-label">
                   View all experiments
                 </ScreenReaderText>
               </Link>
             </motion.div>
           </SectionHeader>
-          <Experiments experiments={experiments}/>
+          <Experiments experiments={experiments} />
         </HomeContentWrap>
       </ExperimentsWrap>
     </>
@@ -146,14 +181,20 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
 IndexPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  experiments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
-  })).isRequired
+  experiments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired
+    })
+  ).isRequired
 }
 
-const IndexPage = ({ data: { mdx: { frontmatter } } }) => (
+const IndexPage = ({
+  data: {
+    mdx: { frontmatter }
+  }
+}) => (
   <Layout>
     <IndexPageTemplate
       title={frontmatter.title}
@@ -169,11 +210,13 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        experiments: PropTypes.arrayOf(PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired
-        })).isRequired
+        experiments: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired
+          })
+        ).isRequired
       }).isRequired
     }).isRequired
   }).isRequired
@@ -183,7 +226,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    mdx(frontmatter: {templateKey: {eq: "index-page"}}) {
+    mdx(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
         description
