@@ -174,7 +174,7 @@ export const BlogPostTemplate = ({
                 <motion.div
                   initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
+                  transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
                 >
                   <Spaced bottom="m">
                     <Heading level={1} id="article-title">
@@ -186,7 +186,7 @@ export const BlogPostTemplate = ({
                   <motion.div
                     initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+                    transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.2 }}
                   >
                     <Text order="body" color="textLighter" element="p">
                       {description}
@@ -206,7 +206,7 @@ export const BlogPostTemplate = ({
         <motion.div
           initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.6 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
         >
           <Padded vertical="4x">
             <ContentWrap>
@@ -270,7 +270,7 @@ export const BlogPostTemplate = ({
         <motion.div
           initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.8 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
         >
           <RecentArticlesWrap aria-labelledby="more-label">
             <Padded vertical="5x">

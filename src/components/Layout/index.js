@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components'
 import Heading from '../../jh-ui/Heading'
@@ -25,6 +25,10 @@ const Layout = ({ children }) => {
   const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false)
   const { theme } = useContext(ThemeContext)
   const mainRef = useRef()
+
+  useEffect(() => {
+    document.body.style.opacity = 1
+  })
 
   const handleMobileMenuExpandedChange = useCallback(expanded => {
     setMobileMenuExpanded(expanded)

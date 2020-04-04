@@ -46,6 +46,10 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+
+    &:not(.no-js) {
+      opacity: 0;
+    }
   }
 
   h1,
