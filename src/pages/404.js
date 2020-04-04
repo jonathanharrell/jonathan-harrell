@@ -33,22 +33,27 @@ const NotFoundContentWrap = styled(ContentWrap)`
   }
 `
 
-
 const NotFoundPage = () => (
   <Layout>
     <HeaderWrap aria-labelledby="about-label">
       <NotFoundContentWrap>
         <Spaced bottom="3x">
           <motion.div
-            initial={typeof window !== 'undefined' ? { opacity: 0, scale: 0.75 } : false}
+            initial={
+              typeof window !== 'undefined'
+                ? { opacity: 0, scale: 0.75 }
+                : false
+            }
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
           >
-            <NotFound/>
+            <NotFound />
           </motion.div>
         </Spaced>
         <motion.div
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
         >
@@ -57,14 +62,14 @@ const NotFoundPage = () => (
           </Heading>
         </motion.div>
         <motion.div
-          initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+          initial={
+            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
         >
           <Spaced top="m">
-            <Text>
-              It looks like nothing was found at this location.
-            </Text>
+            <Text>It looks like nothing was found at this location.</Text>
           </Spaced>
         </motion.div>
       </NotFoundContentWrap>

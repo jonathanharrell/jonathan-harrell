@@ -92,7 +92,12 @@ const childVariants = {
   }
 }
 
-const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
+const TagsPage = ({
+  location,
+  data: {
+    allMdx: { group: tags }
+  }
+}) => (
   <Layout>
     <Seo
       title={`Tags | ${website.titleAlt}`}
@@ -108,17 +113,12 @@ const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
         <Header>
           <ContentWrap>
             <Padded vertical="3x">
-              <Heading level={1}>
-                Tags
-              </Heading>
+              <Heading level={1}>Tags</Heading>
             </Padded>
           </ContentWrap>
         </Header>
       </motion.div>
-      <section
-        id="tags"
-        aria-labelledby="tags-label"
-      >
+      <section id="tags" aria-labelledby="tags-label">
         <Spaced bottom="5x">
           <ContentWrap>
             <ScreenReaderText>
@@ -131,17 +131,17 @@ const TagsPage = ({ location, data: { allMdx: { group: tags } } }) => (
                 <TagCardWrap
                   key={tag.fieldValue}
                   variants={childVariants}
-                  initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+                  initial={
+                    typeof window !== 'undefined'
+                      ? { opacity: 0, y: 50 }
+                      : false
+                  }
                 >
                   <TagCard>
                     <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                      <ScreenReaderText>
-                        Go to tag
-                      </ScreenReaderText>
+                      <ScreenReaderText>Go to tag</ScreenReaderText>
                     </Link>
-                    <Heading level={3}>
-                      {tag.fieldValue}
-                    </Heading>
+                    <Heading level={3}>{tag.fieldValue}</Heading>
                     <Text order="body" color="textLighter">
                       {tag.totalCount} articles
                     </Text>
@@ -187,4 +187,3 @@ export const tagPageQuery = graphql`
     }
   }
 `
-

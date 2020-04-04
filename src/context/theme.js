@@ -4,8 +4,7 @@ import theme from '../jh-ui/theme'
 const ThemeContext = React.createContext({
   theme: theme,
   themeName: null,
-  setTheme: () => {
-  }
+  setTheme: () => {}
 })
 
 export default ThemeContext

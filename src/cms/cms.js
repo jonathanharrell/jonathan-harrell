@@ -20,25 +20,28 @@ CMS.registerEditorComponent({
   id: 'note',
   label: 'Note',
   fields: [
-    { name: 'type', label: 'Type', widget: 'select', options: ['info', 'warning', 'danger'] },
+    {
+      name: 'type',
+      label: 'Type',
+      widget: 'select',
+      options: ['info', 'warning', 'danger']
+    },
     { name: 'text', label: 'Text', widget: 'text' }
   ],
   pattern: /^<Note type="(\S+)">\n(.+)\n<\/Note>$/,
-  fromBlock: function (match) {
+  fromBlock: function(match) {
     return {
       type: match[1],
       text: match[2]
     }
   },
-  toBlock: function (obj) {
+  toBlock: function(obj) {
     return `<Note type="${obj.type}">
     ${obj.text}
 </Note>`
   },
-  toPreview: function (obj) {
-    return (
-      '<p><em>' + obj.text + '</em></p>'
-    )
+  toPreview: function(obj) {
+    return '<p><em>' + obj.text + '</em></p>'
   }
 })
 
@@ -47,22 +50,18 @@ CMS.registerEditorComponent({
 CMS.registerEditorComponent({
   id: 'codepen',
   label: 'Codepen',
-  fields: [
-    { name: 'id', label: 'ID', widget: 'string' }
-  ],
+  fields: [{ name: 'id', label: 'ID', widget: 'string' }],
   pattern: /^<Codepen id="(\S+)"\/>$/,
-  fromBlock: function (match) {
+  fromBlock: function(match) {
     return {
       id: match[1]
     }
   },
-  toBlock: function (obj) {
+  toBlock: function(obj) {
     return `<Codepen id="${obj.id}"/>`
   },
-  toPreview: function (obj) {
-    return (
-      '<p>Codepen - ' + obj.id + '</p>'
-    )
+  toPreview: function(obj) {
+    return '<p>Codepen - ' + obj.id + '</p>'
   }
 })
 
@@ -82,17 +81,15 @@ CMS.registerEditorComponent({
     }
   ],
   pattern: /^<ArticleLink title="(.+)"\/>$/,
-  fromBlock: function (match) {
+  fromBlock: function(match) {
     return {
       title: match[1]
     }
   },
-  toBlock: function (obj) {
+  toBlock: function(obj) {
     return `<ArticleLink title="${obj.title}"/>`
   },
-  toPreview: function (obj) {
-    return (
-      '<p>Article Link - ' + obj.title + '</p>'
-    )
+  toPreview: function(obj) {
+    return '<p>Article Link - ' + obj.title + '</p>'
   }
 })

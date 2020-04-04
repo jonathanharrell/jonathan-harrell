@@ -11,7 +11,7 @@ export const colors = {
   black: 'hsl(0, 0%, 0%)',
   white: 'hsl(0, 0%, 100%)',
   red: 'hsl(5, 66%, 56%)',
-  redDark: 'hsl(10, 66%, 40%)',
+  redDark: 'hsl(10, 66%, 40%)'
 }
 
 export const elevations = {
@@ -23,7 +23,7 @@ export const elevations = {
 export const fonts = {
   sansSerif: `"Roboto", "Helvetica Neue", "Helvetica", "Arial", san-serif`,
   serif: `"DM Serif Text", serif`,
-  serifDisplay: `"DM Serif Display", serif`,
+  serifDisplay: `"DM Serif Display", serif`
 }
 
 export const fontSizes = {
@@ -55,7 +55,7 @@ export const fontSizes = {
   s: {
     mobile: '0.875rem',
     tablet: '0.875rem',
-    desktop: '0.875rem',
+    desktop: '0.875rem'
   }
 }
 

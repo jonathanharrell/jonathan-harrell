@@ -95,13 +95,14 @@
     "storybook-dark-mode": "^0.1.7"
   },
   "scripts": {
-    "clean": "gatsby clean",
-    "start": "npm run develop",
     "build": "npm run clean && gatsby build",
+    "build-storybook": "build-storybook",
+    "clean": "gatsby clean",
     "develop": "npm run clean && gatsby develop -H 0.0.0.0",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "lint": "eslint src/**/*.js",
     "serve": "gatsby serve",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "start": "npm run develop",
+    "storybook": "start-storybook -p 6006"
   }
 }

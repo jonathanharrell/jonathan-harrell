@@ -20,7 +20,7 @@ const ThemeWrap = props => {
     // listen to DARK_MODE event
     channel.addListener('DARK_MODE', toggleDarkMode)
     return () => channel.removeListener('DARK_MODE', toggleDarkMode)
-  }, [channel, setThemeName])
+  }, [setThemeName])
 
   useEffect(() => {
     document.body.setAttribute('data-theme', themeName)
@@ -29,7 +29,7 @@ const ThemeWrap = props => {
   // render your custom theme provider
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle/>
+      <GlobalStyle />
       {props.children}
     </ThemeProvider>
   )
