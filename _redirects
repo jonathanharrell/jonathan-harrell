@@ -1,0 +1,53 @@
+/css-html-javascript-blog                                             /blog
+/html-javascript-css-developer                                        /about
+/css-html-javascript-tips-tricks-subscribe                            /#subscribe
+
+/implicit-state-sharing-in-react-vue                                  /blog/implicit-state-sharing-in-react-vue
+/render-props-react-scoped-slots-vue                                  /blog/component-reusability-in-react-vue
+/whats-the-deal-with-margin-collapse                                  /blog/what’s-the-deal-with-margin-collapse
+/better-typography-with-font-variants                                 /blog/better-typography-with-font-variants
+/advanced-css-only-form-styling                                       /blog/advanced-css-only-form-styling
+/unlocking-the-benefits-of-css-custom-properties                      /blog/unlocking-the-benefits-of-css-custom-properties
+/controlling-element-visibility-with-the-intersection-observer-api    /blog/controlling-element-visibility-with-the-intersection-observer-api
+/component-variants-with-scoped-css-variables                         /blog/component-variants-with-scoped-css-variables
+/semantic-image-overlays-with-object-fit                              /blog/semantic-image-overlays-with-object-fit
+/live-theming-with-css-variables                                      /blog/live-theming-with-css-variables
+/contextual-callouts-with-css-grid                                    /blog/contextual-callouts-with-css-grid
+
+/category/css                                                         /tags/css
+/category/html/forms                                                  /tags/forms
+/category/html                                                        /tags/html
+/category/images                                                      /tags/images
+/category/javacript                                                   /tags/javascript
+/category/css/layout                                                  /tags/layout
+/category/javascript/react                                            /tags/react
+/category/css/theming-css                                             /tags/theming
+/category/css/typography                                              /tags/typography
+/category/javascript/vue                                              /tags/vue
+
+/tag/box-model                                                        /tags/css
+/tag/components
+/tag/context
+/tag/css                                                              /tags/css
+/tag/css-grid                                                         /tags/css
+/tag/css-variables                                                    /tags/css
+/tag/custom-properties                                                /tags/css
+/tag/fonts                                                            /tags/typography
+/tag/forms                                                            /tags/forms
+/tag/html                                                             /tags/html
+/tag/intersection-observer                                            /tags/javascript
+/tag/javascript                                                       /tags/javascript
+/tag/layout                                                           /tags/layout
+/tag/margin-collapse                                                  /tags/css
+/tag/object-fit                                                       /tags/images
+/tag/open-type                                                        /tags/typography
+/tag/provide-inject                                                   /tags/vue
+/tag/react                                                            /tags/react
+/tag/render-props                                                     /tags/react
+/tag/scoped-slots                                                     /tags/vue
+/tag/theming                                                          /tags/theming
+/tag/typography                                                       /tags/typography
+/tag/variables                                                        /tags/css
+/tag/vue                                                              /tags/vue
+
+/author/harr041gmail-com                                              /about
