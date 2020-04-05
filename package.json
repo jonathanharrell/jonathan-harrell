@@ -60,7 +60,6 @@
     "netlify-cms-media-library-uploadcare": "^0.5.2",
     "node-sass": "^4.11.0",
     "noisejs": "^2.1.0",
-    "npm": "^6.12.0",
     "parcel-bundler": "^1.9.4",
     "prismjs": "^1.17.1",
     "prop-types": "^15.6.0",
