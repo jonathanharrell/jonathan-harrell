@@ -24,7 +24,6 @@ const DesktopMenu = () => {
   const [visible, setVisibility] = useState(true)
 
   useEffect(() => {
-    throw new Error('test error')
     // set up logic ot hide/show desktop menu based on the window width
     const rems = breakpoints.desktop.replace('rem', '')
     const fontSize = parseFloat(
