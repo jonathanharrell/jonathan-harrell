@@ -12,6 +12,7 @@ import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
+import init from '../../home-animation'
 import {
   Canvas,
   ExperimentsWrap,
@@ -29,7 +30,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
-    //init(canvasRef.current)
+    init(canvasRef.current)
   }, [])
 
   return (

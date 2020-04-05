@@ -57,7 +57,7 @@ export const BlogPostTemplate = ({
   const articleWrap = useRef()
   const articleContent = useRef()
 
-  const githubUrl = `https://github.com/jonathanharrell/gatsby-starter-netlify-cms/edit/master/src/content${slug}`
+  const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`
   const re = new RegExp(/.+?(?=\/$)/)
   const [match] = githubUrl.match(re)
   const processedGithubUrl = `${match}.mdx`

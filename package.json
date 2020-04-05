@@ -4,7 +4,7 @@
   "description": "Version 4 of Jonathan Harrell's personal development blog.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonathanharrell/gatsby-starter-netlify-cms.git"
+    "url": "https://github.com/jonathanharrell/jonathan-harrell.git"
   },
   "homepage": "https://www.jonathan-harrell.com",
   "author": "Jonathan Harrell <harr041@gmail.com> (www.jonathan-harrell.com)",
