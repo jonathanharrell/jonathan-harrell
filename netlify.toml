@@ -4,5 +4,3 @@
   functions = "functions"
 [build.environment]
   NPM_VERSION = "6.4.1"
-[[plugins]]
-  package = "netlify-plugin-lighthouse"
