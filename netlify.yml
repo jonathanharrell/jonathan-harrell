@@ -1,4 +1,0 @@
-plugins:
-  - type: netlify-plugin-lighthouse
-    config:
-      url: "jonathan-harrell.netlify.com"
