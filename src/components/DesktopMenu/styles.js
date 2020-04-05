@@ -78,6 +78,7 @@ export const SubscribeButton = styled(Button)`
 
   .header-background-gray & {
     border-color: var(--textLighter);
+    background-color: var(--backgroundSecondary);
   }
 
   .no-js & {

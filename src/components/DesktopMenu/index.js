@@ -53,6 +53,10 @@ const DesktopMenu = () => {
       }
     }
 
+    if (href === '/about' && location.pathname.startsWith('/about')) {
+      return { 'data-active': true }
+    }
+
     return isCurrent ? { 'data-active': true } : null
   }
 
