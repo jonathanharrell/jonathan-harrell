@@ -106,8 +106,6 @@ class SearchSelect extends React.Component {
 
 This is a _renderless_ component (one that doesn’t render any markup of its own). Rather, it returns the result of a special prop called a _render prop_. This render prop accepts an object, into which you can pass any data that you would like the parent component to have access to.
 
-Think of this as the opposite of normal props. Usually, props are passed down from parent to child. In the case of render props, these are returned from the child so the parent can access them.
-
 Our `SearchSelect` component is handling the lowest level functionality — filtering a list of options based on a query string. It is then using the special render prop to render an element.
 
 In the parent, we pass a function to the render prop of the `SearchSelect` component. This function returns a React element, which we can hydrate with state and behavior from the `SearchSelect` component itself. Basically, this means we are able to access data from the child component in the parent.
@@ -204,7 +202,7 @@ class TagListSearch extends React.Component {
 }
 ```
 
-Check out the Codepen [here](https://codepen.io/jonathanharrell/pen/KeOmVV).
+<Codepen id="KeOmVV"/>
 
 ## Scoped slots in Vue
 
@@ -310,7 +308,7 @@ Vue.component('autocomplete', {
 })
 ```
 
-Check out the Codepen [here](https://codepen.io/jonathanharrell/pen/VdobNO).
+<Codepen id="VdobNO"/>
 
 ## Other uses for render props & scoped slots
 
