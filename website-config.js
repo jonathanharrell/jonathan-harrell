@@ -9,7 +9,7 @@ module.exports = {
     'Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.', // Headline for schema.org JSONLD
   url: 'https://jonathan-harrell.netlify.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
-  logo: '/img/favicon-180x180.png', // Used for SEO
+  logo: '/img/favicon-seo.png', // Used for SEO
   ogLanguage: 'en_US', // Facebook Language
 
   // JSONLD / Manifest
