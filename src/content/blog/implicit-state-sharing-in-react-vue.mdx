@@ -31,7 +31,7 @@ Imagine this is your ideal API:
 
 `AccordionItem` will contain each section of the accordion that can be expanded or collapsed, `AccordionHeader` will be the place where the user can click to expand or collapse, and `AccordionPanel` will contain the content to be shown or hidden.
 
-Each `AccordionItem` will need to maintain some state — whether it is expanded or not. But `AccordionHeader` will also need access to this value, so that it can show the appropriate toggle button. And `AccordionPanel` may also need to access this, since it is the thing being _expanded_ and collapsed.
+Each `AccordionItem` will need to maintain some state — whether it is expanded or not. But `AccordionHeader` will also need access to this value, so that it can show the appropriate toggle button. And `AccordionPanel` may also need to access this, since it is the thing being expanded and collapsed.
 
 One possibility is exposing the expanded value to your user through render props and making sure your documentation lets them know they need to pass that down to the header and panel components.
 
@@ -50,7 +50,7 @@ One possibility is exposing the expanded value to your user through render props
 
 While this may seem like a decent solution at first, it’s not ideal that the consumer of our component has to worry about the component internals. The fact that `AccordionHeader` and `AccordionPanel` need access to the expanded state should not be something our user has to be concerned about.
 
-It should also not be noted that while this is a trivial example, your component may be far more complex, with multiple levels of nested components, in which case prop drilling may become quite tedious.
+It should also be noted that while this is a trivial example, your component may be far more complex, with multiple levels of nested components, in which case prop drilling may become quite tedious.
 
 What we really need is a way to _implicitly_ pass down props.
 
@@ -155,7 +155,7 @@ Now, we really can achieve our ideal API for the accordion component. Users of o
 </Accordion>
 ```
 
-[Check out the Codepen here](https://codepen.io/jonathanharrell/pen/WgBzyX).
+<Codepen id="WgBzyX"/>
 
 ## Provide/Inject in Vue
 
@@ -191,7 +191,7 @@ We return an object from `provide()` that contains the state we want to provide 
 
 Note that we are using a render function here to create this component, but this is not necessary to use provide/inject.
 
-Now, we will inject this state into our child components. We will simply use the `inject` property, which accepts an array of strings corresponding the properties of the object we defined in `provide`.
+Now, we will inject this state into our child components. We will simply use the `inject` property, which accepts an array of strings corresponding to the properties of the object we defined in `provide`.
 
 ```javascript
 Vue.component('accordion-header', {
@@ -225,7 +225,7 @@ Vue.component('accordion-panel', {
 })
 ```
 
-[Check out the Codepen here](https://codepen.io/jonathanharrell/pen/PdvRoP).
+<Codepen id="PdvRoP"/>
 
 ## Use with Caution
 
