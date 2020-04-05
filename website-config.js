@@ -7,7 +7,7 @@ module.exports = {
     'Want to stay up-to-date on the latest developments in CSS and JavaScript? Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.',
   headline:
     'Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.', // Headline for schema.org JSONLD
-  url: 'https://jonathan-harrell.netlify.com', // Domain of your site. No trailing slash!
+  url: 'https://www.jonathan-harrell.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   logo: '/img/favicon-seo.png', // Used for SEO
   ogLanguage: 'en_US', // Facebook Language
