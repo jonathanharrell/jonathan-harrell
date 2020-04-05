@@ -6,6 +6,5 @@
   NPM_VERSION = "6.4.1"
 [[plugins]]
   package = "netlify-plugin-lighthouse"
-
-  [plugins.inputs]
+  [plugins.config]
   url = "jonathan-harrell.netlify.com"
