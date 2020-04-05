@@ -96,7 +96,7 @@
     "storybook-dark-mode": "^0.1.7"
   },
   "scripts": {
-    "build": "npm run clean && gatsby build",
+    "build": "npm run clean && gatsby build && cp _redirects public/_redirects",
     "build-storybook": "build-storybook",
     "clean": "gatsby clean",
     "develop": "npm run clean && gatsby develop -H 0.0.0.0",

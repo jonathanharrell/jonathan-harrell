@@ -4,3 +4,7 @@
   functions = "functions"
 [build.environment]
   NPM_VERSION = "6.4.1"
+[[headers]]
+  for = "/static/*"
+    [headers.values]
+    cache-control = 'public, max-age=360000'
