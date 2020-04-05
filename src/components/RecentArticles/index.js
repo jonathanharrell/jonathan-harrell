@@ -46,7 +46,7 @@ const RecentArticles = ({
               link={post.fields.slug}
               date={new Date(post.frontmatter.date)}
               title={post.frontmatter.title}
-              excerpt={post.excerpt}
+              excerpt={post.frontmatter.description}
             />
           </BlogExcerptWrap>
         ))}
@@ -61,12 +61,12 @@ RecentArticles.propTypes = {
         PropTypes.shape({
           node: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            excerpt: PropTypes.string.isRequired,
             fields: PropTypes.shape({
               slug: PropTypes.string.isRequired
             }).isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired,
               date: PropTypes.string.isRequired
             }).isRequired
           }).isRequired
@@ -94,6 +94,7 @@ export default ({ currentPostId }) => (
               }
               frontmatter {
                 title
+                description
                 templateKey
                 date
                 tags

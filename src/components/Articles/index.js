@@ -42,7 +42,7 @@ const Articles = ({
             svg={post.frontmatter.featuredimage.fields.markup}
             date={new Date(post.frontmatter.date)}
             title={post.frontmatter.title}
-            excerpt={post.excerpt}
+            excerpt={post.frontmatter.description}
           />
         </BlogExcerptWrap>
       ))}
@@ -56,12 +56,12 @@ Articles.propTypes = {
         PropTypes.shape({
           node: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            excerpt: PropTypes.string.isRequired,
             fields: PropTypes.shape({
               slug: PropTypes.string.isRequired
             }).isRequired,
             frontmatter: PropTypes.shape({
               title: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired,
               date: PropTypes.string.isRequired,
               featuredimage: PropTypes.shape({
                 fields: PropTypes.shape({
@@ -86,13 +86,13 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 150)
               id
               fields {
                 slug
               }
               frontmatter {
                 title
+                description
                 templateKey
                 date
                 featuredimage {
