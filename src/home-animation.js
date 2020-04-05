@@ -4,13 +4,12 @@ import { Noise } from 'noisejs'
 
 const noise = new Noise(Math.random())
 
-const init = () => {
-  const canvas = document.querySelector('canvas')
+const init = canvas => {
   let width = canvas.offsetWidth
   let height = canvas.offsetHeight
 
   const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
+    canvas,
     antialias: true,
     alpha: true
   })

@@ -65,10 +65,12 @@ export const CloseButton = styled(Button)`
   &:hover,
   &:focus {
     color: var(--textLight);
+    transform: scale(1.05);
   }
 
   &:active {
     color: var(--textLighter);
+    transform: scale(0.98);
   }
 `
 

@@ -1,6 +1,6 @@
+import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import Card from '../Card'
-import { Link as GatsbyLink } from 'gatsby'
 
 export const ArticleCard = styled(Card)`
   position: relative;

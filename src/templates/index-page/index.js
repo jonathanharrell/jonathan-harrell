@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import { motion } from 'framer-motion'
@@ -7,6 +7,7 @@ import Spaced from '../../jh-ui/Spaced'
 import Text from '../../jh-ui/Text'
 import SectionHeader from '../../jh-ui/SectionHeader'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
+import Button from '../../jh-ui/Button'
 import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
 import RecentArticles from '../../components/RecentArticles'
@@ -22,13 +23,14 @@ import {
   HomeIllustration,
   RecentArticlesWrap
 } from './styles'
-import Button from '../../jh-ui/Button'
 import Link from '../../jh-ui/Link'
 import HomeIllustrationSrc from '../../img/home-illustration.png'
 
 export const IndexPageTemplate = ({ title, description, experiments }) => {
+  const canvasRef = useRef(0)
+
   useEffect(() => {
-    init()
+    init(canvasRef.current)
   }, [])
 
   return (
@@ -38,6 +40,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
         <HomeContentWrap>
           <HeaderContentWrap>
             <Canvas
+              ref={canvasRef}
               initial={
                 typeof window !== 'undefined'
                   ? { opacity: 0, scale: 0.75, y: '-50%' }

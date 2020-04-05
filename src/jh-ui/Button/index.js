@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link as GatsbyLink } from 'gatsby'
 import { Root } from './styles'
 
 const Button = React.forwardRef(
@@ -8,7 +9,7 @@ const Button = React.forwardRef(
       ref={ref}
       order={order}
       size={size}
-      unstyled={unstyled}
+      unstyled={props.as !== GatsbyLink ? unstyled : undefined}
       as={element}
       {...props}
     >
