@@ -40,7 +40,6 @@ Here I am hiding the label until the user types in the input, thus hiding the pl
 label {
   position: absolute;
   top: 0;
-  font-size: var(--font-size-small);
   opacity: 1;
   transform: translateY(0);
   transition: all 0.2s ease-out;
@@ -135,7 +134,7 @@ input:valid {
 
 This selector checks if an input is currently NOT passing the native browser validation rules (for example, if an email input does not contain a real email).
 
-Again, I am encoding an svg to display a ‘x’ in the input.
+Again, I am encoding an svg to display an ‘x’ in the input.
 
 ```css
 input:invalid {
