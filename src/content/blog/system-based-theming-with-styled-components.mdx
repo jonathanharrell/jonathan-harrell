@@ -159,7 +159,7 @@ Now, when server-side rendered, our theme will change even without JavaScript en
 
 ## Custom Theme Overrides
 
-There are some cases where you may want to allow a user to manually change the theme, overriding what the app inherited from the system by default. Let’s look at how we might achieve this using our initially simpler example. We will need to add a theme toggle method that will update our theme state.
+There are some cases where you may want to allow a user to manually change the theme, overriding what the app inherited from the system by default. Let’s look at how we might achieve this using our initial simpler example. We will need to add a theme toggle method that will update our theme state.
 
 ```jsx
 import { useState, useEffect } from "react";
@@ -336,7 +336,7 @@ In `head`:
     document.body.setAttribute("data-theme", newTheme);
     window.dispatchEvent(
       new CustomEvent("themeChange", {
-        detail: newTheme
+        theme: newTheme
       })
     );
   }
@@ -371,22 +371,21 @@ import { useState, useEffect } from "react";
 // ...set up CSS variables and styled components
 
 const App = () => {
-  const [themeName, setThemeName] = useState();
+  const [activeTheme, setActiveTheme] = useState();
 
   useEffect(() => {
     // set initial theme based on value set on window
-    setThemeName(window.__theme);
+    setActiveTheme(window.__theme);
 
     // set up listener for custom theme change event
     window.addEventListener("themeChange", (event) => {
-      setThemeName(event.detail);
+      setActiveTheme(event.theme);
     });
   }, []);
 
   // allow user to manually change their theme
-  const setTheme = (themeName) => {
-    window.__setPreferredTheme(themeName);
-    addAlert(`Theme set to ${themeName}`);
+  const toggleTheme = (theme) => {
+    window.__setPreferredTheme(theme);
   };
 
   // ...render content
