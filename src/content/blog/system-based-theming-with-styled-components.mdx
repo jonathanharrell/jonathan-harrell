@@ -1,0 +1,393 @@
+---
+templateKey: blog-post
+title: System-Based Theming with Styled Components
+date: 2020-04-09T20:18:26.558Z
+description: >-
+  Learn how to support system-based theming in Styled Components, while allowing
+  a user to select their preferred theme and persist that choice between
+  sessions.
+featuredimage: /img/system-theming.svg
+socialimage: /img/system-theming.png
+tags:
+  - javascript
+  - react
+  - theming
+---
+Most operating systems these days support a system-wide light/dark mode toggle, and we may want our web sites and applications to take on a corresponding mode, essentially inheriting their color scheme from the system on which they are being viewed. Let’s take a look at how to implement this, and how it would integrate with a CSS-in-JS theming system such as Styled Components.
+
+Detecting a user’s system theme involves either using the `prefers-color-scheme` media query in CSS, or checking the media feature in JavaScript. [Browser support for these features](https://caniuse.com/#search=prefers-color-scheme) is fairly good.
+
+## Basic System Theming
+
+Let’s look at a basic implementation where we swap the `theme` object passed to Styled Component’s `ThemeProvider` component based on the detected system theme.
+
+```jsx
+import { useState, useEffect } from "react";
+const { ThemeProvider } from "styled-components";
+
+// set up theme colors
+const themes = {
+  light: {
+    colors: {
+      text: "black",
+      background: "white"
+    }
+  },
+  dark: {
+    colors: {
+      text: "white",
+      background: "black"
+    }
+  }
+};
+
+// set up styled components to use theme colors
+const Wrap = styled.div`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const Heading = styled.h1`
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+const P = styled.p`
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+// set up detection of system dark mode
+const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+const App = () => {
+  // perform an initial detection of system theme
+  const [theme, setTheme] = useState(darkModeQuery.matches ? "dark" : "light");
+
+  // set up a listener to respond to future changes of system theme
+  useEffect(() => {
+    darkModeQuery.addListener((event) => {
+      setTheme(event.matches ? "dark" : "light");
+    });
+  });
+
+  // pass the correct theme object to the provider
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <Wrap>
+        <Heading>System Theming</Heading>
+        <P>Change your system theme to see this page respond</P>
+      </Wrap>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+```
+
+This approach is straightforward and feels very natural to Styled Components. However, if our app is server-side rendered but a user has JavaScript disabled, the app will not respond to system theme changes.
+
+## Supporting Disabled JavaScript with CSS Variables
+
+We can enable our app to respond to the system theme even without JavaScript enabled (in cases where the app is server-side rendered) by taking a slightly different approach. Instead of storing our light and dark theme as separate styled component themes, we will use CSS variables, and override them with a media query.
+
+```jsx
+import { useState, useEffect } from "react";
+import { createGlobalStyle, ThemeProvider, css } from "styled-components";
+
+// set up color values that will be used across both light and dark themes
+const theme = {
+  colors: {
+    black: "black",
+    white: "white"
+  }
+};
+
+// set up light theme CSS variables
+const lightValues = css`
+  --text: ${({ theme }) => theme.colors.black};
+  --background: ${({ theme }) => theme.colors.white};
+`;
+
+// set up dark theme CSS variables
+const darkValues = css`
+  --text: ${({ theme }) => theme.colors.white};
+  --background: ${({ theme }) => theme.colors.black};
+`;
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    // define light theme values as the defaults within the root selector
+    ${lightValues}
+
+    // override with dark theme values within media query
+    @media (prefers-color-scheme: dark) {
+      ${darkValues}
+    }
+  }
+`;
+
+// set up styled components to use CSS variables
+const Wrap = styled.div`
+  background-color: var(--background);
+`;
+
+const Heading = styled.h1`
+  color: var(--text);
+`;
+
+const P = styled.p`
+  color: var(--text);
+`;
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <>
+      <GlobalStyle />
+      <Wrap>
+        <Heading>System Theming</Heading>
+        <P>Change your system theme to see this page respond</P>
+      </Wrap>
+    </>
+  </ThemeProvider>
+);
+
+export default App;
+```
+
+Now, when server-side rendered, our theme will change even without JavaScript enabled, since a CSS media query is now controlling the theme values.
+
+## Custom Theme Overrides
+
+There are some cases where you may want to allow a user to manually change the theme, overriding what the app inherited from the system by default. Let’s look at how we might achieve this using our initially simpler example. We will need to add a theme toggle method that will update our theme state.
+
+```jsx
+import { useState, useEffect } from "react";
+import { ThemeProvider } from "styled-components";
+
+// ...set up themes and styled components
+
+// set up detection of system dark mode
+const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+const App = () => {
+  // perform an initial detection of system theme
+  const [activeTheme, setActiveTheme] = useState(darkModeQuery.matches ? "dark" : "light");
+
+  // set up a listener to respond to future changes of system theme
+  useEffect(() => {
+    darkModeQuery.addListener((event) => {
+      setActiveTheme(event.matches ? "dark" : "light");
+    });
+  });
+
+  // set up a theme toggle method that will update our state when a user clicks the button
+  const toggleTheme = () => {
+    setActiveTheme(activeTheme === "dark" ? "light" : "dark")
+  }
+
+  // pass the correct theme object to the provider
+  return (
+    <ThemeProvider theme={themes[activeTheme]}>
+      <Wrap>
+        <Heading>System Theming</Heading>
+        <Button onClick={toggleTheme}>
+          Change theme to {activeTheme === "light" ? "dark" : "light"}
+        </Button>
+      </Wrap>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+```
+
+## Persistent Custom Theme Overrides
+
+What if we want the user’s custom theme override to be persisted between sessions? We’ll need to bring in some logic to interact with `localStorage` in order to set and retrieve the user’s preference.
+
+Let’s look at a full example that uses CSS variables, supports custom overrides, and persists those overrides between sessions:
+
+```jsx
+import { useState, useEffect } from "react";
+import { createGlobalStyle, ThemeProvider, css } from "styled-components";
+
+// set up color values that will be used across both light and dark themes
+const theme = {
+  colors: {
+    black: "black",
+    white: "white"
+  }
+};
+
+// set up light theme CSS variables
+const lightValues = css`
+  --text: ${({ theme }) => theme.colors.black};
+  --background: ${({ theme }) => theme.colors.white};
+`;
+
+// set up dark theme CSS variables
+const darkValues = css`
+  --text: ${({ theme }) => theme.colors.white};
+  --background: ${({ theme }) => theme.colors.black};
+`;
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    // define light theme values as the defaults within the root selector
+    ${lightValues}
+
+    // override with dark theme values if theme data attribute is set to dark
+    [data-theme="dark"] {
+      ${darkValues}
+    }
+
+    // support no JavaScript scenario by using media query
+    &.no-js {
+      @media (prefers-color-scheme: dark) {
+        ${darkValues}
+      }
+    }
+  }
+`;
+
+// set up styled components to use CSS variables
+const Wrap = styled.div`background-color: var(--background);`;
+
+const Heading = styled.h1`
+  color: var(--text);
+`;
+
+const P = styled.p`
+  color: var(--text);
+`;
+
+// set up detection of system dark mode
+const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+// find saved theme
+const savedTheme = localStorage.getItem("theme");
+
+const App = () => {
+  // set active theme to saved theme, if there is one
+  // otherwise, set to system theme
+  const [activeTheme, setActiveTheme] = useState(
+    savedTheme ? savedTheme : darkModeQuery.matches ? "dark" : "light"
+  );
+
+  // set up a listener to respond to future changes of system theme
+  useEffect(() => {
+    darkModeQuery.addListener((event) => {
+      setActiveTheme(event.matches ? "dark" : "light");
+    });
+  }, []);
+
+  // every time the active theme changes, set the theme data attribute
+  useEffect(() => {
+    document.body.setAttribute("data-theme", activeTheme);
+  }, [activeTheme]);
+
+  // set up a theme toggle method that will update our state when a user clicks the button and save the new theme in localStorage
+  const toggleTheme = () => {
+    const newTheme = activeTheme === "light" ? "dark" : "light";
+    setActiveTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <Wrap>
+          <Heading>System Theming</Heading>
+          <Button onClick={toggleTheme}>
+            Change theme to {activeTheme === "light" ? "dark" : "light"}
+          </Button>
+          <P>Refresh to see the persisted preference</P>
+        </Wrap>
+      </>
+    </ThemeProvider>
+  );
+};
+```
+
+Now instead of using a media query to override CSS variable values, we use a data attribute set on the document body. This allows theme overrides to work.
+
+Note that we support responding to system theme changes without JavaScript by using a `no-js` class and falling back to a media query. Of course, this won’t support custom overrides of the theme.
+
+## Preventing the Default Theme Flash
+
+There is one remaining problem with this implementation when used with server-side rendering. Since we are no longer using a media query, but rather a data attribute to set the theme, we get an initial default themed flash of content, before our app has a chance to actually detect and set the theme. We will need to relocate our theme-setting code to the `head` of the document, before the HTML has actually rendered.
+
+We can store the theme and the theme toggle method on the window so that our React app will then have access to it. This code looks a bit messier, but it supports all of our use cases and prevents the annoying default themed flash.
+
+In `head`:
+
+```javascript
+(function () {
+  // set up method to set theme value on window, set data attribute, and dispatch a custom event indicating the theme change
+  function setTheme(newTheme) {
+    window.__theme = newTheme;
+    preferredTheme = newTheme;
+    document.body.setAttribute("data-theme", newTheme);
+    window.dispatchEvent(
+      new CustomEvent("themeChange", {
+        detail: newTheme
+      })
+    );
+  }
+
+  // grab the saved theme
+  var preferredTheme = localStorage.getItem("theme");
+
+  // set up method to set the active theme to the user's preferred theme and save that theme for persistence
+  window.__setPreferredTheme = function (newTheme) {
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // set up detection of system dark mode
+  var darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // set up a listener to respond to future changes of system theme
+  darkModeQuery.addListener(function (event) {
+    window.__setPreferredTheme(event.matches ? "dark" : "light");
+  });
+
+  // set active theme to saved theme, if there is one, or the system theme
+  setTheme(preferredTheme || (darkModeQuery.matches ? "dark" : "light"));
+})();
+```
+
+In our app:
+
+```jsx
+import { useState, useEffect } from "react";
+
+// ...set up CSS variables and styled components
+
+const App = () => {
+  const [themeName, setThemeName] = useState();
+
+  useEffect(() => {
+    // set initial theme based on value set on window
+    setThemeName(window.__theme);
+
+    // set up listener for custom theme change event
+    window.addEventListener("themeChange", (event) => {
+      setThemeName(event.detail);
+    });
+  }, []);
+
+  // allow user to manually change their theme
+  const setTheme = (themeName) => {
+    window.__setPreferredTheme(themeName);
+    addAlert(`Theme set to ${themeName}`);
+  };
+
+  // ...render content
+});
+
+export default App;
+```
+
+## Conclusion
+
+Thanks to improving browser support for the detection of system themes, it has never been easier to implement a theme for your application or website that responds to your user’s operating system theme. With a bit of extra code, you can also enable user-chosen theme overrides. This will go a long way in creating a more customizable and comfortable experience for your users.
