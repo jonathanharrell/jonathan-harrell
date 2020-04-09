@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>system-theming</title>
+    <desc>Created with Sketch.</desc>
+    <g id="system-theming" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M87.7972771,519.897934 L504.183403,73.0762644 C502.973938,71.4791637 501.074052,70.5 499,70.5 L93,70.5 C89.4101491,70.5 86.5,73.4101491 86.5,77 L86.5,516 C86.5,517.43443 86.9662647,518.791229 87.7972771,519.897934 Z" id="Combined-Shape" stroke="#C9C9D6" stroke-width="3"></path>
+        <path d="M504.634858,72.8728386 L89.2970179,518.568125 C90.1831152,519.009861 91.1688818,519.24667 92.1929269,519.24667 L498.192927,519.24667 C501.782778,519.24667 504.692927,516.336521 504.692927,512.74667 L504.692927,73.7466698 C504.692927,73.451869 504.67337,73.1601357 504.634858,72.8728386 Z" id="Combined-Shape" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6"></path>
+        <rect id="Rectangle-13-Copy-19" stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6" x="118.5" y="102.5" width="172" height="33" rx="6"></rect>
+        <rect id="Rectangle-13-Copy-22" stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6" x="299" y="453" width="175" height="36" rx="6"></rect>
+        <rect id="Rectangle-13-Copy-20" stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6" x="118.5" y="159.5" width="218" height="33" rx="6"></rect>
+        <rect id="Rectangle-13-Copy-21" stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6" x="253" y="396" width="221" height="36" rx="6"></rect>
+        <path d="M333.357923,256.5 L247.5,256.5 C225.960895,256.5 208.5,273.960895 208.5,295.5 L208.5,297.5 C208.5,319.039105 225.960895,336.5 247.5,336.5 L259.095755,336.5 L333.357923,256.5 Z" id="Combined-Shape" stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6"></path>
+        <path d="M346.5,256 C368.867532,256 387,274.132468 387,296.5 C387,318.867532 368.867532,337 346.5,337 L258.288,337 L333.77,256 L346.5,256 Z" id="Combined-Shape" stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6"></path>
+    </g>
+</svg>
