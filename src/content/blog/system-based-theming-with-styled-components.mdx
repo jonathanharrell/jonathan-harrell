@@ -84,6 +84,8 @@ export default App;
 
 This approach is straightforward and feels very natural to Styled Components. However, if our app is server-side rendered but a user has JavaScript disabled, the app will not respond to system theme changes.
 
+<Codepen id="MWaWgVz"/>
+
 ## Supporting Disabled JavaScript with CSS Variables
 
 We can enable our app to respond to the system theme even without JavaScript enabled (in cases where the app is server-side rendered) by taking a slightly different approach. Instead of storing our light and dark theme as separate styled component themes, we will use CSS variables, and override them with a media query.
@@ -154,6 +156,8 @@ export default App;
 
 Now, when server-side rendered, our theme will change even without JavaScript enabled, since a CSS media query is now controlling the theme values.
 
+<Codepen id="JjYjjrW"/>
+
 ## Custom Theme Overrides
 
 There are some cases where you may want to allow a user to manually change the theme, overriding what the app inherited from the system by default. Let’s look at how we might achieve this using our initially simpler example. We will need to add a theme toggle method that will update our theme state.
@@ -198,6 +202,8 @@ const App = () => {
 
 export default App;
 ```
+
+<Codepen id="zYvYYWK"/>
 
 ## Persistent Custom Theme Overrides
 
@@ -311,6 +317,8 @@ const App = () => {
 Now instead of using a media query to override CSS variable values, we use a data attribute set on the document body. This allows theme overrides to work.
 
 Note that we support responding to system theme changes without JavaScript by using a `no-js` class and falling back to a media query. Of course, this won’t support custom overrides of the theme.
+
+<Codepen id="MWaWWZK"/>
 
 ## Preventing the Default Theme Flash
 
