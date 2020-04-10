@@ -22,6 +22,7 @@ export const Root = styled.span`
 
   &:hover,
   &:focus {
-    background-color: var(--backgroundTertiary);
+    ${({ inert }) =>
+      !inert ? 'background-color: var(--backgroundTertiary);' : ''}
   }
 `

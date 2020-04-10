@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const algoliasearch = require('algoliasearch')
 const colors = require('./colors')
 
 exports.createPages = ({ actions, graphql }) => {
@@ -14,12 +15,19 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
+            tableOfContents
             fields {
+              readingTime {
+                text
+              }
               slug
             }
             frontmatter {
               tags
               templateKey
+              title
+              description
+              date
             }
           }
         }
@@ -43,8 +51,8 @@ exports.createPages = ({ actions, graphql }) => {
         ),
         // additional data can be passed via context
         context: {
-          id,
-        },
+          id
+        }
       })
     })
 
@@ -67,10 +75,51 @@ exports.createPages = ({ actions, graphql }) => {
         path: tagPath,
         component: path.resolve(`src/templates/tag/index.js`),
         context: {
-          tag,
-        },
+          tag
+        }
       })
     })
+
+    // Algolia indexing
+    const client = algoliasearch(
+      process.env.GATSBY_ALGOLIA_APPLICATION_ID,
+      process.env.ALGOLIA_ADMIN_API_KEY
+    )
+
+    const postsIndex = client.initIndex('jh_posts')
+    postsIndex.setSettings({
+      attributesToHighlight: [
+        'frontmatter.description',
+        'frontmatter.tags',
+        'frontmatter.title'
+      ],
+      attributesToRetrieve: ['fields', 'frontmatter'],
+      ranking: [
+        'desc(frontmatter.date)',
+        'typo',
+        'geo',
+        'words',
+        'filters',
+        'proximity',
+        'attribute',
+        'exact',
+        'custom'
+      ],
+      searchableAttributes: [
+        'frontmatter.description',
+        'frontmatter.tags',
+        'frontmatter.title'
+      ]
+    })
+
+    const postObjects = posts
+      .filter(edge => edge.node.frontmatter.templateKey === 'blog-post')
+      .map(edge => ({
+        ...edge.node,
+        objectID: edge.node.id
+      }))
+
+    postsIndex.replaceAllObjects(postObjects))
   })
 }
 
@@ -83,7 +132,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
     })
   }
 
@@ -99,7 +148,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
       createNodeField({
         name: `markup`,
         node,
-        value,
+        value
       })
     }
   }

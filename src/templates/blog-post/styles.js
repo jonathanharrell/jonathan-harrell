@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import ContentWrap from '../../components/ContentWrap/'
 import Link from '../../jh-ui/Link'
 import Text from '../../jh-ui/Text'
+import Button from '../../jh-ui/Button'
 
 export const ProgressBarWrap = styled.div`
   position: fixed;
@@ -250,6 +251,10 @@ export const Divider = styled(Text)`
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: inline;
   }
+`
+
+export const ScrollToTopLink = styled(Button)`
+  padding: 0.4rem;
 `
 
 export const RecentArticlesWrap = styled.section`

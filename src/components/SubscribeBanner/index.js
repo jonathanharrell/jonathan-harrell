@@ -21,7 +21,7 @@ import {
 } from './styles'
 import X from '../../svgs/icons/x.svg'
 
-const SubscribeBanner = ({ ...props }) => {
+const SubscribeBanner = () => {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
   const [dismissed, setDismissed] = useState(true)
@@ -95,7 +95,6 @@ const SubscribeBanner = ({ ...props }) => {
           <SubscribeBannerWrap
             id="subscribe"
             aria-labelledby="newsletter-label"
-            {...props}
           >
             <ContentWrap>
               <Padded vertical="3x">

@@ -47,9 +47,14 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 initial={{ opacity: 0, scale: 0.75, y: '-50%' }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
+                role="presentation"
               />
             ) : (
-              <HomeIllustration src={HomeIllustrationSrc} alt="" />
+              <HomeIllustration
+                src={HomeIllustrationSrc}
+                alt=""
+                role="presentation"
+              />
             )}
             <HeaderTextWrap>
               <motion.div
@@ -57,9 +62,11 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
-                <Heading level={1} id="introduction-label">
-                  <PageTitle>{title}</PageTitle>
-                </Heading>
+                <PageTitle>
+                  <Heading level={1} id="introduction-label">
+                    {title}
+                  </Heading>
+                </PageTitle>
               </motion.div>
               <motion.div
                 initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}

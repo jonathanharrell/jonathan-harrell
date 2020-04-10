@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Padded from '../../jh-ui/Padded'
 import Spaced from '../../jh-ui/Spaced'
 import ContentWrap from '../ContentWrap'
@@ -13,16 +12,12 @@ import {
   SiteTitle
 } from './styles'
 
-const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => (
+const Header = () => (
   <HeaderWrap aria-label="Site Header">
     <Padded vertical="m">
       <ContentWrap>
         <HeaderContentWrap>
-          <SiteTitle
-            mobileMenuExpanded={mobileMenuExpanded}
-            level={4}
-            element="span"
-          >
+          <SiteTitle level={4} element="span">
             <HomePageLink to="/" aria-label="Home page" rel="home">
               <Spaced right="xs">
                 <Icon>{`</>`}</Icon>
@@ -30,21 +25,12 @@ const Header = ({ mobileMenuExpanded, handleMobileMenuExpandedChange }) => (
               Jonathan Harrell
             </HomePageLink>
           </SiteTitle>
-          <MobileMenu handleExpandedChange={handleMobileMenuExpandedChange} />
+          <MobileMenu />
           <DesktopMenu />
         </HeaderContentWrap>
       </ContentWrap>
     </Padded>
   </HeaderWrap>
 )
-
-Header.propTypes = {
-  mobileMenuExpanded: PropTypes.bool.isRequired,
-  handleMobileMenuExpandedChange: PropTypes.func.isRequired
-}
-
-Header.defaultProps = {
-  mobileMenuExpanded: false
-}
 
 export default Header

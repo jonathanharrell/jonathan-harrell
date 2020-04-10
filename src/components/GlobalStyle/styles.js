@@ -63,6 +63,10 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  #___gatsby {
+    transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+  }
+
   h1,
   h2,
   h3,
@@ -83,6 +87,11 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration-color: var(--textLighter);
+  }
+
+  mark {
+    background-color: var(--accent);
+    color: var(--text);
   }
 
   .visually-hidden {
@@ -108,6 +117,12 @@ export const GlobalStyle = createGlobalStyle`
   .tippy-tooltip.jh-theme {
     background-color: var(--backgroundTertiary);
     color: var(--text);
+
+    &[data-placement^='top'] {
+      .tippy-arrow {
+        border-top-color: var(--backgroundTertiary);
+      }
+    }
 
     &[data-placement^='bottom'] {
       .tippy-arrow {

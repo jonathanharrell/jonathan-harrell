@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components'
 import Heading from '../../jh-ui/Heading'
@@ -28,17 +22,12 @@ import ThemeContext from '../../context/theme'
 import { AnchoredHeading, Link, Main, SkipLink, Wrap } from './styles'
 
 const Layout = ({ children }) => {
-  const [mobileMenuExpanded, setMobileMenuExpanded] = useState(false)
   const { theme } = useContext(ThemeContext)
   const mainRef = useRef()
 
   useEffect(() => {
     document.body.style.opacity = 1
   })
-
-  const handleMobileMenuExpandedChange = useCallback(expanded => {
-    setMobileMenuExpanded(expanded)
-  }, [])
 
   const skipToContent = () => {
     mainRef.current.focus()
@@ -50,25 +39,15 @@ const Layout = ({ children }) => {
       <GlobalStyle withBackground />
       <Wrap className="layout">
         <SkipLink
+          id="skip-link"
           element="a"
           href="#main"
-          aria-hidden={mobileMenuExpanded}
           onClick={skipToContent}
         >
           Skip to content
         </SkipLink>
-        <Header
-          mobileMenuExpanded={mobileMenuExpanded}
-          handleMobileMenuExpandedChange={handleMobileMenuExpandedChange}
-        />
-        <Main
-          id="main"
-          tabIndex="-1"
-          aria-label="Main Content"
-          aria-hidden={mobileMenuExpanded}
-          mobileMenuExpanded={mobileMenuExpanded}
-          ref={mainRef}
-        >
+        <Header />
+        <Main id="main" tabIndex="-1" aria-label="Main Content" ref={mainRef}>
           <MDXProvider
             components={{
               h1: props => <Heading level={1} {...props} />,
@@ -142,8 +121,8 @@ const Layout = ({ children }) => {
             {children}
           </MDXProvider>
         </Main>
-        <Footer aria-hidden={mobileMenuExpanded} />
-        <SubscribeBanner aria-hidden={mobileMenuExpanded} />
+        <Footer />
+        <SubscribeBanner />
       </Wrap>
     </ThemeProvider>
   )

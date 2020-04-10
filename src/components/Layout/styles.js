@@ -27,14 +27,6 @@ export const Main = styled.main`
   flex-direction: column;
   flex: 1;
   box-shadow: none;
-  transition: opacity 0.2s ease-out;
-  ${({ mobileMenuExpanded }) =>
-    mobileMenuExpanded
-      ? `
-    opacity: 0.5;
-    pointer-events: none;
-  `
-      : ''}
 `
 
 export const AnchoredHeading = styled(ArticleHeading)`

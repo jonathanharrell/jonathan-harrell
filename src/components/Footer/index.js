@@ -11,8 +11,8 @@ import Instagram from '../../svgs/icons/instagram.svg'
 
 const currentYear = new Date().getFullYear()
 
-const Footer = ({ ...props }) => (
-  <FooterWrap aria-label="Site Footer" {...props}>
+const Footer = () => (
+  <FooterWrap aria-label="Site Footer">
     <Padded top="xl" bottom="3x">
       <FooterContentWrap>
         <ScreenReaderText element="h2">Site Footer</ScreenReaderText>

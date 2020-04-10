@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import ArrowUp from '../../svgs/icons/arrow-up.svg'
 import { NavLink, Wrap } from './styles'
+import ArrowUp from '../../svgs/icons/arrow-up.svg'
 
 const PageTitle = ({ children, ...props }) => {
   const titleContent = useRef()

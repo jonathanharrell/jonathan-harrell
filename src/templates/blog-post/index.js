@@ -3,9 +3,13 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import BodyClassName from 'react-body-classname'
-import { motion, useViewportScroll } from 'framer-motion'
-import TypeMate from 'typemate'
+import debounce from 'lodash/debounce'
 import kebabCase from 'lodash/kebabCase'
+import { AnimatePresence, motion, useViewportScroll } from 'framer-motion'
+import TypeMate from 'typemate'
+import Tippy from '@tippy.js/react'
+import 'tippy.js/dist/tippy.css'
+import 'tippy.js/animations/shift-away.css'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import Padded from '../../jh-ui/Padded'
@@ -33,6 +37,7 @@ import {
   Mask,
   ProgressBarWrap,
   RecentArticlesWrap,
+  ScrollToTopLink,
   ShareLink,
   Tag,
   TagLink
@@ -40,6 +45,7 @@ import {
 import Share from '../../svgs/icons/share.svg'
 import Twitter from '../../svgs/icons/twitter.svg'
 import Github from '../../svgs/icons/github.svg'
+import ArrowUp from '../../svgs/icons/arrow-up.svg'
 
 export const BlogPostTemplate = ({
   location,
@@ -54,6 +60,7 @@ export const BlogPostTemplate = ({
   readingTime,
   slug
 }) => {
+  const [scrolled, setScrolled] = useState(false)
   const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
   const { scrollYProgress } = useViewportScroll()
   const articleWrap = useRef()
@@ -75,9 +82,27 @@ export const BlogPostTemplate = ({
     }
   }
 
+  const handleScroll = debounce(() => {
+    setScrolled(window.scrollY > 100)
+  }, 50)
+
+  const scrollToTop = event => {
+    event.preventDefault()
+    window.scrollTo(0, 0)
+    document.getElementById('nav-skip-link').focus()
+  }
+
   useEffect(() => {
     setHasNavigatorShare(!!navigator.share)
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
 
   useLayoutEffect(() => {
     const typeMateInstance = new TypeMate(articleWrap.current, {
@@ -278,6 +303,42 @@ export const BlogPostTemplate = ({
                         </ShareLink>
                       )}
                     </ArticleLinksWrap>
+                    {scrolled && (
+                      <AnimatePresence>
+                        <motion.div
+                          id="main-menu"
+                          initial={{ opacity: 0, y: 100 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 100 }}
+                          transition={{
+                            type: 'spring',
+                            stiffness: 50,
+                            mass: 0.2
+                          }}
+                          style={{
+                            position: 'fixed',
+                            bottom: '1rem',
+                            right: '1rem'
+                          }}
+                        >
+                          <Tippy
+                            content="Scroll to top"
+                            placement="top"
+                            animation="shift-away"
+                            theme="jh"
+                          >
+                            <ScrollToTopLink
+                              href="#nav-skip-link"
+                              element="a"
+                              onClick={scrollToTop}
+                            >
+                              <ArrowUp />
+                              <ScreenReaderText>Scroll to top</ScreenReaderText>
+                            </ScrollToTopLink>
+                          </Tippy>
+                        </motion.div>
+                      </AnimatePresence>
+                    )}
                   </Spaced>
                 </ArticleContent>
               </ArticleContentWrap>
@@ -385,7 +446,7 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM D, YYYY")
         title
         description
         tags
