@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="592px" height="592px" viewBox="0 0 592 592" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M87.7972771,519.897934 L504.183403,73.0762644 C502.973938,71.4791637 501.074052,70.5 499,70.5 L93,70.5 C89.4101491,70.5 86.5,73.4101491 86.5,77 L86.5,516 C86.5,517.43443 86.9662647,518.791229 87.7972771,519.897934 Z" stroke="#C9C9D6" stroke-width="3"></path>
+        <path d="M504.635043,74.8742154 L89.2970208,520.568127 C90.1831173,521.009862 91.1688829,521.24667 92.1929269,521.24667 L498.192927,521.24667 C501.782778,521.24667 504.692927,518.336521 504.692927,514.74667 L504.692927,75.7466698 C504.692927,75.45234 504.673432,75.1610678 504.635043,74.8742154 Z" stroke="#8D8DA6" stroke-width="3" fill-opacity="0.25" fill="#8D8DA6"></path>
+        <rect stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6" x="118.5" y="102.5" width="172" height="33" rx="6"></rect>
+        <rect stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6" x="299" y="455" width="175" height="36" rx="6"></rect>
+        <rect stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6" x="118.5" y="159.5" width="218" height="33" rx="6"></rect>
+        <rect stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6" x="253" y="398" width="221" height="36" rx="6"></rect>
+        <path d="M333.357923,256.5 L247.5,256.5 C225.960895,256.5 208.5,273.960895 208.5,295.5 L208.5,297.5 C208.5,319.039105 225.960895,336.5 247.5,336.5 L259.095755,336.5 L333.357923,256.5 Z" stroke="#C9C9D6" stroke-width="3" fill="#DEDEE6"></path>
+        <path d="M348.5,256 C370.867532,256 389,274.132468 389,296.5 C389,318.867532 370.867532,337 348.5,337 L260.288,337 L335.77,256 L348.5,256 Z" stroke="#8D8DA6" stroke-width="3" fill="#DEDEE6"></path>
+    </g>
+</svg>
