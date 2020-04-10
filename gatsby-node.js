@@ -119,7 +119,7 @@ exports.createPages = ({ actions, graphql }) => {
         objectID: edge.node.id
       }))
 
-    postsIndex.replaceAllObjects(postObjects))
+    postsIndex.replaceAllObjects(postObjects)
   })
 }
 

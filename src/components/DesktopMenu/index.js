@@ -6,7 +6,7 @@ import 'tippy.js/animations/shift-away.css'
 import Spaced from '../../jh-ui/Spaced'
 import { breakpoints } from '../../jh-ui/theme'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Search from '../Search'
+import DesktopSearch from '../DesktopSearch'
 import ThemeContext from '../../context/theme'
 import {
   DesktopMenuWrap,
@@ -131,7 +131,7 @@ const DesktopMenu = () => {
             <h3 id="site-tools-label">Site Tools</h3>
           </ScreenReaderText>
           <Spaced left="xl">
-            <Search/>
+            <DesktopSearch />
           </Spaced>
           <Spaced left="xl">
             <ThemeToggleButton

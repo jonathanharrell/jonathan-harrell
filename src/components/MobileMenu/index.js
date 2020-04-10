@@ -27,7 +27,7 @@ const MobileMenu = () => {
   const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
   const toggleButtonRef = useRef()
-  const menuWrapRef = useRef()
+  const menuRef = useRef()
   const closeButtonRef = useRef()
   const menuHeadingRef = useRef()
   const firstTabbableElementRef = useRef()
@@ -36,7 +36,11 @@ const MobileMenu = () => {
   useEffect(() => {
     // implement close on document click
     const handleClick = event => {
-      if (menuWrapRef.current && !menuWrapRef.current.contains(event.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        toggleButtonRef.current !== event.target
+      ) {
         close()
       }
     }
@@ -148,7 +152,7 @@ const MobileMenu = () => {
   }
 
   return visible ? (
-    <MobileMenuWrap ref={menuWrapRef} onKeyDown={handleKeydown}>
+    <MobileMenuWrap onKeyDown={handleKeydown}>
       <MenuButton
         ref={toggleButtonRef}
         expanded={expanded}
@@ -167,16 +171,17 @@ const MobileMenu = () => {
             <motion.div
               id="main-menu"
               initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0, zIndex: 1 }}
+              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 100 }}
               transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               style={{
                 position: 'fixed',
                 top: 'calc(1rem - 5px)',
-                right: '1rem'
+                right: '1rem',
+                zIndex: 1
               }}
             >
-              <Menu>
+              <Menu ref={menuRef}>
                 <Padded top="4x" bottom="2x">
                   <Padded horizontal="2x" top="2x" bottom="4x">
                     <div>

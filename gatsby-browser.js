@@ -21,5 +21,9 @@ export const onRouteUpdate = ({ prevLocation }) => {
         navSkipLink.focus()
       }, 0)
     }
+
+    // make sure aria-hidden is removed due to overlay
+    const gatsbyWrap = document.getElementById('___gatsby')
+    gatsbyWrap.removeAttribute('aria-hidden')
   }
 }

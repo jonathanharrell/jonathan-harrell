@@ -77,17 +77,23 @@ export default function HTML(props) {
           This site works best with JavaScript enabled.
         </noscript>
         <div
-          id="alert"
+          id="alert-assertive"
           role="region"
           aria-live="assertive"
           className="screen-reader-text"
         />
         <div
+          id="alert-polite"
+          role="region"
+          aria-live="polite"
+          className="screen-reader-text"
+        />
+        <div id="modal" />
+        <div
           key={`body`}
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-        <div id="modal" />
         {props.postBodyComponents}
       </body>
     </html>

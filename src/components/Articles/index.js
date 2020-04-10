@@ -29,14 +29,13 @@ const Articles = ({
 }) => (
   <ArticlesWrap animate="mounted" variants={variants}>
     {posts &&
-      posts.map(({ node: post }, index) => (
+      posts.map(({ node: post }) => (
         <BlogExcerptWrap
           key={post.id}
           variants={childVariants}
           initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
         >
           <BlogExcerpt
-            index={index}
             link={post.fields.slug}
             svg={post.frontmatter.featuredimage.fields.markup}
             date={new Date(post.frontmatter.date)}

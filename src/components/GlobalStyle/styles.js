@@ -51,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-width: 20rem;
     ${({ withBackground }) =>
-      withBackground && 'background-color: var(--backgroundBody)'};
+  withBackground && 'background-color: var(--backgroundBody)'};
     font-family: ${({ theme }) => theme.fonts.sansSerif};
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
@@ -65,6 +65,17 @@ export const GlobalStyle = createGlobalStyle`
 
   #___gatsby {
     transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
+  }
+
+  #modal:not(:empty) {
+    z-index: 1;
+
+    ~ #___gatsby {
+      position: fixed;
+      top: 0;
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   h1,

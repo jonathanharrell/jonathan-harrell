@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link as GatsbyLink } from 'gatsby'
+import React, { useEffect, useRef } from 'react'
 import get from 'lodash/get'
+import kebabCase from 'lodash/kebabCase'
 import algoliasearch from 'algoliasearch/lite'
 import {
   connectHighlight,
   connectHits,
   connectSearchBox,
+  connectStateResults,
   InstantSearch
 } from 'react-instantsearch-dom'
 import Heading from '../../jh-ui/Heading'
@@ -14,75 +14,107 @@ import Text from '../../jh-ui/Text'
 import Tag from '../../jh-ui/Tag'
 import Spaced from '../../jh-ui/Spaced'
 import Padded from '../../jh-ui/Padded'
-import Overlay from '../Overlay'
-import Input from '../../jh-ui/Input'
-import kebabCase from 'lodash/kebabCase'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-
-const SearchWrap = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  width: 30rem;
-  height: 100vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 2rem;
-  background: var(--backgroundPrimary);
-  box-shadow: ${({ theme }) => theme.elevations.high};
-`
-
-const SearchInput = styled(Input)`
-  width: 100%;
-`
-
-const HitsList = styled.ul`
-  list-style: none;
-`
-
-const Hit = styled.li`
-  border-top: 1px solid var(--border);
-`
-
-const ArticleMeta = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const Link = styled(GatsbyLink)`
-  color: var(--text);
-  text-decoration-color: transparent;
-  transition: text-decoration-color 0.2s ${({ theme }) => theme.beziers.out};
-
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration-color: var(--text);
-  }
-`
+import { addAlert, shouldAnimate } from '../../helpers'
+import {
+  ArticleMeta,
+  Hit,
+  HitsList,
+  Link,
+  NoResults,
+  SearchInput
+} from './styles'
+import NotFound from '../../svgs/not-found.svg'
+import { motion } from 'framer-motion'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APPLICATION_ID,
   process.env.GATSBY_ALGOLIA_SEARCH_ONLY_API_KEY
 )
 
-const SearchBox = ({ currentRefinement, refine }) => (
-  <div>
-    <label htmlFor="search" className="visually-hidden">
-      Search for articles
-    </label>
-    <SearchInput
-      type="search"
-      id="search"
-      value={currentRefinement}
-      placeholder="Search articles"
-      onChange={event => refine(event.currentTarget.value)}
-    />
-  </div>
-)
+const SearchBox = ({ currentRefinement, refine }) => {
+  const searchInput = useRef()
+
+  useEffect(() => {
+    searchInput.current.focus()
+  }, [])
+
+  return (
+    <div>
+      <label htmlFor="search" className="visually-hidden">
+        Search for articles
+      </label>
+      <SearchInput
+        type="search"
+        id="search"
+        ref={searchInput}
+        value={currentRefinement}
+        placeholder="Search articles"
+        onChange={event => refine(event.currentTarget.value)}
+      />
+    </div>
+  )
+}
 
 const CustomSearchBox = connectSearchBox(SearchBox)
+
+const StateResults = ({ searchResults, searchState, children }) => {
+  const hasResults = searchResults && searchResults.nbHits !== 0
+
+  useEffect(() => {
+    if (searchResults) {
+      addAlert(
+        `${searchResults.nbHits} article${
+          searchResults.nbHits === 1 ? '' : 's'
+        } found for search query ${searchState.query}`
+      )
+    }
+  }, [searchResults, searchState])
+
+  return (
+    <div>
+      {hasResults && children}
+      {!hasResults && searchState.query && (
+        <NoResults>
+          <motion.div
+            initial={shouldAnimate() ? { opacity: 0, scale: 0.75 } : false}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+          >
+            <Spaced bottom="xxl">
+              <NotFound />
+            </Spaced>
+          </motion.div>
+          <motion.div
+            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+          >
+            <Heading level={4} element="h2">
+              No matching search results
+            </Heading>
+          </motion.div>
+          <motion.div
+            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 50,
+              mass: 0.1,
+              delay: 0.1
+            }}
+          >
+            <Spaced top="xs">
+              <Text color="textLighter">Try another search term</Text>
+            </Spaced>
+          </motion.div>
+        </NoResults>
+      )}
+    </div>
+  )
+}
+
+const CustomStateResults = connectStateResults(StateResults)
 
 const Highlight = ({ highlight, attribute, hit }) => {
   const parsedHit = highlight({
@@ -110,10 +142,32 @@ const Highlight = ({ highlight, attribute, hit }) => {
 
 const CustomHighlight = connectHighlight(Highlight)
 
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
+
 const Hits = ({ hits }) => (
-  <HitsList>
+  <HitsList animate="mounted" variants={variants}>
     {hits.map(hit => (
-      <Hit key={hit.objectID}>
+      <Hit
+        key={hit.objectID}
+        variants={childVariants}
+        initial={shouldAnimate() ? { opacity: 0, x: 50 } : false}
+      >
         <Padded vertical="xxl">
           <article
             aria-labelledby={`${kebabCase(hit.frontmatter.title)}-label`}
@@ -185,25 +239,29 @@ const CustomHits = connectHits(Hits)
 
 const Search = () => {
   return (
-    <Overlay>
-      <SearchWrap>
-        <InstantSearch searchClient={searchClient} indexName="jh_posts">
-          <Spaced bottom="3x">
-            <div>
-              <CustomSearchBox />
-            </div>
-          </Spaced>
-          <section aria-labelledby="search-results-label">
+    <InstantSearch searchClient={searchClient} indexName="jh_posts">
+      <Spaced bottom="3x">
+        <div>
+          <CustomSearchBox />
+        </div>
+      </Spaced>
+      <CustomStateResults>
+        <section aria-labelledby="search-results-label">
+          <motion.div
+            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+          >
             <Spaced bottom="xl">
               <Heading level={4} element="h2" id="search-results-label">
                 Search results
               </Heading>
             </Spaced>
-            <CustomHits />
-          </section>
-        </InstantSearch>
-      </SearchWrap>
-    </Overlay>
+          </motion.div>
+          <CustomHits />
+        </section>
+      </CustomStateResults>
+    </InstantSearch>
   )
 }
 
