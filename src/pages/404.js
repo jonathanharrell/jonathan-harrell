@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
+import PageTitle from '../components/PageTitle'
+import { shouldAnimate } from '../helpers'
 import NotFound from '../svgs/not-found.svg'
-import { motion } from 'framer-motion'
 
 const HeaderWrap = styled.header`
   flex: 1;
@@ -39,11 +41,7 @@ const NotFoundPage = () => (
       <NotFoundContentWrap>
         <Spaced bottom="3x">
           <motion.div
-            initial={
-              typeof window !== 'undefined'
-                ? { opacity: 0, scale: 0.75 }
-                : false
-            }
+            initial={shouldAnimate() ? { opacity: 0, scale: 0.75 } : false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
           >
@@ -51,20 +49,18 @@ const NotFoundPage = () => (
           </motion.div>
         </Spaced>
         <motion.div
-          initial={
-            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-          }
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
         >
-          <Heading level={1} id="about-label">
-            Oops! That page can’t be found.
-          </Heading>
+          <PageTitle>
+            <Heading level={1} id="about-label">
+              Oops! That page can’t be found.
+            </Heading>
+          </PageTitle>
         </motion.div>
         <motion.div
-          initial={
-            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-          }
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.1 }}
         >

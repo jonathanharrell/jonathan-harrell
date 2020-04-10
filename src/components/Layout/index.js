@@ -49,7 +49,12 @@ const Layout = ({ children }) => {
       <Seo />
       <GlobalStyle withBackground />
       <Wrap className="layout">
-        <SkipLink element="a" href="#main" onClick={skipToContent}>
+        <SkipLink
+          element="a"
+          href="#main"
+          aria-hidden={mobileMenuExpanded}
+          onClick={skipToContent}
+        >
           Skip to content
         </SkipLink>
         <Header
@@ -137,8 +142,8 @@ const Layout = ({ children }) => {
             {children}
           </MDXProvider>
         </Main>
-        <Footer inert={mobileMenuExpanded} />
-        <SubscribeBanner inert={mobileMenuExpanded} />
+        <Footer aria-hidden={mobileMenuExpanded} />
+        <SubscribeBanner aria-hidden={mobileMenuExpanded} />
       </Wrap>
     </ThemeProvider>
   )

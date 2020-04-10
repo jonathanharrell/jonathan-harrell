@@ -43,21 +43,33 @@ const DesktopMenu = () => {
 
   // some links need special logic to determine whether or not they should get the active style
   const isActive = ({ isCurrent, href, location }) => {
+    const props = {}
+
     if (href === '/blog') {
       if (location.pathname.startsWith('/blog')) {
-        return { 'data-active': true }
+        props['data-active'] = true
       }
 
       if (location.pathname.startsWith('/tags')) {
-        return { 'data-active': true }
+        props['data-active'] = true
+      }
+
+      if (location.pathname === '/blog' || location.pathname === '/blog/') {
+        props['aria-current'] = 'page'
       }
     }
 
     if (href === '/about' && location.pathname.startsWith('/about')) {
-      return { 'data-active': true }
+      props['data-active'] = true
+      props['aria-current'] = 'page'
     }
 
-    return isCurrent ? { 'data-active': true } : null
+    if (isCurrent) {
+      props['data-active'] = true
+      props['aria-current'] = 'page'
+    }
+
+    return props
   }
 
   const toggleTheme = () => {
@@ -77,7 +89,11 @@ const DesktopMenu = () => {
         <h2>Main Menu</h2>
       </ScreenReaderText>
       <Spaced left="3x">
-        <section aria-labelledby="site-links-label">
+        <section
+          id="site-navigation"
+          tabIndex={-1}
+          aria-labelledby="site-links-label"
+        >
           <ScreenReaderText>
             <h3 id="site-links-label">Site Links</h3>
           </ScreenReaderText>

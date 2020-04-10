@@ -10,7 +10,9 @@ import Link from '../../jh-ui/Link'
 import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import Seo from '../../components/seo'
+import PageTitle from '../../components/PageTitle'
 import website from '../../../website-config'
+import { shouldAnimate } from '../../helpers'
 import {
   ArticlesWrap,
   BlogExcerpt,
@@ -62,24 +64,20 @@ const TagRoute = ({
             <Padded vertical="3x">
               <div>
                 <motion.div
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
-                  <Heading level={1}>{tagHeading}</Heading>
+                  <PageTitle>
+                    <Heading level={1}>{tagHeading}</Heading>
+                  </PageTitle>
                 </motion.div>
                 <Spaced top="m">
                   <Links>
                     <Spaced horizontal="m">
                       <motion.div
                         initial={
-                          typeof window !== 'undefined'
-                            ? { opacity: 0, y: 25 }
-                            : false
+                          shouldAnimate() ? { opacity: 0, y: 25 } : false
                         }
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -95,9 +93,7 @@ const TagRoute = ({
                       </motion.div>
                       <motion.div
                         initial={
-                          typeof window !== 'undefined'
-                            ? { opacity: 0, y: 25 }
-                            : false
+                          shouldAnimate() ? { opacity: 0, y: 25 } : false
                         }
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -132,11 +128,7 @@ const TagRoute = ({
                     <BlogExcerptWrap
                       key={post.id}
                       variants={childVariants}
-                      initial={
-                        typeof window !== 'undefined'
-                          ? { opacity: 0, y: 50 }
-                          : false
-                      }
+                      initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                     >
                       <BlogExcerpt
                         index={index}

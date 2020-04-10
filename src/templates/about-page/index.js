@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 import Padded from '../../jh-ui/Padded'
 import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
@@ -8,7 +9,9 @@ import Text from '../../jh-ui/Text'
 import SectionHeader from '../../jh-ui/SectionHeader'
 import Layout from '../../components/Layout'
 import Seo from '../../components/seo'
+import PageTitle from '../../components/PageTitle'
 import website from '../../../website-config'
+import { shouldAnimate } from '../../helpers'
 import {
   AboutContentWrap,
   BioFigure,
@@ -25,7 +28,6 @@ import {
   UsageLink,
   UsesWrap
 } from './styles'
-import { motion } from 'framer-motion'
 
 export const AboutPageTemplate = ({
   location,
@@ -48,11 +50,7 @@ export const AboutPageTemplate = ({
           {image && (
             <BioFigureWrap>
               <BioFigure
-                initial={
-                  typeof window !== 'undefined'
-                    ? { opacity: 0, scale: 0.75 }
-                    : false
-                }
+                initial={shouldAnimate() ? { opacity: 0, scale: 0.75 } : false}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
@@ -62,9 +60,7 @@ export const AboutPageTemplate = ({
           )}
           <BioText>
             <motion.div
-              initial={
-                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-              }
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 type: 'spring',
@@ -73,14 +69,14 @@ export const AboutPageTemplate = ({
                 delay: 0.1
               }}
             >
-              <Heading level={1} id="about-label">
-                {title || 'About Jonathan'}
-              </Heading>
+              <PageTitle>
+                <Heading level={1} id="about-label">
+                  {title || 'About Jonathan'}
+                </Heading>
+              </PageTitle>
             </motion.div>
             <motion.div
-              initial={
-                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-              }
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 type: 'spring',
@@ -99,7 +95,7 @@ export const AboutPageTemplate = ({
     </HeaderWrap>
     <InvolvementWrap aria-labelledby="involvement-label">
       <motion.div
-        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
       >
@@ -128,7 +124,7 @@ export const AboutPageTemplate = ({
     </InvolvementWrap>
     <UsesWrap id="uses" aria-labelledby="uses-label">
       <motion.div
-        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
       >

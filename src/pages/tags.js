@@ -13,7 +13,9 @@ import Card from '../jh-ui/Card'
 import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import Seo from '../components/seo'
+import PageTitle from '../components/PageTitle'
 import website from '../../website-config'
+import { shouldAnimate } from '../helpers'
 
 const TagsIndexWrap = styled.div`
   flex: 1;
@@ -106,14 +108,16 @@ const TagsPage = ({
     />
     <TagsIndexWrap>
       <motion.div
-        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
       >
         <Header>
           <ContentWrap>
             <Padded vertical="3x">
-              <Heading level={1}>Tags</Heading>
+              <PageTitle>
+                <Heading level={1}>Tags</Heading>
+              </PageTitle>
             </Padded>
           </ContentWrap>
         </Header>
@@ -131,11 +135,7 @@ const TagsPage = ({
                 <TagCardWrap
                   key={tag.fieldValue}
                   variants={childVariants}
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 >
                   <TagCard>
                     <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>

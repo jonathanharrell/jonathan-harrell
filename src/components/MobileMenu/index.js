@@ -94,17 +94,33 @@ const MobileMenu = ({ handleExpandedChange }) => {
 
   // some links need special logic to determine whether or not they should get the active style
   const isActive = ({ isCurrent, href, location }) => {
+    const props = {}
+
     if (href === '/blog') {
       if (location.pathname.startsWith('/blog')) {
-        return { 'data-active': true }
+        props['data-active'] = true
       }
 
       if (location.pathname.startsWith('/tags')) {
-        return { 'data-active': true }
+        props['data-active'] = true
+      }
+
+      if (location.pathname === '/blog' || location.pathname === '/blog/') {
+        props['aria-current'] = 'page'
       }
     }
 
-    return isCurrent ? { 'data-active': true } : null
+    if (href === '/about' && location.pathname.startsWith('/about')) {
+      props['data-active'] = true
+      props['aria-current'] = 'page'
+    }
+
+    if (isCurrent) {
+      props['data-active'] = true
+      props['aria-current'] = 'page'
+    }
+
+    return props
   }
 
   const handleKeydown = event => {
@@ -151,6 +167,7 @@ const MobileMenu = ({ handleExpandedChange }) => {
         expanded={expanded}
         aria-expanded={expanded}
         order="secondary"
+        id="site-navigation"
         aria-controls="main-menu"
         title={expanded ? 'Close menu' : 'Open menu'}
         onClick={open}

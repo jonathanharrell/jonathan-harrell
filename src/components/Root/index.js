@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import 'focus-visible'
 import ErrorBoundary from '../ErrorBoundary'
 import theme from '../../jh-ui/theme'
 import ThemeContext from '../../context/theme'

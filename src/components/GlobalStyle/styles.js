@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     transition: border-color 0.2s ease-out, background 0.2s ease-out, color 0.2s ease-out, fill 0.2s ease-out, stroke 0.2s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+      transition: none;
+    }
   }
 
   ::selection {
@@ -35,7 +40,11 @@ export const GlobalStyle = createGlobalStyle`
 
   *:focus {
     box-shadow: 0 0 0 0.2em var(--selection);
-    outline: 0;
+    outline: none;
+  }
+
+  .js-focus-visible :focus:not(.focus-visible) {
+    box-shadow: none;
   }
 
   body {

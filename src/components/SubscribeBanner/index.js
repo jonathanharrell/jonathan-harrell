@@ -9,7 +9,7 @@ import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Ul from '../../jh-ui/Ul'
 import Alert from '../../jh-ui/Alert'
 import ContentWrap from '../ContentWrap'
-import { addAlert } from '../../helpers'
+import { addAlert, shouldAnimate } from '../../helpers'
 import {
   CloseButton,
   SubscribeBannerWrap,
@@ -21,7 +21,7 @@ import {
 } from './styles'
 import X from '../../svgs/icons/x.svg'
 
-const SubscribeBanner = () => {
+const SubscribeBanner = ({ ...props }) => {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(null)
   const [dismissed, setDismissed] = useState(true)
@@ -75,9 +75,11 @@ const SubscribeBanner = () => {
         throw Error(json.detail)
       } else {
         setSuccess(true)
+        addAlert("You've been subscribed!")
       }
     } catch (error) {
       setError(error.message)
+      addAlert(`There was a problem subscribing: ${error.message}`)
     }
   }
 
@@ -85,9 +87,7 @@ const SubscribeBanner = () => {
     <AnimatePresence>
       {!dismissed ? (
         <motion.div
-          initial={
-            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-          }
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
@@ -95,6 +95,7 @@ const SubscribeBanner = () => {
           <SubscribeBannerWrap
             id="subscribe"
             aria-labelledby="newsletter-label"
+            {...props}
           >
             <ContentWrap>
               <Padded vertical="3x">
@@ -154,7 +155,7 @@ const SubscribeBanner = () => {
                               {error && (
                                 <motion.div
                                   initial={
-                                    typeof window !== 'undefined'
+                                    shouldAnimate()
                                       ? { opacity: 0, y: 50 }
                                       : false
                                   }
@@ -177,7 +178,7 @@ const SubscribeBanner = () => {
                               {success && (
                                 <motion.div
                                   initial={
-                                    typeof window !== 'undefined'
+                                    shouldAnimate()
                                       ? { opacity: 0, y: 50 }
                                       : false
                                   }

@@ -15,11 +15,10 @@ import Button from '../../jh-ui/Button'
 import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
+import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
 import website from '../../../website-config'
-import Share from '../../svgs/icons/share.svg'
-import Twitter from '../../svgs/icons/twitter.svg'
-import Github from '../../svgs/icons/github.svg'
+import { shouldAnimate } from '../../helpers'
 import {
   ArticleContent,
   ArticleContentWrap,
@@ -38,6 +37,9 @@ import {
   Tag,
   TagLink
 } from './styles'
+import Share from '../../svgs/icons/share.svg'
+import Twitter from '../../svgs/icons/twitter.svg'
+import Github from '../../svgs/icons/github.svg'
 
 export const BlogPostTemplate = ({
   location,
@@ -114,11 +116,7 @@ export const BlogPostTemplate = ({
                 <Spaced bottom="3x">
                   <Figure
                     dangerouslySetInnerHTML={{ __html: image.fields.markup }}
-                    initial={
-                      typeof window !== 'undefined'
-                        ? { opacity: 0, scale: 1 }
-                        : false
-                    }
+                    initial={shouldAnimate() ? { opacity: 0, scale: 1 } : false}
                     animate={{ opacity: 1, scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
                   />
@@ -126,11 +124,7 @@ export const BlogPostTemplate = ({
               )}
               <ArticleHeaderContent>
                 <motion.div
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
@@ -185,11 +179,7 @@ export const BlogPostTemplate = ({
                   </Spaced>
                 </motion.div>
                 <motion.div
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     type: 'spring',
@@ -199,18 +189,16 @@ export const BlogPostTemplate = ({
                   }}
                 >
                   <Spaced bottom="m">
-                    <Heading level={1} id="article-title">
-                      {title}
-                    </Heading>
+                    <PageTitle>
+                      <Heading level={1} id="article-title">
+                        {title}
+                      </Heading>
+                    </PageTitle>
                   </Spaced>
                 </motion.div>
                 {description && (
                   <motion.div
-                    initial={
-                      typeof window !== 'undefined'
-                        ? { opacity: 0, y: 50 }
-                        : false
-                    }
+                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
                       type: 'spring',
@@ -234,9 +222,7 @@ export const BlogPostTemplate = ({
           </clipPath>
         </Mask>
         <motion.div
-          initial={
-            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-          }
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
         >
@@ -299,9 +285,7 @@ export const BlogPostTemplate = ({
           </Padded>
         </motion.div>
         <motion.div
-          initial={
-            typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-          }
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
         >

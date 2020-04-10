@@ -8,10 +8,13 @@ import Text from '../../jh-ui/Text'
 import SectionHeader from '../../jh-ui/SectionHeader'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Button from '../../jh-ui/Button'
+import Link from '../../jh-ui/Link'
 import Seo from '../../components/seo'
 import Layout from '../../components/Layout'
+import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
+import { shouldAnimate } from '../../helpers'
 import init from '../../home-animation'
 import {
   Canvas,
@@ -23,14 +26,13 @@ import {
   HomeIllustration,
   RecentArticlesWrap
 } from './styles'
-import Link from '../../jh-ui/Link'
 import HomeIllustrationSrc from '../../img/home-illustration.png'
 
 export const IndexPageTemplate = ({ title, description, experiments }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
-    init(canvasRef.current)
+    if (canvasRef.current) init(canvasRef.current)
   }, [])
 
   return (
@@ -39,35 +41,28 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
-            <Canvas
-              ref={canvasRef}
-              initial={
-                typeof window !== 'undefined'
-                  ? { opacity: 0, scale: 0.75, y: '-50%' }
-                  : false
-              }
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
-            />
-            <noscript>
+            {shouldAnimate() ? (
+              <Canvas
+                ref={canvasRef}
+                initial={{ opacity: 0, scale: 0.75, y: '-50%' }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
+              />
+            ) : (
               <HomeIllustration src={HomeIllustrationSrc} alt="" />
-            </noscript>
+            )}
             <HeaderTextWrap>
               <motion.div
-                initial={
-                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-                }
+                initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
                 <Heading level={1} id="introduction-label">
-                  {title}
+                  <PageTitle>{title}</PageTitle>
                 </Heading>
               </motion.div>
               <motion.div
-                initial={
-                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-                }
+                initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   type: 'spring',
@@ -81,9 +76,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 </Spaced>
               </motion.div>
               <motion.div
-                initial={
-                  typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-                }
+                initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   type: 'spring',
@@ -106,9 +99,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
         <HomeContentWrap>
           <SectionHeader>
             <motion.div
-              initial={
-                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-              }
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 type: 'spring',
@@ -122,7 +113,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
               </Heading>
             </motion.div>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
+              initial={shouldAnimate() ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
               transition={{
                 type: 'spring',
@@ -150,9 +141,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
         <HomeContentWrap>
           <SectionHeader>
             <motion.div
-              initial={
-                typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-              }
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 type: 'spring',
@@ -170,7 +159,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
               </Heading>
             </motion.div>
             <motion.div
-              initial={typeof window !== 'undefined' ? { opacity: 0 } : false}
+              initial={shouldAnimate() ? { opacity: 0 } : false}
               animate={{ opacity: 1 }}
               transition={{
                 type: 'spring',

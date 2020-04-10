@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { motion } from 'framer-motion'
 import kebabCase from 'lodash/kebabCase'
 import Heading from '../../jh-ui/Heading'
 import Padded from '../../jh-ui/Padded'
@@ -9,11 +10,12 @@ import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
+import PageTitle from '../../components/PageTitle'
 import Articles from '../../components/Articles'
 import Seo from '../../components/seo'
 import website from '../../../website-config'
+import { shouldAnimate } from '../../helpers'
 import { ArticlesWrap, BlogIndexWrap, Header, Link, TagWrap } from './styles'
-import { motion } from 'framer-motion'
 
 export const BlogIndexPageTemplate = ({ location, title, tags }) => {
   const articlesRef = useRef()
@@ -35,22 +37,16 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
             <Padded vertical="3x">
               <div>
                 <motion.div
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
                 >
-                  <Heading level={1}>{title || 'Articles'}</Heading>
+                  <PageTitle>
+                    <Heading level={1}>{title || 'Articles'}</Heading>
+                  </PageTitle>
                 </motion.div>
                 <motion.div
-                  initial={
-                    typeof window !== 'undefined'
-                      ? { opacity: 0, y: 50 }
-                      : false
-                  }
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     type: 'spring',

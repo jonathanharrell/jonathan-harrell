@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { shouldAnimate } from '../../helpers'
 import {
   ExperimentExcerptElevated,
   ExperimentExcerptWrap,
@@ -30,7 +31,7 @@ const Experiments = ({ experiments }) => (
       <ExperimentExcerptWrap
         key={experiment.id}
         variants={childVariants}
-        initial={typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false}
+        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
       >
         <ExperimentExcerptElevated
           id={experiment.id}

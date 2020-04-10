@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
+import { shouldAnimate } from '../../helpers'
 import { BlogExcerpt, BlogExcerptWrap, RecentArticlesWrap } from './styles'
 
 const variants = {
@@ -38,9 +39,7 @@ const RecentArticles = ({
           <BlogExcerptWrap
             key={post.id}
             variants={childVariants}
-            initial={
-              typeof window !== 'undefined' ? { opacity: 0, y: 50 } : false
-            }
+            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           >
             <BlogExcerpt
               link={post.fields.slug}
