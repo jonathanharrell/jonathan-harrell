@@ -8,6 +8,7 @@ import Github from '../../svgs/icons/github.svg'
 import Codepen from '../../svgs/icons/codepen.svg'
 import LinkedIn from '../../svgs/icons/linkedin.svg'
 import Instagram from '../../svgs/icons/instagram.svg'
+import Rss from '../../svgs/icons/rss.svg'
 
 const currentYear = new Date().getFullYear()
 
@@ -70,15 +71,10 @@ const Footer = () => (
                 <ScreenReaderText>Instagram</ScreenReaderText>
                 <Instagram />
               </Link>
-              {/*<Link*/}
-              {/*  as="a"*/}
-              {/*  href="https://jonathan-harrell.com/?feed=rss"*/}
-              {/*  target="_blank"*/}
-              {/*  rel="noopener noreferrer"*/}
-              {/*>*/}
-              {/*  <ScreenReaderText>RSS</ScreenReaderText>*/}
-              {/*  <Rss />*/}
-              {/*</Link>*/}
+              <Link as="a" href="/rss.xml">
+                <ScreenReaderText>RSS Feed</ScreenReaderText>
+                <Rss />
+              </Link>
             </Spaced>
           </nav>
         </SocialLinksWrap>

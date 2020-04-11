@@ -28,6 +28,7 @@
     "framer-motion": "^1.8.4",
     "gatsby": "^2.13.31",
     "gatsby-image": "^2.0.23",
+    "gatsby-plugin-feed": "^2.4.1",
     "gatsby-plugin-google-analytics": "^2.2.0",
     "gatsby-plugin-layout": "^1.2.1",
     "gatsby-plugin-manifest": "^2.3.1",
