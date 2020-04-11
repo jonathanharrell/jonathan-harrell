@@ -14,7 +14,15 @@ import Articles from '../../components/Articles'
 import Seo from '../../components/seo'
 import website from '../../../website-config'
 import { shouldAnimate } from '../../helpers'
-import { ArticlesWrap, BlogIndexWrap, Header, Link, TagWrap } from './styles'
+import {
+  ArticlesSkipLink,
+  ArticlesWrap,
+  BlogIndexWrap,
+  Header,
+  HeaderContentWrap,
+  Link,
+  TagWrap
+} from './styles'
 
 export const BlogIndexPageTemplate = ({ location, title, tags }) => {
   const articlesRef = useRef()
@@ -34,7 +42,7 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
         <Header>
           <ContentWrap>
             <Padded vertical="3x">
-              <div>
+              <HeaderContentWrap>
                 <motion.div
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
@@ -44,6 +52,13 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                     <Heading level={1}>{title || 'Articles'}</Heading>
                   </PageTitle>
                 </motion.div>
+                <ArticlesSkipLink
+                  href="#articles"
+                  element="a"
+                  onClick={skipToArticles}
+                >
+                  Skip to articles
+                </ArticlesSkipLink>
                 <motion.div
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   animate={{ opacity: 1, y: 0 }}
@@ -59,11 +74,6 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                       <Heading level={2} id="tags-label">
                         Tags
                       </Heading>
-                    </ScreenReaderText>
-                    <ScreenReaderText>
-                      <a href="#articles" onClick={skipToArticles}>
-                        Skip to articles
-                      </a>
                     </ScreenReaderText>
                     {tags && (
                       <section aria-labelledby="tags-label">
@@ -84,7 +94,7 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                     )}
                   </Spaced>
                 </motion.div>
-              </div>
+              </HeaderContentWrap>
             </Padded>
           </ContentWrap>
         </Header>
