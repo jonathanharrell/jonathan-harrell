@@ -203,7 +203,7 @@ const MobileMenu = ({ location }) => {
                         <X />
                       </CloseButton>
                     </MenuHeader>
-                    <Spaced vertical="3x">
+                    <Spaced vertical="2x">
                       <section aria-labelledby="site-links-label">
                         <h3>
                           <ScreenReaderText id="site-links-label">

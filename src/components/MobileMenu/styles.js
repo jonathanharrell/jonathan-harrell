@@ -27,6 +27,7 @@ export const MenuButton = styled(Button)`
 
 export const Menu = styled.div`
   width: 100vw;
+  height: 100vh;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
@@ -37,7 +38,7 @@ export const Menu = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 20rem;
-    min-height: 40rem;
+    min-height: 35rem;
   }
 `
 
