@@ -222,7 +222,7 @@ const Hits = ({ hits }) => (
                 <ul aria-labelledby="article-tags-label">
                   {hit.frontmatter.tags.map((tag, index) => (
                     <Spaced key={`${hit.objectID}-tag-${index}`} right="xs">
-                      <Tag inert={true}>{tag}</Tag>
+                      <Tag hoverable={false}>{tag}</Tag>
                     </Spaced>
                   ))}
                 </ul>

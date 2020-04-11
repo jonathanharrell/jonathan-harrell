@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Root } from './styles'
 
-const Tag = ({ inert, children, ...props }) => (
-  <Root inert={inert} {...props}>
+const Tag = ({ hoverable, children, ...props }) => (
+  <Root hoverable={hoverable.toString()} {...props}>
     {children}
   </Root>
 )
 
 Tag.propTypes = {
-  inert: PropTypes.bool
+  hoverable: PropTypes.bool
 }
 
 Tag.defaultProps = {
-  inert: false
+  hoverable: true
 }
 
 export default Tag

@@ -64,6 +64,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #___gatsby {
+    width: 100%;
     transition: opacity 0.2s ${({ theme }) => theme.beziers.out};
   }
 

@@ -39,19 +39,23 @@ const DesktopSearch = () => {
 
     const handleResize = debounce(() => {
       setVisibility(window.innerWidth >= desktopWidth)
+      if (window.innerWidth < desktopWidth) close()
     }, 50)
 
     setVisibility(window.innerWidth >= desktopWidth)
 
     window.addEventListener('resize', handleResize)
+    window.addEventListener('routeUpdate', close)
 
     return () => {
       window.removeEventListener('click', handleClick)
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('routeUpdate', close)
     }
   }, [])
 
-  const handleKeydown = () => {}
+  const handleKeydown = () => {
+  }
 
   const open = () => {
     setExpanded(true)
@@ -91,7 +95,7 @@ const DesktopSearch = () => {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 100 }}
-              transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+              transition={{ stiffness: 50, mass: 0.1 }}
               style={{
                 position: 'fixed',
                 top: '0',

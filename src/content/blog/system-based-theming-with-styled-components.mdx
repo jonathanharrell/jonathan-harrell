@@ -336,7 +336,7 @@ In `head`:
     document.body.setAttribute("data-theme", newTheme);
     window.dispatchEvent(
       new CustomEvent("themeChange", {
-        theme: newTheme
+        detail: newTheme
       })
     );
   }
@@ -379,7 +379,7 @@ const App = () => {
 
     // set up listener for custom theme change event
     window.addEventListener("themeChange", (event) => {
-      setActiveTheme(event.theme);
+      setActiveTheme(event.detail);
     });
   }, []);
 
