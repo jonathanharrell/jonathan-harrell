@@ -199,7 +199,11 @@ const MobileMenu = ({ location }) => {
                           Main Menu
                         </h2>
                       </ScreenReaderText>
-                      <CloseButton ref={closeButtonRef} onClick={close}>
+                      <CloseButton
+                        key={themeName}
+                        ref={closeButtonRef}
+                        onClick={close}
+                      >
                         <ScreenReaderText>Close Menu</ScreenReaderText>
                         <X />
                       </CloseButton>
@@ -304,6 +308,7 @@ const MobileMenu = ({ location }) => {
                               slideDirection="bottom"
                             >
                               <SearchButton
+                                key={themeName}
                                 ref={lastTabbableElementRef}
                                 themeName={themeName}
                               >
