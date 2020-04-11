@@ -183,7 +183,9 @@ export const SearchButton = styled(Button)`
   width: 100%;
   height: 3rem;
   border: 0;
-  background-color: var(--backgroundTertiary);
+  background-color: ${({ themeName }) =>
+    getThemeOptionBackgroundColor({ active: false, themeName })};
   border-radius: 4px;
+  color: var(--text);
   text-align: center;
 `

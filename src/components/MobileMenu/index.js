@@ -303,7 +303,10 @@ const MobileMenu = ({ location }) => {
                               location={location}
                               slideDirection="bottom"
                             >
-                              <SearchButton ref={lastTabbableElementRef}>
+                              <SearchButton
+                                ref={lastTabbableElementRef}
+                                themeName={themeName}
+                              >
                                 <Spaced right="xs">
                                   <SearchIcon />
                                 </Spaced>

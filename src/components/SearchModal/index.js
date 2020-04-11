@@ -120,7 +120,7 @@ const SearchModal = React.forwardRef(
           <SearchButton ref={searchButtonRef} unstyled {...searchButtonProps}>
             <ScreenReaderText>Open search</ScreenReaderText>
             <Tippy
-              content={expanded ? 'Close search' : 'Open search'}
+              content="Open search"
               placement="bottom"
               animation="shift-away"
               theme="jh"
