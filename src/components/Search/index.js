@@ -46,7 +46,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
       </label>
       <SearchInput
         ref={searchRef}
-        type="search"
+        type="input"
         id="search"
         value={currentRefinement}
         placeholder="Search articles"
