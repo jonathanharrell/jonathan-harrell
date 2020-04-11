@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Tippy from '@tippy.js/react'
@@ -6,12 +6,14 @@ import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Overlay from '../Overlay'
 import Search from '../Search'
+import ThemeContext from '../../context/theme'
 import { CloseButton, SearchButton, SearchHeader, SearchWrap } from './styles'
 import SearchIcon from '../../svgs/icons/search.svg'
 import X from '../../svgs/icons/x.svg'
 
 const SearchModal = React.forwardRef(
   ({ location, slideDirection, children }, ref) => {
+    const { themeName } = useContext(ThemeContext)
     const [expanded, setExpanded] = useState(false)
     const searchButtonRef = useRef()
     const searchWrapRef = useRef()
@@ -117,7 +119,12 @@ const SearchModal = React.forwardRef(
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
       <div ref={ref} onKeyDown={handleKeydown} onClick={handleSearchModalClick}>
         {customSearchButton || (
-          <SearchButton ref={searchButtonRef} unstyled {...searchButtonProps}>
+          <SearchButton
+            key={themeName}
+            ref={searchButtonRef}
+            unstyled
+            {...searchButtonProps}
+          >
             <ScreenReaderText>Open search</ScreenReaderText>
             <Tippy
               content="Open search"

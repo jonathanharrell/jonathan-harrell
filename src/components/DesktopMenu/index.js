@@ -144,6 +144,7 @@ const DesktopMenu = ({ location }) => {
                 Change theme to {themeName === 'light' ? 'dark' : 'light'}
               </ScreenReaderText>
               <Tippy
+                key={themeName}
                 content={`Change theme to ${
                   themeName === 'light' ? 'dark' : 'light'
                 }`}
