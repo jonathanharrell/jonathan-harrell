@@ -42,6 +42,7 @@ export const SearchWrap = styled.div`
     top: 0;
     right: 0;
     width: 30rem;
+    min-height: 100vh;
     max-height: 100vh;
     border-radius: 0;
   }

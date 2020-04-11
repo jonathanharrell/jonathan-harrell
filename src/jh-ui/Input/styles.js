@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Root = styled.input`
+  appearance: none;
   height: 3rem;
   padding: 0 ${({ theme }) => theme.spacing.m};
   border: 0;
