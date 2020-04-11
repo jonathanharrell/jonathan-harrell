@@ -78,6 +78,10 @@ const SearchModal = React.forwardRef(
       }
     }
 
+    const handleSearchModalClick = event => {
+      event.stopPropagation()
+    }
+
     const open = () => {
       setExpanded(true)
     }
@@ -111,7 +115,7 @@ const SearchModal = React.forwardRef(
 
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div ref={ref} onKeyDown={handleKeydown}>
+      <div ref={ref} onKeyDown={handleKeydown} onClick={handleSearchModalClick}>
         {customSearchButton || (
           <SearchButton ref={searchButtonRef} unstyled {...searchButtonProps}>
             <ScreenReaderText>Open search</ScreenReaderText>

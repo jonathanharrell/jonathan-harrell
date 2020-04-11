@@ -34,6 +34,7 @@ const MobileMenu = ({ location }) => {
   const menuRef = useRef()
   const closeButtonRef = useRef()
   const menuHeadingRef = useRef()
+  const searchModalRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = useRef()
 

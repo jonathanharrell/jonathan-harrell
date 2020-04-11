@@ -38,6 +38,7 @@ export const Menu = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 20rem;
+    height: auto;
     min-height: 35rem;
   }
 `
