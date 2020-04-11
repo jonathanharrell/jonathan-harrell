@@ -21,6 +21,7 @@ export const lightValues = css`
   --backgroundInlineCode: hsl(210, 15%, 97%);
   --backgroundAlertInfo: hsl(210, 15%, 60%, 15%);
   --backgroundAlertDanger: hsl(5, 66%, 56%, 15%);
+  --backgroundMark: hsl(210, 15%, 92.5%);
   --border: hsl(210, 15%, 90%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.blueDarkest};
   --buttonBackgroundPrimary: ${({ theme }) => theme.colors.blueDarkest};
@@ -67,6 +68,7 @@ export const darkValues = css`
   --backgroundInlineCode: hsl(0, 0%, 12%);
   --backgroundAlertInfo: hsl(0, 0%, 40%, 15%);
   --backgroundAlertDanger: hsl(5, 66%, 56%, 15%);
+  --backgroundMark: hsl(0, 0%, 15%);
   --border: hsl(0, 0%, 12%);
   --buttonBorderPrimary: ${({ theme }) => theme.colors.white};
   --buttonBackgroundPrimary: transparent;

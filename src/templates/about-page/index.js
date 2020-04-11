@@ -7,7 +7,6 @@ import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import Text from '../../jh-ui/Text'
 import SectionHeader from '../../jh-ui/SectionHeader'
-import Layout from '../../components/Layout'
 import Seo from '../../components/seo'
 import PageTitle from '../../components/PageTitle'
 import website from '../../../website-config'
@@ -192,16 +191,14 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
   } = post.frontmatter
 
   return (
-    <Layout>
-      <AboutPageTemplate
-        location={location}
-        title={title}
-        image={bioimage}
-        bio={bio}
-        involvement={involvement}
-        whatIUse={whatIUse}
-      />
-    </Layout>
+    <AboutPageTemplate
+      location={location}
+      title={title}
+      image={bioimage}
+      bio={bio}
+      involvement={involvement}
+      whatIUse={whatIUse}
+    />
   )
 }
 

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import { AnimatePresence, motion } from 'framer-motion'
 import Text from '../../jh-ui/Text'
@@ -8,6 +9,7 @@ import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { breakpoints } from '../../jh-ui/theme'
 import Overlay from '../Overlay'
+import SearchModal from '../SearchModal'
 import ThemeContext from '../../context/theme'
 import {
   CloseButton,
@@ -17,12 +19,14 @@ import {
   MenuLink,
   MenuLinkWrap,
   MobileMenuWrap,
+  SearchButton,
   ThemeOption,
   ThemeOptions
 } from './styles'
 import X from '../../svgs/icons/x.svg'
+import SearchIcon from '../../svgs/icons/search.svg'
 
-const MobileMenu = () => {
+const MobileMenu = ({ location }) => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const [visible, setVisibility] = useState(true)
   const [expanded, setExpanded] = useState(false)
@@ -31,7 +35,7 @@ const MobileMenu = () => {
   const closeButtonRef = useRef()
   const menuHeadingRef = useRef()
   const firstTabbableElementRef = useRef()
-  const lastTabbableElementRef = []
+  const lastTabbableElementRef = useRef()
 
   useEffect(() => {
     // implement close on document click
@@ -72,6 +76,10 @@ const MobileMenu = () => {
   }, [])
 
   useEffect(() => {
+    close()
+  }, [location])
+
+  useEffect(() => {
     if (visible) {
       if (expanded) {
         // focus menu heading
@@ -82,10 +90,6 @@ const MobileMenu = () => {
       }
     }
   }, [visible, expanded])
-
-  const setLastTabbableElementRef = element => {
-    lastTabbableElementRef.push(element)
-  }
 
   // some links need special logic to determine whether or not they should get the active style
   const isActive = ({ isCurrent, href, location }) => {
@@ -121,19 +125,19 @@ const MobileMenu = () => {
   const handleKeydown = event => {
     if (!expanded) return
 
-    // if tabbing from last link, force toggle button to get focus
+    // if tabbing from last link, force close button to get focus
     if (event.key === 'Tab' && !event.shiftKey) {
-      if (lastTabbableElementRef.includes(event.target)) {
+      if (lastTabbableElementRef.current === event.target) {
         event.preventDefault()
         closeButtonRef.current.focus()
       }
     }
 
-    // if tabbing backwards from toggle button, force last link to get focus
+    // if tabbing backwards from close button, force last link to get focus
     if (event.key === 'Tab' && event.shiftKey) {
-      if (event.target === toggleButtonRef.current) {
+      if (event.target === closeButtonRef.current) {
         event.preventDefault()
-        lastTabbableElementRef[lastTabbableElementRef.length - 1].focus()
+        lastTabbableElementRef.current.focus()
       }
     }
 
@@ -186,114 +190,130 @@ const MobileMenu = () => {
               }}
             >
               <Menu ref={menuRef}>
-                <Padded top="4x" bottom="2x">
-                  <Padded horizontal="2x" top="2x" bottom="4x">
-                    <div>
-                      <MenuHeader>
-                        <ScreenReaderText>
-                          <h2 ref={menuHeadingRef} tabIndex="-1">
-                            Main Menu
-                          </h2>
-                        </ScreenReaderText>
-                        <CloseButton ref={closeButtonRef} onClick={close}>
-                          <ScreenReaderText>Close Menu</ScreenReaderText>
-                          <X />
-                        </CloseButton>
-                      </MenuHeader>
-                      <Spaced vertical="3x">
-                        <section aria-labelledby="site-links-label">
-                          <h3>
-                            <ScreenReaderText id="site-links-label">
-                              Site Links
-                            </ScreenReaderText>
-                            <Text order="meta" aria-hidden>
-                              Links
-                            </Text>
-                          </h3>
-                          <nav role="navigation">
-                            <ul>
-                              <Spaced vertical="l">
-                                <MenuLinkWrap>
-                                  <MenuLink
-                                    to="/"
-                                    rel="home"
-                                    ref={firstTabbableElementRef}
-                                    getProps={isActive}
-                                  >
-                                    <Heading level={1} element="span">
-                                      Home
-                                    </Heading>
-                                  </MenuLink>
-                                </MenuLinkWrap>
-                                <MenuLinkWrap>
-                                  <MenuLink to="/blog" getProps={isActive}>
-                                    <Heading level={1} element="span">
-                                      Articles
-                                    </Heading>
-                                  </MenuLink>
-                                </MenuLinkWrap>
-                                <MenuLinkWrap>
-                                  <MenuLink to="/about" getProps={isActive}>
-                                    <Heading level={1} element="span">
-                                      About
-                                    </Heading>
-                                  </MenuLink>
-                                </MenuLinkWrap>
-                              </Spaced>
-                            </ul>
-                          </nav>
-                        </section>
-                        <section aria-labelledby="theme-settings-label">
-                          <h3 id="theme-settings-label">
-                            <ScreenReaderText>Theme Settings</ScreenReaderText>
-                            <Text order="meta" aria-hidden>
-                              Change Theme
-                            </Text>
-                          </h3>
-                          <Spaced top="s">
-                            <ThemeOptions>
-                              <ThemeOption
-                                htmlFor="light-theme"
-                                themeName={themeName}
-                                active={themeName === 'light'}
-                              >
-                                <Text order="body">Light</Text>
-                                <ScreenReaderText>
-                                  <input
-                                    ref={setLastTabbableElementRef}
-                                    type="radio"
-                                    id="light-theme"
-                                    name="theme"
-                                    value="light"
-                                    checked={themeName === 'light'}
-                                    onChange={handleThemeChange}
-                                  />
-                                </ScreenReaderText>
-                              </ThemeOption>
-                              <ThemeOption
-                                htmlFor="dark-theme"
-                                themeName={themeName}
-                                active={themeName === 'dark'}
-                              >
-                                <Text order="body">Dark</Text>
-                                <ScreenReaderText>
-                                  <input
-                                    ref={setLastTabbableElementRef}
-                                    type="radio"
-                                    id="dark-theme"
-                                    name="theme"
-                                    value="dark"
-                                    checked={themeName === 'dark'}
-                                    onChange={handleThemeChange}
-                                  />
-                                </ScreenReaderText>
-                              </ThemeOption>
-                            </ThemeOptions>
-                          </Spaced>
-                        </section>
-                      </Spaced>
-                    </div>
-                  </Padded>
+                <Padded all="2x">
+                  <div>
+                    <MenuHeader>
+                      <ScreenReaderText>
+                        <h2 ref={menuHeadingRef} tabIndex="-1">
+                          Main Menu
+                        </h2>
+                      </ScreenReaderText>
+                      <CloseButton ref={closeButtonRef} onClick={close}>
+                        <ScreenReaderText>Close Menu</ScreenReaderText>
+                        <X />
+                      </CloseButton>
+                    </MenuHeader>
+                    <Spaced vertical="3x">
+                      <section aria-labelledby="site-links-label">
+                        <h3>
+                          <ScreenReaderText id="site-links-label">
+                            Site Links
+                          </ScreenReaderText>
+                          <Text order="meta" aria-hidden>
+                            Links
+                          </Text>
+                        </h3>
+                        <nav role="navigation">
+                          <ul>
+                            <Spaced vertical="l">
+                              <MenuLinkWrap>
+                                <MenuLink
+                                  to="/"
+                                  rel="home"
+                                  ref={firstTabbableElementRef}
+                                  getProps={isActive}
+                                >
+                                  <Heading level={1} element="span">
+                                    Home
+                                  </Heading>
+                                </MenuLink>
+                              </MenuLinkWrap>
+                              <MenuLinkWrap>
+                                <MenuLink to="/blog" getProps={isActive}>
+                                  <Heading level={1} element="span">
+                                    Articles
+                                  </Heading>
+                                </MenuLink>
+                              </MenuLinkWrap>
+                              <MenuLinkWrap>
+                                <MenuLink to="/about" getProps={isActive}>
+                                  <Heading level={1} element="span">
+                                    About
+                                  </Heading>
+                                </MenuLink>
+                              </MenuLinkWrap>
+                            </Spaced>
+                          </ul>
+                        </nav>
+                      </section>
+                      <section aria-labelledby="theme-settings-label">
+                        <h3 id="theme-settings-label">
+                          <ScreenReaderText>Theme Settings</ScreenReaderText>
+                          <Text order="meta" aria-hidden>
+                            Change Theme
+                          </Text>
+                        </h3>
+                        <Spaced top="s">
+                          <ThemeOptions>
+                            <ThemeOption
+                              htmlFor="light-theme"
+                              themeName={themeName}
+                              active={themeName === 'light'}
+                            >
+                              <Text order="body">Light</Text>
+                              <ScreenReaderText>
+                                <input
+                                  type="radio"
+                                  id="light-theme"
+                                  name="theme"
+                                  value="light"
+                                  checked={themeName === 'light'}
+                                  onChange={handleThemeChange}
+                                />
+                              </ScreenReaderText>
+                            </ThemeOption>
+                            <ThemeOption
+                              htmlFor="dark-theme"
+                              themeName={themeName}
+                              active={themeName === 'dark'}
+                            >
+                              <Text order="body">Dark</Text>
+                              <ScreenReaderText>
+                                <input
+                                  type="radio"
+                                  id="dark-theme"
+                                  name="theme"
+                                  value="dark"
+                                  checked={themeName === 'dark'}
+                                  onChange={handleThemeChange}
+                                />
+                              </ScreenReaderText>
+                            </ThemeOption>
+                          </ThemeOptions>
+                        </Spaced>
+                      </section>
+                      <section aria-labelledby="search-label">
+                        <h3 id="search-label">
+                          <Text order="meta">Site search</Text>
+                        </h3>
+                        <Spaced top="s">
+                          <div>
+                            <SearchModal
+                              location={location}
+                              slideDirection="bottom"
+                            >
+                              <SearchButton ref={lastTabbableElementRef}>
+                                <Spaced right="xs">
+                                  <SearchIcon />
+                                </Spaced>
+                                Search articles
+                              </SearchButton>
+                            </SearchModal>
+                          </div>
+                        </Spaced>
+                      </section>
+                    </Spaced>
+                  </div>
                 </Padded>
               </Menu>
             </motion.div>
@@ -313,6 +333,10 @@ const MobileMenu = () => {
       </noscript>
     </MobileMenuWrap>
   ) : null
+}
+
+MobileMenu.propTypes = {
+  location: PropTypes.object.isRequired
 }
 
 export default MobileMenu

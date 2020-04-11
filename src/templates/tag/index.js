@@ -7,7 +7,6 @@ import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Link from '../../jh-ui/Link'
-import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import Seo from '../../components/seo'
 import PageTitle from '../../components/PageTitle'
@@ -52,7 +51,7 @@ const TagRoute = ({
   } tagged with “${tag}”`
 
   return (
-    <Layout>
+    <>
       <Seo
         title={`Posts tagged with “${tag}“ | ${website.titleAlt}`}
         pathname={location.pathname}
@@ -144,7 +143,7 @@ const TagRoute = ({
           </Spaced>
         </section>
       </TagIndexWrap>
-    </Layout>
+    </>
   )
 }
 

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import Heading from '../jh-ui/Heading'
 import Spaced from '../jh-ui/Spaced'
 import Text from '../jh-ui/Text'
-import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import PageTitle from '../components/PageTitle'
 import { shouldAnimate } from '../helpers'
@@ -36,7 +35,7 @@ const NotFoundContentWrap = styled(ContentWrap)`
 `
 
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <HeaderWrap aria-labelledby="about-label">
       <NotFoundContentWrap>
         <Spaced bottom="3x">
@@ -70,7 +69,7 @@ const NotFoundPage = () => (
         </motion.div>
       </NotFoundContentWrap>
     </HeaderWrap>
-  </Layout>
+  </>
 )
 
 export default NotFoundPage

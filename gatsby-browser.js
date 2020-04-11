@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Sentry from '@sentry/browser'
 import Root from './src/components/Root/'
+import Layout from './src/components/Layout'
 import config from './package.json'
 
 export const wrapRootElement = ({ element }) => <Root>{element}</Root>
@@ -22,4 +23,8 @@ export const onRouteUpdate = ({ prevLocation }) => {
       }, 0)
     }
   }
+}
+
+export const wrapPageElement = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>
 }

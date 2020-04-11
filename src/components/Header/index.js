@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Padded from '../../jh-ui/Padded'
 import Spaced from '../../jh-ui/Spaced'
 import ContentWrap from '../ContentWrap'
@@ -12,7 +13,7 @@ import {
   SiteTitle
 } from './styles'
 
-const Header = () => (
+const Header = ({ location }) => (
   <HeaderWrap aria-label="Site Header">
     <Padded vertical="m">
       <ContentWrap>
@@ -25,12 +26,16 @@ const Header = () => (
               Jonathan Harrell
             </HomePageLink>
           </SiteTitle>
-          <MobileMenu />
-          <DesktopMenu />
+          <MobileMenu location={location} />
+          <DesktopMenu location={location} />
         </HeaderContentWrap>
       </ContentWrap>
     </Padded>
   </HeaderWrap>
 )
+
+Header.propTypes = {
+  location: PropTypes.object.isRequired
+}
 
 export default Header

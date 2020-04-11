@@ -10,7 +10,6 @@ import Spaced from '../jh-ui/Spaced'
 import ScreenReaderText from '../jh-ui/ScreenReaderText'
 import Text from '../jh-ui/Text'
 import Card from '../jh-ui/Card'
-import Layout from '../components/Layout'
 import ContentWrap from '../components/ContentWrap'
 import Seo from '../components/seo'
 import PageTitle from '../components/PageTitle'
@@ -100,7 +99,7 @@ const TagsPage = ({
     allMdx: { group: tags }
   }
 }) => (
-  <Layout>
+  <>
     <Seo
       title={`Tags | ${website.titleAlt}`}
       pathname={location.pathname}
@@ -153,7 +152,7 @@ const TagsPage = ({
         </Spaced>
       </section>
     </TagsIndexWrap>
-  </Layout>
+  </>
 )
 
 TagsPage.propTypes = {

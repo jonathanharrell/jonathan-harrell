@@ -17,7 +17,6 @@ import Text from '../../jh-ui/Text'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Button from '../../jh-ui/Button'
 import Seo from '../../components/seo'
-import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
@@ -391,21 +390,19 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ location, data: { mdx: post } }) => (
-  <Layout>
-    <BlogPostTemplate
-      location={location}
-      id={post.id}
-      content={post.body}
-      tags={post.frontmatter.tags}
-      title={post.frontmatter.title}
-      description={post.frontmatter.description}
-      date={post.frontmatter.date}
-      image={post.frontmatter.featuredimage}
-      socialImage={post.frontmatter.socialimage}
-      readingTime={post.fields.readingTime}
-      slug={post.fields.slug}
-    />
-  </Layout>
+  <BlogPostTemplate
+    location={location}
+    id={post.id}
+    content={post.body}
+    tags={post.frontmatter.tags}
+    title={post.frontmatter.title}
+    description={post.frontmatter.description}
+    date={post.frontmatter.date}
+    image={post.frontmatter.featuredimage}
+    socialImage={post.frontmatter.socialimage}
+    readingTime={post.fields.readingTime}
+    slug={post.fields.slug}
+  />
 )
 
 BlogPost.propTypes = {

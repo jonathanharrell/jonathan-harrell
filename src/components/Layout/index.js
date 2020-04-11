@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { MDXProvider } from '@mdx-js/react'
 import { ThemeProvider } from 'styled-components'
 import Heading from '../../jh-ui/Heading'
@@ -21,7 +22,7 @@ import SubscribeBanner from '../SubscribeBanner/'
 import ThemeContext from '../../context/theme'
 import { AnchoredHeading, Link, Main, SkipLink, Wrap } from './styles'
 
-const Layout = ({ children }) => {
+const Layout = ({ location, children }) => {
   const { theme } = useContext(ThemeContext)
   const mainRef = useRef()
 
@@ -46,7 +47,7 @@ const Layout = ({ children }) => {
         >
           Skip to content
         </SkipLink>
-        <Header />
+        <Header location={location} />
         <Main id="main" tabIndex="-1" aria-label="Main Content" ref={mainRef}>
           <MDXProvider
             components={{
@@ -126,6 +127,10 @@ const Layout = ({ children }) => {
       </Wrap>
     </ThemeProvider>
   )
+}
+
+Layout.propTypes = {
+  location: PropTypes.object.isRequired
 }
 
 export default Layout

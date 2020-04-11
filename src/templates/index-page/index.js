@@ -10,7 +10,6 @@ import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Button from '../../jh-ui/Button'
 import Link from '../../jh-ui/Link'
 import Seo from '../../components/seo'
-import Layout from '../../components/Layout'
 import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
@@ -213,13 +212,11 @@ const IndexPage = ({
     mdx: { frontmatter }
   }
 }) => (
-  <Layout>
-    <IndexPageTemplate
-      title={frontmatter.title}
-      description={frontmatter.description}
-      experiments={frontmatter.experiments}
-    />
-  </Layout>
+  <IndexPageTemplate
+    title={frontmatter.title}
+    description={frontmatter.description}
+    experiments={frontmatter.experiments}
+  />
 )
 
 IndexPage.propTypes = {

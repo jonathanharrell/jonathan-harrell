@@ -36,16 +36,14 @@ export const Menu = styled.div`
   box-shadow: ${({ theme }) => theme.elevations.high};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: auto;
+    width: 20rem;
+    min-height: 40rem;
   }
 `
 
 export const MenuHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: absolute;
-  width: calc(100% - ${({ theme }) => theme.spacing['4x']});
+  right: ${({ theme }) => theme.spacing['2x']};
 `
 
 export const CloseButton = styled(Button)`
@@ -86,6 +84,7 @@ export const MenuLink = styled(Link)`
 export const ThemeOptions = styled.form`
   display: inline-flex;
   align-items: center;
+  width: 100%;
 
   &:focus-within {
     box-shadow: 0 0 0 0.2em var(--selection);
@@ -130,10 +129,10 @@ export const getThemeOptionBackgroundColor = ({
 
 export const ThemeOption = styled.label`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing.s}
-    ${({ theme }) => theme.spacing['3x']};
+  padding: ${({ theme }) => theme.spacing.s} 0;
   background-color: ${({ active, themeName }) =>
     getThemeOptionBackgroundColor({ active, themeName })};
   border-radius: 4px;
@@ -176,4 +175,13 @@ export const ThemeOption = styled.label`
         action: 'active'
       })};
   }
+`
+
+export const SearchButton = styled(Button)`
+  width: 100%;
+  height: 3rem;
+  border: 0;
+  background-color: var(--backgroundTertiary);
+  border-radius: 4px;
+  text-align: center;
 `

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import get from 'lodash/get'
 import kebabCase from 'lodash/kebabCase'
 import algoliasearch from 'algoliasearch/lite'
@@ -25,7 +26,6 @@ import {
   SearchInput
 } from './styles'
 import NotFound from '../../svgs/not-found.svg'
-import { motion } from 'framer-motion'
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APPLICATION_ID,
@@ -33,10 +33,10 @@ const searchClient = algoliasearch(
 )
 
 const SearchBox = ({ currentRefinement, refine }) => {
-  const searchInput = useRef()
+  const searchRef = useRef()
 
   useEffect(() => {
-    searchInput.current.focus()
+    searchRef.current.focus()
   }, [])
 
   return (
@@ -45,9 +45,9 @@ const SearchBox = ({ currentRefinement, refine }) => {
         Search for articles
       </label>
       <SearchInput
+        ref={searchRef}
         type="search"
         id="search"
-        ref={searchInput}
         value={currentRefinement}
         placeholder="Search articles"
         onChange={event => refine(event.currentTarget.value)}
@@ -62,7 +62,7 @@ const StateResults = ({ searchResults, searchState, children }) => {
   const hasResults = searchResults && searchResults.nbHits !== 0
 
   useEffect(() => {
-    if (searchResults) {
+    if (searchResults && searchState.query) {
       addAlert(
         `${searchResults.nbHits} article${
           searchResults.nbHits === 1 ? '' : 's'
@@ -237,32 +237,30 @@ const Hits = ({ hits }) => (
 
 const CustomHits = connectHits(Hits)
 
-const Search = () => {
-  return (
-    <InstantSearch searchClient={searchClient} indexName="jh_posts">
-      <Spaced bottom="3x">
-        <div>
-          <CustomSearchBox />
-        </div>
-      </Spaced>
-      <CustomStateResults>
-        <section aria-labelledby="search-results-label">
-          <motion.div
-            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
-          >
-            <Spaced bottom="xl">
-              <Heading level={4} element="h2" id="search-results-label">
-                Search results
-              </Heading>
-            </Spaced>
-          </motion.div>
-          <CustomHits />
-        </section>
-      </CustomStateResults>
-    </InstantSearch>
-  )
-}
+const Search = () => (
+  <InstantSearch searchClient={searchClient} indexName="jh_posts">
+    <Spaced bottom="3x">
+      <div>
+        <CustomSearchBox />
+      </div>
+    </Spaced>
+    <CustomStateResults>
+      <section aria-labelledby="search-results-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+        >
+          <Spaced bottom="xl">
+            <Heading level={4} element="h2" id="search-results-label">
+              Search results
+            </Heading>
+          </Spaced>
+        </motion.div>
+        <CustomHits />
+      </section>
+    </CustomStateResults>
+  </InstantSearch>
+)
 
 export default Search

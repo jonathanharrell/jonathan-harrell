@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
@@ -6,7 +7,7 @@ import 'tippy.js/animations/shift-away.css'
 import Spaced from '../../jh-ui/Spaced'
 import { breakpoints } from '../../jh-ui/theme'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import DesktopSearch from '../DesktopSearch'
+import SearchModal from '../SearchModal'
 import ThemeContext from '../../context/theme'
 import {
   DesktopMenuWrap,
@@ -20,7 +21,7 @@ import {
 import Sun from '../../svgs/icons/sun.svg'
 import Moon from '../../svgs/icons/moon.svg'
 
-const DesktopMenu = () => {
+const DesktopMenu = ({ location }) => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const [visible, setVisibility] = useState(true)
 
@@ -131,7 +132,7 @@ const DesktopMenu = () => {
             <h3 id="site-tools-label">Site Tools</h3>
           </ScreenReaderText>
           <Spaced left="xl">
-            <DesktopSearch />
+            <SearchModal location={location} />
           </Spaced>
           <Spaced left="xl">
             <ThemeToggleButton
@@ -166,6 +167,10 @@ const DesktopMenu = () => {
       </Spaced>
     </DesktopMenuWrap>
   ) : null
+}
+
+DesktopMenu.propTypes = {
+  location: PropTypes.object.isRequired
 }
 
 export default DesktopMenu

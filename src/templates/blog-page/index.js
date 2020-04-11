@@ -8,7 +8,6 @@ import Padded from '../../jh-ui/Padded'
 import Tag from '../../jh-ui/Tag'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Layout from '../../components/Layout'
 import ContentWrap from '../../components/ContentWrap'
 import PageTitle from '../../components/PageTitle'
 import Articles from '../../components/Articles'
@@ -131,11 +130,7 @@ const BlogIndexPage = ({
 }) => {
   const { title } = post.frontmatter
 
-  return (
-    <Layout>
-      <BlogIndexPageTemplate location={location} title={title} tags={tags} />
-    </Layout>
-  )
+  return <BlogIndexPageTemplate location={location} title={title} tags={tags} />
 }
 
 BlogIndexPage.propTypes = {
