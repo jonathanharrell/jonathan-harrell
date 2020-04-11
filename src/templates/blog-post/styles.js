@@ -255,6 +255,7 @@ export const Divider = styled(Text)`
 
 export const ScrollToTopLink = styled(Button)`
   padding: 0.4rem;
+  background-color: var(--backgroundInverse);
 
   svg {
     width: auto;
