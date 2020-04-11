@@ -46,7 +46,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
       </label>
       <SearchInput
         ref={searchRef}
-        type="input"
+        type="search"
         id="search"
         value={currentRefinement}
         placeholder="Search articles"
@@ -168,7 +168,7 @@ const Hits = ({ hits }) => (
         variants={childVariants}
         initial={shouldAnimate() ? { opacity: 0, x: 50 } : false}
       >
-        <Padded vertical="xxl">
+        <Padded top="xxl" bottom="xl">
           <article
             aria-labelledby={`${kebabCase(hit.frontmatter.title)}-label`}
           >
@@ -239,7 +239,7 @@ const CustomHits = connectHits(Hits)
 
 const Search = () => (
   <InstantSearch searchClient={searchClient} indexName="jh_posts">
-    <Spaced bottom="3x">
+    <Spaced bottom="2x">
       <div>
         <CustomSearchBox />
       </div>
@@ -251,7 +251,7 @@ const Search = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
         >
-          <Spaced bottom="xl">
+          <Spaced bottom="l">
             <Heading level={4} element="h2" id="search-results-label">
               Search results
             </Heading>

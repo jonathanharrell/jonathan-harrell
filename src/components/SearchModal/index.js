@@ -112,8 +112,8 @@ const SearchModal = React.forwardRef(
       }
     }
 
+    const opacity = slideDirection === 'right' ? 0 : undefined
     const x = slideDirection === 'right' ? 100 : undefined
-    const y = slideDirection === 'bottom' ? 100 : undefined
 
     return (
       // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -144,19 +144,16 @@ const SearchModal = React.forwardRef(
               <motion.div
                 id="search"
                 initial={{
-                  opacity: 0,
-                  x,
-                  y
+                  opacity,
+                  x
                 }}
                 animate={{
                   opacity: 1,
-                  x: 0,
-                  y: 0
+                  x: 0
                 }}
                 exit={{
-                  opacity: 0,
-                  x,
-                  y
+                  opacity,
+                  x
                 }}
                 transition={{ stiffness: 50, mass: 0.1 }}
               >

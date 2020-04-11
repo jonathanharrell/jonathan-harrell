@@ -38,6 +38,10 @@ export const SearchWrap = styled.div`
     min-height: 40rem;
   }
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    max-height: calc(100vh - 4rem);
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     top: 0;
     right: 0;
