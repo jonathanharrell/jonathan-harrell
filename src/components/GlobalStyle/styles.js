@@ -79,6 +79,13 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .tl-edges,
+  .tl-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
   h1,
   h2,
   h3,
