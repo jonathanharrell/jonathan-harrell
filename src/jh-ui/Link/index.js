@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ArrowLeft, ArrowRight } from 'react-feather'
 import Spaced from '../Spaced'
 import { Root } from './styles'
-import ArrowLeft from '../../svgs/icons/arrow-left.svg'
-import ArrowRight from '../../svgs/icons/arrow-right.svg'
 
 const Link = ({ arrow, arrowPosition, href, element, children, ...props }) => (
   <Root

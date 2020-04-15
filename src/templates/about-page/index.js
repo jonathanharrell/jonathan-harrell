@@ -7,6 +7,7 @@ import Heading from '../../jh-ui/Heading'
 import Spaced from '../../jh-ui/Spaced'
 import Text from '../../jh-ui/Text'
 import SectionHeader from '../../jh-ui/SectionHeader'
+import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Seo from '../../components/seo'
 import PageTitle from '../../components/PageTitle'
 import website from '../../../website-config'
@@ -16,17 +17,74 @@ import {
   BioFigure,
   BioFigureWrap,
   BioImage,
+  BioImageBorder,
   BioText,
   HeaderContentWrap,
   HeaderWrap,
-  Involvement,
-  InvolvementDescription,
-  InvolvementTitle,
   InvolvementWrap,
-  Usage,
+  Project,
+  ProjectDescription,
+  ProjectsWrap,
+  ProjectTitle,
+  ProjectWrap,
+  Skill,
+  SkillsetWrap,
+  SkillsWrap,
+  SkillWrap,
+  UsageExcerpt,
   UsageLink,
+  UsagesWrap,
+  UsageWrap,
   UsesWrap
 } from './styles'
+import kebabCase from 'lodash/kebabCase'
+
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
+
+export const Usage = ({ usage }) => {
+  const IconComponent = require(`react-feather/dist/icons/${usage.icon}`)
+    .default
+
+  return (
+    <UsageExcerpt
+      element="article"
+      aria-labelledby={`${kebabCase(usage.name)}-label`}
+    >
+      <UsageLink href={usage.link} target="_blank" rel="noopener noreferrer">
+        <ScreenReaderText>Learn more</ScreenReaderText>
+      </UsageLink>
+      <div>
+        <Padded vertical="s">
+          <div>
+            <IconComponent color="var(--accent)" size={24} />
+          </div>
+        </Padded>
+        <dt>
+          <Text order="meta">{usage.name}</Text>
+        </dt>
+        <dd id={`${kebabCase(usage.name)}-label`}>
+          <Text>{usage.description}</Text>
+        </dd>
+      </div>
+    </UsageExcerpt>
+  )
+}
 
 export const AboutPageTemplate = ({
   location,
@@ -34,7 +92,8 @@ export const AboutPageTemplate = ({
   image,
   bio,
   involvement,
-  whatIUse
+  whatIUse,
+  skillset
 }) => (
   <>
     <Seo
@@ -54,6 +113,18 @@ export const AboutPageTemplate = ({
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
                 <BioImage src={image.publicURL} alt="Jonathan Harrell" />
+                {[1, 2].map(index => (
+                  <BioImageBorder key={index}>
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="49%"
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="1"
+                    />
+                  </BioImageBorder>
+                ))}
               </BioFigure>
             </BioFigureWrap>
           )}
@@ -92,64 +163,105 @@ export const AboutPageTemplate = ({
         </HeaderContentWrap>
       </AboutContentWrap>
     </HeaderWrap>
-    <InvolvementWrap aria-labelledby="involvement-label">
-      <motion.div
-        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
-      >
-        <AboutContentWrap>
-          <SectionHeader>
-            <Heading level={4} as="h2" id="involvement-label">
-              {involvement.title || 'Involvement'}
-            </Heading>
-          </SectionHeader>
-          <Padded vertical="l">
-            {involvement.project.map((project, index) => (
-              <Involvement key={index}>
-                <InvolvementTitle>
-                  <Spaced bottom="s">
-                    <Heading level={3}>{project.name}</Heading>
-                  </Spaced>
-                </InvolvementTitle>
-                <InvolvementDescription>
-                  {project.description}
-                </InvolvementDescription>
-              </Involvement>
-            ))}
-          </Padded>
-        </AboutContentWrap>
-      </motion.div>
-    </InvolvementWrap>
-    <UsesWrap id="uses" aria-labelledby="uses-label">
-      <motion.div
-        initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
-      >
-        <AboutContentWrap>
-          <SectionHeader>
-            <Heading level={4} as="h2" id="uses-label">
-              {whatIUse.title || 'What I Use'}
-            </Heading>
-          </SectionHeader>
-          <dl>
-            <Padded vertical="m">
-              {whatIUse.usage.map((usage, index) => (
-                <Usage key={index}>
-                  <dt>
-                    <Text>{usage.name}</Text>
-                  </dt>
-                  <dd>
-                    <UsageLink href={usage.link}>{usage.description}</UsageLink>
-                  </dd>
-                </Usage>
+    {involvement.projects.length && (
+      <InvolvementWrap aria-labelledby="involvement-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} id="involvement-label">
+                {involvement.title || 'Involvement'}
+              </Heading>
+            </SectionHeader>
+            <ProjectsWrap animate="mounted" variants={variants}>
+              {involvement.projects.map((project, index) => (
+                <ProjectWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                >
+                  <Project hover={false}>
+                    <ProjectTitle>
+                      <Spaced bottom="s">
+                        <Heading level={3}>{project.name}</Heading>
+                      </Spaced>
+                    </ProjectTitle>
+                    <ProjectDescription>
+                      {project.description}
+                    </ProjectDescription>
+                  </Project>
+                </ProjectWrap>
               ))}
-            </Padded>
-          </dl>
-        </AboutContentWrap>
-      </motion.div>
-    </UsesWrap>
+            </ProjectsWrap>
+          </AboutContentWrap>
+        </motion.div>
+      </InvolvementWrap>
+    )}
+    {whatIUse.usages.length && (
+      <UsesWrap id="uses" aria-labelledby="uses-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} id="uses-label">
+                {whatIUse.title || 'What I Use'}
+              </Heading>
+            </SectionHeader>
+            <dl>
+              <UsagesWrap animate="mounted" variants={variants}>
+                {whatIUse.usages.map((usage, index) => (
+                  <UsageWrap
+                    key={index}
+                    variants={childVariants}
+                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                  >
+                    <Usage usage={usage} />
+                  </UsageWrap>
+                ))}
+              </UsagesWrap>
+            </dl>
+          </AboutContentWrap>
+        </motion.div>
+      </UsesWrap>
+    )}
+    {skillset.skills.length && (
+      <SkillsetWrap aria-labelledby="skillset-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.5 }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} color="textInverse" id="skillset-label">
+                {skillset.title || 'Skillset'}
+              </Heading>
+            </SectionHeader>
+            <SkillsWrap animate="mounted" variants={variants}>
+              {skillset.skills.map((skill, index) => (
+                <SkillWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                >
+                  <Skill hover={false}>
+                    <Heading level={3} color="textInverse" element="p">
+                      {skill.name}
+                    </Heading>
+                  </Skill>
+                </SkillWrap>
+              ))}
+            </SkillsWrap>
+          </AboutContentWrap>
+        </motion.div>
+      </SkillsetWrap>
+    )}
   </>
 )
 
@@ -162,7 +274,7 @@ AboutPageTemplate.propTypes = {
   bio: PropTypes.string.isRequired,
   involvement: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    project: PropTypes.arrayOf(
+    projects: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired
@@ -171,11 +283,20 @@ AboutPageTemplate.propTypes = {
   }).isRequired,
   whatIUse: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    usage: PropTypes.arrayOf(
+    usages: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        link: PropTypes.string.isRequired
+        link: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired,
+  skillset: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    skills: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired
       })
     ).isRequired
   }).isRequired
@@ -187,7 +308,8 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
     bioimage,
     bio,
     involvement,
-    what_i_use: whatIUse
+    whatIUse,
+    skillset
   } = post.frontmatter
 
   return (
@@ -198,6 +320,7 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
       bio={bio}
       involvement={involvement}
       whatIUse={whatIUse}
+      skillset={skillset}
     />
   )
 }
@@ -214,20 +337,29 @@ AboutPage.propTypes = {
         bio: PropTypes.string.isRequired,
         involvement: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          project: PropTypes.arrayOf(
+          projects: PropTypes.arrayOf(
             PropTypes.shape({
               name: PropTypes.string.isRequired,
               description: PropTypes.string.isRequired
             })
           ).isRequired
         }).isRequired,
-        what_i_use: PropTypes.shape({
+        whatIUse: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          usage: PropTypes.arrayOf(
+          usages: PropTypes.arrayOf(
             PropTypes.shape({
               name: PropTypes.string.isRequired,
               description: PropTypes.string.isRequired,
-              link: PropTypes.string.isRequired
+              link: PropTypes.string.isRequired,
+              icon: PropTypes.string.isRequired
+            })
+          ).isRequired
+        }).isRequired,
+        skillset: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          skills: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired
             })
           ).isRequired
         }).isRequired
@@ -249,17 +381,24 @@ export const aboutPageQuery = graphql`
         bio
         involvement {
           title
-          project {
+          projects: project {
             name
             description
           }
         }
-        what_i_use {
+        whatIUse: what_i_use {
           title
-          usage {
+          usages: usage {
             name
             description
             link
+            icon
+          }
+        }
+        skillset {
+          title
+          skills: skill {
+            name
           }
         }
       }

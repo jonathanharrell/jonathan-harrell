@@ -6,8 +6,8 @@ import BodyClassName from 'react-body-classname'
 import debounce from 'lodash/debounce'
 import kebabCase from 'lodash/kebabCase'
 import { AnimatePresence, motion, useViewportScroll } from 'framer-motion'
+import { ArrowUp, GitHub, Share, Twitter } from 'react-feather'
 import TypeMate from 'typemate'
-import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-away.css'
 import Heading from '../../jh-ui/Heading'
@@ -41,10 +41,6 @@ import {
   Tag,
   TagLink
 } from './styles'
-import Share from '../../svgs/icons/share.svg'
-import Twitter from '../../svgs/icons/twitter.svg'
-import Github from '../../svgs/icons/github.svg'
-import ArrowUp from '../../svgs/icons/arrow-up.svg'
 
 export const BlogPostTemplate = ({
   location,
@@ -88,7 +84,8 @@ export const BlogPostTemplate = ({
   const scrollToTop = event => {
     event.preventDefault()
     window.scrollTo(0, 0)
-    document.getElementById('nav-skip-link').focus()
+    const navSkipLink = document.getElementById('nav-skip-link')
+    if (navSkipLink) navSkipLink.focus()
   }
 
   useEffect(() => {
@@ -296,7 +293,7 @@ export const BlogPostTemplate = ({
                           rel="noopener noreferrer"
                         >
                           <Spaced right="xs">
-                            <Github />
+                            <GitHub />
                           </Spaced>
                           Edit on Github
                         </ShareLink>
@@ -320,21 +317,14 @@ export const BlogPostTemplate = ({
                             right: '1rem'
                           }}
                         >
-                          <Tippy
-                            content="Scroll to top"
-                            placement="top"
-                            animation="shift-away"
-                            theme="jh"
+                          <ScrollToTopLink
+                            href="#nav-skip-link"
+                            element="a"
+                            onClick={scrollToTop}
                           >
-                            <ScrollToTopLink
-                              href="#nav-skip-link"
-                              element="a"
-                              onClick={scrollToTop}
-                            >
-                              <ArrowUp />
-                              <ScreenReaderText>Scroll to top</ScreenReaderText>
-                            </ScrollToTopLink>
-                          </Tippy>
+                            <ArrowUp />
+                            <ScreenReaderText>Scroll to top</ScreenReaderText>
+                          </ScrollToTopLink>
                         </motion.div>
                       </AnimatePresence>
                     )}

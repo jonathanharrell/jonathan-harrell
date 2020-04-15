@@ -1,14 +1,16 @@
 import React from 'react'
+import {
+  Codepen,
+  GitHub,
+  Instagram,
+  Linkedin,
+  Rss,
+  Twitter
+} from 'react-feather'
 import Padded from '../../jh-ui/Padded'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { FooterContentWrap, FooterWrap, Link, SocialLinksWrap } from './styles'
-import Twitter from '../../svgs/icons/twitter.svg'
-import Github from '../../svgs/icons/github.svg'
-import Codepen from '../../svgs/icons/codepen.svg'
-import LinkedIn from '../../svgs/icons/linkedin.svg'
-import Instagram from '../../svgs/icons/instagram.svg'
-import Rss from '../../svgs/icons/rss.svg'
 
 const currentYear = new Date().getFullYear()
 
@@ -42,7 +44,7 @@ const Footer = () => (
                 rel="noopener noreferrer"
               >
                 <ScreenReaderText>Github</ScreenReaderText>
-                <Github />
+                <GitHub />
               </Link>
               <Link
                 as="a"
@@ -60,7 +62,7 @@ const Footer = () => (
                 rel="noopener noreferrer"
               >
                 <ScreenReaderText>LinkedIn</ScreenReaderText>
-                <LinkedIn />
+                <Linkedin />
               </Link>
               <Link
                 as="a"

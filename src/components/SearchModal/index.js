@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Search as SearchIcon, X } from 'react-feather'
 import Tippy from '@tippy.js/react'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
@@ -8,8 +9,6 @@ import Overlay from '../Overlay'
 import Search from '../Search'
 import ThemeContext from '../../context/theme'
 import { CloseButton, SearchButton, SearchHeader, SearchWrap } from './styles'
-import SearchIcon from '../../svgs/icons/search.svg'
-import X from '../../svgs/icons/x.svg'
 
 const SearchModal = React.forwardRef(
   ({ location, slideDirection, children }, ref) => {

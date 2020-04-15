@@ -134,3 +134,20 @@ collections:
                   - label: Link
                     name: link
                     widget: string
+                  - label: Icon
+                    name: icon
+                    widget: string
+          - label: Skillset
+            name: skillset
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Skill
+                name: skill
+                widget: list
+                fields:
+                  - label: Name
+                    name: name
+                    widget: string

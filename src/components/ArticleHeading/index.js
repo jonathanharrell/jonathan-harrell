@@ -1,12 +1,12 @@
 import React from 'react'
 import kebabCase from 'lodash/kebabCase'
+import { Hash } from 'react-feather'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-away.css'
 import Heading from '../../jh-ui/Heading'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { HeadingLink, HeadingWrap } from './styles'
-import Hash from '../../svgs/icons/hash.svg'
 
 const ArticleHeading = ({ children, ...props }) => {
   const id = kebabCase(children)
