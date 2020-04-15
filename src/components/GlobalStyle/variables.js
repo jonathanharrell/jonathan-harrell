@@ -58,12 +58,12 @@ export const darkValues = css`
   --backgroundPrimary: hsl(0, 0%, 8%);
   --backgroundSecondary: hsl(0, 0%, 10%);
   --backgroundTertiary: hsl(0, 0%, 12%);
-  --backgroundInverse: hsl(0, 0%, 8%);
+  --backgroundInverse: hsl(0, 0%, 6%);
   --backgroundElevatedPrimary: '';
   --backgroundElevatedSecondary: hsl(0, 0%, 12%);
   --backgroundElevatedInverse: hsl(0, 0%, 10%);
   --backgroundBody: hsl(0, 0%, 3%);
-  --backgroundSubscribeBanner: hsl(0, 0%, 6%);
+  --backgroundSubscribeBanner: hsl(0, 0%, 4%);
   --backgroundCode: hsl(0, 0%, 5%);
   --backgroundInlineCode: hsl(0, 0%, 12%);
   --backgroundAlertInfo: hsl(0, 0%, 40%, 15%);

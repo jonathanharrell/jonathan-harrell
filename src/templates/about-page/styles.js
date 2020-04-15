@@ -70,6 +70,22 @@ export const BioImage = styled.img`
   object-fit: cover;
 `
 
+export const BioImageBorder = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:first-of-type {
+    transform: translate(-0.75rem, -0.75rem);
+  }
+
+  &:last-of-type {
+    transform: translate(0.75rem, 0.75rem);
+  }
+`
+
 export const BioText = styled.div`
   grid-column: 1 / -1;
 
@@ -86,7 +102,7 @@ export const InvolvementWrap = styled.section`
   background-color: var(--backgroundSecondary);
 `
 
-export const ProjectsWrap = styled.div`
+export const ProjectsWrap = styled(motion.div)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
@@ -96,9 +112,8 @@ export const ProjectsWrap = styled.div`
   }
 `
 
-export const Involvement = styled(Card)`
+export const ProjectWrap = styled(motion.div)`
   grid-column: 1 / -1;
-  background-color: var(--backgroundElevatedSecondary);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 6;
@@ -109,7 +124,12 @@ export const Involvement = styled(Card)`
   }
 `
 
-export const InvolvementTitle = styled.div`
+export const Project = styled(Card)`
+  height: 100%;
+  background-color: var(--backgroundElevatedSecondary);
+`
+
+export const ProjectTitle = styled.div`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -117,7 +137,7 @@ export const InvolvementTitle = styled.div`
   }
 `
 
-export const InvolvementDescription = styled(Text)`
+export const ProjectDescription = styled(Text)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -129,17 +149,14 @@ export const UsesWrap = styled.section`
   background-color: var(--backgroundPrimary);
 `
 
-export const UsagesWrap = styled.div`
+export const UsagesWrap = styled(motion.div)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
 `
 
-export const UsageWrap = styled(Card)`
-  position: relative;
+export const UsageWrap = styled(motion.div)`
   grid-column: auto / span 6;
-  background-color: var(--backgroundElevatedSecondary);
-  text-align: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: auto / span 3;
@@ -150,10 +167,56 @@ export const UsageWrap = styled(Card)`
   }
 `
 
+export const UsageExcerpt = styled(Card)`
+  position: relative;
+  height: 100%;
+  background-color: var(--backgroundElevatedSecondary);
+  text-align: center;
+`
+
 export const UsageLink = styled.a`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+`
+
+export const SkillsetWrap = styled.section`
+  background-color: var(--backgroundInverse);
+`
+
+export const SkillsWrap = styled(motion.div)`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
+  grid-template-columns: repeat(12, 1fr);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-gap: ${({ theme }) => theme.spacing.xxl};
+  }
+`
+
+export const SkillWrap = styled(motion.div)`
+  grid-column: 1 / -1;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 6;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-column: auto / span 4;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    grid-column: auto / span 3;
+  }
+`
+
+export const Skill = styled(Card)`
+  height: 100%;
+  background-color: var(--backgroundElevatedInverse);
+
+  h3 {
+    color: var(--textInverse);
+  }
 `

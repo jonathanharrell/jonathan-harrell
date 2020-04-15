@@ -17,14 +17,21 @@ import {
   BioFigure,
   BioFigureWrap,
   BioImage,
+  BioImageBorder,
   BioText,
   HeaderContentWrap,
   HeaderWrap,
-  Involvement,
-  InvolvementDescription,
-  InvolvementTitle,
   InvolvementWrap,
+  Project,
+  ProjectDescription,
   ProjectsWrap,
+  ProjectTitle,
+  ProjectWrap,
+  Skill,
+  SkillsetWrap,
+  SkillsWrap,
+  SkillWrap,
+  UsageExcerpt,
   UsageLink,
   UsagesWrap,
   UsageWrap,
@@ -32,12 +39,30 @@ import {
 } from './styles'
 import kebabCase from 'lodash/kebabCase'
 
+const variants = {
+  mounted: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
+}
+
+const childVariants = {
+  mounted: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      mass: 0.1
+    }
+  }
+}
+
 export const Usage = ({ usage }) => {
   const IconComponent = require(`react-feather/dist/icons/${usage.icon}`)
     .default
 
   return (
-    <UsageWrap
+    <UsageExcerpt
       element="article"
       aria-labelledby={`${kebabCase(usage.name)}-label`}
     >
@@ -57,7 +82,7 @@ export const Usage = ({ usage }) => {
           <Text>{usage.description}</Text>
         </dd>
       </div>
-    </UsageWrap>
+    </UsageExcerpt>
   )
 }
 
@@ -67,7 +92,8 @@ export const AboutPageTemplate = ({
   image,
   bio,
   involvement,
-  whatIUse
+  whatIUse,
+  skillset
 }) => (
   <>
     <Seo
@@ -87,6 +113,18 @@ export const AboutPageTemplate = ({
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
                 <BioImage src={image.publicURL} alt="Jonathan Harrell" />
+                {[1, 2].map(index => (
+                  <BioImageBorder key={index}>
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="49%"
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="1"
+                    />
+                  </BioImageBorder>
+                ))}
               </BioFigure>
             </BioFigureWrap>
           )}
@@ -134,22 +172,28 @@ export const AboutPageTemplate = ({
         >
           <AboutContentWrap>
             <SectionHeader>
-              <Heading level={2} as="h2" id="involvement-label">
+              <Heading level={2} id="involvement-label">
                 {involvement.title || 'Involvement'}
               </Heading>
             </SectionHeader>
-            <ProjectsWrap>
+            <ProjectsWrap animate="mounted" variants={variants}>
               {involvement.projects.map((project, index) => (
-                <Involvement key={index} hover={false}>
-                  <InvolvementTitle>
-                    <Spaced bottom="s">
-                      <Heading level={3}>{project.name}</Heading>
-                    </Spaced>
-                  </InvolvementTitle>
-                  <InvolvementDescription>
-                    {project.description}
-                  </InvolvementDescription>
-                </Involvement>
+                <ProjectWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                >
+                  <Project hover={false}>
+                    <ProjectTitle>
+                      <Spaced bottom="s">
+                        <Heading level={3}>{project.name}</Heading>
+                      </Spaced>
+                    </ProjectTitle>
+                    <ProjectDescription>
+                      {project.description}
+                    </ProjectDescription>
+                  </Project>
+                </ProjectWrap>
               ))}
             </ProjectsWrap>
           </AboutContentWrap>
@@ -165,22 +209,58 @@ export const AboutPageTemplate = ({
         >
           <AboutContentWrap>
             <SectionHeader>
-              <Heading level={2} as="h2" id="uses-label">
+              <Heading level={2} id="uses-label">
                 {whatIUse.title || 'What I Use'}
               </Heading>
             </SectionHeader>
             <dl>
-              <Padded vertical="m">
-                <UsagesWrap>
-                  {whatIUse.usages.map((usage, index) => (
-                    <Usage key={index} usage={usage} />
-                  ))}
-                </UsagesWrap>
-              </Padded>
+              <UsagesWrap animate="mounted" variants={variants}>
+                {whatIUse.usages.map((usage, index) => (
+                  <UsageWrap
+                    key={index}
+                    variants={childVariants}
+                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                  >
+                    <Usage usage={usage} />
+                  </UsageWrap>
+                ))}
+              </UsagesWrap>
             </dl>
           </AboutContentWrap>
         </motion.div>
       </UsesWrap>
+    )}
+    {skillset.skills.length && (
+      <SkillsetWrap aria-labelledby="skillset-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.5 }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} color="textInverse" id="skillset-label">
+                {skillset.title || 'Skillset'}
+              </Heading>
+            </SectionHeader>
+            <SkillsWrap animate="mounted" variants={variants}>
+              {skillset.skills.map((skill, index) => (
+                <SkillWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                >
+                  <Skill hover={false}>
+                    <Heading level={3} color="textInverse" element="p">
+                      {skill.name}
+                    </Heading>
+                  </Skill>
+                </SkillWrap>
+              ))}
+            </SkillsWrap>
+          </AboutContentWrap>
+        </motion.div>
+      </SkillsetWrap>
     )}
   </>
 )
@@ -211,6 +291,14 @@ AboutPageTemplate.propTypes = {
         icon: PropTypes.string.isRequired
       })
     ).isRequired
+  }).isRequired,
+  skillset: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    skills: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired
 }
 
@@ -220,7 +308,8 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
     bioimage,
     bio,
     involvement,
-    what_i_use: whatIUse
+    whatIUse,
+    skillset
   } = post.frontmatter
 
   return (
@@ -231,6 +320,7 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
       bio={bio}
       involvement={involvement}
       whatIUse={whatIUse}
+      skillset={skillset}
     />
   )
 }
@@ -254,7 +344,7 @@ AboutPage.propTypes = {
             })
           ).isRequired
         }).isRequired,
-        what_i_use: PropTypes.shape({
+        whatIUse: PropTypes.shape({
           title: PropTypes.string.isRequired,
           usages: PropTypes.arrayOf(
             PropTypes.shape({
@@ -262,6 +352,14 @@ AboutPage.propTypes = {
               description: PropTypes.string.isRequired,
               link: PropTypes.string.isRequired,
               icon: PropTypes.string.isRequired
+            })
+          ).isRequired
+        }).isRequired,
+        skillset: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          skills: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string.isRequired
             })
           ).isRequired
         }).isRequired
@@ -288,13 +386,19 @@ export const aboutPageQuery = graphql`
             description
           }
         }
-        what_i_use {
+        whatIUse: what_i_use {
           title
           usages: usage {
             name
             description
             link
             icon
+          }
+        }
+        skillset {
+          title
+          skills: skill {
+            name
           }
         }
       }
