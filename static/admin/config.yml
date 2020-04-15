@@ -151,3 +151,84 @@ collections:
                   - label: Name
                     name: name
                     widget: string
+      - file: src/content/resume/index.mdx
+        label: Resume
+        name: resume
+        fields:
+          - label: 'Template Key'
+            name: templateKey
+            widget: hidden
+            default: resume-page
+          - label: Title
+            name: title
+            widget: string
+          - label: History
+            name: history
+            widget: object
+            fields:
+              - label: Job
+                name: job
+                widget: list
+                fields:
+                  - label: Company
+                    name: company
+                    widget: string
+                  - label: Position
+                    name: position
+                    widget: string
+                  - label: Start Date
+                    name: startdate
+                    widget: datetime
+                    default: ""
+                    format: "MMMM YYYY"
+                  - label: End Date
+                    name: enddate
+                    widget: datetime
+                    default: ""
+                    format: "MMMM YYYY"
+                  - label: Description
+                    name: description
+                    widget: markdown
+                    buttons: ["bulleted-list"]
+          - label: Education
+            name: education
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: markdown
+                buttons: ["italic"]
+          - label: Tools
+            name: tools
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Tool
+                name: tool
+                widget: list
+                fields:
+                  - label: Name
+                    name: name
+                    widget: string
+          - label: Open-Source Projects
+            name: opensource
+            widget: object
+            fields:
+              - label: Open-Source Projects
+                name: title
+                widget: string
+              - label: Project
+                name: project
+                widget: list
+                fields:
+                  - label: Name
+                    name: name
+                    widget: string
+                  - label: Link
+                    name: link
+                    widget: string
