@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { X } from 'react-feather'
 import Padded from '../../jh-ui/Padded'
 import Button from '../../jh-ui/Button'
 import Heading from '../../jh-ui/Heading'
@@ -19,7 +20,6 @@ import {
   SubscribeForm,
   SubscribeInput
 } from './styles'
-import X from '../../svgs/icons/x.svg'
 
 const SubscribeBanner = () => {
   const [error, setError] = useState(null)

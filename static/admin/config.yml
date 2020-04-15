@@ -134,3 +134,6 @@ collections:
                   - label: Link
                     name: link
                     widget: string
+                  - label: Icon
+                    name: icon
+                    widget: string

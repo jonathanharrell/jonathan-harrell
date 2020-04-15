@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
+import { Moon, Sun } from 'react-feather'
 import Tippy from '@tippy.js/react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-away.css'
@@ -18,8 +19,6 @@ import {
   SubscribeButton,
   ThemeToggleButton
 } from './styles'
-import Sun from '../../svgs/icons/sun.svg'
-import Moon from '../../svgs/icons/moon.svg'
 
 const DesktopMenu = ({ location }) => {
   const { themeName, setTheme } = useContext(ThemeContext)

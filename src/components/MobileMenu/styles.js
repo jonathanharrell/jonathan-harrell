@@ -100,18 +100,18 @@ export const getThemeOptionBackgroundColor = ({
 }) => {
   if (themeName === 'light') {
     if (active) {
-      return 'hsl(0, 0%, 80%)'
+      return 'hsl(210, 15%, 80%)'
     }
 
     if (action === 'hover' || action === 'focus') {
-      return 'hsl(0, 0%, 86%)'
+      return 'hsl(210, 15%, 86%)'
     }
 
     if (action === 'active') {
-      return 'hsl(0, 0%, 88%)'
+      return 'hsl(210, 15%, 88%)'
     }
 
-    return 'hsl(0, 0%, 90%)'
+    return 'hsl(210, 15%, 90%)'
   } else {
     if (active) {
       return 'hsl(0, 0%, 25%)'

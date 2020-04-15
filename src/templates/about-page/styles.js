@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import ContentWrap from '../../components/ContentWrap/'
 import Text from '../../jh-ui/Text'
+import Card from '../../jh-ui/Card'
+import ContentWrap from '../../components/ContentWrap/'
 
 export const HeaderWrap = styled.header`
   padding-top: ${({ theme }) => theme.spacing['3x']};
@@ -85,17 +86,26 @@ export const InvolvementWrap = styled.section`
   background-color: var(--backgroundSecondary);
 `
 
-export const Involvement = styled.div`
+export const ProjectsWrap = styled.div`
   display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
-  border-top: 1px solid var(--border);
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-gap: ${({ theme }) => theme.spacing.xxl};
+  }
+`
+
+export const Involvement = styled(Card)`
+  grid-column: 1 / -1;
+  background-color: var(--backgroundElevatedSecondary);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 6;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-gap: 0 ${({ theme }) => theme.spacing['3x']};
+    grid-column: auto / span 4;
   }
 `
 
@@ -119,52 +129,31 @@ export const UsesWrap = styled.section`
   background-color: var(--backgroundPrimary);
 `
 
-export const Usage = styled.div`
+export const UsagesWrap = styled.div`
   display: grid;
+  grid-gap: ${({ theme }) => theme.spacing.xxl};
   grid-template-columns: repeat(12, 1fr);
-  border-top: 1px solid var(--border);
+`
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-gap: 0 ${({ theme }) => theme.spacing.xxl};
+export const UsageWrap = styled(Card)`
+  position: relative;
+  grid-column: auto / span 6;
+  background-color: var(--backgroundElevatedSecondary);
+  text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 3;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-gap: 0 ${({ theme }) => theme.spacing['3x']};
-  }
-
-  dt,
-  dd {
-    grid-column: 1 / -1;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-      grid-column: auto / span 6;
-    }
-  }
-
-  dt p {
-    font-weight: 600;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-      font-weight: 400;
-    }
+    grid-column: auto / span 2;
   }
 `
 
 export const UsageLink = styled.a`
-  font-size: ${({ theme }) => theme.fontSizes.m.mobile};
-  color: var(--text);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.tablet};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    font-size: ${({ theme }) => theme.fontSizes.m.desktop};
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: none;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import debounce from 'lodash/debounce'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Search as SearchIcon, X } from 'react-feather'
 import Text from '../../jh-ui/Text'
 import Heading from '../../jh-ui/Heading'
 import Padded from '../../jh-ui/Padded'
@@ -23,8 +24,6 @@ import {
   ThemeOption,
   ThemeOptions
 } from './styles'
-import X from '../../svgs/icons/x.svg'
-import SearchIcon from '../../svgs/icons/search.svg'
 
 const MobileMenu = ({ location }) => {
   const { themeName, setTheme } = useContext(ThemeContext)
@@ -34,7 +33,6 @@ const MobileMenu = ({ location }) => {
   const menuRef = useRef()
   const closeButtonRef = useRef()
   const menuHeadingRef = useRef()
-  const searchModalRef = useRef()
   const firstTabbableElementRef = useRef()
   const lastTabbableElementRef = useRef()
 
