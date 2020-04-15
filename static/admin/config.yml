@@ -162,10 +162,13 @@ collections:
           - label: Title
             name: title
             widget: string
-          - label: History
+          - label: Employment History
             name: history
             widget: object
             fields:
+              - label: Title
+                name: title
+                widget: string
               - label: Job
                 name: job
                 widget: list
@@ -178,18 +181,16 @@ collections:
                     widget: string
                   - label: Start Date
                     name: startdate
-                    widget: datetime
-                    default: ""
-                    format: "MMMM YYYY"
+                    widget: string
                   - label: End Date
                     name: enddate
-                    widget: datetime
-                    default: ""
-                    format: "MMMM YYYY"
+                    widget: string
                   - label: Description
                     name: description
                     widget: markdown
+                    minimal: true
                     buttons: ["bulleted-list"]
+                    editorComponents: []
           - label: Education
             name: education
             widget: object
@@ -200,7 +201,9 @@ collections:
               - label: Description
                 name: description
                 widget: markdown
+                minimal: true
                 buttons: ["italic"]
+                editorComponents: []
           - label: Tools
             name: tools
             widget: object
@@ -219,7 +222,7 @@ collections:
             name: opensource
             widget: object
             fields:
-              - label: Open-Source Projects
+              - label: Title
                 name: title
                 widget: string
               - label: Project

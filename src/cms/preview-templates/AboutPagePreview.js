@@ -5,6 +5,7 @@ import previewStyle from '../preview-style'
 const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
   const projects = widgetsFor('involvement').getIn(['data', 'project'])
   const usages = widgetsFor('what-i-use').getIn(['data', 'usage'])
+  const skills = widgetsFor('skillset').getIn(['data', 'skill'])
   const image = entry.getIn(['data', 'bioimage'])
   const imageAsset = getAsset(image).value
 
@@ -34,6 +35,14 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
               <strong>{usage.toJSON().name}</strong>:{' '}
               <a href={usage.toJSON().link}>{usage.toJSON().description}</a>
             </li>
+          ))}
+        </dl>
+      )}
+      <h2>{entry.getIn(['data', 'skillset', 'title'])}</h2>
+      {skills && (
+        <dl>
+          {skills.map((skill, index) => (
+            <li key={index}>{skill.toJSON().name}</li>
           ))}
         </dl>
       )}

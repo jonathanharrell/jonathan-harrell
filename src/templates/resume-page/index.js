@@ -39,7 +39,7 @@ const ResumePageTemplate = ({ location, title }) => (
           <Padded vertical="3x">
             <PageTitle>
               <Heading level={1}>{title || 'Jonathan Harrell'}</Heading>
-              <Text order="body">UI/UX Designer & Front-End Developer</Text>
+              <Text order="body">UI/UX Designer & Front-End Engineer</Text>
             </PageTitle>
           </Padded>
         </ContentWrap>

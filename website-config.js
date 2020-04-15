@@ -1,7 +1,7 @@
 module.exports = {
   pathPrefix: '/',
   title:
-    'Jonathan Harrell | CSS Blogger & Teacher, UI/UX Designer, Front-End Developer', // Navigation and Site Title
+    'Jonathan Harrell | CSS Blogger & Teacher, UI/UX Designer, Front-End Engineer', // Navigation and Site Title
   titleAlt: 'Jonathan Harrell', // Title for JSONLD
   description:
     'Want to stay up-to-date on the latest developments in CSS and JavaScript? Get tips, tutorials and thoughts from designer/developer Jonathan Harrell.',
