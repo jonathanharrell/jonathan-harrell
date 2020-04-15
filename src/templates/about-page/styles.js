@@ -117,10 +117,6 @@ export const ProjectWrap = styled(motion.li)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 6;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
 `
@@ -160,7 +156,7 @@ export const UsageWrap = styled(motion.div)`
   grid-column: auto / span 6;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 3;
+    grid-column: auto / span 4;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -202,7 +198,7 @@ export const SkillWrap = styled(motion.li)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 6;
+    grid-column: auto / span 4;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {

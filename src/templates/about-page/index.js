@@ -38,6 +38,7 @@ import {
   UsesWrap
 } from './styles'
 import kebabCase from 'lodash/kebabCase'
+import Link from '../../jh-ui/Link'
 
 const variants = {
   mounted: {
@@ -64,7 +65,9 @@ export const Usage = ({ usage }) => {
   return (
     <UsageExcerpt
       element="article"
-      aria-labelledby={`${kebabCase(usage.name)}-label`}
+      aria-labelledby={`${kebabCase(usage.name)}-name ${kebabCase(
+        usage.name
+      )}-description`}
     >
       <UsageLink href={usage.link} target="_blank" rel="noopener noreferrer">
         <ScreenReaderText>Learn more</ScreenReaderText>
@@ -75,10 +78,10 @@ export const Usage = ({ usage }) => {
             <IconComponent color="var(--accent)" size={24} />
           </div>
         </Padded>
-        <dt>
+        <dt id={`${kebabCase(usage.name)}-name`}>
           <Text order="meta">{usage.name}</Text>
         </dt>
-        <dd id={`${kebabCase(usage.name)}-label`}>
+        <dd id={`${kebabCase(usage.name)}-description`}>
           <Text>{usage.description}</Text>
         </dd>
       </div>
@@ -242,6 +245,9 @@ export const AboutPageTemplate = ({
               <Heading level={2} color="textInverse" id="skillset-label">
                 {skillset.title || 'Skillset'}
               </Heading>
+              <Link to="/resume" arrow={true}>
+                View resume
+              </Link>
             </SectionHeader>
             <SkillsWrap animate="mounted" variants={variants}>
               {skillset.skills.map((skill, index) => (
