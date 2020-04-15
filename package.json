@@ -104,6 +104,7 @@
   },
   "scripts": {
     "build": "npm run clean && gatsby build && cp _redirects public/_redirects",
+    "build-start": "npm run build && npm run serve",
     "build-storybook": "build-storybook",
     "clean": "gatsby clean",
     "develop": "npm run clean && gatsby develop -H 0.0.0.0",

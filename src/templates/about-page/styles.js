@@ -102,17 +102,18 @@ export const InvolvementWrap = styled.section`
   background-color: var(--backgroundSecondary);
 `
 
-export const ProjectsWrap = styled(motion.div)`
+export const ProjectsWrap = styled(motion.ul)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
+  list-style: none;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-gap: ${({ theme }) => theme.spacing.xxl};
   }
 `
 
-export const ProjectWrap = styled(motion.div)`
+export const ProjectWrap = styled(motion.li)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -186,17 +187,18 @@ export const SkillsetWrap = styled.section`
   background-color: var(--backgroundInverse);
 `
 
-export const SkillsWrap = styled(motion.div)`
+export const SkillsWrap = styled(motion.ul)`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.xxl} 0;
   grid-template-columns: repeat(12, 1fr);
+  list-style: none;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-gap: ${({ theme }) => theme.spacing.xxl};
   }
 `
 
-export const SkillWrap = styled(motion.div)`
+export const SkillWrap = styled(motion.li)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
