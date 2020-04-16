@@ -26,6 +26,7 @@ import {
   InvolvementWrap,
   Project,
   ProjectDescription,
+  ProjectLink,
   ProjectsWrap,
   ProjectTitle,
   ProjectWrap,
@@ -191,15 +192,32 @@ export const AboutPageTemplate = ({
                   variants={childVariants}
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 >
-                  <Project hover={false}>
-                    <ProjectTitle>
-                      <Spaced bottom="s">
-                        <Heading level={3}>{project.name}</Heading>
-                      </Spaced>
-                    </ProjectTitle>
-                    <ProjectDescription>
-                      {project.description}
-                    </ProjectDescription>
+                  <Project
+                    element="article"
+                    aria-labelledby={`${kebabCase(project.name)}-name`}
+                  >
+                    <ProjectLink
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ScreenReaderText>Learn more</ScreenReaderText>
+                    </ProjectLink>
+                    <div>
+                      <ProjectTitle>
+                        <Spaced bottom="s">
+                          <Heading
+                            level={3}
+                            id={`${kebabCase(project.name)}-name`}
+                          >
+                            {project.name}
+                          </Heading>
+                        </Spaced>
+                      </ProjectTitle>
+                      <ProjectDescription>
+                        {project.description}
+                      </ProjectDescription>
+                    </div>
                   </Project>
                 </ProjectWrap>
               ))}
@@ -271,7 +289,7 @@ export const AboutPageTemplate = ({
                   variants={childVariants}
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 >
-                  <Skill hover={false}>
+                  <Skill hoverable={false}>
                     <Heading level={3} color="textInverse" element="p">
                       {skill.name}
                     </Heading>
@@ -298,7 +316,8 @@ AboutPageTemplate.propTypes = {
     projects: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired
+        description: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired
       })
     ).isRequired
   }).isRequired,
@@ -361,7 +380,8 @@ AboutPage.propTypes = {
           projects: PropTypes.arrayOf(
             PropTypes.shape({
               name: PropTypes.string.isRequired,
-              description: PropTypes.string.isRequired
+              description: PropTypes.string.isRequired,
+              link: PropTypes.string.isRequired
             })
           ).isRequired
         }).isRequired,
@@ -405,6 +425,7 @@ export const aboutPageQuery = graphql`
           projects: project {
             name
             description
+            link
           }
         }
         whatIUse: what_i_use {

@@ -122,8 +122,17 @@ export const ProjectWrap = styled(motion.li)`
 `
 
 export const Project = styled(Card)`
+  position: relative;
   height: 100%;
   background-color: var(--backgroundElevatedSecondary);
+`
+
+export const ProjectLink = styled.a`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `
 
 export const ProjectTitle = styled.div`

@@ -17,12 +17,12 @@ export default {
 
 export const Basic = () => {
   const padding = boolean('Padding', true)
-  const hover = boolean('Hover', true)
+  const hoverable = boolean('Hoverable', true)
 
   return (
     <ThemeContext.Consumer>
       {({ theme }) => (
-        <Card theme={theme} padding={padding} hover={hover}>
+        <Card theme={theme} padding={padding} hoverable={hoverable}>
           <Text element="span">Card</Text>
         </Card>
       )}

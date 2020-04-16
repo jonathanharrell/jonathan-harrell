@@ -2,14 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Root } from './styles'
 
-const Tag = ({ hoverable, children, ...props }) => (
-  <Root hoverable={hoverable.toString()} {...props}>
-    {children}
-  </Root>
+const Tag = React.forwardRef(
+  ({ hoverable, element, children, ...props }, ref) => (
+    <Root
+      ref={ref}
+      hoverable={hoverable.toString()}
+      as={element || 'span'}
+      {...props}
+    >
+      {children}
+    </Root>
+  )
 )
 
 Tag.propTypes = {
-  hoverable: PropTypes.bool
+  hoverable: PropTypes.bool,
+  element: PropTypes.string
 }
 
 Tag.defaultProps = {

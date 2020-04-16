@@ -99,7 +99,7 @@ const SubscribeBanner = () => {
             <ContentWrap>
               <Padded vertical="3x">
                 <SubscribeContentWrap>
-                  <SubscribeCard padding={false} hover={false}>
+                  <SubscribeCard padding={false} hoverable={false}>
                     <SubscribeCardContent>
                       <Padded vertical="2x" bottom="xxl" horizontal="2x">
                         <div>

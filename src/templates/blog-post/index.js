@@ -19,6 +19,7 @@ import Button from '../../jh-ui/Button'
 import Seo from '../../components/seo'
 import ContentWrap from '../../components/ContentWrap'
 import PageTitle from '../../components/PageTitle'
+import TableOfContents from '../../components/TableOfContents'
 import RecentArticles from '../../components/RecentArticles'
 import website from '../../../website-config'
 import { shouldAnimate } from '../../helpers'
@@ -53,7 +54,8 @@ export const BlogPostTemplate = ({
   image,
   socialImage,
   readingTime,
-  slug
+  slug,
+  tableOfContents
 }) => {
   const [scrolled, setScrolled] = useState(false)
   const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
@@ -233,6 +235,24 @@ export const BlogPostTemplate = ({
                     </Text>
                   </motion.div>
                 )}
+                {tableOfContents.items.length && (
+                  <motion.div
+                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 50,
+                      mass: 0.1,
+                      delay: 0.3
+                    }}
+                  >
+                    <Spaced top="l">
+                      <div>
+                        <TableOfContents items={tableOfContents.items} />
+                      </div>
+                    </Spaced>
+                  </motion.div>
+                )}
               </ArticleHeaderContent>
             </ArticleHeaderContentWrap>
           </ContentWrap>
@@ -376,7 +396,15 @@ BlogPostTemplate.propTypes = {
   readingTime: PropTypes.shape({
     text: PropTypes.string.isRequired
   }).isRequired,
-  slug: PropTypes.string.isRequired
+  slug: PropTypes.string.isRequired,
+  tableOfContents: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired
 }
 
 const BlogPost = ({ location, data: { mdx: post } }) => (
@@ -392,6 +420,7 @@ const BlogPost = ({ location, data: { mdx: post } }) => (
     socialImage={post.frontmatter.socialimage}
     readingTime={post.fields.readingTime}
     slug={post.fields.slug}
+    tableOfContents={post.tableOfContents}
   />
 )
 
@@ -420,6 +449,14 @@ BlogPost.propTypes = {
           text: PropTypes.string.isRequired
         }).isRequired,
         slug: PropTypes.string.isRequired
+      }).isRequired,
+      tableOfContents: PropTypes.shape({
+        items: PropTypes.arrayOf(
+          PropTypes.shape({
+            url: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+          })
+        ).isRequired
       }).isRequired
     }).isRequired
   }).isRequired
@@ -453,6 +490,7 @@ export const pageQuery = graphql`
         }
         slug
       }
+      tableOfContents
     }
   }
 `

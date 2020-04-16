@@ -24,7 +24,10 @@ export const Root = styled.span`
   &:focus {
     ${({ hoverable }) =>
       hoverable === 'true'
-        ? 'background-color: var(--backgroundTertiary);'
+        ? `
+          background-color: var(--backgroundTertiary);
+          cursor: pointer;
+        `
         : ''}
   }
 `

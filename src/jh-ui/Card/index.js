@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import Padded from '../Padded'
 import { Root } from './styles'
 
-const Card = ({ padding, hover, element, children, ...props }) => (
-  <Root as={element} hover={hover} {...props}>
+const Card = ({ padding, hoverable, element, children, ...props }) => (
+  <Root as={element} hoverable={hoverable} {...props}>
     <Padded all={padding ? 'xxl' : undefined}>
       <div>{children}</div>
     </Padded>
@@ -13,13 +13,13 @@ const Card = ({ padding, hover, element, children, ...props }) => (
 
 Card.propTypes = {
   padding: PropTypes.bool,
-  hover: PropTypes.bool,
+  hoverable: PropTypes.bool,
   element: PropTypes.string
 }
 
 Card.defaultProps = {
   padding: true,
-  hover: true
+  hoverable: true
 }
 
 export default Card
