@@ -79,6 +79,7 @@
     "remark-html": "^11.0.1",
     "styled-components": "^4.4.0",
     "three-js": "^79.0.0",
+    "tippy.js": "^6.1.1",
     "typemate": "^0.7.1",
     "uuid": "^3.2.1"
   },
