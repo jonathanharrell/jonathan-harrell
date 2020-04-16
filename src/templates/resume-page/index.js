@@ -37,7 +37,7 @@ import {
 
 const variants = {
   mounted: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
   }
 }
 
