@@ -15,10 +15,12 @@ import { FooterContentWrap, FooterWrap, Link, SocialLinksWrap } from './styles'
 const currentYear = new Date().getFullYear()
 
 const Footer = () => (
-  <FooterWrap aria-label="Site Footer">
+  <FooterWrap aria-labelledby="footer-label">
     <Padded top="xl" bottom="3x">
       <FooterContentWrap>
-        <ScreenReaderText element="h2">Site Footer</ScreenReaderText>
+        <ScreenReaderText element="h2" id="footer-label">
+          Site Footer
+        </ScreenReaderText>
         <Link to="/" aria-label="Home page" rel="home">
           &copy; 2017–{currentYear} Jonathan Harrell
         </Link>

@@ -1,10 +1,12 @@
 import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 import { ArrowUp } from 'react-feather'
 import { NavLink, Wrap } from './styles'
 
-const PageTitle = ({ children, ...props }) => {
+const PageTitle = ({ children, title, ...props }) => {
   const titleContent = useRef()
-  const pageTitle = titleContent.current ? titleContent.current.innerText : ''
+  const pageTitle =
+    title || (titleContent.current ? titleContent.current.innerText : '')
 
   return (
     <div {...props}>
@@ -21,6 +23,10 @@ const PageTitle = ({ children, ...props }) => {
       </Wrap>
     </div>
   )
+}
+
+PageTitle.propTypes = {
+  title: PropTypes.string
 }
 
 export default PageTitle

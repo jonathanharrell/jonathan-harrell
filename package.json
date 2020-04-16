@@ -75,6 +75,8 @@
     "react-feather": "^2.0.4",
     "react-helmet": "^5.2.0",
     "react-instantsearch-dom": "^6.4.0",
+    "remark": "^12.0.0",
+    "remark-html": "^11.0.1",
     "styled-components": "^4.4.0",
     "three-js": "^79.0.0",
     "typemate": "^0.7.1",
