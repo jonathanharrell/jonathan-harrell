@@ -48,7 +48,7 @@ I have a simple grid of cards that is styled using CSS grid:
 
 I loop over each card and create an observer. The observer accepts a callback and an options object. Note that in options I am setting the `rootMargin` to a negative value. This insets the intersection point in from the viewport on all sides by 100px. So a card can be up to 100px in the viewport before the observer will read it as intersected.
 
-![The root margin grows or shrinks each side of the root element's bounding box before computing intersections.](/img/root-margin.svg)
+![The root margin grows or shrinks each side of the root element’s bounding box before computing intersections.](/img/root-margin.svg)
 
 I have also set the `threshold` option as an array with two numeric values. These are essentially the percentages of intersection at which the observer will respond. So, when a card is 50% in the viewport and when it is 100% in, the observer will fire the callback.
 
@@ -70,7 +70,7 @@ targets.forEach(target => observer.observe(target));
 
 The callback function gives me an array of entries – each entry is essentially an intersection change. I can check the `intersectionRatio` on each entry and apply some styling appropriately.
 
-![Thresholds indicate at what percentage of the target's visibility the observer's callback should be executed.](/img/thresholds.svg)
+![Thresholds indicate at what percentage of the target’s visibility the observer’s callback should be executed.](/img/thresholds.svg)
 
 ```javascript
 const callback = entries => {

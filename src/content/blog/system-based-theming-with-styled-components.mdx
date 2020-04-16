@@ -344,7 +344,7 @@ In `head`:
   // grab the saved theme
   var preferredTheme = localStorage.getItem("theme");
 
-  // set up method to set the active theme to the user's preferred theme and save that theme for persistence
+  // set up method to set the active theme to the user’s preferred theme and save that theme for persistence
   window.__setPreferredTheme = function (newTheme) {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
@@ -396,4 +396,4 @@ export default App;
 
 ## Conclusion
 
-Thanks to improving browser support for the detection of system themes, it has never been easier to implement a theme for your application or website that responds to your users' operating system themes. With a bit of extra code, you can also enable user-chosen theme overrides. This will go a long way in creating a more customizable and comfortable experience for your users.
+Thanks to improving browser support for the detection of system themes, it has never been easier to implement a theme for your application or website that responds to your users’ operating system themes. With a bit of extra code, you can also enable user-chosen theme overrides. This will go a long way in creating a more customizable and comfortable experience for your users.
