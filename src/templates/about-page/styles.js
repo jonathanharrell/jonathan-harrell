@@ -70,7 +70,7 @@ export const BioImage = styled.img`
   object-fit: cover;
 `
 
-export const BioImageBorder = styled.div`
+export const BioImageBorder = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
@@ -83,11 +83,6 @@ export const BioImageBorder = styled.div`
 
   &:last-of-type {
     transform: translate(0.75rem, 0.75rem);
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
   }
 `
 

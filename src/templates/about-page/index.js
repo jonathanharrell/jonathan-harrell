@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import debounce from 'lodash/debounce'
 import kebabCase from 'lodash/kebabCase'
 import { motion } from 'framer-motion'
 import Padded from '../../jh-ui/Padded'
@@ -98,250 +97,196 @@ export const AboutPageTemplate = ({
   involvement,
   whatIUse,
   skillset
-}) => {
-  const [mousePosition, setMousePosition] = useState(0)
-
-  const handleMouseMove = debounce(event => {
-    setMousePosition({ x: event.clientX, y: event.clientY })
-  }, 10)
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  })
-
-  return (
-    <>
-      <Seo
-        title={`${title} | ${website.titleAlt}`}
-        pathname={location.pathname}
-        description="Jonathan Harrell is a UI/UX designer and front-end developer. He specializes in and blogs about HTML and CSS. Learn more."
-        banner={image.publicURL}
-      />
-      <HeaderWrap aria-labelledby="about-label">
-        <AboutContentWrap>
-          <HeaderContentWrap>
-            {image && (
-              <BioFigureWrap>
-                <BioFigure
-                  initial={
-                    shouldAnimate() ? { opacity: 0, scale: 0.75 } : false
-                  }
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+}) => (
+  <>
+    <Seo
+      title={`${title} | ${website.titleAlt}`}
+      pathname={location.pathname}
+      description="Jonathan Harrell is a UI/UX designer and front-end developer. He specializes in and blogs about HTML and CSS. Learn more."
+      banner={image.publicURL}
+    />
+    <HeaderWrap aria-labelledby="about-label">
+      <AboutContentWrap>
+        <HeaderContentWrap>
+          {image && (
+            <BioFigureWrap>
+              <BioFigure
+                initial={
+                  shouldAnimate() ? { opacity: 0, scale: 0.75 } : false
+                }
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
+              >
+                <BioImage src={image.publicURL} alt="Jonathan Harrell" />
+                {[1, 2].map(index => (
+                  <BioImageBorder key={index}>
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="49%"
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="1"
+                    />
+                  </BioImageBorder>
+                ))}
+              </BioFigure>
+            </BioFigureWrap>
+          )}
+          <BioText>
+            <motion.div
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.1
+              }}
+            >
+              <PageTitle>
+                <Heading level={1} id="about-label">
+                  {title || 'About Jonathan'}
+                </Heading>
+              </PageTitle>
+            </motion.div>
+            <motion.div
+              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                type: 'spring',
+                stiffness: 50,
+                mass: 0.1,
+                delay: 0.2
+              }}
+            >
+              <Spaced top="m">
+                <Text>{bio}</Text>
+              </Spaced>
+            </motion.div>
+          </BioText>
+        </HeaderContentWrap>
+      </AboutContentWrap>
+    </HeaderWrap>
+    {involvement.projects.length && (
+      <InvolvementWrap aria-labelledby="involvement-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 50,
+            mass: 0.1,
+            delay: 0.3
+          }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} id="involvement-label">
+                {involvement.title || 'Involvement'}
+              </Heading>
+            </SectionHeader>
+            <ProjectsWrap animate="mounted" variants={variants}>
+              {involvement.projects.map((project, index) => (
+                <ProjectWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 >
-                  <BioImage src={image.publicURL} alt="Jonathan Harrell" />
-                  <BioImageBorder>
-                    <motion.svg
-                      style={
-                        typeof window !== 'undefined'
-                          ? {
-                              transform: `translate(${Math.floor(
-                                (mousePosition.x / window.innerWidth - 0.5) * 20
-                              )}px, ${Math.floor(
-                                (mousePosition.y / window.innerHeight - 0.5) *
-                                  20
-                              )}px)`
-                            }
-                          : undefined
-                      }
-                    >
-                      <circle
-                        cx="50%"
-                        cy="50%"
-                        r="49%"
-                        fill="none"
-                        stroke="var(--accent)"
-                        strokeWidth="1"
-                      />
-                    </motion.svg>
-                  </BioImageBorder>
-                  <BioImageBorder>
-                    <motion.svg
-                      style={
-                        typeof window !== 'undefined'
-                          ? {
-                              transform: `translate(${Math.floor(
-                                (mousePosition.x / window.innerWidth - 0.5) * 20
-                              ) * -1}px, ${Math.floor(
-                                (mousePosition.y / window.innerHeight - 0.5) *
-                                  20
-                              ) * -1}px)`
-                            }
-                          : undefined
-                      }
-                    >
-                      <circle
-                        cx="50%"
-                        cy="50%"
-                        r="49%"
-                        fill="none"
-                        stroke="var(--accent)"
-                        strokeWidth="1"
-                      />
-                    </motion.svg>
-                  </BioImageBorder>
-                </BioFigure>
-              </BioFigureWrap>
-            )}
-            <BioText>
-              <motion.div
-                initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 50,
-                  mass: 0.1,
-                  delay: 0.1
-                }}
-              >
-                <PageTitle>
-                  <Heading level={1} id="about-label">
-                    {title || 'About Jonathan'}
-                  </Heading>
-                </PageTitle>
-              </motion.div>
-              <motion.div
-                initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 50,
-                  mass: 0.1,
-                  delay: 0.2
-                }}
-              >
-                <Spaced top="m">
-                  <Text>{bio}</Text>
-                </Spaced>
-              </motion.div>
-            </BioText>
-          </HeaderContentWrap>
-        </AboutContentWrap>
-      </HeaderWrap>
-      {involvement.projects.length && (
-        <InvolvementWrap aria-labelledby="involvement-label">
-          <motion.div
-            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 50,
-              mass: 0.1,
-              delay: 0.3
-            }}
-          >
-            <AboutContentWrap>
-              <SectionHeader>
-                <Heading level={2} id="involvement-label">
-                  {involvement.title || 'Involvement'}
-                </Heading>
-              </SectionHeader>
-              <ProjectsWrap animate="mounted" variants={variants}>
-                {involvement.projects.map((project, index) => (
-                  <ProjectWrap
+                  <Project hover={false}>
+                    <ProjectTitle>
+                      <Spaced bottom="s">
+                        <Heading level={3}>{project.name}</Heading>
+                      </Spaced>
+                    </ProjectTitle>
+                    <ProjectDescription>
+                      {project.description}
+                    </ProjectDescription>
+                  </Project>
+                </ProjectWrap>
+              ))}
+            </ProjectsWrap>
+          </AboutContentWrap>
+        </motion.div>
+      </InvolvementWrap>
+    )}
+    {whatIUse.usages.length && (
+      <UsesWrap id="uses" aria-labelledby="uses-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 50,
+            mass: 0.1,
+            delay: 0.4
+          }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} id="uses-label">
+                {whatIUse.title || 'What I Use'}
+              </Heading>
+            </SectionHeader>
+            <dl>
+              <UsagesWrap animate="mounted" variants={variants}>
+                {whatIUse.usages.map((usage, index) => (
+                  <UsageWrap
                     key={index}
                     variants={childVariants}
                     initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                   >
-                    <Project hover={false}>
-                      <ProjectTitle>
-                        <Spaced bottom="s">
-                          <Heading level={3}>{project.name}</Heading>
-                        </Spaced>
-                      </ProjectTitle>
-                      <ProjectDescription>
-                        {project.description}
-                      </ProjectDescription>
-                    </Project>
-                  </ProjectWrap>
+                    <Usage usage={usage} />
+                  </UsageWrap>
                 ))}
-              </ProjectsWrap>
-            </AboutContentWrap>
-          </motion.div>
-        </InvolvementWrap>
-      )}
-      {whatIUse.usages.length && (
-        <UsesWrap id="uses" aria-labelledby="uses-label">
-          <motion.div
-            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 50,
-              mass: 0.1,
-              delay: 0.4
-            }}
-          >
-            <AboutContentWrap>
-              <SectionHeader>
-                <Heading level={2} id="uses-label">
-                  {whatIUse.title || 'What I Use'}
-                </Heading>
-              </SectionHeader>
-              <dl>
-                <UsagesWrap animate="mounted" variants={variants}>
-                  {whatIUse.usages.map((usage, index) => (
-                    <UsageWrap
-                      key={index}
-                      variants={childVariants}
-                      initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                    >
-                      <Usage usage={usage} />
-                    </UsageWrap>
-                  ))}
-                </UsagesWrap>
-              </dl>
-            </AboutContentWrap>
-          </motion.div>
-        </UsesWrap>
-      )}
-      {skillset.skills.length && (
-        <SkillsetWrap aria-labelledby="skillset-label">
-          <motion.div
-            initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              type: 'spring',
-              stiffness: 50,
-              mass: 0.1,
-              delay: 0.5
-            }}
-          >
-            <AboutContentWrap>
-              <SectionHeader>
-                <Heading level={2} color="textInverse" id="skillset-label">
-                  {skillset.title || 'Skillset'}
-                </Heading>
-                <Link to="/resume" arrow={true}>
-                  View resume
-                </Link>
-              </SectionHeader>
-              <SkillsWrap animate="mounted" variants={variants}>
-                {skillset.skills.map((skill, index) => (
-                  <SkillWrap
-                    key={index}
-                    variants={childVariants}
-                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                  >
-                    <Skill hover={false}>
-                      <Heading level={3} color="textInverse" element="p">
-                        {skill.name}
-                      </Heading>
-                    </Skill>
-                  </SkillWrap>
-                ))}
-              </SkillsWrap>
-            </AboutContentWrap>
-          </motion.div>
-        </SkillsetWrap>
-      )}
-    </>
-  )
-}
+              </UsagesWrap>
+            </dl>
+          </AboutContentWrap>
+        </motion.div>
+      </UsesWrap>
+    )}
+    {skillset.skills.length && (
+      <SkillsetWrap aria-labelledby="skillset-label">
+        <motion.div
+          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 50,
+            mass: 0.1,
+            delay: 0.5
+          }}
+        >
+          <AboutContentWrap>
+            <SectionHeader>
+              <Heading level={2} color="textInverse" id="skillset-label">
+                {skillset.title || 'Skillset'}
+              </Heading>
+              <Link to="/resume" arrow={true}>
+                View resume
+              </Link>
+            </SectionHeader>
+            <SkillsWrap animate="mounted" variants={variants}>
+              {skillset.skills.map((skill, index) => (
+                <SkillWrap
+                  key={index}
+                  variants={childVariants}
+                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
+                >
+                  <Skill hover={false}>
+                    <Heading level={3} color="textInverse" element="p">
+                      {skill.name}
+                    </Heading>
+                  </Skill>
+                </SkillWrap>
+              ))}
+            </SkillsWrap>
+          </AboutContentWrap>
+        </motion.div>
+      </SkillsetWrap>
+    )}
+  </>
+)
 
 AboutPageTemplate.propTypes = {
   location: PropTypes.object.isRequired,
