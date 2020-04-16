@@ -111,7 +111,6 @@ const SearchModal = React.forwardRef(
       }
     }
 
-    const opacity = slideDirection === 'right' ? 0 : undefined
     const x = slideDirection === 'right' ? 100 : undefined
 
     return (
@@ -144,7 +143,7 @@ const SearchModal = React.forwardRef(
               <motion.div
                 id="search"
                 initial={{
-                  opacity,
+                  opacity: 0,
                   x
                 }}
                 animate={{
@@ -152,7 +151,7 @@ const SearchModal = React.forwardRef(
                   x: 0
                 }}
                 exit={{
-                  opacity,
+                  opacity: 0,
                   x
                 }}
                 transition={{ stiffness: 50, mass: 0.1 }}

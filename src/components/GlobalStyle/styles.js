@@ -67,6 +67,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #modal:not(:empty) {
+    position: relative;
     z-index: 1;
 
     ~ #___gatsby {

@@ -184,8 +184,7 @@ const MobileMenu = ({ location }) => {
               style={{
                 position: 'fixed',
                 top: 'calc(1rem - 5px)',
-                right: '1rem',
-                zIndex: 1
+                right: '1rem'
               }}
             >
               <Menu ref={menuRef}>

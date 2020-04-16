@@ -144,7 +144,7 @@ const CustomHighlight = connectHighlight(Highlight)
 
 const variants = {
   mounted: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.05, delayChildren: 0 }
   }
 }
 
