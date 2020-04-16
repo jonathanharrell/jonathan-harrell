@@ -136,13 +136,18 @@ export const AboutPageTemplate = ({
                   <BioImage src={image.publicURL} alt="Jonathan Harrell" />
                   <BioImageBorder>
                     <motion.svg
-                      style={{
-                        transform: `translate(${Math.floor(
-                          (mousePosition.x / window.innerWidth - 0.5) * 20
-                        )}px, ${Math.floor(
-                          (mousePosition.y / window.innerHeight - 0.5) * 20
-                        )}px)`
-                      }}
+                      style={
+                        typeof window !== 'undefined'
+                          ? {
+                              transform: `translate(${Math.floor(
+                                (mousePosition.x / window.innerWidth - 0.5) * 20
+                              )}px, ${Math.floor(
+                                (mousePosition.y / window.innerHeight - 0.5) *
+                                  20
+                              )}px)`
+                            }
+                          : undefined
+                      }
                     >
                       <circle
                         cx="50%"
@@ -156,13 +161,18 @@ export const AboutPageTemplate = ({
                   </BioImageBorder>
                   <BioImageBorder>
                     <motion.svg
-                      style={{
-                        transform: `translate(${Math.floor(
-                          (mousePosition.x / window.innerWidth - 0.5) * 20
-                        ) * -1}px, ${Math.floor(
-                          (mousePosition.y / window.innerHeight - 0.5) * 20
-                        ) * -1}px)`
-                      }}
+                      style={
+                        typeof window !== 'undefined'
+                          ? {
+                              transform: `translate(${Math.floor(
+                                (mousePosition.x / window.innerWidth - 0.5) * 20
+                              ) * -1}px, ${Math.floor(
+                                (mousePosition.y / window.innerHeight - 0.5) *
+                                  20
+                              ) * -1}px)`
+                            }
+                          : undefined
+                      }
                     >
                       <circle
                         cx="50%"
