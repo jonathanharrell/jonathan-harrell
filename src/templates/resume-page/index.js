@@ -230,7 +230,11 @@ const ResumePageTemplate = ({
                       >
                         <SkillsList>
                           {skillset.skills.map((skill, index) => (
-                            <li key={index}>{skill.name}</li>
+                            <li key={index}>
+                              <Text order="body" element="span">
+                                {skill.name}
+                              </Text>
+                            </li>
                           ))}
                         </SkillsList>
                       </motion.div>
@@ -284,7 +288,11 @@ const ResumePageTemplate = ({
                       >
                         <ToolsList>
                           {tools.tools.map((tool, index) => (
-                            <li key={index}>{tool.name}</li>
+                            <li key={index}>
+                              <Text order="body" element="span">
+                                {tool.name}
+                              </Text>
+                            </li>
                           ))}
                         </ToolsList>
                       </motion.div>

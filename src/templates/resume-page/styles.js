@@ -97,7 +97,7 @@ export const SkillsList = styled(Ul)`
   li {
     display: inline;
 
-    &:not(:last-child)::after {
+    &:not(:last-child) span::after {
       content: ', ';
     }
   }

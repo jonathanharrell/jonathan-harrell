@@ -126,6 +126,7 @@ const SearchModal = React.forwardRef(
           >
             <ScreenReaderText>Open search</ScreenReaderText>
             <Tippy
+              key={expanded}
               content="Open search"
               placement="bottom"
               animation="shift-away"
