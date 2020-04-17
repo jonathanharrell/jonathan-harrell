@@ -30,12 +30,12 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
-    if (canvasRef.current) {
-      import('../../home-animation').then(script => {
-        const init = script.default
-        init(canvasRef.current)
-      })
-    }
+    // if (canvasRef.current) {
+    //   import('../../home-animation').then(script => {
+    //     const init = script.default
+    //     init(canvasRef.current)
+    //   })
+    // }
   }, [])
 
   return (
