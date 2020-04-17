@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useContext, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Search as SearchIcon, X } from 'react-feather'
@@ -6,9 +6,10 @@ import Tippy from '@tippyjs/react'
 import Spaced from '../../jh-ui/Spaced'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import Overlay from '../Overlay'
-import Search from '../Search'
 import ThemeContext from '../../context/theme'
 import { CloseButton, SearchButton, SearchHeader, SearchWrap } from './styles'
+
+const Search = React.lazy(() => import('../Search'))
 
 const SearchModal = React.forwardRef(
   ({ location, slideDirection, children }, ref) => {
@@ -41,7 +42,7 @@ const SearchModal = React.forwardRef(
     }, [])
 
     useEffect(() => {
-      if (expanded) {
+      if (expanded && searchWrapRef.current.querySelector('input')) {
         // focus search input
         searchWrapRef.current.querySelector('input').focus()
       }
@@ -165,7 +166,9 @@ const SearchModal = React.forwardRef(
                       </CloseButton>
                     </SearchHeader>
                   </Spaced>
-                  <Search />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Search />
+                  </Suspense>
                 </SearchWrap>
               </motion.div>
             </Overlay>

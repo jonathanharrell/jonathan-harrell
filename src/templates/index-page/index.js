@@ -14,7 +14,6 @@ import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
 import Experiments from '../../components/Experiments'
 import { shouldAnimate } from '../../helpers'
-import init from '../../home-animation'
 import {
   Canvas,
   ExperimentsWrap,
@@ -31,7 +30,12 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
-    if (canvasRef.current) init(canvasRef.current)
+    if (canvasRef.current) {
+      import('../../home-animation').then(script => {
+        const init = script.default
+        init(canvasRef.current)
+      })
+    }
   }, [])
 
   return (
@@ -40,7 +44,7 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
       <HeaderWrap aria-labelledby="introduction-label">
         <HomeContentWrap>
           <HeaderContentWrap>
-            {shouldAnimate() ? (
+            {shouldAnimate() && (
               <Canvas
                 ref={canvasRef}
                 initial={{ opacity: 0, scale: 0.75, y: '-50%' }}
@@ -48,13 +52,14 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
                 transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
                 role="presentation"
               />
-            ) : (
+            )}
+            <noscript>
               <HomeIllustration
                 src={HomeIllustrationSrc}
                 alt=""
                 role="presentation"
               />
-            )}
+            </noscript>
             <HeaderTextWrap>
               <motion.div
                 initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
