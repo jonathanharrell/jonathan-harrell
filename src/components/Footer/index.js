@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear()
 
 const Footer = () => (
   <FooterWrap aria-labelledby="footer-label">
-    <Padded top="xl" bottom="3x">
+    <Padded vertical="3x">
       <FooterContentWrap>
         <ScreenReaderText element="h2" id="footer-label">
           Site Footer

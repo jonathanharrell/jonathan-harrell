@@ -31,7 +31,15 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
-    if (canvasRef.current) init(canvasRef.current)
+    let destroy
+
+    if (canvasRef.current) {
+      destroy = init(canvasRef.current)
+    }
+
+    return () => {
+      if (destroy) destroy()
+    }
   }, [])
 
   return (

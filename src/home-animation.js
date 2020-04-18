@@ -123,10 +123,17 @@ const init = canvas => {
 
   let resizeTimeout
 
-  window.addEventListener('resize', function() {
+  const handleResize = () => {
     resizeTimeout = clearTimeout(resizeTimeout)
     resizeTimeout = setTimeout(onResize, 200)
-  })
+  }
+
+  window.addEventListener('resize', handleResize)
+
+  return () => {
+    window.removeEventListener('mousemove', onMouseMove)
+    window.removeEventListener('resize', handleResize)
+  }
 }
 
 export default init
