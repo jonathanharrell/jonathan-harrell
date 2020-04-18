@@ -5,6 +5,7 @@ export const Root = styled.input`
   height: 3rem;
   padding: 0 ${({ theme }) => theme.spacing.m};
   border: 0;
+  border-radius: 4px;
   background-color: var(--backgroundSecondary);
   font-family: ${({ theme }) => theme.fonts.sansSerif};
   font-size: ${({ theme }) => theme.fontSizes.m.mobile};

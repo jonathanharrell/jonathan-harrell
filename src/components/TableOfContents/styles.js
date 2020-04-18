@@ -91,7 +91,7 @@ export const ItemHeading = styled(Heading)`
     width: 3rem;
     height: 3px;
     margin: 0.5rem auto 0.75rem;
-    background-color: var(--text);
+    background-color: var(--border);
     content: '';
   }
 `

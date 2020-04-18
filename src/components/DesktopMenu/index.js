@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { navigate } from '@reach/router'
 import debounce from 'lodash/debounce'
 import { Moon, Sun } from 'react-feather'
 import Tippy from '@tippyjs/react'
@@ -79,9 +80,11 @@ const DesktopMenu = ({ location }) => {
 
   // in order to make sure the subscribe section is shown when the subscribe button is clicked,
   // we need to dispatch a custom event
-  const handleSubscribeClick = () => {
+  const handleSubscribeClick = event => {
+    event.preventDefault()
     localStorage.removeItem('subscribe-banner-dismissed')
     window.dispatchEvent(new CustomEvent('showSubscribe'))
+    navigate(event.target.href)
   }
 
   return visible ? (
