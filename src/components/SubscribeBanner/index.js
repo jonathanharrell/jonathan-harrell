@@ -1,23 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { X } from 'react-feather'
 import Padded from '../../jh-ui/Padded'
-import Button from '../../jh-ui/Button'
 import Heading from '../../jh-ui/Heading'
 import Text from '../../jh-ui/Text'
 import Spaced from '../../jh-ui/Spaced'
-import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Ul from '../../jh-ui/Ul'
 import Alert from '../../jh-ui/Alert'
 import ContentWrap from '../ContentWrap'
 import { addAlert, shouldAnimate } from '../../helpers'
 import {
-  CloseButton,
   SubscribeBannerWrap,
-  SubscribeCard,
-  SubscribeCardContent,
+  SubscribeButton,
   SubscribeContentWrap,
   SubscribeForm,
+  SubscribeFormContent,
   SubscribeInput
 } from './styles'
 
@@ -46,13 +41,6 @@ const SubscribeBanner = () => {
     }
   }, [])
 
-  const dismiss = event => {
-    setDismissed(true)
-    localStorage.setItem('subscribe-banner-dismissed', 'true')
-    addAlert('Subscribe banner dismissed')
-    event.target.blur()
-  }
-
   const handleSubmit = async event => {
     setError(null)
     event.preventDefault()
@@ -75,7 +63,7 @@ const SubscribeBanner = () => {
         throw Error(json.detail)
       } else {
         setSuccess(true)
-        addAlert("You've been subscribed!")
+        addAlert('You\'ve been subscribed!')
       }
     } catch (error) {
       setError(error.message)
@@ -99,115 +87,93 @@ const SubscribeBanner = () => {
             <ContentWrap>
               <Padded vertical="3x">
                 <SubscribeContentWrap>
-                  <SubscribeCard padding={false} hoverable={false}>
-                    <SubscribeCardContent>
-                      <Padded vertical="2x" bottom="xxl" horizontal="2x">
-                        <div>
-                          <Heading
-                            id="newsletter-label"
-                            level={4}
-                            element="h2"
-                            color="textInverse"
-                          >
-                            Subscribe to the newsletter
-                          </Heading>
-                          <Spaced top="xs">
-                            <Text color="textLighter">
-                              Sign up for periodic updates, including:
-                            </Text>
-                          </Spaced>
-                          <Spaced top="m">
-                            <Ul color="textInverse">
-                              <li>New front-end experiments</li>
-                              <li>CSS layout tricks and new properties</li>
-                              <li>Insight into new JavaScript APIs</li>
-                            </Ul>
-                          </Spaced>
-                        </div>
-                      </Padded>
-                      <SubscribeForm onSubmit={handleSubmit}>
-                        <CloseButton unstyled type="button" onClick={dismiss}>
-                          <X />
-                          <ScreenReaderText>
-                            Dismiss newsletter subscription form
-                          </ScreenReaderText>
-                        </CloseButton>
-                        <Padded top="4x" bottom="3x" horizontal="2x">
+                  <div>
+                    <Heading
+                      id="newsletter-label"
+                      level={4}
+                      element="h2"
+                      color="textInverse"
+                    >
+                      Want more front-end tips and tricks?
+                    </Heading>
+                    <Spaced top="xs">
+                      <Text color="textLighter">
+                        Sign up for the newsletter to stay up-to-date.
+                      </Text>
+                    </Spaced>
+                  </div>
+                  <Spaced top="xl">
+                    <SubscribeForm onSubmit={handleSubmit}>
+                      <div>
+                        <SubscribeFormContent>
                           <div>
-                            <div>
-                              <label
-                                htmlFor="email"
-                                className="visually-hidden"
-                              >
-                                Enter your email address to subscribe to
-                                newsletter
-                              </label>
-                              <SubscribeInput
-                                id="email"
-                                type="email"
-                                name="email"
-                                placeholder="Your email address"
-                                ref={inputRef}
-                              />
-                            </div>
-                            <AnimatePresence>
-                              {error && (
-                                <motion.div
-                                  initial={
-                                    shouldAnimate()
-                                      ? { opacity: 0, y: 50 }
-                                      : false
-                                  }
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: 50 }}
-                                  transition={{
-                                    type: 'spring',
-                                    stiffness: 50,
-                                    mass: 0.1,
-                                    delay: 0.1
-                                  }}
-                                >
-                                  <Spaced top="m">
-                                    <Alert>{error}</Alert>
-                                  </Spaced>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                            <AnimatePresence>
-                              {success && (
-                                <motion.div
-                                  initial={
-                                    shouldAnimate()
-                                      ? { opacity: 0, y: 50 }
-                                      : false
-                                  }
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: 50 }}
-                                  transition={{
-                                    type: 'spring',
-                                    stiffness: 50,
-                                    mass: 0.1,
-                                    delay: 0.1
-                                  }}
-                                >
-                                  <Spaced top="m">
-                                    <Alert order="info">
-                                      You’ve been subscribed!
-                                    </Alert>
-                                  </Spaced>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                            <Spaced top="m">
-                              <Button order="accent" size="large">
-                                Subscribe
-                              </Button>
-                            </Spaced>
+                            <label htmlFor="email" className="visually-hidden">
+                              Enter your email address to subscribe to
+                              newsletter
+                            </label>
+                            <SubscribeInput
+                              id="email"
+                              type="email"
+                              name="email"
+                              placeholder="Enter your email address"
+                              ref={inputRef}
+                            />
                           </div>
-                        </Padded>
-                      </SubscribeForm>
-                    </SubscribeCardContent>
-                  </SubscribeCard>
+                          <Spaced top="m">
+                            <SubscribeButton order="accent" size="large">
+                              Subscribe
+                            </SubscribeButton>
+                          </Spaced>
+                        </SubscribeFormContent>
+                        <AnimatePresence>
+                          {error && (
+                            <motion.div
+                              initial={
+                                shouldAnimate() ? { opacity: 0, y: 50 } : false
+                              }
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 50 }}
+                              transition={{
+                                type: 'spring',
+                                stiffness: 50,
+                                mass: 0.1,
+                                delay: 0.1
+                              }}
+                            >
+                              <Spaced top="m">
+                                <Alert>{error}</Alert>
+                              </Spaced>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        <AnimatePresence>
+                          {success && (
+                            <motion.div
+                              initial={
+                                shouldAnimate()
+                                  ? { opacity: 0, y: 50 }
+                                  : false
+                              }
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 50 }}
+                              transition={{
+                                type: 'spring',
+                                stiffness: 50,
+                                mass: 0.1,
+                                delay: 0.1
+                              }}
+                            >
+                              <Spaced top="m">
+                                <Alert order="info">
+                                  You’ve been subscribed!
+                                </Alert>
+                              </Spaced>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </SubscribeForm>
+                  </Spaced>
                 </SubscribeContentWrap>
               </Padded>
             </ContentWrap>
