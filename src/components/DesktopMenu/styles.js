@@ -14,6 +14,12 @@ export const DesktopMenuWrap = styled.div`
   }
 `
 
+export const SiteNavigation = styled.section`
+  &:focus:not(.focus-visible) {
+    box-shadow: none;
+  }
+`
+
 export const MenuLinkWrap = styled.li`
   display: inline-block;
   list-style: none;

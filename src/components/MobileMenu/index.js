@@ -91,29 +91,25 @@ const MobileMenu = ({ location }) => {
   }, [visible, expanded])
 
   // some links need special logic to determine whether or not they should get the active style
-  const isActive = ({ isCurrent, href, location }) => {
+  const isActive = ({ isCurrent, isPartiallyCurrent, href, location }) => {
     const props = {}
 
-    if (href === '/blog') {
-      if (location.pathname.startsWith('/blog')) {
+    if (href === '/') {
+      if (isCurrent) {
         props['data-active'] = true
+        props['aria-current'] = 'page'
       }
 
+      return props
+    }
+
+    if (href === '/blog') {
       if (location.pathname.startsWith('/tags')) {
         props['data-active'] = true
       }
-
-      if (location.pathname === '/blog' || location.pathname === '/blog/') {
-        props['aria-current'] = 'page'
-      }
     }
 
-    if (href === '/about' && location.pathname.startsWith('/about')) {
-      props['data-active'] = true
-      props['aria-current'] = 'page'
-    }
-
-    if (isCurrent) {
+    if (isCurrent || isPartiallyCurrent) {
       props['data-active'] = true
       props['aria-current'] = 'page'
     }

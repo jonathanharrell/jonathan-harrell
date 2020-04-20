@@ -16,12 +16,13 @@ import {
   MenuLink,
   MenuLinkText,
   MenuLinkWrap,
+  SiteNavigation,
   SiteTools,
   SubscribeButton,
   ThemeToggleButton
 } from './styles'
 
-const DesktopMenu = ({ location }) => {
+const DesktopMenu = ({ location, shell }) => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const [visible, setVisibility] = useState(true)
 
@@ -44,29 +45,25 @@ const DesktopMenu = ({ location }) => {
   }, [])
 
   // some links need special logic to determine whether or not they should get the active style
-  const isActive = ({ isCurrent, href, location }) => {
+  const isActive = ({ isCurrent, isPartiallyCurrent, href, location }) => {
     const props = {}
 
-    if (href === '/blog') {
-      if (location.pathname.startsWith('/blog')) {
+    if (href === '/') {
+      if (isCurrent) {
         props['data-active'] = true
+        props['aria-current'] = 'page'
       }
 
+      return props
+    }
+
+    if (href === '/blog') {
       if (location.pathname.startsWith('/tags')) {
         props['data-active'] = true
       }
-
-      if (location.pathname === '/blog' || location.pathname === '/blog/') {
-        props['aria-current'] = 'page'
-      }
     }
 
-    if (href === '/about' && location.pathname.startsWith('/about')) {
-      props['data-active'] = true
-      props['aria-current'] = 'page'
-    }
-
-    if (isCurrent) {
+    if (isCurrent || isPartiallyCurrent) {
       props['data-active'] = true
       props['aria-current'] = 'page'
     }
@@ -93,42 +90,44 @@ const DesktopMenu = ({ location }) => {
         <h2>Main Menu</h2>
       </ScreenReaderText>
       <Spaced left="3x">
-        <section
-          id="site-navigation"
-          tabIndex={-1}
-          aria-labelledby="site-links-label"
-        >
-          <ScreenReaderText>
-            <h3 id="site-links-label">Site Links</h3>
-          </ScreenReaderText>
-          <nav role="navigation">
-            <ul>
-              <Spaced right="xxl">
-                <MenuLinkWrap>
-                  <MenuLink to="/" rel="home" getProps={isActive}>
-                    <MenuLinkText order="body" element="span">
-                      Home
-                    </MenuLinkText>
-                  </MenuLink>
-                </MenuLinkWrap>
-                <MenuLinkWrap>
-                  <MenuLink to="/blog" getProps={isActive}>
-                    <MenuLinkText order="body" element="span">
-                      Articles
-                    </MenuLinkText>
-                  </MenuLink>
-                </MenuLinkWrap>
-                <MenuLinkWrap>
-                  <MenuLink to="/about" getProps={isActive}>
-                    <MenuLinkText order="body" element="span">
-                      About
-                    </MenuLinkText>
-                  </MenuLink>
-                </MenuLinkWrap>
-              </Spaced>
-            </ul>
-          </nav>
-        </section>
+        {!shell && (
+          <SiteNavigation
+            id="site-navigation"
+            tabIndex={-1}
+            aria-labelledby="site-links-label"
+          >
+            <ScreenReaderText>
+              <h3 id="site-links-label">Site Links</h3>
+            </ScreenReaderText>
+            <nav role="navigation">
+              <ul>
+                <Spaced right="xxl">
+                  <MenuLinkWrap>
+                    <MenuLink to="/" rel="home" getProps={isActive}>
+                      <MenuLinkText order="body" element="span">
+                        Home
+                      </MenuLinkText>
+                    </MenuLink>
+                  </MenuLinkWrap>
+                  <MenuLinkWrap>
+                    <MenuLink to="/blog" getProps={isActive}>
+                      <MenuLinkText order="body" element="span">
+                        Articles
+                      </MenuLinkText>
+                    </MenuLink>
+                  </MenuLinkWrap>
+                  <MenuLinkWrap>
+                    <MenuLink to="/about" getProps={isActive}>
+                      <MenuLinkText order="body" element="span">
+                        About
+                      </MenuLinkText>
+                    </MenuLink>
+                  </MenuLinkWrap>
+                </Spaced>
+              </ul>
+            </nav>
+          </SiteNavigation>
+        )}
         <SiteTools aria-labelledby="site-tools-label">
           <ScreenReaderText>
             <h3 id="site-tools-label">Site Tools</h3>
@@ -173,7 +172,8 @@ const DesktopMenu = ({ location }) => {
 }
 
 DesktopMenu.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  shell: PropTypes.bool.isRequired
 }
 
 export default DesktopMenu

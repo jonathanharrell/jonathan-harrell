@@ -22,7 +22,7 @@ import SubscribeBanner from '../SubscribeBanner/'
 import ThemeContext from '../../context/theme'
 import { AnchoredHeading, Link, Main, SkipLink, Wrap } from './styles'
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, children, ...rest }) => {
   const { theme } = useContext(ThemeContext)
   const mainRef = useRef()
 
@@ -47,7 +47,10 @@ const Layout = ({ location, children }) => {
         >
           Skip to content
         </SkipLink>
-        <Header location={location} />
+        <Header
+          location={location}
+          shell={rest['*'] === 'offline-plugin-app-shell-fallback'}
+        />
         <Main id="main" tabIndex="-1" aria-label="Main Content" ref={mainRef}>
           <MDXProvider
             components={{

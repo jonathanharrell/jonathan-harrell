@@ -13,7 +13,7 @@ import {
   SiteTitle
 } from './styles'
 
-const Header = ({ location }) => (
+const Header = ({ location, shell }) => (
   <HeaderWrap aria-label="Site Header">
     <Padded vertical="m">
       <ContentWrap>
@@ -26,8 +26,8 @@ const Header = ({ location }) => (
               Jonathan Harrell
             </HomePageLink>
           </SiteTitle>
-          <MobileMenu location={location} />
-          <DesktopMenu location={location} />
+          {!shell && <MobileMenu location={location} />}
+          <DesktopMenu location={location} shell={shell} />
         </HeaderContentWrap>
       </ContentWrap>
     </Padded>
@@ -35,7 +35,8 @@ const Header = ({ location }) => (
 )
 
 Header.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  shell: PropTypes.bool.isRequired
 }
 
 export default Header
