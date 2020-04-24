@@ -1,6 +1,6 @@
 import React from 'react'
-import kebabCase from 'lodash/kebabCase'
 import { Hash } from 'react-feather'
+import GithubSlugger from 'github-slugger'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/shift-away.css'
@@ -8,8 +8,11 @@ import Heading from '../../jh-ui/Heading'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
 import { HeadingLink, HeadingWrap } from './styles'
 
+const slugger = new GithubSlugger()
+
 const ArticleHeading = ({ children, ...props }) => {
-  const id = kebabCase(children)
+  slugger.reset()
+  const id = slugger.slug(children)
 
   // copy page URL including section anchor
   // visitor will be jumped down to the shared section
