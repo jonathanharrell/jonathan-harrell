@@ -238,3 +238,31 @@ collections:
                   - label: Link
                     name: link
                     widget: string
+  - name: project
+    label: Project
+    folder: src/content/work
+    extension: mdx
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - label: 'Template Key'
+        name: templateKey
+        widget: hidden
+        default: project
+      - label: Title
+        name: title
+        widget: string
+      - label: Description
+        name: description
+        widget: text
+      - label: 'Featured Image'
+        name: featuredimage
+        widget: object
+        fields:
+          - label: Light
+            name: light
+            widget: image
+          - label: Dark
+            name: dark
+            widget: image
