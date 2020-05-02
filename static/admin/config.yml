@@ -253,14 +253,14 @@ collections:
       - label: Title
         name: title
         widget: string
-      - label: 'Publish Date'
-        name: date
-        widget: datetime
+      - label: Role
+        name: role
+        widget: string
       - label: Description
         name: description
         widget: text
-      - label: 'Featured Image'
-        name: featuredimage
+      - label: 'Cover Image'
+        name: coverimage
         widget: object
         fields:
           - label: Light
@@ -269,3 +269,23 @@ collections:
           - label: Dark
             name: dark
             widget: image
+      - label: Section
+        name: section
+        widget: list
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Description
+            name: description
+            widget: text
+          - label: 'Section Image'
+            name: sectionimage
+            widget: object
+            fields:
+              - label: Light
+                name: light
+                widget: image
+              - label: Dark
+                name: dark
+                widget: image
