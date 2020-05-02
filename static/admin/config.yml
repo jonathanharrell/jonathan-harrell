@@ -289,3 +289,6 @@ collections:
               - label: Dark
                 name: dark
                 widget: image
+              - label: Alt
+                name: alt
+                widget: string

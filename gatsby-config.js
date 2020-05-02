@@ -171,6 +171,12 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', disallow: '/work/' }]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: website.title,
