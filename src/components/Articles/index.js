@@ -68,7 +68,7 @@ Articles.propTypes = {
               }).isRequired
             }).isRequired
           }).isRequired
-        })
+        }).isRequired
       ).isRequired
     }).isRequired
   }).isRequired

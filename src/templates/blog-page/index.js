@@ -145,7 +145,6 @@ const BlogIndexPage = ({
 
 BlogIndexPage.propTypes = {
   location: PropTypes.object.isRequired,
-  mount: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({

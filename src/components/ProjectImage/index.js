@@ -3,13 +3,16 @@ import PropTypes from 'prop-types'
 import Image from 'gatsby-image'
 import ThemeContext from '../../context/theme'
 
-const ProjectImage = ({ image }) => {
+const ProjectImage = ({ image, ...props }) => {
   const { themeName } = useContext(ThemeContext)
 
   return (
-    <figure>
+    <figure {...props}>
       {themeName && (
-        <Image alt="" fluid={image[themeName].childImageSharp.fluid} />
+        <Image
+          alt={image.alt || ''}
+          fluid={image[themeName].childImageSharp.fluid}
+        />
       )}
       <noscript>
         <picture>
@@ -39,7 +42,8 @@ ProjectImage.propTypes = {
       childImageSharp: PropTypes.shape({
         fluid: PropTypes.object.isRequired
       }).isRequired
-    }).isRequired
+    }).isRequired,
+    alt: PropTypes.string
   }).isRequired
 }
 
