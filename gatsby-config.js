@@ -125,8 +125,13 @@ module.exports = {
       }
     },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-transition-link',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/work/*']
+      }
+    },
     {
       resolve: 'gatsby-plugin-feed',
       options: {
