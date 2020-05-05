@@ -246,7 +246,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid(
                   maxWidth: 960
-                  quality: 100
+                  quality: 75
                   srcSetBreakpoints: [340, 680]
                 ) {
                   ...GatsbyImageSharpFluid_withWebp
@@ -257,7 +257,7 @@ export const pageQuery = graphql`
               childImageSharp {
                 fluid(
                   maxWidth: 960
-                  quality: 100
+                  quality: 75
                   srcSetBreakpoints: [340, 680]
                 ) {
                   ...GatsbyImageSharpFluid_withWebp

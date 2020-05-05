@@ -45,12 +45,12 @@ export const ProjectImageWrap = styled.div`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-column: 2 / -2;
-    margin-bottom: 0 !important;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: ${({ reverse }) => (reverse ? '1 / span 6' : '7 / -1')};
     grid-row: 1 / 2;
+    margin-bottom: 0 !important;
   }
 `
 

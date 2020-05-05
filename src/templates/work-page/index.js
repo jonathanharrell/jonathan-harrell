@@ -246,22 +246,14 @@ export const workPageQuery = graphql`
             image: coverimage {
               light {
                 childImageSharp {
-                  fluid(
-                    maxWidth: 960
-                    quality: 100
-                    srcSetBreakpoints: [340, 680]
-                  ) {
+                  fluid(maxWidth: 960, srcSetBreakpoints: [340, 680]) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
               dark {
                 childImageSharp {
-                  fluid(
-                    maxWidth: 960
-                    quality: 100
-                    srcSetBreakpoints: [340, 680]
-                  ) {
+                  fluid(maxWidth: 960, srcSetBreakpoints: [340, 680]) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
