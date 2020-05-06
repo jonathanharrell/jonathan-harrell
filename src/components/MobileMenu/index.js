@@ -240,6 +240,13 @@ const MobileMenu = ({ location }) => {
                                   </Heading>
                                 </MenuLink>
                               </MenuLinkWrap>
+                              <MenuLinkWrap>
+                                <MenuLink to="/work" getProps={isActive}>
+                                  <Heading level={1} element="span">
+                                    Work
+                                  </Heading>
+                                </MenuLink>
+                              </MenuLinkWrap>
                             </Spaced>
                           </ul>
                         </nav>
