@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Text from '../../jh-ui/Text'
 import Heading from '../../jh-ui/Heading'
+import Button from '../../jh-ui/Button'
 
 export const ProjectWrap = styled.div`
   flex: 1;
@@ -70,4 +71,46 @@ export const SectionImageWrap = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: 3 / -3;
   }
+`
+
+export const LightThemeAlertWrap = styled(motion.div)`
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  width: 100%;
+`
+
+export const LightThemeAlert = styled.div`
+  background-color: var(--backgroundSecondary);
+  border-radius: 6px;
+  color: var(--text);
+
+  button {
+    background-color: transparent;
+    border: 0;
+    text-decoration: underline;
+    color: var(--text);
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      color: var(--text);
+    }
+  }
+`
+
+export const ThemeAlertContentWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const CloseButton = styled(Button)`
+  height: auto;
+  margin-left: auto;
+  padding: 0.3rem;
+  border: 0;
+  background-color: var(--backgroundTertiary);
+  color: var(--text);
 `
