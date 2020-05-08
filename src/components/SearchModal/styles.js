@@ -19,6 +19,8 @@ export const SearchButton = styled(Button)`
 `
 
 export const SearchWrap = styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 1;
   top: calc(1rem - 5px);

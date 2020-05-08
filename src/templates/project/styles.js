@@ -86,8 +86,9 @@ export const LightThemeAlert = styled.div`
   color: var(--text);
 
   button {
-    background-color: transparent;
+    height: auto;
     border: 0;
+    background-color: transparent;
     text-decoration: underline;
     color: var(--text);
 

@@ -224,12 +224,14 @@ ProjectTemplate.propTypes = {
         light: PropTypes.shape({
           childImageSharp: PropTypes.shape({
             fluid: PropTypes.object.isRequired
-          }).isRequired
+          }).isRequired,
+          publicURL: PropTypes.string.isRequired
         }).isRequired,
         dark: PropTypes.shape({
           childImageSharp: PropTypes.shape({
             fluid: PropTypes.object.isRequired
-          }).isRequired
+          }).isRequired,
+          publicURL: PropTypes.string.isRequired
         }).isRequired,
         alt: PropTypes.string,
         shadow: PropTypes.bool.isRequired
@@ -270,12 +272,14 @@ Project.propTypes = {
               light: PropTypes.shape({
                 childImageSharp: PropTypes.shape({
                   fluid: PropTypes.object.isRequired
-                }).isRequired
+                }).isRequired,
+                publicURL: PropTypes.string.isRequired
               }).isRequired,
               dark: PropTypes.shape({
                 childImageSharp: PropTypes.shape({
                   fluid: PropTypes.object.isRequired
-                }).isRequired
+                }).isRequired,
+                publicURL: PropTypes.string.isRequired
               }).isRequired,
               alt: PropTypes.string,
               shadow: PropTypes.bool.isRequired
@@ -315,6 +319,7 @@ export const pageQuery = graphql`
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
+              publicURL
             }
             dark {
               childImageSharp {
@@ -326,6 +331,7 @@ export const pageQuery = graphql`
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
+              publicURL
             }
             alt
             shadow
