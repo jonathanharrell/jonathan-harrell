@@ -11,7 +11,7 @@ export const StateResultsWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  flex: 1 0 auto;
 `
 
 export const LoaderWrap = styled.div`

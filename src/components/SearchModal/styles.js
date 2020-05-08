@@ -56,6 +56,7 @@ export const SearchWrap = styled.div`
 
 export const SearchHeader = styled.header`
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
 `

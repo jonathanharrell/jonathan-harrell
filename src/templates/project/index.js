@@ -188,7 +188,7 @@ export const ProjectTemplate = ({
                         <Link element="button" onClick={swapTheme}>
                           Swap themes
                         </Link>{' '}
-                        to see light versions of these design
+                        to see light versions of these designs
                       </Text>
                       <CloseButton onClick={dismissThemeAlert}>
                         <ScreenReaderText>Dismiss Theme Alert</ScreenReaderText>
