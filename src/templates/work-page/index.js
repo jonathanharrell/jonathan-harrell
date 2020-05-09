@@ -145,12 +145,14 @@ WorkIndexPageTemplate.propTypes = {
             light: PropTypes.shape({
               childImageSharp: PropTypes.shape({
                 fluid: PropTypes.object.isRequired
-              }).isRequired
+              }).isRequired,
+              publicURL: PropTypes.string.isRequired
             }).isRequired,
             dark: PropTypes.shape({
               childImageSharp: PropTypes.shape({
                 fluid: PropTypes.object.isRequired
-              }).isRequired
+              }).isRequired,
+              publicURL: PropTypes.string.isRequired
             }).isRequired,
             shadow: PropTypes.bool.isRequired
           }).isRequired
@@ -203,12 +205,14 @@ WorkIndexPage.propTypes = {
                 light: PropTypes.shape({
                   childImageSharp: PropTypes.shape({
                     fluid: PropTypes.object.isRequired
-                  }).isRequired
+                  }).isRequired,
+                  publicURL: PropTypes.string.isRequired
                 }).isRequired,
                 dark: PropTypes.shape({
                   childImageSharp: PropTypes.shape({
                     fluid: PropTypes.object.isRequired
-                  }).isRequired
+                  }).isRequired,
+                  publicURL: PropTypes.string.isRequired
                 }).isRequired,
                 shadow: PropTypes.bool.isRequired
               }).isRequired
@@ -250,6 +254,7 @@ export const workPageQuery = graphql`
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
+                publicURL
               }
               dark {
                 childImageSharp {
@@ -257,6 +262,7 @@ export const workPageQuery = graphql`
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
+                publicURL
               }
               shadow
             }

@@ -116,7 +116,10 @@ export const AboutPageTemplate = ({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
               >
-                <BioImage src={image.publicURL} alt="Jonathan Harrell" />
+                <BioImage
+                  fluid={image.childImageSharp.fluid}
+                  alt="Jonathan Harrell"
+                />
                 {[1, 2].map(index => (
                   <BioImageBorder key={index}>
                     <circle
@@ -308,7 +311,9 @@ AboutPageTemplate.propTypes = {
   location: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.shape({
-    publicURL: PropTypes.string.isRequired
+    childImageSharp: PropTypes.shape({
+      fluid: PropTypes.object.isRequired
+    }).isRequired
   }).isRequired,
   bio: PropTypes.string.isRequired,
   involvement: PropTypes.shape({
@@ -372,7 +377,9 @@ AboutPage.propTypes = {
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         bioimage: PropTypes.shape({
-          publicURL: PropTypes.string.isRequired
+          childImageSharp: PropTypes.shape({
+            fluid: PropTypes.object.isRequired
+          }).isRequired
         }).isRequired,
         bio: PropTypes.string.isRequired,
         involvement: PropTypes.shape({
@@ -417,7 +424,11 @@ export const aboutPageQuery = graphql`
       frontmatter {
         title
         bioimage {
-          publicURL
+          childImageSharp {
+            fluid(maxWidth: 590, quality: 75, srcSetBreakpoints: [340]) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
         bio
         involvement {

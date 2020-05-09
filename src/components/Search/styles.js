@@ -7,6 +7,20 @@ export const SearchInput = styled(Input)`
   width: 100%;
 `
 
+export const StateResultsWrap = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1 0 auto;
+`
+
+export const LoaderWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+`
+
 export const NoResults = styled.div`
   display: flex;
   flex-direction: column;

@@ -3,10 +3,6 @@ import { Link } from 'gatsby'
 import Button from '../../jh-ui/Button'
 
 export const MobileMenuWrap = styled.div`
-  .no-js & {
-    display: none;
-  }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: none;
   }
@@ -22,6 +18,10 @@ export const MenuButton = styled(Button)`
 
   &:active {
     transform: scale(0.98);
+  }
+
+  .no-js & {
+    display: none;
   }
 `
 
@@ -188,4 +188,23 @@ export const SearchButton = styled(Button)`
   border-radius: 4px;
   color: var(--text);
   text-align: center;
+`
+
+export const NoScriptNav = styled.nav`
+  display: flex;
+  align-items: center;
+`
+
+export const NoScriptMenuLink = styled(Link)`
+  text-decoration: none;
+  color: var(--text);
+
+  &:hover,
+  &:focus {
+    color: var(--textLighter);
+  }
+
+  &:active {
+    color: var(--textLight);
+  }
 `

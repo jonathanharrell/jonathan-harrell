@@ -75,6 +75,7 @@ export const GlobalStyle = createGlobalStyle`
       top: 0;
       opacity: 0.5;
       pointer-events: none;
+      filter: blur(5px);
     }
   }
 

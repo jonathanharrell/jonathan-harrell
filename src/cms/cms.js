@@ -7,6 +7,8 @@ import BlogPagePreview from './preview-templates/BlogPagePreview'
 import BlogPostPreview from './preview-templates/BlogPostPreview'
 import AboutPagePreview from './preview-templates/AboutPagePreview'
 import ResumePagePreview from './preview-templates/ResumePagePreview'
+import WorkPagePreview from './preview-templates/WorkPagePreview'
+import ProjectPreview from './preview-templates/ProjectPreview'
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
@@ -16,6 +18,8 @@ CMS.registerPreviewTemplate('blog', BlogPagePreview)
 CMS.registerPreviewTemplate('blog-post', BlogPostPreview)
 CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('resume', ResumePagePreview)
+CMS.registerPreviewTemplate('work', WorkPagePreview)
+CMS.registerPreviewTemplate('project', ProjectPreview)
 
 // custom note block within blog posts
 CMS.registerEditorComponent({

@@ -16,14 +16,17 @@ import Tag from '../../jh-ui/Tag'
 import Spaced from '../../jh-ui/Spaced'
 import Padded from '../../jh-ui/Padded'
 import ScreenReaderText from '../../jh-ui/ScreenReaderText'
+import Loader from '../Loader'
 import { addAlert, shouldAnimate } from '../../helpers'
 import {
   ArticleMeta,
   Hit,
   HitsList,
   Link,
+  LoaderWrap,
   NoResults,
-  SearchInput
+  SearchInput,
+  StateResultsWrap
 } from './styles'
 import NotFound from '../../svgs/not-found.svg'
 
@@ -58,7 +61,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
 
 const CustomSearchBox = connectSearchBox(SearchBox)
 
-const StateResults = ({ searchResults, searchState, children }) => {
+const StateResults = ({ searchResults, searchState, searching, children }) => {
   const hasResults = searchResults && searchResults.nbHits !== 0
 
   useEffect(() => {
@@ -72,7 +75,7 @@ const StateResults = ({ searchResults, searchState, children }) => {
   }, [searchResults, searchState])
 
   return (
-    <div>
+    <StateResultsWrap>
       {hasResults && children}
       {!hasResults && searchState.query && (
         <NoResults>
@@ -110,7 +113,12 @@ const StateResults = ({ searchResults, searchState, children }) => {
           </motion.div>
         </NoResults>
       )}
-    </div>
+      {!hasResults && !searchState.query && (
+        <LoaderWrap>
+          <Loader>Loading...</Loader>
+        </LoaderWrap>
+      )}
+    </StateResultsWrap>
   )
 }
 

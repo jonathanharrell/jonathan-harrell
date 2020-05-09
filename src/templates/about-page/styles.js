@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import Image from 'gatsby-image'
 import Text from '../../jh-ui/Text'
 import Card from '../../jh-ui/Card'
 import ContentWrap from '../../components/ContentWrap/'
@@ -57,10 +58,9 @@ export const BioFigureWrap = styled.div`
 
 export const BioFigure = styled(motion.figure)`
   position: relative;
-  padding: 50% 0;
 `
 
-export const BioImage = styled.img`
+export const BioImage = styled(Image)`
   position: absolute;
   top: 0;
   left: 0;

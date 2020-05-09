@@ -1,7 +1,12 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Image from 'gatsby-image'
 import ThemeContext from '../../context/theme'
+
+const NoScriptImage = styled.img`
+  max-width: 100%;
+`
 
 const ProjectImage = ({ image, ...props }) => {
   const { themeName } = useContext(ThemeContext)
@@ -24,7 +29,7 @@ const ProjectImage = ({ image, ...props }) => {
             srcSet={image.light.publicURL}
             media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
           />
-          <img src={image.light.publicURL} alt="" />
+          <NoScriptImage src={image.light.publicURL} alt={image.alt || ''} />
         </picture>
       </noscript>
     </figure>
@@ -36,12 +41,14 @@ ProjectImage.propTypes = {
     light: PropTypes.shape({
       childImageSharp: PropTypes.shape({
         fluid: PropTypes.object.isRequired
-      }).isRequired
+      }).isRequired,
+      publicURL: PropTypes.string.isRequired
     }).isRequired,
     dark: PropTypes.shape({
       childImageSharp: PropTypes.shape({
         fluid: PropTypes.object.isRequired
-      }).isRequired
+      }).isRequired,
+      publicURL: PropTypes.string.isRequired
     }).isRequired,
     alt: PropTypes.string
   }).isRequired
