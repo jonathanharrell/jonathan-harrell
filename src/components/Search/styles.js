@@ -9,7 +9,7 @@ export const SearchInput = styled(Input)`
 
 export const StateResultsWrap = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex: 1 0 auto;
 `
