@@ -4,19 +4,33 @@ import Text from '../../jh-ui/Text'
 import Button from '../../jh-ui/Button'
 
 export const DesktopMenuWrap = styled.div`
-  display: none;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
+  .no-js & {
+    flex: 1 0 auto;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      flex: 1;
+    }
   }
 `
 
 export const SiteNavigation = styled.section`
   &:focus:not(.focus-visible) {
     box-shadow: none;
+  }
+
+  .no-js & {
+    margin-top: 0.75rem;
+    margin-left: 0 !important;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      margin-top: 0;
+      margin-left: 3rem !important;
+    }
   }
 `
 

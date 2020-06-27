@@ -117,6 +117,10 @@ export const ProjectWrap = styled(motion.li)`
   grid-column: 1 / -1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-column: auto / span 6;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-column: auto / span 4;
   }
 `

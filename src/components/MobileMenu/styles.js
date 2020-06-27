@@ -2,9 +2,14 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Button from '../../jh-ui/Button'
 
-export const MobileMenuWrap = styled.div``
+export const MobileMenuWrap = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    display: none;
+  }
+`
 
 export const MenuButton = styled(Button)`
+  margin-left: auto;
   background-color: var(--backgroundSecondary);
 
   &:hover,
@@ -184,23 +189,4 @@ export const SearchButton = styled(Button)`
   border-radius: 4px;
   color: var(--text);
   text-align: center;
-`
-
-export const NoScriptNav = styled.nav`
-  display: flex;
-  align-items: center;
-`
-
-export const NoScriptMenuLink = styled(Link)`
-  text-decoration: none;
-  color: var(--text);
-
-  &:hover,
-  &:focus {
-    color: var(--textLighter);
-  }
-
-  &:active {
-    color: var(--textLight);
-  }
 `

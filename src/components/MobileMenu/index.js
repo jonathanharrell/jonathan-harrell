@@ -20,8 +20,6 @@ import {
   MenuLink,
   MenuLinkWrap,
   MobileMenuWrap,
-  NoScriptMenuLink,
-  NoScriptNav,
   SearchButton,
   ThemeOption,
   ThemeOptions
@@ -331,20 +329,6 @@ const MobileMenu = ({ location }) => {
           </Overlay>
         )}
       </AnimatePresence>
-      <noscript>
-        <Spaced top="s">
-          <NoScriptNav role="navigation">
-            <Spaced right="xl">
-              <NoScriptMenuLink to="/" rel="home">
-                Home
-              </NoScriptMenuLink>
-              <NoScriptMenuLink to="/blog">Articles</NoScriptMenuLink>
-              <NoScriptMenuLink to="/about">About</NoScriptMenuLink>
-              <NoScriptMenuLink to="/work">Work</NoScriptMenuLink>
-            </Spaced>
-          </NoScriptNav>
-        </Spaced>
-      </noscript>
     </MobileMenuWrap>
   ) : null
 }
