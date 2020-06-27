@@ -27,7 +27,7 @@
     "convert-svg-to-png": "^0.5.0",
     "focus-visible": "^5.1.0",
     "framer-motion": "^1.8.4",
-    "gatsby": "^2.13.31",
+    "gatsby": "^2.23.11",
     "gatsby-image": "^2.4.0",
     "gatsby-plugin-feed": "^2.4.1",
     "gatsby-plugin-google-analytics": "^2.2.0",
@@ -109,7 +109,7 @@
     "storybook-dark-mode": "^0.1.7"
   },
   "scripts": {
-    "build": "npm run clean && gatsby build && cp _redirects public/_redirects",
+    "build": "npm run clean && GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages && cp _redirects public/_redirects",
     "build-start": "npm run build && npm run serve",
     "build-storybook": "build-storybook",
     "clean": "gatsby clean",

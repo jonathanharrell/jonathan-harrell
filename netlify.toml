@@ -10,3 +10,6 @@
   for = "/static/*"
     [headers.values]
     cache-control = 'public, max-age=360000'
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"

@@ -115,7 +115,9 @@ const StateResults = ({ searchResults, searchState, searching, children }) => {
       )}
       {!hasResults && !searchState.query && (
         <LoaderWrap>
-          <Loader>Loading...</Loader>
+          <Loader>
+            <Text>Loading...</Text>
+          </Loader>
         </LoaderWrap>
       )}
     </StateResultsWrap>

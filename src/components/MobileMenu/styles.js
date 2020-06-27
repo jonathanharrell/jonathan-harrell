@@ -2,11 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Button from '../../jh-ui/Button'
 
-export const MobileMenuWrap = styled.div`
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    display: none;
-  }
-`
+export const MobileMenuWrap = styled.div``
 
 export const MenuButton = styled(Button)`
   background-color: var(--backgroundSecondary);

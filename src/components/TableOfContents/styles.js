@@ -72,7 +72,7 @@ export const ItemLink = styled.a`
   &:hover,
   &:focus,
   &:active {
-    background-color: rgba(125, 125, 125, 0.1);
+    background-color: rgba(125, 125, 125, 0.05);
   }
 
   &:focus {
