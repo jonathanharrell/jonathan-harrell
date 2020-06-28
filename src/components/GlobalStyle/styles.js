@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
 
-  .js-focus-visible :focus:not(.focus-visible):not(:hover) {
+  .js-focus-visible :focus:not(.focus-visible) {
     box-shadow: none;
   }
 
