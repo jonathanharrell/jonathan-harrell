@@ -23,10 +23,14 @@ const SubscribeBanner = () => {
   const inputRef = useRef()
 
   useEffect(() => {
-    const subscribeBannerDismissed = localStorage.getItem(
-      'subscribe-banner-dismissed'
-    )
-    setDismissed(!!subscribeBannerDismissed)
+    try {
+      const subscribeBannerDismissed = localStorage.getItem(
+        'subscribe-banner-dismissed'
+      )
+      setDismissed(!!subscribeBannerDismissed)
+    } catch (error) {
+      setDismissed(false)
+    }
 
     // when the showSubscribe event has been dispatched (for example, from clicking
     // the subscribe button in the header), show the subscribe section
@@ -63,7 +67,7 @@ const SubscribeBanner = () => {
         throw Error(json.detail)
       } else {
         setSuccess(true)
-        addAlert('You\'ve been subscribed!')
+        addAlert("You've been subscribed!")
       }
     } catch (error) {
       setError(error.message)
@@ -150,9 +154,7 @@ const SubscribeBanner = () => {
                           {success && (
                             <motion.div
                               initial={
-                                shouldAnimate()
-                                  ? { opacity: 0, y: 50 }
-                                  : false
+                                shouldAnimate() ? { opacity: 0, y: 50 } : false
                               }
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 50 }}

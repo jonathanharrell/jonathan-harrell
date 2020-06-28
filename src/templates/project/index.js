@@ -62,8 +62,12 @@ export const ProjectTemplate = ({
   const [themeAlertVisible, setThemeAlertVisible] = useState(false)
 
   useEffect(() => {
-    const themeAlertDismissed = localStorage.getItem('themeAlertDismissed')
-    setThemeAlertVisible(!themeAlertDismissed)
+    try {
+      const themeAlertDismissed = localStorage.getItem('themeAlertDismissed')
+      setThemeAlertVisible(!themeAlertDismissed)
+    } catch (error) {
+      setThemeAlertVisible(true)
+    }
   }, [])
 
   const swapTheme = event => {
