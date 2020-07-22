@@ -15,11 +15,14 @@ export const onClientEntry = () => {
 }
 
 export const onRouteUpdate = ({ prevLocation }) => {
+  const scrollPosition = window.scrollY
+
   if (prevLocation) {
     const navSkipLink = document.getElementById('nav-skip-link')
     if (navSkipLink) {
       setTimeout(() => {
         navSkipLink.focus()
+        window.scrollTo(0, scrollPosition)
       }, 0)
     }
   }

@@ -7,9 +7,7 @@ import GlobalStyle from '../components/GlobalStyle/'
 // get channel to listen to event emitter
 const channel = addons.getChannel()
 
-// create a component that listens for the DARK_MODE event
 const ThemeWrap = props => {
-  // this example uses hook but you can also use class component as well
   const [themeName, setThemeName] = useState('light')
 
   useEffect(() => {
