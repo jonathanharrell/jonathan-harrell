@@ -36,7 +36,7 @@ const DesktopMenu = ({ location, shell }) => {
 
     const handleResize = debounce(() => {
       setVisibility(window.innerWidth >= desktopWidth)
-    }, 50)
+    }, 10)
 
     setVisibility(window.innerWidth >= desktopWidth)
 
@@ -82,6 +82,12 @@ const DesktopMenu = ({ location, shell }) => {
     localStorage.removeItem('subscribe-banner-dismissed')
     window.dispatchEvent(new CustomEvent('showSubscribe'))
     navigate(event.target.href)
+
+    const emailInput = document.querySelector('#subscribe #email')
+
+    if (emailInput) {
+      emailInput.focus()
+    }
   }
 
   return visible ? (

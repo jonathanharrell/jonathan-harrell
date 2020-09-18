@@ -35,6 +35,7 @@ const Footer = () => (
                 href="https://twitter.com/HarrellofDurham"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Twitter"
               >
                 <ScreenReaderText>Twitter</ScreenReaderText>
                 <Twitter />
@@ -44,6 +45,7 @@ const Footer = () => (
                 href="https://github.com/jonathanharrell/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Github"
               >
                 <ScreenReaderText>Github</ScreenReaderText>
                 <GitHub />
@@ -53,6 +55,7 @@ const Footer = () => (
                 href="https://codepen.io/jonathanharrell/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Codepen"
               >
                 <ScreenReaderText>Codepen</ScreenReaderText>
                 <Codepen />
@@ -62,6 +65,7 @@ const Footer = () => (
                 href="https://www.linkedin.com/in/jonathanharrell/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="LinkedIn"
               >
                 <ScreenReaderText>LinkedIn</ScreenReaderText>
                 <Linkedin />
@@ -71,11 +75,12 @@ const Footer = () => (
                 href="https://www.instagram.com/harrellofdurham/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Instagram"
               >
                 <ScreenReaderText>Instagram</ScreenReaderText>
                 <Instagram />
               </Link>
-              <Link as="a" href="/rss.xml">
+              <Link as="a" href="/rss.xml" title="RSS Feed">
                 <ScreenReaderText>RSS Feed</ScreenReaderText>
                 <Rss />
               </Link>

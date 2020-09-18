@@ -60,7 +60,7 @@ const MobileMenu = ({ location }) => {
     const handleResize = debounce(() => {
       setVisibility(window.innerWidth < desktopWidth)
       if (window.innerWidth >= desktopWidth) close()
-    }, 50)
+    }, 10)
 
     setVisibility(window.innerWidth < desktopWidth)
 
