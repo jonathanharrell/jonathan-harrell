@@ -6,7 +6,7 @@ export default {
 			"from-pink-500 dark:from-pink-800 to-rose-500 dark:to-rose-800 dark:bg-opacity-75 selection:bg-rose-600 dark:selection:bg-rose-700 selection:bg-opacity-50",
 		gradientText: "text-rose-100",
 		gradientButton: "bg-rose-800 dark:bg-rose-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-rose-400 bg-opacity-5",
+		bg: "bg-rose-400 bg-opacity-10",
 		border: "border-rose-400",
 		text: "text-pink-500"
 	},
@@ -15,7 +15,7 @@ export default {
 			"from-purple-500 dark:from-purple-800 to-indigo-500 dark:to-indigo-800 selection:bg-violet-600 dark:selection:bg-violet-700 selection:bg-opacity-50",
 		gradientText: "text-purple-100",
 		gradientButton: "bg-violet-800 dark:bg-violet-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-purple-400 bg-opacity-5",
+		bg: "bg-purple-400 bg-opacity-10",
 		border: "border-purple-400",
 		text: "text-purple-500"
 	},
@@ -24,7 +24,7 @@ export default {
 			"from-yellow-400 dark:from-yellow-700 to-orange-500 dark:to-orange-700 selection:bg-amber-600 dark:selection:bg-amber-600 selection:bg-opacity-50",
 		gradientText: "text-yellow-100 dark:text-yellow-50",
 		gradientButton: "bg-amber-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-yellow-400 bg-opacity-5",
+		bg: "bg-yellow-400 bg-opacity-10",
 		border: "border-yellow-400",
 		text: "text-yellow-500"
 	},
@@ -33,7 +33,7 @@ export default {
 			"from-green-400 dark:from-green-700 to-cyan-500 dark:to-cyan-700 selection:bg-green-600 dark:selection:bg-green-700 selection:bg-opacity-50",
 		gradientText: "text-green-100",
 		gradientButton: "bg-green-800 dark:bg-green-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-green-400 bg-opacity-5",
+		bg: "bg-green-400 bg-opacity-10",
 		border: "border-green-400",
 		text: "text-green-500"
 	},
@@ -42,7 +42,7 @@ export default {
 			"from-fuchsia-500 dark:from-fuchsia-800 to-purple-600 dark:to-purple-800 selection:bg-fuchsia-600 dark:selection:bg-purple-700 selection:bg-opacity-50",
 		gradientText: "text-fuchsia-100",
 		gradientButton: "bg-purple-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-fuchsia-400 bg-opacity-5",
+		bg: "bg-fuchsia-400 bg-opacity-10",
 		border: "border-fuchsia-400",
 		text: "text-fuchsia-500"
 	},
@@ -51,12 +51,12 @@ export default {
 			"from-light-blue-400 dark:from-light-blue-700 to-indigo-500 dark:to-indigo-700 selection:bg-blue-600 dark:selection:bg-blue-600 selection:bg-opacity-50",
 		gradientText: "text-light-blue-100",
 		gradientButton: "bg-blue-800 dark:bg-blue-900 bg-opacity-50 group-hover:bg-opacity-75",
-		bg: "bg-light-blue-400 bg-opacity-5",
+		bg: "bg-light-blue-400 bg-opacity-10",
 		border: "border-light-blue-400",
 		text: "text-blue-500"
 	},
 	default: {
-		bg: "bg-gray-400 bg-opacity-5",
+		bg: "bg-gray-400 bg-opacity-10",
 		border: "border-gray-400",
 		text: "text-gray-900 dark:text-gray-100"
 	}

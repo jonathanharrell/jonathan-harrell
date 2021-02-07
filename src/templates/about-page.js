@@ -101,9 +101,7 @@ export const AboutPageTemplate = ({
 							<h2 color="textInverse" id="skillset-label">
 								{skillset.title || "Skillset"}
 							</h2>
-							<Link to="/resume" arrow={true}>
-								View resume
-							</Link>
+							<Link to="/resume">View resume</Link>
 						</header>
 						<ul>
 							{skillset.skills.map((skill, index) => (

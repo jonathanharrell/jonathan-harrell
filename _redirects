@@ -1,5 +1,4 @@
-/css-html-javascript-blog                                             /
-/blog                                                                 /
+/css-html-javascript-blog                                             /blog
 /html-javascript-css-developer                                        /about
 /css-html-javascript-tips-tricks-subscribe                            /#subscribe
 /uses                                                                 /about/#uses
@@ -52,6 +51,9 @@
 /tag/typography                                                       /tags/typography
 /tag/variables                                                        /tags/css
 /tag/vue                                                              /tags/vue
+
+/tags                                                                 /blog
+/tags/*                                                               /blog
 
 /author/harr041gmail-com                                              /about
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import colors from "tailwindcss/colors";
 import debounce from "lodash/debounce";
@@ -33,12 +33,16 @@ export const BlogPostTemplate = ({
 	socialImage,
 	readingTime,
 	slug,
-	tableOfContents
+	tableOfContents,
+	prev,
+	next
 }) => {
 	const [scrolled, setScrolled] = useState(false);
+	const [activeSectionId, setActiveSectionId] = useState("");
 	const [hasNavigatorShare, setHasNavigatorShare] = useState(false);
 	const { scrollYProgress } = useViewportScroll();
 	const articleWrap = useRef();
+	const articleContent = useRef();
 
 	const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`;
 	const re = new RegExp(/.+?(?=\/$)/);
@@ -56,8 +60,24 @@ export const BlogPostTemplate = ({
 		}
 	};
 
+	const setActiveSection = () => {
+		if (articleContent.current) {
+			const headings = Array.from(articleContent.current.querySelectorAll("h2"));
+			const visibleHeadings = headings.filter(heading => {
+				const { bottom } = heading.getBoundingClientRect();
+				return bottom <= (window.innerHeight || document.documentElement.clientHeight);
+			});
+			if (visibleHeadings.length) {
+				setActiveSectionId(visibleHeadings[visibleHeadings.length - 1].id);
+			} else {
+				setActiveSectionId("");
+			}
+		}
+	};
+
 	const handleScroll = debounce(() => {
 		setScrolled(window.scrollY > 100);
+		setActiveSection();
 	}, 50);
 
 	const scrollToTop = event => {
@@ -162,17 +182,26 @@ export const BlogPostTemplate = ({
 							<div className="relative">
 								{tableOfContents.items.length && (
 									<div className="hidden 2xl:block absolute left-0 top-0 h-full">
-										<div className="sticky top-4 w-72" style={{ height: "calc(100vh - 32px)" }}>
+										<div className="sticky top-6 w-72" style={{ height: "calc(100vh - 40px)" }}>
 											<div
-												className={`w-full max-h-full overflow-y-auto p-6 rounded-xl bg-gray-50 dark:bg-gray-800`}
+												className={`w-full max-h-full overflow-y-auto p-6 pl-4 rounded-xl bg-gray-50 dark:bg-gray-800`}
 											>
 												<ul>
 													{tableOfContents.items.map(item => (
 														<li key={item.url} className="py-1">
 															<a
 																href={item.url}
-																className={`text-base leading-tight opacity-50 hover:opacity-75`}
+																className={`inline-flex text-base leading-tight opacity-50 hover:opacity-75 ${
+																	item.url === `#${activeSectionId}`
+																		? "opacity-100 font-medium"
+																		: ""
+																}`}
 															>
+																<span
+																	className={`block flex-shrink-0 w-2 h-2 mt-1.5 mr-2 rounded-full ${
+																		item.url === `#${activeSectionId}` ? `bg-${color}-400` : ""
+																	}`}
+																/>
 																{item.title}
 															</a>
 														</li>
@@ -183,7 +212,9 @@ export const BlogPostTemplate = ({
 									</div>
 								)}
 								<div className="max-w-3xl mx-auto">
-									<MDXRenderer>{content}</MDXRenderer>
+									<div ref={articleContent}>
+										<MDXRenderer>{content}</MDXRenderer>
+									</div>
 									<footer className="sm:flex items-center mt-12 pt-12 border-t border-gray-200 dark:border-gray-800 space-y-4 sm:space-y-0 sm:space-x-4">
 										{hasNavigatorShare && (
 											<Button className="w-full sm:w-auto" onClick={shareArticle}>
@@ -232,6 +263,8 @@ export const BlogPostTemplate = ({
 									>
 										More Articles
 									</h2>
+									{prev && <Link to={prev.fields.slug}>Previous: {prev.frontmatter.title}</Link>}
+									{next && <Link to={next.fields.slug}>Next: {next.frontmatter.title}</Link>}
 									<RecentArticles currentPostId={id} />
 								</div>
 							</div>
@@ -272,7 +305,7 @@ export const BlogPostTemplate = ({
 	);
 };
 
-export default ({ location, data: { mdx: post } }) => {
+export default ({ location, data: { mdx: post }, pageContext: { prev, next } }) => {
 	return (
 		<BlogPostTemplate
 			location={location}
@@ -288,6 +321,8 @@ export default ({ location, data: { mdx: post } }) => {
 			readingTime={post.fields.readingTime}
 			slug={post.fields.slug}
 			tableOfContents={post.tableOfContents}
+			prev={prev}
+			next={next}
 		/>
 	);
 };

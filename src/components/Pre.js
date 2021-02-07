@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { codeColors } from "../theme";
 
 const StyledPre = styled.pre`
-	overflow-x: auto;
-	white-space: pre-wrap;
-
 	${({ color }) =>
 		Object.entries(codeColors[color] || codeColors.default)
 			.map(([key, value]) => `.token.${key} { color: ${value}; }`)
@@ -47,7 +44,7 @@ const StyledPre = styled.pre`
 
 const Pre = ({ color, children, ...props }) => {
 	return (
-		<StyledPre color={color} aria-label={`Code sample (${props.className})`} {...props}>
+		<StyledPre color={color} aria-label={`Code sample`} {...props}>
 			{children}
 		</StyledPre>
 	);

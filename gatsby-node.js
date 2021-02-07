@@ -11,15 +11,16 @@ exports.createPages = ({ actions, graphql }) => {
 
 	return graphql(`
 		{
-			allMdx(limit: 1000) {
-				edges {
+			allMdx(
+				limit: 1000
+				sort: { order: DESC, fields: [frontmatter___date] }
+				filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
+			) {
+				posts: edges {
 					node {
 						id
 						tableOfContents
 						fields {
-							readingTime {
-								text
-							}
 							slug
 						}
 						frontmatter {
@@ -39,41 +40,21 @@ exports.createPages = ({ actions, graphql }) => {
 			return Promise.reject(result.errors);
 		}
 
-		const posts = result.data.allMdx.edges;
+		const { posts } = result.data.allMdx;
 
-		posts.forEach(edge => {
-			const id = edge.node.id;
-			createPage({
-				path: edge.node.fields.slug,
-				tags: edge.node.frontmatter.tags,
-				component: path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.js`),
-				// additional data can be passed via context
-				context: {
-					id
-				}
-			});
-		});
-
-		// Tag pages:
-		let tags = [];
-		// Iterate through each post, putting all found tags into `tags`
-		posts.forEach(edge => {
-			if (_.get(edge, `node.frontmatter.tags`)) {
-				tags = tags.concat(edge.node.frontmatter.tags);
-			}
-		});
-		// Eliminate duplicate tags
-		tags = _.uniq(tags);
-
-		// Make tag pages
-		tags.forEach(tag => {
-			const tagPath = `/tags/${_.kebabCase(tag)}/`;
+		posts.forEach(({ node: post }, index) => {
+			const id = post.id;
+			const prev = index < posts.length - 1 ? posts[index + 1].node : undefined;
+			const next = index > 0 ? posts[index - 1].node : undefined;
 
 			createPage({
-				path: tagPath,
-				component: path.resolve(`src/templates/tag.js`),
+				path: post.fields.slug,
+				tags: post.frontmatter.tags,
+				component: path.resolve(`src/templates/blog-post.js`),
 				context: {
-					tag
+					id,
+					prev,
+					next
 				}
 			});
 		});
@@ -102,12 +83,10 @@ exports.createPages = ({ actions, graphql }) => {
 			searchableAttributes: ["frontmatter.description", "frontmatter.tags", "frontmatter.title"]
 		});
 
-		const postObjects = posts
-			.filter(edge => edge.node.frontmatter.templateKey === "blog-post")
-			.map(edge => ({
-				...edge.node,
-				objectID: edge.node.id
-			}));
+		const postObjects = posts.map(({ node: post }) => ({
+			...post,
+			objectID: post.id
+		}));
 
 		postsIndex.replaceAllObjects(postObjects);
 	});

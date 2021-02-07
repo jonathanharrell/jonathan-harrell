@@ -25,7 +25,7 @@ const ArticleHeading = ({ color, children, ...props }) => {
 				href={`#${id}`}
 				title="Copy link to this section"
 				aria-labelledby={`${id}-label`}
-				className={`hidden md:block absolute top-0 my-2 -ml-2 opacity-50 hover:opacity-100 ${themeColors[color].text} transform -translate-x-full`}
+				className={`hidden md:block absolute top-0 my-2 -ml-2 opacity-25 hover:opacity-100 ${themeColors[color].text} transform -translate-x-full`}
 				onClick={copyLink}
 			>
 				<span id={`${id}-label`} className="sr-only">

@@ -1,6 +1,7 @@
 import React from "react";
 import kebabCase from "lodash/kebabCase";
 import themeColors from "../theme";
+import { Link } from "gatsby";
 
 const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, className, ...props }) => {
 	const labelId = `${kebabCase(title)}-label`;
@@ -11,8 +12,8 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 	});
 
 	return (
-		<a
-			href={link}
+		<Link
+			to={link}
 			className={`block overflow-hidden p-8 rounded-xl bg-gradient-to-br ${themeColors[color].bgGradient} shadow-lg hover:shadow-xl transition-shadow group ${className}`}
 			{...props}
 		>
@@ -47,7 +48,7 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 					)}
 				</div>
 			</article>
-		</a>
+		</Link>
 	);
 };
 

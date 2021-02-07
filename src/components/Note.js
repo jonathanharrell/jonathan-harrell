@@ -4,9 +4,11 @@ import themeColors from "../theme";
 
 const Note = ({ type, color, children }) => (
 	<div
-		className={`mt-8 mb-12 px-8 py-6 border-l-4 ${themeColors[color].border} bg-gray-50 dark:bg-gray-800 sm:rounded-lg text-lg leading-relaxed`}
+		className={`mt-8 mb-12 px-8 py-6 border-l-4 ${
+			color ? themeColors[color].bg : "bg-gray-50 dark:bg-gray-800"
+		} ${color ? themeColors[color].border : ""} sm:rounded-lg text-lg leading-relaxed`}
 	>
-		<p className="mb-2 text-base font-bold">Note</p>
+		<p className="mb-1 text-base font-bold">Note:</p>
 		<p>{children}</p>
 	</div>
 );

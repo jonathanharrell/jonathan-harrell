@@ -72,13 +72,23 @@ const Layout = ({ location, color, children, ...props }) => {
 							),
 							li: props => <li className="mb-2" {...props} />,
 							figure: props => <figure className="bg-gray-50 dark:bg-gray-800" {...props} />,
-							pre: props => (
-								<Pre
-									color={color}
-									{...props}
-									className={`overflow-x-auto my-8 -mx-8 sm:mx-0 p-8 sm:rounded-lg bg-gray-50 dark:bg-gray-800 text-base whitespace-pre-wrap text-gray-700 dark:text-gray-300 ${props.className}`}
-								/>
-							),
+							pre: props => {
+								const regex = new RegExp(/language-(.*)/);
+								const [, language] = props.className.match(regex);
+
+								return (
+									<div className="relative my-8 -mx-8 sm:mx-0">
+										<Pre
+											color={color}
+											{...props}
+											className={`overflow-x-auto whitespace-pre-wrap p-8 sm:rounded-lg bg-gray-50 dark:bg-gray-800 text-base whitespace-pre-wrap text-gray-700 dark:text-gray-300 ${props.className}`}
+										/>
+										<span className="hidden sm:block absolute top-0 right-0 py-1 px-4 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-600 transform -translate-y-1/2">
+											{language}
+										</span>
+									</div>
+								);
+							},
 							code: props => <code className="font-mono text-sm" {...props} />,
 							inlineCode: props => (
 								<code
