@@ -16,10 +16,23 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+a,
+button,
+input,
+textarea,
+select {
+  @apply focus:outline-none focus-visible:ring focus-visible:ring-blue-300;
+}
+
 .dark {
   @apply bg-gray-900;
 }
 
 .token.plain-text {
   @apply text-gray-700 dark:text-gray-300;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
 }

@@ -14,6 +14,7 @@ import website from "../../../website-config";
 import Button from "../../components/Button";
 import Layout from "../../components/Layout";
 import themeColors from "../../theme";
+import PageTitle from "../../components/PageTitle";
 
 export const getProgressBarColor = color => {
 	return colors[color] ? colors[color]["400"] : undefined;
@@ -109,7 +110,7 @@ export const BlogPostTemplate = ({
 				</div>
 				<header className={`overflow-hidden bg-gradient-to-br ${themeColors[color].bgGradient}`}>
 					<div className="container">
-						<div className="relative max-w-3xl mx-auto pt-36 pb-12">
+						<div className="relative max-w-3xl mx-auto pt-24 sm:pt-36 pb-12">
 							{image && (
 								<figure
 									dangerouslySetInnerHTML={{
@@ -120,7 +121,7 @@ export const BlogPostTemplate = ({
 							)}
 							<div className="relative">
 								<div
-									className={`flex flex-wrap mb-8 text-sm font-semibold capitalize ${themeColors[color].gradientText} text-shadow`}
+									className={`flex flex-wrap mb-6 sm:mb-8 text-sm font-semibold capitalize ${themeColors[color].gradientText} text-shadow`}
 								>
 									{tags && (
 										<div className="mr-6">
@@ -143,8 +144,12 @@ export const BlogPostTemplate = ({
 									</span>
 									<span>{readingTime.text}</span>
 								</div>
-								<h1 className="mb-4 text-4xl font-medium text-white">{title}</h1>
-								<p className={`text-xl font-medium ${themeColors[color].gradientText} text-shadow`}>
+								<PageTitle>
+									<h1 className="mb-4 text-3xl sm:text-4xl font-medium text-gray-100">{title}</h1>
+								</PageTitle>
+								<p
+									className={`text-lg sm:text-xl font-medium ${themeColors[color].gradientText} text-shadow`}
+								>
 									{description}
 								</p>
 							</div>
@@ -179,9 +184,9 @@ export const BlogPostTemplate = ({
 								)}
 								<div className="max-w-3xl mx-auto">
 									<MDXRenderer>{content}</MDXRenderer>
-									<footer className="flex items-center mt-12 pt-12 border-t border-gray-200 dark:border-gray-800 space-x-4">
+									<footer className="sm:flex items-center mt-12 pt-12 border-t border-gray-200 dark:border-gray-800 space-y-4 sm:space-y-0 sm:space-x-4">
 										{hasNavigatorShare && (
-											<Button onClick={shareArticle}>
+											<Button className="w-full sm:w-auto" onClick={shareArticle}>
 												<Share className={`mr-2 w-5 h-5 text-gray-400`} />
 												<span>Share this article</span>
 											</Button>
@@ -192,6 +197,7 @@ export const BlogPostTemplate = ({
 												target="_blank"
 												rel="noopener noreferrer"
 												as="a"
+												className="w-full sm:w-auto"
 											>
 												<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
 												<span>Discuss on Twitter</span>
@@ -203,6 +209,7 @@ export const BlogPostTemplate = ({
 												target="_blank"
 												rel="noopener noreferrer"
 												as="a"
+												className="w-full sm:w-auto"
 											>
 												<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
 												<span>Edit on Github</span>
@@ -221,7 +228,7 @@ export const BlogPostTemplate = ({
 								<div aria-labelledby="more-label">
 									<h2
 										id="more-label"
-										className="mb-6 text-3xl font-semibold text-gray-600 dark:text-gray-400"
+										className="mb-6 text-3xl font-semibold text-gray-600 dark:text-gray-300"
 									>
 										More Articles
 									</h2>
@@ -250,7 +257,7 @@ export const BlogPostTemplate = ({
 						>
 							<a
 								href="#nav-skip-link"
-								className="block p-2 rounded-lg bg-gray-800 shadow-lg hover:shadow-2xl text-white transform hover:-translate-y-0.5 transition-all ease-in-out duration-150"
+								className="block p-2 rounded-lg bg-gray-700 shadow-lg hover:shadow-2xl text-gray-100 transform hover:-translate-y-0.5 transition-all ease-in-out duration-150"
 								title="Scroll to top"
 								onClick={scrollToTop}
 							>

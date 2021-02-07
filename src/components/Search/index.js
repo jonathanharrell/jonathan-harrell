@@ -40,7 +40,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
 
 	return (
 		<div>
-			<label htmlFor="search" className="visually-hidden">
+			<label htmlFor="search" className="sr-only">
 				Search for articles
 			</label>
 			<SearchInput

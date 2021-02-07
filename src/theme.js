@@ -126,11 +126,11 @@ export const codeColors = {
 		variable: colors.purple["500"]
 	},
 	yellow: {
-		comment: colors.orange["300"],
-		prolog: colors.orange["300"],
-		doctype: colors.orange["300"],
-		cdata: colors.orange["300"],
-		punctuation: colors.orange["300"],
+		comment: colors.orange["500"],
+		prolog: colors.orange["500"],
+		doctype: colors.orange["500"],
+		cdata: colors.orange["500"],
+		punctuation: colors.orange["500"],
 		property: colors.orange["400"],
 		tag: colors.orange["400"],
 		boolean: colors.orange["400"],

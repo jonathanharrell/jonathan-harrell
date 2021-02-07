@@ -23,6 +23,7 @@ const ArticleLink = ({ title }) => {
 							title
 							description
 							color
+							date
 						}
 					}
 				}

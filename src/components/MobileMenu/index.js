@@ -1,34 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import debounce from "lodash/debounce";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search as SearchIcon, X } from "react-feather";
-import Text from "../Text";
-import Heading from "../Heading";
-import { breakpoints } from "../../jh-ui/theme";
+import { X } from "react-feather";
 import Overlay from "../Overlay";
-import SearchModal from "../SearchModal";
 import ThemeContext from "../../context/theme";
-import {
-	CloseButton,
-	Menu,
-	MenuButton,
-	MenuHeader,
-	MenuLink,
-	MenuLinkWrap,
-	MobileMenuWrap,
-	SearchButton,
-	ThemeOption,
-	ThemeOptions
-} from "./styles";
+import themeColors from "../../theme";
+import { Link } from "gatsby";
 
-const MobileMenu = ({ location }) => {
+const MobileMenu = ({ location, color }) => {
 	const { themeName, setTheme } = useContext(ThemeContext);
-	const [visible, setVisibility] = useState(true);
-	const [expanded, setExpanded] = useState(false);
-	const toggleButtonRef = useRef();
+	const [expanded, setExpanded] = useState(true);
+	const openButtonRef = useRef();
 	const menuRef = useRef();
 	const closeButtonRef = useRef();
-	const menuHeadingRef = useRef();
 	const firstTabbableElementRef = useRef();
 	const lastTabbableElementRef = useRef();
 
@@ -38,33 +21,18 @@ const MobileMenu = ({ location }) => {
 			if (
 				menuRef.current &&
 				!menuRef.current.contains(event.target) &&
-				toggleButtonRef.current !== event.target
+				openButtonRef.current !== event.target
 			) {
 				close();
 			}
 		};
 
 		window.addEventListener("click", handleClick);
-
-		// set up logic ot hide/show mobile menu based on the window width
-		const rems = breakpoints.desktop.replace("rem", "");
-		const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-		const desktopWidth = rems * fontSize;
-
-		const handleResize = debounce(() => {
-			setVisibility(window.innerWidth < desktopWidth);
-			if (window.innerWidth >= desktopWidth) close();
-		}, 10);
-
-		setVisibility(window.innerWidth < desktopWidth);
-
-		window.addEventListener("resize", handleResize);
-		window.addEventListener("routeUpdate", close);
+		//window.addEventListener("routeUpdate", close);
 
 		return () => {
 			window.removeEventListener("click", handleClick);
-			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("routeUpdate", close);
+			//window.removeEventListener("routeUpdate", close);
 		};
 	}, []);
 
@@ -73,43 +41,12 @@ const MobileMenu = ({ location }) => {
 	}, [location]);
 
 	useEffect(() => {
-		if (visible) {
-			if (expanded) {
-				// focus menu heading
-				closeButtonRef.current.focus();
-			} else {
-				// focus toggle button
-				toggleButtonRef.current.focus();
-			}
+		if (expanded) {
+			closeButtonRef.current.focus();
+		} else {
+			openButtonRef.current.focus();
 		}
-	}, [visible, expanded]);
-
-	// some links need special logic to determine whether or not they should get the active style
-	const isActive = ({ isCurrent, isPartiallyCurrent, href, location }) => {
-		const props = {};
-
-		if (href === "/") {
-			if (isCurrent) {
-				props["data-active"] = true;
-				props["aria-current"] = "page";
-			}
-
-			return props;
-		}
-
-		if (href === "/blog") {
-			if (location.pathname.startsWith("/tags")) {
-				props["data-active"] = true;
-			}
-		}
-
-		if (isCurrent || isPartiallyCurrent) {
-			props["data-active"] = true;
-			props["aria-current"] = "page";
-		}
-
-		return props;
-	};
+	}, [expanded]);
 
 	const handleKeydown = event => {
 		if (!expanded) return;
@@ -148,20 +85,23 @@ const MobileMenu = ({ location }) => {
 		setTheme(event.target.value);
 	};
 
-	return visible ? (
-		<MobileMenuWrap onKeyDown={handleKeydown}>
-			<MenuButton
-				ref={toggleButtonRef}
-				expanded={expanded}
+	return (
+		<div className="sm:hidden" onKeyDown={handleKeydown}>
+			<button
+				ref={openButtonRef}
 				aria-expanded={expanded}
-				order="secondary"
 				id="site-navigation"
 				aria-controls="main-menu"
-				title={expanded ? "Close menu" : "Open menu"}
+				title="Open menu"
+				className={`inline-flex py-2 px-4 rounded-xl ${
+					themeColors[color]
+						? `${themeColors[color].gradientButton} text-gray-100`
+						: "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+				} text-sm font-semibold transition-colors duration-200 cursor-pointer`}
 				onClick={open}
 			>
 				Menu
-			</MenuButton>
+			</button>
 			<AnimatePresence>
 				{expanded && (
 					<Overlay>
@@ -173,143 +113,126 @@ const MobileMenu = ({ location }) => {
 							transition={{ stiffness: 50, mass: 0.1 }}
 							style={{
 								position: "fixed",
-								top: "calc(1rem - 5px)",
-								right: "1rem"
+								top: "0",
+								right: "0",
+								zIndex: "30"
 							}}
 						>
-							<Menu ref={menuRef}>
-								<div>
-									<MenuHeader>
-										<span className="sr-only">
-											<h2 ref={menuHeadingRef} tabIndex="-1">
-												Main Menu
-											</h2>
-										</span>
-										<CloseButton key={themeName} ref={closeButtonRef} onClick={close}>
-											<span className="sr-only">Close Menu</span>
-											<X />
-										</CloseButton>
-									</MenuHeader>
-									<section aria-labelledby="site-links-label">
-										<h3>
-											<span className="sr-only" id="site-links-label">
-												Site Links
+							<div className="sm:hidden w-screen h-screen py-4">
+								<div className="container">
+									<div
+										ref={menuRef}
+										className="max-w-sm ml-auto p-4 rounded-xl bg-white dark:bg-gray-800 shadow-2xl"
+									>
+										<header className="flex items-center justify-between mb-2 py-1 px-4">
+											<span className="sr-only">
+												<h2>Main Menu</h2>
 											</span>
-											<Text order="meta" aria-hidden>
-												Links
-											</Text>
-										</h3>
-										<nav role="navigation">
-											<ul>
-												<MenuLinkWrap>
-													<MenuLink
-														to="/"
-														rel="home"
-														ref={firstTabbableElementRef}
-														getProps={isActive}
-													>
-														<Heading level={1} element="span">
+											<button
+												ref={closeButtonRef}
+												className="ml-auto text-gray-300 dark:text-gray-600"
+												onClick={close}
+											>
+												<span className="sr-only">Close Menu</span>
+												<X size={28} />
+											</button>
+										</header>
+										<section aria-labelledby="site-links-label">
+											<h3 className="sr-only" id="site-links-label">
+												Site Links
+											</h3>
+											<nav role="navigation">
+												<ul className="space-y-1">
+													<li>
+														<Link
+															to="/"
+															rel="home"
+															ref={firstTabbableElementRef}
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+														>
 															Home
-														</Heading>
-													</MenuLink>
-												</MenuLinkWrap>
-												<MenuLinkWrap>
-													<MenuLink to="/blog" getProps={isActive}>
-														<Heading level={1} element="span">
+														</Link>
+													</li>
+													<li>
+														<Link
+															to="/blog"
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+														>
 															Articles
-														</Heading>
-													</MenuLink>
-												</MenuLinkWrap>
-												<MenuLinkWrap>
-													<MenuLink to="/about" getProps={isActive}>
-														<Heading level={1} element="span">
+														</Link>
+													</li>
+													<li>
+														<Link
+															to="/about"
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+														>
 															About
-														</Heading>
-													</MenuLink>
-												</MenuLinkWrap>
-												<MenuLinkWrap>
-													<MenuLink to="/work" getProps={isActive}>
-														<Heading level={1} element="span">
-															Work
-														</Heading>
-													</MenuLink>
-												</MenuLinkWrap>
-											</ul>
-										</nav>
-									</section>
-									<section aria-labelledby="theme-settings-label">
-										<h3 id="theme-settings-label">
-											<span className="sr-only">Theme Settings</span>
-											<Text order="meta" aria-hidden>
-												Change Theme
-											</Text>
-										</h3>
-										<ThemeOptions>
-											<ThemeOption
-												htmlFor="light-theme"
-												themeName={themeName}
-												active={themeName === "light"}
+														</Link>
+													</li>
+												</ul>
+											</nav>
+										</section>
+										<hr className="m-4 border-1 border-gray-100 dark:border-gray-700" />
+										<section aria-labelledby="theme-settings-label" className="py-2 px-4">
+											<h3
+												id="theme-settings-label"
+												className="font-medium text-gray-400 dark:text-gray-600"
 											>
-												<Text order="body">Light</Text>
-												<span className="sr-only">
-													<input
-														type="radio"
-														id="light-theme"
-														name="theme"
-														value="light"
-														checked={themeName === "light"}
-														onChange={handleThemeChange}
-													/>
-												</span>
-											</ThemeOption>
-											<ThemeOption
-												htmlFor="dark-theme"
-												themeName={themeName}
-												active={themeName === "dark"}
-											>
-												<Text order="body">Dark</Text>
-												<span className="sr-only">
-													<input
-														type="radio"
-														id="dark-theme"
-														name="theme"
-														value="dark"
-														checked={themeName === "dark"}
-														onChange={handleThemeChange}
-													/>
-												</span>
-											</ThemeOption>
-										</ThemeOptions>
-									</section>
-									<section aria-labelledby="search-label">
-										<h3 id="search-label">
-											<Text order="meta">Site search</Text>
-										</h3>
-										<div>
-											<SearchModal
-												location={location}
-												mobileMenuCloseButtonRef={closeButtonRef}
-												slideDirection="bottom"
-											>
-												<SearchButton
-													key={themeName}
-													ref={lastTabbableElementRef}
-													themeName={themeName}
+												<span className="sr-only">Theme Settings</span>
+												<span aria-hidden>Change Theme</span>
+											</h3>
+											<form className="flex mt-4 mb-2">
+												<label
+													htmlFor="light-theme"
+													className={`flex-1 p-2 rounded-tl-xl rounded-bl-xl text-lg font-medium text-center cursor-pointer ${
+														themeName === "light"
+															? "bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400"
+															: "bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-400 dark:text-gray-500"
+													}`}
 												>
-													<SearchIcon />
-													Search articles
-												</SearchButton>
-											</SearchModal>
-										</div>
-									</section>
+													<span className="ml-2">Light</span>
+													<span className="sr-only">
+														<input
+															type="radio"
+															id="light-theme"
+															name="theme"
+															value="light"
+															checked={themeName === "light"}
+															onChange={handleThemeChange}
+														/>
+													</span>
+												</label>
+												<label
+													htmlFor="dark-theme"
+													className={`flex-1 p-2 rounded-tr-xl rounded-br-xl text-lg font-medium text-center cursor-pointer ${
+														themeName === "dark"
+															? "bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400"
+															: "bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-400 dark:text-gray-500"
+													}`}
+												>
+													<span className="ml-2">Dark</span>
+													<span className="sr-only">
+														<input
+															type="radio"
+															id="dark-theme"
+															name="theme"
+															value="dark"
+															checked={themeName === "dark"}
+															onChange={handleThemeChange}
+														/>
+													</span>
+												</label>
+											</form>
+										</section>
+									</div>
 								</div>
-							</Menu>
+							</div>
 						</motion.div>
 					</Overlay>
 				)}
 			</AnimatePresence>
-		</MobileMenuWrap>
-	) : null;
+		</div>
+	);
 };
 
 export default MobileMenu;

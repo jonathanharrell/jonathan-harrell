@@ -25,7 +25,7 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 							<span className="sr-only">Article published date&nbsp;</span>
 							{formattedDate}
 						</p>
-						<h3 id={labelId} className="text-2xl font-semibold text-white">
+						<h3 id={labelId} className="text-2xl font-semibold text-gray-100">
 							{title}
 						</h3>
 						<p
@@ -34,7 +34,7 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 							{excerpt}
 						</p>
 						<span
-							className={`inline-flex mt-4 py-2 px-4 rounded-xl ${themeColors[color].gradientButton} bg-gray-50 font-semibold text-white transition-colors duration-200 cursor-pointer`}
+							className={`inline-flex mt-4 py-2 px-4 rounded-xl ${themeColors[color].gradientButton} bg-gray-50 font-semibold text-gray-100 transition-colors duration-200 cursor-pointer`}
 						>
 							Read post
 						</span>

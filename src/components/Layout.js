@@ -8,7 +8,6 @@ import Note from "./Note";
 import Codepen from "./Codepen";
 import ArticleLink from "./ArticleLink";
 import Footer from "./Footer";
-import SubscribeBanner from "./SubscribeBanner";
 import ThemeContext from "../context/theme";
 import Pre from "./Pre";
 import themeColors from "../theme";
@@ -33,7 +32,7 @@ const Layout = ({ location, color, children, ...props }) => {
 				<a
 					id="skip-link"
 					href="#main"
-					className="block absolute left-4 py-2 px-4 rounded-lg bg-gray-800 shadow-lg hover:shadow-2xl text-white transform -translate-y-full focus:translate-y-4"
+					className="block absolute z-20 left-4 py-2 px-4 rounded-lg bg-gray-800 shadow-lg hover:shadow-2xl opacity-0 focus:opacity-100 text-gray-100 transform -translate-y-full focus:translate-y-4"
 					onClick={skipToContent}
 				>
 					Skip to content
@@ -52,21 +51,25 @@ const Layout = ({ location, color, children, ...props }) => {
 				>
 					<MDXProvider
 						components={{
-							h1: props => <h1 className="text-4xl font-medium" {...props} />,
+							h1: props => <h1 className="text-3xl sm:text-4xl font-medium" {...props} />,
 							h2: props => (
 								<ArticleHeading
 									color={color}
-									className="mt-24 mb-6 text-3xl font-bold"
+									className="mt-16 sm:mt-24 mb-4 text-2xl sm:text-3xl font-bold"
 									{...props}
 								/>
 							),
-							h3: props => <h3 className="mt-10 mb-6 text-2xl font-bold" {...props} />,
-							h4: props => <h4 className="mt-8 mb-6 text-xl font-semibold" {...props} />,
-							h5: props => <h5 className="mt-6 mb-6 text-lg font-semibold" {...props} />,
-							h6: props => <h6 className="mt-4 mb-6 text-base font-semibold" {...props} />,
-							p: props => <p className="mb-6 text-lg leading-normal" {...props} />,
-							ul: props => <ul className="ml-5 mb-6 list-disc text-lg leading-normal" {...props} />,
-							ol: props => <ol className="ml-5 mb-6 list-disc text-lg leading-normal" {...props} />,
+							h3: props => <h3 className="mt-10 mb-4 text-xl sm:text-2xl font-bold" {...props} />,
+							h4: props => <h4 className="mt-8 mb-4 text-lg sm:text-xl font-semibold" {...props} />,
+							h5: props => <h5 className="mt-6 mb-4 sm:text-lg font-semibold" {...props} />,
+							h6: props => <h6 className="mt-4 mb-4 font-semibold" {...props} />,
+							p: props => <p className="mb-4 sm:text-lg leading-normal" {...props} />,
+							ul: props => (
+								<ul className="ml-5 mb-4 list-disc sm:text-lg leading-normal" {...props} />
+							),
+							ol: props => (
+								<ol className="ml-5 mb-4 list-disc sm:text-lg leading-normal" {...props} />
+							),
 							li: props => <li className="mb-2" {...props} />,
 							figure: props => <figure className="bg-gray-50 dark:bg-gray-800" {...props} />,
 							pre: props => (
@@ -85,7 +88,7 @@ const Layout = ({ location, color, children, ...props }) => {
 							),
 							a: props => (
 								<a
-									className={`text-xl font-medium hover:underline ${themeColors[color].text}`}
+									className={`sm:text-lg font-medium hover:underline ${themeColors[color].text}`}
 									style={{ textUnderlineOffset: "3px" }}
 									{...props}
 								/>
@@ -99,7 +102,6 @@ const Layout = ({ location, color, children, ...props }) => {
 					</MDXProvider>
 				</main>
 				<Footer />
-				<SubscribeBanner />
 			</div>
 		</ThemeProvider>
 	);

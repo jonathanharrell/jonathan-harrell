@@ -1,6 +1,5 @@
 import { Link } from "gatsby";
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Moon, Sun } from "react-feather";
 import ThemeContext from "../context/theme";
@@ -47,10 +46,15 @@ const DesktopMenu = ({ shell, color }) => {
 	};
 
 	return (
-		<div className="flex-1 flex items-center justify-between">
+		<div className="hidden sm:flex flex-1 items-center justify-between">
 			<h2 className="sr-only">Main Menu</h2>
 			{!shell && (
-				<section id="site-navigation" tabIndex={-1} aria-labelledby="site-links-label">
+				<section
+					id="site-navigation"
+					tabIndex={-1}
+					aria-labelledby="site-links-label"
+					className="focus:outline-none"
+				>
 					<h3 id="site-links-label" className="sr-only">
 						Site Links
 					</h3>
@@ -62,7 +66,7 @@ const DesktopMenu = ({ shell, color }) => {
 									rel="home"
 									getProps={isActive}
 									className={`text-base font-semibold hover:opacity-75 ${
-										color ? "text-white" : ""
+										color ? "text-gray-100" : ""
 									}`}
 								>
 									Home
@@ -73,7 +77,7 @@ const DesktopMenu = ({ shell, color }) => {
 									to="/blog"
 									getProps={isActive}
 									className={`text-base font-semibold hover:opacity-75 ${
-										color ? "text-white" : ""
+										color ? "text-gray-100" : ""
 									}`}
 								>
 									Articles
@@ -84,7 +88,7 @@ const DesktopMenu = ({ shell, color }) => {
 									to="/about"
 									getProps={isActive}
 									className={`text-base font-semibold hover:opacity-75 ${
-										color ? "text-white" : ""
+										color ? "text-gray-100" : ""
 									}`}
 								>
 									About
@@ -96,6 +100,7 @@ const DesktopMenu = ({ shell, color }) => {
 			)}
 			<button
 				title={`Change theme to ${themeName === "light" ? "dark" : "light"}`}
+				className={`hover:opacity-75 ${color ? "text-gray-100" : ""}`}
 				onClick={toggleTheme}
 			>
 				<span className="sr-only">Change theme to {themeName === "light" ? "dark" : "light"}</span>
@@ -103,10 +108,6 @@ const DesktopMenu = ({ shell, color }) => {
 			</button>
 		</div>
 	);
-};
-
-DesktopMenu.propTypes = {
-	shell: PropTypes.bool.isRequired
 };
 
 export default DesktopMenu;

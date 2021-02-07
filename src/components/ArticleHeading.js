@@ -25,7 +25,6 @@ const ArticleHeading = ({ color, children, ...props }) => {
 				href={`#${id}`}
 				title="Copy link to this section"
 				aria-labelledby={`${id}-label`}
-				tabIndex="-1"
 				className={`hidden md:block absolute top-0 my-2 -ml-2 opacity-50 hover:opacity-100 ${themeColors[color].text} transform -translate-x-full`}
 				onClick={copyLink}
 			>
