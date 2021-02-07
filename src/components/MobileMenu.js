@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "react-feather";
-import Overlay from "../Overlay";
-import ThemeContext from "../../context/theme";
-import themeColors from "../../theme";
+import Overlay from "./Overlay";
+import ThemeContext from "../context/theme";
+import themeColors from "../theme";
 import { Link } from "gatsby";
 
 const MobileMenu = ({ location, color }) => {

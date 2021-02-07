@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
-import website from "../../../website-config";
-import Layout from "../../components/Layout";
-import Seo from "../../components/seo";
-import Articles from "../../components/Articles";
+import website from "../../website-config";
+import Layout from "../components/Layout";
+import Seo from "../components/seo";
+import Articles from "../components/Articles";
 
 const description =
 	"Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques.";

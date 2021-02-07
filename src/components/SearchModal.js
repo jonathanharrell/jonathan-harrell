@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search as SearchIcon, X } from "react-feather";
 import Tippy from "@tippyjs/react";
-import Overlay from "../Overlay";
-import ThemeContext from "../../context/theme";
-import { CloseButton, SearchButton, SearchHeader, SearchWrap } from "./styles";
+import Overlay from "./Overlay";
+import ThemeContext from "../context/theme";
 
-const Search = React.lazy(() => import("../Search"));
+const Search = React.lazy(() => import("./Search"));
 
 const SearchModal = React.forwardRef(
 	({ location, mobileMenuCloseButtonRef, slideDirection, children }, ref) => {
@@ -120,7 +119,7 @@ const SearchModal = React.forwardRef(
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div ref={ref} onKeyDown={handleKeydown} onClick={handleSearchModalClick}>
 				{customSearchButton || (
-					<SearchButton key={themeName} ref={searchButtonRef} unstyled {...searchButtonProps}>
+					<button key={themeName} ref={searchButtonRef} {...searchButtonProps}>
 						<span className="sr-only">Open search</span>
 						<Tippy
 							key={expanded}
@@ -133,7 +132,7 @@ const SearchModal = React.forwardRef(
 								<SearchIcon />
 							</span>
 						</Tippy>
-					</SearchButton>
+					</button>
 				)}
 				<AnimatePresence>
 					{expanded && (
@@ -154,17 +153,17 @@ const SearchModal = React.forwardRef(
 								}}
 								transition={{ stiffness: 50, mass: 0.1 }}
 							>
-								<SearchWrap ref={searchWrapRef}>
-									<SearchHeader>
-										<CloseButton ref={closeButtonRef} onClick={close}>
+								<div ref={searchWrapRef}>
+									<header>
+										<button ref={closeButtonRef} onClick={close}>
 											<span className="sr-only">Close Search</span>
 											<X />
-										</CloseButton>
-									</SearchHeader>
+										</button>
+									</header>
 									<Suspense fallback={<div>Loading...</div>}>
 										<Search />
 									</Suspense>
-								</SearchWrap>
+								</div>
 							</motion.div>
 						</Overlay>
 					)}

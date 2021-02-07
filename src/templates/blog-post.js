@@ -8,13 +8,13 @@ import { ArrowUp, GitHub, Share, Twitter } from "react-feather";
 import TypeMate from "typemate";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
-import Seo from "../../components/seo";
-import RecentArticles from "../../components/RecentArticles";
-import website from "../../../website-config";
-import Button from "../../components/Button";
-import Layout from "../../components/Layout";
-import themeColors from "../../theme";
-import PageTitle from "../../components/PageTitle";
+import Seo from "../components/seo";
+import RecentArticles from "../components/RecentArticles";
+import website from "../../website-config";
+import Button from "../components/Button";
+import Layout from "../components/Layout";
+import themeColors from "../theme";
+import PageTitle from "../components/PageTitle";
 
 export const getProgressBarColor = color => {
 	return colors[color] ? colors[color]["400"] : undefined;

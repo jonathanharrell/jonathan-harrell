@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import get from "lodash/get";
 import kebabCase from "lodash/kebabCase";
 import algoliasearch from "algoliasearch/lite";
@@ -10,21 +9,10 @@ import {
 	connectStateResults,
 	InstantSearch
 } from "react-instantsearch-dom";
-import Heading from "../Heading";
-import Text from "../Text";
-import Loader from "../Loader";
-import { addAlert, shouldAnimate } from "../../helpers";
-import {
-	ArticleMeta,
-	Hit,
-	HitsList,
-	Link,
-	LoaderWrap,
-	NoResults,
-	SearchInput,
-	StateResultsWrap
-} from "./styles";
-import NotFound from "../../svgs/not-found.svg";
+import Loader from "./Loader";
+import { addAlert } from "../helpers";
+import NotFound from "../svgs/not-found.svg";
+import { Link } from "gatsby";
 
 const searchClient = algoliasearch(
 	process.env.GATSBY_ALGOLIA_APPLICATION_ID,
@@ -43,7 +31,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
 			<label htmlFor="search" className="sr-only">
 				Search for articles
 			</label>
-			<SearchInput
+			<input
 				ref={searchRef}
 				type="search"
 				id="search"
@@ -71,48 +59,23 @@ const StateResults = ({ searchResults, searchState, searching, children }) => {
 	}, [searchResults, searchState]);
 
 	return (
-		<StateResultsWrap>
+		<div>
 			{hasResults && children}
 			{!hasResults && searchState.query && (
-				<NoResults>
-					<motion.div
-						initial={shouldAnimate() ? { opacity: 0, scale: 0.75 } : false}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ type: "spring", stiffness: 50, mass: 0.1 }}
-					>
-						<NotFound />
-					</motion.div>
-					<motion.div
-						initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ type: "spring", stiffness: 50, mass: 0.1 }}
-					>
-						<Heading level={4} element="h2">
-							No matching search results
-						</Heading>
-					</motion.div>
-					<motion.div
-						initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{
-							type: "spring",
-							stiffness: 50,
-							mass: 0.1,
-							delay: 0.1
-						}}
-					>
-						<Text color="textLighter">Try another search term</Text>
-					</motion.div>
-				</NoResults>
+				<div>
+					<NotFound />
+					<h2>No matching search results</h2>
+					<p>Try another search term</p>
+				</div>
 			)}
 			{!hasResults && !searchState.query && (
-				<LoaderWrap>
+				<div>
 					<Loader>
 						<span className="sr-only">Loading...</span>
 					</Loader>
-				</LoaderWrap>
+				</div>
 			)}
-		</StateResultsWrap>
+		</div>
 	);
 };
 
@@ -163,40 +126,32 @@ const childVariants = {
 };
 
 const Hits = ({ hits }) => (
-	<HitsList animate="mounted" variants={variants}>
+	<ul>
 		{hits.map(hit => (
-			<Hit
-				key={hit.objectID}
-				variants={childVariants}
-				initial={shouldAnimate() ? { opacity: 0, x: 50 } : false}
-			>
+			<li key={hit.objectID}>
 				<article aria-labelledby={`${kebabCase(hit.frontmatter.title)}-label`}>
-					<ArticleMeta>
-						<Text order="meta" element="span">
+					<div>
+						<span>
 							{new Date(hit.frontmatter.date).toLocaleDateString("en-US", {
 								month: "long",
 								day: "numeric",
 								year: "numeric"
 							})}
-						</Text>
-						<Text order="meta" element="span">
-							{hit.fields.readingTime.text}
-						</Text>
-					</ArticleMeta>
-					<Heading level={3} id={`${kebabCase(hit.frontmatter.title)}-label`}>
+						</span>
+						<span>{hit.fields.readingTime.text}</span>
+					</div>
+					<h3 id={`${kebabCase(hit.frontmatter.title)}-label`}>
 						<Link to={hit.fields.slug}>
 							<CustomHighlight attribute="frontmatter.title" hit={hit} tagName="mark" />
 						</Link>
-					</Heading>
-					<Text color="textLighter">
+					</h3>
+					<p>
 						<CustomHighlight attribute="frontmatter.description" hit={hit} tagName="mark" />
-					</Text>
+					</p>
 					{hit.frontmatter.tags && hit.frontmatter.tags.length ? (
 						<div>
 							<span className="sr-only">
-								<Heading level={4} id={`${hit.objectID}-tags-label`}>
-									Article Tags
-								</Heading>
+								<h4 id={`${hit.objectID}-tags-label`}>Article Tags</h4>
 							</span>
 							<ul aria-labelledby="article-tags-label">
 								{hit.frontmatter.tags.map((tag, index) => (
@@ -206,9 +161,9 @@ const Hits = ({ hits }) => (
 						</div>
 					) : null}
 				</article>
-			</Hit>
+			</li>
 		))}
-	</HitsList>
+	</ul>
 );
 
 const CustomHits = connectHits(Hits);
@@ -220,15 +175,7 @@ const Search = () => (
 		</div>
 		<CustomStateResults>
 			<section aria-labelledby="search-results-label">
-				<motion.div
-					initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ type: "spring", stiffness: 50, mass: 0.1 }}
-				>
-					<Heading level={4} element="h2" id="search-results-label">
-						Search results
-					</Heading>
-				</motion.div>
+				<h2 id="search-results-label">Search results</h2>
 				<CustomHits />
 			</section>
 		</CustomStateResults>

@@ -1,8 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import * as Sentry from "@sentry/browser";
-import theme from "../jh-ui/theme";
-import Heading from "./Heading";
 
 // this component will catch any unhandled error and display a message and report button
 export default class ErrorBoundary extends React.Component {
@@ -30,12 +27,10 @@ export default class ErrorBoundary extends React.Component {
 	render() {
 		if (this.state.hasError) {
 			return (
-				<ThemeProvider theme={theme}>
-					<div>
-						<Heading level={1}>Oops! There was an error.</Heading>
-						<button onClick={this.handleClick}>Report feedback</button>
-					</div>
-				</ThemeProvider>
+				<div>
+					<h1>Oops! There was an error.</h1>
+					<button onClick={this.handleClick}>Report feedback</button>
+				</div>
 			);
 		}
 
