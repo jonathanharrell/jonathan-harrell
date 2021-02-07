@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { motion } from 'framer-motion'
-import Input from '../../jh-ui/Input'
 
-export const SearchInput = styled(Input)`
+export const SearchInput = styled.input`
   width: 100%;
 `
 

@@ -1,0 +1,112 @@
+import { Link } from "gatsby";
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { Moon, Sun } from "react-feather";
+import ThemeContext from "../context/theme";
+
+const SiteLink = styled(Link)`
+	&[data-active] {
+		border-bottom: 2px solid currentColor;
+		opacity: 1 !important;
+	}
+`;
+
+const DesktopMenu = ({ shell, color }) => {
+	const { themeName, setTheme } = useContext(ThemeContext);
+
+	// some links need special logic to determine whether or not they should get the active style
+	const isActive = ({ isCurrent, isPartiallyCurrent, href, location }) => {
+		const props = {};
+
+		if (href === "/") {
+			if (isCurrent) {
+				props["data-active"] = true;
+				props["aria-current"] = "page";
+			}
+
+			return props;
+		}
+
+		if (href === "/blog") {
+			if (location.pathname.startsWith("/tags")) {
+				props["data-active"] = true;
+			}
+		}
+
+		if (isCurrent || isPartiallyCurrent) {
+			props["data-active"] = true;
+			props["aria-current"] = "page";
+		}
+
+		return props;
+	};
+
+	const toggleTheme = () => {
+		setTheme(themeName === "light" ? "dark" : "light");
+	};
+
+	return (
+		<div className="flex-1 flex items-center justify-between">
+			<h2 className="sr-only">Main Menu</h2>
+			{!shell && (
+				<section id="site-navigation" tabIndex={-1} aria-labelledby="site-links-label">
+					<h3 id="site-links-label" className="sr-only">
+						Site Links
+					</h3>
+					<nav role="navigation">
+						<ul className="flex items-center space-x-6">
+							<li>
+								<SiteLink
+									to="/"
+									rel="home"
+									getProps={isActive}
+									className={`text-base font-semibold hover:opacity-75 ${
+										color ? "text-white" : ""
+									}`}
+								>
+									Home
+								</SiteLink>
+							</li>
+							<li>
+								<SiteLink
+									to="/blog"
+									getProps={isActive}
+									className={`text-base font-semibold hover:opacity-75 ${
+										color ? "text-white" : ""
+									}`}
+								>
+									Articles
+								</SiteLink>
+							</li>
+							<li>
+								<SiteLink
+									to="/about"
+									getProps={isActive}
+									className={`text-base font-semibold hover:opacity-75 ${
+										color ? "text-white" : ""
+									}`}
+								>
+									About
+								</SiteLink>
+							</li>
+						</ul>
+					</nav>
+				</section>
+			)}
+			<button
+				title={`Change theme to ${themeName === "light" ? "dark" : "light"}`}
+				onClick={toggleTheme}
+			>
+				<span className="sr-only">Change theme to {themeName === "light" ? "dark" : "light"}</span>
+				<span>{themeName === "light" ? <Sun /> : <Moon />}</span>
+			</button>
+		</div>
+	);
+};
+
+DesktopMenu.propTypes = {
+	shell: PropTypes.bool.isRequired
+};
+
+export default DesktopMenu;

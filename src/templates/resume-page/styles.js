@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Ul from '../../jh-ui/Ul'
 
 export const ResumeIndexWrap = styled.div`
   flex: 1;
@@ -90,7 +89,7 @@ export const SkillsetWrap = styled.section`
   }
 `
 
-export const SkillsList = styled(Ul)`
+export const SkillsList = styled.ul`
   list-style: none;
   margin: 0;
 
@@ -111,7 +110,7 @@ export const ToolsWrap = styled.section`
   }
 `
 
-export const ToolsList = styled(Ul)`
+export const ToolsList = styled.ul`
   list-style: none;
   margin: 0;
 
@@ -128,7 +127,7 @@ export const OpenSourceWrap = styled.section`
   }
 `
 
-export const ProjectsList = styled(Ul)`
+export const ProjectsList = styled.ul`
   list-style: none;
   margin: 0;
 

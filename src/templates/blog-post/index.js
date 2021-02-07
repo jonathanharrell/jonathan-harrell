@@ -1,496 +1,318 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import BodyClassName from 'react-body-classname'
-import debounce from 'lodash/debounce'
-import kebabCase from 'lodash/kebabCase'
-import { AnimatePresence, motion, useViewportScroll } from 'framer-motion'
-import { ArrowUp, GitHub, Share, Twitter } from 'react-feather'
-import TypeMate from 'typemate'
-import 'tippy.js/dist/tippy.css'
-import 'tippy.js/animations/shift-away.css'
-import Heading from '../../jh-ui/Heading'
-import Spaced from '../../jh-ui/Spaced'
-import Padded from '../../jh-ui/Padded'
-import Text from '../../jh-ui/Text'
-import ScreenReaderText from '../../jh-ui/ScreenReaderText'
-import Button from '../../jh-ui/Button'
-import Seo from '../../components/seo'
-import ContentWrap from '../../components/ContentWrap'
-import PageTitle from '../../components/PageTitle'
-import TableOfContents from '../../components/TableOfContents'
-import RecentArticles from '../../components/RecentArticles'
-import website from '../../../website-config'
-import { shouldAnimate } from '../../helpers'
-import {
-  ArticleContent,
-  ArticleContentWrap,
-  ArticleHeader,
-  ArticleHeaderContent,
-  ArticleHeaderContentWrap,
-  ArticleLinksWrap,
-  ArticleMeta,
-  ArticleWrap,
-  Divider,
-  Figure,
-  Mask,
-  ProgressBarWrap,
-  RecentArticlesWrap,
-  ScrollToTopLink,
-  ShareLink,
-  Tag,
-  TagLink
-} from './styles'
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import colors from "tailwindcss/colors";
+import debounce from "lodash/debounce";
+import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
+import { ArrowUp, GitHub, Share, Twitter } from "react-feather";
+import TypeMate from "typemate";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/shift-away.css";
+import Seo from "../../components/seo";
+import RecentArticles from "../../components/RecentArticles";
+import website from "../../../website-config";
+import Button from "../../components/Button";
+import Layout from "../../components/Layout";
+import themeColors from "../../theme";
+
+export const getProgressBarColor = color => {
+	return colors[color] ? colors[color]["400"] : undefined;
+};
 
 export const BlogPostTemplate = ({
-  location,
-  id,
-  content,
-  tags,
-  title,
-  description,
-  date,
-  image,
-  socialImage,
-  readingTime,
-  slug,
-  tableOfContents
+	location,
+	id,
+	content,
+	tags,
+	title,
+	description,
+	color,
+	date,
+	image,
+	socialImage,
+	readingTime,
+	slug,
+	tableOfContents
 }) => {
-  const [scrolled, setScrolled] = useState(false)
-  const [hasNavigatorShare, setHasNavigatorShare] = useState(false)
-  const { scrollYProgress } = useViewportScroll()
-  const articleWrap = useRef()
-  const articleContent = useRef()
+	const [scrolled, setScrolled] = useState(false);
+	const [hasNavigatorShare, setHasNavigatorShare] = useState(false);
+	const { scrollYProgress } = useViewportScroll();
+	const articleWrap = useRef();
 
-  const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`
-  const re = new RegExp(/.+?(?=\/$)/)
-  const [match] = githubUrl.match(re)
-  const processedGithubUrl = `${match}.mdx`
+	const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`;
+	const re = new RegExp(/.+?(?=\/$)/);
+	const [match] = githubUrl.match(re);
+	const processedGithubUrl = `${match}.mdx`;
 
-  const shareArticle = () => {
-    try {
-      navigator.share({
-        title,
-        url: `${window.location.origin}${slug}`
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+	const shareArticle = () => {
+		try {
+			navigator.share({
+				title,
+				url: `${window.location.origin}${slug}`
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
-  const handleScroll = debounce(() => {
-    setScrolled(window.scrollY > 100)
-  }, 50)
+	const handleScroll = debounce(() => {
+		setScrolled(window.scrollY > 100);
+	}, 50);
 
-  const scrollToTop = event => {
-    event.preventDefault()
-    window.scrollTo(0, 0)
-    const navSkipLink = document.getElementById('nav-skip-link')
-    if (navSkipLink) navSkipLink.focus()
-  }
+	const scrollToTop = event => {
+		event.preventDefault();
+		window.scrollTo(0, 0);
+		const navSkipLink = document.getElementById("nav-skip-link");
+		if (navSkipLink) navSkipLink.focus();
+	};
 
-  useEffect(() => {
-    setHasNavigatorShare(!!navigator.share)
-  }, [])
+	useEffect(() => {
+		setHasNavigatorShare(!!navigator.share);
+	}, []);
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [handleScroll])
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [handleScroll]);
 
-  useLayoutEffect(() => {
-    const typeMateInstance = new TypeMate(articleWrap.current, {
-      selector: 'h1, h2, h3, h4, h5, h6, p'
-    })
-    typeMateInstance.apply()
-  }, [])
+	useLayoutEffect(() => {
+		const typeMateInstance = new TypeMate(articleWrap.current, {
+			selector: "h1, h2, h3, h4, h5, h6, p"
+		});
+		typeMateInstance.apply();
+	}, []);
 
-  return (
-    <>
-      <Seo
-        title={`${title} | ${website.titleAlt}`}
-        pathname={location.pathname}
-        description={description}
-        banner={socialImage ? socialImage.publicURL : undefined}
-        publicationDate={date}
-        article
-      />
-      <ArticleWrap ref={articleWrap} aria-labelledby="article-title">
-        <BodyClassName className={`header-background-gray`} />
-        <ProgressBarWrap>
-          <motion.div
-            style={{
-              width: '100%',
-              height: '0.2rem',
-              background: 'var(--accent)',
-              scaleX: scrollYProgress,
-              transformOrigin: '0 0'
-            }}
-          />
-        </ProgressBarWrap>
-        <ArticleHeader>
-          <ContentWrap>
-            <ArticleHeaderContentWrap>
-              {image && (
-                <Spaced bottom="3x">
-                  <Figure
-                    dangerouslySetInnerHTML={{ __html: image.fields.markup }}
-                    initial={shouldAnimate() ? { opacity: 0, scale: 1 } : false}
-                    animate={{ opacity: 1, scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
-                  />
-                </Spaced>
-              )}
-              <ArticleHeaderContent>
-                <motion.div
-                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 50, mass: 0.1 }}
-                >
-                  <Spaced bottom="s">
-                    <ArticleMeta>
-                      {tags && (
-                        <Spaced right="xxl">
-                          <div>
-                            <ScreenReaderText>
-                              <Heading level={2} id="article-tags-label">
-                                Article Tags
-                              </Heading>
-                            </ScreenReaderText>
-                            <ul aria-labelledby="article-tags-label">
-                              {tags.map((tag, index) => (
-                                <Tag key={tag + `tag`}>
-                                  <TagLink
-                                    to={`/tags/${kebabCase(tag)}/`}
-                                    aria-label={`View articles with the tag ${tag}`}
-                                  >
-                                    <Text order="meta" element="span">
-                                      {tag}
-                                    </Text>
-                                  </TagLink>
-                                  {index < tags.length - 1 && (
-                                    <Text
-                                      order="meta"
-                                      element="span"
-                                      aria-hidden
-                                    >
-                                      &nbsp;•&nbsp;
-                                    </Text>
-                                  )}
-                                </Tag>
-                              ))}
-                            </ul>
-                          </div>
-                        </Spaced>
-                      )}
-                      <Spaced right="xxl">
-                        <Text order="meta" element="span">
-                          <ScreenReaderText>
-                            Article published date&nbsp;
-                          </ScreenReaderText>
-                          {date}
-                        </Text>
-                      </Spaced>
-                      <Text order="meta" element="span">
-                        {readingTime.text}
-                      </Text>
-                    </ArticleMeta>
-                  </Spaced>
-                </motion.div>
-                <motion.div
-                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 50,
-                    mass: 0.1,
-                    delay: 0.1
-                  }}
-                >
-                  <Spaced bottom="m">
-                    <PageTitle>
-                      <Heading level={1} id="article-title">
-                        {title}
-                      </Heading>
-                    </PageTitle>
-                  </Spaced>
-                </motion.div>
-                {description && (
-                  <motion.div
-                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 50,
-                      mass: 0.1,
-                      delay: 0.2
-                    }}
-                  >
-                    <Text order="body" color="textLighter" element="p">
-                      {description}
-                    </Text>
-                  </motion.div>
-                )}
-                {tableOfContents.items.length && (
-                  <motion.div
-                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 50,
-                      mass: 0.1,
-                      delay: 0.3
-                    }}
-                  >
-                    <Spaced top="l">
-                      <div>
-                        <TableOfContents items={tableOfContents.items} />
-                      </div>
-                    </Spaced>
-                  </motion.div>
-                )}
-              </ArticleHeaderContent>
-            </ArticleHeaderContentWrap>
-          </ContentWrap>
-        </ArticleHeader>
-        <Mask>
-          <clipPath id="wave" clipPathUnits="objectBoundingBox">
-            <path d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z" />
-          </clipPath>
-        </Mask>
-        <motion.div
-          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.3 }}
-        >
-          <Padded vertical="4x">
-            <ContentWrap>
-              <ArticleContentWrap>
-                <ArticleContent ref={articleContent}>
-                  <MDXRenderer>{content}</MDXRenderer>
-                  <Spaced top="4x">
-                    <ArticleLinksWrap>
-                      {hasNavigatorShare && (
-                        <span>
-                          <Button unstyled={true} onClick={shareArticle}>
-                            <ShareLink element="span">
-                              <Spaced right="xs">
-                                <Share />
-                              </Spaced>
-                              Share this article
-                            </ShareLink>
-                          </Button>
-                        </span>
-                      )}
-                      {!hasNavigatorShare && location.href && (
-                        <span>
-                          <ShareLink
-                            href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Spaced right="xs">
-                              <Twitter />
-                            </Spaced>
-                            Discuss on Twitter
-                          </ShareLink>
-                        </span>
-                      )}
-                      {(hasNavigatorShare || location.href) &&
-                        processedGithubUrl && (
-                          <Spaced horizontal="s">
-                            <Divider element="span">•</Divider>
-                          </Spaced>
-                        )}
-                      {processedGithubUrl && (
-                        <ShareLink
-                          href={processedGithubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Spaced right="xs">
-                            <GitHub />
-                          </Spaced>
-                          Edit on Github
-                        </ShareLink>
-                      )}
-                    </ArticleLinksWrap>
-                    {scrolled && (
-                      <AnimatePresence>
-                        <motion.div
-                          id="main-menu"
-                          initial={{ opacity: 0, y: 100 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 100 }}
-                          transition={{
-                            type: 'spring',
-                            stiffness: 50,
-                            mass: 0.2
-                          }}
-                          style={{
-                            position: 'fixed',
-                            bottom: '1rem',
-                            right: '1rem'
-                          }}
-                        >
-                          <ScrollToTopLink
-                            href="#nav-skip-link"
-                            element="a"
-                            onClick={scrollToTop}
-                          >
-                            <ArrowUp />
-                            <ScreenReaderText>Scroll to top</ScreenReaderText>
-                          </ScrollToTopLink>
-                        </motion.div>
-                      </AnimatePresence>
-                    )}
-                  </Spaced>
-                </ArticleContent>
-              </ArticleContentWrap>
-            </ContentWrap>
-          </Padded>
-        </motion.div>
-        <motion.div
-          initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 50, mass: 0.1, delay: 0.4 }}
-        >
-          <RecentArticlesWrap aria-labelledby="more-label">
-            <Padded vertical="5x">
-              <ContentWrap>
-                <Spaced bottom="2x">
-                  <Heading level={2} id="more-label">
-                    More Articles
-                  </Heading>
-                </Spaced>
-                <RecentArticles currentPostId={id} />
-              </ContentWrap>
-            </Padded>
-          </RecentArticlesWrap>
-        </motion.div>
-      </ArticleWrap>
-    </>
-  )
-}
+	return (
+		<Layout location={location} color={color}>
+			<Seo
+				title={`${title} | ${website.titleAlt}`}
+				pathname={location.pathname}
+				description={description}
+				banner={socialImage ? socialImage.publicURL : undefined}
+				publicationDate={date}
+				article
+			/>
+			<article ref={articleWrap} aria-labelledby="article-title">
+				<div className="fixed top-0 left-0 w-full z-10">
+					<motion.div
+						className="w-full height-1 bg-red-500 origin-top-left"
+						style={{
+							width: "100%",
+							height: "0.2rem",
+							background: getProgressBarColor(color),
+							scaleX: scrollYProgress
+						}}
+					/>
+				</div>
+				<header className={`overflow-hidden bg-gradient-to-br ${themeColors[color].bgGradient}`}>
+					<div className="container">
+						<div className="relative max-w-3xl mx-auto pt-36 pb-12">
+							{image && (
+								<figure
+									dangerouslySetInnerHTML={{
+										__html: image.fields.markup || undefined
+									}}
+									className="absolute bottom-0 right-0 opacity-30 transform translate-y-1 scale-125"
+								/>
+							)}
+							<div className="relative">
+								<div
+									className={`flex flex-wrap mb-8 text-sm font-semibold capitalize ${themeColors[color].gradientText} text-shadow`}
+								>
+									{tags && (
+										<div className="mr-6">
+											<h2 id="article-tags-label" className="sr-only">
+												Article Tags
+											</h2>
+											<ul className="flex items-center" aria-labelledby="article-tags-label">
+												{tags.map((tag, index) => (
+													<li key={tag + `tag`}>
+														{tag}
+														{index < tags.length - 1 ? <span className="mx-2">/</span> : ""}
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
+									<span className="mr-6">
+										<span className="sr-only">Article published date&nbsp;</span>
+										{date}
+									</span>
+									<span>{readingTime.text}</span>
+								</div>
+								<h1 className="mb-4 text-4xl font-medium text-white">{title}</h1>
+								<p className={`text-xl font-medium ${themeColors[color].gradientText} text-shadow`}>
+									{description}
+								</p>
+							</div>
+						</div>
+					</div>
+				</header>
+				<section>
+					<div className="container">
+						<div className="py-12 sm:py-24">
+							<div className="relative">
+								{tableOfContents.items.length && (
+									<div className="hidden 2xl:block absolute left-0 top-0 h-full">
+										<div className="sticky top-4 w-72" style={{ height: "calc(100vh - 32px)" }}>
+											<div
+												className={`w-full max-h-full overflow-y-auto p-6 rounded-xl bg-gray-50 dark:bg-gray-800`}
+											>
+												<ul>
+													{tableOfContents.items.map(item => (
+														<li key={item.url} className="py-1">
+															<a
+																href={item.url}
+																className={`text-base leading-tight opacity-50 hover:opacity-75`}
+															>
+																{item.title}
+															</a>
+														</li>
+													))}
+												</ul>
+											</div>
+										</div>
+									</div>
+								)}
+								<div className="max-w-3xl mx-auto">
+									<MDXRenderer>{content}</MDXRenderer>
+									<footer className="flex items-center mt-12 pt-12 border-t border-gray-200 dark:border-gray-800 space-x-4">
+										{hasNavigatorShare && (
+											<Button onClick={shareArticle}>
+												<Share className={`mr-2 w-5 h-5 text-gray-400`} />
+												<span>Share this article</span>
+											</Button>
+										)}
+										{!hasNavigatorShare && location.href && (
+											<Button
+												href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+												target="_blank"
+												rel="noopener noreferrer"
+												as="a"
+											>
+												<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
+												<span>Discuss on Twitter</span>
+											</Button>
+										)}
+										{processedGithubUrl && (
+											<Button
+												href={processedGithubUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												as="a"
+											>
+												<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
+												<span>Edit on Github</span>
+											</Button>
+										)}
+									</footer>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className="bg-gray-50 dark:bg-gray-800">
+					<div className="container">
+						<div className="py-12 sm:py-24">
+							<div className="max-w-3xl mx-auto">
+								<div aria-labelledby="more-label">
+									<h2
+										id="more-label"
+										className="mb-6 text-3xl font-semibold text-gray-600 dark:text-gray-400"
+									>
+										More Articles
+									</h2>
+									<RecentArticles currentPostId={id} />
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				{scrolled && (
+					<AnimatePresence>
+						<motion.div
+							initial={{ opacity: 0, y: 100 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: 100 }}
+							transition={{
+								type: "spring",
+								stiffness: 50,
+								mass: 0.2
+							}}
+							style={{
+								position: "fixed",
+								bottom: "1rem",
+								right: "1rem"
+							}}
+						>
+							<a
+								href="#nav-skip-link"
+								className="block p-2 rounded-lg bg-gray-800 shadow-lg hover:shadow-2xl text-white transform hover:-translate-y-0.5 transition-all ease-in-out duration-150"
+								title="Scroll to top"
+								onClick={scrollToTop}
+							>
+								<ArrowUp />
+								<span className="sr-only">Scroll to top</span>
+							</a>
+						</motion.div>
+					</AnimatePresence>
+				)}
+			</article>
+		</Layout>
+	);
+};
 
-BlogPostTemplate.propTypes = {
-  location: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    fields: PropTypes.shape({
-      markup: PropTypes.string.isRequired
-    })
-  }).isRequired,
-  socialImage: PropTypes.shape({
-    publicURL: PropTypes.string.isRequired
-  }).isRequired,
-  readingTime: PropTypes.shape({
-    text: PropTypes.string.isRequired
-  }).isRequired,
-  slug: PropTypes.string.isRequired,
-  tableOfContents: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        url: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-      })
-    ).isRequired
-  }).isRequired
-}
-
-const BlogPost = ({ location, data: { mdx: post } }) => (
-  <BlogPostTemplate
-    location={location}
-    id={post.id}
-    content={post.body}
-    tags={post.frontmatter.tags}
-    title={post.frontmatter.title}
-    description={post.frontmatter.description}
-    date={post.frontmatter.date}
-    image={post.frontmatter.featuredimage}
-    socialImage={post.frontmatter.socialimage}
-    readingTime={post.fields.readingTime}
-    slug={post.fields.slug}
-    tableOfContents={post.tableOfContents}
-  />
-)
-
-BlogPost.propTypes = {
-  location: PropTypes.object.isRequired,
-  data: PropTypes.shape({
-    mdx: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      body: PropTypes.node.isRequired,
-      frontmatter: PropTypes.shape({
-        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        featuredimage: PropTypes.shape({
-          fields: PropTypes.shape({
-            markup: PropTypes.string.isRequired
-          })
-        }).isRequired,
-        socialimage: PropTypes.shape({
-          publicURL: PropTypes.string.isRequired
-        }).isRequired
-      }).isRequired,
-      fields: PropTypes.shape({
-        readingTime: PropTypes.shape({
-          text: PropTypes.string.isRequired
-        }).isRequired,
-        slug: PropTypes.string.isRequired
-      }).isRequired,
-      tableOfContents: PropTypes.shape({
-        items: PropTypes.arrayOf(
-          PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired
-          })
-        ).isRequired
-      }).isRequired
-    }).isRequired
-  }).isRequired
-}
-
-export default BlogPost
+export default ({ location, data: { mdx: post } }) => {
+	return (
+		<BlogPostTemplate
+			location={location}
+			id={post.id}
+			content={post.body}
+			tags={post.frontmatter.tags}
+			title={post.frontmatter.title}
+			description={post.frontmatter.description}
+			color={post.frontmatter.color || "blue"}
+			date={post.frontmatter.date}
+			image={post.frontmatter.featuredimage}
+			socialImage={post.frontmatter.socialimage}
+			readingTime={post.fields.readingTime}
+			slug={post.fields.slug}
+			tableOfContents={post.tableOfContents}
+		/>
+	);
+};
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
-    mdx(id: { eq: $id }) {
-      id
-      body
-      frontmatter {
-        date(formatString: "MMMM D, YYYY")
-        title
-        description
-        tags
-        featuredimage {
-          publicURL
-          fields {
-            markup
-          }
-        }
-        socialimage {
-          publicURL
-        }
-      }
-      fields {
-        readingTime {
-          text
-        }
-        slug
-      }
-      tableOfContents
-    }
-  }
-`
+	query BlogPostByID($id: String!) {
+		mdx(id: { eq: $id }) {
+			id
+			body
+			frontmatter {
+				date(formatString: "MMMM D, YYYY")
+				title
+				description
+				color
+				tags
+				featuredimage {
+					publicURL
+					fields {
+						markup
+					}
+				}
+				socialimage {
+					publicURL
+				}
+			}
+			fields {
+				readingTime {
+					text
+				}
+				slug
+			}
+			tableOfContents
+		}
+	}
+`;

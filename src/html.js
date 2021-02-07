@@ -14,6 +14,11 @@ export default function HTML(props) {
         window.__theme = newTheme
         preferredTheme = newTheme
         document.body.setAttribute('data-theme', newTheme)
+        if (newTheme === 'dark') {
+          document.body.classList.add('dark')
+        } else {
+          document.body.classList.remove('dark')
+        }
         window.dispatchEvent(new CustomEvent('themeChange', {
           detail: newTheme
         }))

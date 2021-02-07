@@ -45,20 +45,27 @@ module.exports = {
               destinationDir: 'static'
             }
           },
-          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              languageExtensions: [],
+              noInlineHighlight: true
+            }
+          },
           {
             resolve: 'gatsby-remark-jh-inline-svg',
             options: {
               colors
             }
-          },
-          'gatsby-remark-jh-codepen-block'
+          }
+          // 'gatsby-remark-jh-codepen-block'
         ]
       }
     },
     'gatsby-remark-reading-time',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -102,30 +109,30 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`
       }
     },
-    {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
-      options: {
-        fonts: [
-          {
-            family: 'Roboto',
-            variants: ['400', '400i', '500', '700'],
-            subsets: ['latin-ext']
-          },
-          {
-            family: 'DM Serif Display',
-            variants: ['400'],
-            subsets: ['latin-ext']
-          },
-          {
-            family: 'DM Serif Text',
-            variants: ['400'],
-            subsets: ['latin-ext']
-          }
-        ]
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-prefetch-google-fonts',
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: 'Roboto',
+    //         variants: ['400', '400i', '500', '700'],
+    //         subsets: ['latin-ext']
+    //       },
+    //       {
+    //         family: 'DM Serif Display',
+    //         variants: ['400'],
+    //         subsets: ['latin-ext']
+    //       },
+    //       {
+    //         family: 'DM Serif Text',
+    //         variants: ['400'],
+    //         subsets: ['latin-ext']
+    //       }
+    //     ]
+    //   }
+    // },
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-transition-link',
+    // 'gatsby-plugin-transition-link',
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {

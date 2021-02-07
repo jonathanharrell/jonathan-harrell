@@ -25,6 +25,11 @@ collections:
       - label: Description
         name: description
         widget: text
+      - label: Color
+        name: color
+        widget: select
+        options: ['pink', 'indigo', 'yellow', 'green', 'blue', 'purple']
+        default: 'blue'
       - label: 'Featured Image'
         name: featuredimage
         widget: image
