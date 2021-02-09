@@ -20,13 +20,11 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 			<article aria-labelledby={labelId}>
 				<div className={`${svg ? "grid" : ""} gap-8 grid-cols-5 items-center`}>
 					<div className="col-span-5 md:col-span-3">
-						<p
-							className={`mt-1 text-sm font-semibold ${themeColors[color].gradientText} text-shadow`}
-						>
+						<p className={`text-sm font-semibold ${themeColors[color].gradientText} text-shadow`}>
 							<span className="sr-only">Article published date&nbsp;</span>
 							{formattedDate}
 						</p>
-						<h3 id={labelId} className="text-2xl font-semibold text-gray-100">
+						<h3 id={labelId} className="text-2xl font-bold leading-tight text-gray-100">
 							{title}
 						</h3>
 						<p

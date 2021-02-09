@@ -3,9 +3,9 @@ import { graphql, StaticQuery } from "gatsby";
 import ArticleExcerpt from "./ArticleExcerpt";
 
 const RecentArticles = ({ posts }) => (
-	<ul className="grid gap-6 grid-cols-2">
+	<ul className="space-y-6">
 		{posts.map(({ node: post }) => (
-			<li key={post.id} className="col-span-2 md:col-span-1">
+			<li key={post.id}>
 				<ArticleExcerpt
 					link={post.fields.slug}
 					date={new Date(post.frontmatter.date)}
@@ -22,7 +22,7 @@ const RecentArticles = ({ posts }) => (
 const query = graphql`
 	query RecentArticlesQuery {
 		allMdx(
-			limit: 5
+			limit: 3
 			sort: { order: DESC, fields: [frontmatter___date] }
 			filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
 		) {
@@ -49,7 +49,7 @@ export default ({ currentPostId }) => (
 	<StaticQuery
 		query={query}
 		render={({ allMdx: { posts } }) => {
-			const filteredPosts = posts.filter(post => post.node.id !== currentPostId).slice(0, 4);
+			const filteredPosts = posts.filter(post => post.node.id !== currentPostId);
 
 			return <RecentArticles posts={filteredPosts} />;
 		}}

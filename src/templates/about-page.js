@@ -1,11 +1,13 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import kebabCase from "lodash/kebabCase";
 import Seo from "../components/seo";
-import PageTitle from "../components/PageTitle";
 import website from "../../website-config";
 import Layout from "../components/Layout";
 import GatsbyImage from "gatsby-image";
+
+const description =
+	"Jonathan Harrell is a UI/UX designer and front-end developer. He specializes in and blogs about HTML and CSS. Learn more.";
 
 export const Usage = ({ usage }) => {
 	const IconComponent = require(`react-feather/dist/icons/${usage.icon}`).default;
@@ -26,48 +28,52 @@ export const Usage = ({ usage }) => {
 	);
 };
 
-export const AboutPageTemplate = ({
-	location,
-	title,
-	image,
-	bio,
-	involvement,
-	whatIUse,
-	skillset
-}) => (
+export const AboutPageTemplate = ({ location, title, image, bio, involvement, whatIUse }) => (
 	<Layout location={location}>
 		<Seo
 			title={`${title} | ${website.titleAlt}`}
 			pathname={location.pathname}
-			description="Jonathan Harrell is a UI/UX designer and front-end developer. He specializes in and blogs about HTML and CSS. Learn more."
+			description={description}
 			banner={image.publicURL}
 		/>
 		<div className="container">
-			<div className="max-w-3xl mx-auto py-24">
-				<header aria-labelledby="about-label">
-					<div>
+			<div className="max-w-3xl mx-auto py-20 sm:py-24">
+				<header aria-labelledby="about-label" className="mb-16">
+					<h1
+						id="about-label"
+						className="mb-10 text-5xl font-extrabold tracking-tight leading-none"
+					>
+						{title || "About Jonathan"}
+					</h1>
+					<div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{image && (
 							<figure>
-								<GatsbyImage fluid={image.childImageSharp.fluid} alt="Jonathan Harrell" />
+								<GatsbyImage
+									fluid={image.childImageSharp.fluid}
+									alt="Jonathan Harrell"
+									className="rounded-xl"
+								/>
 							</figure>
 						)}
-						<div>
-							<PageTitle>
-								<h1 id="about-label">{title || "About Jonathan"}</h1>
-							</PageTitle>
-							<p>{bio}</p>
+						<div className="lg:col-span-2">
+							<p className="text-xl mb-10 text-gray-500">{bio}</p>
 						</div>
 					</div>
 				</header>
 				{involvement.projects.length && (
-					<section aria-labelledby="involvement-label">
-						<header>
-							<h2 id="involvement-label">{involvement.title || "Involvement"}</h2>
+					<section aria-labelledby="involvement-label" className="mt-10 sm:mt-12">
+						<header className="mb-6">
+							<h2 id="involvement-label" className="text-2xl sm:text-3xl font-bold tracking-tight">
+								{involvement.title || "Involvement"}
+							</h2>
 						</header>
 						<ul>
 							{involvement.projects.map((project, index) => (
 								<li key={index}>
-									<article aria-labelledby={`${kebabCase(project.name)}-name`}>
+									<article
+										aria-labelledby={`${kebabCase(project.name)}-name`}
+										className="p-8 rounded-xl bg-gray-100"
+									>
 										<a href={project.link} target="_blank" rel="noopener noreferrer">
 											<span className="sr-only">Learn more</span>
 										</a>
@@ -95,30 +101,13 @@ export const AboutPageTemplate = ({
 						</dl>
 					</section>
 				)}
-				{skillset.skills.length && (
-					<section aria-labelledby="skillset-label">
-						<header>
-							<h2 color="textInverse" id="skillset-label">
-								{skillset.title || "Skillset"}
-							</h2>
-							<Link to="/resume">View resume</Link>
-						</header>
-						<ul>
-							{skillset.skills.map((skill, index) => (
-								<li key={index}>
-									<p color="textInverse">{skill.name}</p>
-								</li>
-							))}
-						</ul>
-					</section>
-				)}
 			</div>
 		</div>
 	</Layout>
 );
 
 const AboutPage = ({ location, data: { mdx: post } }) => {
-	const { title, bioimage, bio, involvement, whatIUse, skillset } = post.frontmatter;
+	const { title, bioimage, bio, involvement, whatIUse } = post.frontmatter;
 
 	return (
 		<AboutPageTemplate
@@ -128,7 +117,6 @@ const AboutPage = ({ location, data: { mdx: post } }) => {
 			bio={bio}
 			involvement={involvement}
 			whatIUse={whatIUse}
-			skillset={skillset}
 		/>
 	);
 };
@@ -163,12 +151,6 @@ export const aboutPageQuery = graphql`
 						description
 						link
 						icon
-					}
-				}
-				skillset {
-					title
-					skills: skill {
-						name
 					}
 				}
 			}

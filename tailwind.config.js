@@ -7,7 +7,7 @@ module.exports = {
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem"
+			padding: "1.5rem"
 		},
 		extend: {
 			colors: {
@@ -59,7 +59,8 @@ module.exports = {
 			ringOffsetColor: ["focus-visible"],
 			ringOffsetWidth: ["focus-visible"],
 			ringOpacity: ["focus-visible"],
-			ringWidth: ["focus-visible"]
+			ringWidth: ["focus-visible"],
+			opacity: ["focus-visible"]
 		}
 	},
 	plugins: [

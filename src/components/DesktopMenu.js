@@ -65,7 +65,7 @@ const DesktopMenu = ({ shell, color }) => {
 									to="/"
 									rel="home"
 									getProps={isActive}
-									className={`text-base font-semibold hover:opacity-75 ${
+									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
 										color ? "text-gray-100" : ""
 									}`}
 								>
@@ -76,7 +76,7 @@ const DesktopMenu = ({ shell, color }) => {
 								<SiteLink
 									to="/blog"
 									getProps={isActive}
-									className={`text-base font-semibold hover:opacity-75 ${
+									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
 										color ? "text-gray-100" : ""
 									}`}
 								>
@@ -87,7 +87,7 @@ const DesktopMenu = ({ shell, color }) => {
 								<SiteLink
 									to="/about"
 									getProps={isActive}
-									className={`text-base font-semibold hover:opacity-75 ${
+									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
 										color ? "text-gray-100" : ""
 									}`}
 								>

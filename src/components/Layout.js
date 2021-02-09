@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
-import { ThemeProvider } from "styled-components";
 import Seo from "./seo";
 import Header from "./Header";
 import Note from "./Note";
@@ -26,9 +25,9 @@ const Layout = ({ location, color, children, ...props }) => {
 	};
 
 	return (
-		<ThemeProvider theme={theme}>
+		<div className="flex flex-col min-h-screen">
 			<Seo />
-			<div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+			<div className="flex flex-col flex-1 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
 				<a
 					id="skip-link"
 					href="#main"
@@ -47,7 +46,7 @@ const Layout = ({ location, color, children, ...props }) => {
 					tabIndex="-1"
 					aria-label="Main Content"
 					ref={mainRef}
-					className="outline-none"
+					className="flex-1 outline-none"
 				>
 					<MDXProvider
 						components={{
@@ -55,7 +54,7 @@ const Layout = ({ location, color, children, ...props }) => {
 							h2: props => (
 								<ArticleHeading
 									color={color}
-									className="mt-16 sm:mt-24 mb-4 text-2xl sm:text-3xl font-bold"
+									className="mt-16 sm:mt-24 mb-4 text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight"
 									{...props}
 								/>
 							),
@@ -77,7 +76,7 @@ const Layout = ({ location, color, children, ...props }) => {
 								const [, language] = props.className.match(regex);
 
 								return (
-									<div className="relative my-8 -mx-8 sm:mx-0">
+									<div className="relative my-6 sm:my-8 -mx-8 sm:mx-0">
 										<Pre
 											color={color}
 											{...props}
@@ -113,7 +112,7 @@ const Layout = ({ location, color, children, ...props }) => {
 				</main>
 				<Footer />
 			</div>
-		</ThemeProvider>
+		</div>
 	);
 };
 

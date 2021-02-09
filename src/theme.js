@@ -23,7 +23,7 @@ export default {
 		bgGradient:
 			"from-yellow-400 dark:from-yellow-700 to-orange-500 dark:to-orange-700 selection:bg-amber-600 dark:selection:bg-amber-600 selection:bg-opacity-50",
 		gradientText: "text-yellow-100 dark:text-yellow-50",
-		gradientButton: "bg-amber-900 bg-opacity-50 group-hover:bg-opacity-75",
+		gradientButton: "bg-amber-800 dark:bg-amber-900 bg-opacity-50 group-hover:bg-opacity-75",
 		bg: "bg-yellow-400 bg-opacity-10",
 		border: "border-yellow-400",
 		text: "text-yellow-500"

@@ -17,15 +17,12 @@ const Footer = () => (
 				</h2>
 				<SubscribeBanner />
 				<hr className="my-6 border-1 border-gray-200 dark:border-gray-700" />
-				<div className="sm:flex items-center justify-between">
-					<Link to="/" aria-label="Home page" rel="home">
-						&copy; 2017–{currentYear} Jonathan Harrell
-					</Link>
-					<section aria-labelledby="social-links-label">
+				<div className="flex flex-col sm:flex-row items-center justify-between">
+					<section aria-labelledby="social-links-label" className="sm:order-1">
 						<span className="sr-only">
 							<h3 id="social-links-label">Social Links</h3>
 						</span>
-						<nav className="flex mt-4 sm:mt-0 space-x-6">
+						<nav className="flex mb-4 sm:mb-0 space-x-6">
 							<a
 								href="https://twitter.com/HarrellofDurham"
 								target="_blank"
@@ -77,6 +74,9 @@ const Footer = () => (
 							</a>
 						</nav>
 					</section>
+					<Link to="/" aria-label="Home page" rel="home">
+						&copy; 2017–{currentYear} Jonathan Harrell
+					</Link>
 				</div>
 			</div>
 		</div>

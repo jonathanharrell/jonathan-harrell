@@ -6,10 +6,42 @@ const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 const algoliasearch = require("algoliasearch");
 const colors = require("./colors");
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
 	const { createPage } = actions;
 
-	return graphql(`
+	// create about page
+	await graphql(`
+		{
+			allMdx(filter: { frontmatter: { templateKey: { eq: "about-page" } } }) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+						frontmatter {
+							title
+						}
+					}
+				}
+			}
+		}
+	`).then(result => {
+		if (result.errors) {
+			result.errors.forEach(e => console.error(e.toString()));
+			return Promise.reject(result.errors);
+		}
+
+		const { edges } = result.data.allMdx;
+		const page = edges[0].node;
+
+		createPage({
+			path: page.fields.slug,
+			component: path.resolve(`src/templates/about-page.js`)
+		});
+	});
+
+	// create blog posts
+	await graphql(`
 		{
 			allMdx(
 				limit: 1000
@@ -28,6 +60,7 @@ exports.createPages = ({ actions, graphql }) => {
 							templateKey
 							title
 							description
+							color
 							date
 						}
 					}
@@ -59,7 +92,7 @@ exports.createPages = ({ actions, graphql }) => {
 			});
 		});
 
-		// Algolia indexing
+		// index blog posts in Algolia
 		const client = algoliasearch(
 			process.env.GATSBY_ALGOLIA_APPLICATION_ID,
 			process.env.ALGOLIA_ADMIN_API_KEY
@@ -134,50 +167,4 @@ exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
 	}
 
 	actions.replaceWebpackConfig(config);
-};
-
-exports.createSchemaCustomization = ({
-	actions: { createTypes, createFieldExtension },
-	createContentDigest
-}) => {
-	createFieldExtension({
-		name: "mdx",
-		extend() {
-			return {
-				type: "String",
-				resolve(source, args, context, info) {
-					// Grab field
-					const value = source[info.fieldName];
-					// Isolate MDX
-					const mdxType = info.schema.getType("Mdx");
-					// Grab just the body contents of what MDX generates
-					const { resolve } = mdxType.getFields().body;
-					return resolve({
-						rawBody: value,
-						internal: {
-							contentDigest: createContentDigest(value) // Used for caching
-						}
-					});
-				}
-			};
-		}
-	});
-	createTypes(`
-    type Mdx implements Node {
-      frontmatter: MdxFrontmatter
-    }
-    type MdxFrontmatter {
-      history: HistoryValues
-      education: EducationValues
-    }
-    type HistoryValues {
-      job: [JobValues]
-    }
-    type JobValues {
-      description: String @mdx
-    }
-    type EducationValues {
-      description: String @mdx
-    }
-  `);
 };

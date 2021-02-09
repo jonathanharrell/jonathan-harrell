@@ -9,12 +9,10 @@ import TypeMate from "typemate";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import Seo from "../components/seo";
-import RecentArticles from "../components/RecentArticles";
 import website from "../../website-config";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
 import themeColors from "../theme";
-import PageTitle from "../components/PageTitle";
 
 export const getProgressBarColor = color => {
 	return colors[color] ? colors[color]["400"] : undefined;
@@ -82,7 +80,11 @@ export const BlogPostTemplate = ({
 
 	const scrollToTop = event => {
 		event.preventDefault();
-		window.scrollTo(0, 0);
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "smooth"
+		});
 		const navSkipLink = document.getElementById("nav-skip-link");
 		if (navSkipLink) navSkipLink.focus();
 	};
@@ -164,9 +166,9 @@ export const BlogPostTemplate = ({
 									</span>
 									<span>{readingTime.text}</span>
 								</div>
-								<PageTitle>
-									<h1 className="mb-4 text-3xl sm:text-4xl font-medium text-gray-100">{title}</h1>
-								</PageTitle>
+								<h1 className="mb-4 text-3xl sm:text-5xl font-extrabold leading-none text-gray-100">
+									{title}
+								</h1>
 								<p
 									className={`text-lg sm:text-xl font-medium ${themeColors[color].gradientText} text-shadow`}
 								>
@@ -215,57 +217,69 @@ export const BlogPostTemplate = ({
 									<div ref={articleContent}>
 										<MDXRenderer>{content}</MDXRenderer>
 									</div>
-									<footer className="sm:flex items-center mt-12 pt-12 border-t border-gray-200 dark:border-gray-800 space-y-4 sm:space-y-0 sm:space-x-4">
-										{hasNavigatorShare && (
-											<Button className="w-full sm:w-auto" onClick={shareArticle}>
-												<Share className={`mr-2 w-5 h-5 text-gray-400`} />
-												<span>Share this article</span>
-											</Button>
-										)}
-										{!hasNavigatorShare && location.href && (
-											<Button
-												href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
-												target="_blank"
-												rel="noopener noreferrer"
-												as="a"
-												className="w-full sm:w-auto"
-											>
-												<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
-												<span>Discuss on Twitter</span>
-											</Button>
-										)}
-										{processedGithubUrl && (
-											<Button
-												href={processedGithubUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												as="a"
-												className="w-full sm:w-auto"
-											>
-												<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
-												<span>Edit on Github</span>
-											</Button>
-										)}
+									<footer className="mt-16">
+										<div className="sm:flex space-y-6 sm:space-y-0 sm:space-x-6">
+											{prev && (
+												<Link
+													to={prev.fields.slug}
+													className="block flex-1 py-4 px-5 border border-gray-200 dark:border-gray-700 rounded-lg group"
+												>
+													<h3 className="mb-1 text-sm font-semibold">« Previous</h3>
+													<p
+														className={`text-lg leading-snug font-semibold opacity-75 group-hover:opacity-100 ${themeColors[color].text}`}
+													>
+														{prev.frontmatter.title}
+													</p>
+												</Link>
+											)}
+											{next && (
+												<Link
+													to={next.fields.slug}
+													className="block flex-1 py-4 px-5 border border-gray-200 dark:border-gray-700 rounded-lg text-right group"
+												>
+													<h3 className="mb-1 text-sm font-semibold">Next »</h3>
+													<p
+														className={`text-lg leading-snug font-semibold opacity-75 group-hover:opacity-100 ${themeColors[color].text}`}
+													>
+														{next.frontmatter.title}
+													</p>
+												</Link>
+											)}
+										</div>
+										<hr className="my-10 border-t border-gray-200 dark:border-gray-800" />
+										<div className="sm:flex items-center space-y-4 sm:space-y-0 sm:space-x-4">
+											{hasNavigatorShare && (
+												<Button className="w-full sm:w-auto" onClick={shareArticle}>
+													<Share className={`mr-2 w-5 h-5 text-gray-400`} />
+													<span>Share this article</span>
+												</Button>
+											)}
+											{!hasNavigatorShare && location.href && (
+												<Button
+													href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
+													target="_blank"
+													rel="noopener noreferrer"
+													as="a"
+													className="w-full sm:w-auto"
+												>
+													<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
+													<span>Discuss on Twitter</span>
+												</Button>
+											)}
+											{processedGithubUrl && (
+												<Button
+													href={processedGithubUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													as="a"
+													className="w-full sm:w-auto"
+												>
+													<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
+													<span>Edit on Github</span>
+												</Button>
+											)}
+										</div>
 									</footer>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className="bg-gray-50 dark:bg-gray-800">
-					<div className="container">
-						<div className="py-12 sm:py-24">
-							<div className="max-w-3xl mx-auto">
-								<div aria-labelledby="more-label">
-									<h2
-										id="more-label"
-										className="mb-6 text-3xl font-semibold text-gray-600 dark:text-gray-300"
-									>
-										More Articles
-									</h2>
-									{prev && <Link to={prev.fields.slug}>Previous: {prev.frontmatter.title}</Link>}
-									{next && <Link to={next.fields.slug}>Next: {next.frontmatter.title}</Link>}
-									<RecentArticles currentPostId={id} />
 								</div>
 							</div>
 						</div>

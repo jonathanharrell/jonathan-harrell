@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import ArticleExcerpt from "./ArticleExcerpt";
 
 const Articles = ({ posts }) => (
-	<ul className="grid gap-6 grid-cols-1">
+	<ul className="space-y-6">
 		{posts &&
 			posts.map(({ node: post }) => (
 				<li key={post.id}>

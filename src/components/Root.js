@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "focus-visible";
 import ErrorBoundary from "./ErrorBoundary";
-import theme from "../jh-ui/theme";
 import ThemeContext from "../context/theme";
 import { addAlert } from "../helpers";
 
@@ -25,7 +24,7 @@ const Root = ({ children }) => {
 	};
 
 	return (
-		<ThemeContext.Provider value={{ theme, themeName, setTheme }}>
+		<ThemeContext.Provider value={{ themeName, setTheme }}>
 			<ErrorBoundary>{children}</ErrorBoundary>
 		</ThemeContext.Provider>
 	);

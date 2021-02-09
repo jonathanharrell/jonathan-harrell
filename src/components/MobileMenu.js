@@ -8,7 +8,7 @@ import { Link } from "gatsby";
 
 const MobileMenu = ({ location, color }) => {
 	const { themeName, setTheme } = useContext(ThemeContext);
-	const [expanded, setExpanded] = useState(true);
+	const [expanded, setExpanded] = useState(false);
 	const openButtonRef = useRef();
 	const menuRef = useRef();
 	const closeButtonRef = useRef();

@@ -14,7 +14,7 @@ export const BlogIndexPageTemplate = ({ location, tags }) => {
 			<div className="container">
 				<div className="max-w-3xl mx-auto py-24">
 					<header>
-						<h1 className="sr-only">Articles</h1>
+						<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">Articles</h1>
 						<select name="" id="">
 							{tags.map(tag => (
 								<option key={tag.fieldValue} value={tag.fieldValue}>

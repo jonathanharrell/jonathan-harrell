@@ -44,7 +44,7 @@ const SubscribeBanner = () => {
 					<h3 id="newsletter-label" className="font-semibold">
 						Want more front-end tips and tricks?
 					</h3>
-					<p className="text-lg">Sign up for the newsletter to stay up-to-date.</p>
+					<p className="sm:text-lg">Sign up for the newsletter to stay up-to-date.</p>
 				</div>
 				<form onSubmit={handleSubmit} className="mt-4 md:mt-0">
 					<div>
@@ -59,10 +59,10 @@ const SubscribeBanner = () => {
 									name="email"
 									placeholder="Enter your email"
 									ref={inputRef}
-									className="w-full py-3 px-5 rounded-lg bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
+									className="w-full py-3 px-5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400"
 								/>
 							</div>
-							<button className="inline-flex items-center justify-center ml-2 py-3 px-5 rounded-lg bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 font-medium text-gray-900 dark:text-gray-100">
+							<button className="inline-flex items-center justify-center ml-2 py-3 px-5 rounded-lg bg-gray-800 hover:bg-gray-900 dark:bg-gray-900 dark:hover:bg-black font-medium text-white dark:text-white">
 								Subscribe
 							</button>
 						</div>
