@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import Seo from "./seo";
@@ -7,13 +7,11 @@ import Note from "./Note";
 import Codepen from "./Codepen";
 import ArticleLink from "./ArticleLink";
 import Footer from "./Footer";
-import ThemeContext from "../context/theme";
 import Pre from "./Pre";
 import themeColors from "../theme";
 import ArticleHeading from "./ArticleHeading";
 
 const Layout = ({ location, color, children, ...props }) => {
-	const { theme } = useContext(ThemeContext);
 	const mainRef = useRef();
 
 	useEffect(() => {
@@ -110,7 +108,7 @@ const Layout = ({ location, color, children, ...props }) => {
 						{children}
 					</MDXProvider>
 				</main>
-				<Footer />
+				<Footer color={color} />
 			</div>
 		</div>
 	);

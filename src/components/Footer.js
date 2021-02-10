@@ -5,18 +5,18 @@ import SubscribeBanner from "./SubscribeBanner";
 
 const currentYear = new Date().getFullYear();
 
-const Footer = () => (
+const Footer = ({ color }) => (
 	<footer
 		aria-labelledby="footer-label"
-		className="py-8 sm:py-12 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+		className="py-8 sm:py-12 md:py-16 bg-gray-800 dark:bg-gray-800 text-gray-400 dark:text-gray-400"
 	>
 		<div className="container">
 			<div className="max-w-3xl mx-auto">
 				<h2 id="footer-label" className="sr-only">
 					Site Footer
 				</h2>
-				<SubscribeBanner />
-				<hr className="my-6 border-1 border-gray-200 dark:border-gray-700" />
+				<SubscribeBanner color={color} />
+				<hr className="my-6 border-1 border-gray-700 dark:border-gray-700" />
 				<div className="flex flex-col sm:flex-row items-center justify-between">
 					<section aria-labelledby="social-links-label" className="sm:order-1">
 						<span className="sr-only">
@@ -28,53 +28,58 @@ const Footer = () => (
 								target="_blank"
 								rel="noopener noreferrer"
 								title="Twitter"
+								className="hover:text-gray-300"
 							>
 								<span className="sr-only">Twitter</span>
-								<Twitter />
-							</a>
-							<a
-								href="https://github.com/jonathanharrell/"
-								target="_blank"
-								rel="noopener noreferrer"
-								title="Github"
-							>
-								<span className="sr-only">Github</span>
-								<GitHub />
-							</a>
-							<a
-								href="https://codepen.io/jonathanharrell/"
-								target="_blank"
-								rel="noopener noreferrer"
-								title="Codepen"
-							>
-								<span className="sr-only">Codepen</span>
-								<Codepen />
-							</a>
-							<a
-								href="https://www.linkedin.com/in/jonathanharrell/"
-								target="_blank"
-								rel="noopener noreferrer"
-								title="LinkedIn"
-							>
-								<span className="sr-only">LinkedIn</span>
-								<Linkedin />
+								<Twitter size={20} />
 							</a>
 							<a
 								href="https://www.instagram.com/harrellofdurham/"
 								target="_blank"
 								rel="noopener noreferrer"
 								title="Instagram"
+								className="hover:text-gray-300"
 							>
 								<span className="sr-only">Instagram</span>
-								<Instagram />
+								<Instagram size={20} />
 							</a>
-							<a href="/rss.xml" title="RSS Feed">
+							<a
+								href="https://www.linkedin.com/in/jonathanharrell/"
+								target="_blank"
+								rel="noopener noreferrer"
+								title="LinkedIn"
+								className="hover:text-gray-300"
+							>
+								<span className="sr-only">LinkedIn</span>
+								<Linkedin size={20} />
+							</a>
+							<a
+								href="https://github.com/jonathanharrell/"
+								target="_blank"
+								rel="noopener noreferrer"
+								title="Github"
+								className="hover:text-gray-300"
+							>
+								<span className="sr-only">Github</span>
+								<GitHub size={20} />
+							</a>
+							<a
+								href="https://codepen.io/jonathanharrell/"
+								target="_blank"
+								rel="noopener noreferrer"
+								title="Codepen"
+								className="hover:text-gray-300"
+							>
+								<span className="sr-only">Codepen</span>
+								<Codepen size={20} />
+							</a>
+							<a href="/rss.xml" title="RSS Feed" className="hover:text-gray-300">
 								<span className="sr-only">RSS Feed</span>
-								<Rss />
+								<Rss size={20} />
 							</a>
 						</nav>
 					</section>
-					<Link to="/" aria-label="Home page" rel="home">
+					<Link to="/" aria-label="Home page" rel="home" className="hover:text-gray-300">
 						&copy; 2017–{currentYear} Jonathan Harrell
 					</Link>
 				</div>

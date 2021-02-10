@@ -9,15 +9,15 @@ export const IndexPage = ({ location }) => {
 		<Layout location={location}>
 			<Seo />
 			<div className="container">
-				<div className="max-w-3xl mx-auto py-20 sm:py-24">
+				<div className="max-w-3xl mx-auto py-24">
 					<header aria-labelledby="introduction-label">
 						<h1
 							id="introduction-label"
-							className="mb-4 text-5xl font-extrabold tracking-tight leading-none"
+							className="mb-4 text-4xl sm:text-5xl font-extrabold tracking-tight leading-none"
 						>
 							UI/UX Designer & Front-End Engineer
 						</h1>
-						<p className="text-2xl mb-10 text-gray-500">
+						<p className="text-xl sm:text-2xl mb-10 text-gray-500 dark:text-gray-400">
 							I’m a designer and developer committed to making the web a more empowering and
 							accessible place. I create engaging user experiences and bring them to life through
 							maintainable, high-quality code. I share what I’ve learned in my technical blog.
@@ -32,7 +32,11 @@ export const IndexPage = ({ location }) => {
 								Recent Articles
 							</h2>
 							<p>
-								<Link to="/blog" aria-labelledby="view-all-articles-label" className="font-bold">
+								<Link
+									to="/blog"
+									aria-labelledby="view-all-articles-label"
+									className="font-bold hover:text-gray-600 dark:hover:text-gray-300"
+								>
 									<span aria-hidden>View all</span>
 									<span className="sr-only" id="view-all-articles-label">
 										View all articles

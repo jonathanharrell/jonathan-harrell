@@ -107,24 +107,6 @@ const Highlight = ({ highlight, attribute, hit }) => {
 
 const CustomHighlight = connectHighlight(Highlight);
 
-const variants = {
-	mounted: {
-		transition: { staggerChildren: 0.05, delayChildren: 0 }
-	}
-};
-
-const childVariants = {
-	mounted: {
-		x: 0,
-		opacity: 1,
-		transition: {
-			type: "spring",
-			stiffness: 50,
-			mass: 0.1
-		}
-	}
-};
-
 const Hits = ({ hits }) => (
 	<ul>
 		{hits.map(hit => (

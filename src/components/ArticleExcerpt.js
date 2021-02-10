@@ -1,7 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 import kebabCase from "lodash/kebabCase";
 import themeColors from "../theme";
 import { Link } from "gatsby";
+
+const Title = styled.h3`
+	mark {
+		background-color: rgba(0, 0, 0, 0.15);
+		color: inherit;
+	}
+`;
+
+const Excerpt = styled.p`
+	mark {
+		background-color: rgba(0, 0, 0, 0.15);
+		color: inherit;
+	}
+`;
 
 const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, className, ...props }) => {
 	const labelId = `${kebabCase(title)}-label`;
@@ -24,14 +39,14 @@ const ArticleExcerpt = ({ link, image, svg, date, title, excerpt, color, classNa
 							<span className="sr-only">Article published date&nbsp;</span>
 							{formattedDate}
 						</p>
-						<h3 id={labelId} className="text-2xl font-bold leading-tight text-gray-100">
+						<Title id={labelId} className="text-2xl font-bold leading-tight text-gray-100">
 							{title}
-						</h3>
-						<p
+						</Title>
+						<Excerpt
 							className={`mt-4 text-lg font-medium ${themeColors[color].gradientText} text-shadow leading-snug`}
 						>
 							{excerpt}
-						</p>
+						</Excerpt>
 						<span
 							className={`inline-flex mt-4 py-2 px-4 rounded-xl ${themeColors[color].gradientButton} bg-gray-50 font-semibold text-gray-100 transition-colors duration-200 cursor-pointer`}
 						>

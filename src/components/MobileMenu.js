@@ -148,7 +148,7 @@ const MobileMenu = ({ location, color }) => {
 															to="/"
 															rel="home"
 															ref={firstTabbableElementRef}
-															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-xl font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
 														>
 															Home
 														</Link>
@@ -156,7 +156,7 @@ const MobileMenu = ({ location, color }) => {
 													<li>
 														<Link
 															to="/blog"
-															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-xl font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
 														>
 															Articles
 														</Link>
@@ -164,7 +164,7 @@ const MobileMenu = ({ location, color }) => {
 													<li>
 														<Link
 															to="/about"
-															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
+															className="block py-2 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-xl font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
 														>
 															About
 														</Link>

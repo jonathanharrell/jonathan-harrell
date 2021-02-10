@@ -62,6 +62,11 @@ exports.createPages = async ({ actions, graphql }) => {
 							description
 							color
 							date
+							featuredimage {
+								fields {
+									markup
+								}
+							}
 						}
 					}
 				}
@@ -113,7 +118,8 @@ exports.createPages = async ({ actions, graphql }) => {
 				"exact",
 				"custom"
 			],
-			searchableAttributes: ["frontmatter.description", "frontmatter.tags", "frontmatter.title"]
+			searchableAttributes: ["frontmatter.description", "frontmatter.tags", "frontmatter.title"],
+			attributesForFaceting: ["frontmatter.tags"]
 		});
 
 		const postObjects = posts.map(({ node: post }) => ({

@@ -13,18 +13,20 @@ export const Usage = ({ usage }) => {
 	const IconComponent = require(`react-feather/dist/icons/${usage.icon}`).default;
 
 	return (
-		<article aria-labelledby={`${kebabCase(usage.name)}-name ${kebabCase(usage.name)}-description`}>
-			<a href={usage.link} target="_blank" rel="noopener noreferrer">
-				<span className="sr-only">Learn more</span>
-			</a>
-			<div>
-				<div>
-					<IconComponent color="var(--accent)" size={24} />
-				</div>
-				<dt id={`${kebabCase(usage.name)}-name`}>{usage.name}</dt>
-				<dd id={`${kebabCase(usage.name)}-description`}>{usage.description}</dd>
+		<a
+			href={usage.link}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="block p-6 rounded-xl bg-gray-100 dark:bg-gray-800 shadow-sm hover:shadow text-center"
+		>
+			<div className="mb-2 text-gray-400">
+				<IconComponent color="currentColor" size={24} className="mx-auto" />
 			</div>
-		</article>
+			<dt id={`${kebabCase(usage.name)}-name`}>{usage.name}</dt>
+			<dd id={`${kebabCase(usage.name)}-description`} className="font-bold">
+				{usage.description}
+			</dd>
+		</a>
 	);
 };
 
@@ -37,15 +39,15 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 			banner={image.publicURL}
 		/>
 		<div className="container">
-			<div className="max-w-3xl mx-auto py-20 sm:py-24">
-				<header aria-labelledby="about-label" className="mb-16">
+			<div className="max-w-3xl mx-auto py-24">
+				<header aria-labelledby="about-label">
 					<h1
 						id="about-label"
-						className="mb-10 text-5xl font-extrabold tracking-tight leading-none"
+						className="mb-6 sm:mb-10 text-4xl sm:text-5xl font-extrabold tracking-tight leading-none"
 					>
 						{title || "About Jonathan"}
 					</h1>
-					<div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+					<div className="grid gap-y-6 gap-x-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{image && (
 							<figure>
 								<GatsbyImage
@@ -56,48 +58,45 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 							</figure>
 						)}
 						<div className="lg:col-span-2">
-							<p className="text-xl mb-10 text-gray-500">{bio}</p>
+							<p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400">{bio}</p>
 						</div>
 					</div>
 				</header>
 				{involvement.projects.length && (
-					<section aria-labelledby="involvement-label" className="mt-10 sm:mt-12">
-						<header className="mb-6">
+					<section aria-labelledby="involvement-label" className="mt-10 sm:mt-16">
+						<header className="mb-4 sm:mb-6">
 							<h2 id="involvement-label" className="text-2xl sm:text-3xl font-bold tracking-tight">
 								{involvement.title || "Involvement"}
 							</h2>
 						</header>
-						<ul>
+						<ul className="grid gap-6 sm:grid-cols-2">
 							{involvement.projects.map((project, index) => (
 								<li key={index}>
-									<article
-										aria-labelledby={`${kebabCase(project.name)}-name`}
-										className="p-8 rounded-xl bg-gray-100"
+									<a
+										href={project.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="block h-full p-8 rounded-xl bg-gray-100 dark:bg-gray-800 shadow-sm hover:shadow"
 									>
-										<a href={project.link} target="_blank" rel="noopener noreferrer">
-											<span className="sr-only">Learn more</span>
-										</a>
-										<div>
-											<h3 id={`${kebabCase(project.name)}-name`}>{project.name}</h3>
-											<p>{project.description}</p>
-										</div>
-									</article>
+										<h3 className="mb-1 text-2xl font-bold leading-tight">{project.name}</h3>
+										<p>{project.description}</p>
+									</a>
 								</li>
 							))}
 						</ul>
 					</section>
 				)}
 				{whatIUse.usages.length && (
-					<section id="uses" aria-labelledby="uses-label">
-						<header>
-							<h2 id="uses-label">{whatIUse.title || "What I Use"}</h2>
+					<section id="uses" aria-labelledby="uses-label" className="mt-10 sm:mt-16">
+						<header className="mb-4 sm:mb-6">
+							<h2 id="uses-label" className="text-2xl sm:text-3xl font-bold tracking-tight">
+								{whatIUse.title || "What I Use"}
+							</h2>
 						</header>
-						<dl>
-							<div>
-								{whatIUse.usages.map((usage, index) => (
-									<Usage key={index} usage={usage} />
-								))}
-							</div>
+						<dl className="grid gap-6 grid-cols-2 sm:grid-cols-3">
+							{whatIUse.usages.map((usage, index) => (
+								<Usage key={index} usage={usage} />
+							))}
 						</dl>
 					</section>
 				)}

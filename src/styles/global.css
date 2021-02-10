@@ -6,6 +6,10 @@
   @apply dark:bg-black;
 }
 
+html {
+  @apply bg-gray-800;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
