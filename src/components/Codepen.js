@@ -31,7 +31,7 @@ const Codepen = ({ id, children }) => {
 		root.current.querySelector("form").submit();
 	};
 
-	return (
+	return children ? (
 		<>
 			<div ref={root} className="my-8 border-4 border-gray-50 dark:border-gray-800">
 				<div>
@@ -68,7 +68,7 @@ const Codepen = ({ id, children }) => {
 				{/*/>*/}
 			</div>
 		</>
-	);
+	) : null;
 };
 
 Codepen.propTypes = {
