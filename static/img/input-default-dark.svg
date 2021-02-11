@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="768px" height="161px" viewBox="0 0 768 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>input-default-dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="136" y="87" width="16" height="16" rx="8"></rect>
+        <filter x="-25.0%" y="-18.8%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="268" y="87" width="16" height="16" rx="8"></rect>
+        <filter x="-25.0%" y="-18.8%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-5" x="403" y="87" width="16" height="16" rx="8"></rect>
+        <filter x="-25.0%" y="-18.8%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-7" x="538" y="87" width="16" height="16" rx="8"></rect>
+        <filter x="-25.0%" y="-18.8%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-8">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="input-default-dark" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#202938" x="0" y="0" width="768" height="161"></rect>
+        <rect id="Rectangle" fill="#374150" x="127" y="79" width="116" height="32" rx="16"></rect>
+        <text id="Options" font-family="SFProText-Semibold, SF Pro Text" font-size="18" font-weight="500" fill="#F3F4F6">
+            <tspan x="136" y="67">Options</tspan>
+        </text>
+        <text id="Option-1-Copy" font-family="SFProText-Medium, SF Pro Text" font-size="16" font-weight="400" fill="#F3F4F6">
+            <tspan x="164" y="101">Option 1</tspan>
+        </text>
+        <text id="Option-2" font-family="SFProText-Medium, SF Pro Text" font-size="16" font-weight="400" fill="#F3F4F6">
+            <tspan x="296" y="101">Option 2</tspan>
+        </text>
+        <text id="Option-3" font-family="SFProText-Medium, SF Pro Text" font-size="16" font-weight="400" fill="#F3F4F6">
+            <tspan x="431" y="101">Option 3</tspan>
+        </text>
+        <text id="Option-4" font-family="SFProText-Medium, SF Pro Text" font-size="16" font-weight="400" fill="#F3F4F6">
+            <tspan x="566" y="101">Option 4</tspan>
+        </text>
+        <g id="Rectangle-Copy-2">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use stroke="#353E4D" stroke-width="1" fill="#111727" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+        <g id="Rectangle-Copy-3">
+            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+            <use stroke="#353E4D" stroke-width="1" fill="#111727" fill-rule="evenodd" xlink:href="#path-3"></use>
+        </g>
+        <g id="Rectangle-Copy-4">
+            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+            <use stroke="#1EB981" stroke-width="1" fill="#1EB981" fill-rule="evenodd" xlink:href="#path-5"></use>
+        </g>
+        <g id="Rectangle-Copy-5">
+            <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
+            <use stroke="#353E4D" stroke-width="1" fill="#111727" fill-rule="evenodd" xlink:href="#path-7"></use>
+        </g>
+        <circle id="Oval" fill="#111727" cx="411" cy="95" r="3"></circle>
+    </g>
+</svg>

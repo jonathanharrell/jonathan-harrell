@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
 import Seo from "./seo";
@@ -11,8 +11,10 @@ import Pre from "./Pre";
 import themeColors from "../theme";
 import ArticleHeading from "./ArticleHeading";
 import ThemedImage from "./ThemedImage";
+import ThemeContext from "../context/theme";
 
 const Layout = ({ location, color, children, ...props }) => {
+	const { themeName } = useContext(ThemeContext);
 	const mainRef = useRef();
 
 	useEffect(() => {
@@ -125,7 +127,7 @@ const Layout = ({ location, color, children, ...props }) => {
 								/>
 							),
 							Note: props => <Note color={color} {...props} />,
-							Codepen,
+							Codepen: props => <Codepen key={themeName} {...props} />,
 							ArticleLink
 						}}
 					>
