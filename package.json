@@ -102,7 +102,7 @@
 		"eslint-plugin-jsx-a11y": "^6.2.3",
 		"eslint-plugin-prettier": "^3.1.2",
 		"prettier": "^1.15.3",
-		"webpack": "^5.21.2"
+		"webpack": "^4.43.0"
 	},
 	"scripts": {
 		"build": "npm run clean && GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages && cp _redirects public/_redirects",
