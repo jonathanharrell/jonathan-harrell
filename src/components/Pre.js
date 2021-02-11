@@ -9,9 +9,9 @@ const StyledPre = styled.pre`
 			.join("\n")}
 
 	.token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
+	.token.prolog,
+	.token.doctype,
+	.token.cdata {
 		opacity: 0.5;
 	}
 

@@ -11,33 +11,38 @@ const Codepen = ({ id, children }) => {
 		window.__CPEmbed(root.current.querySelector(".codepen"));
 	}, [themeName]);
 
-	const css = `.dark { background-color: black; color: white }`;
-
 	return (
-		<div ref={root} className="my-8 border-4 border-gray-50 dark:border-gray-800">
-			<div
-				className="codepen hidden"
-				data-prefill={`{
+		<>
+			<div ref={root} className="my-8 border-4 border-gray-50 dark:border-gray-800">
+				<div
+					className="codepen hidden"
+					data-prefill={`{
 					"html_classes": ["${themeName}"],
-					"stylesheets": "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+					"stylesheets": "https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css"
 				}`}
-				data-height="400"
-				data-theme-id={themeName}
-				data-default-tab="html,result"
-			>
-				<pre data-lang="html">{ReactDOMServer.renderToString(children)}</pre>
-				<pre data-lang="css" dangerouslySetInnerHTML={{ __html: css }} />
+					data-height="180"
+					data-theme-id="39442"
+					data-default-tab="result"
+				>
+					{children.map((child, index) => (
+						<pre key={index} data-lang={child.props["data-lang"]}>
+							{child.props["data-lang"] === "html"
+								? ReactDOMServer.renderToString(child.props.children)
+								: child.props.children}
+						</pre>
+					))}
+				</div>
+				{/*<iframe*/}
+				{/*	ref={iframe}*/}
+				{/*	height="500"*/}
+				{/*	scrolling="no"*/}
+				{/*	src={`//codepen.io/jonathanharrell/embed/${id}/?height=500&theme-id=${themeName}&default-tab=result&embed-version=2`}*/}
+				{/*	frameBorder="no"*/}
+				{/*	title="Codepen Embed"*/}
+				{/*	className="w-full"*/}
+				{/*/>*/}
 			</div>
-			{/*<iframe*/}
-			{/*	ref={iframe}*/}
-			{/*	height="500"*/}
-			{/*	scrolling="no"*/}
-			{/*	src={`//codepen.io/jonathanharrell/embed/${id}/?height=500&theme-id=${themeName}&default-tab=result&embed-version=2`}*/}
-			{/*	frameBorder="no"*/}
-			{/*	title="Codepen Embed"*/}
-			{/*	className="w-full"*/}
-			{/*/>*/}
-		</div>
+		</>
 	);
 };
 

@@ -100,7 +100,7 @@ const Layout = ({ location, color, children, ...props }) => {
 								const [, language] = props.className.match(regex);
 
 								return (
-									<div className="relative my-6 sm:my-8 -mx-8 sm:mx-0">
+									<div className="relative my-6 sm:my-8 -mx-6 sm:mx-0">
 										<Pre
 											color={color}
 											{...props}

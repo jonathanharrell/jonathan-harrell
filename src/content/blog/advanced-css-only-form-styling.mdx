@@ -15,20 +15,59 @@ tags:
 ---
 HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.
 
-<Codepen id="vVEexG">
-	<div>
-		<label htmlFor="text">Test 1</label>
-		<input type="text" id="text" disabled />
-	</div>
-</Codepen>
-
 ## :enabled & :disabled
 
 <Codepen id="vVEexG">
-	<div>
-		<label htmlFor="text">Test 2</label>
-		<input type="text" id="text" disabled />
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<div>
+					<label htmlFor="enabled">Email address (enabled)</label>
+					<input type="email" id="enabled" placeholder="email@email.com" class="input" />
+				</div>
+				<div>
+					<label htmlFor="disabled">Email address (disabled)</label>
+					<input type="email" id="disabled" placeholder="email@email.com" class="input" disabled />
+				</div>
+			</form>
+		</div>
 	</div>
+	<div data-lang="css">{`
+	:root {
+		--hiq-html-background-color: #F9FAFB;
+		--hiq-body-background-color: #F9FAFB;
+		--hiq-font-size-large: 1.125rem;
+		--hiq-border-radius: 6px;
+		--hiq-outline-width: 0;
+		--hiq-input-padding-vertical: 1.25rem;
+		--hiq-input-padding-horizontal: 1rem;
+	}
+	.dark {
+		--hiq-html-background-color: #1F2937;
+		--hiq-body-background-color: #1F2937;
+		--hiq-text-color: white;
+	}
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		padding: 4rem;
+	}
+	form {
+		display: grid;
+		grid-gap: 48px;
+		grid-template-columns: repeat(2, 1fr);
+		width: 100%;
+		max-width: 40rem;
+	}
+	.input {
+		font-size: var(--hiq-font-size-large) !important;
+	}
+	.input:focus {
+		border-color: #10B981 !important;
+	}
+	`}</div>
 </Codepen>
 
 <figure>

@@ -19,6 +19,7 @@
 		"@sentry/browser": "^5.15.0",
 		"@tippyjs/react": "^4.0.0",
 		"algoliasearch": "^4.1.0",
+		"autoprefixer": "^10.2.4",
 		"axios": "^0.19.2",
 		"babel-plugin-remove-graphql-queries": "^2.7.11",
 		"babel-plugin-styled-components": "^1.10.6",
@@ -100,7 +101,8 @@
 		"eslint-config-react-app": "^5.2.1",
 		"eslint-plugin-jsx-a11y": "^6.2.3",
 		"eslint-plugin-prettier": "^3.1.2",
-		"prettier": "^1.15.3"
+		"prettier": "^1.15.3",
+		"webpack": "^5.21.2"
 	},
 	"scripts": {
 		"build": "npm run clean && GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages && cp _redirects public/_redirects",
