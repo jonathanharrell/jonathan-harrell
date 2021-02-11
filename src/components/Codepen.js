@@ -57,15 +57,6 @@ const Codepen = ({ id, children }) => {
 						</pre>
 					))}
 				</div>
-				{/*<iframe*/}
-				{/*	ref={iframe}*/}
-				{/*	height="500"*/}
-				{/*	scrolling="no"*/}
-				{/*	src={`//codepen.io/jonathanharrell/embed/${id}/?height=500&theme-id=${themeName}&default-tab=result&embed-version=2`}*/}
-				{/*	frameBorder="no"*/}
-				{/*	title="Codepen Embed"*/}
-				{/*	className="w-full"*/}
-				{/*/>*/}
 			</div>
 		</>
 	) : null;

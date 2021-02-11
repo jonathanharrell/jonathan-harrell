@@ -1,0 +1,26 @@
+:root {
+	--hiq-html-background-color: #F9FAFB;
+	--hiq-body-background-color: #F9FAFB;
+	--hiq-font-size-large: 1.125rem;
+	--hiq-border-radius: 6px;
+	--hiq-outline-width: 0;
+	--hiq-input-padding-vertical: 1.25rem;
+	--hiq-input-padding-horizontal: 1rem;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+.dark {
+	--hiq-html-background-color: #1F2937;
+	--hiq-body-background-color: #1F2937;
+	--hiq-text-color: white;
+	--hiq-input-border-color: #353E4D;
+	--hiq-input-background-color: #111727;
+	--hiq-disabled-background-color: #374150;
+	--hiq-disabled-border-color: #353E4D;
+}
+
