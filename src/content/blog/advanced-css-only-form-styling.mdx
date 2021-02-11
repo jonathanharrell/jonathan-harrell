@@ -42,10 +42,19 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		--hiq-input-padding-vertical: 1.25rem;
 		--hiq-input-padding-horizontal: 1rem;
 	}
+	body {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
 	.dark {
 		--hiq-html-background-color: #1F2937;
 		--hiq-body-background-color: #1F2937;
 		--hiq-text-color: white;
+		--hiq-input-border-color: #353E4D;
+		--hiq-input-background-color: #111727;
+		--hiq-disabled-background-color: #374150;
+		--hiq-disabled-border-color: #353E4D;
 	}
 	.wrap {
 		display: flex;
@@ -61,22 +70,16 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		width: 100%;
 		max-width: 40rem;
 	}
-	.input {
-		font-size: var(--hiq-font-size-large) !important;
+	.input.input {
+		font-size: var(--hiq-font-size-large);
+		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 	}
-	.input:focus {
-		border-color: #10B981 !important;
+	.input.input:focus {
+		border-color: #10B981;
+		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
 	}
 	`}</div>
 </Codepen>
-
-<figure>
-	<img
-		src="/img/input-disabled.svg"
-		data-dark-src="/img/input-disabled-dark.svg"
-		alt="Disabled inputs can be styled to appear dimmer than enabled inputs, letting the user know that these inputs cannot be interacted with."
-	/>
-</figure>
 
 This one should be familiar to most of you, but still important to remember. It’s pretty essential to display whether or not an input is disabled to a user.
 
