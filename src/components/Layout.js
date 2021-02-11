@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import Pre from "./Pre";
 import themeColors from "../theme";
 import ArticleHeading from "./ArticleHeading";
+import ThemedImage from "./ThemedImage";
 
 const Layout = ({ location, color, children, ...props }) => {
 	const mainRef = useRef();
@@ -48,7 +49,9 @@ const Layout = ({ location, color, children, ...props }) => {
 				>
 					<MDXProvider
 						components={{
-							h1: props => <h1 className="text-3xl sm:text-4xl font-medium" {...props} />,
+							h1: props => (
+								<h1 className="text-3xl sm:text-4xl font-medium" {...props} />
+							),
 							h2: props => (
 								<ArticleHeading
 									color={color}
@@ -56,19 +59,40 @@ const Layout = ({ location, color, children, ...props }) => {
 									{...props}
 								/>
 							),
-							h3: props => <h3 className="mt-10 mb-4 text-xl sm:text-2xl font-bold" {...props} />,
-							h4: props => <h4 className="mt-8 mb-4 text-lg sm:text-xl font-semibold" {...props} />,
-							h5: props => <h5 className="mt-6 mb-4 sm:text-lg font-semibold" {...props} />,
+							h3: props => (
+								<h3
+									className="mt-10 mb-4 text-xl sm:text-2xl font-bold"
+									{...props}
+								/>
+							),
+							h4: props => (
+								<h4
+									className="mt-8 mb-4 text-lg sm:text-xl font-semibold"
+									{...props}
+								/>
+							),
+							h5: props => (
+								<h5 className="mt-6 mb-4 sm:text-lg font-semibold" {...props} />
+							),
 							h6: props => <h6 className="mt-4 mb-4 font-semibold" {...props} />,
 							p: props => <p className="mb-4 sm:text-lg leading-normal" {...props} />,
 							ul: props => (
-								<ul className="ml-5 mb-4 list-disc sm:text-lg leading-normal" {...props} />
+								<ul
+									className="ml-5 mb-4 list-disc sm:text-lg leading-normal"
+									{...props}
+								/>
 							),
 							ol: props => (
-								<ol className="ml-5 mb-4 list-disc sm:text-lg leading-normal" {...props} />
+								<ol
+									className="ml-5 mb-4 list-disc sm:text-lg leading-normal"
+									{...props}
+								/>
 							),
 							li: props => <li className="mb-2" {...props} />,
-							figure: props => <figure className="bg-gray-50 dark:bg-gray-800" {...props} />,
+							figure: props => (
+								<figure className="mb-4 bg-gray-50 dark:bg-gray-800" {...props} />
+							),
+							img: props => <ThemedImage {...props} />,
 							pre: props => {
 								const regex = new RegExp(/language-(.*)/);
 								const [, language] = props.className.match(regex);

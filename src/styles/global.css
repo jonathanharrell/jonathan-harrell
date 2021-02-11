@@ -32,7 +32,7 @@ select {
   @apply text-gray-700 dark:text-gray-300;
 }
 
-svg {
-  max-width: 100%;
-  height: auto;
-}
+/*svg {*/
+/*  max-width: 100%;*/
+/*  height: auto;*/
+/*}*/

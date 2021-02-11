@@ -38,7 +38,15 @@ module.exports = {
 				"Segoe UI Symbol",
 				"Noto Color Emoji"
 			],
-			serif: ["New York", "ui-serif", "Georgia", "Cambria", "Times New Roman", "Times", "serif"],
+			serif: [
+				"New York",
+				"ui-serif",
+				"Georgia",
+				"Cambria",
+				"Times New Roman",
+				"Times",
+				"serif"
+			],
 			mono: [
 				"ui-monospace",
 				"SFMono-Regular",

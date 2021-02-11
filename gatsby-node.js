@@ -62,11 +62,6 @@ exports.createPages = async ({ actions, graphql }) => {
 							description
 							color
 							date
-							featuredimage {
-								fields {
-									markup
-								}
-							}
 						}
 					}
 				}
@@ -105,7 +100,11 @@ exports.createPages = async ({ actions, graphql }) => {
 
 		const postsIndex = client.initIndex("jh_posts");
 		postsIndex.setSettings({
-			attributesToHighlight: ["frontmatter.description", "frontmatter.tags", "frontmatter.title"],
+			attributesToHighlight: [
+				"frontmatter.description",
+				"frontmatter.tags",
+				"frontmatter.title"
+			],
 			attributesToRetrieve: ["fields", "frontmatter"],
 			ranking: [
 				"desc(frontmatter.date)",
@@ -118,7 +117,11 @@ exports.createPages = async ({ actions, graphql }) => {
 				"exact",
 				"custom"
 			],
-			searchableAttributes: ["frontmatter.description", "frontmatter.tags", "frontmatter.title"],
+			searchableAttributes: [
+				"frontmatter.description",
+				"frontmatter.tags",
+				"frontmatter.title"
+			],
 			attributesForFaceting: ["frontmatter.tags"]
 		});
 
@@ -144,22 +147,22 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 		});
 	}
 
-	if (node.internal.type === "File") {
-		if (node.relativePath.endsWith(".svg")) {
-			let value = fs.readFileSync(node.absolutePath, "utf8");
-
-			Object.entries(colors).forEach(([color, replacement]) => {
-				const re = new RegExp(color, "g");
-				value = value.replace(re, replacement);
-			});
-
-			createNodeField({
-				name: `markup`,
-				node,
-				value
-			});
-		}
-	}
+	// if (node.internal.type === "File") {
+	// 	if (node.relativePath.endsWith(".svg")) {
+	// 		let value = fs.readFileSync(node.absolutePath, "utf8");
+	//
+	// 		Object.entries(colors).forEach(([color, replacement]) => {
+	// 			const re = new RegExp(color, "g");
+	// 			value = value.replace(re, replacement);
+	// 		});
+	//
+	// 		createNodeField({
+	// 			name: `markup`,
+	// 			node,
+	// 			value
+	// 		});
+	// 	}
+	// }
 };
 
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {

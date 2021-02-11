@@ -9,17 +9,67 @@ color: green
 featuredimage: /img/placeholder.svg
 socialimage: /img/css-form-styling.png
 tags:
-  - css
-  - forms
-  - html
+  - CSS
+  - Forms
+  - HTML
 ---
 HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.
 
 <Codepen id="vVEexG"/>
 
+## :enabled & :disabled
+
+<figure>
+	<img
+		src="/img/input-disabled.svg"
+		data-dark-src="/img/input-disabled-dark.svg"
+		alt="Disabled inputs can be styled to appear dimmer than enabled inputs, letting the user know that these inputs cannot be interacted with."
+	/>
+</figure>
+
+This one should be familiar to most of you, but still important to remember. It’s pretty essential to display whether or not an input is disabled to a user.
+
+```css
+&:disabled {
+  border-color: var(--gray-lighter);
+  background-color: var(--gray-lightest);
+  color: var(--gray-light);
+}
+```
+
+## :read-write & read-only
+
+<figure>
+	<img
+		src="/img/input-read-only.svg"
+		data-dark-src="/img/input-read-only-dark.svg"
+		alt="Read-only inputs can be styled with their values dimmer than writable inputs, letting the user know that the values of these inputs cannot be altered."
+	/>
+</figure>
+
+An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
+
+```html
+<input type="text" value="Read-only value" readonly>
+```
+
+```css
+input:read-only {
+  border-color: var(--gray-lighter);
+  color: var(--gray);
+  cursor: not-allowed;
+}
+```
+
 ## :placeholder-shown
 
-![A common UX pattern involves showing a placeholder within an input and then moving that placeholder text above the input when a user starts typing.](/img/placeholder-shown.svg)
+<figure>
+	<img
+		src="/img/input-placeholder-shown.svg"
+		data-dark-src="/img/input-placeholder-shown-dark.svg"
+		alt="A common UX pattern involves showing a placeholder within an input and then moving that placeholder text above the input when a user starts typing."
+	/>
+</figure>
 
 The first selector is relatively new and doesn’t have complete [browser support](https://caniuse.com/#feat=css-placeholder-shown) yet. However, this seems like something that could easily work as a progressive enhancement. The selector allows us to detect whether a placeholder is currently visible to the user. This could come in handy if we want to dynamically hide and show the input’s associated label.
 
@@ -52,139 +102,25 @@ input:placeholder-shown + label {
 }
 ```
 
-## :required
+## :default
 
-![Required inputs can be styled to show a required message, alerting the user that these inputs must be filled in.](/img/required.svg)
-
-Use this selector to indicate that an input has the `required` attribute. Here I am using an empty `.help-text` span and placing some content dynamically using the `::before` pseudo-element. Realistically, this would be done with JavaScript, but I am including here to demonstrate a pure CSS approach.
-
-```html
-<label for="required-input">Required input</label>
-<input type="text" id="required-input" required>
-<span class="help-text"></span>
-```
-
-```css
-input:required + .help-text::before {
-  content: '*Required';
-}
-```
-
-## :optional
-
-![Optional inputs can be styled to show an optional message, alerting the user that these inputs aren’t required.](/img/optional.svg)
-
-This selector does the opposite of `:required`. I am again using an empty `.help-text` `span` to display some optional text if the required attribute is NOT present.
-
-```css
-input:optional + .help-text::before {
-  content: '*Optional';
-}
-```
-
-## :disabled
-
-![Disabled inputs can be styled to appear dimmer than enabled inputs, letting the user know that these inputs cannot be interacted with.](/img/disabled.svg)
-
-This one should be familiar to most of you, but still important to remember. It’s pretty essential to display whether or not an input is disabled to a user.
-
-```css
-&:disabled {
-  border-color: var(--gray-lighter);
-  background-color: var(--gray-lightest);
-  color: var(--gray-light);
-}
-```
-
-## :read-only
-
-![Read-only inputs can be styled with their values dimmer than writable inputs, letting the user know that the values of these inputs cannot be altered.](/img/read-only.svg)
-
-An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
-
-```html
-<input type="text" value="Read-only value" readonly>
-```
-
-```css
-input:read-only {
-  border-color: var(--gray-lighter);
-  color: var(--gray);
-  cursor: not-allowed;
-}
-```
-
-## :valid
-
-![Valid inputs can be styled with a success state, such as a check box, letting users know when these inputs have been successfully filled in.](/img/valid.svg)
-
-While much form validation will happen with JavaScript, we are able to take advantage of HTML form validation and style inputs accordingly. This selector gives us the chance to style any input which is currently passing the native browser validation rules.
-
-Here I am encoding an svg to display a checkbox in the input using the `background-image` property.
-
-```css
-input:valid {
-  border-color: var(--color-primary);
-  background-image: url("data:image/svg+xml,...");
-}
-```
-
-## :invalid
-
-![Invalid inputs can be styled with a warning or error message, letting users know when these inputs are not passing their validation rules.](/img/invalid.svg)
-
-This selector checks if an input is currently NOT passing the native browser validation rules (for example, if an email input does not contain a real email).
-
-Again, I am encoding an svg to display an ‘x’ in the input.
-
-```css
-input:invalid {
-  border-color: var(--color-error);
-  background-image: url("data:image/svg+xml,...");
-}
-```
-
-I can also customize some validation messages for each input type using the `.help-text` span and the `::before` pseudo-element.
-
-```html
-<label for="invalid-email">Invalid input</label>
-<input type="email" id="invalid-email" value="notanemail">
-<span class="help-text"></span>
-```
-
-```css
-input[type='email']:invalid + .help-text::before {
-  content: 'You must enter a valid email.'
-}
-```
-
-## :in-range/:out-of-range
-
-![Inputs with range attributes defined can be styled when they are in or out-of-range, letting users know if the inputs are or are not passing their validation rules.](/img/out-of-range.svg)
-
-These selectors detect whether the value of a number input is within the min/max values specified or not.
-
-```html
-<label for="out-of-range-input">Out-of-range input</label>
-<input
-  type="number"
-  id="out-of-range-input"
-  min="1"
-  max="10"
-  value="12"
->
-<span class="help-text">(value must be between 1 and 10)</span>
-```
-
-```css
-input:out-of-range + .help-text::before {
-  content: 'Out of range';
-}
-```
+<figure>
+	<img
+		src="/img/input-default.svg"
+		data-dark-src="/img/input-default-dark.svg"
+		alt=""
+	/>
+</figure>
 
 ## :checked
 
-![Checkbox inputs can be styled based on their checked or unchecked states. This allows custom checkboxes to alert the user when these inputs have been checked.](/img/checked.svg)
+<figure>
+	<img
+		src="/img/input-checked.svg"
+		data-dark-src="/img/input-checked-dark.svg"
+		alt="Checkbox inputs can be styled based on their checked or unchecked states. This allows custom checkboxes to alert the user when these inputs have been checked."
+	/>
+</figure>
 
 Most of you will be familiar with this selector. It gives us the ability to apply custom styles to checkboxes and radio buttons when checked. My technique for styling checkboxes involves creating a wrapper element and placing the `label` after the `input`.
 
@@ -215,6 +151,126 @@ I visually hide the input so that it disappears from view but is still clickable
   content: '';
 }
 ```
+
+## :indeterminate
+
+<figure>
+	<img
+		src="/img/input-indeterminate.svg"
+		data-dark-src="/img/input-indeterminate-dark.svg"
+		alt=""
+	/>
+</figure>
+
+## :valid & :invalid
+
+<figure>
+	<img
+		src="/img/input-invalid.svg"
+		data-dark-src="/img/input-invalid-dark.svg"
+		alt="Valid inputs can be styled with a success state, such as a check box, letting users know when these inputs have been successfully filled in. Invalid inputs can be styled with a warning or error message, letting users know when these inputs are not passing their validation rules."
+	/>
+</figure>
+
+While much form validation will happen with JavaScript, we are able to take advantage of HTML form validation and style inputs accordingly. This selector gives us the chance to style any input which is currently passing the native browser validation rules.
+
+Here I am encoding an svg to display a checkbox in the input using the `background-image` property.
+
+```css
+input:valid {
+  border-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,...");
+}
+```
+
+This selector checks if an input is currently NOT passing the native browser validation rules (for example, if an email input does not contain a real email).
+
+Again, I am encoding an svg to display an ‘x’ in the input.
+
+```css
+input:invalid {
+  border-color: var(--color-error);
+  background-image: url("data:image/svg+xml,...");
+}
+```
+
+I can also customize some validation messages for each input type using the `.help-text` span and the `::before` pseudo-element.
+
+```html
+<label for="invalid-email">Invalid input</label>
+<input type="email" id="invalid-email" value="notanemail">
+<span class="help-text"></span>
+```
+
+```css
+input[type='email']:invalid + .help-text::before {
+  content: 'You must enter a valid email.'
+}
+```
+
+## :in-range & :out-of-range
+
+<figure>
+	<img
+		src="/img/input-out-of-range.svg"
+		data-dark-src="/img/input-out-of-range-dark.svg"
+		alt="Inputs with range attributes defined can be styled when they are in or out-of-range, letting users know if the inputs are or are not passing their validation rules."
+	/>
+</figure>
+
+These selectors detect whether the value of a number input is within the min/max values specified or not.
+
+```html
+<label for="out-of-range-input">Out-of-range input</label>
+<input
+  type="number"
+  id="out-of-range-input"
+  min="1"
+  max="10"
+  value="12"
+>
+<span class="help-text">(value must be between 1 and 10)</span>
+```
+
+```css
+input:out-of-range + .help-text::before {
+  content: 'Out of range';
+}
+```
+
+## :required & :optional
+
+<figure>
+	<img
+		src="/img/input-required.svg"
+		data-dark-src="/img/input-required-dark.svg"
+		alt="Optional inputs can be styled to show an optional message, alerting the user that these inputs aren’t required. Required inputs can be styled to show a required message, alerting the user that these inputs must be filled in."
+	/>
+</figure>
+
+Use this selector to indicate that an input has the `required` attribute. Here I am using an empty `.help-text` span and placing some content dynamically using the `::before` pseudo-element. Realistically, this would be done with JavaScript, but I am including here to demonstrate a pure CSS approach.
+
+```html
+<label for="required-input">Required input</label>
+<input type="text" id="required-input" required>
+<span class="help-text"></span>
+```
+
+```css
+input:required + .help-text::before {
+  content: '*Required';
+}
+```
+
+This selector does the opposite of `:required`. I am again using an empty `.help-text` `span` to display some optional text if the required attribute is NOT present.
+
+```css
+input:optional + .help-text::before {
+  content: '*Optional';
+}
+```
+
+## :user-invalid (experimental)
 
 ## Getting a Head Start with the HiQ Framework
 

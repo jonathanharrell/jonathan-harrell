@@ -13,6 +13,7 @@ import website from "../../website-config";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
 import themeColors from "../theme";
+import TableOfContents from "../components/TableOfContents";
 
 export const getProgressBarColor = color => {
 	return colors[color] ? colors[color]["400"] : undefined;
@@ -74,8 +75,8 @@ export const BlogPostTemplate = ({
 	};
 
 	const handleScroll = debounce(() => {
-		setScrolled(window.scrollY > 100);
-		setActiveSection();
+		//setScrolled(window.scrollY > 100);
+		//setActiveSection();
 	}, 50);
 
 	const scrollToTop = event => {
@@ -130,38 +131,48 @@ export const BlogPostTemplate = ({
 						}}
 					/>
 				</div>
-				<header className={`overflow-hidden bg-gradient-to-br ${themeColors[color].bgGradient}`}>
+				<header
+					className={`overflow-hidden bg-gradient-to-br ${themeColors[color].bgGradient}`}
+				>
 					<div className="container">
 						<div className="relative max-w-3xl mx-auto pt-24 sm:pt-36 pb-12">
 							{image && (
-								<figure
-									dangerouslySetInnerHTML={{
-										__html: image.fields.markup || undefined
-									}}
-									className="absolute bottom-0 right-0 opacity-30 transform translate-y-1 scale-125"
-								/>
+								<figure className="absolute bottom-0 right-0 opacity-30 transform translate-y-1 scale-125">
+									<img src={image.publicURL} alt="" />
+								</figure>
 							)}
 							<div className="relative">
 								<div
-									className={`flex flex-wrap mb-6 sm:mb-8 text-sm font-semibold capitalize ${themeColors[color].gradientText} text-shadow`}
+									className={`flex flex-wrap mb-6 sm:mb-8 text-sm font-semibold ${themeColors[color].gradientText} text-shadow`}
 								>
 									{tags && (
 										<div className="mr-6">
 											<h2 id="article-tags-label" className="sr-only">
 												Article Tags
 											</h2>
-											<ul className="flex items-center" aria-labelledby="article-tags-label">
+											<ul
+												className="flex items-center"
+												aria-labelledby="article-tags-label"
+											>
 												{tags.map((tag, index) => (
 													<li key={tag + `tag`}>
 														{tag}
-														{index < tags.length - 1 ? <span className="mx-2">/</span> : ""}
+														{index < tags.length - 1 ? (
+															<span className="mx-2 opacity-50">
+																/
+															</span>
+														) : (
+															""
+														)}
 													</li>
 												))}
 											</ul>
 										</div>
 									)}
 									<span className="mr-6">
-										<span className="sr-only">Article published date&nbsp;</span>
+										<span className="sr-only">
+											Article published date&nbsp;
+										</span>
 										{date}
 									</span>
 									<span>{readingTime.text}</span>
@@ -184,31 +195,18 @@ export const BlogPostTemplate = ({
 							<div className="relative">
 								{tableOfContents.items.length && (
 									<div className="hidden 2xl:block absolute left-0 top-0 h-full">
-										<div className="sticky top-6 w-72" style={{ height: "calc(100vh - 40px)" }}>
+										<div
+											className="sticky top-6 w-72"
+											style={{ height: "calc(100vh - 40px)" }}
+										>
 											<div
 												className={`w-full max-h-full overflow-y-auto p-6 pl-4 rounded-xl bg-gray-50 dark:bg-gray-800`}
 											>
-												<ul>
-													{tableOfContents.items.map(item => (
-														<li key={item.url} className="py-1">
-															<a
-																href={item.url}
-																className={`inline-flex text-base leading-tight opacity-50 hover:opacity-75 ${
-																	item.url === `#${activeSectionId}`
-																		? "opacity-100 font-medium"
-																		: ""
-																}`}
-															>
-																<span
-																	className={`block flex-shrink-0 w-2 h-2 mt-1.5 mr-2 rounded-full ${
-																		item.url === `#${activeSectionId}` ? `bg-${color}-400` : ""
-																	}`}
-																/>
-																{item.title}
-															</a>
-														</li>
-													))}
-												</ul>
+												<TableOfContents
+													tableOfContents={tableOfContents}
+													activeSectionId={activeSectionId}
+													color={color}
+												/>
 											</div>
 										</div>
 									</div>
@@ -224,7 +222,9 @@ export const BlogPostTemplate = ({
 													to={prev.fields.slug}
 													className="block flex-1 py-4 px-5 border border-gray-200 dark:border-gray-700 rounded-lg group"
 												>
-													<h3 className="mb-1 text-sm font-semibold">« Previous</h3>
+													<h3 className="mb-1 text-sm font-semibold">
+														« Previous
+													</h3>
 													<p
 														className={`text-lg leading-snug font-semibold opacity-75 group-hover:opacity-100 ${themeColors[color].text}`}
 													>
@@ -237,7 +237,9 @@ export const BlogPostTemplate = ({
 													to={next.fields.slug}
 													className="block flex-1 py-4 px-5 border border-gray-200 dark:border-gray-700 rounded-lg text-right group"
 												>
-													<h3 className="mb-1 text-sm font-semibold">Next »</h3>
+													<h3 className="mb-1 text-sm font-semibold">
+														Next »
+													</h3>
 													<p
 														className={`text-lg leading-snug font-semibold opacity-75 group-hover:opacity-100 ${themeColors[color].text}`}
 													>
@@ -249,8 +251,13 @@ export const BlogPostTemplate = ({
 										<hr className="my-10 border-t border-gray-200 dark:border-gray-800" />
 										<div className="sm:flex items-center space-y-4 sm:space-y-0 sm:space-x-4">
 											{hasNavigatorShare && (
-												<Button className="w-full sm:w-auto" onClick={shareArticle}>
-													<Share className={`mr-2 w-5 h-5 text-gray-400`} />
+												<Button
+													className="w-full sm:w-auto"
+													onClick={shareArticle}
+												>
+													<Share
+														className={`mr-2 w-5 h-5 text-gray-400`}
+													/>
 													<span>Share this article</span>
 												</Button>
 											)}
@@ -262,7 +269,9 @@ export const BlogPostTemplate = ({
 													as="a"
 													className="w-full sm:w-auto"
 												>
-													<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
+													<Twitter
+														className={`mr-2 w-5 h-5 text-gray-400`}
+													/>
 													<span>Discuss on Twitter</span>
 												</Button>
 											)}
@@ -274,7 +283,9 @@ export const BlogPostTemplate = ({
 													as="a"
 													className="w-full sm:w-auto"
 												>
-													<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
+													<GitHub
+														className={`mr-2 w-5 h-5 text-gray-400`}
+													/>
 													<span>Edit on Github</span>
 												</Button>
 											)}
@@ -354,9 +365,6 @@ export const pageQuery = graphql`
 				tags
 				featuredimage {
 					publicURL
-					fields {
-						markup
-					}
 				}
 				socialimage {
 					publicURL

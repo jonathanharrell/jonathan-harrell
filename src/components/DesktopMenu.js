@@ -15,7 +15,7 @@ const DesktopMenu = ({ shell, color }) => {
 	const { themeName, setTheme } = useContext(ThemeContext);
 
 	// some links need special logic to determine whether or not they should get the active style
-	const isActive = ({ isCurrent, isPartiallyCurrent, href, location }) => {
+	const isActive = ({ isCurrent, isPartiallyCurrent, href }) => {
 		const props = {};
 
 		if (href === "/") {
@@ -25,12 +25,6 @@ const DesktopMenu = ({ shell, color }) => {
 			}
 
 			return props;
-		}
-
-		if (href === "/blog") {
-			if (location.pathname.startsWith("/tags")) {
-				props["data-active"] = true;
-			}
 		}
 
 		if (isCurrent || isPartiallyCurrent) {

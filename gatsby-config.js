@@ -36,7 +36,10 @@ module.exports = {
 					{
 						resolve: "gatsby-remark-images",
 						options: {
-							maxWidth: 2048
+							backgroundColor: "transparent",
+							maxWidth: 768,
+							showCaptions: true,
+							withWebp: true
 						}
 					},
 					{
@@ -51,13 +54,13 @@ module.exports = {
 							languageExtensions: [],
 							noInlineHighlight: true
 						}
-					},
-					{
-						resolve: "gatsby-remark-jh-inline-svg",
-						options: {
-							colors
-						}
 					}
+					// {
+					// 	resolve: "gatsby-remark-jh-inline-svg",
+					// 	options: {
+					// 		colors
+					// 	}
+					// }
 					// 'gatsby-remark-jh-codepen-block'
 				]
 			}
@@ -101,12 +104,6 @@ module.exports = {
 			options: {
 				path: `${__dirname}/src/svgs`,
 				name: "svgs"
-			}
-		},
-		{
-			resolve: "gatsby-plugin-netlify-cms",
-			options: {
-				modulePath: `${__dirname}/src/cms/cms.js`
 			}
 		},
 		// {
@@ -198,6 +195,12 @@ module.exports = {
 				theme_color: website.themeColor,
 				display: "standalone",
 				icon: website.favicon
+			}
+		},
+		{
+			resolve: "gatsby-plugin-netlify-cms",
+			options: {
+				modulePath: `${__dirname}/src/cms/cms.js`
 			}
 		},
 		"gatsby-plugin-offline",

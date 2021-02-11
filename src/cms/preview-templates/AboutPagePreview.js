@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import previewStyle from "../preview-style";
 
 const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
@@ -36,15 +35,6 @@ const AboutPagePreview = ({ entry, widgetsFor, getAsset }) => {
 			)}
 		</div>
 	);
-};
-
-AboutPagePreview.propTypes = {
-	entry: PropTypes.shape({
-		getIn: PropTypes.func,
-		getAsset: PropTypes.func
-	}),
-	widgetFor: PropTypes.func,
-	widgetsFor: PropTypes.func
 };
 
 export default AboutPagePreview;

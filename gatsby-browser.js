@@ -27,7 +27,3 @@ export const onRouteUpdate = ({ prevLocation }) => {
 		}
 	}
 };
-
-// export const wrapPageElement = ({ element, props }) => {
-//   return <Layout {...props}>{element}</Layout>
-// }

@@ -18,7 +18,7 @@ const ArticleHeading = ({ color, children, ...props }) => {
 
 	return (
 		<div className="relative">
-			<h2 id={id} {...props}>
+			<h2 id={id} {...props} style={{ scrollMarginTop: "1rem" }}>
 				{children}
 			</h2>
 			<a

@@ -5,6 +5,7 @@ import {
 	connectHits,
 	connectRefinementList,
 	connectSearchBox,
+	connectStateResults,
 	InstantSearch
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
@@ -12,6 +13,7 @@ import Layout from "../components/Layout";
 import Seo from "../components/seo";
 import get from "lodash/get";
 import ArticleExcerpt from "../components/ArticleExcerpt";
+import { addAlert } from "../helpers";
 
 const description =
 	"Stay update to date on the latest developments in HTML, CSS and Javascript. Read Jonathan Harrell's blog for tips, tricks and techniques.";
@@ -65,6 +67,34 @@ const SearchBox = ({ currentRefinement, refine }) => {
 	);
 };
 
+const StateResults = ({ searchResults, searchState, children }) => {
+	const hasResults = searchResults && searchResults.nbHits !== 0;
+
+	useEffect(() => {
+		if (searchResults && searchState.query) {
+			addAlert(
+				`${searchResults.nbHits} article${
+					searchResults.nbHits === 1 ? "" : "s"
+				} found for search query ${searchState.query}`
+			);
+		}
+	}, [searchResults, searchState]);
+
+	return (
+		<div>
+			{hasResults && children}
+			{!hasResults && searchState.query && (
+				<div className="py-16 rounded-xl bg-gray-50 text-center">
+					<h2 className="text-3xl font-extrabold tracking-tight">
+						No matching search results
+					</h2>
+					<p className="text-lg">Try another search term</p>
+				</div>
+			)}
+		</div>
+	);
+};
+
 const Highlight = ({ highlight, attribute, hit }) => {
 	const parsedHit = highlight({
 		highlightProperty: "_highlightResult",
@@ -97,11 +127,23 @@ const Hits = ({ hits }) => (
 			<li key={hit.objectID}>
 				<ArticleExcerpt
 					link={hit.fields.slug}
-					title={<CustomHighlight attribute="frontmatter.title" hit={hit} tagName="mark" />}
-					excerpt={<CustomHighlight attribute="frontmatter.description" hit={hit} tagName="mark" />}
+					title={
+						<CustomHighlight attribute="frontmatter.title" hit={hit} tagName="mark" />
+					}
+					excerpt={
+						<CustomHighlight
+							attribute="frontmatter.description"
+							hit={hit}
+							tagName="mark"
+						/>
+					}
 					date={new Date(hit.frontmatter.date)}
 					color={hit.frontmatter.color || "blue"}
-					svg={hit.frontmatter.featuredimage ? hit.frontmatter.featuredimage.fields.markup : null}
+					svg={
+						hit.frontmatter.featuredimage
+							? hit.frontmatter.featuredimage.fields.markup
+							: null
+					}
 				/>
 			</li>
 		))}
@@ -110,6 +152,7 @@ const Hits = ({ hits }) => (
 
 const CustomRefinementList = connectRefinementList(RefinementList);
 const CustomSearchBox = connectSearchBox(SearchBox);
+const CustomStateResults = connectStateResults(StateResults);
 const CustomHits = connectHits(Hits);
 
 export const BlogIndexPageTemplate = ({ location, tags }) => {
@@ -120,14 +163,18 @@ export const BlogIndexPageTemplate = ({ location, tags }) => {
 				<div className="max-w-3xl mx-auto py-24">
 					<InstantSearch searchClient={searchClient} indexName="jh_posts">
 						<header className="mb-8">
-							<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">Articles</h1>
+							<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">
+								Articles
+							</h1>
 						</header>
 						<section>
 							<div className="sm:flex items-center justify-between mb-4">
 								<CustomRefinementList attribute="frontmatter.tags" />
 								<CustomSearchBox />
 							</div>
-							<CustomHits />
+							<CustomStateResults>
+								<CustomHits />
+							</CustomStateResults>
 						</section>
 					</InstantSearch>
 				</div>
