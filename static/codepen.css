@@ -24,3 +24,20 @@ body {
 	--hiq-disabled-border-color: #353E4D;
 }
 
+.wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	padding: 4rem;
+}
+
+input {
+	font-size: var(--hiq-font-size-large);
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+input:focus {
+	border-color: #10B981;
+	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+}

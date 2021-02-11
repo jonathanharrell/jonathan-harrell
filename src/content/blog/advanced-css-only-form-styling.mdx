@@ -17,7 +17,7 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 ## :enabled & :disabled
 
-<Codepen id="vVEexG">
+<Codepen>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -33,29 +33,6 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		</div>
 	</div>
 	<div data-lang="css">{`
-	:root {
-		--hiq-html-background-color: #F9FAFB;
-		--hiq-body-background-color: #F9FAFB;
-		--hiq-font-size-large: 1.125rem;
-		--hiq-border-radius: 6px;
-		--hiq-outline-width: 0;
-		--hiq-input-padding-vertical: 1.25rem;
-		--hiq-input-padding-horizontal: 1rem;
-	}
-	body {
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-rendering: optimizeLegibility;
-	}
-	.dark {
-		--hiq-html-background-color: #1F2937;
-		--hiq-body-background-color: #1F2937;
-		--hiq-text-color: white;
-		--hiq-input-border-color: #353E4D;
-		--hiq-input-background-color: #111727;
-		--hiq-disabled-background-color: #374150;
-		--hiq-disabled-border-color: #353E4D;
-	}
 	.wrap {
 		display: flex;
 		align-items: center;
@@ -70,11 +47,15 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		width: 100%;
 		max-width: 40rem;
 	}
-	.input.input {
+	form .input {
 		font-size: var(--hiq-font-size-large);
 		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 	}
-	.input.input:focus {
+	form .input:enabled {
+		border-color: #10B981 !important;
+		box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+	}
+	form .input:focus {
 		border-color: #10B981;
 		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
 	}
@@ -83,61 +64,156 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 This one should be familiar to most of you, but still important to remember. It’s pretty essential to display whether or not an input is disabled to a user.
 
+```html
+<input type="email">
+<input type="email" disabled>
+```
+
 ```css
-&:disabled {
-  border-color: var(--gray-lighter);
-  background-color: var(--gray-lightest);
-  color: var(--gray-light);
+input:enabled {
+	border-color: var(--primary);
+	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+}
+
+input:disabled {
+	background-color: var(--gray-lighter);
+	color: var(--gray-light);
 }
 ```
 
 ## :read-write & read-only
 
-<figure>
-	<img
-		src="/img/input-read-only.svg"
-		data-dark-src="/img/input-read-only-dark.svg"
-		alt="Read-only inputs can be styled with their values dimmer than writable inputs, letting the user know that the values of these inputs cannot be altered."
-	/>
-</figure>
+<Codepen>
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<div>
+					<label htmlFor="read-write">Email address (read-write)</label>
+					<input type="email" id="read-write" placeholder="email@email.com" value="my-email@email.com" class="input" />
+				</div>
+				<div>
+					<label htmlFor="read-only">Email address (read-only)</label>
+					<input type="email" id="read-only" placeholder="email@email.com" value="my-email@email.com" class="input" readOnly />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div data-lang="css">{`
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		padding: 4rem;
+	}
+	form {
+		display: grid;
+		grid-gap: 48px;
+		grid-template-columns: repeat(2, 1fr);
+		width: 100%;
+		max-width: 40rem;
+	}
+	form .input {
+		font-size: var(--hiq-font-size-large);
+		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+	}
+	form .input:read-write {
+		border-color: #10B981 !important;
+		box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+	}
+	form .input:focus {
+		border-color: #10B981;
+		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+	}
+	`}</div>
+</Codepen>
 
 An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
 
 ```html
-<input type="text" value="Read-only value" readonly>
+<input type="email" value="Read-write value">
+<input type="email" value="Read-only value" readonly>
 ```
 
 ```css
+input:read-write {
+	border-color: var(--primary);
+	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+}
+
 input:read-only {
-  border-color: var(--gray-lighter);
-  color: var(--gray);
-  cursor: not-allowed;
+	background-color: var(--gray-lighter);
+	color: var(--gray-light);
 }
 ```
 
 ## :placeholder-shown
 
-<figure>
-	<img
-		src="/img/input-placeholder-shown.svg"
-		data-dark-src="/img/input-placeholder-shown-dark.svg"
-		alt="A common UX pattern involves showing a placeholder within an input and then moving that placeholder text above the input when a user starts typing."
-	/>
-</figure>
+<Codepen>
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<div>
+					<input type="email" id="placeholder-shown" placeholder="Email address" class="input" autoComplete="off" />
+					<label htmlFor="placeholder-shown">Email address</label>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div data-lang="css">{`
+	:root {
+		--hiq-input-invalid-border-color: #e3e5e8;
+	}
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		padding: 4rem;
+	}
+	form {
+		width: 100%;
+		max-width: 25rem;
+	}
+	form div {
+		position: relative;
+		padding-top: 1.75rem;
+	}
+	form .input {
+		font-size: var(--hiq-font-size-large);
+		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+	}
+	form label {
+		position: absolute;
+		top: 0;
+		opacity: 1;
+		transform: translateY(0);
+		transition: all 0.2s ease-out;
+	}
+	form .input:placeholder-shown + label {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+	form .input:focus {
+		border-color: #10B981;
+		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+	}
+	`}</div>
+</Codepen>
 
 The first selector is relatively new and doesn’t have complete [browser support](https://caniuse.com/#feat=css-placeholder-shown) yet. However, this seems like something that could easily work as a progressive enhancement. The selector allows us to detect whether a placeholder is currently visible to the user. This could come in handy if we want to dynamically hide and show the input’s associated label.
 
 Here I am hiding the label until the user types in the input, thus hiding the placeholder. I use a nice transition effect to display the label. Note that for this to work, the label must come AFTER the input.
 
 ```html
-<div class="form-group">
-  <input type="text" id="dynamic-label-input" placeholder="Enter some text">
-  <label for="dynamic-label-input">Enter some text</label>
+<div class="input-wrap">
+  <input type="email" id="email" placeholder="Email address">
+  <label for="email">Email address</label>
 </div>
 ```
 
 ```css
-.form-group {
+.input-wrap {
   position: relative;
   padding-top: 1.5rem;
 }
@@ -157,6 +233,55 @@ input:placeholder-shown + label {
 ```
 
 ## :default
+
+<Codepen>
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<fieldset>
+					<legend>Options</legend>
+					<div class="radio">
+						<input type="radio" name="season" id="spring" checked></input>
+						<label for="spring">Option 1</label>
+					</div>
+					<div class="radio">
+						<input type="radio" name="season" id="summer"></input>
+						<label for="summer">Option 2</label>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div data-lang="css">{`
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		padding: 4rem;
+	}
+	form {
+		width: 100%;
+		max-width: 32rem;
+	}
+	fieldset {
+		display: flex;
+	}
+	.radio {
+		display: flex;
+		margin-right: 1rem;
+	}
+	.radio label {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-radius: 9999px;
+		font-weight: 500;
+	}
+	.radio input:default + label {
+		background-color: #E5E7EB;
+	}
+	`}</div>
+</Codepen>
 
 <figure>
 	<img
