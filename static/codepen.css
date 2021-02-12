@@ -22,6 +22,7 @@ body {
 	--hiq-input-background-color: #111727;
 	--hiq-disabled-background-color: #374150;
 	--hiq-disabled-border-color: #353E4D;
+	--hiq-input-invalid-border-color: #e3e5e8;
 }
 
 .wrap {
@@ -29,7 +30,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	padding: 4rem;
+	padding: 2rem;
+}
+
+@media (min-width: 640px) {
+	.wrap {
+		padding: 4rem;
+	}
 }
 
 input {

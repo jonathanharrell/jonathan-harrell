@@ -32,6 +32,10 @@ select {
   @apply text-gray-700 dark:text-gray-300;
 }
 
+.cp_embed_wrapper {
+	height: 100%;
+}
+
 /*svg {*/
 /*  max-width: 100%;*/
 /*  height: auto;*/

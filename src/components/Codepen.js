@@ -25,7 +25,7 @@ const Codepen = ({ children }) => {
 		data.html_classes = [themeName];
 		data.stylesheets = [
 			"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-			"https://60255a16a1fb6c0007fe1c96--jonathan-harrell.netlify.app/codepen.css"
+			"https://60256b6cee186a00083be97f--jonathan-harrell.netlify.app/codepen.css"
 		];
 
 		return (
@@ -41,32 +41,34 @@ const Codepen = ({ children }) => {
 
 	return codepenChildren ? (
 		<>
-			<div ref={root} className="my-8 border-4 border-gray-50 dark:border-gray-800">
+			<div ref={root} className="my-8 bg-pink-400">
 				<div>
 					<span>Try it out!</span>
 					<button onClick={viewOnCodepen}>View it on Codepen</button>
 					<div className="hidden">{renderForm()}</div>
 				</div>
-				<div
-					className="codepen hidden"
-					data-prefill={`{
+				<div style={{ height: "300px" }}>
+					<div
+						className="codepen hidden"
+						data-prefill={`{
 						"html_classes": ["${themeName}"],
 						"stylesheets": [
 							"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-							"https://60255a16a1fb6c0007fe1c96--jonathan-harrell.netlify.app/codepen.css"
+							"https://60256b6cee186a00083be97f--jonathan-harrell.netlify.app/codepen.css"
 						]
 					}`}
-					data-height="180"
-					data-theme-id="39442"
-					data-default-tab="result"
-				>
-					{codepenChildren.map((child, index) => (
-						<pre key={index} data-lang={child.props["data-lang"]}>
-							{child.props["data-lang"] === "html"
-								? ReactDOMServer.renderToString(child.props.children)
-								: child.props.children}
-						</pre>
-					))}
+						data-height="100%"
+						data-theme-id="39442"
+						data-default-tab="result"
+					>
+						{codepenChildren.map((child, index) => (
+							<pre key={index} data-lang={child.props["data-lang"]}>
+								{child.props["data-lang"] === "html"
+									? ReactDOMServer.renderToString(child.props.children)
+									: child.props.children}
+							</pre>
+						))}
+					</div>
 				</div>
 			</div>
 		</>

@@ -23,7 +23,7 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 			<form>
 				<div>
 					<label htmlFor="enabled">Email address (enabled)</label>
-					<input type="email" id="enabled" placeholder="email@email.com" class="input" />
+					<input type="email" id="enabled" placeholder="email@email.com" class="input" onChange={() => {}} />
 				</div>
 				<div>
 					<label htmlFor="disabled">Email address (disabled)</label>
@@ -33,19 +33,18 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		</div>
 	</div>
 	<div data-lang="css">{`
-	.wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		padding: 4rem;
-	}
 	form {
 		display: grid;
-		grid-gap: 48px;
-		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 24px;
+		grid-template-columns: repeat(1, 1fr);
 		width: 100%;
 		max-width: 40rem;
+	}
+	@media (min-width: 640px) {
+		form {
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 48px;
+		}
 	}
 	form .input {
 		font-size: var(--hiq-font-size-large);
@@ -89,7 +88,7 @@ input:disabled {
 			<form>
 				<div>
 					<label htmlFor="read-write">Email address (read-write)</label>
-					<input type="email" id="read-write" placeholder="email@email.com" value="my-email@email.com" class="input" />
+					<input type="email" id="read-write" placeholder="email@email.com" value="my-email@email.com" class="input" onChange={() => {}} />
 				</div>
 				<div>
 					<label htmlFor="read-only">Email address (read-only)</label>
@@ -99,13 +98,6 @@ input:disabled {
 		</div>
 	</div>
 	<div data-lang="css">{`
-	.wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		padding: 4rem;
-	}
 	form {
 		display: grid;
 		grid-gap: 48px;
@@ -131,7 +123,7 @@ input:disabled {
 An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
 
 ```html
-<input type="email" value="Read-write value">
+<input type="email" value="Read-write value" onChange={() => {}}>
 <input type="email" value="Read-only value" readonly>
 ```
 
@@ -154,23 +146,13 @@ input:read-only {
 		<div className="wrap">
 			<form>
 				<div>
-					<input type="email" id="placeholder-shown" placeholder="Email address" class="input" autoComplete="off" />
+					<input type="email" id="placeholder-shown" placeholder="Email address" class="input" autoComplete="off" onChange={() => {}} />
 					<label htmlFor="placeholder-shown">Email address</label>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div data-lang="css">{`
-	:root {
-		--hiq-input-invalid-border-color: #e3e5e8;
-	}
-	.wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		padding: 4rem;
-	}
 	form {
 		width: 100%;
 		max-width: 25rem;
@@ -241,11 +223,11 @@ input:placeholder-shown + label {
 				<fieldset>
 					<legend>Options</legend>
 					<div class="radio">
-						<input type="radio" name="season" id="spring" checked></input>
+						<input type="radio" name="season" id="spring" checked onChange={() => {}}></input>
 						<label for="spring">Option 1</label>
 					</div>
 					<div class="radio">
-						<input type="radio" name="season" id="summer"></input>
+						<input type="radio" name="season" id="summer" onChange={() => {}}></input>
 						<label for="summer">Option 2</label>
 					</div>
 				</fieldset>
@@ -253,13 +235,6 @@ input:placeholder-shown + label {
 		</div>
 	</div>
 	<div data-lang="css">{`
-	.wrap {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		padding: 4rem;
-	}
 	form {
 		width: 100%;
 		max-width: 32rem;
