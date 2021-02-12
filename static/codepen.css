@@ -10,7 +10,10 @@
 	--hiq-radio-check-width: 0.4rem;
 	--hiq-radio-check-height: 0.4rem;
 	--hiq-radio-background-color: #FFF;
-	--hiq-radio-border-color: #E3E5E8;
+	--hiq-radio-border-color: var(--hiq-input-border-color);
+	--hiq-checkbox-border-radius: 4px;
+	--hiq-checkbox-background-color: #FFF;
+	--hiq-checkbox-border-color: var(--hiq-input-border-color);
 }
 
 body {
@@ -28,7 +31,8 @@ body {
 	--hiq-disabled-background-color: #374150;
 	--hiq-disabled-border-color: #353E4D;
 	--hiq-input-invalid-border-color: #353E4D;
-	--radio-border-color: #353E4D;
+	--hiq-radio-background-color: #111727;
+	--hiq-checkbox-background-color: #111727;
 }
 
 .wrap {

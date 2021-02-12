@@ -9,7 +9,7 @@ const CodepenWrap = styled.div`
 	${({ smHeight }) => `@media (min-width: 768px) { height: ${smHeight}px; }`};
 `;
 
-const Codepen = ({ height, smHeight, children }) => {
+const Codepen = ({ title, height, smHeight, children }) => {
 	const { themeName } = useContext(ThemeContext);
 	const root = useRef();
 
@@ -29,10 +29,11 @@ const Codepen = ({ height, smHeight, children }) => {
 			return obj;
 		}, {});
 
+		data.title = title;
 		data.html_classes = [themeName];
 		data.stylesheets = [
 			"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-			"https://6025dcd0a3059200081bdc97--jonathan-harrell.netlify.app/codepen.css"
+			"https://6025deddeb347a0007c5b56b--jonathan-harrell.netlify.app/codepen.css"
 		];
 
 		return (
@@ -45,7 +46,7 @@ const Codepen = ({ height, smHeight, children }) => {
 	const viewOnCodepen = () => {
 		root.current.querySelector("form").submit();
 	};
-
+	console.log(title);
 	return codepenChildren ? (
 		<>
 			<div
@@ -67,7 +68,7 @@ const Codepen = ({ height, smHeight, children }) => {
 						"html_classes": ["${themeName}"],
 						"stylesheets": [
 							"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-							"https://6025dcd0a3059200081bdc97--jonathan-harrell.netlify.app/codepen.css"
+							"https://6025deddeb347a0007c5b56b--jonathan-harrell.netlify.app/codepen.css"
 						]
 					}`}
 						data-height="100%"

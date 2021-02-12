@@ -17,7 +17,7 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 ## :enabled & :disabled
 
-<Codepen height={260} smHeight={180}>
+<Codepen title="Enabled & Disabled Inputs" height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -82,7 +82,7 @@ input:disabled {
 
 ## :read-write & read-only
 
-<Codepen height={260} smHeight={180}>
+<Codepen title="Read-Write & Read-Only Inputs" height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -147,7 +147,7 @@ input:read-only {
 
 ## :placeholder-shown
 
-<Codepen height={180}>
+<Codepen title="Placeholder-Shown" height={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -229,19 +229,27 @@ input:placeholder-shown + label {
 
 ## :default
 
-<Codepen>
+<Codepen title="Default Input Value" height={240} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
 				<fieldset>
 					<legend>Options</legend>
 					<div class="radio">
-						<input type="radio" name="season" id="spring" checked onChange={() => {}}></input>
-						<label for="spring">Option 1</label>
+						<input type="radio" name="options" id="option-1" checked onChange={() => {}}></input>
+						<label for="option-1">Option 1</label>
 					</div>
 					<div class="radio">
-						<input type="radio" name="season" id="summer" onChange={() => {}}></input>
-						<label for="summer">Option 2</label>
+						<input type="radio" name="options" id="option-2" onChange={() => {}}></input>
+						<label for="option-2">Option 2</label>
+					</div>
+					<div class="radio">
+						<input type="radio" name="options" id="option-3" onChange={() => {}}></input>
+						<label for="option-3">Option 3</label>
+					</div>
+					<div class="radio">
+						<input type="radio" name="options" id="option-4" onChange={() => {}}></input>
+						<label for="option-4">Option 4</label>
 					</div>
 				</fieldset>
 			</form>
@@ -256,8 +264,12 @@ input:placeholder-shown + label {
 		max-width: 32rem;
 	}
 	fieldset {
-		display: flex;
 		margin-bottom: 0;
+	}
+	@media (min-width: 640px) {
+		fieldset {
+			display: flex;
+		}
 	}
 	.radio {
 		display: flex;
@@ -282,26 +294,62 @@ input:placeholder-shown + label {
 	.radio input:default + label {
 		background-color: #F3F4F6;
 	}
+	.dark .radio input:default + label {
+		background-color: #374150;
+	}
 	`}</div>
 </Codepen>
 
-<figure>
-	<img
-		src="/img/input-default.svg"
-		data-dark-src="/img/input-default-dark.svg"
-		alt=""
-	/>
-</figure>
-
 ## :checked
 
-<figure>
-	<img
-		src="/img/input-checked.svg"
-		data-dark-src="/img/input-checked-dark.svg"
-		alt="Checkbox inputs can be styled based on their checked or unchecked states. This allows custom checkboxes to alert the user when these inputs have been checked."
-	/>
-</figure>
+<Codepen title="Checked Input Value" height={240} smHeight={180}>
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<fieldset>
+					<legend>Options</legend>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-1" onChange={() => {}}></input>
+						<label for="option-1">Option 1</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-2" onChange={() => {}}></input>
+						<label for="option-2">Option 2</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-3" checked onChange={() => {}}></input>
+						<label for="option-3">Option 3</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-4" onChange={() => {}}></input>
+						<label for="option-4">Option 4</label>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div data-lang="css">{`
+	:root {
+		--hiq-color-primary: #10B981;
+	}
+	form {
+		width: 100%;
+		max-width: 32rem;
+	}
+	fieldset {
+		margin-bottom: 0;
+	}
+	@media (min-width: 640px) {
+		fieldset {
+			display: flex;
+		}
+	}
+	.checkbox {
+		display: flex;
+		margin-right: 1rem;
+	}
+	`}</div>
+</Codepen>
 
 Most of you will be familiar with this selector. It gives us the ability to apply custom styles to checkboxes and radio buttons when checked. My technique for styling checkboxes involves creating a wrapper element and placing the `label` after the `input`.
 
