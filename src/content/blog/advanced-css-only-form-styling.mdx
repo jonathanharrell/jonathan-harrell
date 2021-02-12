@@ -33,31 +33,32 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 		</div>
 	</div>
 	<div data-lang="css">{`
+/* uses HiQ library as base */
+form {
+	display: grid;
+	grid-gap: 24px;
+	grid-template-columns: repeat(1, 1fr);
+	width: 100%;
+	max-width: 40rem;
+}
+@media (min-width: 640px) {
 	form {
-		display: grid;
-		grid-gap: 24px;
-		grid-template-columns: repeat(1, 1fr);
-		width: 100%;
-		max-width: 40rem;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 48px;
 	}
-	@media (min-width: 640px) {
-		form {
-			grid-template-columns: repeat(2, 1fr);
-			grid-gap: 48px;
-		}
-	}
-	form .input {
-		font-size: var(--hiq-font-size-large);
-		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
-	form .input:enabled {
-		border-color: #10B981 !important;
-		box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
-	}
-	form .input:focus {
-		border-color: #10B981;
-		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
+}
+form .input {
+	font-size: var(--hiq-font-size-large);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+form .input:enabled {
+	border-color: #10B981 !important;
+	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
+}
+form .input:focus {
+	border-color: #10B981;
+	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
 	`}</div>
 </Codepen>
 
@@ -70,8 +71,8 @@ This one should be familiar to most of you, but still important to remember. Itâ
 
 ```css
 input:enabled {
-	border-color: var(--primary);
-	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+	border-color: var(--color-primary);
+	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
 }
 
 input:disabled {
@@ -98,45 +99,46 @@ input:disabled {
 		</div>
 	</div>
 	<div data-lang="css">{`
+/* uses HiQ library as base */
+form {
+	display: grid;
+	grid-gap: 24px;
+	grid-template-columns: repeat(1, 1fr);
+	width: 100%;
+	max-width: 40rem;
+}
+@media (min-width: 640px) {
 	form {
-		display: grid;
-		grid-gap: 24px;
-		grid-template-columns: repeat(1, 1fr);
-		width: 100%;
-		max-width: 40rem;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 48px;
 	}
-	@media (min-width: 640px) {
-		form {
-			grid-template-columns: repeat(2, 1fr);
-			grid-gap: 48px;
-		}
-	}
-	form .input {
-		font-size: var(--hiq-font-size-large);
-		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
-	form .input:read-write {
-		border-color: #10B981 !important;
-		box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
-	}
-	form .input:focus {
-		border-color: #10B981;
-		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
+}
+form .input {
+	font-size: var(--hiq-font-size-large);
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+form .input:read-write {
+	border-color: #10B981 !important;
+	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+}
+form .input:focus {
+	border-color: #10B981;
+	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+}
 	`}</div>
 </Codepen>
 
 An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
 
 ```html
-<input type="email" value="Read-write value" onChange={() => {}}>
+<input type="email" value="Read-write value">
 <input type="email" value="Read-only value" readonly>
 ```
 
 ```css
 input:read-write {
 	border-color: var(--primary);
-	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
 }
 
 input:read-only {
@@ -166,33 +168,34 @@ input:read-only {
 		</div>
 	</div>
 	<div data-lang="css">{`
-	form {
-		width: 100%;
-		max-width: 25rem;
-	}
-	form div {
-		position: relative;
-		padding-top: 1.75rem;
-	}
-	form .input {
-		font-size: var(--hiq-font-size-large);
-		box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
-	form label {
-		position: absolute;
-		top: 0;
-		opacity: 1;
-		transform: translateY(0);
-		transition: all 0.2s ease-out;
-	}
-	form .input:placeholder-shown + label {
-		opacity: 0;
-		transform: translateY(1rem);
-	}
-	form .input:focus {
-		border-color: #10B981;
-		box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
-	}
+/* uses HiQ library as base */
+form {
+	width: 100%;
+	max-width: 25rem;
+}
+form div {
+	position: relative;
+	padding-top: 1.75rem;
+}
+form .input {
+	font-size: var(--hiq-font-size-large);
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+form label {
+	position: absolute;
+	top: 0;
+	opacity: 1;
+	transform: translateY(0);
+	transition: all 0.2s ease-out;
+}
+form .input:placeholder-shown + label {
+	opacity: 0;
+	transform: translateY(1rem);
+}
+form .input:focus {
+	border-color: #10B981;
+	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+}
 	`}</div>
 </Codepen>
 
@@ -229,7 +232,7 @@ input:placeholder-shown + label {
 
 ## :default
 
-<Codepen title="Default Input Value" height={240} smHeight={180}>
+<Codepen title="Default Input Value" height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -256,53 +259,53 @@ input:placeholder-shown + label {
 		</div>
 	</div>
 	<div data-lang="css">{`
-	:root {
-		--hiq-color-primary: #10B981;
-	}
-	form {
-		width: 100%;
-		max-width: 32rem;
-	}
+/* uses HiQ library as base */
+:root {
+	--hiq-color-primary: #10B981;
+}
+form {
+	width: 100%;
+	max-width: 32rem;
+}
+fieldset {
+	margin-bottom: 0;
+}
+@media (min-width: 640px) {
 	fieldset {
-		margin-bottom: 0;
-	}
-	@media (min-width: 640px) {
-		fieldset {
-			display: flex;
-		}
-	}
-	.radio {
 		display: flex;
-		margin-right: 1rem;
 	}
-	.radio label {
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
-		padding-left: 2rem;
-		padding-right: 1rem;
-		border-radius: 9999px;
-		font-weight: 500;
-	}
-	.radio label::before {
-		top: 50%;
-		left: 0.5rem;
-		transform: translateY(-50%);
-	}
-	.radio label::after {
-		left: 1rem !important;
-	}
-	.radio input:default + label {
-		background-color: #F3F4F6;
-	}
-	.dark .radio input:default + label {
-		background-color: #374150;
-	}
+}
+.radio {
+	display: flex;
+	margin-right: 1rem;
+}
+.radio label {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+.radio label::before {
+	top: 50%;
+	left: 0.5rem;
+	transform: translateY(-50%);
+}
+.radio label::after {
+	left: 1rem !important;
+}
+.radio input:default + label {
+	background-color: #F3F4F6;
+	border-radius: 9999px;
+}
+.dark .radio input:default + label {
+	background-color: #374150;
+}
 	`}</div>
 </Codepen>
 
 ## :checked
 
-<Codepen title="Checked Input Value" height={240} smHeight={180}>
+<Codepen title="Checked Input Value" height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -329,25 +332,29 @@ input:placeholder-shown + label {
 		</div>
 	</div>
 	<div data-lang="css">{`
-	:root {
-		--hiq-color-primary: #10B981;
-	}
-	form {
-		width: 100%;
-		max-width: 32rem;
-	}
+/* uses HiQ library as base */
+:root {
+	--hiq-color-primary: #10B981;
+}
+form {
+	width: 100%;
+	max-width: 32rem;
+}
+fieldset {
+	margin-bottom: 0;
+}
+@media (min-width: 640px) {
 	fieldset {
-		margin-bottom: 0;
-	}
-	@media (min-width: 640px) {
-		fieldset {
-			display: flex;
-		}
-	}
-	.checkbox {
 		display: flex;
-		margin-right: 1rem;
 	}
+}
+.checkbox {
+	display: flex;
+	margin-right: 1rem;
+}
+.checkbox label {
+	margin: 0.5rem 0;
+}
 	`}</div>
 </Codepen>
 
@@ -363,11 +370,11 @@ I visually hide the input so that it disappears from view but is still clickable
 ```
 
 ```css
-&:checked + label::before {
+input:checked + label::before {
   background-color: var(--color-primary);
 }
 
-&:checked + label::after {
+input:checked + label::after {
   display: block;
   position: absolute;
   top: 0.2rem;
@@ -383,13 +390,98 @@ I visually hide the input so that it disappears from view but is still clickable
 
 ## :indeterminate
 
-<figure>
-	<img
-		src="/img/input-indeterminate.svg"
-		data-dark-src="/img/input-indeterminate-dark.svg"
-		alt=""
-	/>
-</figure>
+<Codepen title="Indeterminate Input Value" height={260} smHeight={220}>
+	<div data-lang="js">{`
+const masterCheckbox = document.querySelector("input[name='master-option']");
+setMasterState();
+document.querySelector("fieldset").addEventListener("click", event => {
+	if (event.target.type === "checkbox") {
+		setMasterState();
+	}
+});
+function setMasterState() {
+	const checkboxes = Array.from(
+		document.querySelectorAll("fieldset input")
+	);
+	const trueValues = checkboxes.map(checkbox => checkbox.checked).filter(value => value);
+	const allChecked = trueValues.length === checkboxes.length;
+	if (allChecked) {
+		masterCheckbox.indeterminate = false;
+		return masterCheckbox.checked = true;
+	}
+	const someChecked = trueValues.length > 0;
+	if (someChecked) {
+		return masterCheckbox.indeterminate = true;
+	}
+	masterCheckbox.indeterminate = false;
+	masterCheckbox.checked = false;
+}
+	`}</div>
+	<div data-lang="html">
+		<div className="wrap">
+			<form>
+				<div class="master-option-wrap">
+					<div class="checkbox master-option">
+						<input type="checkbox" name="master-option" id="master-option" onChange={() => {}}></input>
+						<label for="master-option">Master option</label>
+					</div>
+				</div>
+				<fieldset>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-1" checked onChange={() => {}}></input>
+						<label for="option-1">Option 1</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-2" checked onChange={() => {}}></input>
+						<label for="option-2">Option 2</label>
+					</div>
+					<div class="checkbox">
+						<input type="checkbox" name="options" id="option-3" onChange={() => {}}></input>
+						<label for="option-3">Option 3</label>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div data-lang="css">{`
+/* uses HiQ library as base */
+:root {
+	--hiq-color-primary: #10B981;
+}
+form {
+	width: 100%;
+	max-width: 32rem;
+	overflow: hidden;
+	border: 1px solid #E3E5E8;
+	border-radius: 6px;
+	background-color: #FFF;
+}
+.master-option-wrap {
+	padding: 1.25rem 2rem;
+}
+.master-option label {
+	font-weight: 600 !important;
+}
+fieldset {
+	margin-bottom: 0;
+	padding: 1.25rem 2rem;
+	border-top: 1px solid #E3E5E8;
+	background-color: var(--hiq-body-background-color);
+}
+@media (min-width: 640px) {
+	fieldset {
+		display: flex;
+	}
+}
+.checkbox {
+	display: flex;
+	margin-right: 1rem;
+}
+.checkbox label {
+	margin-bottom: 0;
+}
+	`}</div>
+</Codepen>
 
 ## :valid & :invalid
 

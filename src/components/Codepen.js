@@ -33,7 +33,7 @@ const Codepen = ({ title, height, smHeight, children }) => {
 		data.html_classes = [themeName];
 		data.stylesheets = [
 			"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-			"https://6025deddeb347a0007c5b56b--jonathan-harrell.netlify.app/codepen.css"
+			"https://6025e3fadd179900073e0ef5--jonathan-harrell.netlify.app/codepen.css"
 		];
 
 		return (
@@ -46,7 +46,7 @@ const Codepen = ({ title, height, smHeight, children }) => {
 	const viewOnCodepen = () => {
 		root.current.querySelector("form").submit();
 	};
-	console.log(title);
+
 	return codepenChildren ? (
 		<>
 			<div
@@ -68,7 +68,7 @@ const Codepen = ({ title, height, smHeight, children }) => {
 						"html_classes": ["${themeName}"],
 						"stylesheets": [
 							"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-							"https://6025deddeb347a0007c5b56b--jonathan-harrell.netlify.app/codepen.css"
+							"https://6025e3fadd179900073e0ef5--jonathan-harrell.netlify.app/codepen.css"
 						]
 					}`}
 						data-height="100%"

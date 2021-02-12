@@ -6,7 +6,7 @@
 	--hiq-outline-width: 0;
 	--hiq-input-padding-vertical: 1.25rem;
 	--hiq-input-padding-horizontal: 1rem;
-	--hiq-input-invalid-border-color: #E3E5E8;
+	--hiq-input-invalid-border-color: var(--hiq-input-border-color);
 	--hiq-radio-check-width: 0.4rem;
 	--hiq-radio-check-height: 0.4rem;
 	--hiq-radio-background-color: #FFF;
@@ -62,4 +62,8 @@ input:focus {
 .radio label::before,
 .checkbox label::before {
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.checkbox input[type="checkbox"]:checked + label::after {
+	left: calc(0.5rem - 1px);
 }
