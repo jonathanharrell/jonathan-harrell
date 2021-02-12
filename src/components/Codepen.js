@@ -1,8 +1,15 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
+import styled from "styled-components";
+import { Codepen as CodepenIcon } from "react-feather";
 import ThemeContext from "../context/theme";
 
-const Codepen = ({ children }) => {
+const CodepenWrap = styled.div`
+	${({ height }) => `height: ${height}px`};
+	${({ smHeight }) => `@media (min-width: 768px) { height: ${smHeight}px; }`};
+`;
+
+const Codepen = ({ height, smHeight, children }) => {
 	const { themeName } = useContext(ThemeContext);
 	const root = useRef();
 
@@ -25,7 +32,7 @@ const Codepen = ({ children }) => {
 		data.html_classes = [themeName];
 		data.stylesheets = [
 			"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-			"https://60256b6cee186a00083be97f--jonathan-harrell.netlify.app/codepen.css"
+			"https://6025d3572775570007152c9f--jonathan-harrell.netlify.app/codepen.css"
 		];
 
 		return (
@@ -41,20 +48,22 @@ const Codepen = ({ children }) => {
 
 	return codepenChildren ? (
 		<>
-			<div ref={root} className="my-8 bg-pink-400">
-				<div>
-					<span>Try it out!</span>
-					<button onClick={viewOnCodepen}>View it on Codepen</button>
+			<div ref={root} className="relative my-8 bg-gray-50 dark:bg-gray-800">
+				<div className="absolute top-0 right-0 py-1 px-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm font-medium text-gray-600 dark:text-gray-400">
+					<button className="flex items-center" onClick={viewOnCodepen}>
+						<CodepenIcon size={14} className="mr-1" />
+						View it on Codepen
+					</button>
 					<div className="hidden">{renderForm()}</div>
 				</div>
-				<div style={{ height: "300px" }}>
+				<CodepenWrap height={height} smHeight={smHeight}>
 					<div
 						className="codepen hidden"
 						data-prefill={`{
 						"html_classes": ["${themeName}"],
 						"stylesheets": [
 							"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-							"https://60256b6cee186a00083be97f--jonathan-harrell.netlify.app/codepen.css"
+							"https://6025d3572775570007152c9f--jonathan-harrell.netlify.app/codepen.css"
 						]
 					}`}
 						data-height="100%"
@@ -69,7 +78,7 @@ const Codepen = ({ children }) => {
 							</pre>
 						))}
 					</div>
-				</div>
+				</CodepenWrap>
 			</div>
 		</>
 	) : null;

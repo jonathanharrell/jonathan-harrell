@@ -6,6 +6,11 @@
 	--hiq-outline-width: 0;
 	--hiq-input-padding-vertical: 1.25rem;
 	--hiq-input-padding-horizontal: 1rem;
+	--hiq-input-invalid-border-color: #E3E5E8;
+	--radio-check-width: 0.4rem;
+	--radio-check-height: 0.4rem;
+	--radio-background-color: #FFF;
+	--radio-border-color: #E3E5E8;
 }
 
 body {
@@ -22,7 +27,8 @@ body {
 	--hiq-input-background-color: #111727;
 	--hiq-disabled-background-color: #374150;
 	--hiq-disabled-border-color: #353E4D;
-	--hiq-input-invalid-border-color: #e3e5e8;
+	--hiq-input-invalid-border-color: #353E4D;
+	--radio-border-color: #353E4D;
 }
 
 .wrap {
@@ -47,4 +53,9 @@ input {
 input:focus {
 	border-color: #10B981;
 	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+input[type="radio"] label::before,
+input[type="checkbox"] label::before {
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }

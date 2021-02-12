@@ -17,7 +17,7 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 ## :enabled & :disabled
 
-<Codepen>
+<Codepen height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -82,7 +82,7 @@ input:disabled {
 
 ## :read-write & read-only
 
-<Codepen>
+<Codepen height={260} smHeight={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
@@ -100,10 +100,16 @@ input:disabled {
 	<div data-lang="css">{`
 	form {
 		display: grid;
-		grid-gap: 48px;
-		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 24px;
+		grid-template-columns: repeat(1, 1fr);
 		width: 100%;
 		max-width: 40rem;
+	}
+	@media (min-width: 640px) {
+		form {
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 48px;
+		}
 	}
 	form .input {
 		font-size: var(--hiq-font-size-large);
@@ -141,13 +147,13 @@ input:read-only {
 
 ## :placeholder-shown
 
-<Codepen>
+<Codepen height={180}>
 	<div data-lang="html">
 		<div className="wrap">
 			<form>
 				<div>
-					<input type="email" id="placeholder-shown" placeholder="Email address" class="input" autoComplete="off" onChange={() => {}} />
-					<label htmlFor="placeholder-shown">Email address</label>
+					<input type="email" id="placeholder-shown" placeholder="Type in me" class="input" autoComplete="off" onChange={() => {}} />
+					<label htmlFor="placeholder-shown">Type in me</label>
 				</div>
 			</form>
 		</div>
@@ -235,6 +241,9 @@ input:placeholder-shown + label {
 		</div>
 	</div>
 	<div data-lang="css">{`
+	:root {
+		--hiq-color-primary: #10B981;
+	}
 	form {
 		width: 100%;
 		max-width: 32rem;
@@ -249,8 +258,18 @@ input:placeholder-shown + label {
 	.radio label {
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
+		padding-left: 2rem;
+		padding-right: 1rem;
 		border-radius: 9999px;
 		font-weight: 500;
+	}
+	.radio label::before {
+		top: 50%;
+		left: 0.5rem;
+		transform: translateY(-50%);
+	}
+	.radio label::after {
+		left: 1rem !important;
 	}
 	.radio input:default + label {
 		background-color: #E5E7EB;
