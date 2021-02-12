@@ -32,7 +32,7 @@ const Codepen = ({ height, smHeight, children }) => {
 		data.html_classes = [themeName];
 		data.stylesheets = [
 			"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-			"https://6025d3572775570007152c9f--jonathan-harrell.netlify.app/codepen.css"
+			"https://6025dcd0a3059200081bdc97--jonathan-harrell.netlify.app/codepen.css"
 		];
 
 		return (
@@ -48,14 +48,18 @@ const Codepen = ({ height, smHeight, children }) => {
 
 	return codepenChildren ? (
 		<>
-			<div ref={root} className="relative my-8 bg-gray-50 dark:bg-gray-800">
-				<div className="absolute top-0 right-0 py-1 px-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm font-medium text-gray-600 dark:text-gray-400">
-					<button className="flex items-center" onClick={viewOnCodepen}>
-						<CodepenIcon size={14} className="mr-1" />
-						View it on Codepen
-					</button>
-					<div className="hidden">{renderForm()}</div>
-				</div>
+			<div
+				ref={root}
+				className="relative overflow-hidden my-8 rounded-xl bg-gray-50 dark:bg-gray-800"
+			>
+				<button
+					className="flex items-center absolute top-0 right-0 py-1 px-2 rounded-tr-xl bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm font-medium text-gray-600 dark:text-gray-400"
+					onClick={viewOnCodepen}
+				>
+					<CodepenIcon size={14} className="mr-1" />
+					View it on Codepen
+				</button>
+				<div className="hidden">{renderForm()}</div>
 				<CodepenWrap height={height} smHeight={smHeight}>
 					<div
 						className="codepen hidden"
@@ -63,7 +67,7 @@ const Codepen = ({ height, smHeight, children }) => {
 						"html_classes": ["${themeName}"],
 						"stylesheets": [
 							"https://cdn.jsdelivr.net/npm/hiq@4.1.4/dist/hiq.min.css",
-							"https://6025d3572775570007152c9f--jonathan-harrell.netlify.app/codepen.css"
+							"https://6025dcd0a3059200081bdc97--jonathan-harrell.netlify.app/codepen.css"
 						]
 					}`}
 						data-height="100%"

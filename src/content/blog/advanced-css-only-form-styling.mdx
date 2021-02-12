@@ -152,8 +152,15 @@ input:read-only {
 		<div className="wrap">
 			<form>
 				<div>
-					<input type="email" id="placeholder-shown" placeholder="Type in me" class="input" autoComplete="off" onChange={() => {}} />
-					<label htmlFor="placeholder-shown">Type in me</label>
+					<input
+						type="text"
+						id="type-in-me"
+						placeholder="Type in me"
+						autoComplete="off"
+						class="input"
+						onChange={() => {}}
+					/>
+					<label htmlFor="type-in-me">Type in me</label>
 				</div>
 			</form>
 		</div>
@@ -195,8 +202,8 @@ Here I am hiding the label until the user types in the input, thus hiding the pl
 
 ```html
 <div class="input-wrap">
-  <input type="email" id="email" placeholder="Email address">
-  <label for="email">Email address</label>
+  <input type="text" id="type-in-me" placeholder="Type in me">
+  <label for="type-in-me">Email address</label>
 </div>
 ```
 
@@ -250,6 +257,7 @@ input:placeholder-shown + label {
 	}
 	fieldset {
 		display: flex;
+		margin-bottom: 0;
 	}
 	.radio {
 		display: flex;
@@ -272,7 +280,7 @@ input:placeholder-shown + label {
 		left: 1rem !important;
 	}
 	.radio input:default + label {
-		background-color: #E5E7EB;
+		background-color: #F3F4F6;
 	}
 	`}</div>
 </Codepen>

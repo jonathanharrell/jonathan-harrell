@@ -7,10 +7,10 @@
 	--hiq-input-padding-vertical: 1.25rem;
 	--hiq-input-padding-horizontal: 1rem;
 	--hiq-input-invalid-border-color: #E3E5E8;
-	--radio-check-width: 0.4rem;
-	--radio-check-height: 0.4rem;
-	--radio-background-color: #FFF;
-	--radio-border-color: #E3E5E8;
+	--hiq-radio-check-width: 0.4rem;
+	--hiq-radio-check-height: 0.4rem;
+	--hiq-radio-background-color: #FFF;
+	--hiq-radio-border-color: #E3E5E8;
 }
 
 body {
@@ -55,7 +55,7 @@ input:focus {
 	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
 }
 
-input[type="radio"] label::before,
-input[type="checkbox"] label::before {
+.radio label::before,
+.checkbox label::before {
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }
