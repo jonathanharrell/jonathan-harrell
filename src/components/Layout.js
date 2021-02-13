@@ -122,12 +122,15 @@ const Layout = ({ location, color, children, ...props }) => {
 							a: props => (
 								<a
 									className={`sm:text-lg font-medium hover:underline ${themeColors[color].text}`}
-									style={{ textUnderlineOffset: "3px" }}
+									style={{
+										textUnderlineOffset: "3px",
+										textDecorationThickness: "2px"
+									}}
 									{...props}
 								/>
 							),
 							Note: props => <Note color={color} {...props} />,
-							Codepen: props => <Codepen key={themeName} {...props} />,
+							Codepen: props => <Codepen key={themeName} color={color} {...props} />,
 							ArticleLink
 						}}
 					>

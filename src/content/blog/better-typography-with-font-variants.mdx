@@ -17,8 +17,6 @@ However, this is quickly changing thanks to the increasing availability of OpenT
 
 This article is an overview of how to control OpenType features using CSS, but remember that whatever web font you are using will also need to support these features.
 
-<Codepen id="rqaGqE"/>
-
 ## The font-variant- Properties for Advanced Typography
 
 You can control most OpenType features using various properties beginning with `font-variant-`. There is also a low-level property `font-feature-settings` which can be used to support legacy browsers. Whenever possible, however, you should use the more modern `font-variant` properties. One solution is to use an `@supports` rule to check if a font-variant property is supported and otherwise use `font-feature-settings`.
@@ -42,7 +40,37 @@ Ligatures are single glyphs made from two or more characters. They typically pre
 
 ### common-ligatures
 
-![Common ligatures often include character pairings where the first letter is "f".](/img/common-ligatures.svg)
+<Codepen
+	title="Common Ligatures"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p style="font-feature-settings: 'liga' 0;">Different first Afliction affidavit There</p>
+				<p>Di<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">ff</span>erent <span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">fi</span>rst A<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">fl</span>iction a<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">ffi</span>davit <span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">Th</span>ere</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem 0;
+			font-size: 2rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 2.75rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 These are ligatures that the type designer has decided should be used in normal conditions. In most circumstances you should use these. Most browsers enable them by default.
 
@@ -56,7 +84,37 @@ font-feature-settings: 'liga' 0; /* low-level disable */
 
 ### discretionary-ligatures
 
-![Discretionary ligatures can include character pairings with flourished connections.](/img/discretionary-ligatures.svg)
+<Codepen
+	title="Discretionary Ligatures"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>ct sp st</p>
+				<p style="font-feature-settings: 'dlig' 1; color: var(--primary-color);">ct sp st</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 These are ligatures which can be used for typographic purposes, for example to achieve a special effect. These are disabled by default.
 
@@ -70,7 +128,39 @@ font-feature-settings: 'dlig' 0; /* low-level disable */
 
 ### contextual
 
-![In the Inkwell Script typeface, alternate versions of the letters "f" and "t" are automatically introduced.](/img/contextual-ligatures.svg)
+<Codepen
+	title="Contextual Alternates"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>The bloom has gone off the rose</p>
+				<p style="font-feature-settings: 'calt' 1;">
+					The <span style=" color: var(--primary-color);">bloom</span> has g<span style=" color: var(--primary-color);">one</span> off the <span style=" color: var(--primary-color);">rose</span>
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: caflisch-script-pro, sans-serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 These are alternate ligatures that are affected by their surrounding context. They often harmonize the shapes of grouped glyphs. These are enabled by default.
 
@@ -104,7 +194,37 @@ Thankfully, there is now a way to enable true subscripts and superscripts with `
 
 ### sub
 
-![True subscript characters are sized and positioned specifically for use in footnotes and scientific formulas.](/img/subscript.svg)
+<Codepen
+	title="Subscripts"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>H2O, CO2</p>
+				<p>H<span style="font-feature-settings: 'subs' 1; color: var(--primary-color);">2</span>O, CO<span style="font-feature-settings: 'subs' 1; color: var(--primary-color);">2</span></p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 This enables true subscript characters.
 
@@ -118,7 +238,37 @@ font-feature-settings: 'subs' 0; /* low-level disable */
 
 ### super
 
-![True superscript characters are sized and positioned specifically for use in mathematical expressions and scientific formulas.](/img/superscript.svg)
+<Codepen
+	title="Superscripts"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>X2</p>
+				<p>X<span style="font-feature-settings: 'sups' 1; color: var(--primary-color);">2</span></p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 This enables true superscript characters.
 
@@ -136,7 +286,35 @@ A capital is not a capital is not a capital. The most significant use of `font-v
 
 ### small-caps
 
-![Small caps in the typeface Hoefler Text match the x-height of the font.](/img/small-caps.svg)
+<Codepen
+	title="Small Caps"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>Changing case to Small Caps.</p>
+				<p style="font-feature-settings: 'smcp' 1; ">C<span style="color: var(--primary-color);">hanging case</span> to S<span style="color: var(--primary-color);">mall</span> C<span style="color: var(--primary-color);">aps</span>.</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-weight: 700;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 2rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 3rem;
+			}
+		}
+	`}
+/>
 
 Small caps are designed to be the same height as lowercase letters and are used to capitalize words within running text. They make for a more cohesive and readable paragraph.
 
@@ -150,7 +328,35 @@ font-feature-settings: 'smcp' 0; /* low-level disable */
 
 ### all-small-caps
 
-![All characters in the typeface Hoefler Text are converted to small caps using all-small-caps.](/img/all-small-caps.svg)
+<Codepen
+	title="All Small Caps"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>Changing case to Small Caps.</p>
+				<p style="font-feature-settings: 'smcp' 1, 'c2sc' 1; color: var(--primary-color);">Changing case to Small Caps.</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-weight: 700;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 2rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 3rem;
+			}
+		}
+	`}
+/>
 
 The `small-caps` value will only replace lowercase letters with small caps. To replace all letters with small caps (which is probably what you want) you need to use `all-small-caps`.
 
@@ -191,6 +397,37 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 ```
 
 ### unicase
+
+<Codepen
+	title="Unicase"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>Server Offline</p>
+				<p style="font-feature-settings: 'unic' 1; color: var(--primary-color);">Server Offline</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: Arial, sans-serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+/>
 
 ![A version of the Arial typeface includes unicase characters.](/img/unicase.svg)
 
@@ -234,7 +471,36 @@ font-variant-numeric: lining-nums tabular-nums;
 
 ### lining-nums
 
-![Lining numerals in the typeface Ideal Sans stretch from baseline to cap-height.](/img/lining-nums.svg)
+<Codepen
+	title="Lining Numerals"
+	height={240}
+	smHeight={200}
+	html={`
+		<div class="wrap">
+			<div>
+				<p style="font-feature-settings: 'lnum' 1; color: var(--primary-color);">0123456789</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 Lining numerals approximate capital letters and are uniform in height. They should be used in headings or numeric tables. Usually numbers are lining figures by default.
 
@@ -248,7 +514,37 @@ font-feature-settings: 'lnum' 0; /* low-level disable */
 
 ### oldstyle-nums
 
-![Old-style numerals in the typeface Ideal Sans ascend and descend to sympathize with the rhythm of lowercase letters.](/img/oldstyle-nums.svg)
+<Codepen
+	title="Old-style Numerals"
+	height={240}
+	smHeight={270}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>0123456789</p>
+				<p style="font-feature-settings: 'onum' 1; color: var(--primary-color);">0123456789</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 Old-style numerals have varying heights and alignments and are therefore more similar to lowercase letters. They should be used in running text.
 
@@ -262,6 +558,45 @@ font-feature-settings: 'onum' 0; /* low-level disable */
 
 ### proportional-nums
 
+<Codepen
+	title="Proportional Numerals"
+	height={240}
+	smHeight={240}
+	html={`
+		<div class="wrap">
+			<div>
+				<p style="font-feature-settings: 'pnum' 1; color: var(--primary-color);">
+					<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: hypatia-sans-pro, sans-serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+		span {
+			border-right: 1px solid var(--primary-color);
+		}
+		span:first-child {
+			border-left: 1px solid var(--primary-color);
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
+
 Proportional numerals have variable spacing and blend in with horizontal text. They should be used in most situations, other than numeric tables where vertical alignment is important. Usually numbers are proportional figures by default.
 
 ```css
@@ -274,7 +609,44 @@ font-feature-settings: 'pnum' 0; /* low-level disable */
 
 ### tabular-nums
 
-![Tabular numerals should be used in contexts where numbers need to be stacked.](/img/tabular-nums.svg)
+<Codepen
+	title="Tabular Numerals"
+	height={240}
+	smHeight={240}
+	html={`
+		<div class="wrap">
+			<div>
+				<p style="font-feature-settings: 'tnum' 1; color: var(--primary-color);">
+					<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: hypatia-sans-pro, sans-serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+		span {
+			border-right: 1px solid var(--primary-color);
+		}
+		span:first-child {
+			border-left: 1px solid var(--primary-color);
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 Tabular numerals have the same width and should be used in numeric tables to allow vertical alignment of numbers.
 
@@ -288,7 +660,37 @@ font-feature-settings: 'tnum' 0; /* low-level disable */
 
 ### diagonal-fractions
 
-![Numerators and denominators in the typeface Ideal Sans are aligned with the baseline and cap-height.](/img/diagonal-fractions.svg)
+<Codepen
+	title="Subscripts"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>1 3/4 C of flour, 1/2 cup.</p>
+				<p>1 <span style="font-feature-settings: 'frac' 1; color: var(--primary-color);">3/4</span> C of flour, <span style="font-feature-settings: 'frac' 1; color: var(--primary-color);">1/2</span> cup.</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 By default, fractions will display as lowercase letters with a slash. Proper fractions will be formatted to match the height of a lining figure and can be either diagonal or stacked.
 
@@ -316,7 +718,37 @@ font-feature-settings: 'afrc' 0; /* low-level disable */
 
 ### ordinal
 
-![The typeface Fedra Sans includes specially sized and positioned characters for common ordinals like "1st", "2nd", and "3rd".](/img/ordinals.svg)
+<Codepen
+	title="Subscripts"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>1st, 2nd, 3rd</p>
+				<p>1<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">st</span>, 2<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">nd</span>, 3<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">rd</span></p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 Ordinals like st, nd, rd, and th will appear as standard lowercase letters by default. However, these should ideally appear as smaller raised numbers following the numeral. The `ordinal` value enables that.
 
@@ -330,7 +762,39 @@ font-feature-settings: 'ordn' 0; /* low-level disable */
 
 ### slashed-zero
 
-![The typeface Operator Mono includes a special slashed-zero numeral.](/img/slashed-zero.svg)
+<Codepen
+	title="Subscripts"
+	height={240}
+	smHeight={220}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>
+					<span>0</span> <span style="font-feature-settings: 'zero' 1; color: var(--primary-color);">0</span>
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		body {
+			font-family: warnock-pro, serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 6rem;
+			line-height: 1;
+			letter-spacing: -3px;
+			text-align: center;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 7rem;
+			}
+		}
+	`}
+	stylesheets={["https://use.typekit.net/kes4reb.css"]}
+/>
 
 This enables an alternate zero character with a slash through it.
 

@@ -17,50 +17,44 @@ HTML form inputs have always been notoriously difficult to style with CSS, but t
 
 ## :enabled & :disabled
 
-<Codepen title="Enabled & Disabled Inputs" height={260} smHeight={180}>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Enabled & Disabled Inputs"
+	height={260}
+	smHeight={180}
+	html={`
+		<div class="wrap">
 			<form>
 				<div>
-					<label htmlFor="enabled">Email address (enabled)</label>
-					<input type="email" id="enabled" placeholder="email@email.com" class="input" onChange={() => {}} />
+					<label for="enabled">Email address (enabled)</label>
+					<input type="email" id="enabled" placeholder="email@email.com" class="input" />
 				</div>
 				<div>
-					<label htmlFor="disabled">Email address (disabled)</label>
+					<label for="disabled">Email address (disabled)</label>
 					<input type="email" id="disabled" placeholder="email@email.com" class="input" disabled />
 				</div>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-form {
-	display: grid;
-	grid-gap: 24px;
-	grid-template-columns: repeat(1, 1fr);
-	width: 100%;
-	max-width: 40rem;
-}
-@media (min-width: 640px) {
-	form {
-		grid-template-columns: repeat(2, 1fr);
-		grid-gap: 48px;
-	}
-}
-form .input {
-	font-size: var(--hiq-font-size-large);
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-form .input:enabled {
-	border-color: #10B981 !important;
-	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
-}
-form .input:focus {
-	border-color: #10B981;
-	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		.input:enabled {
+			border-color: var(--primary-color);
+			box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
+		}
+	`}
+/>
 
 This one should be familiar to most of you, but still important to remember. It’s pretty essential to display whether or not an input is disabled to a user.
 
@@ -71,7 +65,7 @@ This one should be familiar to most of you, but still important to remember. It�
 
 ```css
 input:enabled {
-	border-color: var(--color-primary);
+	border-color: var(--primary-color);
 	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
 }
 
@@ -83,50 +77,47 @@ input:disabled {
 
 ## :read-write & read-only
 
-<Codepen title="Read-Write & Read-Only Inputs" height={260} smHeight={180}>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Read-Write & Read-Only Inputs"
+	height={260}
+	smHeight={180}
+	html={`
+		<div class="wrap">
 			<form>
 				<div>
-					<label htmlFor="read-write">Email address (read-write)</label>
-					<input type="email" id="read-write" placeholder="email@email.com" value="my-email@email.com" class="input" onChange={() => {}} />
+					<label for="read-write">Email address (read-write)</label>
+					<input type="email" id="read-write" placeholder="email@email.com" value="my-email@email.com" class="input" />
 				</div>
 				<div>
-					<label htmlFor="read-only">Email address (read-only)</label>
+					<label for="read-only">Email address (read-only)</label>
 					<input type="email" id="read-only" placeholder="email@email.com" value="my-email@email.com" class="input" readOnly />
 				</div>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-form {
-	display: grid;
-	grid-gap: 24px;
-	grid-template-columns: repeat(1, 1fr);
-	width: 100%;
-	max-width: 40rem;
-}
-@media (min-width: 640px) {
-	form {
-		grid-template-columns: repeat(2, 1fr);
-		grid-gap: 48px;
-	}
-}
-form .input {
-	font-size: var(--hiq-font-size-large);
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-}
-form .input:read-write {
-	border-color: #10B981 !important;
-	box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
-}
-form .input:focus {
-	border-color: #10B981;
-	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		.input:read-write {
+			border-color: var(--primary-color);
+			box-shadow: 0 1px 3px 0 rgba(30,185,128,0.5);
+		}
+		.input:read-only {
+			background-color: var(--input-disabled-background-color);
+		}
+	`}
+/>
 
 An input with the `readonly` attribute should convey a slightly different meaning than a disabled input. Thankfully we have this selector to help with that.
 
@@ -137,7 +128,7 @@ An input with the `readonly` attribute should convey a slightly different meanin
 
 ```css
 input:read-write {
-	border-color: var(--primary);
+	border-color: var(--primary-color);
 	box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
 }
 
@@ -149,9 +140,11 @@ input:read-only {
 
 ## :placeholder-shown
 
-<Codepen title="Placeholder-Shown" height={180}>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Placeholder-Shown"
+	height={180}
+	html={`
+		<div class="wrap">
 			<form>
 				<div>
 					<input
@@ -160,44 +153,34 @@ input:read-only {
 						placeholder="Type in me"
 						autoComplete="off"
 						class="input"
-						onChange={() => {}}
 					/>
-					<label htmlFor="type-in-me">Type in me</label>
+					<label for="type-in-me">Type in me</label>
 				</div>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-form {
-	width: 100%;
-	max-width: 25rem;
-}
-form div {
-	position: relative;
-	padding-top: 1.75rem;
-}
-form .input {
-	font-size: var(--hiq-font-size-large);
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-}
-form label {
-	position: absolute;
-	top: 0;
-	opacity: 1;
-	transform: translateY(0);
-	transition: all 0.2s ease-out;
-}
-form .input:placeholder-shown + label {
-	opacity: 0;
-	transform: translateY(1rem);
-}
-form .input:focus {
-	border-color: #10B981;
-	box-shadow: 0 0 0 1px #1EB981, 0 1px 2px 0 rgba(0,0,0,0.05);
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			width: 100%;
+			max-width: 25rem;
+		}
+		form div {
+			position: relative;
+			padding-top: 1.75rem;
+		}
+		form label {
+			position: absolute;
+			top: 0;
+			opacity: 1;
+			transform: translateY(0);
+			transition: all 0.2s ease-out;
+		}
+		form .input:placeholder-shown + label {
+			opacity: 0;
+			transform: translateY(1rem);
+		}
+	`}
+/>
 
 The first selector is relatively new and doesn’t have complete [browser support](https://caniuse.com/#feat=css-placeholder-shown) yet. However, this seems like something that could easily work as a progressive enhancement. The selector allows us to detect whether a placeholder is currently visible to the user. This could come in handy if we want to dynamically hide and show the input’s associated label.
 
@@ -232,131 +215,135 @@ input:placeholder-shown + label {
 
 ## :default
 
-<Codepen title="Default Input Value" height={260} smHeight={180}>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Default Input Value"
+	height={240}
+	smHeight={180}
+	html={`
+		<div class="wrap">
 			<form>
 				<fieldset>
 					<legend>Options</legend>
 					<div class="radio">
-						<input type="radio" name="options" id="option-1" checked onChange={() => {}}></input>
+						<input type="radio" name="options" id="option-1" checked/>
 						<label for="option-1">Option 1</label>
 					</div>
 					<div class="radio">
-						<input type="radio" name="options" id="option-2" onChange={() => {}}></input>
+						<input type="radio" name="options" id="option-2"/>
 						<label for="option-2">Option 2</label>
 					</div>
 					<div class="radio">
-						<input type="radio" name="options" id="option-3" onChange={() => {}}></input>
+						<input type="radio" name="options" id="option-3"/>
 						<label for="option-3">Option 3</label>
 					</div>
 					<div class="radio">
-						<input type="radio" name="options" id="option-4" onChange={() => {}}></input>
+						<input type="radio" name="options" id="option-4"/>
 						<label for="option-4">Option 4</label>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-:root {
-	--hiq-color-primary: #10B981;
-}
-form {
-	width: 100%;
-	max-width: 32rem;
-}
-fieldset {
-	margin-bottom: 0;
-}
-@media (min-width: 640px) {
-	fieldset {
-		display: flex;
-	}
-}
-.radio {
-	display: flex;
-	margin-right: 1rem;
-}
-.radio label {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 2rem;
-	padding-right: 1rem;
-}
-.radio label::before {
-	top: 50%;
-	left: 0.5rem;
-	transform: translateY(-50%);
-}
-.radio label::after {
-	left: 1rem !important;
-}
-.radio input:default + label {
-	background-color: #F3F4F6;
-	border-radius: 9999px;
-}
-.dark .radio input:default + label {
-	background-color: #374150;
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			width: 100%;
+			max-width: 32rem;
+		}
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+		legend {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
+		.radio {
+			position: relative;
+			margin-bottom: 1.25rem;
+			margin-right: 2rem;
+		}
+		@media (min-width: 640px) {
+			.radio {
+				margin-bottom: 0;
+			}
+		}
+		.radio input:default::before {
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: -0.5rem;
+			left: -0.5rem;
+			width: calc(100% + 1.5rem);
+			height: calc(100% + 1rem);
+			border-radius: 9999px;
+			background-color: #E5E7EB;
+			content: "";
+		}
+		.dark input:default::before {
+			background-color: #374151;
+		}
+	`}
+/>
 
 ## :checked
 
-<Codepen title="Checked Input Value" height={260} smHeight={180}>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Checked Input Value"
+	height={240}
+	smHeight={180}
+	html={`
+		<div class="wrap">
 			<form>
 				<fieldset>
 					<legend>Options</legend>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-1" onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-1"/>
 						<label for="option-1">Option 1</label>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-2" onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-2"/>
 						<label for="option-2">Option 2</label>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-3" checked onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-3" checked/>
 						<label for="option-3">Option 3</label>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-4" onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-4"/>
 						<label for="option-4">Option 4</label>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-:root {
-	--hiq-color-primary: #10B981;
-}
-form {
-	width: 100%;
-	max-width: 32rem;
-}
-fieldset {
-	margin-bottom: 0;
-}
-@media (min-width: 640px) {
-	fieldset {
-		display: flex;
-	}
-}
-.checkbox {
-	display: flex;
-	margin-right: 1rem;
-}
-.checkbox label {
-	margin: 0.5rem 0;
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			width: 100%;
+			max-width: 32rem;
+		}
+		legend {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+		.checkbox {
+			margin-bottom: 1rem;
+			margin-right: 2rem;
+		}
+		@media (min-width: 640px) {
+			.checkbox {
+				margin-bottom: 0;
+			}
+		}
+	`}
+/>
 
 Most of you will be familiar with this selector. It gives us the ability to apply custom styles to checkboxes and radio buttons when checked. My technique for styling checkboxes involves creating a wrapper element and placing the `label` after the `input`.
 
@@ -370,128 +357,194 @@ I visually hide the input so that it disappears from view but is still clickable
 ```
 
 ```css
-input:checked + label::before {
-  background-color: var(--color-primary);
-}
-
-input:checked + label::after {
-  display: block;
-  position: absolute;
-  top: 0.2rem;
-  left: 0.375rem;
-  width: 0.25rem;
-  height: 0.5rem;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  content: '';
+input[type="checkbox"]:checked {
+	background-color: var(--primary-color);
+	background-image: url("data:image/...");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
 }
 ```
 
 ## :indeterminate
 
-<Codepen title="Indeterminate Input Value" height={260} smHeight={220}>
-	<div data-lang="js">{`
-const masterCheckbox = document.querySelector("input[name='master-option']");
-setMasterState();
-document.querySelector("fieldset").addEventListener("click", event => {
-	if (event.target.type === "checkbox") {
-		setMasterState();
-	}
-});
-function setMasterState() {
-	const checkboxes = Array.from(
-		document.querySelectorAll("fieldset input")
-	);
-	const trueValues = checkboxes.map(checkbox => checkbox.checked).filter(value => value);
-	const allChecked = trueValues.length === checkboxes.length;
-	if (allChecked) {
-		masterCheckbox.indeterminate = false;
-		return masterCheckbox.checked = true;
-	}
-	const someChecked = trueValues.length > 0;
-	if (someChecked) {
-		return masterCheckbox.indeterminate = true;
-	}
-	masterCheckbox.indeterminate = false;
-	masterCheckbox.checked = false;
-}
-	`}</div>
-	<div data-lang="html">
-		<div className="wrap">
+<Codepen
+	title="Indeterminate Input Value"
+	height={280}
+	smHeight={220}
+	html={`
+		<div class="wrap">
 			<form>
 				<div class="master-option-wrap">
 					<div class="checkbox master-option">
-						<input type="checkbox" name="master-option" id="master-option" onChange={() => {}}></input>
+						<input type="checkbox" name="master-option" id="master-option"/>
 						<label for="master-option">Master option</label>
 					</div>
 				</div>
 				<fieldset>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-1" checked onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-1" checked/>
 						<label for="option-1">Option 1</label>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-2" checked onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-2" checked/>
 						<label for="option-2">Option 2</label>
 					</div>
 					<div class="checkbox">
-						<input type="checkbox" name="options" id="option-3" onChange={() => {}}></input>
+						<input type="checkbox" name="options" id="option-3"/>
 						<label for="option-3">Option 3</label>
 					</div>
 				</fieldset>
 			</form>
 		</div>
-	</div>
-	<div data-lang="css">{`
-/* uses HiQ library as base */
-:root {
-	--hiq-color-primary: #10B981;
-}
-form {
-	width: 100%;
-	max-width: 32rem;
-	overflow: hidden;
-	border: 1px solid #E3E5E8;
-	border-radius: 6px;
-	background-color: #FFF;
-}
-.master-option-wrap {
-	padding: 1.25rem 2rem;
-}
-.master-option label {
-	font-weight: 600 !important;
-}
-fieldset {
-	margin-bottom: 0;
-	padding: 1.25rem 2rem;
-	border-top: 1px solid #E3E5E8;
-	background-color: var(--hiq-body-background-color);
-}
-@media (min-width: 640px) {
-	fieldset {
-		display: flex;
-	}
-}
-.checkbox {
-	display: flex;
-	margin-right: 1rem;
-}
-.checkbox label {
-	margin-bottom: 0;
-}
-	`}</div>
-</Codepen>
+	`}
+	css={`
+		form {
+			width: 100%;
+			max-width: 32rem;
+			overflow: hidden;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+		}
+		.master-option-wrap {
+			padding: 1.25rem 2rem;
+		}
+		.master-option label {
+			font-weight: 600;
+		}
+		fieldset {
+			margin-bottom: 0;
+			padding: 1.25rem 2rem;
+			border-top: 1px solid var(--input-border-color);
+			background-color: #F3F4F6;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		}
+		.dark fieldset {
+			background-color: #1F2937;
+		}
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+		fieldset .checkbox {
+			margin-bottom: 0.5rem;
+			margin-right: 1rem;
+		}
+		@media (min-width: 640px) {
+			fieldset .checkbox {
+				margin-bottom: 0;
+			}
+		}
+	`}
+	js={`
+		const masterCheckbox = document.querySelector("input[name='master-option']");
+		setMasterState();
+		document.querySelector("fieldset").addEventListener("click", event => {
+			if (event.target.type === "checkbox") {
+				setMasterState();
+			}
+		});
+		function setMasterState() {
+			const checkboxes = Array.from(
+				document.querySelectorAll("fieldset input")
+			);
+			const trueValues = checkboxes
+				.map(checkbox => checkbox.checked)
+				.filter(value => value);
+			const allChecked = trueValues.length === checkboxes.length;
+			if (allChecked) {
+				masterCheckbox.indeterminate = false;
+				return masterCheckbox.checked = true;
+			}
+			const someChecked = trueValues.length > 0;
+			if (someChecked) {
+				return masterCheckbox.indeterminate = true;
+			}
+			masterCheckbox.indeterminate = false;
+			masterCheckbox.checked = false;
+		}
+	`}
+/>
 
 ## :valid & :invalid
 
-<figure>
-	<img
-		src="/img/input-invalid.svg"
-		data-dark-src="/img/input-invalid-dark.svg"
-		alt="Valid inputs can be styled with a success state, such as a check box, letting users know when these inputs have been successfully filled in. Invalid inputs can be styled with a warning or error message, letting users know when these inputs are not passing their validation rules."
-	/>
-</figure>
+<Codepen
+	title="Valid & Invalid Inputs"
+	height={340}
+	smHeight={220}
+	html={`
+		<div class="wrap">
+			<form>
+				<div>
+					<label for="valid">Email address (valid)</label>
+					<input type="email" id="valid" placeholder="email@email.com" value="email@email.com" class="input" />
+					<span data-valid-message="This looks like a valid email address!" data-invalid-message="You must enter a valid email address"></span>
+				</div>
+				<div>
+					<label for="invalid">Email address (invalid)</label>
+					<input type="email" id="invalid" placeholder="email@email.com" value="email" class="input" />
+					<span data-valid-message="This looks like a valid email address!" data-invalid-message="You must enter a valid email address"></span>
+				</div>
+			</form>
+		</div>
+	`}
+	css={`
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		input:valid,
+		input:invalid {
+			background-repeat: no-repeat;
+			background-size: 20px 20px;
+			background-position: calc(100% - 0.5rem);
+		}
+		input:valid {
+			background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.7071 8.70711C14.0976 8.31658 14.0976 7.68342 13.7071 7.29289C13.3166 6.90237 12.6834 6.90237 12.2929 7.29289L9 10.5858L7.70711 9.29289C7.31658 8.90237 6.68342 8.90237 6.29289 9.29289C5.90237 9.68342 5.90237 10.3166 6.29289 10.7071L8.29289 12.7071C8.68342 13.0976 9.31658 13.0976 9.70711 12.7071L13.7071 8.70711Z' fill='%2310B981'/%3E%3C/svg%3E%0A");
+		}
+		input:invalid {
+			border-color: #EF4444;
+			background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711 7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071 11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z' fill='%23EF4444'/%3E%3C/svg%3E%0A");
+		}
+		input:valid + span::after,
+		input:invalid + span::after {
+			display: block;
+			margin-top: 0.75rem;
+			padding: 0.6rem 1rem;
+			border-radius: 6px;
+			font-size: 0.875rem;
+		}
+		input:valid + span::after {
+			background-color: #E9F6F1;
+			color: #047857;
+			content: attr(data-valid-message);
+		}
+		.dark input:valid + span::after {
+			background-color: rgba(30, 185, 129, 0.15);
+			color: #10B981;
+		}
+		input:invalid + span::after {
+			background-color: #FEF2F2;
+			color: #B91C1C;
+			content: attr(data-invalid-message);
+		}
+		.dark input:invalid + span::after {
+			background-color: rgba(239, 68, 68, 0.15);
+			color: #EF4444;
+		}
+	`}
+/>
 
 While much form validation will happen with JavaScript, we are able to take advantage of HTML form validation and style inputs accordingly. This selector gives us the chance to style any input which is currently passing the native browser validation rules.
 
@@ -499,7 +552,7 @@ Here I am encoding an svg to display a checkbox in the input using the `backgrou
 
 ```css
 input:valid {
-  border-color: var(--color-primary);
+  border-color: var(--primary-color);
   background-image: url("data:image/svg+xml,...");
 }
 ```
@@ -510,7 +563,7 @@ Again, I am encoding an svg to display an ‘x’ in the input.
 
 ```css
 input:invalid {
-  border-color: var(--color-error);
+  border-color: var(--error-color);
   background-image: url("data:image/svg+xml,...");
 }
 ```
@@ -531,13 +584,82 @@ input[type='email']:invalid + .help-text::before {
 
 ## :in-range & :out-of-range
 
-<figure>
-	<img
-		src="/img/input-out-of-range.svg"
-		data-dark-src="/img/input-out-of-range-dark.svg"
-		alt="Inputs with range attributes defined can be styled when they are in or out-of-range, letting users know if the inputs are or are not passing their validation rules."
-	/>
-</figure>
+<Codepen
+	title="In-Range & Out-of-Range Inputs"
+	height={340}
+	smHeight={220}
+	html={`
+		<div class="wrap">
+			<form>
+				<div>
+					<label for="in-range">Email address (in-range)</label>
+					<input type="number" id="in-range" placeholder="0" min="1" max="9" value="4" class="input" />
+					<span data-in-range-message="This number is within range!" data-out-of-range-message="This number is out of range!"></span>
+				</div>
+				<div>
+					<label for="out-of-range">Email address (out-of-range)</label>
+					<input type="number" id="out-of-range" placeholder="0" min="1" max="9" value="11" class="input" />
+					<span data-in-range-message="This number is within range!" data-out-of-range-message="This number is out of range!"></span>
+				</div>
+			</form>
+		</div>
+	`}
+	css={`
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		input:in-range,
+		input:out-of-range {
+			padding-right: 2rem;
+			background-repeat: no-repeat;
+			background-size: 20px 20px;
+			background-position: calc(100% - 0.5rem);
+		}
+		input:in-range {
+			background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.7071 8.70711C14.0976 8.31658 14.0976 7.68342 13.7071 7.29289C13.3166 6.90237 12.6834 6.90237 12.2929 7.29289L9 10.5858L7.70711 9.29289C7.31658 8.90237 6.68342 8.90237 6.29289 9.29289C5.90237 9.68342 5.90237 10.3166 6.29289 10.7071L8.29289 12.7071C8.68342 13.0976 9.31658 13.0976 9.70711 12.7071L13.7071 8.70711Z' fill='%2310B981'/%3E%3C/svg%3E%0A");
+		}
+		input:out-of-range {
+			border-color: #EF4444;
+			background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711 7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071 11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z' fill='%23EF4444'/%3E%3C/svg%3E%0A");
+		}
+		input:in-range + span::after,
+		input:out-of-range + span::after {
+			display: block;
+			margin-top: 0.75rem;
+			padding: 0.6rem 1rem;
+			border-radius: 6px;
+			font-size: 0.875rem;
+		}
+		input:in-range + span::after {
+			background-color: #E9F6F1;
+			color: #047857;
+			content: attr(data-in-range-message);
+		}
+		.dark input:in-range + span::after {
+			background-color: rgba(30, 185, 129, 0.15);
+			color: #10B981;
+		}
+		input:out-of-range + span::after {
+			background-color: #FEF2F2;
+			color: #B91C1C;
+			content: attr(data-out-of-range-message);
+		}
+		.dark input:invalid + span::after {
+			background-color: rgba(239, 68, 68, 0.15);
+			color: #EF4444;
+		}
+	`}
+/>
 
 These selectors detect whether the value of a number input is within the min/max values specified or not.
 
@@ -561,13 +683,72 @@ input:out-of-range + .help-text::before {
 
 ## :required & :optional
 
-<figure>
-	<img
-		src="/img/input-required.svg"
-		data-dark-src="/img/input-required-dark.svg"
-		alt="Optional inputs can be styled to show an optional message, alerting the user that these inputs aren’t required. Required inputs can be styled to show a required message, alerting the user that these inputs must be filled in."
-	/>
-</figure>
+<Codepen
+	title="Enabled & Disabled Inputs"
+	height={260}
+	smHeight={180}
+	html={`
+		<div class="wrap">
+			<form>
+				<div>
+					<label for="optional">Email address</label>
+					<input type="email" id="optional" placeholder="email@email.com" class="input" />
+					<span></span>
+				</div>
+				<div>
+					<label for="required">Email address</label>
+					<input type="email" id="required" placeholder="email@email.com" class="input" required />
+					<span></span>
+				</div>
+			</form>
+		</div>
+	`}
+	css={`
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		form > div {
+			position: relative;
+		}
+		input:optional + span::before,
+		input:required + span::before {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 0.125rem 0.5rem;
+			border-radius: 6px;
+			font-size: 0.75rem;
+			font-weight: 600;
+		}
+		.input:optional + span::before {
+			background-color: #E5E7EB;
+			content: "Optional";
+		}
+		.dark .input:optional + span::before {
+			background-color: #374151;
+		}
+		.input:required + span::before {
+			background-color: #FEF2F2;
+			color: #B91C1C;
+			content: "Required";
+		}
+		.dark .input:required + span::before {
+			background-color: rgba(239, 68, 68, 0.15);
+			color: #EF4444;
+		}
+	`}
+/>
 
 Use this selector to indicate that an input has the `required` attribute. Here I am using an empty `.help-text` span and placing some content dynamically using the `::before` pseudo-element. Realistically, this would be done with JavaScript, but I am including here to demonstrate a pure CSS approach.
 
@@ -590,8 +771,6 @@ input:optional + .help-text::before {
   content: '*Optional';
 }
 ```
-
-## :user-invalid (experimental)
 
 ## Getting a Head Start with the HiQ Framework
 
