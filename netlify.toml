@@ -11,7 +11,8 @@
     [headers.values]
     cache-control = 'public, max-age=360000'
   for= "/static/fonts/*"
-    Access-Control-Allow-Origin = '*'
+    [headers.values]
+    access-control-allow-origin = '*'
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
