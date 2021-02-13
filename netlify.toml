@@ -10,6 +10,11 @@
   for = "/static/*"
     [headers.values]
     cache-control = 'public, max-age=360000'
+
+[[headers]]
+  for = "/static/fonts/*"
+    [headers.values]
+    cache-control = 'public, max-age=360000'
     Access-Control-Allow-Origin = '*'
 
 [[plugins]]

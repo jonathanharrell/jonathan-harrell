@@ -7,8 +7,6 @@ import ThemeContext from "../context/theme";
 
 const fullConfig = resolveConfig(tailwindConfig);
 
-console.log(fullConfig);
-
 const CodepenWrap = styled.div`
 	${({ height }) => `height: ${height}px`};
 	${({ smHeight }) => `@media (min-width: 768px) { height: ${smHeight}px; }`};
@@ -189,7 +187,7 @@ const Codepen = ({
 	const viewOnCodepen = () => {
 		root.current.querySelector("form").submit();
 	};
-	console.log(babel);
+
 	return (
 		<div
 			ref={root}
