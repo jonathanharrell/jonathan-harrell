@@ -182,7 +182,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 		<div class="wrap">
 			<div>
 				<p>ſinful ſingular</p>
-				<p style="font-feature-settings: 'lig' 1;">
+				<p style="font-feature-settings: 'hlig' 1;">
 					<span style=" color: var(--primary-color);">ſi</span>nful <span style=" color: var(--primary-color);">ſi</span>ngular
 				</p>
 			</div>
@@ -191,7 +191,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "cardo";
-			src: url("https://6028257a146ae7000842ebcd--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
+			src: url("https://602827d9f0b29700078ff1a2--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
 		}
 		body {
 			font-family: cardo, sans-serif;
@@ -201,7 +201,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -3px;
+			letter-spacing: -1px;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -210,8 +210,6 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 		}
 	`}
 />
-
-![Alternate characters like the archaic "long s" can be used in historical settings.](/img/historical-ligatures.svg)
 
 These are ligatures which could be considered a subset of discretionary, but are specifically used to achieve a historical effect. These are disabled by default.
 
@@ -407,6 +405,43 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 
 ### petite-caps
 
+<Codepen
+	title="Unicase"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>Georg Duffner - Principal Design</p>
+				<p style="font-feature-settings: 'pcap' 1; color: var(--primary-color);">
+					Georg Duffner - Principal Design
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		@font-face {
+			font-family: "eb-garamond-bold";
+			src: url("https://602827d9f0b29700078ff1a2--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
+		}
+		body {
+			font-family: "eb-garamond-bold", sans-serif;
+			font-weight: 700;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+/>
+
 ![Petite caps in the typeface EB Garamond are slightly shorter than the x-height of the font.](/img/petite-caps.svg)
 
 Standard small caps will typically appear slightly larger than the x-height of the font. Some typefaces have additional small caps that match the x-height. These are called `petite-caps`.
@@ -448,9 +483,13 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 		</div>
 	`}
 	css={`
+		@font-face {
+			font-family: "arial-bold";
+			src: url("https://602827d9f0b29700078ff1a2--jonathan-harrell.netlify.app/fonts/arial-bold.woff2");
+		}
 		body {
-			font-family: Arial, sans-serif;
-			font-weight: 600;
+			font-family: "arial-bold", sans-serif;
+			font-weight: 700;
 		}
 		p {
 			margin: 1.5rem;
@@ -465,8 +504,6 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 		}
 	`}
 />
-
-![A version of the Arial typeface includes unicase characters.](/img/unicase.svg)
 
 This feature maps upper and lowercase letters to a mixed set of lowercase and small capital forms, creating a single case alphabet. Sometimes the small capitals used are actual small cap glyphs and sometimes they are specially designed unicase forms. The implementation of this feature varies greatly from font to font.
 
