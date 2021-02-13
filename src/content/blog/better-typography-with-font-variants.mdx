@@ -406,15 +406,15 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 ### petite-caps
 
 <Codepen
-	title="Unicase"
+	title="Petite Caps"
 	height={240}
 	smHeight={260}
 	html={`
 		<div class="wrap">
 			<div>
 				<p>Georg Duffner - Principal Design</p>
-				<p style="font-feature-settings: 'pcap' 1; color: var(--primary-color);">
-					Georg Duffner - Principal Design
+				<p style="font-feature-settings: 'pcap' 1;">
+					G<span style="color: var(--primary-color);">eorg Duffner</span> - P<span style="color: var(--primary-color);">rincipal Design</span>
 				</p>
 			</div>
 		</div>
@@ -422,27 +422,25 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "eb-garamond-bold";
-			src: url("https://602827d9f0b29700078ff1a2--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
+			src: url("https://60282b3bab00380007fc82dc--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
 		}
 		body {
 			font-family: "eb-garamond-bold", sans-serif;
 			font-weight: 700;
 		}
 		p {
-			margin: 1.5rem;
-			font-size: 3rem;
+			margin: 1.5rem 0;
+			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
 		}
 		@media (min-width: 640px) {
 			p {
-				font-size: 4rem;
+				font-size: 3rem;
 			}
 		}
 	`}
 />
-
-![Petite caps in the typeface EB Garamond are slightly shorter than the x-height of the font.](/img/petite-caps.svg)
 
 Standard small caps will typically appear slightly larger than the x-height of the font. Some typefaces have additional small caps that match the x-height. These are called `petite-caps`.
 
@@ -456,7 +454,42 @@ font-feature-settings: 'pcap' 0; /* low-level disable */
 
 ### all-petite-caps
 
-![All characters in the typeface EB Garamond are converted to petite caps using all-petite-caps.](/img/all-petite-caps.svg)
+<Codepen
+	title="All Petite Caps"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>Georg Duffner - Principal Design</p>
+				<p style="font-feature-settings: 'c2pc' 1; color: var(--primary-color);">
+					Georg Duffner - Principal Design
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		@font-face {
+			font-family: "eb-garamond-bold";
+			src: url("https://60282b3bab00380007fc82dc--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
+		}
+		body {
+			font-family: "eb-garamond-bold", sans-serif;
+			font-weight: 700;
+		}
+		p {
+			margin: 1.5rem 0;
+			font-size: 2rem;
+			line-height: 1;
+			letter-spacing: -2px;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 3rem;
+			}
+		}
+	`}
+/>
 
 Similarly to `all-small-caps`, this converts all letters, both lower and uppercase, to petite caps.
 
