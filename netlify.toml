@@ -10,6 +10,8 @@
   for = "/static/*"
     [headers.values]
     cache-control = 'public, max-age=360000'
+  for= "/static/fonts/*"
+    Access-Control-Allow-Origin = '*'
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
