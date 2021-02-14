@@ -36,7 +36,7 @@ export const IndexPage = ({ location }) => {
 								<Link
 									to="/blog"
 									aria-labelledby="view-all-articles-label"
-									className="font-bold hover:text-gray-600 dark:hover:text-gray-300"
+									className="font-semibold hover:underline"
 								>
 									<span aria-hidden>View all</span>
 									<span className="sr-only" id="view-all-articles-label">

@@ -43,7 +43,7 @@ const searchStateToURL = searchState =>
 const Menu = ({ items, currentRefinement, refine }) => (
 	<div className="relative">
 		<select
-			className="appearance-none w-48 py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
+			className="appearance-none w-full py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
 			value={currentRefinement || undefined}
 			onInput={event => refine(event.target.value || [])}
 		>
@@ -84,7 +84,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
 				value={currentRefinement}
 				placeholder="Search articles"
 				autoComplete="off"
-				className="py-2 pl-10 pr-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
+				className="w-full py-2 pl-10 pr-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
 				onChange={event => refine(event.currentTarget.value)}
 			/>
 			<Search
@@ -205,9 +205,13 @@ const ArticleSearch = ({ searchState, onSearchStateChange, createURL }) => (
 			<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">Articles</h1>
 		</header>
 		<section>
-			<div className="sm:flex items-center justify-between mb-4">
-				<CustomMenu attribute="frontmatter.tags" />
-				<CustomSearchBox />
+			<div className="sm:flex items-center justify-between mb-6">
+				<div className="sm:w-48 mb-4 sm:mb-0">
+					<CustomMenu attribute="frontmatter.tags" />
+				</div>
+				<div className="sm:w-56">
+					<CustomSearchBox />
+				</div>
 			</div>
 			<CustomStateResults>
 				<CustomHits />
