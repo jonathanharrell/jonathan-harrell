@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 const getColors = order => {
 	switch (order) {
 		case "success":
-			return "bg-green-50 text-green-600";
+			return "bg-green-400 bg-opacity-20 text-green-600";
 		case "warning":
-			return "bg-yellow-50 text-yellow-600";
+			return "bg-yellow-400 bg-opacity-20 text-yellow-600";
 		case "danger":
-			return "bg-red-50 text-red-600";
+			return "bg-red-400 bg-opacity-20 text-red-600";
 		case "info":
 		default:
 			return "bg-blue-50 text-blue-600";

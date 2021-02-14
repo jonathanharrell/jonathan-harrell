@@ -1,19 +1,18 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import colors from "tailwindcss/colors";
-import debounce from "lodash/debounce";
-import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
-import { ArrowUp, GitHub, Share, Twitter } from "react-feather";
+import { motion, useViewportScroll } from "framer-motion";
 import TypeMate from "typemate";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import Seo from "../components/seo";
 import website from "../../website-config";
-import Button from "../components/Button";
 import Layout from "../components/Layout";
 import themeColors from "../theme";
 import TableOfContents from "../components/TableOfContents";
+import ScrollToTop from "../components/ScrollToTop";
+import ArticleShare from "../components/ArticleShare";
 
 export const getProgressBarColor = color => {
 	return colors[color] ? colors[color]["400"] : undefined;
@@ -36,71 +35,9 @@ export const BlogPostTemplate = ({
 	prev,
 	next
 }) => {
-	const [scrolled, setScrolled] = useState(false);
-	const [activeSectionId, setActiveSectionId] = useState("");
-	const [hasNavigatorShare, setHasNavigatorShare] = useState(false);
 	const { scrollYProgress } = useViewportScroll();
 	const articleWrap = useRef();
 	const articleContent = useRef();
-
-	const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`;
-	const re = new RegExp(/.+?(?=\/$)/);
-	const [match] = githubUrl.match(re);
-	const processedGithubUrl = `${match}.mdx`;
-
-	const shareArticle = () => {
-		try {
-			navigator.share({
-				title,
-				url: `${window.location.origin}${slug}`
-			});
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
-	const setActiveSection = () => {
-		if (articleContent.current) {
-			const headings = Array.from(articleContent.current.querySelectorAll("h2"));
-			const visibleHeadings = headings.filter(heading => {
-				const { bottom } = heading.getBoundingClientRect();
-				return bottom <= (window.innerHeight || document.documentElement.clientHeight);
-			});
-			if (visibleHeadings.length) {
-				setActiveSectionId(visibleHeadings[visibleHeadings.length - 1].id);
-			} else {
-				setActiveSectionId("");
-			}
-		}
-	};
-
-	const handleScroll = debounce(() => {
-		//setScrolled(window.scrollY > 100);
-		//setActiveSection();
-	}, 50);
-
-	const scrollToTop = event => {
-		event.preventDefault();
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: "smooth"
-		});
-		const navSkipLink = document.getElementById("nav-skip-link");
-		if (navSkipLink) navSkipLink.focus();
-	};
-
-	useEffect(() => {
-		setHasNavigatorShare(!!navigator.share);
-	}, []);
-
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, [handleScroll]);
 
 	useLayoutEffect(() => {
 		const typeMateInstance = new TypeMate(articleWrap.current, {
@@ -204,7 +141,7 @@ export const BlogPostTemplate = ({
 											>
 												<TableOfContents
 													tableOfContents={tableOfContents}
-													activeSectionId={activeSectionId}
+													articleContent={articleContent}
 													color={color}
 												/>
 											</div>
@@ -250,45 +187,11 @@ export const BlogPostTemplate = ({
 										</div>
 										<hr className="my-10 border-t border-gray-200 dark:border-gray-800" />
 										<div className="sm:flex items-center space-y-4 sm:space-y-0 sm:space-x-4">
-											{hasNavigatorShare && (
-												<Button
-													className="w-full sm:w-auto"
-													onClick={shareArticle}
-												>
-													<Share
-														className={`mr-2 w-5 h-5 text-gray-400`}
-													/>
-													<span>Share this article</span>
-												</Button>
-											)}
-											{!hasNavigatorShare && location.href && (
-												<Button
-													href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
-													target="_blank"
-													rel="noopener noreferrer"
-													as="a"
-													className="w-full sm:w-auto"
-												>
-													<Twitter
-														className={`mr-2 w-5 h-5 text-gray-400`}
-													/>
-													<span>Discuss on Twitter</span>
-												</Button>
-											)}
-											{processedGithubUrl && (
-												<Button
-													href={processedGithubUrl}
-													target="_blank"
-													rel="noopener noreferrer"
-													as="a"
-													className="w-full sm:w-auto"
-												>
-													<GitHub
-														className={`mr-2 w-5 h-5 text-gray-400`}
-													/>
-													<span>Edit on Github</span>
-												</Button>
-											)}
+											<ArticleShare
+												location={location}
+												title={title}
+												slug={slug}
+											/>
 										</div>
 									</footer>
 								</div>
@@ -296,35 +199,7 @@ export const BlogPostTemplate = ({
 						</div>
 					</div>
 				</section>
-				{scrolled && (
-					<AnimatePresence>
-						<motion.div
-							initial={{ opacity: 0, y: 100 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: 100 }}
-							transition={{
-								type: "spring",
-								stiffness: 50,
-								mass: 0.2
-							}}
-							style={{
-								position: "fixed",
-								bottom: "1rem",
-								right: "1rem"
-							}}
-						>
-							<a
-								href="#nav-skip-link"
-								className="block p-2 rounded-lg bg-gray-700 shadow-lg hover:shadow-2xl text-gray-100 transform hover:-translate-y-0.5 transition-all ease-in-out duration-150"
-								title="Scroll to top"
-								onClick={scrollToTop}
-							>
-								<ArrowUp />
-								<span className="sr-only">Scroll to top</span>
-							</a>
-						</motion.div>
-					</AnimatePresence>
-				)}
+				<ScrollToTop />
 			</article>
 		</Layout>
 	);
@@ -341,7 +216,6 @@ export default ({ location, data: { mdx: post }, pageContext: { prev, next } }) 
 			description={post.frontmatter.description}
 			color={post.frontmatter.color || "blue"}
 			date={post.frontmatter.date}
-			image={post.frontmatter.featuredimage}
 			socialImage={post.frontmatter.socialimage}
 			readingTime={post.fields.readingTime}
 			slug={post.fields.slug}
@@ -363,9 +237,6 @@ export const pageQuery = graphql`
 				description
 				color
 				tags
-				featuredimage {
-					publicURL
-				}
 				socialimage {
 					publicURL
 				}

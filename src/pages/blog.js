@@ -9,6 +9,7 @@ import {
 	InstantSearch
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
+import { ChevronDown, Search, X } from "react-feather";
 import Layout from "../components/Layout";
 import Seo from "../components/seo";
 import get from "lodash/get";
@@ -24,21 +25,27 @@ const searchClient = algoliasearch(
 );
 
 const RefinementList = ({ items, refine }) => (
-	<select
-		className="appearance-none w-48 py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
-		onInput={event => refine(event.target.value || [])}
-	>
-		<option value={[]}>All posts</option>
-		{items
-			.sort((a, b) => {
-				if (a.label > b.label) return 1;
-				if (a.label < b.label) return -1;
-				return 0;
-			})
-			.map(item => (
-				<option key={item.label}>{item.label}</option>
-			))}
-	</select>
+	<div className="relative">
+		<select
+			className="appearance-none w-48 py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
+			onInput={event => refine(event.target.value || [])}
+		>
+			<option value={[]}>All posts</option>
+			{items
+				.sort((a, b) => {
+					if (a.label > b.label) return 1;
+					if (a.label < b.label) return -1;
+					return 0;
+				})
+				.map(item => (
+					<option key={item.label}>{item.label}</option>
+				))}
+		</select>
+		<ChevronDown
+			size={20}
+			className="absolute top-1/2 right-3 transform -translate-y-1/2 pointer-events-none"
+		/>
+	</div>
 );
 
 const SearchBox = ({ currentRefinement, refine }) => {
@@ -49,7 +56,7 @@ const SearchBox = ({ currentRefinement, refine }) => {
 	}, []);
 
 	return (
-		<div>
+		<div className="relative">
 			<label htmlFor="search" className="sr-only">
 				Search for articles
 			</label>
@@ -60,14 +67,26 @@ const SearchBox = ({ currentRefinement, refine }) => {
 				value={currentRefinement}
 				placeholder="Search articles"
 				autoComplete="off"
-				className="py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
+				className="py-2 pl-10 pr-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
 				onChange={event => refine(event.currentTarget.value)}
 			/>
+			<Search
+				size={20}
+				className="absolute top-1/2 left-3 transform -translate-y-1/2 pointer-events-none"
+			/>
+			{currentRefinement && (
+				<button
+					className="absolute top-1/2 right-3 transform -translate-y-1/2"
+					onClick={() => refine()}
+				>
+					<X size={20} />
+				</button>
+			)}
 		</div>
 	);
 };
 
-const StateResults = ({ searchResults, searchState, children }) => {
+const StateResults = ({ searchResults, searchState, searching, children }) => {
 	const hasResults = searchResults && searchResults.nbHits !== 0;
 
 	useEffect(() => {
@@ -83,13 +102,16 @@ const StateResults = ({ searchResults, searchState, children }) => {
 	return (
 		<div>
 			{hasResults && children}
-			{!hasResults && searchState.query && (
-				<div className="py-16 rounded-xl bg-gray-50 text-center">
+			{!searching && !hasResults && searchState.query && (
+				<div className="py-16 rounded-xl bg-gray-50 dark:bg-gray-800 text-center">
 					<h2 className="text-3xl font-extrabold tracking-tight">
 						No matching search results
 					</h2>
 					<p className="text-lg">Try another search term</p>
 				</div>
+			)}
+			{searching && !hasResults && (
+				<p className="text-3xl font-extrabold tracking-tight">Searching...</p>
 			)}
 		</div>
 	);

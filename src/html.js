@@ -48,20 +48,6 @@ export default function HTML(props) {
     })();
   `;
 
-	const style = `
-    .screen-reader-text {
-      clip: rect(0 0 0 0);
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      margin: -1px;
-      padding: 0;
-      border: 0;
-      white-space: nowrap;
-    }
-  `;
-
 	return (
 		<html {...props.htmlAttributes} lang="en">
 			<head>
@@ -72,27 +58,20 @@ export default function HTML(props) {
 					content="width=device-width, initial-scale=1, shrink-to-fit=no"
 				/>
 				{props.headComponents}
-				<style dangerouslySetInnerHTML={{ __html: style }} />
 			</head>
 			<body className="no-js" {...props.bodyAttributes}>
 				<script dangerouslySetInnerHTML={{ __html: jsScript }} />
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				{props.preBodyComponents}
-				<noscript key="noscript" id="gatsby-noscript" className="noscript">
+				<noscript
+					key="noscript"
+					id="gatsby-noscript"
+					className="py-2 px-4 bg-yellow-400 text-sm font-medium"
+				>
 					This site works best with JavaScript enabled.
 				</noscript>
-				<div
-					id="alert-assertive"
-					role="region"
-					aria-live="assertive"
-					className="screen-reader-text"
-				/>
-				<div
-					id="alert-polite"
-					role="region"
-					aria-live="polite"
-					className="screen-reader-text"
-				/>
+				<div id="alert-assertive" role="region" aria-live="assertive" className="sr-only" />
+				<div id="alert-polite" role="region" aria-live="polite" className="sr-only" />
 				<div key={`body`} id="___gatsby" dangerouslySetInnerHTML={{ __html: props.body }} />
 				<div id="modal" />
 				{props.postBodyComponents}

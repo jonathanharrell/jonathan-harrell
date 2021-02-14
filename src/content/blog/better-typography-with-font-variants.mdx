@@ -62,6 +62,7 @@ Ligatures are single glyphs made from two or more characters. They typically pre
 			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -106,6 +107,7 @@ font-feature-settings: 'liga' 0; /* low-level disable */
 			font-size: 4rem;
 			line-height: 1;
 			letter-spacing: -3px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -130,7 +132,7 @@ font-feature-settings: 'dlig' 0; /* low-level disable */
 
 <Codepen
 	title="Contextual Alternates"
-	height={240}
+	height={280}
 	smHeight={260}
 	html={`
 		<div class="wrap">
@@ -148,13 +150,15 @@ font-feature-settings: 'dlig' 0; /* low-level disable */
 			font-weight: 600;
 		}
 		p {
-			margin: 1.5rem;
+			margin: 1rem;
 			font-size: 3rem;
 			line-height: 1;
 			letter-spacing: -3px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
+				margin: 1.5rem;
 				font-size: 4rem;
 			}
 		}
@@ -191,7 +195,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "cardo";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
 		}
 		body {
 			font-family: cardo, sans-serif;
@@ -201,7 +205,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -1px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -250,7 +254,7 @@ Thankfully, there is now a way to enable true subscripts and superscripts with `
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -3px;
+			letter-spacing: -2px;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -294,7 +298,7 @@ font-feature-settings: 'subs' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 4rem;
 			line-height: 1;
-			letter-spacing: -3px;
+			letter-spacing: -2px;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -342,6 +346,7 @@ A capital is not a capital is not a capital. The most significant use of `font-v
 			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -384,6 +389,7 @@ font-feature-settings: 'smcp' 0; /* low-level disable */
 			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -422,7 +428,7 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "eb-garamond-bold";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
 		}
 		body {
 			font-family: "eb-garamond-bold", sans-serif;
@@ -433,6 +439,7 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -471,7 +478,7 @@ font-feature-settings: 'pcap' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "eb-garamond-bold";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
 		}
 		body {
 			font-family: "eb-garamond-bold", sans-serif;
@@ -482,6 +489,7 @@ font-feature-settings: 'pcap' 0; /* low-level disable */
 			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -505,8 +513,7 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 
 <Codepen
 	title="Unicase"
-	height={240}
-	smHeight={260}
+	height={260}
 	html={`
 		<div class="wrap">
 			<div>
@@ -518,7 +525,7 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "arial-bold";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/arial-bold.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/arial-bold.woff2");
 		}
 		body {
 			font-family: "arial-bold", sans-serif;
@@ -529,6 +536,7 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 			font-size: 3rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -552,7 +560,7 @@ font-feature-settings: 'unic' 0; /* low-level disable */
 
 <Codepen
 	title="Titling Caps"
-	height={240}
+	height={300}
 	smHeight={260}
 	html={`
 		<div class="wrap">
@@ -567,7 +575,7 @@ font-feature-settings: 'unic' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "allan";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/allan-regular.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/allan-regular.woff2");
 		}
 		body {
 			font-family: "allan", sans-serif;
@@ -577,6 +585,7 @@ font-feature-settings: 'unic' 0; /* low-level disable */
 			font-size: 3rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -614,7 +623,7 @@ font-variant-numeric: lining-nums tabular-nums;
 
 <Codepen
 	title="Lining Numerals"
-	height={240}
+	height={180}
 	smHeight={200}
 	html={`
 		<div class="wrap">
@@ -701,7 +710,7 @@ font-feature-settings: 'onum' 0; /* low-level disable */
 
 <Codepen
 	title="Proportional Numerals"
-	height={240}
+	height={220}
 	smHeight={240}
 	html={`
 		<div class="wrap">
@@ -752,7 +761,7 @@ font-feature-settings: 'pnum' 0; /* low-level disable */
 
 <Codepen
 	title="Tabular Numerals"
-	height={240}
+	height={220}
 	smHeight={240}
 	html={`
 		<div class="wrap">
@@ -803,7 +812,7 @@ font-feature-settings: 'tnum' 0; /* low-level disable */
 
 <Codepen
 	title="Diagonal Fractions"
-	height={240}
+	height={320}
 	smHeight={260}
 	html={`
 		<div class="wrap">
@@ -823,6 +832,7 @@ font-feature-settings: 'tnum' 0; /* low-level disable */
 			font-size: 3rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -860,7 +870,7 @@ font-feature-settings: 'frac' 0; /* low-level disable */
 	css={`
 		@font-face {
 			font-family: "ubuntu-mono-bold";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/ubuntu-mono-bold.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/ubuntu-mono-bold.woff2");
 		}
 		body {
 			font-family: "ubuntu-mono-bold", sans-serif;
@@ -868,13 +878,14 @@ font-feature-settings: 'frac' 0; /* low-level disable */
 		}
 		p {
 			margin: 1.5rem;
-			font-size: 3rem;
+			font-size: 2rem;
 			line-height: 1;
 			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
-				font-size: 4rem;
+				font-size: 3rem;
 			}
 		}
 	`}
@@ -893,7 +904,7 @@ font-feature-settings: 'afrc' 0; /* low-level disable */
 ### ordinal
 
 <Codepen
-	title="Subscripts"
+	title="Ordinals"
 	height={240}
 	smHeight={260}
 	html={`
@@ -913,7 +924,7 @@ font-feature-settings: 'afrc' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -3px;
+			letter-spacing: -2px;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -938,7 +949,7 @@ font-feature-settings: 'ordn' 0; /* low-level disable */
 
 <Codepen
 	title="Subscripts"
-	height={240}
+	height={180}
 	smHeight={220}
 	html={`
 		<div class="wrap">
@@ -1003,7 +1014,7 @@ Fonts can provide a variety of alternates for any character. The `font-variant-a
 	css={`
 		@font-face {
 			font-family: "cardo";
-			src: url("https://60283105303ad00007a7f457--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
 		}
 		body {
 			font-family: cardo, sans-serif;
@@ -1013,7 +1024,7 @@ Fonts can provide a variety of alternates for any character. The `font-variant-a
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -1px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -1037,7 +1048,7 @@ font-feature-settings: 'hist' 0; /* low-level disable */
 
 <Codepen
 	title="Stylistic Alternates"
-	height={240}
+	height={260}
 	smHeight={220}
 	html={`
 		<div class="wrap">
@@ -1058,7 +1069,7 @@ font-feature-settings: 'hist' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 2rem;
 			line-height: 1;
-			letter-spacing: -2px;
+			letter-spacing: -1px;
 			text-align: center;
 		}
 		@media (min-width: 640px) {
@@ -1088,7 +1099,7 @@ font-feature-settings: 'salt' 0; /* low-level disable */
 
 <Codepen
 	title="Stylistic Sets"
-	height={240}
+	height={300}
 	smHeight={240}
 	html={`
 		<div class="wrap">
@@ -1109,7 +1120,8 @@ font-feature-settings: 'salt' 0; /* low-level disable */
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -3px;
+			letter-spacing: -2px;
+			text-align: center;
 		}
 		@media (min-width: 640px) {
 			p {
@@ -1151,8 +1163,8 @@ font-feature-settings: cv01; /* low-level enable */
 ### swash(feature-value-name)
 
 <Codepen
-	title="Stylistic Sets"
-	height={240}
+	title="Swashes"
+	height={280}
 	smHeight={240}
 	html={`
 		<div class="wrap">
@@ -1173,7 +1185,6 @@ font-feature-settings: cv01; /* low-level enable */
 			margin: 1.5rem;
 			font-size: 3rem;
 			line-height: 1;
-			letter-spacing: -3px;
 			text-align: center;
 		}
 		@media (min-width: 640px) {
@@ -1201,7 +1212,43 @@ font-feature-settings: swsh 0; /* low-level disable */
 
 ### ornaments(feature-value-name)
 
-![The typeface Hoefler Text provides many graphic characters, including several fleurons.](/img/ornaments.svg)
+<Codepen
+	title="Ornaments"
+	height={240}
+	smHeight={260}
+	html={`
+		<div class="wrap">
+			<div>
+				<p>abcdefg</p>
+				<p style="font-feature-settings: 'ornm' 1; color: var(--primary-color);">
+					abcdefg
+				</p>
+			</div>
+		</div>
+	`}
+	css={`
+		@font-face {
+			font-family: "clara";
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/clara-regular.woff2");
+		}
+		body {
+			font-family: clara, sans-serif;
+			font-weight: 600;
+		}
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -3px;
+			text-align: center;
+		}
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	`}
+/>
 
 This replaces default glyphs with ornaments, if they are provided in the font.
 
@@ -1218,8 +1265,6 @@ font-feature-settings: ornm 0; /* low-level disable */
 ```
 
 ### annotation(feature-value-name)
-
-![The collection of Whitney Index fonts provide examples of annotation characters.](/img/annotations.svg)
 
 Annotations are notational forms of glyphs (for example, glyphs placed in open or solid circles, squares, parentheses, diamonds, rounded boxes. etc.).
 
@@ -1243,3 +1288,4 @@ There is a huge amount to learn about typography on the web including font varia
 * [Web Typography, by Richard Rutter](http://book.webtypography.net/)
 * [Guide to OpenType Syntax in CSS, from Adobe](https://helpx.adobe.com/typekit/using/open-type-syntax.html)
 * [OpenType Layout Tag Registry, from Microsoft](https://www.microsoft.com/typography/otspec/features_ae.htm)
+* [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/)
