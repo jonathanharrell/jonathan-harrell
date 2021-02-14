@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { graphql } from "gatsby";
+import React, { useEffect, useRef, useState } from "react";
+import { navigate } from "@reach/router";
 import {
 	connectHighlight,
 	connectHits,
-	connectRefinementList,
+	connectMenu,
 	connectSearchBox,
 	connectStateResults,
 	InstantSearch
 } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch/lite";
+import qs from "qs";
 import { ChevronDown, Search, X } from "react-feather";
 import Layout from "../components/Layout";
 import Seo from "../components/seo";
@@ -24,10 +25,26 @@ const searchClient = algoliasearch(
 	process.env.GATSBY_ALGOLIA_SEARCH_ONLY_API_KEY
 );
 
-const RefinementList = ({ items, refine }) => (
+const DEFAULT_PROPS = {
+	searchClient,
+	indexName: "jh_posts"
+};
+
+const updateAfter = 700;
+
+const createURL = state => `?${qs.stringify(state)}`;
+
+const pathToSearchState = path =>
+	path.includes("?") ? qs.parse(path.substring(path.indexOf("?") + 1)) : {};
+
+const searchStateToURL = searchState =>
+	searchState ? `${window.location.pathname}?${qs.stringify(searchState)}` : "";
+
+const Menu = ({ items, currentRefinement, refine }) => (
 	<div className="relative">
 		<select
 			className="appearance-none w-48 py-2 px-4 rounded bg-gray-100 dark:bg-gray-800 shadow-sm"
+			value={currentRefinement || undefined}
 			onInput={event => refine(event.target.value || [])}
 		>
 			<option value={[]}>All posts</option>
@@ -172,55 +189,68 @@ const Hits = ({ hits }) => (
 	</ul>
 );
 
-const CustomRefinementList = connectRefinementList(RefinementList);
+const CustomMenu = connectMenu(Menu);
 const CustomSearchBox = connectSearchBox(SearchBox);
 const CustomStateResults = connectStateResults(StateResults);
 const CustomHits = connectHits(Hits);
 
-export const BlogIndexPageTemplate = ({ location, tags }) => {
+const ArticleSearch = ({ searchState, onSearchStateChange, createURL }) => (
+	<InstantSearch
+		{...DEFAULT_PROPS}
+		searchState={searchState}
+		onSearchStateChange={onSearchStateChange}
+		createURL={createURL}
+	>
+		<header className="mb-8">
+			<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">Articles</h1>
+		</header>
+		<section>
+			<div className="sm:flex items-center justify-between mb-4">
+				<CustomMenu attribute="frontmatter.tags" />
+				<CustomSearchBox />
+			</div>
+			<CustomStateResults>
+				<CustomHits />
+			</CustomStateResults>
+		</section>
+	</InstantSearch>
+);
+
+export const BlogIndexPage = ({ location }) => {
+	const [searchState, setSearchState] = useState(pathToSearchState(location.search));
+	const [debouncedSetState, setDebouncedSetState] = useState(null);
+
+	useEffect(() => {
+		setSearchState(pathToSearchState(location.search));
+	}, [location.search]);
+
+	const onSearchStateChange = searchState => {
+		clearTimeout(debouncedSetState);
+
+		setDebouncedSetState(
+			setTimeout(() => {
+				const href = searchStateToURL(searchState);
+				navigate(href);
+			}, updateAfter)
+		);
+
+		setSearchState(searchState);
+	};
+
 	return (
 		<Layout location={location}>
 			<Seo title="Articles" pathname={location.pathname} description={description} />
 			<div className="container">
 				<div className="max-w-3xl mx-auto py-24">
-					<InstantSearch searchClient={searchClient} indexName="jh_posts">
-						<header className="mb-8">
-							<h1 className="text-5xl leading-none font-extrabold tracking-tight mb-4">
-								Articles
-							</h1>
-						</header>
-						<section>
-							<div className="sm:flex items-center justify-between mb-4">
-								<CustomRefinementList attribute="frontmatter.tags" />
-								<CustomSearchBox />
-							</div>
-							<CustomStateResults>
-								<CustomHits />
-							</CustomStateResults>
-						</section>
-					</InstantSearch>
+					<ArticleSearch
+						searchState={searchState}
+						onSearchStateChange={onSearchStateChange}
+						createURL={createURL}
+					/>
 				</div>
 			</div>
 		</Layout>
 	);
 };
 
-const BlogIndexPage = ({
-	location,
-	data: {
-		allMdx: { tags }
-	}
-}) => <BlogIndexPageTemplate location={location} tags={tags} />;
-
 export default BlogIndexPage;
-
-export const blogPageQuery = graphql`
-	query BlogPage {
-		allMdx(limit: 1000) {
-			tags: group(field: frontmatter___tags) {
-				fieldValue
-				totalCount
-			}
-		}
-	}
-`;

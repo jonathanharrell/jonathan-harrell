@@ -66,7 +66,7 @@ export default function HTML(props) {
 				<noscript
 					key="noscript"
 					id="gatsby-noscript"
-					className="py-2 px-4 bg-yellow-400 text-sm font-medium"
+					className="block py-2 px-4 bg-yellow-400 text-sm font-medium"
 				>
 					This site works best with JavaScript enabled.
 				</noscript>
