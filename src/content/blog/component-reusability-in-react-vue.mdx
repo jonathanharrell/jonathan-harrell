@@ -203,15 +203,14 @@ class TagListSearch extends React.Component {
 ```
 
 <Codepen
-	title="Reusabel React Search Select with Render Props"
+	title="Reusable React Search Select with Render Props"
 	height={260}
-	smHeight={180}
+	smHeight={240}
 	html={`
 		<div class="wrap">
 			<div id="app"></div>
 		</div>
 	`}
-	css={``}
 	babel={`
 		class SearchSelect extends React.Component {
 		  constructor(props) {
@@ -265,35 +264,37 @@ class TagListSearch extends React.Component {
 				options={options}
 				filterMethod={this.filterMethod}
 				render={({results, searchList}) => (
-				  <div className="autocomplete">
-					<input
-					  type="text"
-					  placeholder="Type to search list"
-					  onChange={searchList}
-					  onFocus={() => this.showDropdown()}
-					  onBlur={() => this.hideDropdown()}
-					  />
-					{this.state.dropdownVisible && (
-					  <div className="autocomplete-dropdown">
-						<ul className="autocomplete-search-results-list">
-						  {results.map(result => (
-							<li className="autocomplete-search-result" key={result}>{result}</li>
-						  ))}
-						</ul>
+					<div className="autocomplete">
+						<input
+						  type="text"
+						  placeholder="Type to search list"
+						  onChange={searchList}
+						  onFocus={() => this.showDropdown()}
+						  onBlur={() => this.hideDropdown()}
+						  />
+						{this.state.dropdownVisible && (
+						  <div className="autocomplete-dropdown">
+							<ul className="autocomplete-search-results-list">
+							  {results.map(result => (
+								<li className="autocomplete-search-result" key={result}>
+									{result}
+								</li>
+							  ))}
+							</ul>
+						  </div>
+						)}
 					  </div>
 					)}
-				  </div>
-				)}
 				/>
 			)
 		  }
 		}
 		class TagListSearch extends React.Component {
 		  constructor(props) {
-			super(props)
+			super(props);
 		  }
 		  filterMethod (options, query) {
-			return options.filter(option => option.toLowerCase().includes(query.toLowerCase()))
+			return options.filter(option => option.toLowerCase().includes(query.toLowerCase()));
 		  }
 		  render() {
 			return (
@@ -315,16 +316,16 @@ class TagListSearch extends React.Component {
 				  </div>
 				)}
 				/>
-			)
+			);
 		  }
 		}
 		class App extends React.Component {
 		  constructor(props) {
-			super(props)
+			super(props);
 		  }
 		  render() {
 			return (
-			  <div className="wrapper">
+			  <div className="example-wrap">
 				<div className="example">
 				  <h2>Autocomplete</h2>
 				  <Autocomplete />
@@ -339,8 +340,52 @@ class TagListSearch extends React.Component {
 		}
 		ReactDOM.render(
 		  <App />,
-		  document.getElementById('app')
-		)
+		  document.getElementById("app")
+		);
+	`}
+	css={`
+		#app {
+			width: 100%;
+		}
+		.example-wrap {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 35rem;
+			margin: 0 auto;
+		}
+		@media (min-width: 640px) {
+			.example-wrap {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+		h2 {
+			font-size: 1rem;
+		}
+		.autocomplete {
+		position: relative;
+		}
+		.autocomplete-dropdown {
+			position: absolute;
+			top: 100%;
+			background-color: var(--input-background-color);
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		}
+		.autocomplete-search-results-list {
+		  list-style: none;
+		  margin: 0;
+			padding: 0;
+		}
+		.tag-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.tag-list li {
+			display: inline-block;
+		}
 	`}
 	scripts={[
 		"https://cdnjs.cloudflare.com/ajax/libs/react/16.4.0/umd/react.development.js",

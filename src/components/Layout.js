@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/react";
 import Seo from "./seo";
 import Header from "./Header";
 import Note from "./Note";
-import Codepen from "./Codepen";
+import Example from "./Example";
 import ArticleLink from "./ArticleLink";
 import Footer from "./Footer";
 import Pre from "./Pre";
@@ -130,7 +130,8 @@ const Layout = ({ location, color, children, ...props }) => {
 								/>
 							),
 							Note: props => <Note color={color} {...props} />,
-							Codepen: props => <Codepen key={themeName} color={color} {...props} />,
+							// Codepen: props => <Codepen key={themeName} color={color} {...props} />,
+							Example: props => <Example key={themeName} color={color} {...props} />,
 							ArticleLink
 						}}
 					>

@@ -11,7 +11,7 @@ const Header = ({ location, shell, color }) => (
 					to="/"
 					aria-label="Home page"
 					rel="home"
-					className={`mr-8 text-base font-semibold ${color ? "text-gray-100" : ""}`}
+					className={`mr-12 text-base font-semibold ${color ? "text-gray-100" : ""}`}
 				>
 					Jonathan Harrell
 				</GatsbyLink>

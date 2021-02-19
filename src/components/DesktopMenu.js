@@ -53,7 +53,7 @@ const DesktopMenu = ({ shell, color }) => {
 						Site Links
 					</h3>
 					<nav role="navigation">
-						<ul className="flex items-center space-x-6">
+						<ul className="flex items-center space-x-8">
 							<li>
 								<SiteLink
 									to="/"
@@ -97,7 +97,9 @@ const DesktopMenu = ({ shell, color }) => {
 				className={`hover:opacity-75 ${color ? "text-gray-100" : ""}`}
 				onClick={toggleTheme}
 			>
-				<span className="sr-only">Change theme to {themeName === "light" ? "dark" : "light"}</span>
+				<span className="sr-only">
+					Change theme to {themeName === "light" ? "dark" : "light"}
+				</span>
 				<span>{themeName === "light" ? <Sun /> : <Moon />}</span>
 			</button>
 		</div>

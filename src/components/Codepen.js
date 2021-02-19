@@ -142,7 +142,7 @@ const Codepen = ({
 	height,
 	smHeight,
 	html,
-	css,
+	styles,
 	js,
 	babel,
 	scripts = [],
@@ -155,10 +155,10 @@ const Codepen = ({
 	if (js) js = cleanupCode(js);
 	if (babel) babel = cleanupCode(babel);
 
-	if (css) {
-		css = `${getGlobalCss(color)}\n${cleanupCode(css)}`;
+	if (styles) {
+		styles = `${getGlobalCss(color)}\n${cleanupCode(styles)}`;
 	} else {
-		css = getGlobalCss(color);
+		styles = getGlobalCss(color);
 	}
 
 	useEffect(() => {
@@ -168,14 +168,16 @@ const Codepen = ({
 	const renderForm = () => {
 		const data = {};
 		if (html) data.html = html;
-		if (css) data.css = css;
+		if (styles) data.css = styles;
 		if (js) data.js = js;
-		if (babel) data.babel = babel;
+		if (babel) data.js = babel;
 
 		data.title = title;
 		data.html_classes = [themeName];
 		data.scripts = scripts;
 		data.stylesheets = stylesheets;
+
+		if (babel) data.js_pre_processor = "babel";
 
 		return (
 			<form action="https://codepen.io/pen/define" method="POST" target="_blank">
@@ -214,7 +216,7 @@ const Codepen = ({
 					data-default-tab="result"
 				>
 					{html && <pre data-lang="html">{html}</pre>}
-					{css && <pre data-lang="css">{css}</pre>}
+					{styles && <pre data-lang="css">{styles}</pre>}
 					{js && <pre data-lang="js">{js}</pre>}
 					{babel && <pre data-lang="babel">{babel}</pre>}
 				</div>

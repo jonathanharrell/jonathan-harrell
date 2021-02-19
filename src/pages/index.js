@@ -13,7 +13,7 @@ export const IndexPage = ({ location }) => {
 					<header aria-labelledby="introduction-label">
 						<h1
 							id="introduction-label"
-							className="mb-4 text-4xl sm:text-5xl font-extrabold tracking-tight leading-none"
+							className="mb-4 text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-none"
 						>
 							UI/UX Designer & Front-End Engineer
 						</h1>
