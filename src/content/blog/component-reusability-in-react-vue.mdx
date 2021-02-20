@@ -14,11 +14,7 @@ tags:
 ---
 One of the issues all front-end developers face is how to make UI components reusable. How do we craft components in such a way that satisfies the narrow use case that is clear to us now, while also making them reusable enough to work in a variety of circumstances? Render props and scoped slots provide a solution.
 
-Let’s say we are building an autocomplete component:
-
-![Using render props in React or scoped slots in Vue, we reuse the same basic search/select functionality to create two different components.](/img/autocomplete.svg)
-
-Take a look at the initial React component code:
+Let’s say we are building an autocomplete component. Take a look at the initial React component code:
 
 ```jsx
 class Autocomplete extends React.Component {
@@ -66,15 +62,13 @@ In this component, we have some logic that controls the core search behavior, bu
 
 Think about how you would reuse this component. Sure, you could use this very same component if you want to reproduce exactly the same behavioral and visual result. But what if you want to reuse the same behavior, but visualize the component slightly differently? What if you want to reuse the core search behavior but add a few modifications for a slightly different use case?
 
-Imagine that instead of a dropdown containing the search results, you want a tag-like list of search results that always display:
-
-![An additional component we can create that reuses the same core search/select functionality is a tag-like list.](/img/tag-list.svg)
-
-At their core, the functionality of these two components is very similar: type into an input to filter a list.
+Imagine that instead of a dropdown containing the search results, you want a tag-like list of search results that always display. At their core, the functionality of these two components is very similar: type into an input to filter a list.
 
 This is a perfect use case for some relatively new tools that modern JavaScript frameworks now provide. These are _render props_ in React and _scoped slots_ in Vue. They work very similarly and provide a way to separate the **behavior** of a component from its **presentation**.
 
 ## Render props in React
+
+<Example name="reusable-react" height={400} smHeight={380} />
 
 First, let’s look at how we would restructure our autocomplete component using render props in React. We will now have two components — one for our Autocomplete component and one for a core SearchSelect component.
 
@@ -202,9 +196,9 @@ class TagListSearch extends React.Component {
 }
 ```
 
-<Example name="reusable-react" height={260} smHeight={240}/>
-
 ## Scoped slots in Vue
+
+<Example name="reusable-vue" height={400} smHeight={380} />
 
 Now let’s look at how we would implement this in Vue using scoped slots. First, here’s our search select component (for this example I am using globally registered components but you should probably use single file components in a real project):
 
@@ -307,8 +301,6 @@ Vue.component('autocomplete', {
   `
 })
 ```
-
-<Codepen id="VdobNO"/>
 
 ## Other uses for render props & scoped slots
 

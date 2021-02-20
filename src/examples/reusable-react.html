@@ -16,7 +16,8 @@
 			grid-gap: 24px;
 			grid-template-columns: repeat(1, 1fr);
 			width: 100%;
-			max-width: 35rem;
+			max-width: 40rem;
+			min-height: 260px;
 			margin: 0 auto;
 		}
 
@@ -38,6 +39,11 @@
 		.autocomplete-dropdown {
 			position: absolute;
 			top: 100%;
+			width: 100%;
+			max-height: 196px;
+			overflow-y: auto;
+			margin-top: 8px;
+			border-radius: 6px;
 			background-color: var(--input-background-color);
 			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 		}
@@ -45,38 +51,56 @@
 		.autocomplete-search-results-list {
 			list-style: none;
 			margin: 0;
+			padding: 8px 0;
+		}
+
+		.autocomplete-search-results-list:empty {
 			padding: 0;
+		}
+
+		.autocomplete-search-results-list li {
+			padding: 6px 12px;
 		}
 
 		.tag-list {
 			list-style: none;
-			margin: 0;
+			margin: 16px 0 0;
 			padding: 0;
 		}
 
 		.tag-list li {
 			display: inline-block;
+			margin: 0 4px 4px 0;
+			padding: 2px 6px;
+			border-radius: 4px;
+			background-color: #6B7280;
+			font-size: 14px;
+			color: #FFF;
+		}
+
+		.dark .tag-list li {
+			background-color: #374151;
 		}
 	</style>
 	<script data-babel="true">
 		class SearchSelect extends React.Component {
 			constructor(props) {
-				super(props)
+				super(props);
 				this.state = {
 					results: props.options
 				}
 			}
 
 			searchList(event) {
-				const results = this.props.filterMethod(this.props.options, event.target.value)
-				this.setState({ results })
+				const results = this.props.filterMethod(this.props.options, event.target.value);
+				this.setState({ results });
 			}
 
 			render() {
 				return this.props.render({
 					results: this.state.results,
 					searchList: (event) => this.searchList(event)
-				})
+				});
 			}
 		}
 
@@ -91,26 +115,33 @@
 			"Saw",
 			"Sicario",
 			"Zombies"
-		]
+		];
 
 		class Autocomplete extends React.Component {
 			constructor(props) {
-				super(props)
+				super(props);
 				this.state = {
 					dropdownVisible: false
 				}
+				this.input = React.createRef();
 			}
 
 			filterMethod (options, query) {
-				return options.filter(option => option.toLowerCase().includes(query.toLowerCase()))
+				return options.filter(option => option.toLowerCase().includes(query.toLowerCase()));
 			}
 
 			showDropdown () {
-				this.setState({ dropdownVisible: true })
+				this.setState({ dropdownVisible: true });
 			}
 
 			hideDropdown () {
-				this.setState({ dropdownVisible: false })
+				this.setState({ dropdownVisible: false });
+			}
+
+			componentDidMount() {
+				if (this.input.current) {
+					this.input.current.focus();
+				}
 			}
 
 			render() {
@@ -123,6 +154,7 @@
 								<input
 									type="text"
 									placeholder="Type to search list"
+									ref={this.input}
 									onChange={searchList}
 									onFocus={() => this.showDropdown()}
 									onBlur={() => this.hideDropdown()}
@@ -141,7 +173,7 @@
 							</div>
 						)}
 					/>
-				)
+				);
 			}
 		}
 
@@ -195,7 +227,7 @@
 							<TagListSearch />
 						</div>
 					</div>
-				)
+				);
 			}
 		}
 
