@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>All Small Caps</title>
+	<style>
+		body {
+			font-weight: 700;
+		}
+
+		p {
+			margin: 1.5rem;
+			font-size: 2rem;
+			line-height: 1;
+			letter-spacing: -2px;
+			text-align: center;
+		}
+
+		@media (min-width: 640px) {
+			p {
+				font-size: 3rem;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div>
+		<p>Changing case to Small Caps.</p>
+		<p style="font-feature-settings: 'smcp' 1, 'c2sc' 1; color: var(--primary-color);">Changing case to Small Caps.</p>
+	</div>
+</div>
+</body>
+</html>

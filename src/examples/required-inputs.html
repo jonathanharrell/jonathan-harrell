@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Required & Optional Inputs</title>
+	<style>
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+
+		form > div {
+			position: relative;
+		}
+
+		input:optional + span::before,
+		input:required + span::before {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 0.125rem 0.5rem;
+			border-radius: 6px;
+			font-size: 0.75rem;
+			font-weight: 600;
+		}
+
+		.input:optional + span::before {
+			background-color: #E5E7EB;
+			content: "Optional";
+		}
+
+		.dark .input:optional + span::before {
+			background-color: #374151;
+		}
+
+		.input:required + span::before {
+			background-color: #FEF2F2;
+			color: #B91C1C;
+			content: "Required";
+		}
+
+		.dark .input:required + span::before {
+			background-color: rgba(239, 68, 68, 0.15);
+			color: #EF4444;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<div>
+			<label for="optional">Email address</label>
+			<input class="input" id="optional" placeholder="email@email.com" type="email" />
+			<span></span>
+		</div>
+		<div>
+			<label for="required">Email address</label>
+			<input class="input" id="required" placeholder="email@email.com" required type="email" />
+			<span></span>
+		</div>
+	</form>
+</div>
+</body>
+</html>

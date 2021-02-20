@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Default Input Value</title>
+	<style>
+		form {
+			width: 100%;
+			max-width: 32rem;
+		}
+
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+
+		legend {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
+
+		.radio {
+			position: relative;
+			margin-bottom: 1.25rem;
+			margin-right: 2rem;
+		}
+
+		@media (min-width: 640px) {
+			.radio {
+				margin-bottom: 0;
+			}
+		}
+
+		.radio input:default::before {
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: -0.5rem;
+			left: -0.5rem;
+			width: calc(100% + 1.5rem);
+			height: calc(100% + 1rem);
+			border-radius: 9999px;
+			background-color: #E5E7EB;
+			content: "";
+		}
+
+		.dark input:default::before {
+			background-color: #374151;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<fieldset>
+			<legend>Options</legend>
+			<div class="radio">
+				<input checked id="option-1" name="options" type="radio"/>
+				<label for="option-1">Option 1</label>
+			</div>
+			<div class="radio">
+				<input id="option-2" name="options" type="radio"/>
+				<label for="option-2">Option 2</label>
+			</div>
+			<div class="radio">
+				<input id="option-3" name="options" type="radio"/>
+				<label for="option-3">Option 3</label>
+			</div>
+			<div class="radio">
+				<input id="option-4" name="options" type="radio"/>
+				<label for="option-4">Option 4</label>
+			</div>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

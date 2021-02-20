@@ -40,38 +40,7 @@ Ligatures are single glyphs made from two or more characters. They typically pre
 
 ### common-ligatures
 
-<Codepen
-	title="Common Ligatures"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p style="font-feature-settings: 'liga' 0;">Different first Afliction affidavit There</p>
-				<p>Di<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">ff</span>erent <span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">fi</span>rst A<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">fl</span>iction a<span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">ffi</span>davit <span style="font-feature-settings: 'liga' 1; color: var(--primary-color);">Th</span>ere</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem 0;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 2.75rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="common-ligatures" height={240} smHeight={260}/>
 
 These are ligatures that the type designer has decided should be used in normal conditions. In most circumstances you should use these. Most browsers enable them by default.
 
@@ -85,38 +54,7 @@ font-feature-settings: 'liga' 0; /* low-level disable */
 
 ### discretionary-ligatures
 
-<Codepen
-	title="Discretionary Ligatures"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>ct sp st</p>
-				<p style="font-feature-settings: 'dlig' 1; color: var(--primary-color);">ct sp st</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -3px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="discretionary-ligatures" height={240} smHeight={260}/>
 
 These are ligatures which can be used for typographic purposes, for example to achieve a special effect. These are disabled by default.
 
@@ -130,41 +68,7 @@ font-feature-settings: 'dlig' 0; /* low-level disable */
 
 ### contextual
 
-<Codepen
-	title="Contextual Alternates"
-	height={280}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>The bloom has gone off the rose</p>
-				<p style="font-feature-settings: 'calt' 1;">
-					The <span style=" color: var(--primary-color);">bloom</span> has g<span style=" color: var(--primary-color);">one</span> off the <span style=" color: var(--primary-color);">rose</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: caflisch-script-pro, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -3px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				margin: 1.5rem;
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="contextual-alternates" height={280} smHeight={260}/>
 
 These are alternate ligatures that are affected by their surrounding context. They often harmonize the shapes of grouped glyphs. These are enabled by default.
 
@@ -178,42 +82,7 @@ font-feature-settings: 'calt' 0; /* low-level disable */
 
 ### historical-ligatures
 
-<Codepen
-	title="Historical Ligatures"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>ſinful ſingular</p>
-				<p style="font-feature-settings: 'hlig' 1;">
-					<span style=" color: var(--primary-color);">ſi</span>nful <span style=" color: var(--primary-color);">ſi</span>ngular
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "cardo";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
-		}
-		body {
-			font-family: cardo, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-/>
+<Example name="historical-ligatures" height={240} smHeight={260}/>
 
 These are ligatures which could be considered a subset of discretionary, but are specifically used to achieve a historical effect. These are disabled by default.
 
@@ -233,37 +102,7 @@ Thankfully, there is now a way to enable true subscripts and superscripts with `
 
 ### sub
 
-<Codepen
-	title="Subscripts"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>H2O, CO2</p>
-				<p>H<span style="font-feature-settings: 'subs' 1; color: var(--primary-color);">2</span>O, CO<span style="font-feature-settings: 'subs' 1; color: var(--primary-color);">2</span></p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="subscripts" height={240} smHeight={260}/>
 
 This enables true subscript characters.
 
@@ -277,37 +116,7 @@ font-feature-settings: 'subs' 0; /* low-level disable */
 
 ### super
 
-<Codepen
-	title="Superscripts"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>X2</p>
-				<p>X<span style="font-feature-settings: 'sups' 1; color: var(--primary-color);">2</span></p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -2px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="superscripts" height={240} smHeight={260}/>
 
 This enables true superscript characters.
 
@@ -325,36 +134,7 @@ A capital is not a capital is not a capital. The most significant use of `font-v
 
 ### small-caps
 
-<Codepen
-	title="Small Caps"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Changing case to Small Caps.</p>
-				<p style="font-feature-settings: 'smcp' 1; ">C<span style="color: var(--primary-color);">hanging case</span> to S<span style="color: var(--primary-color);">mall</span> C<span style="color: var(--primary-color);">aps</span>.</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-weight: 700;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-/>
+<Example name="small-caps" height={240} smHeight={260}/>
 
 Small caps are designed to be the same height as lowercase letters and are used to capitalize words within running text. They make for a more cohesive and readable paragraph.
 
@@ -368,36 +148,7 @@ font-feature-settings: 'smcp' 0; /* low-level disable */
 
 ### all-small-caps
 
-<Codepen
-	title="All Small Caps"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Changing case to Small Caps.</p>
-				<p style="font-feature-settings: 'smcp' 1, 'c2sc' 1; color: var(--primary-color);">Changing case to Small Caps.</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-weight: 700;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-/>
+<Example name="all-small-caps" height={240} smHeight={260}/>
 
 The `small-caps` value will only replace lowercase letters with small caps. To replace all letters with small caps (which is probably what you want) you need to use `all-small-caps`.
 
@@ -411,43 +162,7 @@ font-feature-settings: 'smcp' 1, 'c2sc' 0; /* low-level disable */
 
 ### petite-caps
 
-<Codepen
-	title="Petite Caps"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Georg Duffner - Principal Design</p>
-				<p style="font-feature-settings: 'pcap' 1;">
-					G<span style="color: var(--primary-color);">eorg Duffner</span> - P<span style="color: var(--primary-color);">rincipal Design</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "eb-garamond-bold";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
-		}
-		body {
-			font-family: "eb-garamond-bold", sans-serif;
-			font-weight: 700;
-		}
-		p {
-			margin: 1.5rem 0;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-/>
+<Example name="petite-caps" height={240} smHeight={260}/>
 
 Standard small caps will typically appear slightly larger than the x-height of the font. Some typefaces have additional small caps that match the x-height. These are called `petite-caps`.
 
@@ -461,43 +176,7 @@ font-feature-settings: 'pcap' 0; /* low-level disable */
 
 ### all-petite-caps
 
-<Codepen
-	title="All Petite Caps"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Georg Duffner - Principal Design</p>
-				<p style="font-feature-settings: 'c2pc' 1; color: var(--primary-color);">
-					Georg Duffner - Principal Design
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "eb-garamond-bold";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/eb-garamond-bold.woff2");
-		}
-		body {
-			font-family: "eb-garamond-bold", sans-serif;
-			font-weight: 700;
-		}
-		p {
-			margin: 1.5rem 0;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-/>
+<Example name="all-petite-caps" height={240} smHeight={260}/>
 
 Similarly to `all-small-caps`, this converts all letters, both lower and uppercase, to petite caps.
 
@@ -511,40 +190,7 @@ font-feature-settings: 'pcap' 1, 'c2pc' 0; /* low-level disable */
 
 ### unicase
 
-<Codepen
-	title="Unicase"
-	height={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Server Offline</p>
-				<p style="font-feature-settings: 'unic' 1; color: var(--primary-color);">Server Offline</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "arial-bold";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/arial-bold.woff2");
-		}
-		body {
-			font-family: "arial-bold", sans-serif;
-			font-weight: 700;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-/>
+<Example name="unicase" height={240} smHeight={260}/>
 
 This feature maps upper and lowercase letters to a mixed set of lowercase and small capital forms, creating a single case alphabet. Sometimes the small capitals used are actual small cap glyphs and sometimes they are specially designed unicase forms. The implementation of this feature varies greatly from font to font.
 
@@ -558,42 +204,7 @@ font-feature-settings: 'unic' 0; /* low-level disable */
 
 ### titling-caps
 
-<Codepen
-	title="Titling Caps"
-	height={300}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Quick brown lazy Grumpy</p>
-				<p style="font-feature-settings: 'titl' 1;">
-					Q<span style="color: var(--primary-color);">u</span>ick b<span style="color: var(--primary-color);">r</span>own laz<span style="color: var(--primary-color);">y</span> G<span style="color: var(--primary-color);">ru</span>mp<span style="color: var(--primary-color);">y</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "allan";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/allan-regular.woff2");
-		}
-		body {
-			font-family: "allan", sans-serif;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-/>
+<Example name="titling-caps" height={300} smHeight={260}/>
 
 Standard uppercase letters are designed for use alongside lowercase letters and when they are used in strings of all uppercase letters they can appear too strong. Some fonts include titling capitals specifically for this situation.
 
@@ -621,36 +232,7 @@ font-variant-numeric: lining-nums tabular-nums;
 
 ### lining-nums
 
-<Codepen
-	title="Lining Numerals"
-	height={180}
-	smHeight={200}
-	html={`
-		<div class="wrap">
-			<div>
-				<p style="font-feature-settings: 'lnum' 1; color: var(--primary-color);">0123456789</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 0;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -3px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="lining-numerals" height={180} smHeight={200}/>
 
 Lining numerals approximate capital letters and are uniform in height. They should be used in headings or numeric tables. Usually numbers are lining figures by default.
 
@@ -664,37 +246,7 @@ font-feature-settings: 'lnum' 0; /* low-level disable */
 
 ### oldstyle-nums
 
-<Codepen
-	title="Old-style Numerals"
-	height={240}
-	smHeight={270}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>0123456789</p>
-				<p style="font-feature-settings: 'onum' 1; color: var(--primary-color);">0123456789</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 0;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -3px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="old-style-numerals" height={240} smHeight={270}/>
 
 Old-style numerals have varying heights and alignments and are therefore more similar to lowercase letters. They should be used in running text.
 
@@ -708,44 +260,7 @@ font-feature-settings: 'onum' 0; /* low-level disable */
 
 ### proportional-nums
 
-<Codepen
-	title="Proportional Numerals"
-	height={220}
-	smHeight={240}
-	html={`
-		<div class="wrap">
-			<div>
-				<p style="font-feature-settings: 'pnum' 1; color: var(--primary-color);">
-					<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: hypatia-sans-pro, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -3px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-		span {
-			border-right: 1px solid var(--primary-color);
-		}
-		span:first-child {
-			border-left: 1px solid var(--primary-color);
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="proportional-numerals" height={220} smHeight={240}/>
 
 Proportional numerals have variable spacing and blend in with horizontal text. They should be used in most situations, other than numeric tables where vertical alignment is important. Usually numbers are proportional figures by default.
 
@@ -759,44 +274,7 @@ font-feature-settings: 'pnum' 0; /* low-level disable */
 
 ### tabular-nums
 
-<Codepen
-	title="Tabular Numerals"
-	height={220}
-	smHeight={240}
-	html={`
-		<div class="wrap">
-			<div>
-				<p style="font-feature-settings: 'tnum' 1; color: var(--primary-color);">
-					<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: hypatia-sans-pro, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 4rem;
-			line-height: 1;
-			letter-spacing: -3px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 5rem;
-			}
-		}
-		span {
-			border-right: 1px solid var(--primary-color);
-		}
-		span:first-child {
-			border-left: 1px solid var(--primary-color);
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="tabular-numerals" height={220} smHeight={240}/>
 
 Tabular numerals have the same width and should be used in numeric tables to allow vertical alignment of numbers.
 
@@ -810,38 +288,7 @@ font-feature-settings: 'tnum' 0; /* low-level disable */
 
 ### diagonal-fractions
 
-<Codepen
-	title="Diagonal Fractions"
-	height={320}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>1 3/4 C of flour, 1/2 cup.</p>
-				<p>1 <span style="font-feature-settings: 'frac' 1; color: var(--primary-color);">3/4</span> C of flour, <span style="font-feature-settings: 'frac' 1; color: var(--primary-color);">1/2</span> cup.</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="diagonal-fractions" height={320} smHeight={260}/>
 
 By default, fractions will display as lowercase letters with a slash. Proper fractions will be formatted to match the height of a lining figure and can be either diagonal or stacked.
 
@@ -855,41 +302,7 @@ font-feature-settings: 'frac' 0; /* low-level disable */
 
 ### stacked-fractions
 
-<Codepen
-	title="Stacked Fractions"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>1 3/4 C of flour, 1/2 cup.</p>
-				<p>1 <span style="font-feature-settings: 'afrc' 1; color: var(--primary-color);">3/4</span> C of flour, <span style="font-feature-settings: 'afrc' 1; color: var(--primary-color);">1/2</span> cup.</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "ubuntu-mono-bold";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/ubuntu-mono-bold.woff2");
-		}
-		body {
-			font-family: "ubuntu-mono-bold", sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-/>
+<Example name="stacked-fractions" height={240} smHeight={260}/>
 
 Stacked fractions are not as common of a feature in most web fonts as diagonal fractions, but should prove useful with heavily scientific or mathematical content.
 
@@ -903,37 +316,7 @@ font-feature-settings: 'afrc' 0; /* low-level disable */
 
 ### ordinal
 
-<Codepen
-	title="Ordinals"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>1st, 2nd, 3rd</p>
-				<p>1<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">st</span>, 2<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">nd</span>, 3<span style="font-feature-settings: 'ordn' 1; color: var(--primary-color);">rd</span></p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="ordinals" height={240} smHeight={260}/>
 
 Ordinals like st, nd, rd, and th will appear as standard lowercase letters by default. However, these should ideally appear as smaller raised numbers following the numeral. The `ordinal` value enables that.
 
@@ -947,39 +330,7 @@ font-feature-settings: 'ordn' 0; /* low-level disable */
 
 ### slashed-zero
 
-<Codepen
-	title="Subscripts"
-	height={180}
-	smHeight={220}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>
-					<span>0</span> <span style="font-feature-settings: 'zero' 1; color: var(--primary-color);">0</span>
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: warnock-pro, serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 6rem;
-			line-height: 1;
-			letter-spacing: -3px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 7rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="slashed-zero" height={180} smHeight={220}/>
 
 This enables an alternate zero character with a slash through it.
 
@@ -997,42 +348,7 @@ Fonts can provide a variety of alternates for any character. The `font-variant-a
 
 ### historical-forms
 
-<Codepen
-	title="Historical Forms"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>A paradise lost</p>
-				<p style="font-feature-settings: 'hist' 1;">
-					A paradi<span style=" color: var(--primary-color);">s</span>e lo<span style=" color: var(--primary-color);">s</span>t
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "cardo";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
-		}
-		body {
-			font-family: cardo, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-/>
+<Example name="historical-forms" height={240} smHeight={260}/>
 
 Historical alternates can be used for a “period” effect. Note the difference between this and historical ligatures. Historical ligatures are historical character combinations, whereas historical forms are substitutions for individual characters.
 
@@ -1046,40 +362,7 @@ font-feature-settings: 'hist' 0; /* low-level disable */
 
 ### stylistic(feature-value-name)
 
-<Codepen
-	title="Stylistic Alternates"
-	height={260}
-	smHeight={220}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Easy Sunday morning & my fox.</p>
-				<p style="font-feature-settings: 'salt' 1;">
-					E<span style="color: var(--primary-color);">a</span>s<span style="color: var(--primary-color);">y</span> Sund<span style="color: var(--primary-color);">ay</span> mornin<span style="color: var(--primary-color);">g</span> & m<span style="color: var(--primary-color);">y</span> fox.
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: bree, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 2rem;
-			line-height: 1;
-			letter-spacing: -1px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 3rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="stylistic-alternates" height={260} smHeight={220}/>
 
 Use this to select stylistic features on an individual basis. In order to use this and several of the following `font-variant-alternates` functions, you must define a `font-feature-value` using the `@font-feature-values` rule. For example, if you wanted to select stylistic feature number 1 in the font you are using, you would first define the feature value, and then use it within the `font-variant-alternates: stylistic()` function.
 
@@ -1097,40 +380,7 @@ font-feature-settings: 'salt' 0; /* low-level disable */
 
 ### styleset(feature-value-name)
 
-<Codepen
-	title="Stylistic Sets"
-	height={300}
-	smHeight={240}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>The quick brown fox</p>
-				<p style="font-feature-settings: 'ss01' 1;">
-					T<span style="color: var(--primary-color);">h</span>e q<span style="color: var(--primary-color);">ui</span>c<span style="color: var(--primary-color);">k</span> <span style="color: var(--primary-color);">br</span>ow<span style="color: var(--primary-color);">n</span> fox
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: hypatia-sans-pro, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -2px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="stylistic-sets" height={300} smHeight={240}/>
 
 Use this to select an entire set of alternative glyphs. The glyphs in a set are often designed to work together. Select a particular set by defining a `font-feature-values` rule using the set’s number.
 
@@ -1162,39 +412,7 @@ font-feature-settings: cv01; /* low-level enable */
 
 ### swash(feature-value-name)
 
-<Codepen
-	title="Swashes"
-	height={280}
-	smHeight={240}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>Fred And Ginger</p>
-				<p style="font-feature-settings: 'swsh' 1;">
-					<span style="color: var(--primary-color);">F</span>red <span style="color: var(--primary-color);">And G</span>inger
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		body {
-			font-family: bickham-script-pro-3, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-	stylesheets={["https://use.typekit.net/kes4reb.css"]}
-/>
+<Example name="swashes" height={280} smHeight={240}/>
 
 Swashes can be used to provide typographic interest to headings or more artistic settings of text. They are typically exaggerated alternative character designs, or have some sort of typographic flourish. Select a particular swash by defining a `font-feature-values` rule using the set’s number.
 
@@ -1212,43 +430,7 @@ font-feature-settings: swsh 0; /* low-level disable */
 
 ### ornaments(feature-value-name)
 
-<Codepen
-	title="Ornaments"
-	height={240}
-	smHeight={260}
-	html={`
-		<div class="wrap">
-			<div>
-				<p>abcdefg</p>
-				<p style="font-feature-settings: 'ornm' 1; color: var(--primary-color);">
-					abcdefg
-				</p>
-			</div>
-		</div>
-	`}
-	css={`
-		@font-face {
-			font-family: "clara";
-			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/clara-regular.woff2");
-		}
-		body {
-			font-family: clara, sans-serif;
-			font-weight: 600;
-		}
-		p {
-			margin: 1.5rem;
-			font-size: 3rem;
-			line-height: 1;
-			letter-spacing: -3px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			p {
-				font-size: 4rem;
-			}
-		}
-	`}
-/>
+<Example name="ornaments" height={240} smHeight={260}/>
 
 This replaces default glyphs with ornaments, if they are provided in the font.
 

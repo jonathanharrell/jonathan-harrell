@@ -130,7 +130,6 @@ const Layout = ({ location, color, children, ...props }) => {
 								/>
 							),
 							Note: props => <Note color={color} {...props} />,
-							// Codepen: props => <Codepen key={themeName} color={color} {...props} />,
 							Example: props => <Example key={themeName} color={color} {...props} />,
 							ArticleLink
 						}}

@@ -168,6 +168,8 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
 exports.onCreateWebpackConfig = ({ getConfig, stage, actions }) => {
 	const config = getConfig();
 
+	config.module.rules.push({ test: /\.html$/, loader: "html-loader" });
+
 	if (stage.startsWith("develop") && config.resolve) {
 		config.resolve.alias = {
 			...config.resolve.alias,
