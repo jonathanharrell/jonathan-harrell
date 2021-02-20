@@ -14,8 +14,7 @@ const CodepenWrap = styled.div`
 
 const cleanupCode = code => code.replace(/\n/, "").replace(/^\t\t/gm, "");
 
-const getGlobalCss = color => `
-:root {
+const getGlobalCss = color => `:root {
 	--primary-color: ${fullConfig.theme.colors[color]["400"]};
 	--background-color: ${fullConfig.theme.colors.gray["50"]};
 	--text-color: ${fullConfig.theme.colors.gray["900"]};
@@ -56,9 +55,11 @@ body {
 
 .wrap {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	overflow-y: auto;
 	padding: 2rem;
 }
 
@@ -170,6 +171,11 @@ const Codepen = ({
 }) => {
 	const { themeName } = useContext(ThemeContext);
 	const root = useRef();
+
+	if (html) html = html.replace(/\n/, "");
+	if (styles) styles = cleanupCode(styles);
+	if (js) js = cleanupCode(js);
+	if (babel) babel = cleanupCode(babel);
 
 	if (styles) {
 		styles = `${getGlobalCss(color)}\n${styles}`;

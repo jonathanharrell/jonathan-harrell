@@ -7,10 +7,12 @@ const TableOfContents = ({ tableOfContents, articleContent, color }) => {
 	const setActiveSection = useCallback(() => {
 		if (articleContent.current) {
 			const headings = Array.from(articleContent.current.querySelectorAll("h2"));
+
 			const visibleHeadings = headings.filter(heading => {
 				const { bottom } = heading.getBoundingClientRect();
 				return bottom <= (window.innerHeight || document.documentElement.clientHeight);
 			});
+
 			if (visibleHeadings.length) {
 				setActiveSectionId(visibleHeadings[visibleHeadings.length - 1].id);
 			} else {
@@ -42,7 +44,7 @@ const TableOfContents = ({ tableOfContents, articleContent, color }) => {
 					<a
 						href={item.url}
 						className={`inline-flex text-base leading-tight opacity-50 hover:opacity-75 ${
-							item.url === `#${activeSectionId}` ? "opacity-100 font-medium" : ""
+							item.url === `#${activeSectionId}` ? "opacity-100" : ""
 						}`}
 					>
 						<span
