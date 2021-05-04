@@ -18,16 +18,40 @@
 		@media (min-width: 640px) {
 			form {
 				grid-template-columns: repeat(2, 1fr);
-				grid-gap: 48px;
+				grid-gap: 3rem;
 			}
 		}
 
-		.input:read-write {
+		label {
+			display: block;
+			margin-bottom: 0.375rem;
+			font-weight: 600;
+		}
+
+		input {
+			appearance: none;
+			width: 100%;
+			padding: 0.625rem 0.875rem;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+			font-size: 1.125rem;
+			color: inherit;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
+		}
+
+		input:read-write {
 			border-color: var(--primary-color);
 			box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
 		}
 
-		.input:read-only {
+		input:read-only {
 			background-color: var(--input-disabled-background-color);
 		}
 	</style>
@@ -37,11 +61,11 @@
 	<form>
 		<div>
 			<label for="read-write">Email address (read-write)</label>
-			<input class="input" id="read-write" placeholder="email@email.com" type="email" value="my-email@email.com" />
+			<input id="read-write" placeholder="email@email.com" type="email" value="my-email@email.com" />
 		</div>
 		<div>
 			<label for="read-only">Email address (read-only)</label>
-			<input class="input" id="read-only" placeholder="email@email.com" readOnly type="email" value="my-email@email.com" />
+			<input id="read-only" placeholder="email@email.com" readonly type="email" value="my-email@email.com" />
 		</div>
 	</form>
 </div>

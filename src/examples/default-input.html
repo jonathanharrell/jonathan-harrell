@@ -12,6 +12,12 @@
 			max-width: 32rem;
 		}
 
+		fieldset {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
 		@media (min-width: 640px) {
 			fieldset {
 				display: flex;
@@ -25,6 +31,8 @@
 		}
 
 		.radio {
+			display: flex;
+			align-items: center;
 			position: relative;
 			margin-bottom: 1.25rem;
 			margin-right: 2rem;
@@ -34,6 +42,10 @@
 			.radio {
 				margin-bottom: 0;
 			}
+		}
+
+		.radio label {
+			margin-left: 0.5rem;
 		}
 
 		.radio input:default::before {
@@ -51,6 +63,35 @@
 
 		.dark input:default::before {
 			background-color: #374151;
+		}
+
+		input[type="radio"] {
+			appearance: none;
+			width: 1rem;
+			height: 1rem;
+			margin: 0;
+			padding: 0;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		input[type="radio"] {
+			border-radius: 9999px;
+		}
+
+		input[type="radio"]:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
+		}
+
+		input[type="radio"]:checked {
+			border-color: var(--primary-color);
+			background-color: var(--primary-color);
+			background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e")
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-position: center;
 		}
 	</style>
 </head>

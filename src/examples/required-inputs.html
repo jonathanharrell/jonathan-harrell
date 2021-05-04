@@ -18,12 +18,36 @@
 		@media (min-width: 640px) {
 			form {
 				grid-template-columns: repeat(2, 1fr);
-				grid-gap: 48px;
+				grid-gap: 3rem;
 			}
 		}
 
 		form > div {
 			position: relative;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 0.375rem;
+			font-weight: 600;
+		}
+
+		input {
+			appearance: none;
+			width: 100%;
+			padding: 0.625rem 0.875rem;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+			font-size: 1.125rem;
+			color: inherit;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
 		}
 
 		input:optional + span::before,
@@ -38,22 +62,22 @@
 			font-weight: 600;
 		}
 
-		.input:optional + span::before {
+		input:optional + span::before {
 			background-color: #E5E7EB;
 			content: "Optional";
 		}
 
-		.dark .input:optional + span::before {
+		.dark input:optional + span::before {
 			background-color: #374151;
 		}
 
-		.input:required + span::before {
+		input:required + span::before {
 			background-color: #FEF2F2;
 			color: #B91C1C;
 			content: "Required";
 		}
 
-		.dark .input:required + span::before {
+		.dark input:required + span::before {
 			background-color: rgba(239, 68, 68, 0.15);
 			color: #EF4444;
 		}
@@ -64,12 +88,12 @@
 	<form>
 		<div>
 			<label for="optional">Email address</label>
-			<input class="input" id="optional" placeholder="email@email.com" type="email" />
+			<input id="optional" placeholder="email@email.com" type="email" />
 			<span></span>
 		</div>
 		<div>
 			<label for="required">Email address</label>
-			<input class="input" id="required" placeholder="email@email.com" required type="email" />
+			<input id="required" placeholder="email@email.com" required type="email" />
 			<span></span>
 		</div>
 	</form>

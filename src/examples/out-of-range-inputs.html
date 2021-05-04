@@ -18,8 +18,32 @@
 		@media (min-width: 640px) {
 			form {
 				grid-template-columns: repeat(2, 1fr);
-				grid-gap: 48px;
+				grid-gap: 3rem;
 			}
+		}
+
+		label {
+			display: block;
+			margin-bottom: 0.375rem;
+			font-weight: 600;
+		}
+
+		input {
+			appearance: none;
+			width: 100%;
+			padding: 0.625rem 0.875rem;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+			font-size: 1.125rem;
+			color: inherit;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
 		}
 
 		input:in-range,
@@ -76,12 +100,12 @@
 	<form>
 		<div>
 			<label for="in-range">Email address (in-range)</label>
-			<input class="input" id="in-range" max="9" min="1" placeholder="0" type="number" value="4" />
+			<input id="in-range" max="9" min="1" placeholder="0" type="number" value="4" />
 			<span data-in-range-message="This number is within range!" data-out-of-range-message="This number is out of range!"></span>
 		</div>
 		<div>
 			<label for="out-of-range">Email address (out-of-range)</label>
-			<input class="input" id="out-of-range" max="9" min="1" placeholder="0" type="number" value="11" />
+			<input id="out-of-range" max="9" min="1" placeholder="0" type="number" value="11" />
 			<span data-in-range-message="This number is within range!" data-out-of-range-message="This number is out of range!"></span>
 		</div>
 	</form>

@@ -14,7 +14,8 @@ const CodepenWrap = styled.div`
 
 const cleanupCode = code => code.replace(/\n/, "").replace(/^\t\t/gm, "");
 
-const getGlobalCss = color => `:root {
+const getGlobalCss = color => `/* Global styles for all Codepen examples */
+:root {
 	--primary-color: ${fullConfig.theme.colors[color]["400"]};
 	--background-color: ${fullConfig.theme.colors.gray["50"]};
 	--text-color: ${fullConfig.theme.colors.gray["900"]};
@@ -63,99 +64,7 @@ body {
 	padding: 2rem;
 }
 
-fieldset {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-label {
-	display: block;
-	margin-bottom: ${fullConfig.theme.margin[1.5]};
-	font-weight: 600;
-}
-
-input {
-	appearance: none;
-	width: 100%;
-	padding: ${fullConfig.theme.padding[2.5]} ${fullConfig.theme.padding[3.5]};
-	border: 1px solid var(--input-border-color);
-	border-radius: ${fullConfig.theme.borderRadius.md};
-	background-color: var(--input-background-color);
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-	font-size: ${fullConfig.theme.fontSize.lg[0]};
-	color: inherit;
-}
-
-input:focus {
-	outline: none;
-	border-color: var(--primary-color) !important;
-	box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
-}
-
-input:disabled {
-	background-color: var(--input-disabled-background-color);
-	cursor: not-allowed;
-}
-
-input::placeholder {
-	color: var(--input-placeholder-color);
-}
-
-.checkbox,
-.radio {
-	display: flex;
-	align-items: center;
-}
-
-.checkbox label,
-.radio label {
-	margin-bottom: 0;
-	margin-left: 0.5rem;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-	width: 1rem;
-	height: 1rem;
-	margin: 0;
-	padding: 0;
-}
-
-input[type="checkbox"] {
-	border-radius: ${fullConfig.theme.borderRadius.DEFAULT};
-}
-
-input[type="radio"] {
-	border-radius: ${fullConfig.theme.borderRadius.full};
-}
-
-input[type="checkbox"]:checked,
-input[type="radio"]:checked {
-	border-color: var(--primary-color);
-	background-color: var(--primary-color);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: center;
-}
-
-input[type="checkbox"]:checked {
-	background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-}
-
-input[type="radio"]:checked {
-	background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
-}
-
-input[type="checkbox"]:indeterminate {
-	border-color: var(--primary-color);
-	background-color: var(--primary-color);
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='2' x='4' y='7' rx='1'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: center;
-}
-`;
+/* Styles specific to this example */`;
 
 const Codepen = ({
 	color,
