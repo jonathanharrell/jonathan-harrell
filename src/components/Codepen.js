@@ -122,12 +122,9 @@ const Codepen = ({
 	};
 
 	return (
-		<div
-			ref={root}
-			className="relative overflow-hidden my-8 rounded-xl bg-gray-50 dark:bg-gray-800"
-		>
+		<div ref={root} className="relative overflow-hidden my-8 bg-gray-50 dark:bg-gray-800">
 			<button
-				className="flex items-center absolute top-0 right-0 py-1 px-2 rounded-tr-xl rounded-bl-xl bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm font-medium text-gray-600 dark:text-gray-400"
+				className="flex items-center absolute top-0 right-0 p-2 text-sm font-medium text-gray-400 dark:text-gray-600"
 				onClick={viewOnCodepen}
 			>
 				<CodepenIcon size={14} className="mr-1" />

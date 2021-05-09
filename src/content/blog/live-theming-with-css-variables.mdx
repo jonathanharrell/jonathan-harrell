@@ -113,7 +113,7 @@ const handleInputChange = (property, pixels) => {
 
 Next, I’ll need to add some functionality to grab the values from localStorage and set them on page load. I will need to set the CSS variable and the input value so everything is consistent. Once again, I’ve extracted the logic to a separate function. And again, be careful of pixel values. This time, when setting the input values, the ‘px’ string will need to be removed.
 
-```css
+```javascript
 const setValueFromLocalStorage = property => {
   let value = localStorage.getItem(property);
   document.documentElement.style.setProperty(

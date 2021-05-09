@@ -7,6 +7,10 @@ const ScrollToTop = () => {
 	const [scrolled, setScrolled] = useState(false);
 
 	const handleScroll = debounce(() => {
+		if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+			return setScrolled(false);
+		}
+
 		setScrolled(window.scrollY > 100);
 	}, 50);
 

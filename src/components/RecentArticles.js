@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import ArticleExcerpt from "./ArticleExcerpt";
 
 const RecentArticles = ({ posts }) => (
-	<ul className="grid gap-6 sm:grid-cols-2">
+	<ul className="grid gap-y-10 md:gap-y-8 gap-x-8 md:grid-cols-2">
 		{posts.map(({ node: post }) => (
 			<li key={post.id}>
 				<ArticleExcerpt
@@ -46,5 +46,8 @@ const query = graphql`
 `;
 
 export default () => (
-	<StaticQuery query={query} render={({ allMdx: { posts } }) => <RecentArticles posts={posts} />} />
+	<StaticQuery
+		query={query}
+		render={({ allMdx: { posts } }) => <RecentArticles posts={posts} />}
+	/>
 );

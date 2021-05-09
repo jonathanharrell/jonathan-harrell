@@ -8,7 +8,6 @@ import Example from "./Example";
 import ArticleLink from "./ArticleLink";
 import Footer from "./Footer";
 import Pre from "./Pre";
-import themeColors from "../theme";
 import ArticleHeading from "./ArticleHeading";
 import ThemedImage from "./ThemedImage";
 import ThemeContext from "../context/theme";
@@ -28,7 +27,7 @@ const Layout = ({ location, color, children, ...props }) => {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Seo />
-			<div className="flex flex-col flex-1 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+			<div className="flex-1 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
 				<a
 					id="skip-link"
 					href="#main"
@@ -47,7 +46,7 @@ const Layout = ({ location, color, children, ...props }) => {
 					tabIndex="-1"
 					aria-label="Main Content"
 					ref={mainRef}
-					className="flex-1 outline-none"
+					className="outline-none"
 				>
 					<MDXProvider
 						components={{
@@ -57,7 +56,7 @@ const Layout = ({ location, color, children, ...props }) => {
 							h2: props => (
 								<ArticleHeading
 									color={color}
-									className="mt-16 sm:mt-24 mb-4 text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight"
+									className="mt-16 mb-6 text-2xl sm:text-3xl font-bold tracking-tight leading-tight"
 									{...props}
 								/>
 							),
@@ -77,16 +76,21 @@ const Layout = ({ location, color, children, ...props }) => {
 								<h5 className="mt-6 mb-4 sm:text-lg font-semibold" {...props} />
 							),
 							h6: props => <h6 className="mt-4 mb-4 font-semibold" {...props} />,
-							p: props => <p className="mb-4 sm:text-lg leading-normal" {...props} />,
+							p: props => (
+								<p
+									className="mb-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300"
+									{...props}
+								/>
+							),
 							ul: props => (
 								<ul
-									className="ml-5 mb-4 list-disc sm:text-lg leading-normal"
+									className="ml-5 mb-6 list-disc sm:text-lg leading-normal text-gray-600 dark:text-gray-300"
 									{...props}
 								/>
 							),
 							ol: props => (
 								<ol
-									className="ml-5 mb-4 list-disc sm:text-lg leading-normal"
+									className="ml-5 mb-6 list-disc sm:text-lg leading-normal text-gray-600 dark:text-gray-300"
 									{...props}
 								/>
 							),
@@ -102,13 +106,11 @@ const Layout = ({ location, color, children, ...props }) => {
 								return (
 									<div className="relative my-6 sm:my-8 -mx-6 sm:mx-0">
 										<Pre
-											color={color}
+											color="green"
 											{...props}
-											className={`overflow-x-auto whitespace-pre-wrap p-8 sm:rounded-lg bg-gray-50 dark:bg-gray-800 text-base whitespace-pre-wrap text-gray-700 dark:text-gray-300 ${props.className}`}
+											className={`overflow-x-auto whitespace-pre-wrap p-6 sm:rounded-lg bg-gray-800 selection:bg-black whitespace-pre-wrap text-gray-100 ${props.className}`}
+											style={{ fontSize: "0.9rem" }}
 										/>
-										<span className="hidden sm:block absolute top-0 right-0 py-1 px-4 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-400 dark:text-gray-600 transform -translate-y-1/2">
-											{language}
-										</span>
 									</div>
 								);
 							},
@@ -116,21 +118,23 @@ const Layout = ({ location, color, children, ...props }) => {
 							inlineCode: props => (
 								<code
 									{...props}
-									className={`px-1 py-0.5 rounded text-base bg-gray-50 dark:bg-gray-800 ${themeColors[color].text}`}
-								/>
+									className="px-0.5 text-base bg-gray-100 dark:bg-gray-800"
+								>
+									{props.children}
+								</code>
 							),
 							a: props => (
 								<a
-									className={`sm:text-lg font-medium hover:underline ${themeColors[color].text}`}
+									className="font-medium hover:underline text-green-500"
 									style={{
-										textUnderlineOffset: "3px",
+										textUnderlineOffset: "1px",
 										textDecorationThickness: "2px"
 									}}
 									{...props}
 								/>
 							),
 							Note: props => <Note color={color} {...props} />,
-							Example: props => <Example key={themeName} color={color} {...props} />,
+							Example: props => <Example key={themeName} color="green" {...props} />,
 							ArticleLink
 						}}
 					>

@@ -3,10 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "react-feather";
 import Overlay from "./Overlay";
 import ThemeContext from "../context/theme";
-import themeColors from "../theme";
 import { Link } from "gatsby";
 
-const MobileMenu = ({ location, color }) => {
+const MobileMenu = ({ location }) => {
 	const { themeName, setTheme } = useContext(ThemeContext);
 	const [expanded, setExpanded] = useState(false);
 	const openButtonRef = useRef();
@@ -93,11 +92,7 @@ const MobileMenu = ({ location, color }) => {
 				id="site-navigation"
 				aria-controls="main-menu"
 				title="Open menu"
-				className={`inline-flex py-2 px-4 rounded-xl ${
-					themeColors[color]
-						? `${themeColors[color].gradientButton} text-gray-100`
-						: "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-				} text-sm font-semibold transition-colors duration-200 cursor-pointer`}
+				className={`inline-flex py-2 px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm font-semibold transition-colors duration-200 cursor-pointer`}
 				onClick={open}
 			>
 				Menu
@@ -172,8 +167,11 @@ const MobileMenu = ({ location, color }) => {
 												</ul>
 											</nav>
 										</section>
-										<hr className="m-4 border-1 border-gray-100 dark:border-gray-700" />
-										<section aria-labelledby="theme-settings-label" className="py-2 px-4">
+										<hr className="m-4 border-1 border-gray-200 dark:border-gray-800" />
+										<section
+											aria-labelledby="theme-settings-label"
+											className="py-2 px-4"
+										>
 											<h3
 												id="theme-settings-label"
 												className="font-medium text-gray-400 dark:text-gray-600"

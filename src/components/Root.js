@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "focus-visible";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "../context/theme";
-import { addAlert } from "../helpers";
 
 const Root = ({ children }) => {
 	const [themeName, setThemeName] = useState();
@@ -20,7 +19,6 @@ const Root = ({ children }) => {
 	// allow user to manually change their theme
 	const setTheme = themeName => {
 		window.__setPreferredTheme(themeName);
-		addAlert(`Theme set to ${themeName}`);
 	};
 
 	return (

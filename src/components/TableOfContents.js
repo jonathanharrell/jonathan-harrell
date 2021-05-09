@@ -48,8 +48,8 @@ const TableOfContents = ({ tableOfContents, articleContent, color }) => {
 						}`}
 					>
 						<span
-							className={`block flex-shrink-0 w-2 h-2 mt-2 mr-2 rounded-full ${
-								item.url === `#${activeSectionId}` ? `bg-${color}-400` : ""
+							className={`block flex-shrink-0 w-2 h-2 mt-1.5 mr-2 rounded-full ${
+								item.url === `#${activeSectionId}` ? `bg-green-400` : ""
 							}`}
 						/>
 						{item.title}

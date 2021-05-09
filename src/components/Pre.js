@@ -4,24 +4,13 @@ import { codeColors } from "../theme";
 
 const StyledPre = styled.pre`
 	${({ color }) =>
-		Object.entries(codeColors[color] || codeColors.default)
+		Object.entries(codeColors)
 			.map(([key, value]) => `.token.${key} { color: ${value}; }`)
 			.join("\n")}
 
-	.token.comment,
-	.token.prolog,
-	.token.doctype,
-	.token.cdata {
-		opacity: 0.5;
-	}
-
-	.token.namespace {
-		opacity: 0.75;
-	}
-
 	.language-css .token.string,
 	.style .token.string {
-		color: ${({ color }) => codeColors[color].operator};
+		color: ${({ color }) => codeColors.operator};
 	}
 
 	.token.important,

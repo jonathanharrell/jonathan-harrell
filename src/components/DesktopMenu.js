@@ -1,18 +1,16 @@
 import { Link } from "gatsby";
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { Moon, Sun } from "react-feather";
+import React, { useContext, useEffect, useState } from "react";
+import { Switch } from "@headlessui/react";
+import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import ThemeContext from "../context/theme";
 
-const SiteLink = styled(Link)`
-	&[data-active] {
-		border-bottom: 2px solid currentColor;
-		opacity: 1 !important;
-	}
-`;
-
-const DesktopMenu = ({ shell, color }) => {
+const DesktopMenu = ({ shell }) => {
 	const { themeName, setTheme } = useContext(ThemeContext);
+	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+
+	useEffect(() => {
+		setDarkModeEnabled(themeName === "dark");
+	}, [themeName]);
 
 	// some links need special logic to determine whether or not they should get the active style
 	const isActive = ({ isCurrent, isPartiallyCurrent, href }) => {
@@ -55,53 +53,60 @@ const DesktopMenu = ({ shell, color }) => {
 					<nav role="navigation">
 						<ul className="flex items-center space-x-8">
 							<li>
-								<SiteLink
+								<Link
 									to="/"
 									rel="home"
 									getProps={isActive}
-									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
-										color ? "text-gray-100" : ""
-									}`}
+									className="py-0.5 text-base font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300"
 								>
 									Home
-								</SiteLink>
+								</Link>
 							</li>
 							<li>
-								<SiteLink
+								<Link
 									to="/blog"
 									getProps={isActive}
-									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
-										color ? "text-gray-100" : ""
-									}`}
+									className="py-0.5 text-base font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300"
 								>
 									Articles
-								</SiteLink>
+								</Link>
 							</li>
 							<li>
-								<SiteLink
+								<Link
 									to="/about"
 									getProps={isActive}
-									className={`py-0.5 text-base font-semibold hover:opacity-75 ${
-										color ? "text-gray-100" : ""
-									}`}
+									className="py-0.5 text-base font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300"
 								>
 									About
-								</SiteLink>
+								</Link>
 							</li>
 						</ul>
 					</nav>
 				</section>
 			)}
-			<button
-				title={`Change theme to ${themeName === "light" ? "dark" : "light"}`}
-				className={`hover:opacity-75 ${color ? "text-gray-100" : ""}`}
-				onClick={toggleTheme}
+			<Switch
+				checked={darkModeEnabled}
+				onChange={toggleTheme}
+				className={`${
+					darkModeEnabled ? "bg-gray-700" : "bg-gray-200"
+				} relative inline-flex items-center h-7 rounded-full w-14`}
 			>
-				<span className="sr-only">
-					Change theme to {themeName === "light" ? "dark" : "light"}
-				</span>
-				<span>{themeName === "light" ? <Sun /> : <Moon />}</span>
-			</button>
+				<span className="sr-only">Enable dark mode</span>
+				{darkModeEnabled ? (
+					<span className="absolute top-1/2 left-1.5 transform -translate-y-1/2">
+						<SunIcon className="h-5 w-5 text-gray-300" />
+					</span>
+				) : (
+					<span className="absolute top-1/2 right-1.5 transform -translate-y-1/2">
+						<MoonIcon className="h-5 w-5 text-gray-500" />
+					</span>
+				)}
+				<span
+					className={`${
+						darkModeEnabled ? "translate-x-8" : "translate-x-2"
+					} inline-block w-4 h-4 transform bg-white rounded-full`}
+				/>
+			</Switch>
 		</div>
 	);
 };

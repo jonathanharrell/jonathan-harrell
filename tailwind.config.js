@@ -18,7 +18,8 @@ module.exports = {
 				orange: colors.orange,
 				purple: colors.purple,
 				rose: colors.rose,
-				violet: colors.violet
+				violet: colors.violet,
+				teal: colors.teal
 			}
 		},
 		fontFamily: {
@@ -68,6 +69,7 @@ module.exports = {
 			ringOffsetWidth: ["focus-visible"],
 			ringOpacity: ["focus-visible"],
 			ringWidth: ["focus-visible"],
+			rotate: ["group-hover"],
 			opacity: ["focus-visible"]
 		}
 	},

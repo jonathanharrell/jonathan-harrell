@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { GitHub, Share, Twitter } from "react-feather";
-import Button from "./Button";
+import { ChatAlt2Icon, ShareIcon } from "@heroicons/react/solid";
 
-const ArticleShare = ({ location, title, slug }) => {
+const ArticleShare = ({ location, title, slug, className }) => {
 	const [hasNavigatorShare, setHasNavigatorShare] = useState(false);
-
-	const githubUrl = `https://github.com/jonathanharrell/jonathan-harrell/edit/master/src/content${slug}`;
-	const re = new RegExp(/.+?(?=\/$)/);
-	const [match] = githubUrl.match(re);
-	const processedGithubUrl = `${match}.mdx`;
 
 	const shareArticle = () => {
 		try {
@@ -28,34 +22,24 @@ const ArticleShare = ({ location, title, slug }) => {
 	return (
 		<>
 			{hasNavigatorShare && (
-				<Button className="w-full sm:w-auto" onClick={shareArticle}>
-					<Share className={`mr-2 w-5 h-5 text-gray-400`} />
+				<button
+					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white hover:bg-gray-100 border md:border-l-0 md:border-r-0 border-gray-200 rounded-lg md:rounded-none text-lg"
+					onClick={shareArticle}
+				>
+					<ShareIcon className="w-5 h-5 mr-2 text-gray-400" />
 					<span>Share this article</span>
-				</Button>
+				</button>
 			)}
 			{!hasNavigatorShare && location.href && (
-				<Button
+				<a
 					href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
 					target="_blank"
 					rel="noopener noreferrer"
-					as="a"
-					className="w-full sm:w-auto"
+					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white hover:bg-gray-100 border md:border-l-0 md:border-r-0 border-gray-200 rounded-lg md:rounded-none text-lg"
 				>
-					<Twitter className={`mr-2 w-5 h-5 text-gray-400`} />
+					<ChatAlt2Icon className="w-5 h-5 mr-2 text-gray-400" />
 					<span>Discuss on Twitter</span>
-				</Button>
-			)}
-			{processedGithubUrl && (
-				<Button
-					href={processedGithubUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					as="a"
-					className="w-full sm:w-auto"
-				>
-					<GitHub className={`mr-2 w-5 h-5 text-gray-400`} />
-					<span>Edit on Github</span>
-				</Button>
+				</a>
 			)}
 		</>
 	);

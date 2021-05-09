@@ -34,13 +34,15 @@ const ArticleLink = ({ title }) => {
 	const [{ node: post }] = posts.filter(post => post.node.frontmatter.title === title);
 
 	return post ? (
-		<ArticleExcerpt
-			link={post.fields.slug}
-			date={new Date(post.frontmatter.date)}
-			title={post.frontmatter.title}
-			excerpt={post.frontmatter.description}
-			color={post.frontmatter.color || "blue"}
-		/>
+		<div className="py-6 px-8 rounded-xl bg-gray-100 dark:bg-gray-800">
+			<ArticleExcerpt
+				link={post.fields.slug}
+				date={new Date(post.frontmatter.date)}
+				title={post.frontmatter.title}
+				excerpt={post.frontmatter.description}
+				color={post.frontmatter.color || "blue"}
+			/>
+		</div>
 	) : null;
 };
 

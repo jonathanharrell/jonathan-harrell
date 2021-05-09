@@ -21,7 +21,7 @@ button,
 input,
 textarea,
 select {
-  @apply focus:outline-none focus-visible:ring focus-visible:ring-blue-300;
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400;
 }
 
 .dark {
@@ -34,6 +34,10 @@ select {
 
 .cp_embed_wrapper {
 	height: 100%;
+}
+
+mark {
+	@apply bg-gray-100 dark:bg-gray-700 text-current;
 }
 
 /*svg {*/
