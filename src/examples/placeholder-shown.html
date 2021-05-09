@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Placeholder-Shown</title>
+	<style>
+		form {
+			width: 100%;
+			max-width: 25rem;
+		}
+
+		form div {
+			position: relative;
+			padding-top: 1.75rem;
+		}
+
+		label {
+			display: block;
+			position: absolute;
+			top: 0;
+			margin-bottom: 0.375rem;
+			opacity: 1;
+			font-weight: 600;
+			transform: translateY(0);
+			transition: all 0.2s ease-out;
+		}
+
+		input {
+			appearance: none;
+			width: 100%;
+			padding: 0.625rem 0.875rem;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+			font-size: 1.125rem;
+			color: inherit;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
+		}
+
+		input:placeholder-shown + label {
+			opacity: 0;
+			transform: translateY(1rem);
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<div>
+			<input
+				autocomplete="off"
+				id="type-in-me"
+				placeholder="Type in me"
+				type="text"
+			/>
+			<label for="type-in-me">Type in me</label>
+		</div>
+	</form>
+</div>
+</body>
+</html>

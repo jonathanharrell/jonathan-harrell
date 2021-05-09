@@ -5,12 +5,13 @@ date: 2020-04-09T20:18:26.558Z
 description: >-
   Learn how to support system-based theming in Styled Components, while allowing
   a user to select their preferred theme and persist that choice.
-featuredimage: /img/system-theming.svg
+color: indigo
+featuredimage: /img/placeholder.svg
 socialimage: /img/system-theming.png
 tags:
-  - javascript
-  - react
-  - theming
+  - JavaScript
+  - React
+  - Theming
 ---
 Most operating systems these days support a system-wide light/dark mode toggle, and we may want our web sites and applications to take on a corresponding mode, essentially inheriting their color scheme from the system on which they are being viewed. Let’s take a look at how to implement this, and how it would integrate with a CSS-in-JS theming system such as Styled Components.
 
@@ -113,12 +114,12 @@ const darkValues = css`
   --background: ${({ theme }) => theme.colors.black};
 `;
 
+// define light theme values as the defaults within the root selector
+// override with dark theme values within media query
 const GlobalStyle = createGlobalStyle`
   :root {
-    // define light theme values as the defaults within the root selector
     ${lightValues}
 
-    // override with dark theme values within media query
     @media (prefers-color-scheme: dark) {
       ${darkValues}
     }
@@ -234,17 +235,17 @@ const darkValues = css`
   --background: ${({ theme }) => theme.colors.black};
 `;
 
+// define light theme values as the defaults within the root selector
+// override with dark theme values if theme data attribute is set to dark
+// support no JavaScript scenario by using media query
 const GlobalStyle = createGlobalStyle`
   :root {
-    // define light theme values as the defaults within the root selector
     ${lightValues}
 
-    // override with dark theme values if theme data attribute is set to dark
     [data-theme="dark"] {
       ${darkValues}
     }
 
-    // support no JavaScript scenario by using media query
     &.no-js {
       @media (prefers-color-scheme: dark) {
         ${darkValues}

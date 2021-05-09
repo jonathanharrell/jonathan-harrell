@@ -21,7 +21,4 @@ npm run build
 
 # Serve production build
 npm run serve
-
-# Run storybook
-npm run storybook
 ```

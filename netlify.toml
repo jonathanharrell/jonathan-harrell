@@ -1,15 +1,24 @@
+[dev]
+  framework = "gatsby"
+
 [build]
   publish = "public"
   command = "npm run build"
   functions = "functions"
 
 [build.environment]
-  NPM_VERSION = "6.4.1"
+  NPM_VERSION = "6.12.0"
 
 [[headers]]
   for = "/static/*"
     [headers.values]
-    cache-control = 'public, max-age=360000'
+    cache-control = "public, max-age=360000"
+
+[[headers]]
+  for = "/fonts/*"
+    [headers.values]
+    cache-control = "public, max-age=360000"
+    Access-Control-Allow-Origin = "*"
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"

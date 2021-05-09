@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Enabled & Disabled Inputs</title>
+	<style>
+		form {
+			display: grid;
+			grid-gap: 1.5rem;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 3rem;
+			}
+		}
+
+		label {
+			display: block;
+			margin-bottom: 0.375rem;
+			font-weight: 600;
+		}
+
+		input {
+			appearance: none;
+			width: 100%;
+			padding: 0.625rem 0.875rem;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+			font-size: 1.125rem;
+			color: inherit;
+		}
+
+		input:focus {
+			outline: none;
+			border-color: var(--primary-color) !important;
+			box-shadow: 0 0 0 1px var(--primary-color), 0 1px 2px 0 rgba(0,0,0,0.05) !important;
+		}
+
+		input:disabled {
+			background-color: var(--input-disabled-background-color);
+			cursor: not-allowed;
+		}
+
+		input::placeholder {
+			color: var(--input-placeholder-color);
+		}
+
+		input:enabled {
+			border-color: var(--primary-color);
+			box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<div>
+			<label for="enabled">Email address (enabled)</label>
+			<input id="enabled" placeholder="email@email.com" type="email" />
+		</div>
+		<div>
+			<label for="disabled">Email address (disabled)</label>
+			<input disabled id="disabled" placeholder="email@email.com" type="email" />
+		</div>
+	</form>
+</div>
+</body>
+</html>

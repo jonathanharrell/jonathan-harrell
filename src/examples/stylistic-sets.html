@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Stylistic Sets</title>
+	<style>
+		body {
+			font-family: hypatia-sans-pro, sans-serif;
+			font-weight: 600;
+		}
+
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -2px;
+			text-align: center;
+		}
+
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	</style>
+	<link href="https://use.typekit.net/kes4reb.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+	<div>
+		<p>The quick brown fox</p>
+		<p style="font-feature-settings: 'ss01' 1;">
+			T<span style="color: var(--primary-color);">h</span>e q<span style="color: var(--primary-color);">ui</span>c<span style="color: var(--primary-color);">k</span> <span style="color: var(--primary-color);">br</span>ow<span style="color: var(--primary-color);">n</span> fox
+		</p>
+	</div>
+</div>
+</body>
+</html>

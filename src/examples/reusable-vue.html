@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Reusable Vue Search Select with Scoped Slots</title>
+	<style>
+		#app {
+			width: 100%;
+		}
+
+		.example-wrap {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+			min-height: 260px;
+			margin: 0 auto;
+		}
+
+		@media (min-width: 640px) {
+			.example-wrap {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 3rem;
+			}
+		}
+
+		h2 {
+			font-size: 1rem;
+		}
+
+		.autocomplete {
+			position: relative;
+		}
+
+		.autocomplete-dropdown {
+			position: absolute;
+			top: 100%;
+			width: 100%;
+			max-height: 196px;
+			overflow-y: auto;
+			margin-top: 8px;
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		}
+
+		.autocomplete-search-results-list {
+			list-style: none;
+			margin: 0;
+			padding: 8px 0;
+		}
+
+		.autocomplete-search-results-list:empty {
+			padding: 0;
+		}
+
+		.autocomplete-search-results-list li {
+			padding: 6px 12px;
+		}
+
+		.tag-list {
+			list-style: none;
+			margin: 16px 0 0;
+			padding: 0;
+		}
+
+		.tag-list li {
+			display: inline-block;
+			margin: 0 4px 4px 0;
+			padding: 2px 6px;
+			border-radius: 4px;
+			background-color: #6B7280;
+			font-size: 14px;
+			color: #FFF;
+		}
+
+		.dark .tag-list li {
+			background-color: #374151;
+		}
+	</style>
+	<script data-babel="true">
+		Vue.component('search-select', {
+			props: [
+				'options',
+				'filterMethod'
+			],
+
+			data() {
+				return {
+					query: ''
+				}
+			},
+
+			computed: {
+				results() {
+					return this.filterMethod(this.options, this.query);
+				}
+			},
+
+			methods: {
+				setQuery(event) {
+					this.query = event.target.value
+				}
+			},
+
+			render() {
+				return this.$scopedSlots.default({
+					results: this.results,
+					searchList: (event) => {
+						this.setQuery(event)
+					}
+				});
+			}
+		});
+
+		const options = [
+			'Inside Out',
+			'John Wick',
+			'Jurassic World',
+			'The Lord of the Rings',
+			'Pacific Rim',
+			'Pirates of the Caribbean',
+			'Planet of the Apes',
+			'Saw',
+			'Sicario',
+			'Zombies'
+		];
+
+		Vue.component('autocomplete', {
+			data() {
+				return {
+					dropdownVisible: false
+				}
+			},
+
+			methods: {
+				filterMethod(options, query) {
+					return options.filter(option => option.toLowerCase().includes(query.toLowerCase()));
+				},
+
+				showDropdown() {
+					this.dropdownVisible = true;
+				},
+
+				hideDropdown() {
+					this.dropdownVisible = false;
+				}
+			},
+
+			template: `
+				<search-select
+					:options="options"
+					:filterMethod="filterMethod"
+				>
+					<div slot-scope="{ results, searchList }">
+						<div class="autocomplete">
+							<input
+								type="text"
+								placeholder="Type to search list"
+								@input="searchList"
+								@focus="showDropdown"
+								@blur="hideDropdown"
+							/>
+							<div class="autocomplete-dropdown" v-if="dropdownVisible">
+								<ul class="autocomplete-search-results-list">
+									<li
+										class="autocomplete-search-result"
+										v-for="result in results"
+										:key="result"
+									>
+										{{ result }}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</search-select>
+			`
+		});
+
+		Vue.component('tag-list-search', {
+			methods: {
+				filterMethod(options, query) {
+					return options.filter(option => option.toLowerCase().includes(query.toLowerCase()));
+				}
+			},
+
+			template: `
+				<search-select
+					:options="options"
+					:filterMethod="filterMethod"
+				>
+					<div slot-scope="{ results, searchList }">
+						<div class="tag-list-search">
+							<input
+								type="text"
+								placeholder="Type to search list"
+								@input="searchList"
+							/>
+							<ul class="tag-list">
+								<li
+									class="tag"
+									v-for="result in results"
+									:key="result"
+								>
+									{{ result }}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</search-select>
+			`
+		});
+
+		const app = new Vue({
+			el: '#app'
+		});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div id="app">
+		<div class="example-wrap">
+			<div class="example">
+				<h2>Autocomplete</h2>
+				<autocomplete></autocomplete>
+			</div>
+			<div class="example">
+				<h2>Tag List Search</h2>
+				<tag-list-search></tag-list-search>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

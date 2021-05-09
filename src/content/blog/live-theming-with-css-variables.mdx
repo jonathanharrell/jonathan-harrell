@@ -5,15 +5,17 @@ date: 2017-08-19T20:17:00.000Z
 description: >-
   CSS variables are opening up exciting new possibilities, like creating a very
   performant live theme editor that dynamically updates CSS values.
-featuredimage: /img/css-variables-theming.svg
+color: indigo
 socialimage: /img/live-theming.png
 tags:
-  - css
-  - theming
+  - CSS
+  - Theming
 ---
 CSS variables, now enjoying fairly good [browser support](https://caniuse.com/#search=css%20variables), are opening up exciting possibilities for more dynamic styling. Having true CSS variables means that we can get and set their values in JavaScript, allowing us to build cool features like live theming.
 
 The process is fairly simple — setup initial variable values in CSS, markup some inputs, add event listeners and set the values in JavaScript. Let’s get started!
+
+<Example name="live-theming" height={440} smHeight={460} />
 
 ![Set CSS variables using JavaScript to create a live theming experience.](/img/live-theming.svg)
 
@@ -111,7 +113,7 @@ const handleInputChange = (property, pixels) => {
 
 Next, I’ll need to add some functionality to grab the values from localStorage and set them on page load. I will need to set the CSS variable and the input value so everything is consistent. Once again, I’ve extracted the logic to a separate function. And again, be careful of pixel values. This time, when setting the input values, the ‘px’ string will need to be removed.
 
-```css
+```javascript
 const setValueFromLocalStorage = property => {
   let value = localStorage.getItem(property);
   document.documentElement.style.setProperty(

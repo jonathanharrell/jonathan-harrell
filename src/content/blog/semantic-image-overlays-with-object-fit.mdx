@@ -5,13 +5,16 @@ date: 2017-08-27T20:17:00.000Z
 description: >-
   Learn how to use CSS grid and the object-fit property to create an image grid
   with overlays that is semantic and great for SEO.
-featuredimage: /img/semantic-image-overlays.svg
+color: yellow
+featuredimage: /img/placeholder.svg
 socialimage: /img/semantic-image-overlays.png
 tags:
-  - css
-  - images
+  - CSS
+  - Images
 ---
 Think of how many times you have coded a grid of images with an overlay that appears on hover and displays some sort of text. With the `object-fit` property getting wider support, there is now a clean, semantic way of doing this.
+
+<Example name="object-fit" height={440} smHeight={460} />
 
 ## The Old Way (without object-fit)
 
@@ -112,9 +115,3 @@ It’s almost identical, only that now we’re using the `figure` element to con
 ## Browser Support of object-fit
 
 Currently `object-fit` is not supported in IE or Edge, but there is a simple [polyfill](https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3) you can use to convert the image to a background-image in those browsers.
-
-## Conclusion
-
-Check out the live demo to see the styles in action, as well as some additional gradient and hover effects to make it more snazzy.
-
-<Codepen id="vVEerg"/>

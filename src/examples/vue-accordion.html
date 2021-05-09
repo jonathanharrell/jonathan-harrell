@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Vue Accordion Component Using Provide/Inject</title>
+	<style>
+		#app {
+			width: 100%;
+		}
+
+		.accordion-wrap {
+			margin: 0 auto;
+			max-width: 35rem;
+		}
+
+		.accordion {
+			width: 100%;
+			margin: 0 auto;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		.accordion-item {
+			background-color: var(--input-background-color);
+		}
+
+		.accordion-item:not(:first-child) .accordion-header {
+			border-top: 1px solid var(--input-border-color);
+		}
+
+		.accordion-item .accordion-panel {
+			border-top: 1px solid var(--input-border-color);
+		}
+
+		.accordion-header {
+			margin: 0;
+			line-height: 0;
+		}
+
+		.accordion-header button {
+			appearance: none;
+			width: 100%;
+			padding: 16px;
+			border: 0;
+			background: none;
+			font-size: 1rem;
+			font-weight: 600;
+			text-align: left;
+			color: var(--text-color);
+		}
+
+		.accordion-panel {
+			padding: 16px;
+		}
+	</style>
+	<script data-babel="true">
+		Vue.component('accordion', {
+			render (createElement) {
+				return createElement(
+					'div',
+					{ class: 'accordion' },
+					this.$slots.default
+				)
+			}
+		});
+
+		Vue.component('accordion-item', {
+			data () {
+				return {
+					sharedState: {
+						expanded: false
+					}
+				}
+			},
+
+			provide () {
+				return {
+					accordionItemState: this.sharedState
+				}
+			},
+
+			render (createElement) {
+				return createElement(
+					'div',
+					{ class: 'accordion-item' },
+					this.$slots.default
+				);
+			}
+		});
+
+		Vue.component('accordion-header', {
+			inject: ['accordionItemState'],
+
+			template: `
+				<h2 class="accordion-header">
+					<button
+						:aria-expanded="accordionItemState.expanded ? 'true' : 'false'"
+						@click="accordionItemState.expanded = !accordionItemState.expanded"
+					>
+						{{ accordionItemState.expanded ? '▼' : '►' }}
+						<slot></slot>
+					</button>
+				</h2>
+			`
+		});
+
+		Vue.component('accordion-panel', {
+			inject: ['accordionItemState'],
+
+			template: `
+				<div class="accordion-panel" :hidden="!accordionItemState.expanded">
+					<slot></slot>
+				</div>
+			`
+		});
+
+		const app = new Vue({
+			el: '#app'
+		});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<div id="app">
+		<div class="accordion-wrap">
+			<accordion>
+				<accordion-item>
+					<accordion-header>
+						Section 1
+					</accordion-header>
+					<accordion-panel>
+						Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+					</accordion-panel>
+				</accordion-item>
+				<accordion-item>
+					<accordion-header>
+						Section 2
+					</accordion-header>
+					<accordion-panel>
+						Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
+					</accordion-panel>
+				</accordion-item>
+				<accordion-item>
+					<accordion-header>
+						Section 3
+					</accordion-header>
+					<accordion-panel>
+						Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+					</accordion-panel>
+				</accordion-item>
+			</accordion>
+		</div>
+	</div>
+</div>
+</body>
+</html>

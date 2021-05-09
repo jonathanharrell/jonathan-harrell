@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Button Variants with Scoped CSS Variables</title>
+	<style>
+		:root {
+			--button-background-color: #6B7280;
+		}
+
+		.button-wrap {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		button {
+			appearance: none;
+			margin: 0 8px 8px 0;
+			padding: 10px 16px;
+			border: 0;
+			border-radius: 9999px;
+			background-color: var(--button-background-color);
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+			font-size: 16px;
+			color: #FFF;
+		}
+
+		.button-primary {
+			--button-background-color: var(--primary-color);
+		}
+
+		.button-secondary {
+			--button-background-color: #374151;
+		}
+
+		.button-success {
+			--button-background-color: #34D399;
+		}
+
+		.button-danger {
+			--button-background-color: #EF4444;
+		}
+
+		.button-warning {
+			--button-background-color: #F59E0B;
+		}
+
+		.button-info {
+			--button-background-color: #3B82F6;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="button-wrap">
+		<button class="button-primary">Primary</button>
+		<button class="button-secondary">Secondary</button>
+		<button class="button-success">Success</button>
+		<button class="button-danger">Danger</button>
+		<button class="button-warning">Warning</button>
+		<button class="button-info">Info</button>
+	</div>
+</div>
+</body>
+</html>

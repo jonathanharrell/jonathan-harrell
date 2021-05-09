@@ -1,33 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="595px" viewBox="0 0 1200 595" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <rect fill="#F9F9FB" x="0" y="0" width="1200" height="595"></rect>
-    <rect fill-opacity="0.1" fill="#8D8DA6" x="115" y="230" width="430" height="55"></rect>
-    <rect fill="#FFFFFF" x="655" y="90" width="430" height="180"></rect>
-    <rect fill="#FFFFFF" x="115" y="90" width="430" height="140"></rect>
-    <polygon fill="#8D8DA6" fill-rule="nonzero"
-             points="323 285 323 283 329 283 329 232 323 232 323 230 337 230 337 232 331 232 331 283 337 283 337 285"></polygon>
-    <rect fill="#8D8DA6" x="278" y="246" width="40" height="24" rx="12"></rect>
-    <text font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
-      <tspan x="289" y="263">30</tspan>
-    </text>
-    <rect fill-opacity="0.1" fill="#8D8DA6" x="656" y="270" width="429" height="55"></rect>
-    <polygon fill="#8D8DA6" fill-rule="nonzero"
-             points="863 325 863 323 869 323 869 272 863 272 863 270 877 270 877 272 871 272 871 323 877 323 877 325"></polygon>
-    <rect fill="#8D8DA6" x="818" y="286" width="40" height="24" rx="12"></rect>
-    <text font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
-      <tspan x="829" y="303">30</tspan>
-    </text>
-    <rect fill-opacity="0.1" fill="#8D8DA6" x="115" y="310" width="430" height="55"></rect>
-    <rect fill="#FFFFFF" x="655" y="325" width="430" height="180"></rect>
-    <polygon fill="#8D8DA6" fill-rule="nonzero"
-             points="323 365 323 363 329 363 329 312 323 312 323 310 337 310 337 312 331 312 331 363 337 363 337 365"></polygon>
-    <rect fill="#8D8DA6" x="278" y="326" width="40" height="24" rx="12"></rect>
-    <text font-family="Menlo-Bold, Menlo" font-size="16" font-weight="bold" fill="#F9FAFA">
-      <tspan x="289" y="343">30</tspan>
-    </text>
-    <rect fill="#FFFFFF" x="115" y="365" width="430" height="140"></rect>
-    <line x1="1086" y1="90" x2="1086" y2="505" stroke="#8D8DA6" stroke-width="2"></line>
-    <line x1="655" y1="90" x2="655" y2="505" stroke="#8D8DA6" stroke-width="2"></line>
-  </g>
+<svg width="768px" height="467px" viewBox="0 0 768 467" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>sibling-elements</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="421" y="177" width="280" height="34"></rect>
+        <pattern id="pattern-2" width="7.2" height="7.2" x="413.8" y="169.8" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-3" transform="scale(0.6,0.6)"></use>
+        </pattern>
+        <image id="image-3" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGN5fIAKQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAADKADAAQAAAABAAAADAAAAAAwxNhnAAAAPElEQVQoFWNkIALcrOBoYPj/r56BkamRoHKQ4pvlbP/BmgipHlWMHEK0Cw2QLURHCkgtKMaJikGoYpDhAKsQRyg+NaFuAAAAAElFTkSuQmCC"></image>
+        <rect id="path-4" x="67" y="94" width="280" height="83"></rect>
+        <filter x="-1.2%" y="-3.0%" width="102.5%" height="108.4%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-6" x="421" y="94" width="280" height="83"></rect>
+        <filter x="-1.2%" y="-3.0%" width="102.5%" height="108.4%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-8" x="421" y="211" width="280" height="83"></rect>
+        <filter x="-1.2%" y="-3.0%" width="102.5%" height="108.4%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-10" x="67" y="290" width="280" height="83"></rect>
+        <filter x="-1.2%" y="-3.0%" width="102.5%" height="108.4%" filterUnits="objectBoundingBox" id="filter-11">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="sibling-elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F9FAFB" x="0" y="0" width="768" height="467"></rect>
+        <rect id="Rectangle-Copy" fill="#FCE68A" x="67" y="256" width="280" height="151"></rect>
+        <rect id="Rectangle-Copy-5" fill="#FCE68A" x="67" y="60" width="280" height="151"></rect>
+        <rect id="Rectangle-Copy-6" fill="#FCE68A" x="421" y="60" width="280" height="34"></rect>
+        <g id="Rectangle-Copy-8">
+            <use fill="#FCE68A" xlink:href="#path-1"></use>
+            <use fill="url(#pattern-2)" xlink:href="#path-1"></use>
+        </g>
+        <rect id="Rectangle-Copy-7" fill="#FCE68A" x="421" y="294" width="280" height="34"></rect>
+        <g id="Mask">
+            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+        </g>
+        <g id="Mask-Copy-2">
+            <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+        </g>
+        <g id="Mask-Copy-3">
+            <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+        </g>
+        <g id="Mask-Copy">
+            <use fill="black" fill-opacity="1" filter="url(#filter-11)" xlink:href="#path-10"></use>
+            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-10"></use>
+        </g>
+    </g>
 </svg>

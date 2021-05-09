@@ -52,4 +52,20 @@
 /tag/variables                                                        /tags/css
 /tag/vue                                                              /tags/vue
 
+/tags/css                                                             /blog?page=1&menu%5Bfrontmatter.tags%5D=CSS
+/tags/javascript                                                      /blog?page=1&menu%5Bfrontmatter.tags%5D=JavaScript
+/tags/react                                                           /blog?page=1&menu%5Bfrontmatter.tags%5D=React
+/tags/typography                                                      /blog?page=1&menu%5Bfrontmatter.tags%5D=Typography
+/tags/forms                                                           /blog?page=1&menu%5Bfrontmatter.tags%5D=Forms
+/tags/html                                                            /blog?page=1&menu%5Bfrontmatter.tags%5D=HTML
+/tags/layout                                                          /blog?page=1&menu%5Bfrontmatter.tags%5D=Layout
+/tags/images                                                          /blog?page=1&menu%5Bfrontmatter.tags%5D=Images
+/tags/vue                                                             /blog?page=1&menu%5Bfrontmatter.tags%5D=Vue
+/tags/theming                                                         /blog?page=1&menu%5Bfrontmatter.tags%5D=Theming
+
+/tags                                                                 /blog
+/tags/*                                                               /blog
+
 /author/harr041gmail-com                                              /about
+
+/work                                                                 /

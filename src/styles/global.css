@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  @apply dark:bg-black;
+}
+
+html {
+  @apply bg-gray-800;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400;
+}
+
+.dark {
+  @apply bg-gray-900;
+}
+
+.token.plain-text {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.cp_embed_wrapper {
+	height: 100%;
+}
+
+mark {
+	@apply bg-gray-100 dark:bg-gray-700 text-current;
+}
+
+/*svg {*/
+/*  max-width: 100%;*/
+/*  height: auto;*/
+/*}*/

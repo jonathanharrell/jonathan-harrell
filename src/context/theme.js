@@ -1,10 +1,8 @@
-import React from 'react'
-import theme from '../jh-ui/theme'
+import React from "react";
 
 const ThemeContext = React.createContext({
-  theme: theme,
-  themeName: null,
-  setTheme: () => {}
-})
+	themeName: null,
+	setTheme: () => {}
+});
 
-export default ThemeContext
+export default ThemeContext;
