@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Proportional Numerals</title>
+	<style>
+		body {
+			font-family: hypatia-sans-pro, sans-serif;
+			font-weight: 600;
+		}
+
+		p {
+			margin: 1.5rem;
+			font-size: 4rem;
+			line-height: 1;
+			letter-spacing: -3px;
+		}
+
+		@media (min-width: 640px) {
+			p {
+				font-size: 5rem;
+			}
+		}
+
+		span {
+			border-right: 1px solid var(--primary-color);
+		}
+
+		span:first-child {
+			border-left: 1px solid var(--primary-color);
+		}
+	</style>
+	<link href="https://use.typekit.net/kes4reb.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+	<div>
+		<p style="font-feature-settings: 'pnum' 1; color: var(--primary-color);">
+			<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+		</p>
+	</div>
+</div>
+</body>
+</html>

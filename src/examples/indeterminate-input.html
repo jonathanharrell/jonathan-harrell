@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Indeterminate Input Value</title>
+	<style>
+		form {
+			width: 100%;
+			max-width: 32rem;
+			overflow: hidden;
+			border: 1px solid var(--input-border-color);
+			border-radius: 6px;
+			background-color: var(--input-background-color);
+		}
+
+		.master-option-wrap {
+			padding: 1.25rem 2rem;
+		}
+
+		.master-option label {
+			font-weight: 600;
+		}
+
+		fieldset {
+			margin-bottom: 0;
+			padding: 1.25rem 2rem;
+			border-top: 1px solid var(--input-border-color);
+			background-color: #F3F4F6;
+			box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		}
+
+		.dark fieldset {
+			background-color: #1F2937;
+		}
+
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+
+		fieldset .checkbox {
+			margin-bottom: 0.5rem;
+			margin-right: 1rem;
+		}
+
+		@media (min-width: 640px) {
+			fieldset .checkbox {
+				margin-bottom: 0;
+			}
+		}
+	</style>
+	<script>
+		const masterCheckbox = document.querySelector("input[name='master-option']");
+
+		setMasterState();
+
+		document.querySelector("fieldset").addEventListener("click", event => {
+			if (event.target.type === "checkbox") {
+				setMasterState();
+			}
+		});
+
+		function setMasterState() {
+			const checkboxes = Array.from(
+				document.querySelectorAll("fieldset input")
+			);
+
+			const trueValues = checkboxes
+				.map(checkbox => checkbox.checked)
+				.filter(value => value);
+
+			const allChecked = trueValues.length === checkboxes.length;
+
+			if (allChecked) {
+				masterCheckbox.indeterminate = false;
+				return masterCheckbox.checked = true;
+			}
+
+			const someChecked = trueValues.length > 0;
+
+			if (someChecked) {
+				return masterCheckbox.indeterminate = true;
+			}
+
+			masterCheckbox.indeterminate = false;
+			masterCheckbox.checked = false;
+		}
+	</script>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<div class="master-option-wrap">
+			<div class="checkbox master-option">
+				<input id="master-option" name="master-option" type="checkbox"/>
+				<label for="master-option">Master option</label>
+			</div>
+		</div>
+		<fieldset>
+			<div class="checkbox">
+				<input checked id="option-1" name="options" type="checkbox"/>
+				<label for="option-1">Option 1</label>
+			</div>
+			<div class="checkbox">
+				<input checked id="option-2" name="options" type="checkbox"/>
+				<label for="option-2">Option 2</label>
+			</div>
+			<div class="checkbox">
+				<input id="option-3" name="options" type="checkbox"/>
+				<label for="option-3">Option 3</label>
+			</div>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

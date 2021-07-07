@@ -5,11 +5,12 @@ date: 2017-10-24T20:17:00.000Z
 description: >-
   Overview of the benefits of CSS variables and helpful tips and tricks for
   working with them.
-featuredimage: /img/unlocking-css-benefits.svg
+color: yellow
+featuredimage: /img/placeholder.svg
 socialimage: /img/unlocking-css-benefits.png
 tags:
-  - css
-  - theming
+  - CSS
+  - Theming
 ---
 More and more developers are starting to use CSS variables, or as they are more correctly known, custom properties. Native CSS custom properties provide several clear benefits over preprocessor variables. They provide the power to achieve things like live theming which were previously much more difficult.
 
@@ -77,7 +78,7 @@ Preprocessor variables do not work in plain CSS or with other preprocessors so t
 
 Here’s an example of overriding default Bootstrap Sass typography variables to use custom properties.
 
-```css
+```scss
 $font-size-h1: calc(var(--font-size-base) * 2.6) !default;
 $font-size-h2: calc(var(--font-size-base) * 2.15) !default;
 $font-size-h3: calc(var(--font-size-base) * 1.7) !default;

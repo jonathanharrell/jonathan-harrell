@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Enabled & Disabled Inputs</title>
+	<style>
+		form {
+			display: grid;
+			grid-gap: 24px;
+			grid-template-columns: repeat(1, 1fr);
+			width: 100%;
+			max-width: 40rem;
+		}
+
+		@media (min-width: 640px) {
+			form {
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 48px;
+			}
+		}
+
+		.input:enabled {
+			border-color: var(--primary-color);
+			box-shadow: 0 1px 3px 0 rgba(30, 185, 128, 0.5);
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<div>
+			<label for="enabled">Email address (enabled)</label>
+			<input class="input" id="enabled" placeholder="email@email.com" type="email" />
+		</div>
+		<div>
+			<label for="disabled">Email address (disabled)</label>
+			<input class="input" disabled id="disabled" placeholder="email@email.com" type="email" />
+		</div>
+	</form>
+</div>
+</body>
+</html>

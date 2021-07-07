@@ -5,12 +5,12 @@ date: 2018-11-05T22:14:59.449Z
 description: >-
   Learn to use React’s Context API and provide/inject in Vue to share state
   between related components without resorting to a global data store.
-featuredimage: /img/implicit-state-sharing.svg
+color: pink
 socialimage: /img/implicit-state-sharing.png
 tags:
-  - javascript
-  - react
-  - vue
+  - JavaScript
+  - React
+  - Vue
 ---
 Imagine you are creating an accordion component that you want to distribute publicly through an npm package. You would like the user of this accordion to be able to use the component in a very flexible way, by composing multiple components together. React Context and provide/inject in Vue provide a solution.
 
@@ -56,7 +56,7 @@ What we really need is a way to _implicitly_ pass down props.
 
 ## Using React Context
 
-![](/img/accordion-state-sharing.svg)
+<Example name="react-accordion" height={400} smHeight={380} />
 
 There is a better solution for cases like this — React Context. We can use the Context API to create some state and provide it where needed behind the scenes, removing this concern from our public-facing API.
 
@@ -155,9 +155,9 @@ Now, we really can achieve our ideal API for the accordion component. Users of o
 </Accordion>
 ```
 
-<Codepen id="WgBzyX"/>
-
 ## Provide/Inject in Vue
+
+<Example name="vue-accordion" height={400} smHeight={380} />
 
 Vue provides a similar tool to React’s Context API, called provide/inject. To use this, we will use the `provide` method on our `accordion-item` Vue component:
 

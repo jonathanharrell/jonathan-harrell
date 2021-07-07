@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Historical Ligatures</title>
+	<style>
+		@font-face {
+			font-family: "cardo";
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/cardo-regular.woff2");
+		}
+
+		body {
+			font-family: cardo, sans-serif;
+			font-weight: 600;
+		}
+
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			text-align: center;
+		}
+
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div>
+		<p>ſinful ſingular</p>
+		<p style="font-feature-settings: 'hlig' 1;">
+			<span style=" color: var(--primary-color);">ſi</span>nful <span style=" color: var(--primary-color);">ſi</span>ngular
+		</p>
+	</div>
+</div>
+</body>
+</html>

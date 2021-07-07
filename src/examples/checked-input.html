@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Checked Input Value</title>
+	<style>
+		form {
+			width: 100%;
+			max-width: 32rem;
+		}
+
+		legend {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
+
+		@media (min-width: 640px) {
+			fieldset {
+				display: flex;
+			}
+		}
+
+		.checkbox {
+			margin-bottom: 1rem;
+			margin-right: 2rem;
+		}
+
+		@media (min-width: 640px) {
+			.checkbox {
+				margin-bottom: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<form>
+		<fieldset>
+			<legend>Options</legend>
+			<div class="checkbox">
+				<input id="option-1" name="options" type="checkbox"/>
+				<label for="option-1">Option 1</label>
+			</div>
+			<div class="checkbox">
+				<input id="option-2" name="options" type="checkbox"/>
+				<label for="option-2">Option 2</label>
+			</div>
+			<div class="checkbox">
+				<input checked id="option-3" name="options" type="checkbox"/>
+				<label for="option-3">Option 3</label>
+			</div>
+			<div class="checkbox">
+				<input id="option-4" name="options" type="checkbox"/>
+				<label for="option-4">Option 4</label>
+			</div>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

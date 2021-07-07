@@ -5,15 +5,17 @@ date: 2017-10-12T20:17:00.000Z
 description: >-
   Scoped CSS variables provide an incredibly easy and clean way to create
   variants of common interface components like buttons.
-featuredimage: /img/component-variants.svg
+color: purple
 socialimage: /img/component-variants.png
 tags:
-  - css
-  - theming
+  - CSS
+  - Theming
 ---
 Generating variants of common interface components like buttons, inputs, cards, etc., has typically involved multiple class names, pre-processor mixins, or repeated code. Now, component variants can be created in a clean and straightforward manner using CSS variables.
 
 Let’s take creating buttons as an example. I want to replicate the familiar set of buttons made popular by Bootstrap and similar frameworks that includes primary, secondary, success, danger, warning, info, light and dark variants.
+
+<Example name="component-variants" height={260} smHeight={180} />
 
 ## Base Styling
 
@@ -118,10 +120,6 @@ Here I’m nesting variant selectors with PostCSS:
   /* ... */
 }
 ```
-
-Check out the Codepen for the working result:
-
-<Codepen id="NaBPoJ"/>
 
 ## Browser Support for CSS Variables
 

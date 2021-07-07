@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Titling Caps</title>
+	<style>
+		@font-face {
+			font-family: "allan";
+			src: url("https://60283f6be291fa00077f66b1--jonathan-harrell.netlify.app/fonts/allan-regular.woff2");
+		}
+
+		body {
+			font-family: "allan", sans-serif;
+		}
+
+		p {
+			margin: 1.5rem;
+			font-size: 3rem;
+			line-height: 1;
+			letter-spacing: -2px;
+			text-align: center;
+		}
+
+		@media (min-width: 640px) {
+			p {
+				font-size: 4rem;
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div>
+		<p>Quick brown lazy Grumpy</p>
+		<p style="font-feature-settings: 'titl' 1;">
+			Q<span style="color: var(--primary-color);">u</span>ick b<span style="color: var(--primary-color);">r</span>own laz<span style="color: var(--primary-color);">y</span> G<span style="color: var(--primary-color);">ru</span>mp<span style="color: var(--primary-color);">y</span>
+		</p>
+	</div>
+</div>
+</body>
+</html>
