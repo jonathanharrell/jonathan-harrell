@@ -206,8 +206,8 @@ const CustomHighlight = connectHighlight(Highlight);
 const Hits = ({ hits }) => (
 	<ul className="grid gap-y-10 gap-x-8 md:grid-cols-2">
 		{hits.map((hit, index) => (
-			<>
-				<li key={hit.objectID}>
+			<Fragment key={index}>
+				<li>
 					<ArticleExcerpt
 						link={hit.fields.slug}
 						title={
@@ -230,12 +230,11 @@ const Hits = ({ hits }) => (
 				</li>
 				{(index + 1) % 2 === 0 && index < hits.length - 1 && (
 					<li
-						key={`divider-${index}`}
 						aria-hidden="true"
 						className="hidden md:block md:col-span-2 border-b border-gray-200 dark:border-gray-800"
 					/>
 				)}
-			</>
+			</Fragment>
 		))}
 	</ul>
 );
