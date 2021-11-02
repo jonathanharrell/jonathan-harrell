@@ -16,14 +16,12 @@ import ArticleShare from "../components/ArticleShare";
 
 export const BlogPostTemplate = ({
 	location,
-	id,
 	content,
 	tags,
 	title,
 	description,
 	color,
 	date,
-	image,
 	socialImage,
 	readingTime,
 	slug,
@@ -105,9 +103,7 @@ export const BlogPostTemplate = ({
 										className="sticky top-6 w-72"
 										style={{ height: "calc(100vh - 40px)" }}
 									>
-										<div
-											className={`w-full max-h-full overflow-y-auto p-6 pl-4 rounded-xl bg-gray-50 dark:bg-gray-800`}
-										>
+										<div className={`w-full max-h-full overflow-y-auto`}>
 											<TableOfContents
 												tableOfContents={tableOfContents}
 												articleContent={articleContent}
@@ -128,14 +124,14 @@ export const BlogPostTemplate = ({
 								{prev ? (
 									<Link
 										to={prev.fields.slug}
-										className="flex flex-1 items-center justify-center mb-4 md:mb-0 py-1.5 px-4 bg-white hover:bg-gray-100 border border-gray-200 rounded-lg md:rounded-tr-none md:rounded-br-none text-lg"
+										className="flex flex-1 items-center justify-center mb-4 md:mb-0 py-1.5 px-4 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-tr-none md:rounded-br-none text-lg"
 									>
 										<ChevronLeftIcon className="w-5 h-5 mr-2 text-gray-400" />
 										Previous article
 									</Link>
 								) : (
-									<a className="flex flex-1 items-center justify-center mb-4 md:mb-0 py-1.5 px-4 bg-white border border-gray-200 rounded-lg md:rounded-tr-none md:rounded-br-none text-lg text-gray-400 cursor-not-allowed">
-										<ChevronLeftIcon className="w-5 h-5 mr-2 text-gray-300" />
+									<a className="flex flex-1 items-center justify-center mb-4 md:mb-0 py-1.5 px-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-tr-none md:rounded-br-none text-lg text-gray-400 dark:text-gray-500 cursor-not-allowed">
+										<ChevronLeftIcon className="w-5 h-5 mr-2 text-gray-300 dark:text-gray-600" />
 										Previous article
 									</a>
 								)}
@@ -143,15 +139,15 @@ export const BlogPostTemplate = ({
 								{next ? (
 									<Link
 										to={next.fields.slug}
-										className="flex flex-1 items-center justify-center mt-4 md:mt-0 py-1.5 px-4 bg-white hover:bg-gray-100 border border-gray-200 rounded-lg md:rounded-tl-none md:rounded-bl-none text-lg"
+										className="flex flex-1 items-center justify-center mt-4 md:mt-0 py-1.5 px-4 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-tl-none md:rounded-bl-none text-lg"
 									>
 										Next article
 										<ChevronRightIcon className="w-5 h-5 ml-2 text-gray-400" />
 									</Link>
 								) : (
-									<a className="flex flex-1 items-center justify-center mt-4 md:mt-0 py-1.5 px-4 bg-white border border-gray-200 rounded-lg md:rounded-tl-none md:rounded-bl-none text-lg text-gray-400 cursor-not-allowed">
+									<a className="flex flex-1 items-center justify-center mt-4 md:mt-0 py-1.5 px-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg md:rounded-tl-none md:rounded-bl-none text-lg text-gray-400 dark:text-gray-500 cursor-not-allowed">
 										Next article
-										<ChevronRightIcon className="w-5 h-5 ml-2 text-gray-300" />
+										<ChevronRightIcon className="w-5 h-5 ml-2 text-gray-300 dark:text-gray-600" />
 									</a>
 								)}
 							</div>

@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
 const Footer = ({ color }) => (
 	<footer aria-labelledby="footer-label" className="my-8 text-gray-500">
 		<div className="container">
-			<div className="max-w-4xl mx-auto pt-4 sm:pt-6 border-t-2 border-gray-100 dark:border-gray-800">
+			<div className="max-w-4xl mx-auto pt-8 sm:pt-6 border-t-2 border-gray-100 dark:border-gray-800">
 				<h2 id="footer-label" className="sr-only">
 					Site Footer
 				</h2>

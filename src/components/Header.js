@@ -6,7 +6,7 @@ import DesktopMenu from "./DesktopMenu";
 const Header = ({ location, shell }) => (
 	<header aria-label="Site Header">
 		<div className="container">
-			<div className="flex items-center justify-between max-w-4xl mx-auto py-4 sm:py-5">
+			<div className="flex items-center justify-between max-w-4xl mx-auto py-5 sm:py-4">
 				<GatsbyLink
 					to="/"
 					aria-label="Home page"

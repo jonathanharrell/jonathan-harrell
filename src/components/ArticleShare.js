@@ -23,7 +23,7 @@ const ArticleShare = ({ location, title, slug, className }) => {
 		<>
 			{hasNavigatorShare && (
 				<button
-					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white hover:bg-gray-100 border md:border-l-0 md:border-r-0 border-gray-200 rounded-lg md:rounded-none text-lg"
+					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border md:border-l-0 md:border-r-0 border-gray-200 dark:border-gray-700 rounded-lg md:rounded-none text-lg"
 					onClick={shareArticle}
 				>
 					<ShareIcon className="w-5 h-5 mr-2 text-gray-400" />
@@ -35,7 +35,7 @@ const ArticleShare = ({ location, title, slug, className }) => {
 					href={`https://twitter.com/intent/tweet?text=${title}&url=${location.href}`}
 					target="_blank"
 					rel="noopener noreferrer"
-					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white hover:bg-gray-100 border md:border-l-0 md:border-r-0 border-gray-200 rounded-lg md:rounded-none text-lg"
+					className="flex flex-1 items-center justify-center py-1.5 px-4 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 border md:border-l-0 md:border-r-0 border-gray-200 dark:border-gray-700 rounded-lg md:rounded-none text-lg"
 				>
 					<ChatAlt2Icon className="w-5 h-5 mr-2 text-gray-400" />
 					<span>Discuss on Twitter</span>

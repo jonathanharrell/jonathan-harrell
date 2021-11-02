@@ -46,15 +46,15 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 			banner={image.publicURL}
 		/>
 		<div className="container">
-			<div className="max-w-4xl mx-auto py-12">
+			<div className="max-w-4xl mx-auto py-8 sm:py-12">
 				<header aria-labelledby="about-label">
 					<div className="grid gap-y-6 gap-x-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 						{image && (
-							<figure>
+							<figure className="mb-8 sm:mb-0">
 								<GatsbyImage
 									fluid={image.childImageSharp.fluid}
 									alt="Jonathan Harrell"
-									className="md:h-full rounded-xl shadow-md transform origin-bottom-left -rotate-6"
+									className="lg:h-full rounded-xl shadow-md transform origin-bottom-left lg:-rotate-6"
 								/>
 							</figure>
 						)}
@@ -72,7 +72,7 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 					</div>
 				</header>
 				{involvement.projects.length && (
-					<section aria-labelledby="involvement-label" className="mt-10 sm:mt-16">
+					<section aria-labelledby="involvement-label" className="mt-16">
 						<header className="mb-8">
 							<h2
 								id="involvement-label"
@@ -81,7 +81,7 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 								{involvement.title || "Involvement"}
 							</h2>
 						</header>
-						<ul className="grid gap-x-10 grid-cols-1 md:grid-cols-2">
+						<ul className="grid gap-10 grid-cols-1 md:grid-cols-2">
 							{involvement.projects.map((project, index) => (
 								<li key={index}>
 									<a
@@ -112,7 +112,7 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 					</section>
 				)}
 				{whatIUse.usages.length && (
-					<section id="uses" aria-labelledby="uses-label" className="mt-10 sm:mt-16">
+					<section id="uses" aria-labelledby="uses-label" className="mt-16">
 						<header className="mb-4">
 							<h2
 								id="uses-label"
@@ -121,7 +121,7 @@ export const AboutPageTemplate = ({ location, title, image, bio, involvement, wh
 								{whatIUse.title || "What I Use"}
 							</h2>
 						</header>
-						<dl className="grid gap-y-4 gap-x-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+						<dl className="grid gap-y-4 gap-x-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 							{whatIUse.usages.map((usage, index) => (
 								<Usage key={index} usage={usage} />
 							))}

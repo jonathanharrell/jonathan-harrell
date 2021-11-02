@@ -9,7 +9,7 @@ export const IndexPage = ({ location }) => {
 		<Layout location={location}>
 			<Seo />
 			<div className="container">
-				<div className="max-w-4xl mx-auto pt-20 pb-12">
+				<div className="max-w-4xl mx-auto py-12 sm:pt-20">
 					<header aria-labelledby="introduction-label">
 						<h1
 							id="introduction-label"
@@ -24,7 +24,7 @@ export const IndexPage = ({ location }) => {
 							I’ve learned in my technical blog.
 						</p>
 					</header>
-					<section aria-labelledby="recent-articles-label" className="mt-10 sm:mt-16">
+					<section aria-labelledby="recent-articles-label" className="mt-16">
 						<header className="mb-12 pb-4 sm:pb-6 flex items-baseline justify-between border-b-2 border-gray-100 dark:border-gray-800">
 							<h2
 								id="recent-articles-label"
