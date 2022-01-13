@@ -196,9 +196,6 @@ const Hits = ({ hits }) => (
                     )}
                   </Text>
                 </Spaced>
-                <Text order="meta" element="span">
-                  {hit.fields.readingTime.text}
-                </Text>
               </ArticleMeta>
             </Spaced>
             <Spaced bottom="s">
