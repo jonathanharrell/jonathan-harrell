@@ -103,24 +103,12 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          {
-            family: 'Roboto',
-            variants: ['400', '400i', '500', '700'],
-            subsets: ['latin-ext']
-          },
-          {
-            family: 'DM Serif Display',
-            variants: ['400'],
-            subsets: ['latin-ext']
-          },
-          {
-            family: 'DM Serif Text',
-            variants: ['400'],
-            subsets: ['latin-ext']
-          }
+          'Roboto\:400,400i,500,700',
+          'DM+Serif+Display',
+          'DM+Serif+Text'
         ]
       }
     },
