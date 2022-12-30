@@ -27,7 +27,7 @@
     "convert-svg-to-png": "^0.5.0",
     "focus-visible": "^5.1.0",
     "framer-motion": "^1.8.4",
-    "gatsby": "^2.23.11",
+    "gatsby": "^2.32.13",
     "gatsby-image": "^2.4.0",
     "gatsby-plugin-feed": "^2.4.1",
     "gatsby-plugin-google-analytics": "^2.2.0",
