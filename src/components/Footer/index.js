@@ -34,10 +34,10 @@ const Footer = () => (
                 as="a"
                 href="https://twitter.com/HarrellofDurham"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer me"
                 title="Twitter"
               >
-                <ScreenReaderText>Twitter</ScreenReaderText>
+                <ScreenReaderText>twitter.com/HarrellofDurham</ScreenReaderText>
                 <Twitter />
               </Link>
               <Link
