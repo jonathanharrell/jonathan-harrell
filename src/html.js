@@ -68,6 +68,14 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <style dangerouslySetInnerHTML={{ __html: style }} />
+        <link
+          rel="webmention"
+          href="https://webmention.io/www.jonathan-harrell.com/webmention"
+        />
+        <link
+          rel="pingback"
+          href="https://webmention.io/www.jonathan-harrell.com/xmlrpc"
+        />
       </head>
       <body className="no-js" {...props.bodyAttributes}>
         <script dangerouslySetInnerHTML={{ __html: jsScript }} />
