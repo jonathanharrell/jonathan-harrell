@@ -44,7 +44,7 @@ const Footer = () => (
                 as="a"
                 href="https://github.com/jonathanharrell/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer me"
                 title="Github"
               >
                 <ScreenReaderText>Github</ScreenReaderText>

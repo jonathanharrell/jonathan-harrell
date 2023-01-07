@@ -129,13 +129,6 @@ const DesktopMenu = ({ location, shell }) => {
                       </MenuLinkText>
                     </MenuLink>
                   </MenuLinkWrap>
-                  <MenuLinkWrap>
-                    <MenuLink to="/work" getProps={isActive}>
-                      <MenuLinkText order="body" element="span">
-                        Work
-                      </MenuLinkText>
-                    </MenuLink>
-                  </MenuLinkWrap>
                 </Spaced>
               </ul>
             </nav>
