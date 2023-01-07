@@ -47,7 +47,9 @@ const Footer = () => (
                 rel="noopener noreferrer me"
                 title="Github"
               >
-                <ScreenReaderText>Github</ScreenReaderText>
+                <ScreenReaderText>
+                  https://github.com/jonathanharrell/
+                </ScreenReaderText>
                 <GitHub />
               </Link>
               <Link
