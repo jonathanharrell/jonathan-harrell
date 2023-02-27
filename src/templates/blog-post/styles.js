@@ -17,40 +17,14 @@ export const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
 `
 
-export const ArticleHeader = styled.header`
-  position: relative;
-  overflow: hidden;
-  background-color: var(--backgroundSecondary);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    height: 28rem;
-  }
-
-  &::after {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradientGray);
-    mix-blend-mode: multiply;
-    content: '';
-  }
-
-  ${ContentWrap} {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-  }
-`
+export const ArticleHeader = styled.header``
 
 export const ArticleHeaderContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   position: relative;
   height: 100%;
-  padding: 8rem 0 4rem;
+  padding-top: 8rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding-top: 10rem;
@@ -148,6 +122,7 @@ export const ArticleContent = styled.div`
     font-family: ${({ theme }) => theme.fonts.serifDisplay};
     font-size: 6rem;
     line-height: 0.85;
+    color: var(--accent);
   }
 
   .gatsby-highlight {
