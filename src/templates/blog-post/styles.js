@@ -21,10 +21,9 @@ export const ArticleHeader = styled.header`
   position: relative;
   overflow: hidden;
   background-color: var(--backgroundSecondary);
-  clip-path: url(#wave);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    height: 32.5rem;
+    height: 28rem;
   }
 
   &::after {
@@ -51,7 +50,7 @@ export const ArticleHeaderContentWrap = styled.div`
   grid-template-columns: repeat(12, 1fr);
   position: relative;
   height: 100%;
-  padding: 8rem 0 6rem;
+  padding: 8rem 0 4rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding-top: 10rem;
@@ -70,13 +69,14 @@ export const Figure = styled(motion.figure)`
   top: 0;
   right: -25%;
   height: 100%;
+  filter: blur(5px);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: block;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    right: 0;
+    right: 10%;
   }
 
   > div {
@@ -85,7 +85,7 @@ export const Figure = styled(motion.figure)`
   }
 
   svg {
-    height: 100%;
+    height: 125%;
   }
 `
 
@@ -96,16 +96,12 @@ export const ArticleHeaderContent = styled.div`
   grid-column: 1 / -1;
   position: relative;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-column: auto / span 10;
-  }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 7;
+    grid-column: 2 / span 10;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-column: auto / span 6;
+    grid-column: 3 / span 8;
   }
 `
 

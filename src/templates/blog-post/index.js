@@ -139,8 +139,10 @@ export const BlogPostTemplate = ({
                 <Spaced bottom="3x">
                   <Figure
                     dangerouslySetInnerHTML={{ __html: image.fields.markup }}
-                    initial={shouldAnimate() ? { opacity: 0, scale: 1 } : false}
-                    animate={{ opacity: 1, scale: 1.05 }}
+                    initial={
+                      shouldAnimate() ? { opacity: 0, scale: 0.75 } : false
+                    }
+                    animate={{ opacity: 0.5, scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
                   />
                 </Spaced>
