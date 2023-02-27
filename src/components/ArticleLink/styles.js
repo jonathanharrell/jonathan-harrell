@@ -3,7 +3,7 @@ import Card from '../../jh-ui/Card'
 
 export const ArticleLinkWrap = styled(Card)`
   position: relative;
-  background-color: var(--backgroundCode);
+  background-color: var(--backgroundElevatedSecondary);
   border-radius: 6px;
 
   > div {

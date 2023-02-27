@@ -102,7 +102,7 @@ export const BioText = styled.div`
 `
 
 export const InvolvementWrap = styled.section`
-  background-color: var(--backgroundSecondary);
+  background-color: var(--backgroundPrimary);
 `
 
 export const ProjectsWrap = styled(motion.ul)`
@@ -196,7 +196,7 @@ export const UsageLink = styled.a`
 `
 
 export const SkillsetWrap = styled.section`
-  background-color: var(--backgroundSecondary);
+  background-color: var(--backgroundPrimary);
 `
 
 export const SkillsWrap = styled(motion.ul)`
@@ -228,5 +228,5 @@ export const SkillWrap = styled(motion.li)`
 
 export const Skill = styled(Card)`
   height: 100%;
-  background-color: var(--backgroundPrimary);
+  background-color: var(--backgroundElevatedSecondary);
 `

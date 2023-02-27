@@ -104,5 +104,6 @@ export const HeaderTextWrap = styled.div`
 `
 
 export const RecentArticlesWrap = styled.section`
-  background-color: var(--backgroundSecondary);
+  border-top: 1px solid var(--border);
+  background-color: var(--backgroundPrimary);
 `

@@ -90,22 +90,6 @@ const TagRoute = ({
                           See all articles
                         </Link>
                       </motion.div>
-                      <motion.div
-                        initial={
-                          shouldAnimate() ? { opacity: 0, y: 25 } : false
-                        }
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 50,
-                          mass: 0.1,
-                          delay: 0.2
-                        }}
-                      >
-                        <Link to="/tags/" arrow={true} arrowPosition="right">
-                          Browse all tags
-                        </Link>
-                      </motion.div>
                     </Spaced>
                   </Links>
                 </Spaced>
