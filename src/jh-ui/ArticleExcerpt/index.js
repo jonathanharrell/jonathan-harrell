@@ -17,12 +17,6 @@ const ArticleExcerpt = ({
   excerpt,
   ...props
 }) => {
-  const formattedDate = date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  })
-
   return (
     <ArticleCard
       padding={false}
@@ -44,14 +38,6 @@ const ArticleExcerpt = ({
         )}
         <Padded top="xxl" left="xxl" right="xxl" bottom="2x">
           <div>
-            <Spaced bottom="m">
-              <Text order="meta">
-                <ScreenReaderText>
-                  Article published date&nbsp;
-                </ScreenReaderText>
-                {formattedDate}
-              </Text>
-            </Spaced>
             <Spaced bottom="l">
               <Heading level={3} id={`${kebabCase(title)}-label`}>
                 {title}

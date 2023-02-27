@@ -3,6 +3,8 @@ import { darkValues, lightValues } from './variables'
 
 export const GlobalStyle = createGlobalStyle`
   :root {
+    color-scheme: light dark;
+
     ${lightValues}
 
     [data-theme="dark"] {

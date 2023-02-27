@@ -278,7 +278,7 @@ export const AboutPageTemplate = ({
         >
           <AboutContentWrap>
             <SectionHeader>
-              <Heading level={2} color="textInverse" id="skillset-label">
+              <Heading level={2} id="skillset-label">
                 {skillset.title || 'Skillset'}
               </Heading>
               <Link to="/resume" arrow={true}>
@@ -293,7 +293,7 @@ export const AboutPageTemplate = ({
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                 >
                   <Skill hoverable={false}>
-                    <Heading level={3} color="textInverse" element="p">
+                    <Heading level={3} element="p">
                       {skill.name}
                     </Heading>
                   </Skill>

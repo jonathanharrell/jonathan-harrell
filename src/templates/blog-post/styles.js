@@ -17,41 +17,14 @@ export const ArticleWrap = styled.article`
   background-color: var(--backgroundPrimary);
 `
 
-export const ArticleHeader = styled.header`
-  position: relative;
-  overflow: hidden;
-  background-color: var(--backgroundSecondary);
-  clip-path: url(#wave);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    height: 32.5rem;
-  }
-
-  &::after {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradientGray);
-    mix-blend-mode: multiply;
-    content: '';
-  }
-
-  ${ContentWrap} {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-  }
-`
+export const ArticleHeader = styled.header``
 
 export const ArticleHeaderContentWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   position: relative;
   height: 100%;
-  padding: 8rem 0 6rem;
+  padding-top: 8rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding-top: 10rem;
@@ -70,13 +43,14 @@ export const Figure = styled(motion.figure)`
   top: 0;
   right: -25%;
   height: 100%;
+  filter: blur(5px);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: block;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    right: 0;
+    right: 10%;
   }
 
   > div {
@@ -85,7 +59,7 @@ export const Figure = styled(motion.figure)`
   }
 
   svg {
-    height: 100%;
+    height: 125%;
   }
 `
 
@@ -96,16 +70,12 @@ export const ArticleHeaderContent = styled.div`
   grid-column: 1 / -1;
   position: relative;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    grid-column: auto / span 10;
-  }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    grid-column: auto / span 7;
+    grid-column: 2 / span 10;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-column: auto / span 6;
+    grid-column: 3 / span 8;
   }
 `
 
@@ -152,6 +122,7 @@ export const ArticleContent = styled.div`
     font-family: ${({ theme }) => theme.fonts.serifDisplay};
     font-size: 6rem;
     line-height: 0.85;
+    color: var(--accent);
   }
 
   .gatsby-highlight {
@@ -263,5 +234,6 @@ export const ScrollToTopLink = styled(Button)`
 `
 
 export const RecentArticlesWrap = styled.section`
-  background-color: var(--backgroundSecondary);
+  border-top: 1px solid var(--border);
+  background-color: var(--backgroundPrimary);
 `

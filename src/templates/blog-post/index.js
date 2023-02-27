@@ -135,16 +135,6 @@ export const BlogPostTemplate = ({
         <ArticleHeader>
           <ContentWrap>
             <ArticleHeaderContentWrap>
-              {image && (
-                <Spaced bottom="3x">
-                  <Figure
-                    dangerouslySetInnerHTML={{ __html: image.fields.markup }}
-                    initial={shouldAnimate() ? { opacity: 0, scale: 1 } : false}
-                    animate={{ opacity: 1, scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 50, mass: 0.2 }}
-                  />
-                </Spaced>
-              )}
               <ArticleHeaderContent>
                 <motion.div
                   initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
@@ -219,7 +209,7 @@ export const BlogPostTemplate = ({
                     </PageTitle>
                   </Spaced>
                 </motion.div>
-                {description && (
+                {tableOfContents.items.length && (
                   <motion.div
                     initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
                     animate={{ opacity: 1, y: 0 }}
@@ -230,23 +220,7 @@ export const BlogPostTemplate = ({
                       delay: 0.2
                     }}
                   >
-                    <Text order="body" color="textLighter" element="p">
-                      {description}
-                    </Text>
-                  </motion.div>
-                )}
-                {tableOfContents.items.length && (
-                  <motion.div
-                    initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 50,
-                      mass: 0.1,
-                      delay: 0.3
-                    }}
-                  >
-                    <Spaced top="l">
+                    <Spaced top="s">
                       <div>
                         <TableOfContents items={tableOfContents.items} />
                       </div>
@@ -257,11 +231,6 @@ export const BlogPostTemplate = ({
             </ArticleHeaderContentWrap>
           </ContentWrap>
         </ArticleHeader>
-        <Mask>
-          <clipPath id="wave" clipPathUnits="objectBoundingBox">
-            <path d="M1,0.843688301 C0.84002688,0.986453208 0.673360164,1.031424 0.5,0.978600682 C0.328125233,0.926230056 0.162829975,0.927702402 0.00411407769,0.983017719 L0,0.984465905 L0,0 L1,0 L1,0.843688301 Z" />
-          </clipPath>
-        </Mask>
         <motion.div
           initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: 1, y: 0 }}

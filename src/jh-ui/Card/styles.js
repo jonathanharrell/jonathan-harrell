@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Root = styled.div`
   overflow: hidden;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  box-shadow: ${({ theme }) => theme.elevations.medium};
   transition: all 0.2s ${({ theme }) => theme.beziers.out};
 
   > * {
