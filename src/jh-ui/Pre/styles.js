@@ -6,7 +6,7 @@ export const StyledPre = styled.pre`
   white-space: pre-wrap;
 
   code {
-    line-height: 1.7;
+    line-height: 1.5;
     color: var(--textCode);
   }
 
