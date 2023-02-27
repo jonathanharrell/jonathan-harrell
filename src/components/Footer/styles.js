@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import ContentWrap from '../ContentWrap/'
 
 export const FooterWrap = styled.footer`
-  background-color: var(--backgroundInverse);
+  background-color: var(--backgroundPrimary);
   color: var(--textLighter);
 `
 

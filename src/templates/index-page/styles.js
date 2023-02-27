@@ -7,7 +7,6 @@ export const HeaderWrap = styled.header`
   overflow: hidden;
   padding-top: 5rem;
   background-color: var(--backgroundPrimary);
-  box-shadow: inset 0 -1px 5px hsl(0, 0%, 0%, 15%);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding-top: 7rem;
@@ -50,12 +49,13 @@ export const Canvas = styled(motion.canvas)`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     left: auto;
-    right: -12.5%;
-    width: 60vw;
-    height: 60vw;
+    right: 0;
+    width: 50vw;
+    height: 50vw;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
+    top: calc(50% - 8rem);
     right: 0;
   }
 `
@@ -105,8 +105,4 @@ export const HeaderTextWrap = styled.div`
 
 export const RecentArticlesWrap = styled.section`
   background-color: var(--backgroundSecondary);
-`
-
-export const ExperimentsWrap = styled.section`
-  background-color: var(--backgroundInverse);
 `

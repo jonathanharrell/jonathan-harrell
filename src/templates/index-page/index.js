@@ -12,12 +12,10 @@ import Link from '../../jh-ui/Link'
 import Seo from '../../components/seo'
 import PageTitle from '../../components/PageTitle'
 import RecentArticles from '../../components/RecentArticles'
-import Experiments from '../../components/Experiments'
 import init from '../../home-animation'
 import { shouldAnimate } from '../../helpers'
 import {
   Canvas,
-  ExperimentsWrap,
   HeaderContentWrap,
   HeaderTextWrap,
   HeaderWrap,
@@ -27,7 +25,7 @@ import {
 } from './styles'
 import HomeIllustrationSrc from '../../img/home-illustration.png'
 
-export const IndexPageTemplate = ({ title, description, experiments }) => {
+export const IndexPageTemplate = ({ title, description }) => {
   const canvasRef = useRef(0)
 
   useEffect(() => {
@@ -152,54 +150,6 @@ export const IndexPageTemplate = ({ title, description, experiments }) => {
           <RecentArticles />
         </HomeContentWrap>
       </RecentArticlesWrap>
-      <ExperimentsWrap aria-labelledby="recent-experiments-label">
-        <HomeContentWrap>
-          <SectionHeader>
-            <motion.div
-              initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 50,
-                mass: 0.1,
-                delay: 0.4
-              }}
-            >
-              <Heading
-                level={2}
-                color="textInverse"
-                id="recent-experiments-label"
-              >
-                Recent Experiments
-              </Heading>
-            </motion.div>
-            <motion.div
-              initial={shouldAnimate() ? { opacity: 0 } : false}
-              animate={{ opacity: 1 }}
-              transition={{
-                type: 'spring',
-                stiffness: 50,
-                mass: 0.1,
-                delay: 0.5
-              }}
-            >
-              <Link
-                href="https://codepen.io/jonathanharrell/"
-                target="_blank"
-                rel="noopener noreferrer"
-                arrow={true}
-                aria-labelledby="view-all-experiments-label"
-              >
-                <span aria-hidden>View all</span>
-                <ScreenReaderText id="view-all-experiments-label">
-                  View all experiments
-                </ScreenReaderText>
-              </Link>
-            </motion.div>
-          </SectionHeader>
-          <Experiments experiments={experiments} />
-        </HomeContentWrap>
-      </ExperimentsWrap>
     </>
   )
 }
@@ -254,11 +204,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        experiments {
-          id
-          title
-          date
-        }
       }
     }
   }

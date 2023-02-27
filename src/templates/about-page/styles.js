@@ -66,8 +66,11 @@ export const BioImage = styled(Image)`
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+
+  img {
+    border-radius: 50%;
+  }
 `
 
 export const BioImageBorder = styled.svg`
@@ -193,7 +196,7 @@ export const UsageLink = styled.a`
 `
 
 export const SkillsetWrap = styled.section`
-  background-color: var(--backgroundInverse);
+  background-color: var(--backgroundSecondary);
 `
 
 export const SkillsWrap = styled(motion.ul)`
@@ -225,9 +228,5 @@ export const SkillWrap = styled(motion.li)`
 
 export const Skill = styled(Card)`
   height: 100%;
-  background-color: var(--backgroundElevatedInverse);
-
-  h3 {
-    color: var(--textInverse);
-  }
+  background-color: var(--backgroundPrimary);
 `

@@ -15,7 +15,7 @@ export const lightValues = css`
   --backgroundElevatedPrimary: '';
   --backgroundElevatedSecondary: ${({ theme }) => theme.colors.white};
   --backgroundElevatedInverse: ${({ theme }) => theme.colors.blueDarker};
-  --backgroundBody: ${({ theme }) => theme.colors.blueDarkest};
+  --backgroundBody: var(--backgroundPrimary);
   --backgroundSubscribeBanner: hsl(210, 67%, 9%);
   --backgroundCode: hsl(210, 15%, 97%);
   --backgroundInlineCode: hsl(210, 15%, 97%);
@@ -55,14 +55,14 @@ export const darkValues = css`
   --textCode: ${({ theme }) => theme.colors.white};
   --textAlertInfo: hsl(0, 0%, 60%);
   --textAlertDanger: hsl(5, 66%, 56%);
-  --backgroundPrimary: hsl(0, 0%, 8%);
+  --backgroundPrimary: hsl(0.67, 4%, 9%);
   --backgroundSecondary: hsl(0, 0%, 10%);
   --backgroundTertiary: hsl(0, 0%, 12%);
   --backgroundInverse: hsl(0, 0%, 6%);
   --backgroundElevatedPrimary: '';
   --backgroundElevatedSecondary: hsl(0, 0%, 12%);
   --backgroundElevatedInverse: hsl(0, 0%, 10%);
-  --backgroundBody: hsl(0, 0%, 3%);
+  --backgroundBody: var(--backgroundPrimary);
   --backgroundSubscribeBanner: hsl(0, 0%, 4%);
   --backgroundCode: hsl(0, 0%, 5%);
   --backgroundInlineCode: hsl(0, 0%, 12%);
