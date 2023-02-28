@@ -13,7 +13,7 @@ export const HeaderWrap = styled.header`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    padding-top: 10rem;
+    padding-top: 8rem;
   }
 `
 
@@ -55,8 +55,7 @@ export const Canvas = styled(motion.canvas)`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    top: calc(50% - 8rem);
-    right: 0;
+    top: calc(50% - 4rem);
   }
 `
 
@@ -83,14 +82,13 @@ export const HomeIllustration = styled.img`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     left: auto;
-    right: -12.5%;
-    width: 60vw;
-    height: 60vw;
-    transform: translate(0, -50%);
+    right: 0;
+    width: 50vw;
+    height: 50vw;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    right: 0;
+    top: calc(50% - 4rem);
   }
 `
 

@@ -59,41 +59,6 @@ export const BlogIndexPageTemplate = ({ location, title, tags }) => {
                 >
                   Skip to articles
                 </ArticlesSkipLink>
-                <motion.div
-                  initial={shouldAnimate() ? { opacity: 0, y: 50 } : false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 50,
-                    mass: 0.1,
-                    delay: 0.1
-                  }}
-                >
-                  <Spaced top="xxl">
-                    <ScreenReaderText>
-                      <Heading level={2} id="tags-label">
-                        Tags
-                      </Heading>
-                    </ScreenReaderText>
-                    {tags && (
-                      <section aria-labelledby="tags-label">
-                        <ul>
-                          {tags.map(tag => (
-                            <TagWrap key={tag.fieldValue + `tag`}>
-                              <Tag
-                                as={Link}
-                                to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                                aria-label={`View articles with the tag ${tag.fieldValue}`}
-                              >
-                                {tag.fieldValue}
-                              </Tag>
-                            </TagWrap>
-                          ))}
-                        </ul>
-                      </section>
-                    )}
-                  </Spaced>
-                </motion.div>
               </HeaderContentWrap>
             </Padded>
           </ContentWrap>

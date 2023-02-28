@@ -137,7 +137,6 @@ export const IndexPageTemplate = ({ title, description }) => {
             >
               <Link
                 to="/blog"
-                arrow={true}
                 aria-labelledby="view-all-articles-label"
               >
                 <span aria-hidden>View all</span>
