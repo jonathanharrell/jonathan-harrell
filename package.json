@@ -19,7 +19,7 @@
     "@sentry/browser": "^5.15.0",
     "@tippyjs/react": "^4.0.0",
     "algoliasearch": "^4.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "babel-plugin-remove-graphql-queries": "^2.7.11",
     "babel-plugin-styled-components": "^1.10.6",
     "bulma": "^0.7.0",
